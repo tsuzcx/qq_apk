@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mm.e.a.m;
-import com.tencent.mm.wear.a.c.d;
 import com.tencent.mm.wear.app.MMApplication;
+import com.tencent.mm.wear.app.a.c;
 import com.tencent.mm.wear.app.ui.MMActivity;
 import java.security.Key;
 import javax.crypto.Cipher;
@@ -13,33 +13,33 @@ import javax.crypto.spec.SecretKeySpec;
 
 public final class g
 {
-  private byte[] aaX;
-  private m aaY;
-  private String aaZ = "language_default";
-  private com.tencent.mm.wear.app.a.c aay = new com.tencent.mm.wear.app.a.a();
-  private String aba = "@invalid@";
+  private c adZ = new com.tencent.mm.wear.app.a.a();
+  private String aeA = "language_default";
+  private String aeB = "@invalid@";
+  private byte[] aey;
+  private m aez;
   
   public g()
   {
     SharedPreferences localSharedPreferences = MMApplication.getContext().getSharedPreferences("connect_core_shared_pre_name", 0);
-    this.aba = localSharedPreferences.getString("key_connect_username", "@invalid@");
-    this.aaZ = localSharedPreferences.getString("key_connect_language", "language_default");
+    this.aeB = localSharedPreferences.getString("key_connect_username", "@invalid@");
+    this.aeA = localSharedPreferences.getString("key_connect_language", "language_default");
   }
   
   protected final void a(m paramm)
   {
-    this.aaY = paramm;
-    this.aaZ = paramm.VL;
-    this.aba = paramm.Vm;
+    this.aez = paramm;
+    this.aeA = paramm.XG;
+    this.aeB = paramm.Xh;
     paramm = MMApplication.getContext().getSharedPreferences("connect_core_shared_pre_name", 0);
-    paramm.edit().putString("key_connect_language", this.aaZ).commit();
-    paramm.edit().putString("key_connect_username", this.aba).commit();
-    MMActivity.z(MMApplication.getContext());
+    paramm.edit().putString("key_connect_language", this.aeA).commit();
+    paramm.edit().putString("key_connect_username", this.aeB).commit();
+    MMActivity.A(MMApplication.getContext());
   }
   
   protected final void j(byte[] paramArrayOfByte)
   {
-    this.aaX = paramArrayOfByte;
+    this.aey = paramArrayOfByte;
   }
   
   public final byte[] k(byte[] paramArrayOfByte)
@@ -49,12 +49,12 @@ public final class g
     if (paramArrayOfByte != null)
     {
       localObject = localCipher;
-      if (this.aaX == null) {}
+      if (this.aey == null) {}
     }
     try
     {
-      d.e("MicroMsg.MMConnectionCore", "sessionKey is not null %s", new Object[] { com.tencent.mm.a.c.g(this.aaX) });
-      localObject = new SecretKeySpec(this.aaX, "AES");
+      com.tencent.mm.wear.a.c.d.d("MicroMsg.MMConnectionCore", "sessionKey is not null %s", new Object[] { com.tencent.mm.a.d.g(this.aey) });
+      localObject = new SecretKeySpec(this.aey, "AES");
       localCipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
       localCipher.init(1, (Key)localObject);
       localObject = localCipher.doFinal(paramArrayOfByte);
@@ -62,7 +62,7 @@ public final class g
     }
     catch (Exception paramArrayOfByte)
     {
-      d.a("MicroMsg.MMConnectionCore", paramArrayOfByte);
+      com.tencent.mm.wear.a.c.d.a("MicroMsg.MMConnectionCore", paramArrayOfByte);
     }
     return null;
   }
@@ -74,48 +74,48 @@ public final class g
     if (paramArrayOfByte != null)
     {
       localObject1 = localObject2;
-      if (this.aaX == null) {}
+      if (this.aey == null) {}
     }
     try
     {
-      d.e("MicroMsg.MMConnectionCore", "sessionKey is not null %s", new Object[] { com.tencent.mm.a.c.g(this.aaX) });
-      localObject1 = com.tencent.mm.c.a.a.a.a(paramArrayOfByte, this.aaX);
+      com.tencent.mm.wear.a.c.d.d("MicroMsg.MMConnectionCore", "sessionKey is not null %s", new Object[] { com.tencent.mm.a.d.g(this.aey) });
+      localObject1 = com.tencent.mm.c.b.a.a.a(paramArrayOfByte, this.aey);
       return localObject1;
     }
     catch (Exception paramArrayOfByte)
     {
-      d.a("MicroMsg.MMConnectionCore", paramArrayOfByte);
+      com.tencent.mm.wear.a.c.d.a("MicroMsg.MMConnectionCore", paramArrayOfByte);
     }
     return null;
   }
   
-  public final com.tencent.mm.wear.app.a.c lS()
+  public final c mF()
   {
-    return this.aay;
+    return this.adZ;
   }
   
-  public final m lT()
+  public final m mG()
   {
-    return this.aaY;
+    return this.aez;
   }
   
-  public final boolean lU()
+  public final boolean mH()
   {
-    if (this.aaY == null) {}
-    while (("language_default".equals(this.aaY.VL)) || ("zh_CN".equals(this.aaY.VL))) {
+    if (this.aez == null) {}
+    while (("language_default".equals(this.aez.XG)) || ("zh_CN".equals(this.aez.XG))) {
       return false;
     }
     return true;
   }
   
-  public final String lV()
+  public final String mI()
   {
-    return this.aaZ;
+    return this.aeA;
   }
   
-  public final String lW()
+  public final String mJ()
   {
-    return this.aba;
+    return this.aeB;
   }
 }
 

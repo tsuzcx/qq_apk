@@ -1,42 +1,25 @@
 package com.tencent.mm.plugin.appbrand.ui.collection;
 
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.desktop.DragRecyclerView;
+import d.l;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionSortViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder;", "root", "Landroid/view/View;", "(Landroid/view/View;)V", "deleteHandle", "kotlin.jvm.PlatformType", "getDeleteHandle", "()Landroid/view/View;", "rightExtraBottomLine", "getRightExtraBottomLine", "sortHandle", "getSortHandle", "setBottomLineVisibility", "", "visibility", "", "plugin-appbrand-integration_release"})
-final class i
-  extends l
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionRecyclerView;", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/DragRecyclerView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "plugin-appbrand-integration_release"})
+public final class i
+  extends DragRecyclerView
 {
-  private final View iSb;
-  final View iSc;
-  final View iSd;
-  
-  public i(View paramView)
+  public i(Context paramContext)
   {
-    super(paramView);
-    AppMethodBeat.i(135104);
-    this.iSb = paramView.findViewById(2131820550);
-    this.iSc = paramView.findViewById(2131821172);
-    this.iSd = paramView.findViewById(2131821173);
-    ViewGroup.LayoutParams localLayoutParams = this.iSh.getLayoutParams();
-    paramView = localLayoutParams;
-    if (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      paramView = null;
-    }
-    paramView = (ViewGroup.MarginLayoutParams)paramView;
-    if (paramView != null) {
-      paramView.leftMargin = 0;
-    }
-    this.iSh.requestLayout();
-    AppMethodBeat.o(135104);
+    super(paramContext);
+    AppMethodBeat.i(51268);
+    setNestedScrollingEnabled(true);
+    AppMethodBeat.o(51268);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.collection.i
  * JD-Core Version:    0.7.0.1
  */

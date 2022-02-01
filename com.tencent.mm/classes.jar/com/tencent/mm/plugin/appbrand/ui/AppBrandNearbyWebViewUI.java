@@ -5,177 +5,171 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.h;
-import com.tencent.mm.plugin.appbrand.aa;
+import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.plugin.appbrand.ab;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.ai;
+import com.tencent.mm.ui.ao;
 
 public final class AppBrandNearbyWebViewUI
   extends WebViewUI
 {
-  private static Boolean eth = null;
+  private static Boolean fGr = null;
   
   /* Error */
-  public static boolean Mo()
+  public static boolean XM()
   {
     // Byte code:
-    //   0: sipush 17072
+    //   0: sipush 21123
     //   3: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: getstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:eth	Ljava/lang/Boolean;
-    //   9: ifnonnull +65 -> 74
-    //   12: new 26	java/io/FileInputStream
-    //   15: dup
-    //   16: new 28	java/io/File
+    //   6: getstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:fGr	Ljava/lang/Boolean;
+    //   9: ifnonnull +78 -> 87
+    //   12: aconst_null
+    //   13: astore_2
+    //   14: aconst_null
+    //   15: astore_1
+    //   16: new 26	com/tencent/mm/vfs/e
     //   19: dup
-    //   20: invokestatic 34	android/os/Environment:getRootDirectory	()Ljava/io/File;
-    //   23: ldc 36
-    //   25: invokespecial 39	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   28: invokespecial 42	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   31: astore_2
-    //   32: aload_2
+    //   20: invokestatic 32	android/os/Environment:getRootDirectory	()Ljava/io/File;
+    //   23: ldc 34
+    //   25: invokespecial 37	com/tencent/mm/vfs/e:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   28: invokestatic 43	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   31: astore_3
+    //   32: aload_3
     //   33: astore_1
-    //   34: new 44	java/util/Properties
-    //   37: dup
-    //   38: invokespecial 45	java/util/Properties:<init>	()V
-    //   41: astore_3
-    //   42: aload_2
-    //   43: astore_1
-    //   44: aload_3
-    //   45: aload_2
-    //   46: invokevirtual 49	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   49: aload_2
-    //   50: astore_1
+    //   34: aload_3
+    //   35: astore_2
+    //   36: new 45	java/util/Properties
+    //   39: dup
+    //   40: invokespecial 46	java/util/Properties:<init>	()V
+    //   43: astore 4
+    //   45: aload_3
+    //   46: astore_1
+    //   47: aload_3
+    //   48: astore_2
+    //   49: aload 4
     //   51: aload_3
-    //   52: ldc 51
-    //   54: ldc 53
-    //   56: invokevirtual 57	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   59: ldc 59
-    //   61: invokevirtual 65	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   64: invokestatic 71	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   67: putstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:eth	Ljava/lang/Boolean;
-    //   70: aload_2
-    //   71: invokevirtual 74	java/io/FileInputStream:close	()V
-    //   74: getstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:eth	Ljava/lang/Boolean;
-    //   77: invokevirtual 77	java/lang/Boolean:booleanValue	()Z
-    //   80: istore_0
-    //   81: sipush 17072
-    //   84: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   87: iload_0
-    //   88: ireturn
-    //   89: astore_1
-    //   90: aconst_null
-    //   91: astore_2
-    //   92: aload_2
-    //   93: astore_1
-    //   94: getstatic 83	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   97: putstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:eth	Ljava/lang/Boolean;
-    //   100: aload_2
-    //   101: ifnull -27 -> 74
-    //   104: aload_2
-    //   105: invokevirtual 74	java/io/FileInputStream:close	()V
-    //   108: goto -34 -> 74
-    //   111: astore_1
-    //   112: goto -38 -> 74
-    //   115: astore_1
-    //   116: aconst_null
-    //   117: astore_2
-    //   118: aload_2
-    //   119: ifnull +7 -> 126
-    //   122: aload_2
-    //   123: invokevirtual 74	java/io/FileInputStream:close	()V
-    //   126: sipush 17072
-    //   129: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   132: aload_1
-    //   133: athrow
-    //   134: astore_1
-    //   135: goto -61 -> 74
-    //   138: astore_2
-    //   139: goto -13 -> 126
-    //   142: astore_2
-    //   143: aload_1
-    //   144: astore_3
-    //   145: aload_2
-    //   146: astore_1
-    //   147: aload_3
-    //   148: astore_2
-    //   149: goto -31 -> 118
-    //   152: astore_1
-    //   153: goto -61 -> 92
+    //   52: invokevirtual 50	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   55: aload_3
+    //   56: astore_1
+    //   57: aload_3
+    //   58: astore_2
+    //   59: aload 4
+    //   61: ldc 52
+    //   63: ldc 54
+    //   65: invokevirtual 58	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   68: ldc 60
+    //   70: invokevirtual 66	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   73: invokestatic 72	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   76: putstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:fGr	Ljava/lang/Boolean;
+    //   79: aload_3
+    //   80: ifnull +7 -> 87
+    //   83: aload_3
+    //   84: invokevirtual 77	java/io/InputStream:close	()V
+    //   87: getstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:fGr	Ljava/lang/Boolean;
+    //   90: invokevirtual 80	java/lang/Boolean:booleanValue	()Z
+    //   93: istore_0
+    //   94: sipush 21123
+    //   97: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   100: iload_0
+    //   101: ireturn
+    //   102: astore_2
+    //   103: aload_1
+    //   104: astore_2
+    //   105: getstatic 86	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   108: putstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:fGr	Ljava/lang/Boolean;
+    //   111: aload_1
+    //   112: ifnull -25 -> 87
+    //   115: aload_1
+    //   116: invokevirtual 77	java/io/InputStream:close	()V
+    //   119: goto -32 -> 87
+    //   122: astore_1
+    //   123: goto -36 -> 87
+    //   126: astore_1
+    //   127: aload_2
+    //   128: ifnull +7 -> 135
+    //   131: aload_2
+    //   132: invokevirtual 77	java/io/InputStream:close	()V
+    //   135: sipush 21123
+    //   138: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   141: aload_1
+    //   142: athrow
+    //   143: astore_1
+    //   144: goto -57 -> 87
+    //   147: astore_2
+    //   148: goto -13 -> 135
     // Local variable table:
     //   start	length	slot	name	signature
-    //   80	8	0	bool	boolean
-    //   33	18	1	localFileInputStream1	java.io.FileInputStream
-    //   89	1	1	localException1	java.lang.Exception
-    //   93	1	1	localFileInputStream2	java.io.FileInputStream
-    //   111	1	1	localException2	java.lang.Exception
-    //   115	18	1	localObject1	java.lang.Object
-    //   134	10	1	localException3	java.lang.Exception
-    //   146	1	1	localObject2	java.lang.Object
-    //   152	1	1	localException4	java.lang.Exception
-    //   31	92	2	localFileInputStream3	java.io.FileInputStream
-    //   138	1	2	localException5	java.lang.Exception
-    //   142	4	2	localObject3	java.lang.Object
-    //   148	1	2	localObject4	java.lang.Object
-    //   41	107	3	localObject5	java.lang.Object
+    //   93	8	0	bool	boolean
+    //   15	101	1	localObject1	java.lang.Object
+    //   122	1	1	localException1	java.lang.Exception
+    //   126	16	1	localObject2	java.lang.Object
+    //   143	1	1	localException2	java.lang.Exception
+    //   13	46	2	localObject3	java.lang.Object
+    //   102	1	2	localException3	java.lang.Exception
+    //   104	28	2	localObject4	java.lang.Object
+    //   147	1	2	localException4	java.lang.Exception
+    //   31	53	3	localInputStream	java.io.InputStream
+    //   43	17	4	localProperties	java.util.Properties
     // Exception table:
     //   from	to	target	type
-    //   12	32	89	java/lang/Exception
-    //   104	108	111	java/lang/Exception
-    //   12	32	115	finally
-    //   70	74	134	java/lang/Exception
-    //   122	126	138	java/lang/Exception
-    //   34	42	142	finally
-    //   44	49	142	finally
-    //   51	70	142	finally
-    //   94	100	142	finally
-    //   34	42	152	java/lang/Exception
-    //   44	49	152	java/lang/Exception
-    //   51	70	152	java/lang/Exception
+    //   16	32	102	java/lang/Exception
+    //   36	45	102	java/lang/Exception
+    //   49	55	102	java/lang/Exception
+    //   59	79	102	java/lang/Exception
+    //   115	119	122	java/lang/Exception
+    //   16	32	126	finally
+    //   36	45	126	finally
+    //   49	55	126	finally
+    //   59	79	126	finally
+    //   105	111	126	finally
+    //   83	87	143	java/lang/Exception
+    //   131	135	147	java/lang/Exception
   }
   
-  public final void aMf()
+  public final void bol()
   {
-    AppMethodBeat.i(17070);
-    super.aMf();
+    AppMethodBeat.i(21121);
+    super.bol();
     setActionbarColor(-855310);
-    AppMethodBeat.o(17070);
+    AppMethodBeat.o(21121);
   }
   
-  public final int aMg()
+  public final int bom()
   {
-    AppMethodBeat.i(17071);
-    if ((Build.VERSION.SDK_INT >= 23) && ((!h.Mn()) || (!Mo())))
+    AppMethodBeat.i(21122);
+    if ((Build.VERSION.SDK_INT >= 23) && ((!g.XL()) || (!XM())))
     {
-      af.a(getWindow(), true);
-      AppMethodBeat.o(17071);
+      ai.d(getWindow());
+      AppMethodBeat.o(21122);
       return -855310;
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      i = aa.gSb;
-      AppMethodBeat.o(17071);
+      i = ab.iHI;
+      AppMethodBeat.o(21122);
       return i;
     }
-    int i = super.aMg();
-    AppMethodBeat.o(17071);
+    int i = super.bom();
+    AppMethodBeat.o(21122);
     return i;
   }
   
-  public final boolean aMh()
+  public final boolean bon()
   {
     return true;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(17069);
+    AppMethodBeat.i(21120);
     super.initView();
-    AppMethodBeat.o(17069);
+    AppMethodBeat.o(21120);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(17067);
+    AppMethodBeat.i(21118);
     if (getIntent() != null)
     {
       getIntent().putExtra("forceHideShare", true);
@@ -186,7 +180,7 @@ public final class AppBrandNearbyWebViewUI
     }
     super.onCreate(paramBundle);
     setResult(-1);
-    AppMethodBeat.o(17067);
+    AppMethodBeat.o(21118);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -197,10 +191,10 @@ public final class AppBrandNearbyWebViewUI
   
   public final void setMMTitle(String paramString)
   {
-    AppMethodBeat.i(17068);
+    AppMethodBeat.i(21119);
     super.setMMTitle(paramString);
-    setMMTitleColor(-16777216);
-    AppMethodBeat.o(17068);
+    setMMTitleColor(ao.aD(getContext(), 2130968584));
+    AppMethodBeat.o(21119);
   }
 }
 

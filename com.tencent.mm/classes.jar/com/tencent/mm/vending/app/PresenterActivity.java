@@ -3,36 +3,37 @@ package com.tencent.mm.vending.app;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.vending.e.b;
 
 public abstract class PresenterActivity
-  extends Activity
+  extends HellActivity
   implements b
 {
-  private c ANT = new c();
+  private c gfW = new c();
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.ANT.A(getIntent(), this);
+    this.gfW.B(getIntent(), this);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    this.ANT.onDestroy();
+    this.gfW.onDestroy();
     super.onDestroy();
   }
   
-  protected void onPause()
+  public void onPause()
   {
-    this.ANT.a(3);
+    this.gfW.abd(3);
     super.onPause();
   }
   
-  protected void onResume()
+  public void onResume()
   {
     super.onResume();
-    this.ANT.a(2);
+    this.gfW.abd(2);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -43,7 +44,7 @@ public abstract class PresenterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.vending.app.PresenterActivity
  * JD-Core Version:    0.7.0.1
  */

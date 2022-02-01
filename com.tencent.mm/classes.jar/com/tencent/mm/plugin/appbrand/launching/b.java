@@ -1,9 +1,22 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-public class b {}
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.uj;
+import com.tencent.mm.sdk.b.c;
+
+public final class b
+  extends c<uj>
+{
+  public b()
+  {
+    AppMethodBeat.i(160600);
+    this.__eventId = uj.class.getName().hashCode();
+    AppMethodBeat.o(160600);
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.b
  * JD-Core Version:    0.7.0.1
  */

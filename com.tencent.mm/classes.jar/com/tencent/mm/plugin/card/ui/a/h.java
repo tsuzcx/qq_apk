@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.card.ui.a;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.ui.e.a;
-import com.tencent.mm.protocal.protobuf.pg;
+import com.tencent.mm.protocal.protobuf.ro;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 
@@ -15,115 +15,115 @@ public final class h
     super(paramMMActivity);
   }
   
-  protected final void beC()
+  public final boolean bLI()
   {
-    AppMethodBeat.i(88723);
-    super.beC();
-    AppMethodBeat.o(88723);
-  }
-  
-  public final boolean beM()
-  {
-    AppMethodBeat.i(88724);
-    ArrayList localArrayList = com.tencent.mm.plugin.card.sharecard.a.b.HS(this.klk.bbi());
-    if (((!this.ktU.kmw) || (this.ktU.ejF == 4)) && (!TextUtils.isEmpty(this.klk.bbj())))
+    AppMethodBeat.i(113651);
+    ArrayList localArrayList = com.tencent.mm.plugin.card.sharecard.a.b.QC(this.nqp.bIa());
+    if (((!this.nzk.nrB) || (this.nzk.fsv == 4)) && (!TextUtils.isEmpty(this.nqp.bIb())))
     {
-      AppMethodBeat.o(88724);
+      AppMethodBeat.o(113651);
       return true;
     }
-    if (((this.ktU.kmw) && (localArrayList != null) && (localArrayList.size() > 0)) || ((!TextUtils.isEmpty(this.klk.bbj())) && (beN())))
+    if (((this.nzk.nrB) && (localArrayList != null) && (localArrayList.size() > 0)) || ((!TextUtils.isEmpty(this.nqp.bIb())) && (bLJ())))
     {
-      AppMethodBeat.o(88724);
+      AppMethodBeat.o(113651);
       return true;
     }
-    AppMethodBeat.o(88724);
+    AppMethodBeat.o(113651);
     return false;
   }
   
-  public final boolean beN()
+  public final boolean bLJ()
   {
-    return this.ktU.ejF == 3;
+    return this.nzk.fsv == 3;
   }
   
-  public final boolean beO()
-  {
-    return false;
-  }
-  
-  public final boolean beQ()
-  {
-    return this.kyA;
-  }
-  
-  public final boolean beR()
+  public final boolean bLK()
   {
     return false;
   }
   
-  public final boolean beT()
+  public final boolean bLM()
+  {
+    return this.nDT;
+  }
+  
+  public final boolean bLN()
   {
     return false;
   }
   
-  public final boolean beU()
+  public final boolean bLP()
   {
-    AppMethodBeat.i(88725);
-    if ((this.kyA) && (super.beU()))
+    return false;
+  }
+  
+  public final boolean bLQ()
+  {
+    AppMethodBeat.i(113652);
+    if ((this.nDT) && (super.bLQ()))
     {
-      AppMethodBeat.o(88725);
+      AppMethodBeat.o(113652);
       return true;
     }
-    AppMethodBeat.o(88725);
+    AppMethodBeat.o(113652);
     return false;
   }
   
-  public final boolean beY()
+  public final boolean bLU()
   {
     return false;
   }
   
-  public final boolean beZ()
+  public final boolean bLV()
   {
     return false;
   }
   
-  public final boolean bfa()
+  public final boolean bLW()
   {
-    AppMethodBeat.i(88726);
-    if (super.bfa())
+    AppMethodBeat.i(113653);
+    if (super.bLW())
     {
-      AppMethodBeat.o(88726);
+      AppMethodBeat.o(113653);
       return true;
     }
-    if (bfb())
+    if (bLX())
     {
-      AppMethodBeat.o(88726);
+      AppMethodBeat.o(113653);
       return true;
     }
-    if ((this.klk.baK()) && (this.kyA))
+    if ((this.nqp.bHB()) && (this.nDT))
     {
-      AppMethodBeat.o(88726);
+      AppMethodBeat.o(113653);
       return true;
     }
-    AppMethodBeat.o(88726);
+    AppMethodBeat.o(113653);
     return false;
   }
   
-  public final boolean bfb()
+  public final boolean bLX()
   {
-    AppMethodBeat.i(88727);
-    if ((!this.kyA) && (this.klk.bbd().wGw == 1))
+    AppMethodBeat.i(113654);
+    if ((!this.nDT) && (this.nqp.bHV().CSb == 1))
     {
-      AppMethodBeat.o(88727);
+      AppMethodBeat.o(113654);
       return true;
     }
-    AppMethodBeat.o(88727);
+    AppMethodBeat.o(113654);
     return false;
+  }
+  
+  protected final void bLy()
+  {
+    AppMethodBeat.i(113650);
+    super.bLy();
+    AppMethodBeat.o(113650);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.h
  * JD-Core Version:    0.7.0.1
  */

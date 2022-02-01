@@ -6,24 +6,28 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.page.an;
-import com.tencent.mm.plugin.appbrand.page.ap;
-import com.tencent.mm.plugin.appbrand.page.as;
+import com.tencent.mm.plugin.appbrand.page.bb;
+import com.tencent.mm.plugin.appbrand.page.bd;
+import com.tencent.mm.plugin.appbrand.page.bh;
 
 public final class b
   extends FrameLayout
-  implements as
+  implements bh
 {
+  private b cdy = null;
+  
   public b(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void a(an paraman) {}
+  public final void a(bb parambb) {}
   
-  public final void c(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public final void a(bd parambd) {}
   
-  public final void fr(int paramInt) {}
+  public final void d(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  
+  public final void gJ(int paramInt) {}
   
   public final ViewGroup getContainer()
   {
@@ -34,15 +38,28 @@ public final class b
   
   public final void onViewAdded(View paramView)
   {
-    AppMethodBeat.i(140485);
+    AppMethodBeat.i(130626);
     super.onViewAdded(paramView);
     if (((paramView instanceof CoverViewContainer)) && (!paramView.hasOnClickListeners())) {
       paramView.setOnTouchListener(new b.a((byte)0));
     }
-    AppMethodBeat.o(140485);
+    if (this.cdy != null) {
+      this.cdy.cl(paramView);
+    }
+    AppMethodBeat.o(130626);
   }
   
-  public final void setupWebViewTouchInterceptor(ap paramap) {}
+  public final void setNativeWidgetAddedCallback(b paramb)
+  {
+    this.cdy = paramb;
+  }
+  
+  public final void setupWebViewTouchInterceptor(bd parambd) {}
+  
+  public static abstract interface b
+  {
+    public abstract void cl(View paramView);
+  }
 }
 
 

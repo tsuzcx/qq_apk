@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <stroke android:width="2.0dip" android:color="@color/d7" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@raw/icons_outlined_camera" />
+    <item android:drawable="@raw/icons_outlined_camera" />
+</selector>

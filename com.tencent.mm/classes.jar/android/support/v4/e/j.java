@@ -1,51 +1,25 @@
 package android.support.v4.e;
 
-public final class j<F, S>
+import android.os.Build.VERSION;
+import java.util.Arrays;
+import java.util.Objects;
+
+public final class j
 {
-  public final F first;
-  public final S second;
-  
-  public j(F paramF, S paramS)
+  public static boolean equals(Object paramObject1, Object paramObject2)
   {
-    this.first = paramF;
-    this.second = paramS;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    if (!(paramObject instanceof j)) {}
-    do
-    {
-      return false;
-      paramObject = (j)paramObject;
-    } while ((!i.equals(paramObject.first, this.first)) || (!i.equals(paramObject.second, this.second)));
-    return true;
-  }
-  
-  public final int hashCode()
-  {
-    int j = 0;
-    int i;
-    if (this.first == null)
-    {
-      i = 0;
-      if (this.second != null) {
-        break label33;
-      }
+    if (Build.VERSION.SDK_INT >= 19) {
+      return Objects.equals(paramObject1, paramObject2);
     }
-    for (;;)
-    {
-      return i ^ j;
-      i = this.first.hashCode();
-      break;
-      label33:
-      j = this.second.hashCode();
-    }
+    return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
   }
   
-  public final String toString()
+  public static int hash(Object... paramVarArgs)
   {
-    return "Pair{" + String.valueOf(this.first) + " " + String.valueOf(this.second) + "}";
+    if (Build.VERSION.SDK_INT >= 19) {
+      return Objects.hash(paramVarArgs);
+    }
+    return Arrays.hashCode(paramVarArgs);
   }
 }
 

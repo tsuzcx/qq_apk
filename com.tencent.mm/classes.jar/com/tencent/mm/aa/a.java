@@ -1,82 +1,110 @@
 package com.tencent.mm.aa;
 
-public abstract interface a
+import android.content.res.Resources;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.graphics.Rect;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.aj;
+
+public final class a
+  implements Cloneable
 {
-  public abstract a ak(Object paramObject);
+  public static Rect Rm;
+  private static int gag;
+  private static int gah;
+  public static float gai;
+  public static float gaj;
+  public static Path gak;
+  public static Path gal;
+  public static Paint gam;
+  public static Paint gan;
+  public static Paint gao;
+  public static Paint gaq;
+  public static Paint gar;
+  public Rect cHB;
+  public Rect gas;
+  public Rect gat;
+  public Matrix mMatrix;
   
-  public abstract a cg(int paramInt1, int paramInt2);
+  static
+  {
+    AppMethodBeat.i(9245);
+    gag = (int)aj.getResources().getDimension(2131165935);
+    gah = (int)aj.getResources().getDimension(2131165934);
+    gai = aj.getResources().getDimension(2131166075);
+    gaj = aj.getResources().getDimension(2131166074);
+    gak = new Path();
+    gal = new Path();
+    gam = new Paint();
+    gan = new Paint();
+    gao = new Paint();
+    gaq = new Paint();
+    gar = new Paint();
+    Rm = new Rect();
+    gao.setColor(-16777216);
+    gam.setColor(-1);
+    gam.setStrokeWidth(gag);
+    gam.setStyle(Paint.Style.STROKE);
+    gam.setAntiAlias(true);
+    gaq.set(gam);
+    gaq.setStrokeWidth(gah);
+    gar.set(gam);
+    gar.setStrokeWidth(gai);
+    gan.set(gam);
+    gan.setStrokeWidth(gag * 7);
+    gan.setColor(549174203);
+    AppMethodBeat.o(9245);
+  }
   
-  public abstract a cs(boolean paramBoolean);
+  public a()
+  {
+    AppMethodBeat.i(9241);
+    this.gas = new Rect();
+    this.gat = new Rect();
+    this.mMatrix = new Matrix();
+    AppMethodBeat.o(9241);
+  }
   
-  public abstract a d(int paramInt, double paramDouble);
+  public a(Rect paramRect)
+  {
+    AppMethodBeat.i(9240);
+    this.gas = new Rect();
+    this.gat = new Rect();
+    this.mMatrix = new Matrix();
+    this.cHB = paramRect;
+    AppMethodBeat.o(9240);
+  }
   
-  public abstract a e(int paramInt, Object paramObject);
+  public static void lZ(int paramInt)
+  {
+    AppMethodBeat.i(9242);
+    gar.setAlpha(paramInt);
+    gam.setAlpha(paramInt);
+    gaq.setAlpha((int)(0.7058824F * paramInt));
+    AppMethodBeat.o(9242);
+  }
   
-  public abstract Object get(int paramInt);
+  public static void ma(int paramInt)
+  {
+    AppMethodBeat.i(9243);
+    gao.setAlpha((int)(0.9019608F * paramInt));
+    AppMethodBeat.o(9243);
+  }
   
-  public abstract boolean getBoolean(int paramInt);
-  
-  public abstract double getDouble(int paramInt);
-  
-  public abstract int getInt(int paramInt);
-  
-  public abstract long getLong(int paramInt);
-  
-  public abstract String getString(int paramInt);
-  
-  public abstract a gg(long paramLong);
-  
-  public abstract boolean isNull(int paramInt);
-  
-  public abstract a jA(int paramInt);
-  
-  public abstract a jB(int paramInt);
-  
-  public abstract c jC(int paramInt);
-  
-  public abstract c jD(int paramInt);
-  
-  public abstract a jz(int paramInt);
-  
-  public abstract int length();
-  
-  public abstract a n(double paramDouble);
-  
-  public abstract Object opt(int paramInt);
-  
-  public abstract boolean optBoolean(int paramInt);
-  
-  public abstract boolean optBoolean(int paramInt, boolean paramBoolean);
-  
-  public abstract double optDouble(int paramInt);
-  
-  public abstract double optDouble(int paramInt, double paramDouble);
-  
-  public abstract int optInt(int paramInt);
-  
-  public abstract int optInt(int paramInt1, int paramInt2);
-  
-  public abstract long optLong(int paramInt);
-  
-  public abstract long optLong(int paramInt, long paramLong);
-  
-  public abstract String optString(int paramInt);
-  
-  public abstract String optString(int paramInt, String paramString);
-  
-  public abstract Object remove(int paramInt);
-  
-  public abstract a s(int paramInt, long paramLong);
-  
-  public abstract String toString();
-  
-  public abstract String toString(int paramInt);
-  
-  public abstract a z(int paramInt, boolean paramBoolean);
+  public final Object clone()
+  {
+    AppMethodBeat.i(9244);
+    Object localObject = super.clone();
+    AppMethodBeat.o(9244);
+    return localObject;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.aa.a
  * JD-Core Version:    0.7.0.1
  */

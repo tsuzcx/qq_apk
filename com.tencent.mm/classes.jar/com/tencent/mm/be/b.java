@@ -1,206 +1,167 @@
 package com.tencent.mm.be;
 
-import android.os.HandlerThread;
-import android.util.Base64;
-import com.tencent.map.swlocation.api.LocationUpdateListener;
-import com.tencent.map.swlocation.api.ServerMessageListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.i;
-import com.tencent.mm.ba.k;
-import com.tencent.mm.compatible.e.q;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.n.b;
+import com.tencent.mm.g.c.au;
 import com.tencent.mm.kernel.a;
-import com.tencent.mm.platformtools.af;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.dgz;
+import com.tencent.mm.protocal.protobuf.dha;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.vfs.i;
 
 public final class b
+  extends n
+  implements com.tencent.mm.network.k
 {
-  private static b fNA;
-  private static final byte[] fNz;
-  private boolean fNB;
-  private al fNC;
-  int fND;
-  int fNE;
-  int fNF;
-  private int fNG;
-  private c fNH;
-  private List<d> fNI;
-  private List<d> fNJ;
-  private com.tencent.mm.sdk.b.c fNK;
-  private ap fNL;
-  private LocationUpdateListener fNM;
-  private int fNN;
-  private ServerMessageListener fNO;
-  private long startTime;
+  private int cWU;
+  private com.tencent.mm.al.g callback;
+  private String clientId;
+  private String dpa;
+  private int gTY;
+  public String hqm;
+  private com.tencent.mm.al.b rr;
+  private String username;
   
-  static
+  private b(String paramString)
   {
-    AppMethodBeat.i(78554);
-    fNz = "@wechat*weixin!!".getBytes();
-    AppMethodBeat.o(78554);
+    AppMethodBeat.i(90688);
+    this.username = paramString;
+    this.gTY = 0;
+    this.cWU = 0;
+    paramString = new StringBuilder();
+    com.tencent.mm.kernel.g.afz();
+    this.clientId = (a.getUin() + System.currentTimeMillis());
+    AppMethodBeat.o(90688);
   }
   
-  public b()
+  public b(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(78535);
-    this.fNB = false;
-    this.startTime = 0L;
-    this.fND = 5000;
-    this.fNE = 5000;
-    this.fNF = 30000;
-    this.fNG = 3600;
-    this.fNI = new ArrayList();
-    this.fNJ = new ArrayList();
-    this.fNK = new b.3(this);
-    com.tencent.mm.kernel.g.RM();
-    this.fNL = new ap(com.tencent.mm.kernel.g.RO().oNc.getLooper(), new b.4(this), false);
-    this.fNM = new b.5(this);
-    this.fNN = 0;
-    this.fNO = new b.6(this);
-    AppMethodBeat.o(78535);
+    this(paramString1);
+    this.dpa = paramString2;
   }
   
-  public static b aiV()
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(78534);
-    if (fNA == null) {
-      fNA = new b();
+    AppMethodBeat.i(90690);
+    this.callback = paramg;
+    if ((this.dpa == null) || (this.dpa.length() == 0))
+    {
+      ad.e("MicroMsg.NetSceneUploadCardImg", "imgPath is null or length = 0");
+      AppMethodBeat.o(90690);
+      return -1;
     }
-    b localb = fNA;
-    AppMethodBeat.o(78534);
-    return localb;
+    if (!i.eK(this.dpa))
+    {
+      ad.e("MicroMsg.NetSceneUploadCardImg", "The img does not exist, imgPath = " + this.dpa);
+      AppMethodBeat.o(90690);
+      return -1;
+    }
+    if (this.gTY == 0) {
+      this.gTY = ((int)new com.tencent.mm.vfs.e(this.dpa).length());
+    }
+    paramg = new b.a();
+    paramg.gUU = new dgz();
+    paramg.gUV = new dha();
+    paramg.uri = "/cgi-bin/micromsg-bin/uploadcardimg";
+    paramg.funcId = 575;
+    paramg.reqCmdId = 0;
+    paramg.respCmdId = 0;
+    this.rr = paramg.atI();
+    int i = Math.min(this.gTY - this.cWU, 32768);
+    paramg = i.aR(this.dpa, this.cWU, i);
+    if (paramg == null)
+    {
+      ad.e("MicroMsg.NetSceneUploadCardImg", "readFromFile error");
+      AppMethodBeat.o(90690);
+      return -1;
+    }
+    ad.i("MicroMsg.NetSceneUploadCardImg", "doScene uploadLen:%d, total: %d", new Object[] { Integer.valueOf(paramg.length), Integer.valueOf(this.gTY) });
+    dgz localdgz = (dgz)this.rr.gUS.gUX;
+    localdgz.DbL = this.username;
+    localdgz.uKQ = this.gTY;
+    localdgz.uKR = this.cWU;
+    localdgz.uKT = new SKBuiltinBuffer_t().setBuffer(paramg);
+    localdgz.uKS = localdgz.uKT.getILen();
+    localdgz.gKn = this.clientId;
+    i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(90690);
+    return i;
   }
   
-  private static String aiW()
+  public final int getType()
   {
-    AppMethodBeat.i(78536);
-    String str = q.bP(true);
-    com.tencent.mm.kernel.g.RJ();
-    Object localObject = new com.tencent.mm.a.p(a.getUin()).toString();
-    str = str + "_" + (String)localObject;
-    try
-    {
-      localObject = new af();
-      byte[] arrayOfByte1 = str.getBytes("UTF-8");
-      byte[] arrayOfByte2 = fNz;
-      localObject = new String(Base64.encode(((af)localObject).a(arrayOfByte1, arrayOfByte1.length, arrayOfByte2), 0), "UTF-8");
-      ab.i("MicroMsg.SenseWhereHelper", "create encrypt imei[%s], original imei[%s]", new Object[] { localObject, bo.aqg(str) });
-      AppMethodBeat.o(78536);
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace("MicroMsg.SenseWhereHelper", localException, "", new Object[0]);
-      ab.e("MicroMsg.SenseWhereHelper", "create imei error: " + localException.toString());
-      AppMethodBeat.o(78536);
-    }
-    return "";
+    return 575;
   }
   
-  private boolean aiY()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(78539);
-    com.tencent.mm.kernel.g.RJ();
-    if (new com.tencent.mm.a.p(a.getUin()).longValue() < 1000000L)
+    AppMethodBeat.i(90691);
+    ad.d("MicroMsg.NetSceneUploadCardImg", "onGYNetEnd:%s, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ab.i("MicroMsg.SenseWhereHelper", "it boss uin do not start sense where.");
-      AppMethodBeat.o(78539);
-      return false;
-    }
-    Object localObject = com.tencent.mm.m.g.Nq().getValue("AndroidSenseWhereArgs");
-    if (bo.isNullOrNil((String)localObject))
-    {
-      ab.i("MicroMsg.SenseWhereHelper", "it has no config do not start sense where.");
-      AppMethodBeat.o(78539);
-      return false;
-    }
-    try
-    {
-      ab.d("MicroMsg.SenseWhereHelper", "sense where config : ".concat(String.valueOf(localObject)));
-      localObject = ((String)localObject).split(";");
-      int i = bo.getInt(localObject[0], 0);
-      com.tencent.mm.kernel.g.RJ();
-      int j = i.bQ(a.getUin() + 5, 100);
-      if (j > i)
-      {
-        ab.d("MicroMsg.SenseWhereHelper", "do not start sense where.uinhash %d, percent %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
-        AppMethodBeat.o(78539);
-        return false;
-      }
-      this.fNE = bo.getInt(localObject[1], 5000);
-      this.fND = bo.getInt(localObject[2], 5000);
-      this.fNF = bo.getInt(localObject[3], 30000);
-      this.fNG = bo.getInt(localObject[4], 3600);
-      ab.i("MicroMsg.SenseWhereHelper", "check sense where report args[%d, %d, %d, %d]", new Object[] { Integer.valueOf(this.fNE), Integer.valueOf(this.fND), Integer.valueOf(this.fNF), Integer.valueOf(this.fNG) });
-      long l = bo.gz(((Long)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yDt, Long.valueOf(0L))).longValue());
-      i = this.fNG;
-      if (l > i)
-      {
-        AppMethodBeat.o(78539);
-        return true;
-      }
-      ab.i("MicroMsg.SenseWhereHelper", "it is not time out. diff[%d], collection interval[%d]", new Object[] { Long.valueOf(l), Integer.valueOf(this.fNG) });
-      AppMethodBeat.o(78539);
-      return false;
-    }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace("MicroMsg.SenseWhereHelper", localException, "", new Object[0]);
-      ab.e("MicroMsg.SenseWhereHelper", "check sense where config error: " + localException.toString());
-      ab.i("MicroMsg.SenseWhereHelper", "it default do not start sense where.");
-      AppMethodBeat.o(78539);
-    }
-    return false;
-  }
-  
-  public static void aiZ()
-  {
-    AppMethodBeat.i(78540);
-    if (bo.gz(bo.a((Long)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yDs, null), 0L)) * 1000L > 21600000L)
-    {
-      ab.i("MicroMsg.SenseWhereHelper", "update sense where location package list.");
-      k localk = new k(36);
-      com.tencent.mm.kernel.g.RK().eHt.a(localk, 0);
-      com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yDs, Long.valueOf(bo.aox()));
-    }
-    AppMethodBeat.o(78540);
-  }
-  
-  public final void a(float paramFloat1, float paramFloat2, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(78537);
-    if (com.tencent.mm.kernel.g.RJ().QU())
-    {
-      com.tencent.mm.kernel.g.RJ();
-      if (!a.QP()) {}
-    }
-    else
-    {
-      AppMethodBeat.o(78537);
+      ad.e("MicroMsg.NetSceneUploadCardImg", "upload card img error");
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(90691);
       return;
     }
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RO().ac(new b.1(this, paramInt2, paramFloat1, paramFloat2, paramInt3, paramInt1, paramString1, paramString2));
-    AppMethodBeat.o(78537);
+    paramq = (dha)((com.tencent.mm.al.b)paramq).gUT.gUX;
+    this.hqm = paramq.DOC;
+    this.cWU = paramq.uKR;
+    if (this.cWU < this.gTY)
+    {
+      if (doScene(dispatcher(), this.callback) < 0)
+      {
+        ad.e("MicroMsg.NetSceneUploadCardImg", "doScene again failed");
+        this.callback.onSceneEnd(3, -1, "", this);
+      }
+      ad.d("MicroMsg.NetSceneUploadCardImg", "doScene again");
+      AppMethodBeat.o(90691);
+      return;
+    }
+    if (!bt.isNullOrNil(this.hqm))
+    {
+      paramq = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(this.username);
+      if ((paramq != null) && ((int)paramq.fId > 0) && (com.tencent.mm.n.b.ls(paramq.field_type)))
+      {
+        paramq.nC(this.hqm);
+        ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().c(this.username, paramq);
+      }
+    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(90691);
   }
   
-  public final void aiX()
+  public final int securityLimitCount()
   {
-    AppMethodBeat.i(78538);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RO().ac(new b.2(this));
-    AppMethodBeat.o(78538);
+    return 100;
+  }
+  
+  public final n.b securityVerificationChecked(q paramq)
+  {
+    AppMethodBeat.i(90689);
+    if ((this.dpa == null) || (this.dpa.length() == 0))
+    {
+      paramq = n.b.gVC;
+      AppMethodBeat.o(90689);
+      return paramq;
+    }
+    paramq = n.b.gVB;
+    AppMethodBeat.o(90689);
+    return paramq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.be.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,26 +9,26 @@ public class SoterSignResult
   implements Parcelable
 {
   public static final Parcelable.Creator<SoterSignResult> CREATOR;
-  public byte[] BmP;
-  public int BmQ;
-  public int bpE;
+  public byte[] Ivp;
+  public int Ivq;
+  public int bRZ;
   
   static
   {
-    AppMethodBeat.i(73118);
-    CREATOR = new SoterSignResult.1();
-    AppMethodBeat.o(73118);
+    AppMethodBeat.i(88754);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(88754);
   }
   
   public SoterSignResult() {}
   
   protected SoterSignResult(Parcel paramParcel)
   {
-    AppMethodBeat.i(73116);
-    this.bpE = paramParcel.readInt();
-    this.BmP = paramParcel.createByteArray();
-    this.BmQ = paramParcel.readInt();
-    AppMethodBeat.o(73116);
+    AppMethodBeat.i(88752);
+    this.bRZ = paramParcel.readInt();
+    this.Ivp = paramParcel.createByteArray();
+    this.Ivq = paramParcel.readInt();
+    AppMethodBeat.o(88752);
   }
   
   public int describeContents()
@@ -38,16 +38,16 @@ public class SoterSignResult
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(73117);
-    paramParcel.writeInt(this.bpE);
-    paramParcel.writeByteArray(this.BmP);
-    paramParcel.writeInt(this.BmQ);
-    AppMethodBeat.o(73117);
+    AppMethodBeat.i(88753);
+    paramParcel.writeInt(this.bRZ);
+    paramParcel.writeByteArray(this.Ivp);
+    paramParcel.writeInt(this.Ivq);
+    AppMethodBeat.o(88753);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.soter.soterserver.SoterSignResult
  * JD-Core Version:    0.7.0.1
  */

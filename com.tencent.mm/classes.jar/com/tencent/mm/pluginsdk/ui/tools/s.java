@@ -1,135 +1,78 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
+import com.tencent.mm.sdk.platformtools.ad;
 
-final class s
+public final class s
 {
-  static Pattern sAddressPattern;
-  String mAuthInfo;
-  String mHost;
-  String mPath;
-  int mPort;
-  String mScheme;
+  private static int CnG = -1;
   
-  static
+  public static void a(View paramView, VideoSightView paramVideoSightView)
   {
-    AppMethodBeat.i(80456);
-    sAddressPattern = Pattern.compile("(?:(http|https|file)\\:\\/\\/)?(?:([-A-Za-z0-9$_.+!*'(),;?&=]+(?:\\:[-A-Za-z0-9$_.+!*'(),;?&=]+)?)@)?([a-zA-Z0-9 -퟿豈-﷏ﷰ-￯%_-][a-zA-Z0-9 -퟿豈-﷏ﷰ-￯%_\\.-]*|\\[[0-9a-fA-F:\\.]+\\])?(?:\\:([0-9]*))?(\\/?[^#]*)?.*", 2);
-    AppMethodBeat.o(80456);
-  }
-  
-  public s(String paramString)
-  {
-    AppMethodBeat.i(80454);
-    if (paramString == null)
+    AppMethodBeat.i(116268);
+    if ((paramView == null) || (paramVideoSightView == null))
     {
-      paramString = new NullPointerException();
-      AppMethodBeat.o(80454);
-      throw paramString;
+      ad.e("VideoSightHelper", "null view object " + paramView + "," + paramVideoSightView);
+      AppMethodBeat.o(116268);
+      return;
     }
-    this.mScheme = "";
-    this.mHost = "";
-    this.mPort = -1;
-    this.mPath = "/";
-    this.mAuthInfo = "";
-    paramString = sAddressPattern.matcher(paramString);
-    String str;
-    if (paramString.matches())
-    {
-      str = paramString.group(1);
-      if (str != null) {
-        this.mScheme = str.toLowerCase();
-      }
-      str = paramString.group(2);
-      if (str != null) {
-        this.mAuthInfo = str;
-      }
-      str = paramString.group(3);
-      if (str != null) {
-        this.mHost = str;
-      }
-      str = paramString.group(4);
-      if ((str == null) || (str.length() <= 0)) {}
-    }
-    for (;;)
-    {
-      try
+    if (paramView.getVisibility() == 0) {
+      paramVideoSightView.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
       {
-        this.mPort = bo.getInt(str, this.mPort);
-        paramString = paramString.group(5);
-        if ((paramString != null) && (paramString.length() > 0))
+        public final void onLayoutChange(final View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
         {
-          if (paramString.charAt(0) == '/') {
-            this.mPath = paramString;
+          AppMethodBeat.i(116267);
+          paramAnonymousInt1 = paramAnonymousInt4 - paramAnonymousInt2;
+          if ((paramAnonymousInt1 > 0) && (paramAnonymousInt8 - paramAnonymousInt6 != paramAnonymousInt1)) {
+            paramAnonymousView.post(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(116266);
+                int j = paramAnonymousView.getResources().getDisplayMetrics().heightPixels - paramAnonymousView.getHeight() >>> 1;
+                int i = (int)(j / 1.618D - (s.1.this.CnH.getHeight() >>> 1));
+                if (i >= 0)
+                {
+                  if (s.CnG < 0) {
+                    s.access$002(BackwardSupportUtil.b.g(paramAnonymousView.getContext(), 20.0F));
+                  }
+                  if (s.1.this.CnH.getHeight() + i + s.CnG <= j) {
+                    break label192;
+                  }
+                  i -= s.1.this.CnH.getHeight() + i + s.CnG - j;
+                }
+                label192:
+                for (;;)
+                {
+                  RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)s.1.this.CnH.getLayoutParams();
+                  if ((i > 0) && (i != localLayoutParams.bottomMargin))
+                  {
+                    ad.i("VideoSightHelper", "setting tip marginBottom ".concat(String.valueOf(i)));
+                    localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, i);
+                    s.1.this.CnH.setLayoutParams(localLayoutParams);
+                  }
+                  AppMethodBeat.o(116266);
+                  return;
+                }
+              }
+            });
           }
+          AppMethodBeat.o(116267);
         }
-        else
-        {
-          if ((this.mPort != 443) || (!this.mScheme.equals(""))) {
-            break label284;
-          }
-          this.mScheme = "https";
-          if (this.mScheme.equals("")) {
-            this.mScheme = "http";
-          }
-          AppMethodBeat.o(80454);
-          return;
-        }
-      }
-      catch (NumberFormatException paramString)
-      {
-        paramString = new Exception("Bad port");
-        AppMethodBeat.o(80454);
-        throw paramString;
-      }
-      this.mPath = "/".concat(String.valueOf(paramString));
-      continue;
-      paramString = new Exception("Bad address");
-      AppMethodBeat.o(80454);
-      throw paramString;
-      label284:
-      if (this.mPort == -1) {
-        if (this.mScheme.equals("https")) {
-          this.mPort = 443;
-        } else {
-          this.mPort = 80;
-        }
-      }
+      });
     }
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(80455);
-    String str2 = "";
-    if ((this.mPort == 443) || (!this.mScheme.equals("https")))
-    {
-      str1 = str2;
-      if (this.mPort != 80)
-      {
-        str1 = str2;
-        if (!this.mScheme.equals("http")) {}
-      }
-    }
-    else
-    {
-      str1 = ":" + Integer.toString(this.mPort);
-    }
-    str2 = "";
-    if (this.mAuthInfo.length() > 0) {
-      str2 = this.mAuthInfo + "@";
-    }
-    String str1 = this.mScheme + "://" + str2 + this.mHost + str1 + this.mPath;
-    AppMethodBeat.o(80455);
-    return str1;
+    AppMethodBeat.o(116268);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.s
  * JD-Core Version:    0.7.0.1
  */

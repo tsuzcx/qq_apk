@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.profile.ui.newbizinfo;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -8,15 +9,13 @@ import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.d;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.api.c;
 import com.tencent.mm.modelappbrand.a.b;
-import com.tencent.mm.modelappbrand.a.b.f;
+import com.tencent.mm.modelappbrand.a.b.h;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
-import com.tencent.mm.plugin.appbrand.service.l;
 import com.tencent.mm.plugin.appbrand.widget.AppBrandNearbyShowcaseView;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
 import java.util.List;
@@ -24,216 +23,219 @@ import java.util.List;
 public class NewBizBindWxaInfoPreference
   extends Preference
 {
-  private static final int eln;
-  private static final int elo;
-  private static final int elp;
+  private static final int fye;
+  private static final int fyf;
+  private static final int fyg;
+  private static int fyh;
   private Context context;
-  private b.f elm;
-  private ThreeDotsLoadingView iJJ;
-  private AppBrandNearbyShowcaseView iSt;
-  private View iXf;
-  private boolean iXg;
-  private List<WxaAttributes.WxaEntryInfo> jaN;
-  private View.OnClickListener lNc;
+  private b.h fyd;
+  private View lLA;
+  private boolean lLB;
+  private AppBrandNearbyShowcaseView lLz;
+  private List<WxaAttributes.WxaEntryInfo> lQH;
+  private ThreeDotsLoadingView luZ;
   private View mView;
-  private View.OnClickListener pxS;
-  private d pyd;
+  private View.OnClickListener pdN;
+  private View.OnClickListener uzC;
+  private c uzN;
   
   static
   {
-    AppMethodBeat.i(23841);
-    eln = com.tencent.mm.cb.a.fromDPToPix(ah.getContext(), 25);
-    elo = com.tencent.mm.cb.a.fromDPToPix(ah.getContext(), 20);
-    elp = com.tencent.mm.cb.a.fromDPToPix(ah.getContext(), 2);
-    AppMethodBeat.o(23841);
+    AppMethodBeat.i(27491);
+    fye = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 25);
+    fyf = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 20);
+    fyg = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 2);
+    fyh = -1;
+    AppMethodBeat.o(27491);
   }
   
   public NewBizBindWxaInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(23831);
+    AppMethodBeat.i(27482);
     this.mView = null;
-    this.iXg = false;
+    this.lLB = false;
     this.context = paramContext;
     init();
-    AppMethodBeat.o(23831);
+    AppMethodBeat.o(27482);
   }
   
   public NewBizBindWxaInfoPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(23832);
+    AppMethodBeat.i(27483);
     this.mView = null;
-    this.iXg = false;
+    this.lLB = false;
     this.context = paramContext;
     init();
-    AppMethodBeat.o(23832);
+    AppMethodBeat.o(27483);
   }
   
-  private void azw()
+  private void aVd()
   {
-    AppMethodBeat.i(23838);
-    if ((this.pyd == null) || (this.jaN == null))
+    AppMethodBeat.i(27488);
+    if ((this.uzN == null) || (this.lQH == null))
     {
-      ab.w("MicroMsg.NewBizBindWxaInfoPreference", "mWxaEntryInfoList or bizInfo is null, return");
-      AppMethodBeat.o(23838);
+      ad.w("MicroMsg.NewBizBindWxaInfoPreference", "mWxaEntryInfoList or bizInfo is null, return");
+      AppMethodBeat.o(27488);
       return;
     }
-    this.iJJ.dOW();
-    cx(this.iJJ);
-    if (this.jaN.size() > 0)
+    this.luZ.ffc();
+    cJ(this.luZ);
+    if (this.lQH.size() > 0)
     {
-      this.iSt.setVisibility(0);
-      this.iSt.setIconLayerCount(Math.min(this.jaN.size(), 4));
+      this.lLz.setVisibility(0);
+      this.lLz.setIconLayerCount(Math.min(this.lQH.size(), 4));
       final boolean bool;
       int i;
-      label139:
+      label141:
       b localb;
       ImageView localImageView;
-      if (this.iXf.getVisibility() != 0)
+      if (this.lLA.getVisibility() != 0)
       {
         bool = true;
         if (bool) {
-          this.iSt.fa(false);
+          this.lLz.bqR();
         }
-        if (this.elm == null) {
-          this.elm = new com.tencent.mm.plugin.appbrand.ui.widget.a(eln, elp);
+        if (this.fyd == null) {
+          this.fyd = new com.tencent.mm.plugin.appbrand.ui.widget.a(fye, fyg, fyh);
         }
         i = 0;
-        if (i >= this.iSt.getChildCount()) {
-          break label228;
+        if (i >= this.lLz.getChildCount()) {
+          break label230;
         }
-        localb = b.acD();
-        localImageView = this.iSt.pU(i);
-        if (this.jaN.size() <= i) {
-          break label223;
+        localb = b.aub();
+        localImageView = this.lLz.us(i);
+        if (this.lQH.size() <= i) {
+          break label225;
         }
       }
-      label223:
-      for (String str = ((WxaAttributes.WxaEntryInfo)this.jaN.get(i)).iconUrl;; str = null)
+      label225:
+      for (String str = ((WxaAttributes.WxaEntryInfo)this.lQH.get(i)).iconUrl;; str = null)
       {
-        localb.a(localImageView, str, com.tencent.mm.modelappbrand.a.a.acC(), this.elm);
+        localb.a(localImageView, str, com.tencent.mm.modelappbrand.a.a.aua(), this.fyd);
         i += 1;
-        break label139;
+        break label141;
         bool = false;
         break;
       }
-      label228:
-      c(this.iXf, new Runnable()
+      label230:
+      c(this.lLA, new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(23829);
+          AppMethodBeat.i(27480);
           if ((bool) && (NewBizBindWxaInfoPreference.c(NewBizBindWxaInfoPreference.this) != null)) {
-            NewBizBindWxaInfoPreference.c(NewBizBindWxaInfoPreference.this).aOx();
+            NewBizBindWxaInfoPreference.c(NewBizBindWxaInfoPreference.this).hm(true);
           }
-          AppMethodBeat.o(23829);
+          AppMethodBeat.o(27480);
         }
       });
-      if (this.jaN.size() == 1)
+      if (this.lQH.size() == 1)
       {
-        this.mView.setTag(((WxaAttributes.WxaEntryInfo)this.jaN.get(0)).username);
-        this.mView.setOnClickListener(this.lNc);
-        AppMethodBeat.o(23838);
+        this.mView.setTag(((WxaAttributes.WxaEntryInfo)this.lQH.get(0)).username);
+        this.mView.setOnClickListener(this.pdN);
+        AppMethodBeat.o(27488);
         return;
       }
       this.mView.setTag(null);
-      this.mView.setOnClickListener(this.pxS);
-      AppMethodBeat.o(23838);
+      this.mView.setOnClickListener(this.uzC);
+      AppMethodBeat.o(27488);
       return;
     }
-    this.iSt.setVisibility(8);
-    AppMethodBeat.o(23838);
+    this.lLz.setVisibility(8);
+    AppMethodBeat.o(27488);
   }
   
   private static void c(View paramView, Runnable paramRunnable)
   {
-    AppMethodBeat.i(23839);
+    AppMethodBeat.i(27489);
     if (paramView.getVisibility() != 0)
     {
       paramView.setAlpha(0.0F);
       paramView.setVisibility(0);
     }
     paramView.animate().setDuration(200L).alpha(1.0F).withEndAction(paramRunnable).start();
-    AppMethodBeat.o(23839);
+    AppMethodBeat.o(27489);
   }
   
-  private void cx(View paramView)
+  private void cJ(final View paramView)
   {
-    AppMethodBeat.i(23840);
+    AppMethodBeat.i(27490);
     if (paramView.getVisibility() == 0) {
-      paramView.animate().setDuration(200L).alpha(0.0F).withEndAction(new NewBizBindWxaInfoPreference.4(this, paramView)).start();
+      paramView.animate().setDuration(200L).alpha(0.0F).withEndAction(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(27481);
+          paramView.setVisibility(8);
+          AppMethodBeat.o(27481);
+        }
+      }).start();
     }
-    AppMethodBeat.o(23840);
+    AppMethodBeat.o(27490);
   }
   
   private void init()
   {
-    AppMethodBeat.i(23833);
-    this.lNc = new NewBizBindWxaInfoPreference.1(this);
-    this.pxS = new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(23828);
-        ((l)g.E(l.class)).a(NewBizBindWxaInfoPreference.this.mContext, NewBizBindWxaInfoPreference.a(NewBizBindWxaInfoPreference.this).field_username, NewBizBindWxaInfoPreference.a(NewBizBindWxaInfoPreference.this).field_appId, NewBizBindWxaInfoPreference.b(NewBizBindWxaInfoPreference.this));
-        AppMethodBeat.o(23828);
-      }
-    };
-    AppMethodBeat.o(23833);
+    AppMethodBeat.i(27484);
+    this.pdN = new NewBizBindWxaInfoPreference.1(this);
+    this.uzC = new NewBizBindWxaInfoPreference.2(this);
+    fyh = this.context.getResources().getColor(2131100498);
+    AppMethodBeat.o(27484);
   }
   
-  private void lo()
+  private void pY()
   {
-    AppMethodBeat.i(23837);
-    if (this.iJJ == null)
+    AppMethodBeat.i(27487);
+    if (this.luZ == null)
     {
-      ab.i("MicroMsg.NewBizBindWxaInfoPreference", "startLoad or mLoadingView is null");
-      AppMethodBeat.o(23837);
+      ad.i("MicroMsg.NewBizBindWxaInfoPreference", "startLoad or mLoadingView is null");
+      AppMethodBeat.o(27487);
       return;
     }
-    if (this.iXg)
+    if (this.lLB)
     {
-      ab.i("MicroMsg.NewBizBindWxaInfoPreference", "startLoad has load.");
-      AppMethodBeat.o(23837);
+      ad.i("MicroMsg.NewBizBindWxaInfoPreference", "startLoad has load.");
+      AppMethodBeat.o(27487);
       return;
     }
-    this.iXg = true;
-    cx(this.iXf);
-    c(this.iJJ, null);
-    this.iJJ.dOV();
-    azw();
-    AppMethodBeat.o(23837);
+    this.lLB = true;
+    cJ(this.lLA);
+    c(this.luZ, null);
+    this.luZ.ffb();
+    aVd();
+    AppMethodBeat.o(27487);
   }
   
   public final View getView(View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(23834);
+    AppMethodBeat.i(27485);
     if (this.mView == null) {
       this.mView = onCreateView(paramViewGroup);
     }
     onBindView(this.mView);
     paramView = this.mView;
-    AppMethodBeat.o(23834);
+    AppMethodBeat.o(27485);
     return paramView;
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(23835);
+    AppMethodBeat.i(27486);
     super.onBindView(paramView);
-    this.iXf = paramView.findViewById(2131823043);
-    this.iJJ = ((ThreeDotsLoadingView)paramView.findViewById(2131823045));
-    this.iSt = ((AppBrandNearbyShowcaseView)paramView.findViewById(2131823044));
-    this.iSt.setIconSize(eln + elp * 2);
-    this.iSt.setIconGap(elo);
-    lo();
-    AppMethodBeat.o(23835);
+    this.lLA = paramView.findViewById(2131302723);
+    this.luZ = ((ThreeDotsLoadingView)paramView.findViewById(2131302725));
+    this.lLz = ((AppBrandNearbyShowcaseView)paramView.findViewById(2131302724));
+    this.lLz.setIconSize(fye + fyg * 2);
+    this.lLz.setIconGap(fyf);
+    pY();
+    AppMethodBeat.o(27486);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizBindWxaInfoPreference
  * JD-Core Version:    0.7.0.1
  */

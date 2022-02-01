@@ -24,26 +24,26 @@ public final class zzak
   public zzak(Context paramContext)
   {
     this(paramContext, new zzn());
-    AppMethodBeat.i(57549);
-    AppMethodBeat.o(57549);
+    AppMethodBeat.i(2503);
+    AppMethodBeat.o(2503);
   }
   
   @VisibleForTesting
   private zzak(Context paramContext, zzn paramzzn)
   {
-    AppMethodBeat.i(57550);
+    AppMethodBeat.i(2504);
     this.zzdb = new a();
     this.zzk = paramContext;
     this.zzcz = paramContext.getSharedPreferences("com.google.android.gms.appid", 0);
     this.zzda = paramzzn;
-    paramContext = new File(b.P(this.zzk), "com.google.android.gms.appid-no-backup");
+    paramContext = new File(b.R(this.zzk), "com.google.android.gms.appid-no-backup");
     if (!paramContext.exists()) {
       try
       {
         if ((paramContext.createNewFile()) && (!isEmpty())) {
           InstanceIDListenerService.zzd(this.zzk, this);
         }
-        AppMethodBeat.o(57550);
+        AppMethodBeat.o(2504);
         return;
       }
       catch (IOException paramContext)
@@ -54,29 +54,29 @@ public final class zzak
           if (paramContext.length() != 0)
           {
             "Error creating file in no backup dir: ".concat(paramContext);
-            AppMethodBeat.o(57550);
+            AppMethodBeat.o(2504);
             return;
           }
           new String("Error creating file in no backup dir: ");
         }
       }
     }
-    AppMethodBeat.o(57550);
+    AppMethodBeat.o(2504);
   }
   
   private static String zzd(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(57552);
+    AppMethodBeat.i(2506);
     paramString1 = String.valueOf(paramString1).length() + 4 + String.valueOf(paramString2).length() + String.valueOf(paramString3).length() + paramString1 + "|T|" + paramString2 + "|" + paramString3;
-    AppMethodBeat.o(57552);
+    AppMethodBeat.o(2506);
     return paramString1;
   }
   
   static String zzh(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(57561);
+    AppMethodBeat.i(2515);
     paramString1 = String.valueOf(paramString1).length() + 3 + String.valueOf(paramString2).length() + paramString1 + "|S|" + paramString2;
-    AppMethodBeat.o(57561);
+    AppMethodBeat.o(2515);
     return paramString1;
   }
   
@@ -84,9 +84,9 @@ public final class zzak
   {
     try
     {
-      AppMethodBeat.i(57553);
+      AppMethodBeat.i(2507);
       paramString = this.zzcz.getString(paramString, null);
-      AppMethodBeat.o(57553);
+      AppMethodBeat.o(2507);
       return paramString;
     }
     finally
@@ -98,9 +98,9 @@ public final class zzak
   
   public final boolean isEmpty()
   {
-    AppMethodBeat.i(57551);
+    AppMethodBeat.i(2505);
     boolean bool = this.zzcz.getAll().isEmpty();
-    AppMethodBeat.o(57551);
+    AppMethodBeat.o(2505);
     return bool;
   }
   
@@ -108,14 +108,14 @@ public final class zzak
   {
     try
     {
-      AppMethodBeat.i(57557);
+      AppMethodBeat.i(2511);
       paramString1 = zzd(paramString1, paramString2, paramString3);
       paramString2 = this.zzcz.edit();
       paramString2.putString(paramString1, paramString4);
       paramString2.putString("appVersion", paramString5);
       paramString2.putString("lastToken", Long.toString(System.currentTimeMillis() / 1000L));
       paramString2.commit();
-      AppMethodBeat.o(57557);
+      AppMethodBeat.o(2511);
       return;
     }
     finally
@@ -129,10 +129,10 @@ public final class zzak
   {
     try
     {
-      AppMethodBeat.i(57556);
+      AppMethodBeat.i(2510);
       paramString1 = zzd(paramString1, paramString2, paramString3);
       paramString1 = this.zzcz.getString(paramString1, null);
-      AppMethodBeat.o(57556);
+      AppMethodBeat.o(2510);
       return paramString1;
     }
     finally
@@ -146,12 +146,12 @@ public final class zzak
   {
     try
     {
-      AppMethodBeat.i(57558);
+      AppMethodBeat.i(2512);
       paramString1 = zzd(paramString1, paramString2, paramString3);
       paramString2 = this.zzcz.edit();
       paramString2.remove(paramString1);
       paramString2.commit();
-      AppMethodBeat.o(57558);
+      AppMethodBeat.o(2512);
       return;
     }
     finally
@@ -165,7 +165,7 @@ public final class zzak
   {
     try
     {
-      AppMethodBeat.i(57554);
+      AppMethodBeat.i(2508);
       SharedPreferences.Editor localEditor = this.zzcz.edit();
       Iterator localIterator = this.zzcz.getAll().keySet().iterator();
       while (localIterator.hasNext())
@@ -178,7 +178,7 @@ public final class zzak
       localEditor.commit();
     }
     finally {}
-    AppMethodBeat.o(57554);
+    AppMethodBeat.o(2508);
   }
   
   /* Error */
@@ -187,87 +187,87 @@ public final class zzak
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 229
-    //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: getfield 44	com/google/android/gms/iid/zzak:zzdb	Ljava/util/Map;
-    //   11: aload_1
-    //   12: invokeinterface 232 2 0
-    //   17: checkcast 234	com/google/android/gms/iid/zzo
-    //   20: astore_2
-    //   21: aload_2
-    //   22: ifnull +12 -> 34
-    //   25: ldc 229
-    //   27: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aload_2
-    //   33: areturn
-    //   34: aload_0
-    //   35: getfield 58	com/google/android/gms/iid/zzak:zzda	Lcom/google/android/gms/iid/zzn;
-    //   38: aload_0
-    //   39: getfield 46	com/google/android/gms/iid/zzak:zzk	Landroid/content/Context;
-    //   42: aload_1
-    //   43: invokevirtual 237	com/google/android/gms/iid/zzn:zze	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/android/gms/iid/zzo;
-    //   46: astore_2
-    //   47: aload_0
-    //   48: getfield 44	com/google/android/gms/iid/zzak:zzdb	Ljava/util/Map;
-    //   51: aload_1
-    //   52: aload_2
-    //   53: invokeinterface 241 3 0
-    //   58: pop
-    //   59: ldc 229
-    //   61: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   64: goto -34 -> 30
-    //   67: astore_1
-    //   68: aload_0
-    //   69: monitorexit
-    //   70: aload_1
-    //   71: athrow
-    //   72: astore_2
-    //   73: aload_0
-    //   74: getfield 46	com/google/android/gms/iid/zzak:zzk	Landroid/content/Context;
-    //   77: aload_0
-    //   78: invokestatic 87	com/google/android/gms/iid/InstanceIDListenerService:zzd	(Landroid/content/Context;Lcom/google/android/gms/iid/zzak;)V
-    //   81: aload_0
-    //   82: getfield 58	com/google/android/gms/iid/zzak:zzda	Lcom/google/android/gms/iid/zzn;
-    //   85: aload_0
-    //   86: getfield 46	com/google/android/gms/iid/zzak:zzk	Landroid/content/Context;
-    //   89: aload_1
-    //   90: invokevirtual 243	com/google/android/gms/iid/zzn:zzf	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/android/gms/iid/zzo;
-    //   93: astore_2
-    //   94: goto -47 -> 47
+    //   2: sipush 2513
+    //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: getfield 42	com/google/android/gms/iid/zzak:zzdb	Ljava/util/Map;
+    //   12: aload_1
+    //   13: invokeinterface 221 2 0
+    //   18: checkcast 223	com/google/android/gms/iid/zzo
+    //   21: astore_2
+    //   22: aload_2
+    //   23: ifnull +13 -> 36
+    //   26: sipush 2513
+    //   29: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   32: aload_0
+    //   33: monitorexit
+    //   34: aload_2
+    //   35: areturn
+    //   36: aload_0
+    //   37: getfield 56	com/google/android/gms/iid/zzak:zzda	Lcom/google/android/gms/iid/zzn;
+    //   40: aload_0
+    //   41: getfield 44	com/google/android/gms/iid/zzak:zzk	Landroid/content/Context;
+    //   44: aload_1
+    //   45: invokevirtual 226	com/google/android/gms/iid/zzn:zze	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/android/gms/iid/zzo;
+    //   48: astore_2
+    //   49: aload_0
+    //   50: getfield 42	com/google/android/gms/iid/zzak:zzdb	Ljava/util/Map;
+    //   53: aload_1
+    //   54: aload_2
+    //   55: invokeinterface 230 3 0
+    //   60: pop
+    //   61: sipush 2513
+    //   64: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   67: goto -35 -> 32
+    //   70: astore_1
+    //   71: aload_0
+    //   72: monitorexit
+    //   73: aload_1
+    //   74: athrow
+    //   75: astore_2
+    //   76: aload_0
+    //   77: getfield 44	com/google/android/gms/iid/zzak:zzk	Landroid/content/Context;
+    //   80: aload_0
+    //   81: invokestatic 85	com/google/android/gms/iid/InstanceIDListenerService:zzd	(Landroid/content/Context;Lcom/google/android/gms/iid/zzak;)V
+    //   84: aload_0
+    //   85: getfield 56	com/google/android/gms/iid/zzak:zzda	Lcom/google/android/gms/iid/zzn;
+    //   88: aload_0
+    //   89: getfield 44	com/google/android/gms/iid/zzak:zzk	Landroid/content/Context;
+    //   92: aload_1
+    //   93: invokevirtual 232	com/google/android/gms/iid/zzn:zzf	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/android/gms/iid/zzo;
+    //   96: astore_2
+    //   97: goto -48 -> 49
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	97	0	this	zzak
-    //   0	97	1	paramString	String
-    //   20	33	2	localzzo1	zzo
-    //   72	1	2	localzzp	zzp
-    //   93	1	2	localzzo2	zzo
+    //   0	100	0	this	zzak
+    //   0	100	1	paramString	String
+    //   21	34	2	localzzo1	zzo
+    //   75	1	2	localzzp	zzp
+    //   96	1	2	localzzo2	zzo
     // Exception table:
     //   from	to	target	type
-    //   2	21	67	finally
-    //   25	30	67	finally
-    //   34	47	67	finally
-    //   47	64	67	finally
-    //   73	94	67	finally
-    //   34	47	72	com/google/android/gms/iid/zzp
+    //   2	22	70	finally
+    //   26	32	70	finally
+    //   36	49	70	finally
+    //   49	67	70	finally
+    //   76	97	70	finally
+    //   36	49	75	com/google/android/gms/iid/zzp
   }
   
   final void zzk(String paramString)
   {
-    AppMethodBeat.i(57560);
+    AppMethodBeat.i(2514);
     try
     {
       this.zzdb.remove(paramString);
       zzn.zzg(this.zzk, paramString);
       zzi(String.valueOf(paramString).concat("|"));
-      AppMethodBeat.o(57560);
+      AppMethodBeat.o(2514);
       return;
     }
     finally
     {
-      AppMethodBeat.o(57560);
+      AppMethodBeat.o(2514);
     }
   }
   
@@ -275,11 +275,11 @@ public final class zzak
   {
     try
     {
-      AppMethodBeat.i(57555);
+      AppMethodBeat.i(2509);
       this.zzdb.clear();
       zzn.zzi(this.zzk);
       this.zzcz.edit().clear().commit();
-      AppMethodBeat.o(57555);
+      AppMethodBeat.o(2509);
       return;
     }
     finally
@@ -291,7 +291,7 @@ public final class zzak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.iid.zzak
  * JD-Core Version:    0.7.0.1
  */

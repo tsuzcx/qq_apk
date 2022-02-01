@@ -1,52 +1,55 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
-import com.tencent.mm.plugin.appbrand.appusage.s;
-import com.tencent.mm.plugin.appbrand.appusage.w;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.app.j;
+import com.tencent.mm.plugin.appbrand.appusage.u;
+import com.tencent.mm.plugin.appbrand.appusage.y;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.boots.a.b;
 
 public final class c
-  extends b
 {
   public static void a(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
-    AppMethodBeat.i(131717);
+    AppMethodBeat.i(47067);
     paramAppBrandInitConfigWC.resetSession();
-    paramAppBrandInitConfigWC.resetSession();
-    com.tencent.mm.kernel.g.RJ();
+    g.afz();
     paramAppBrandInitConfigWC.uin = a.getUin();
-    boolean bool = com.tencent.mm.plugin.appbrand.app.g.auK().aJ(paramAppBrandInitConfigWC.username, paramAppBrandInitConfigWC.gXd);
-    if (com.tencent.mm.plugin.appbrand.app.g.auL().aG(paramAppBrandInitConfigWC.username, paramAppBrandInitConfigWC.gXd)) {
-      paramAppBrandStatObject.iFX = 1;
+    boolean bool = j.aOI().aY(paramAppBrandInitConfigWC.username, paramAppBrandInitConfigWC.iOP);
+    if (j.aOJ().aV(paramAppBrandInitConfigWC.username, paramAppBrandInitConfigWC.iOP)) {
+      paramAppBrandStatObject.lpL = 1;
     }
     for (;;)
     {
-      if (paramAppBrandInitConfigWC.vY()) {
-        ((com.tencent.mm.plugin.boots.a.c)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.boots.a.c.class)).rQ(com.tencent.mm.plugin.boots.a.b.jRI);
+      if (paramAppBrandInitConfigWC.CZ()) {
+        ((com.tencent.mm.plugin.boots.a.c)g.ab(com.tencent.mm.plugin.boots.a.c.class)).xw(b.mQL);
       }
-      if (!paramAppBrandInitConfigWC.hiD)
+      if (!paramAppBrandInitConfigWC.jdl)
       {
-        ((com.tencent.mm.plugin.boots.a.c)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.boots.a.c.class)).rQ(com.tencent.mm.plugin.boots.a.b.jRK);
-        if (!paramAppBrandInitConfigWC.vY()) {
-          ((com.tencent.mm.plugin.boots.a.c)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.boots.a.c.class)).rQ(com.tencent.mm.plugin.boots.a.b.jRL);
+        ((com.tencent.mm.plugin.boots.a.c)g.ab(com.tencent.mm.plugin.boots.a.c.class)).xw(b.mQN);
+        if (!paramAppBrandInitConfigWC.CZ()) {
+          ((com.tencent.mm.plugin.boots.a.c)g.ab(com.tencent.mm.plugin.boots.a.c.class)).xw(b.mQO);
         }
       }
-      AppMethodBeat.o(131717);
+      if ("wxfe02ecfe70800f46".equalsIgnoreCase(paramAppBrandInitConfigWC.appId)) {
+        ((com.tencent.mm.plugin.boots.a.c)g.ab(com.tencent.mm.plugin.boots.a.c.class)).xw(b.mQP);
+      }
+      AppMethodBeat.o(47067);
       return;
       if (bool) {
-        paramAppBrandStatObject.iFX = 2;
+        paramAppBrandStatObject.lpL = 2;
       } else {
-        paramAppBrandStatObject.iFX = 3;
+        paramAppBrandStatObject.lpL = 3;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.c
  * JD-Core Version:    0.7.0.1
  */

@@ -14,23 +14,23 @@ public class WXEnterpriseCardObject
   
   public boolean checkArgs()
   {
-    AppMethodBeat.i(128299);
+    AppMethodBeat.i(3999);
     if ((this.cardInfo == null) || (this.cardInfo.length() == 0))
     {
       Log.e("MicroMsg.SDK.WXEnterpriseCardObject", "checkArgs fail, cardInfo is invalid");
-      AppMethodBeat.o(128299);
+      AppMethodBeat.o(3999);
       return false;
     }
-    AppMethodBeat.o(128299);
+    AppMethodBeat.o(3999);
     return true;
   }
   
   public void serialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128297);
+    AppMethodBeat.i(3997);
     paramBundle.putInt("_wxenterprisecard_msgtype", this.msgType);
     paramBundle.putString("_wxenterprisecard_cardinfo", this.cardInfo);
-    AppMethodBeat.o(128297);
+    AppMethodBeat.o(3997);
   }
   
   public int type()
@@ -40,15 +40,15 @@ public class WXEnterpriseCardObject
   
   public void unserialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128298);
+    AppMethodBeat.i(3998);
     this.msgType = paramBundle.getInt("_wxenterprisecard_msgtype");
     this.cardInfo = paramBundle.getString("_wxenterprisecard_cardinfo");
-    AppMethodBeat.o(128298);
+    AppMethodBeat.o(3998);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXEnterpriseCardObject
  * JD-Core Version:    0.7.0.1
  */

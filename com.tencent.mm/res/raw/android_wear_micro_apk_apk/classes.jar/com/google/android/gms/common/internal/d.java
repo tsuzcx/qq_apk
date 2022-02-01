@@ -6,6 +6,14 @@ import android.text.TextUtils;
 
 public final class d
 {
+  public static <T> T D(T paramT)
+  {
+    if (paramT == null) {
+      throw new NullPointerException("null reference");
+    }
+    return paramT;
+  }
+  
   public static void a(Handler paramHandler)
   {
     if (Looper.myLooper() != paramHandler.getLooper()) {
@@ -34,7 +42,7 @@ public final class d
     }
   }
   
-  public static <T> T e(T paramT, Object paramObject)
+  public static <T> T g(T paramT, Object paramObject)
   {
     if (paramT == null) {
       throw new NullPointerException(String.valueOf(paramObject));
@@ -50,22 +58,14 @@ public final class d
     return paramString;
   }
   
-  public static <T> T u(T paramT)
-  {
-    if (paramT == null) {
-      throw new NullPointerException("null reference");
-    }
-    return paramT;
-  }
-  
-  public static void v(boolean paramBoolean)
+  public static void y(boolean paramBoolean)
   {
     if (!paramBoolean) {
       throw new IllegalStateException();
     }
   }
   
-  public static void w(boolean paramBoolean)
+  public static void z(boolean paramBoolean)
   {
     if (!paramBoolean) {
       throw new IllegalArgumentException();

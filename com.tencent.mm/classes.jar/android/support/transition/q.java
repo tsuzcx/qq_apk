@@ -1,32 +1,19 @@
 package android.support.transition;
 
-import android.animation.ObjectAnimator;
-import android.graphics.Path;
-import android.graphics.PointF;
-import android.os.Build.VERSION;
-import android.util.Property;
-
-final class q
+public class q
+  implements Transition.c
 {
-  private static final t sf = new r();
+  public void a(Transition paramTransition) {}
   
-  static
-  {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      sf = new s();
-      return;
-    }
-  }
+  public void dg() {}
   
-  static <T> ObjectAnimator a(T paramT, Property<T, PointF> paramProperty, Path paramPath)
-  {
-    return sf.a(paramT, paramProperty, paramPath);
-  }
+  public void dh() {}
+  
+  public void dl() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.q
  * JD-Core Version:    0.7.0.1
  */

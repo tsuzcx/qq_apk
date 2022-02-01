@@ -5,7 +5,8 @@ import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.story.api.e;
-import com.tencent.mm.plugin.story.api.l;
+import com.tencent.mm.plugin.story.api.m;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,27 +15,61 @@ import java.util.Set;
 
 public final class a
 {
-  private static SparseArray<HashMap> slO;
-  private static l slP;
+  private static SparseArray<HashMap> xVT;
+  private static m xVU;
   
   static
   {
-    AppMethodBeat.i(40419);
-    slO = new SparseArray();
-    slP = new a.1();
-    ((e)g.G(e.class)).addStoryStatusNotifyListener(slP);
-    AppMethodBeat.o(40419);
+    AppMethodBeat.i(100382);
+    xVT = new SparseArray();
+    xVU = new m()
+    {
+      public final void bH(final String paramAnonymousString, final boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(100378);
+        aq.f(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(100377);
+            int i = 0;
+            while (i < a.dDK().size())
+            {
+              Object localObject = (Set)((HashMap)a.dDK().valueAt(i)).get(paramAnonymousString);
+              if ((localObject == null) || (((Set)localObject).size() == 0))
+              {
+                AppMethodBeat.o(100377);
+                return;
+              }
+              localObject = ((Set)localObject).iterator();
+              while (((Iterator)localObject).hasNext())
+              {
+                m localm = (m)((WeakReference)((Iterator)localObject).next()).get();
+                if (localm != null) {
+                  localm.bH(paramAnonymousString, paramAnonymousBoolean);
+                }
+              }
+              i += 1;
+            }
+            AppMethodBeat.o(100377);
+          }
+        });
+        AppMethodBeat.o(100378);
+      }
+    };
+    ((e)g.ad(e.class)).addStoryStatusNotifyListener(xVU);
+    AppMethodBeat.o(100382);
   }
   
-  public static void a(int paramInt, String paramString, l paraml)
+  public static void a(int paramInt, String paramString, m paramm)
   {
-    AppMethodBeat.i(40416);
-    if ((TextUtils.isEmpty(paramString)) || (paraml == null))
+    AppMethodBeat.i(100379);
+    if ((TextUtils.isEmpty(paramString)) || (paramm == null))
     {
-      AppMethodBeat.o(40416);
+      AppMethodBeat.o(100379);
       return;
     }
-    HashMap localHashMap = (HashMap)slO.get(paramInt);
+    HashMap localHashMap = (HashMap)xVT.get(paramInt);
     if (localHashMap == null) {
       localHashMap = new HashMap();
     }
@@ -45,55 +80,55 @@ public final class a
       if (localSet == null) {
         localObject = new HashSet();
       }
-      ((Set)localObject).add(new WeakReference(paraml));
+      ((Set)localObject).add(new WeakReference(paramm));
       localHashMap.put(paramString, localObject);
-      slO.put(paramInt, localHashMap);
-      AppMethodBeat.o(40416);
+      xVT.put(paramInt, localHashMap);
+      AppMethodBeat.o(100379);
       return;
     }
   }
   
-  public static void b(int paramInt, String paramString, l paraml)
+  public static void b(int paramInt, String paramString, m paramm)
   {
-    AppMethodBeat.i(40417);
-    if ((TextUtils.isEmpty(paramString)) || (paraml == null))
+    AppMethodBeat.i(100380);
+    if ((TextUtils.isEmpty(paramString)) || (paramm == null))
     {
-      AppMethodBeat.o(40417);
+      AppMethodBeat.o(100380);
       return;
     }
-    Object localObject = (HashMap)slO.get(paramInt);
+    Object localObject = (HashMap)xVT.get(paramInt);
     if (localObject == null)
     {
-      AppMethodBeat.o(40417);
+      AppMethodBeat.o(100380);
       return;
     }
     paramString = (Set)((HashMap)localObject).get(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(40417);
+      AppMethodBeat.o(100380);
       return;
     }
     paramString = paramString.iterator();
     while (paramString.hasNext())
     {
-      localObject = (l)((WeakReference)paramString.next()).get();
-      if ((localObject == null) || (localObject.equals(paraml))) {
+      localObject = (m)((WeakReference)paramString.next()).get();
+      if ((localObject == null) || (localObject.equals(paramm))) {
         paramString.remove();
       }
     }
-    AppMethodBeat.o(40417);
+    AppMethodBeat.o(100380);
   }
   
-  public static void cxo()
+  public static void dDJ()
   {
-    AppMethodBeat.i(40418);
-    slO.remove(4);
-    AppMethodBeat.o(40418);
+    AppMethodBeat.i(100381);
+    xVT.remove(4);
+    AppMethodBeat.o(100381);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.e.a
  * JD-Core Version:    0.7.0.1
  */

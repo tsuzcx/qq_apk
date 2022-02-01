@@ -1,121 +1,129 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.b.h;
-import com.tencent.mm.plugin.appbrand.b.i;
-import com.tencent.mm.sdk.d.a;
-import com.tencent.mm.sdk.d.d;
-import com.tencent.mm.sdk.d.d.c;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.page.b.a;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.b.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.h;
+import d.g.b.k;
+import d.l;
+import d.v;
 
-@Deprecated
-final class bm
-  extends i
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/page/MPPageViewActionBarExtensionImpl;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewActionBarExtension;", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "applyActionBarSizeProperty", "", "actionBar", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar;", "onActionbarInstalled", "onBackground", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onDestroy", "onForeground", "Companion", "luggage-wechat-full-sdk_release"})
+public final class bm
+  implements a
 {
-  final h iAi;
-  final h iAj;
-  private boolean izJ;
+  public static final bm.a lfn;
+  private final aa ceg;
   
-  private void l(Message paramMessage)
+  static
   {
-    int j = 1;
-    AppMethodBeat.i(140970);
-    ab.i("Luggage.MPWebViewRenderEngine.StateMachine", "executeOrPostMessage %d, %s", new Object[] { Integer.valueOf(paramMessage.what), paramMessage.obj });
-    if ((Looper.myLooper() == this.yrd.getLooper()) && (duh() != null) && (duh().what != -2))
+    AppMethodBeat.i(183075);
+    lfn = new bm.a((byte)0);
+    AppMethodBeat.o(183075);
+  }
+  
+  public bm(aa paramaa)
+  {
+    AppMethodBeat.i(183074);
+    this.ceg = paramaa;
+    AppMethodBeat.o(183074);
+  }
+  
+  private static void c(b paramb)
+  {
+    AppMethodBeat.i(186861);
+    Object localObject1 = paramb.getContext();
+    Object localObject2 = paramb.getCapsuleView();
+    if (localObject2 != null)
     {
-      bl[] arrayOfbl = bl.values();
-      int k = arrayOfbl.length;
-      int i = 0;
-      if (i < k)
+      k.g(localObject2, "it");
+      if ((((View)localObject2).getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
       {
-        bl localbl = arrayOfbl[i];
-        if (!this.yrd.hasMessages(localbl.ordinal())) {}
-      }
-      for (i = j;; i = 0)
-      {
-        if ((i != 0) || (this.gYX)) {
-          break label145;
+        Object localObject3 = ((View)localObject2).getLayoutParams();
+        if (localObject3 == null)
+        {
+          paramb = new v("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+          AppMethodBeat.o(186861);
+          throw paramb;
         }
-        this.yrd.dispatchMessage(paramMessage);
-        AppMethodBeat.o(140970);
-        return;
-        i += 1;
+        localObject3 = (ViewGroup.MarginLayoutParams)localObject3;
+        k.g(localObject1, "context");
+        ((ViewGroup.MarginLayoutParams)localObject3).rightMargin = ((Context)localObject1).getResources().getDimensionPixelSize(2131167028);
+        ((View)localObject2).setLayoutParams(((View)localObject2).getLayoutParams());
+      }
+    }
+    else
+    {
+      localObject2 = paramb.getNavResetStyleListener();
+      if (localObject2 == null) {
+        break label238;
+      }
+    }
+    label238:
+    for (int i = ((b.c)localObject2).bkf();; i = b.c.lRp)
+    {
+      paramb.bre();
+      k.g(localObject1, "context");
+      paramb.setNavContainerMinimumWidth(((Context)localObject1).getResources().getDimensionPixelOffset(i));
+      i = ((Context)localObject1).getResources().getDimensionPixelOffset(2131165742);
+      paramb.setActionBarHeight(i);
+      paramb = new StringBuilder("[applyActionBarSizeProperty] ActionBar height=").append(i).append("  density=");
+      localObject1 = ((Context)localObject1).getResources();
+      k.g(localObject1, "context.resources");
+      ad.i("MPPageViewActionBarExtensionImpl", ((Resources)localObject1).getDisplayMetrics().density);
+      AppMethodBeat.o(186861);
+      return;
+      if ((!h.IS_FLAVOR_RED) && (!h.DEBUG)) {
         break;
       }
+      paramb = (Throwable)new RuntimeException("it is not MarginLayoutParams");
+      AppMethodBeat.o(186861);
+      throw paramb;
     }
-    label145:
-    this.yrd.sendMessage(paramMessage);
-    AppMethodBeat.o(140970);
   }
   
-  public final void a(h paramh)
+  public final void a(b paramb)
   {
-    AppMethodBeat.i(140973);
-    ab.i("Luggage.MPWebViewRenderEngine.StateMachine", "onNewStateEntered %s", new Object[] { paramh.getName() });
-    AppMethodBeat.o(140973);
+    AppMethodBeat.i(186860);
+    k.h(paramb, "actionBar");
+    c(paramb);
+    AppMethodBeat.o(186860);
   }
   
-  final void a(bl parambl, Object paramObject)
+  public final void onBackground() {}
+  
+  public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(140971);
-    l(obtainMessage(parambl.ordinal(), paramObject));
-    AppMethodBeat.o(140971);
+    AppMethodBeat.i(183072);
+    k.h(paramConfiguration, "newConfig");
+    paramConfiguration = this.ceg.bjH();
+    k.g(paramConfiguration, "page.actionBar");
+    c(paramConfiguration);
+    AppMethodBeat.o(183072);
   }
   
-  final a aKb()
-  {
-    AppMethodBeat.i(140972);
-    a locala = super.dui();
-    AppMethodBeat.o(140972);
-    return locala;
-  }
+  public final void onDestroy() {}
   
-  final void aKc()
+  public final void onForeground()
   {
-    AppMethodBeat.i(140975);
-    super.duj();
-    AppMethodBeat.o(140975);
-  }
-  
-  final boolean aKd()
-  {
-    AppMethodBeat.i(140976);
-    Message localMessage = duh();
-    if (this.yrd == null)
-    {
-      if (localMessage.what == -1)
-      {
-        AppMethodBeat.o(140976);
-        return true;
-      }
-      AppMethodBeat.o(140976);
-      return false;
-    }
-    boolean bool = d.c.w(localMessage);
-    AppMethodBeat.o(140976);
-    return bool;
-  }
-  
-  public final void j(Message paramMessage)
-  {
-    AppMethodBeat.i(140974);
-    super.j(paramMessage);
-    ab.i("Luggage.MPWebViewRenderEngine.StateMachine", "unhandledMessage %s, %s", new Object[] { bl.pn(paramMessage.what), paramMessage.obj });
-    if (bl.iAg.po(paramMessage.what)) {
-      this.izJ = true;
-    }
-    if (bl.iAc.po(paramMessage.what)) {
-      b(this.iAj);
-    }
-    AppMethodBeat.o(140974);
+    AppMethodBeat.i(183071);
+    b localb = this.ceg.bjH();
+    k.g(localb, "page.actionBar");
+    c(localb);
+    AppMethodBeat.o(183071);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bm
  * JD-Core Version:    0.7.0.1
  */

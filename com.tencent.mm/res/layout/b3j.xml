@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/f7u" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center" android:id="@id/f7x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/z9" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/f96" android:background="@drawable/ajp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c0" android:layout_marginTop="@dimen/jn" android:layout_marginRight="@dimen/c0" android:layout_marginBottom="@dimen/jn">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f9u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/bq" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_70" />
+        <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/ia" android:textColor="@color/y4" android:textColorHint="@color/s4" android:gravity="center_vertical" android:id="@id/fao" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/d" android:minHeight="@dimen/h4" android:hint="@string/wa" android:singleLine="true" android:layout_weight="1.0" android:textCursorDrawable="@drawable/x5" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/d2l" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/qp">
+        <ListView android:id="@id/dmn" android:background="@color/xo" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/n3" />
+        <com.tencent.mm.chatroom.ui.SelectMemberScrollBar android:id="@id/dmq" android:layout_width="@dimen/nq" android:layout_height="fill_parent" android:layout_alignParentRight="true" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/faq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="15.0dip" android:textColor="@color/c3" android:gravity="center" android:id="@id/fap" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="@string/d5_" android:layout_weight="0.5" />
+            <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.5" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/far" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="200.0dip">
+            <ProgressBar android:padding="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a5o" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/c3" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dpf" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -8,13 +8,12 @@ import com.tencent.mm.wear.a.b.a;
 
 public final class d
 {
-  private long aaA = 10000L;
-  private View ahE;
-  private e aie;
-  private View aif;
-  private TextView aig;
-  private TextView aih;
-  private Runnable aii = new Runnable()
+  private long aeb = 10000L;
+  private e alG;
+  private View alH;
+  private TextView alI;
+  private TextView alJ;
+  private Runnable alK = new Runnable()
   {
     public final void run()
     {
@@ -22,7 +21,7 @@ public final class d
       d.b(d.this).setVisibility(0);
     }
   };
-  private View.OnClickListener aij = new View.OnClickListener()
+  private View.OnClickListener alL = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
@@ -32,56 +31,57 @@ public final class d
       }
     }
   };
+  private View alg;
   
   public d(Activity paramActivity)
   {
-    this.ahE = paramActivity.findViewById(2131558498);
-    this.aif = paramActivity.findViewById(2131558525);
-    this.aif.setOnClickListener(this.aij);
-    this.aig = ((TextView)paramActivity.findViewById(2131558524));
-    this.aih = ((TextView)paramActivity.findViewById(2131558520));
+    this.alg = paramActivity.findViewById(2131558499);
+    this.alH = paramActivity.findViewById(2131558526);
+    this.alH.setOnClickListener(this.alL);
+    this.alI = ((TextView)paramActivity.findViewById(2131558525));
+    this.alJ = ((TextView)paramActivity.findViewById(2131558521));
   }
   
-  public final void Q(String paramString)
+  public final void X(String paramString)
   {
-    this.aig.setText(paramString);
+    this.alI.setText(paramString);
   }
   
-  public final void R(String paramString)
+  public final void Y(String paramString)
   {
-    this.aih.setText(paramString);
+    this.alJ.setText(paramString);
   }
   
   public final void a(e parame)
   {
-    this.aie = parame;
+    this.alG = parame;
   }
   
-  public final void nD()
+  public final void or()
   {
-    this.ahE.setVisibility(8);
-    this.aif.setVisibility(8);
-    a.aiT.removeCallbacks(this.aii);
+    this.alg.setVisibility(8);
+    this.alH.setVisibility(8);
+    a.amv.removeCallbacks(this.alK);
   }
   
   public final void setError()
   {
-    this.ahE.setVisibility(8);
-    this.aif.setVisibility(0);
-    a.aiT.removeCallbacks(this.aii);
+    this.alg.setVisibility(8);
+    this.alH.setVisibility(0);
+    a.amv.removeCallbacks(this.alK);
   }
   
   public final void setTimeout(long paramLong)
   {
-    this.aaA = paramLong;
+    this.aeb = paramLong;
   }
   
   public final void startLoading()
   {
-    this.ahE.setVisibility(0);
-    this.aif.setVisibility(8);
-    a.aiT.removeCallbacks(this.aii);
-    a.aiT.postDelayed(this.aii, this.aaA);
+    this.alg.setVisibility(0);
+    this.alH.setVisibility(8);
+    a.amv.removeCallbacks(this.alK);
+    a.amv.postDelayed(this.alK, this.aeb);
   }
 }
 

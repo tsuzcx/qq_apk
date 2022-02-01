@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.card.ui.v2;
 
-import a.l;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.applet.m;
-import com.tencent.mm.pluginsdk.ui.d.h;
+import com.tencent.mm.pluginsdk.ui.applet.u;
+import com.tencent.mm.pluginsdk.ui.span.i;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/card/ui/v2/CardHomePageNewUI$HomePageVH$setModel$1$span$1", "Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickListener;", "onClick", "", "widget", "Landroid/view/View;", "hrefInfo", "Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;", "plugin-card_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/card/ui/v2/CardHomePageNewUI$HomePageVH$setModel$1$span$1", "Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickListener;", "onClick", "", "widget", "Landroid/view/View;", "hrefInfo", "Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;", "plugin-card_release"})
 public final class CardHomePageNewUI$e$d
-  extends h
+  extends i
 {
   CardHomePageNewUI$e$d(View.OnClickListener paramOnClickListener) {}
   
-  public final void a(View paramView, m paramm)
+  public final void a(View paramView, u paramu)
   {
-    AppMethodBeat.i(89194);
-    this.kzU.onClick(paramView);
-    AppMethodBeat.o(89194);
+    AppMethodBeat.i(112420);
+    this.nFl.onClick(paramView);
+    AppMethodBeat.o(112420);
   }
 }
 

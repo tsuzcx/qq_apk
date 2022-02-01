@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.game.ui.GameMessageBubbleView android:gravity="center_horizontal" android:id="@id/cdd" android:background="@color/a_r" android:paddingLeft="@dimen/o" android:paddingRight="@dimen/o" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center|left" android:id="@id/cdc" android:background="@drawable/vp" android:padding="@dimen/jn" android:focusable="true" android:clickable="true" android:duplicateParentState="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" android:layout_marginBottom="@dimen/ha">
+            <ImageView android:id="@id/cdb" android:layout_width="@dimen/i8" android:layout_height="@dimen/i8" android:scaleType="fitCenter" />
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/a_u" android:ellipsize="end" android:id="@id/cda" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+    </com.tencent.mm.plugin.game.ui.GameMessageBubbleView>
+</LinearLayout>

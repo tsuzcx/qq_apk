@@ -1,32 +1,25 @@
 package com.tencent.mm.bg;
 
-public abstract interface d
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+public final class d
 {
-  public abstract void aX(String paramString1, String paramString2);
+  String hqX;
+  double hqY;
+  double latitude;
+  double longitude;
   
-  public abstract void akV();
-  
-  public abstract void akW();
-  
-  public abstract void akX();
-  
-  public abstract void akY();
-  
-  public abstract void akZ();
-  
-  public abstract void ala();
-  
-  public abstract void i(int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void mh(int paramInt);
-  
-  public abstract void t(String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void uM(String paramString);
+  public final String toString()
+  {
+    AppMethodBeat.i(150911);
+    String str = "gspType:" + this.hqX + " longitude: " + this.longitude + " latitude: " + this.latitude + " distance: " + this.hqY;
+    AppMethodBeat.o(150911);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.bg.d
  * JD-Core Version:    0.7.0.1
  */

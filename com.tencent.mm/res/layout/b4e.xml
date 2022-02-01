@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:paddingLeft="@dimen/c_" android:paddingRight="@dimen/c_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_horizontal" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:layout_marginTop="@dimen/bt" android:src="@raw/wechat_gray_logo" />
+    <TextView android:textStyle="bold" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/fdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c_" android:singleLine="true" style="@style/ko" />
+    <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:text="@string/f4s" style="@style/ya" />
+    <View android:id="@id/a5m" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/fe_" android:layout_marginBottom="@dimen/bv" android:text="@string/ds8" style="@style/od" />
+</LinearLayout>

@@ -2,7 +2,7 @@ package android.support.v7.widget;
 
 public abstract interface ac
 {
-  public abstract boolean dR();
+  public abstract boolean ef();
 }
 
 

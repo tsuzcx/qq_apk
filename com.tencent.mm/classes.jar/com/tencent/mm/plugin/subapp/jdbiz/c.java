@@ -1,191 +1,191 @@
 package com.tencent.mm.plugin.subapp.jdbiz;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.model.az;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.storage.ab;
 import java.util.Map;
 
 public final class c
 {
-  public String cDI = "";
-  public long fSm = 0L;
+  public String duk = "";
+  public long huV = 0L;
   public String iconUrl = "";
   public String jumpUrl = "";
-  public String sWA = "";
-  public String sWB = "";
-  public boolean sWC = false;
-  public boolean sWD = false;
-  public String sWE = "";
-  public String sWF = "";
-  public long sWG;
-  public long sWH;
-  public long sWI;
-  public long sWJ;
-  public String sWK = "";
-  public String sWL = "";
-  public String sWM = "";
-  public String sWN = "";
-  public String sWO = "";
-  public String sWP = "";
-  public int sWQ = 0;
   public long startTime;
   public String title = "";
+  public String yCA = "";
+  public String yCB = "";
+  public String yCC = "";
+  public int yCD = 0;
+  public String yCn = "";
+  public String yCo = "";
+  public boolean yCp = false;
+  public boolean yCq = false;
+  public String yCr = "";
+  public String yCs = "";
+  public long yCt;
+  public long yCu;
+  public long yCv;
+  public long yCw;
+  public String yCx = "";
+  public String yCy = "";
+  public String yCz = "";
   
-  private void af(Map<String, String> paramMap)
+  private void aH(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(25194);
+    AppMethodBeat.i(28871);
     if (paramMap == null)
     {
-      AppMethodBeat.o(25194);
+      AppMethodBeat.o(28871);
       return;
     }
-    this.sWA = bo.bf((String)paramMap.get(".sysmsg.biztype"), "");
-    this.sWK = bo.bf((String)paramMap.get(".sysmsg.alert"), "");
-    this.sWB = bo.bf((String)paramMap.get(".sysmsg.activityid"), "");
-    this.startTime = bo.apW((String)paramMap.get(".sysmsg.starttime"));
-    this.fSm = bo.apW((String)paramMap.get(".sysmsg.expiretime"));
-    this.title = bo.bf((String)paramMap.get(".sysmsg.content.title"), "");
-    this.iconUrl = bo.bf((String)paramMap.get(".sysmsg.content.icon"), "");
-    this.jumpUrl = bo.bf((String)paramMap.get(".sysmsg.content.jumpurl"), "");
-    this.sWO = bo.bf((String)paramMap.get(".sysmsg.content.jumpweapp.username"), "");
-    this.sWP = bo.bf((String)paramMap.get(".sysmsg.content.jumpweapp.path"), "");
-    this.sWQ = bo.apV((String)paramMap.get(".sysmsg.content.jumpweapp.version"));
-    this.sWG = bo.apW((String)paramMap.get(".sysmsg.content.urlstarttime"));
-    this.sWH = bo.apW((String)paramMap.get(".sysmsg.content.urlexpiretime"));
-    this.sWE = bo.bf((String)paramMap.get(".sysmsg.content.jdcelltitle"), "");
-    this.sWF = bo.bf((String)paramMap.get(".sysmsg.content.jdcellicon"), "");
-    this.sWI = bo.apW((String)paramMap.get(".sysmsg.content.titlestarttime"));
-    this.sWJ = bo.apW((String)paramMap.get(".sysmsg.content.titleexpiretime"));
-    this.sWC = "1".equals(paramMap.get(".sysmsg.content.findshowreddot"));
-    this.sWD = "1".equals(paramMap.get(".sysmsg.content.jdcellshowred"));
-    this.sWL = bo.bf((String)paramMap.get(".sysmsg.content.alertviewtitle"), "");
-    this.sWM = bo.bf((String)paramMap.get(".sysmsg.content.alertviewconfirm"), "");
-    this.sWN = bo.bf((String)paramMap.get(".sysmsg.content.alertviewcancel"), "");
-    AppMethodBeat.o(25194);
+    this.yCn = bt.by((String)paramMap.get(".sysmsg.biztype"), "");
+    this.yCx = bt.by((String)paramMap.get(".sysmsg.alert"), "");
+    this.yCo = bt.by((String)paramMap.get(".sysmsg.activityid"), "");
+    this.startTime = bt.aGi((String)paramMap.get(".sysmsg.starttime"));
+    this.huV = bt.aGi((String)paramMap.get(".sysmsg.expiretime"));
+    this.title = bt.by((String)paramMap.get(".sysmsg.content.title"), "");
+    this.iconUrl = bt.by((String)paramMap.get(".sysmsg.content.icon"), "");
+    this.jumpUrl = bt.by((String)paramMap.get(".sysmsg.content.jumpurl"), "");
+    this.yCB = bt.by((String)paramMap.get(".sysmsg.content.jumpweapp.username"), "");
+    this.yCC = bt.by((String)paramMap.get(".sysmsg.content.jumpweapp.path"), "");
+    this.yCD = bt.aGh((String)paramMap.get(".sysmsg.content.jumpweapp.version"));
+    this.yCt = bt.aGi((String)paramMap.get(".sysmsg.content.urlstarttime"));
+    this.yCu = bt.aGi((String)paramMap.get(".sysmsg.content.urlexpiretime"));
+    this.yCr = bt.by((String)paramMap.get(".sysmsg.content.jdcelltitle"), "");
+    this.yCs = bt.by((String)paramMap.get(".sysmsg.content.jdcellicon"), "");
+    this.yCv = bt.aGi((String)paramMap.get(".sysmsg.content.titlestarttime"));
+    this.yCw = bt.aGi((String)paramMap.get(".sysmsg.content.titleexpiretime"));
+    this.yCp = "1".equals(paramMap.get(".sysmsg.content.findshowreddot"));
+    this.yCq = "1".equals(paramMap.get(".sysmsg.content.jdcellshowred"));
+    this.yCy = bt.by((String)paramMap.get(".sysmsg.content.alertviewtitle"), "");
+    this.yCz = bt.by((String)paramMap.get(".sysmsg.content.alertviewconfirm"), "");
+    this.yCA = bt.by((String)paramMap.get(".sysmsg.content.alertviewcancel"), "");
+    AppMethodBeat.o(28871);
   }
   
-  public static c cGB()
+  public static c dLQ()
   {
-    AppMethodBeat.i(25192);
-    aw.aaz();
-    String str = (String)com.tencent.mm.model.c.Ru().get(327942, "");
+    AppMethodBeat.i(28869);
+    az.arV();
+    String str = (String)com.tencent.mm.model.c.afk().get(327942, "");
     c localc = new c();
-    ab.i("MicroMsg.JdMsgContent", " create xml : ".concat(String.valueOf(str)));
-    localc.abg(str);
-    AppMethodBeat.o(25192);
+    ad.i("MicroMsg.JdMsgContent", " create xml : ".concat(String.valueOf(str)));
+    localc.apq(str);
+    AppMethodBeat.o(28869);
     return localc;
   }
   
   private void init()
   {
-    this.sWA = "";
-    this.sWB = "";
-    this.fSm = 0L;
-    this.sWE = "";
-    this.sWC = false;
-    this.sWD = false;
-    this.sWL = "";
-    this.sWM = "";
-    this.sWN = "";
-    this.sWK = "";
+    this.yCn = "";
+    this.yCo = "";
+    this.huV = 0L;
+    this.yCr = "";
+    this.yCp = false;
+    this.yCq = false;
+    this.yCy = "";
+    this.yCz = "";
+    this.yCA = "";
+    this.yCx = "";
     this.jumpUrl = "";
-    this.cDI = "";
-  }
-  
-  public final String SU()
-  {
-    AppMethodBeat.i(25200);
-    String str = bo.bf(this.cDI, "");
-    AppMethodBeat.o(25200);
-    return str;
+    this.duk = "";
   }
   
   public final boolean a(c paramc)
   {
-    AppMethodBeat.i(25199);
+    AppMethodBeat.i(28876);
     if (paramc == null)
     {
-      AppMethodBeat.o(25199);
+      AppMethodBeat.o(28876);
       return true;
     }
-    if (!bo.bf(this.sWB, "").equals(bo.bf(paramc.sWB, "")))
+    if (!bt.by(this.yCo, "").equals(bt.by(paramc.yCo, "")))
     {
-      AppMethodBeat.o(25199);
+      AppMethodBeat.o(28876);
       return true;
     }
-    AppMethodBeat.o(25199);
+    AppMethodBeat.o(28876);
     return false;
   }
   
-  public final void abg(String paramString)
+  public final String agO()
   {
-    AppMethodBeat.i(25193);
+    AppMethodBeat.i(28877);
+    String str = bt.by(this.duk, "");
+    AppMethodBeat.o(28877);
+    return str;
+  }
+  
+  public final void apq(String paramString)
+  {
+    AppMethodBeat.i(28870);
     init();
-    this.cDI = paramString;
-    if (bo.isNullOrNil(paramString))
+    this.duk = paramString;
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(25193);
+      AppMethodBeat.o(28870);
       return;
     }
-    ab.i("MicroMsg.JdMsgContent", "feed xml %s", new Object[] { paramString });
-    af(br.F(paramString, "sysmsg"));
-    AppMethodBeat.o(25193);
+    ad.i("MicroMsg.JdMsgContent", "feed xml %s", new Object[] { paramString });
+    aH(bw.K(paramString, "sysmsg"));
+    AppMethodBeat.o(28870);
   }
   
-  public final boolean bzK()
+  public final boolean cva()
   {
-    AppMethodBeat.i(25196);
-    if ((this.fSm != 0L) && (this.fSm < System.currentTimeMillis() / 1000L))
+    AppMethodBeat.i(28873);
+    if ((this.huV != 0L) && (this.huV < System.currentTimeMillis() / 1000L))
     {
-      AppMethodBeat.o(25196);
+      AppMethodBeat.o(28873);
       return true;
     }
-    AppMethodBeat.o(25196);
+    AppMethodBeat.o(28873);
     return false;
   }
   
-  public final boolean cGC()
+  public final boolean dLR()
   {
-    AppMethodBeat.i(153651);
-    if (this.sWG < System.currentTimeMillis() / 1000L)
+    AppMethodBeat.i(28874);
+    if (this.yCt < System.currentTimeMillis() / 1000L)
     {
-      AppMethodBeat.o(153651);
+      AppMethodBeat.o(28874);
       return true;
     }
-    AppMethodBeat.o(153651);
+    AppMethodBeat.o(28874);
     return false;
   }
   
-  public final boolean cGD()
+  public final boolean dLS()
   {
-    AppMethodBeat.i(153652);
-    if ((this.sWH != 0L) && (this.sWH < System.currentTimeMillis() / 1000L))
+    AppMethodBeat.i(28875);
+    if ((this.yCu != 0L) && (this.yCu < System.currentTimeMillis() / 1000L))
     {
-      AppMethodBeat.o(153652);
+      AppMethodBeat.o(28875);
       return true;
     }
-    AppMethodBeat.o(153652);
+    AppMethodBeat.o(28875);
     return false;
   }
   
   public final boolean isStart()
   {
-    AppMethodBeat.i(25195);
+    AppMethodBeat.i(28872);
     if (this.startTime < System.currentTimeMillis() / 1000L)
     {
-      AppMethodBeat.o(25195);
+      AppMethodBeat.o(28872);
       return true;
     }
-    AppMethodBeat.o(25195);
+    AppMethodBeat.o(28872);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.jdbiz.c
  * JD-Core Version:    0.7.0.1
  */

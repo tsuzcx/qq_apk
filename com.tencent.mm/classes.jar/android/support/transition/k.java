@@ -1,36 +1,31 @@
 package android.support.transition;
 
-import android.graphics.Matrix;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewGroup;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
+import android.graphics.PointF;
+import android.util.Property;
 
-final class k
+final class k<T>
+  extends Property<T, Float>
 {
-  private static final j.a rY = new h.a();
+  private final PathMeasure vc;
+  private final Property<T, PointF> yA;
+  private final float yB;
+  private final float[] yC = new float[2];
+  private final PointF yD = new PointF();
+  private float yE;
   
-  static
+  k(Property<T, PointF> paramProperty, Path paramPath)
   {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      rY = new i.a();
-      return;
-    }
-  }
-  
-  static void A(View paramView)
-  {
-    rY.A(paramView);
-  }
-  
-  static j a(View paramView, ViewGroup paramViewGroup, Matrix paramMatrix)
-  {
-    return rY.a(paramView, paramViewGroup, paramMatrix);
+    super(Float.class, paramProperty.getName());
+    this.yA = paramProperty;
+    this.vc = new PathMeasure(paramPath, false);
+    this.yB = this.vc.getLength();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.k
  * JD-Core Version:    0.7.0.1
  */

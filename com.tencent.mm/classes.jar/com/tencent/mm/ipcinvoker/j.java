@@ -1,8 +1,47 @@
 package com.tencent.mm.ipcinvoker;
 
-public abstract interface j
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashMap;
+import java.util.Map;
+
+public class j
 {
-  public abstract void onDisconnect();
+  private static volatile j fZt;
+  Map<String, BaseIPCService> fZu;
+  
+  private j()
+  {
+    AppMethodBeat.i(158752);
+    this.fZu = new HashMap();
+    AppMethodBeat.o(158752);
+  }
+  
+  public static j adw()
+  {
+    AppMethodBeat.i(158753);
+    if (fZt == null) {}
+    try
+    {
+      if (fZt == null) {
+        fZt = new j();
+      }
+      j localj = fZt;
+      AppMethodBeat.o(158753);
+      return localj;
+    }
+    finally
+    {
+      AppMethodBeat.o(158753);
+    }
+  }
+  
+  public final BaseIPCService qs(String paramString)
+  {
+    AppMethodBeat.i(158754);
+    paramString = (BaseIPCService)this.fZu.get(paramString);
+    AppMethodBeat.o(158754);
+    return paramString;
+  }
 }
 
 

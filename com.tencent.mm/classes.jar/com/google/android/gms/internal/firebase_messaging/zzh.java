@@ -11,18 +11,18 @@ public final class zzh
   
   static
   {
-    AppMethodBeat.i(108680);
+    AppMethodBeat.i(4116);
     for (localObject2 = null;; localObject2 = localObject3)
     {
       try
       {
         localObject3 = zza();
         if (localObject3 == null) {
-          break label58;
+          break label60;
         }
         localObject2 = localObject3;
         if (((Integer)localObject3).intValue() < 19) {
-          break label58;
+          break label60;
         }
         localObject2 = localObject3;
         localObject1 = new zzm();
@@ -33,7 +33,7 @@ public final class zzh
         for (;;)
         {
           Object localObject1;
-          label58:
+          label60:
           Object localObject3 = System.err;
           String str = zza.class.getName();
           ((PrintStream)localObject3).println(String.valueOf(str).length() + 132 + "An error has occured when initializing the try-with-resources desuguring strategy. The default strategy " + str + "will be used. The error is: ");
@@ -51,11 +51,11 @@ public final class zzh
       }
       zze = (zzi)localObject1;
       if (localObject2 != null) {
-        break label180;
+        break label182;
       }
       i = 1;
       zzf = i;
-      AppMethodBeat.o(108680);
+      AppMethodBeat.o(4116);
       return;
       localObject2 = localObject3;
       if (Boolean.getBoolean("com.google.devtools.build.android.desugar.runtime.twr_disable_mimic")) {
@@ -63,7 +63,7 @@ public final class zzh
       }
       i = 1;
       if (i == 0) {
-        break label165;
+        break label167;
       }
       localObject2 = localObject3;
       localObject1 = new zzl();
@@ -72,27 +72,27 @@ public final class zzh
   
   private static Integer zza()
   {
-    AppMethodBeat.i(108679);
+    AppMethodBeat.i(4115);
     try
     {
       Integer localInteger = (Integer)Class.forName("android.os.Build$VERSION").getField("SDK_INT").get(null);
-      AppMethodBeat.o(108679);
+      AppMethodBeat.o(4115);
       return localInteger;
     }
     catch (Exception localException)
     {
       System.err.println("Failed to retrieve value from android.os.Build$VERSION.SDK_INT due to the following exception.");
       localException.printStackTrace(System.err);
-      AppMethodBeat.o(108679);
+      AppMethodBeat.o(4115);
     }
     return null;
   }
   
   public static void zza(Throwable paramThrowable1, Throwable paramThrowable2)
   {
-    AppMethodBeat.i(108678);
+    AppMethodBeat.i(4114);
     zze.zza(paramThrowable1, paramThrowable2);
-    AppMethodBeat.o(108678);
+    AppMethodBeat.o(4114);
   }
   
   static final class zza
@@ -103,7 +103,7 @@ public final class zzh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.internal.firebase_messaging.zzh
  * JD-Core Version:    0.7.0.1
  */

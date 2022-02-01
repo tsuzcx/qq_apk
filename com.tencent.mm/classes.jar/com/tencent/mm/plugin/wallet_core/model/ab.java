@@ -3,24 +3,23 @@ package com.tencent.mm.plugin.wallet_core.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.storage.ae.a;
 
 public final class ab
 {
   public static String TAG = "MicroMsg.WalletIndexPayMenu";
   
-  public static void afj(String paramString)
+  public static void Ml(String paramString)
   {
-    AppMethodBeat.i(46909);
-    g.RM();
-    g.RL().Ru().set(ac.a.yHg, paramString);
-    AppMethodBeat.o(46909);
+    AppMethodBeat.i(70428);
+    g.afC();
+    g.afB().afk().set(ae.a.FpR, paramString);
+    AppMethodBeat.o(70428);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.ab
  * JD-Core Version:    0.7.0.1
  */

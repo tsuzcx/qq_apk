@@ -1,6 +1,7 @@
 package android.support.v4.media;
 
 import android.os.Bundle;
+import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.os.ResultReceiver;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +11,7 @@ class MediaBrowserCompat$SearchResultReceiver
 {
   public final void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    if (paramBundle != null) {
-      paramBundle.setClassLoader(MediaBrowserCompat.class.getClassLoader());
-    }
+    MediaSessionCompat.d(paramBundle);
     if ((paramInt != 0) || (paramBundle == null) || (!paramBundle.containsKey("search_results"))) {}
     for (;;)
     {
@@ -34,7 +33,7 @@ class MediaBrowserCompat$SearchResultReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.media.MediaBrowserCompat.SearchResultReceiver
  * JD-Core Version:    0.7.0.1
  */

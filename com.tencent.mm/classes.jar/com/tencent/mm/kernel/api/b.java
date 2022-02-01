@@ -4,7 +4,7 @@ import java.util.List;
 
 public abstract interface b
 {
-  public abstract List<String> RR();
+  public abstract List<String> afI();
 }
 
 

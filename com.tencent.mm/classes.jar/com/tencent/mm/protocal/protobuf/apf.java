@@ -1,133 +1,105 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
 import java.util.LinkedList;
 
 public final class apf
-  extends buy
+  extends ckq
 {
-  public String wsp;
-  public SKBuiltinBuffer_t wvN;
+  public String dlB;
+  public String signature;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(73713);
+    AppMethodBeat.i(82400);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wvN == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: RandomEncryKey");
-        AppMethodBeat.o(73713);
-        throw paramVarArgs;
-      }
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.iQ(1, this.BaseRequest.computeSize());
+        paramVarArgs.kX(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.wsp != null) {
-        paramVarArgs.e(2, this.wsp);
+      if (this.dlB != null) {
+        paramVarArgs.d(2, this.dlB);
       }
-      if (this.wvN != null)
-      {
-        paramVarArgs.iQ(3, this.wvN.computeSize());
-        this.wvN.writeFields(paramVarArgs);
+      if (this.signature != null) {
+        paramVarArgs.d(3, this.signature);
       }
-      AppMethodBeat.o(73713);
+      AppMethodBeat.o(82400);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label574;
+        break label430;
       }
     }
-    label574:
-    for (int i = e.a.a.a.iP(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label430:
+    for (int i = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.wsp != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.wsp);
+      if (this.dlB != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.dlB);
       }
       i = paramInt;
-      if (this.wvN != null) {
-        i = paramInt + e.a.a.a.iP(3, this.wvN.computeSize());
+      if (this.signature != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.signature);
       }
-      AppMethodBeat.o(73713);
+      AppMethodBeat.o(82400);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = buy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = buy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        if (this.wvN == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: RandomEncryKey");
-          AppMethodBeat.o(73713);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(73713);
+        AppMethodBeat.o(82400);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         apf localapf = (apf)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(73713);
+          AppMethodBeat.o(82400);
           return -1;
         case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new hq();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((hq)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localapf.BaseRequest = ((hq)localObject1);
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new ip();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localapf.BaseRequest = ((ip)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(73713);
+          AppMethodBeat.o(82400);
           return 0;
         case 2: 
-          localapf.wsp = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(73713);
+          localapf.dlB = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(82400);
           return 0;
         }
-        paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new SKBuiltinBuffer_t();
-          localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-          localapf.wvN = ((SKBuiltinBuffer_t)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(73713);
+        localapf.signature = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(82400);
         return 0;
       }
-      AppMethodBeat.o(73713);
+      AppMethodBeat.o(82400);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.apf
  * JD-Core Version:    0.7.0.1
  */

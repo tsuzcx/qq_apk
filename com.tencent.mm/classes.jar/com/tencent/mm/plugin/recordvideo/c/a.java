@@ -1,41 +1,57 @@
 package com.tencent.mm.plugin.recordvideo.c;
 
-import a.f.b.j;
-import a.l;
-import a.l.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import org.json.JSONArray;
+import com.tencent.mm.media.i.b.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/recordvideo/report/BehaviorTraceData;", "", "()V", "lock", "Ljava/lang/Object;", "traceJsonArray", "Lorg/json/JSONArray;", "addTrace", "", "aid", "", "checkLength", "", "trace", "Lorg/json/JSONObject;", "getTraceString", "", "plugin-recordvideo_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/render/RecorderTextureRenderer;", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "()V", "TAG", "", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "mirror", "", "", "setRotate", "degree", "", "setTextureSize", "width", "height", "updateDrawViewSize", "updateTextureSize", "plugin-recordvideo_release"})
 public final class a
+  extends com.tencent.mm.media.i.a
 {
-  final Object lock;
-  JSONArray qfr;
+  private final String TAG = "MicroMsg.RecorderTextureRenderer";
   
   public a()
   {
-    AppMethodBeat.i(154638);
-    this.qfr = new JSONArray();
-    this.lock = new Object();
-    AppMethodBeat.o(154638);
+    super(0, 0, 1, 1, 15);
   }
   
-  public final String cgA()
+  public final com.tencent.mm.media.i.b.a akj()
   {
-    AppMethodBeat.i(154637);
-    synchronized (this.lock)
-    {
-      String str = this.qfr.toString();
-      j.p(str, "traceJsonArray.toString()");
-      str = m.h(str, ",", ";", false);
-      AppMethodBeat.o(154637);
-      return str;
-    }
+    AppMethodBeat.i(182857);
+    com.tencent.mm.media.i.b.a locala = (com.tencent.mm.media.i.b.a)new d(this.guI, this.guJ, this.guK, this.guL, this.guM, this.scaleType);
+    AppMethodBeat.o(182857);
+    return locala;
   }
+  
+  public final void cS(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(182858);
+    ad.i(this.TAG, "updateTextureSize " + paramInt1 + ", " + paramInt2 + "; " + this.guI + ", " + this.guJ);
+    AppMethodBeat.o(182858);
+  }
+  
+  public final void cT(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(182859);
+    super.cT(paramInt1, paramInt2);
+    AppMethodBeat.o(182859);
+  }
+  
+  public final void dJ(boolean paramBoolean) {}
+  
+  public final void gM(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(182856);
+    super.cS(paramInt1, paramInt2);
+    AppMethodBeat.o(182856);
+  }
+  
+  public final void mz(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.c.a
  * JD-Core Version:    0.7.0.1
  */

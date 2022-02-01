@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.card.model.a;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.buy;
-import com.tencent.mm.protocal.protobuf.bvk;
-import com.tencent.mm.protocal.protobuf.hv;
-import com.tencent.mm.protocal.protobuf.hw;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.protocal.protobuf.aaz;
+import com.tencent.mm.protocal.protobuf.aba;
+import com.tencent.mm.protocal.protobuf.ckq;
+import com.tencent.mm.protocal.protobuf.cld;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/card/model/v2/CgiBatchDeleteCardInInvalid;", "Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "Lcom/tencent/mm/protocal/protobuf/BatchDeleteCardInInvalidListResponse;", "cardIds", "", "", "(Ljava/util/List;)V", "Companion", "plugin-card_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/card/model/v2/CgiDeleteCardInInvalidList;", "Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "Lcom/tencent/mm/protocal/protobuf/DeleteCardInInvalidListResponse;", "cardId", "", "(Ljava/lang/String;)V", "Companion", "plugin-card_release"})
 public final class b
-  extends k<hw>
+  extends j<aba>
 {
   private static String TAG;
-  public static final b.a kps;
+  public static final a nuJ;
   
   static
   {
-    AppMethodBeat.i(89155);
-    kps = new b.a((byte)0);
-    TAG = "MicroMsg.CgiBatchDeleteCardInInvalid";
-    AppMethodBeat.o(89155);
+    AppMethodBeat.i(112384);
+    nuJ = new a((byte)0);
+    TAG = "MicroMsg.CgiDeleteCardInInvalidList";
+    AppMethodBeat.o(112384);
   }
   
-  public b(List<String> paramList)
+  public b(String paramString)
   {
-    AppMethodBeat.i(89154);
-    hv localhv = new hv();
-    hw localhw = new hw();
-    localhv.wuw = new LinkedList((Collection)paramList);
-    a((buy)localhv, (bvk)localhw, 2850, "/cgi-bin/mmpay-bin/mktbatchdeletecardininvalidlist");
-    ab.i(TAG, "cardIds: %s", new Object[] { Integer.valueOf(paramList.size()) });
-    AppMethodBeat.o(89154);
+    AppMethodBeat.i(112383);
+    aaz localaaz = new aaz();
+    aba localaba = new aba();
+    localaaz.CuA = paramString;
+    a((ckq)localaaz, (cld)localaba, 2707, "/cgi-bin/mmpay-bin/mktdeletecardininvalidlist");
+    ad.i(TAG, "cardid: %s", new Object[] { paramString });
+    AppMethodBeat.o(112383);
   }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/card/model/v2/CgiDeleteCardInInvalidList$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "plugin-card_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.a.b
  * JD-Core Version:    0.7.0.1
  */

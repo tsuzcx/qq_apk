@@ -1,6 +1,6 @@
 package com.tencent.mm.kernel.api;
 
-import com.tencent.mm.cg.h;
+import com.tencent.mm.storagebase.h;
 
 public abstract interface e
 {

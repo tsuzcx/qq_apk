@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.at;
+import com.tencent.mm.plugin.emoji.model.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMTabView;
 
 final class EmojiStoreV2TabView$2$1
@@ -13,32 +13,39 @@ final class EmojiStoreV2TabView$2$1
   
   public final void run()
   {
-    AppMethodBeat.i(53799);
+    AppMethodBeat.i(109372);
     try
     {
-      if (EmojiStoreV2TabView.b(this.lrV.lrU) != null)
-      {
-        if (i.getEmojiStorageMgr().dxv())
-        {
-          EmojiStoreV2TabView.b(this.lrV.lrU).setText(2131299208);
-          AppMethodBeat.o(53799);
-          return;
-        }
-        EmojiStoreV2TabView.b(this.lrV.lrU).setText(2131299207);
+      if (EmojiStoreV2TabView.b(this.oIp.oIo) == null) {
+        break label119;
       }
-      AppMethodBeat.o(53799);
-      return;
+      if (!bt.isNullOrNil(d.bUR().owU))
+      {
+        EmojiStoreV2TabView.b(this.oIp.oIo).setText(d.bUR().owU);
+        AppMethodBeat.o(109372);
+        return;
+      }
+      if (d.bUR().owT)
+      {
+        EmojiStoreV2TabView.b(this.oIp.oIo).setText(2131758334);
+        AppMethodBeat.o(109372);
+        return;
+      }
     }
     catch (Exception localException)
     {
-      ab.printErrStackTrace("MicroMsg.emoji.EmojiStoreV2TabView", localException, "event update error", new Object[0]);
-      AppMethodBeat.o(53799);
+      ad.printErrStackTrace("MicroMsg.emoji.EmojiStoreV2TabView", localException, "event update error", new Object[0]);
+      AppMethodBeat.o(109372);
+      return;
     }
+    EmojiStoreV2TabView.b(this.oIp.oIo).setText(2131758333);
+    label119:
+    AppMethodBeat.o(109372);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2TabView.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,23 @@ public class GeoPoint
   
   static
   {
-    AppMethodBeat.i(101185);
-    CREATOR = new GeoPoint.1();
-    AppMethodBeat.o(101185);
+    AppMethodBeat.i(87540);
+    CREATOR = new Parcelable.Creator()
+    {
+      public final GeoPoint createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(87597);
+        paramAnonymousParcel = new GeoPoint(paramAnonymousParcel, null);
+        AppMethodBeat.o(87597);
+        return paramAnonymousParcel;
+      }
+      
+      public final GeoPoint[] newArray(int paramAnonymousInt)
+      {
+        return new GeoPoint[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(87540);
   }
   
   public GeoPoint(int paramInt1, int paramInt2)
@@ -29,27 +43,27 @@ public class GeoPoint
   
   private GeoPoint(Parcel paramParcel)
   {
-    AppMethodBeat.i(101182);
+    AppMethodBeat.i(87537);
     this.e6Lat = 0;
     this.e6Lon = 0;
     this.e6Lat = paramParcel.readInt();
     this.e6Lon = paramParcel.readInt();
-    AppMethodBeat.o(101182);
+    AppMethodBeat.o(87537);
   }
   
   public static LatLng g2l(GeoPoint paramGeoPoint)
   {
-    AppMethodBeat.i(101184);
+    AppMethodBeat.i(87539);
     paramGeoPoint = new LatLng(paramGeoPoint.getLatitudeE6() * 1.0D / 1000000.0D, paramGeoPoint.getLongitudeE6() * 1.0D / 1000000.0D);
-    AppMethodBeat.o(101184);
+    AppMethodBeat.o(87539);
     return paramGeoPoint;
   }
   
   public GeoPoint Copy()
   {
-    AppMethodBeat.i(101181);
+    AppMethodBeat.i(87536);
     GeoPoint localGeoPoint = new GeoPoint(this.e6Lat, this.e6Lon);
-    AppMethodBeat.o(101181);
+    AppMethodBeat.o(87536);
     return localGeoPoint;
   }
   
@@ -60,24 +74,24 @@ public class GeoPoint
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(101179);
+    AppMethodBeat.i(87534);
     if (paramObject == null)
     {
-      AppMethodBeat.o(101179);
+      AppMethodBeat.o(87534);
       return false;
     }
     if (paramObject.getClass() != getClass())
     {
-      AppMethodBeat.o(101179);
+      AppMethodBeat.o(87534);
       return false;
     }
     paramObject = (GeoPoint)paramObject;
     if ((this.e6Lat == paramObject.e6Lat) && (this.e6Lon == paramObject.e6Lon))
     {
-      AppMethodBeat.o(101179);
+      AppMethodBeat.o(87534);
       return true;
     }
-    AppMethodBeat.o(101179);
+    AppMethodBeat.o(87534);
     return false;
   }
   
@@ -108,23 +122,23 @@ public class GeoPoint
   
   public String toString()
   {
-    AppMethodBeat.i(101180);
+    AppMethodBeat.i(87535);
     String str = this.e6Lat + "," + this.e6Lon;
-    AppMethodBeat.o(101180);
+    AppMethodBeat.o(87535);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(101183);
+    AppMethodBeat.i(87538);
     paramParcel.writeInt(this.e6Lat);
     paramParcel.writeInt(this.e6Lon);
-    AppMethodBeat.o(101183);
+    AppMethodBeat.o(87538);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.GeoPoint
  * JD-Core Version:    0.7.0.1
  */

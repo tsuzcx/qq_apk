@@ -12,17 +12,17 @@ final class SnsCommentCollapseLayout$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(40479);
+    AppMethodBeat.i(100506);
     if (paramMotionEvent.getAction() == 0) {
-      paramView.setTag(2131820681, new int[] { (int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY() });
+      paramView.setTag(2131306044, new int[] { (int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY() });
     }
-    AppMethodBeat.o(40479);
+    AppMethodBeat.o(100506);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsCommentCollapseLayout.1
  * JD-Core Version:    0.7.0.1
  */

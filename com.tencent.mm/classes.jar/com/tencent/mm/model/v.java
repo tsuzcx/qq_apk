@@ -1,138 +1,233 @@
 package com.tencent.mm.model;
 
+import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.n.b;
+import com.tencent.mm.plugin.chatroom.a.c;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.List;
 import java.util.Set;
 
-public class v
+public final class v
 {
-  private static volatile v fln;
-  private Map<String, v.c> flo;
+  private static Set<String> gMl;
   
-  private v()
+  static
   {
-    AppMethodBeat.i(115091);
-    this.flo = new v.a((byte)0);
-    AppMethodBeat.o(115091);
+    AppMethodBeat.i(90684);
+    gMl = new HashSet();
+    AppMethodBeat.o(90684);
   }
   
-  public static v aae()
+  public static String a(af paramaf, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(115090);
-    if (fln == null) {}
-    try
+    AppMethodBeat.i(90680);
+    if (paramaf == null)
     {
-      if (fln == null) {
-        fln = new v();
-      }
-      v localv = fln;
-      AppMethodBeat.o(115090);
-      return localv;
+      AppMethodBeat.o(90680);
+      return paramString;
     }
-    finally
+    if ((paramBoolean) && (bt.isNullOrNil(paramaf.field_nickname)) && (bt.isNullOrNil(paramaf.field_conRemark)))
     {
-      AppMethodBeat.o(115090);
+      paramaf = ((c)g.ab(c.class)).apV().sh(paramString);
+      AppMethodBeat.o(90680);
+      return paramaf;
     }
-  }
-  
-  private v.c oN(String paramString)
-  {
-    AppMethodBeat.i(115092);
-    v.c localc = new v.c();
-    this.flo.put(paramString, localc);
-    AppMethodBeat.o(115092);
-    return localc;
-  }
-  
-  public static String oQ(String paramString)
-  {
-    AppMethodBeat.i(115096);
-    paramString = "SessionId@" + paramString + "#" + System.nanoTime();
-    AppMethodBeat.o(115096);
+    if ((paramaf.ZX() != null) && (paramaf.ZX().length() > 0))
+    {
+      paramaf = paramaf.ZX();
+      AppMethodBeat.o(90680);
+      return paramaf;
+    }
+    if ((bt.isNullOrNil(paramaf.field_nickname)) && (w.tm(paramString)))
+    {
+      paramaf = b.pL(paramString);
+      AppMethodBeat.o(90680);
+      return paramaf;
+    }
+    AppMethodBeat.o(90680);
     return paramString;
   }
   
-  public final v.b oO(String paramString)
+  public static String b(af paramaf)
   {
-    AppMethodBeat.i(115093);
-    paramString = (v.c)this.flo.get(paramString);
-    if (paramString != null)
+    AppMethodBeat.i(90681);
+    Object localObject = sh(paramaf.field_username);
+    if (w.pF(paramaf.field_username))
     {
-      paramString = paramString.flq;
-      AppMethodBeat.o(115093);
-      return paramString;
-    }
-    AppMethodBeat.o(115093);
-    return null;
-  }
-  
-  public final v.b oP(String paramString)
-  {
-    AppMethodBeat.i(115095);
-    paramString = (v.c)this.flo.remove(paramString);
-    if (paramString != null)
-    {
-      paramString = paramString.flq;
-      AppMethodBeat.o(115095);
-      return paramString;
-    }
-    AppMethodBeat.o(115095);
-    return null;
-  }
-  
-  public String toString()
-  {
-    AppMethodBeat.i(115097);
-    long l = System.currentTimeMillis();
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("DataCenter \nDataStore size : ").append(this.flo.size());
-    LinkedHashSet localLinkedHashSet = new LinkedHashSet(this.flo.entrySet());
-    Iterator localIterator = localLinkedHashSet.iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (localEntry != null)
+      if ((localObject != null) && (!((String)localObject).equals(paramaf.field_username)))
       {
-        v.c localc = (v.c)localEntry.getValue();
-        if (localc != null)
-        {
-          ((StringBuilder)localObject).append("\nDataStore id : ").append((String)localEntry.getKey());
-          ((StringBuilder)localObject).append(", CT : ").append(localc.flr).append("ms");
-          ((StringBuilder)localObject).append(", TTL : ").append((l - localc.flr) / 1000L).append("s");
-        }
+        AppMethodBeat.o(90681);
+        return localObject;
       }
+      localObject = ((c)g.ab(c.class)).apV().tL(paramaf.field_username);
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        paramaf = new ArrayList();
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          paramaf.add(sh((String)((Iterator)localObject).next()));
+        }
+        paramaf = "(" + bt.n(paramaf, ", ") + ")";
+        AppMethodBeat.o(90681);
+        return paramaf;
+      }
+      paramaf = com.tencent.mm.sdk.platformtools.aj.getResources().getString(2131755178);
+      AppMethodBeat.o(90681);
+      return paramaf;
     }
-    localLinkedHashSet.clear();
-    localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(115097);
+    AppMethodBeat.o(90681);
     return localObject;
   }
   
-  public final v.b z(String paramString, boolean paramBoolean)
+  public static String b(af paramaf, String paramString)
   {
-    AppMethodBeat.i(115094);
-    v.c localc2 = (v.c)this.flo.get(paramString);
-    v.c localc1 = localc2;
-    if (localc2 == null)
+    AppMethodBeat.i(186094);
+    paramaf = a(paramaf, paramString, w.pF(paramString));
+    AppMethodBeat.o(186094);
+    return paramaf;
+  }
+  
+  public static void b(Set<String> paramSet)
+  {
+    gMl = paramSet;
+  }
+  
+  public static String getDisplayName(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(90676);
+    if (bt.isNullOrNil(paramString2))
     {
-      if (!paramBoolean)
-      {
-        AppMethodBeat.o(115094);
-        return null;
-      }
-      localc1 = oN(paramString);
+      paramString1 = sh(paramString1);
+      AppMethodBeat.o(90676);
+      return paramString1;
     }
-    paramString = localc1.flq;
-    AppMethodBeat.o(115094);
+    String str = si(paramString1);
+    if (!bt.isNullOrNil(str))
+    {
+      AppMethodBeat.o(90676);
+      return str;
+    }
+    paramString2 = q.ab(paramString1, paramString2);
+    if (bt.isNullOrNil(paramString2))
+    {
+      paramString1 = sh(paramString1);
+      AppMethodBeat.o(90676);
+      return paramString1;
+    }
+    AppMethodBeat.o(90676);
+    return paramString2;
+  }
+  
+  public static String sf(String paramString)
+  {
+    AppMethodBeat.i(90675);
+    af localaf = ((k)g.ab(k.class)).apM().aHY(paramString);
+    if (localaf == null)
+    {
+      AppMethodBeat.o(90675);
+      return paramString;
+    }
+    if (!bt.isNullOrNil(localaf.field_nickname))
+    {
+      paramString = localaf.field_nickname;
+      AppMethodBeat.o(90675);
+      return paramString;
+    }
+    AppMethodBeat.o(90675);
+    return paramString;
+  }
+  
+  public static String sg(String paramString)
+  {
+    AppMethodBeat.i(90677);
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      AppMethodBeat.o(90677);
+      return "";
+    }
+    af localaf = ((k)g.ab(k.class)).apM().aHY(paramString);
+    ad.d("MicroMsg.ContactCommDisplay", "username: %s", new Object[] { paramString });
+    if (localaf == null)
+    {
+      AppMethodBeat.o(90677);
+      return paramString;
+    }
+    if ((w.pF(paramString)) && (bt.isNullOrNil(localaf.field_nickname)))
+    {
+      String str = ((c)g.ab(c.class)).apV().sh(paramString);
+      if (!bt.isNullOrNil(str))
+      {
+        AppMethodBeat.o(90677);
+        return str;
+      }
+    }
+    if ((localaf.ZW() != null) && (localaf.ZW().length() > 0))
+    {
+      paramString = localaf.ZW();
+      AppMethodBeat.o(90677);
+      return paramString;
+    }
+    AppMethodBeat.o(90677);
+    return paramString;
+  }
+  
+  public static String sh(String paramString)
+  {
+    AppMethodBeat.i(90678);
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      AppMethodBeat.o(90678);
+      return "";
+    }
+    paramString = b(((k)g.ab(k.class)).apM().aHY(paramString), paramString);
+    AppMethodBeat.o(90678);
+    return paramString;
+  }
+  
+  public static String si(String paramString)
+  {
+    AppMethodBeat.i(90682);
+    paramString = ((k)g.ab(k.class)).apM().aHY(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(90682);
+      return "";
+    }
+    if (!bt.isNullOrNil(paramString.field_conRemark))
+    {
+      paramString = paramString.field_conRemark;
+      AppMethodBeat.o(90682);
+      return paramString;
+    }
+    AppMethodBeat.o(90682);
+    return "";
+  }
+  
+  public static String sj(String paramString)
+  {
+    AppMethodBeat.i(90683);
+    if (gMl.contains(paramString))
+    {
+      AppMethodBeat.o(90683);
+      return "";
+    }
+    AppMethodBeat.o(90683);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.model.v
  * JD-Core Version:    0.7.0.1
  */

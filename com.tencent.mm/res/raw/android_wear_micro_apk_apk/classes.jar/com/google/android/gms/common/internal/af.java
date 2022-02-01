@@ -5,17 +5,17 @@ import android.content.ServiceConnection;
 
 public abstract class af
 {
-  private static final Object Kp = new Object();
-  private static af Kq;
+  private static final Object Me = new Object();
+  private static af Mf;
   
-  public static af h(Context paramContext)
+  public static af i(Context paramContext)
   {
-    synchronized (Kp)
+    synchronized (Me)
     {
-      if (Kq == null) {
-        Kq = new ah(paramContext.getApplicationContext());
+      if (Mf == null) {
+        Mf = new ah(paramContext.getApplicationContext());
       }
-      return Kq;
+      return Mf;
     }
   }
   

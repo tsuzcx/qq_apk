@@ -1,31 +1,23 @@
 package com.tencent.mm.plugin.sns.ui.widget;
 
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.drawable.Drawable;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.pluginsdk.ui.span.l;
 
 public final class g
-  extends com.tencent.mm.ui.widget.a
 {
-  public g(Drawable paramDrawable)
+  public static l a(Context paramContext, String paramString, float paramFloat, boolean paramBoolean)
   {
-    super(paramDrawable);
-  }
-  
-  public final int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    AppMethodBeat.i(40524);
-    int i = com.tencent.mm.cb.a.fromDPToPix(ah.getContext(), 4);
-    paramInt1 = super.getSize(paramPaint, paramCharSequence, paramInt1, paramInt2, paramFontMetricsInt);
-    AppMethodBeat.o(40524);
-    return i + paramInt1;
+    AppMethodBeat.i(100558);
+    paramContext = new l(k.a(paramContext, paramString, (int)paramFloat, 2, paramBoolean));
+    AppMethodBeat.o(100558);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.g
  * JD-Core Version:    0.7.0.1
  */

@@ -11,15 +11,15 @@ final class FaceDebugUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(356);
-    this.mkx.finish();
-    AppMethodBeat.o(356);
+    AppMethodBeat.i(103875);
+    this.pRi.finish();
+    AppMethodBeat.o(103875);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.ui.FaceDebugUI.1
  * JD-Core Version:    0.7.0.1
  */

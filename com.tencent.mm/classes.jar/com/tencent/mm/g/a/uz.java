@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class uz
   extends b
 {
-  public a cLx;
-  public uz.b cLy;
+  public a dAx;
   
   public uz()
   {
@@ -16,31 +15,21 @@ public final class uz
   
   private uz(byte paramByte)
   {
-    AppMethodBeat.i(5472);
-    this.cLx = new a();
-    this.cLy = new uz.b();
-    this.ymq = false;
+    AppMethodBeat.i(91220);
+    this.dAx = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(5472);
+    AppMethodBeat.o(91220);
   }
   
   public static final class a
   {
-    public String action;
-    public String appId;
-    public String buffer;
-    public String cLA;
-    public int cLB;
-    public String cLz;
-    public String cqf;
-    public String nonceStr;
-    public String signType;
-    public String url;
+    public boolean dAy = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.uz
  * JD-Core Version:    0.7.0.1
  */

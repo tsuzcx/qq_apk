@@ -1,272 +1,211 @@
 package com.tencent.tinker.d.a;
 
-import java.io.BufferedInputStream;
-import java.io.Closeable;
-import java.io.DataInputStream;
-import java.io.File;
 import java.io.InputStream;
-import java.io.RandomAccessFile;
 import java.nio.ByteOrder;
-import java.util.Collection;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
+import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.zip.ZipException;
 
 public final class g
-  implements Closeable
+  implements Cloneable
 {
-  private File BwA;
-  private RandomAccessFile BwB;
-  private final LinkedHashMap<String, f> Bwz = new LinkedHashMap();
-  private final String filename;
-  public String wqH;
+  String CzS;
+  long IFC = -1L;
+  int IFD = -1;
+  int IFE = -1;
+  byte[] IFF;
+  long IFG = -1L;
+  long IFH = -1L;
+  public long crc = -1L;
+  public String name;
+  long size = -1L;
+  int tGD = -1;
   
-  public g(File paramFile)
+  public g(g paramg)
   {
-    this(paramFile, (byte)0);
-  }
-  
-  private g(File paramFile, byte paramByte)
-  {
-    this.filename = paramFile.getPath();
-    this.BwA = null;
-    this.BwB = new RandomAccessFile(this.filename, "r");
-    dWL();
+    this.name = paramg.name;
+    this.CzS = paramg.CzS;
+    this.tGD = paramg.tGD;
+    this.size = paramg.size;
+    this.IFC = paramg.IFC;
+    this.crc = paramg.crc;
+    this.IFD = paramg.IFD;
+    this.IFE = paramg.IFE;
+    this.IFF = paramg.IFF;
+    this.IFG = paramg.IFG;
+    this.IFH = paramg.IFH;
   }
   
   public g(String paramString)
   {
-    this(new File(paramString), (byte)0);
-  }
-  
-  static void a(String paramString1, long paramLong1, String paramString2, long paramLong2, String paramString3, int paramInt)
-  {
-    String str = Integer.toHexString(paramInt);
-    throw new ZipException("file name:" + paramString1 + ", file size" + paramLong1 + ", entry name:" + paramString2 + ", entry localHeaderRelOffset:" + paramLong2 + ", " + paramString3 + " signature not found; was " + str);
-  }
-  
-  private void dWL()
-  {
-    long l1 = 0L;
-    long l2 = this.BwB.length() - 22L;
-    if (l2 < 0L) {
-      throw new ZipException("File too short to be a zip file: " + this.BwB.length());
-    }
-    this.BwB.seek(0L);
-    if (Integer.reverseBytes(this.BwB.readInt()) != 67324752L) {
-      throw new ZipException("Not a zip archive");
-    }
-    long l3 = l2 - 65536L;
-    if (l3 < 0L) {}
-    for (;;)
-    {
-      this.BwB.seek(l2);
-      if (Integer.reverseBytes(this.BwB.readInt()) != 101010256L)
-      {
-        l2 -= 1L;
-        if (l2 < l1) {
-          throw new ZipException("End Of Central Directory signature not found");
-        }
-      }
-      else
-      {
-        Object localObject = new byte[18];
-        this.BwB.readFully((byte[])localObject);
-        localObject = c.a((byte[])localObject, 18, ByteOrder.LITTLE_ENDIAN);
-        int i = ((b)localObject).readShort();
-        int k = ((b)localObject).readShort();
-        int j = ((b)localObject).readShort() & 0xFFFF;
-        int m = ((b)localObject).readShort();
-        ((b)localObject).dWJ();
-        l1 = ((b)localObject).readInt() & 0xFFFFFFFF;
-        int n = ((b)localObject).readShort() & 0xFFFF;
-        if ((j != (m & 0xFFFF)) || ((i & 0xFFFF) != 0) || ((k & 0xFFFF) != 0)) {
-          throw new ZipException("Spanned archives not supported");
-        }
-        if (n > 0)
-        {
-          localObject = new byte[n];
-          this.BwB.readFully((byte[])localObject);
-          this.wqH = new String((byte[])localObject, 0, localObject.length, d.UTF_8);
-        }
-        localObject = new BufferedInputStream(new a(this.BwB, l1), 4096);
-        byte[] arrayOfByte = new byte[46];
-        i = 0;
-        while (i < j)
-        {
-          f localf = new f(arrayOfByte, (InputStream)localObject, d.UTF_8);
-          if (localf.Bwx >= l1) {
-            throw new ZipException("Local file header offset is after central directory");
-          }
-          String str = localf.name;
-          if (this.Bwz.put(str, localf) != null) {
-            throw new ZipException("Duplicate entry name: ".concat(String.valueOf(str)));
-          }
-          i += 1;
-        }
-        return;
-      }
-      continue;
-      l1 = l3;
-    }
-  }
-  
-  public final InputStream a(f arg1)
-  {
-    f localf = axh(???.name);
-    if (localf == null) {
-      return null;
-    }
-    a locala;
-    DataInputStream localDataInputStream;
-    synchronized (this.BwB)
-    {
-      locala = new a(???, localf.Bwx);
-      localDataInputStream = new DataInputStream(locala);
-      i = Integer.reverseBytes(localDataInputStream.readInt());
-      if (i != 67324752L) {
-        a(this.filename, ???.length(), localf.name, localf.Bwx, "Local File Header", i);
-      }
-      localDataInputStream.skipBytes(2);
-      i = Short.reverseBytes(localDataInputStream.readShort()) & 0xFFFF;
-      if ((i & 0x1) != 0) {
-        throw new ZipException("Invalid General Purpose Bit Flag: ".concat(String.valueOf(i)));
-      }
-    }
-    localDataInputStream.skipBytes(18);
-    int i = Short.reverseBytes(localDataInputStream.readShort());
-    int j = Short.reverseBytes(localDataInputStream.readShort());
-    localDataInputStream.close();
-    locala.skip((i & 0xFFFF) + (j & 0xFFFF));
-    if (localObject.Bwu == 0) {
-      a.a(locala, a.a(locala) + localObject.size);
-    }
-    for (;;)
-    {
-      return locala;
-      a.a(locala, a.a(locala) + localObject.Bwt);
-    }
-  }
-  
-  public final f axh(String paramString)
-  {
-    dWK();
     if (paramString == null) {
-      throw new NullPointerException("entryName == null");
+      throw new NullPointerException("name == null");
     }
-    f localf2 = (f)this.Bwz.get(paramString);
-    f localf1 = localf2;
-    if (localf2 == null) {
-      localf1 = (f)this.Bwz.get(paramString + "/");
+    byte[] arrayOfByte = paramString.getBytes(Charset.forName("UTF-8"));
+    if (arrayOfByte.length > 65535) {
+      throw new IllegalArgumentException("Name" + " too long: " + arrayOfByte.length);
     }
-    return localf1;
+    this.name = paramString;
   }
   
-  public final void close()
+  g(byte[] paramArrayOfByte, InputStream paramInputStream, Charset paramCharset)
   {
-    RandomAccessFile localRandomAccessFile = this.BwB;
-    if (localRandomAccessFile != null) {}
-    try
+    f.b(paramInputStream, paramArrayOfByte, 0, 46);
+    paramArrayOfByte = d.a(paramArrayOfByte, 46, ByteOrder.LITTLE_ENDIAN);
+    int i = paramArrayOfByte.readInt();
+    if (i != 33639248L) {
+      h.a("unknown", paramInputStream.available(), "unknown", 0L, "Central Directory Entry", i);
+    }
+    paramArrayOfByte.seek(8);
+    i = paramArrayOfByte.readShort() & 0xFFFF;
+    if ((i & 0x1) != 0) {
+      throw new ZipException("Invalid General Purpose Bit Flag: ".concat(String.valueOf(i)));
+    }
+    if ((i & 0x800) != 0) {
+      paramCharset = Charset.forName("UTF-8");
+    }
+    this.IFD = (paramArrayOfByte.readShort() & 0xFFFF);
+    this.tGD = (paramArrayOfByte.readShort() & 0xFFFF);
+    this.IFE = (paramArrayOfByte.readShort() & 0xFFFF);
+    this.crc = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
+    this.IFC = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
+    this.size = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
+    i = paramArrayOfByte.readShort();
+    int j = paramArrayOfByte.readShort() & 0xFFFF;
+    int k = paramArrayOfByte.readShort() & 0xFFFF;
+    paramArrayOfByte.seek(42);
+    this.IFG = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
+    paramArrayOfByte = new byte[i & 0xFFFF];
+    f.b(paramInputStream, paramArrayOfByte, 0, paramArrayOfByte.length);
+    if (cN(paramArrayOfByte)) {
+      throw new ZipException("Filename contains NUL byte: " + Arrays.toString(paramArrayOfByte));
+    }
+    this.name = new String(paramArrayOfByte, 0, paramArrayOfByte.length, paramCharset);
+    if (j > 0)
     {
-      this.BwB = null;
-      localRandomAccessFile.close();
-      if (this.BwA != null)
+      this.IFF = new byte[j];
+      f.b(paramInputStream, this.IFF, 0, j);
+    }
+    if (k > 0)
+    {
+      paramArrayOfByte = new byte[k];
+      f.b(paramInputStream, paramArrayOfByte, 0, k);
+      this.CzS = new String(paramArrayOfByte, 0, paramArrayOfByte.length, paramCharset);
+    }
+  }
+  
+  private static boolean cN(byte[] paramArrayOfByte)
+  {
+    boolean bool2 = false;
+    int j = paramArrayOfByte.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
       {
-        this.BwA.delete();
-        this.BwA = null;
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public final void dWK()
-  {
-    if (this.BwB == null) {
-      throw new IllegalStateException("Zip file closed");
-    }
-  }
-  
-  public final Enumeration<? extends f> entries()
-  {
-    dWK();
-    new Enumeration()
-    {
-      public final boolean hasMoreElements()
-      {
-        g.a(g.this);
-        return this.atQ.hasNext();
-      }
-    };
-  }
-  
-  public static final class a
-    extends InputStream
-  {
-    private final RandomAccessFile BwD;
-    private long aNX;
-    private long offset;
-    
-    public a(RandomAccessFile paramRandomAccessFile, long paramLong)
-    {
-      this(paramRandomAccessFile, paramLong, paramRandomAccessFile.length());
-    }
-    
-    private a(RandomAccessFile paramRandomAccessFile, long paramLong1, long paramLong2)
-    {
-      this.BwD = paramRandomAccessFile;
-      this.offset = paramLong1;
-      this.aNX = paramLong2;
-    }
-    
-    public final int available()
-    {
-      if (this.offset < this.aNX) {
-        return 1;
-      }
-      return 0;
-    }
-    
-    public final int read()
-    {
-      return e.K(this);
-    }
-    
-    public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-    {
-      synchronized (this.BwD)
-      {
-        long l = this.aNX - this.offset;
-        int i = paramInt2;
-        if (paramInt2 > l) {
-          i = (int)l;
+        if (paramArrayOfByte[i] == 0) {
+          bool1 = true;
         }
-        this.BwD.seek(this.offset);
-        paramInt1 = this.BwD.read(paramArrayOfByte, paramInt1, i);
-        if (paramInt1 > 0)
-        {
-          this.offset += paramInt1;
-          return paramInt1;
-        }
-        return -1;
       }
-    }
-    
-    public final long skip(long paramLong)
-    {
-      long l = paramLong;
-      if (paramLong > this.aNX - this.offset) {
-        l = this.aNX - this.offset;
+      else {
+        return bool1;
       }
-      this.offset += l;
-      return l;
+      i += 1;
     }
+  }
+  
+  /* Error */
+  public final Object clone()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 179	java/lang/Object:clone	()Ljava/lang/Object;
+    //   4: checkcast 2	com/tencent/tinker/d/a/g
+    //   7: astore_2
+    //   8: aload_0
+    //   9: getfield 50	com/tencent/tinker/d/a/g:IFF	[B
+    //   12: ifnull +21 -> 33
+    //   15: aload_0
+    //   16: getfield 50	com/tencent/tinker/d/a/g:IFF	[B
+    //   19: invokevirtual 181	[B:clone	()Ljava/lang/Object;
+    //   22: checkcast 180	[B
+    //   25: astore_1
+    //   26: aload_2
+    //   27: aload_1
+    //   28: putfield 50	com/tencent/tinker/d/a/g:IFF	[B
+    //   31: aload_2
+    //   32: areturn
+    //   33: aconst_null
+    //   34: astore_1
+    //   35: goto -9 -> 26
+    //   38: astore_1
+    //   39: new 183	java/lang/AssertionError
+    //   42: dup
+    //   43: aload_1
+    //   44: invokespecial 186	java/lang/AssertionError:<init>	(Ljava/lang/Object;)V
+    //   47: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	48	0	this	g
+    //   25	10	1	arrayOfByte	byte[]
+    //   38	6	1	localCloneNotSupportedException	java.lang.CloneNotSupportedException
+    //   7	25	2	localg	g
+    // Exception table:
+    //   from	to	target	type
+    //   0	26	38	java/lang/CloneNotSupportedException
+    //   26	31	38	java/lang/CloneNotSupportedException
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (!(paramObject instanceof g)) {
+      return false;
+    }
+    return this.name.equals(((g)paramObject).name);
+  }
+  
+  public final int hashCode()
+  {
+    return this.name.hashCode();
+  }
+  
+  public final void setMethod(int paramInt)
+  {
+    if ((paramInt != 0) && (paramInt != 8)) {
+      throw new IllegalArgumentException("Bad method: ".concat(String.valueOf(paramInt)));
+    }
+    this.IFD = paramInt;
+  }
+  
+  public final void setSize(long paramLong)
+  {
+    if (paramLong < 0L) {
+      throw new IllegalArgumentException("Bad size: ".concat(String.valueOf(paramLong)));
+    }
+    this.size = paramLong;
+  }
+  
+  public final String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append("name:" + this.name);
+    localStringBuffer.append("\ncomment:" + this.CzS);
+    localStringBuffer.append("\ntime:" + this.tGD);
+    localStringBuffer.append("\nsize:" + this.size);
+    localStringBuffer.append("\ncompressedSize:" + this.IFC);
+    localStringBuffer.append("\ncrc:" + this.crc);
+    localStringBuffer.append("\ncompressionMethod:" + this.IFD);
+    localStringBuffer.append("\nmodDate:" + this.IFE);
+    localStringBuffer.append("\nextra length:" + this.IFF.length);
+    localStringBuffer.append("\nlocalHeaderRelOffset:" + this.IFG);
+    localStringBuffer.append("\ndataOffset:" + this.IFH);
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tinker.d.a.g
  * JD-Core Version:    0.7.0.1
  */

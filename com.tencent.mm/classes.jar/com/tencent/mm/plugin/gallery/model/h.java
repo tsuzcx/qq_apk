@@ -6,73 +6,84 @@ import java.util.LinkedList;
 public final class h<E>
   extends LinkedList<E>
 {
-  private byte[] eKs;
+  private byte[] lock;
   
   public h()
   {
-    AppMethodBeat.i(21297);
-    this.eKs = new byte[0];
-    AppMethodBeat.o(21297);
+    AppMethodBeat.i(111324);
+    this.lock = new byte[0];
+    AppMethodBeat.o(111324);
   }
   
-  public final boolean Z(E paramE)
+  private boolean aN(E paramE)
   {
-    AppMethodBeat.i(21299);
-    synchronized (this.eKs)
+    AppMethodBeat.i(111326);
+    synchronized (this.lock)
     {
       boolean bool = super.contains(paramE);
-      AppMethodBeat.o(21299);
+      AppMethodBeat.o(111326);
       return bool;
     }
   }
   
   public final boolean add(E paramE)
   {
-    AppMethodBeat.i(21301);
-    synchronized (this.eKs)
+    AppMethodBeat.i(111328);
+    synchronized (this.lock)
     {
       boolean bool = super.add(paramE);
-      AppMethodBeat.o(21301);
+      AppMethodBeat.o(111328);
       return bool;
     }
   }
   
-  public final E bEi()
+  public final void clear()
   {
-    AppMethodBeat.i(21298);
-    synchronized (this.eKs)
+    AppMethodBeat.i(111330);
+    synchronized (this.lock)
+    {
+      super.clear();
+      AppMethodBeat.o(111330);
+      return;
+    }
+  }
+  
+  public final E czJ()
+  {
+    AppMethodBeat.i(111325);
+    synchronized (this.lock)
     {
       if (size() > 0)
       {
         Object localObject1 = super.poll();
-        AppMethodBeat.o(21298);
+        AppMethodBeat.o(111325);
         return localObject1;
       }
-      AppMethodBeat.o(21298);
+      AppMethodBeat.o(111325);
       return null;
     }
   }
   
-  public final void bO(E paramE)
+  public final void de(E paramE)
   {
-    AppMethodBeat.i(21300);
-    synchronized (this.eKs)
+    AppMethodBeat.i(111327);
+    synchronized (this.lock)
     {
-      if (Z(paramE)) {
+      if (aN(paramE)) {
         super.remove(paramE);
       }
-      AppMethodBeat.o(21300);
+      AppMethodBeat.o(111327);
       return;
     }
   }
   
   public final int size()
   {
-    AppMethodBeat.i(21302);
-    synchronized (this.eKs)
+    AppMethodBeat.i(111329);
+    synchronized (this.lock)
     {
       int i = super.size();
-      AppMethodBeat.o(21302);
+      AppMethodBeat.o(111329);
       return i;
     }
   }

@@ -15,19 +15,19 @@ final class zzr<TResult>
   
   zzr()
   {
-    AppMethodBeat.i(57408);
+    AppMethodBeat.i(13407);
     this.mLock = new Object();
-    AppMethodBeat.o(57408);
+    AppMethodBeat.o(13407);
   }
   
   public final void zza(Task<TResult> paramTask)
   {
-    AppMethodBeat.i(57410);
+    AppMethodBeat.i(13409);
     synchronized (this.mLock)
     {
       if ((this.zzaga == null) || (this.zzagb))
       {
-        AppMethodBeat.o(57410);
+        AppMethodBeat.o(13409);
         return;
       }
       this.zzagb = true;
@@ -38,10 +38,10 @@ final class zzr<TResult>
       if (localzzq == null)
       {
         this.zzagb = false;
-        AppMethodBeat.o(57410);
+        AppMethodBeat.o(13409);
         return;
         paramTask = finally;
-        AppMethodBeat.o(57410);
+        AppMethodBeat.o(13409);
         throw paramTask;
       }
       localzzq.onComplete(paramTask);
@@ -50,14 +50,14 @@ final class zzr<TResult>
   
   public final void zza(zzq<TResult> paramzzq)
   {
-    AppMethodBeat.i(57409);
+    AppMethodBeat.i(13408);
     synchronized (this.mLock)
     {
       if (this.zzaga == null) {
         this.zzaga = new ArrayDeque();
       }
       this.zzaga.add(paramzzq);
-      AppMethodBeat.o(57409);
+      AppMethodBeat.o(13408);
       return;
     }
   }

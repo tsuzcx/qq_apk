@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/feu" android:background="@drawable/bmx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="0.0dip" android:minHeight="106.0dip"
+<LinearLayout android:orientation="horizontal" android:background="@drawable/oc" android:paddingLeft="@dimen/i_" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/i_" android:paddingBottom="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="106.0dip" android:minHeight="106.0dip">
-        <ImageView android:id="@id/fev" android:layout_width="217.0dip" android:layout_height="106.0dip" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        <ImageView android:id="@id/few" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginLeft="13.0dip" android:layout_marginTop="13.0dip" android:layout_marginRight="7.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/a6q" android:id="@id/fex" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/few" android:layout_alignTop="@id/few" />
-        <TextView android:textSize="12.0dip" android:textColor="@color/a6q" android:id="@id/fey" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_below="@id/fex" android:layout_alignLeft="@id/fex" android:alpha="0.5" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="54.0dip" android:layout_below="@id/few" android:layout_alignParentLeft="true" android:layout_alignWithParentIfMissing="true">
-            <ImageView android:id="@id/fez" android:layout_width="43.0dip" android:layout_height="wrap_content" android:src="@drawable/dg" />
-            <ImageView android:id="@id/ff0" android:layout_width="43.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/dg" />
-            <ImageView android:id="@id/ff1" android:layout_width="43.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/dg" />
-            <TextView android:textSize="26.0dip" android:textColor="@color/a6q" android:gravity="left" android:id="@id/ff2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" />
-        </LinearLayout>
-        <ImageView android:id="@id/ff3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/bankcard_new" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        <TextView android:id="@id/ff4" android:background="@drawable/bmy" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.5dip" android:layout_marginRight="0.5dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        <TextView android:textColor="#4c000000" android:id="@id/ff5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="26.0dip" android:text="@string/fmt" android:layout_alignTop="@id/few" android:layout_alignParentRight="true" />
-        <TextView android:textColor="@color/h6" android:id="@id/ff6" android:background="@drawable/dh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="26.0dip" android:text="" android:layout_alignTop="@id/few" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/ff7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginLeft="54.0dip" android:layout_alignParentBottom="true">
-        <View android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="1.0dip" android:alpha="0.1" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <TextView android:textColor="#ffe2e2e2" android:id="@id/ff8" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:alpha="0.6" />
-            <ImageView android:layout_width="7.0dip" android:layout_height="12.0dip" android:layout_marginRight="12.0dip" android:src="@raw/aa_right_arrow" />
-        </LinearLayout>
+    <com.tencent.mm.ui.MMImageView android:id="@id/ffa" android:background="@raw/default_avatar" android:layout_width="@dimen/f" android:layout_height="@dimen/f" android:scaleType="centerCrop" />
+    <LinearLayout android:gravity="left" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_marginRight="@dimen/jn" android:layout_marginBottom="@dimen/ju">
+        <TextView android:id="@id/ffc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ic" android:maxLines="2" android:singleLine="false" style="@style/lw" />
+        <TextView android:id="@id/ff_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ic" android:singleLine="true" style="@style/ly" />
+        <TextView android:id="@id/ffb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ju" android:singleLine="true" style="@style/ly" />
     </LinearLayout>
 </LinearLayout>

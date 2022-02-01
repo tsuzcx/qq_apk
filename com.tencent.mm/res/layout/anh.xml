@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cii" android:background="@color/xy" android:layout_width="fill_parent" android:layout_height="@dimen/b5"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:padding="@dimen/m1" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="168.0dip" android:minHeight="64.0dip" style="@style/q9">
-        <ProgressBar android:id="@id/dvr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m1" style="@style/a00" />
-        <TextView android:textSize="@dimen/dw" android:textColor="@color/w9" android:id="@id/dvs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m1" android:maxWidth="200.0dip" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gaz" android:background="@drawable/au" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <ImageView android:id="@id/gay" android:paddingLeft="@dimen/ci" android:paddingRight="@dimen/ci" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/gh" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/i" android:textColor="@color/bs" android:ellipsize="end" android:gravity="center|left" android:id="@id/doe" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/dc2" android:singleLine="true" />
+    <View android:id="@id/bm9" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <ImageButton android:id="@id/gbq" android:background="@drawable/au" android:focusable="true" android:layout_width="@dimen/b5" android:layout_height="@dimen/b5" android:src="@raw/actionbar_icon_dark_search" />
+    <ImageButton android:id="@id/gb0" android:background="@drawable/au" android:focusable="true" android:visibility="gone" android:layout_width="@dimen/b5" android:layout_height="@dimen/b5" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gb1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <TextView android:id="@id/ck" android:layout_marginRight="@dimen/bp" android:text="send" style="@style/o8" />
     </LinearLayout>
 </LinearLayout>

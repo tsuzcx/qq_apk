@@ -1,7 +1,7 @@
 package com.tencent.mm.ui.widget;
 
 import android.content.Context;
-import com.tencent.mm.ui.widget.c.a;
+import com.tencent.mm.ui.widget.b.a;
 
 @Deprecated
 public final class f

@@ -9,24 +9,24 @@ public class zzck
   extends zza
 {
   public static final Parcelable.Creator<zzck> CREATOR = new bf();
-  final int Hc;
-  public final am TH;
+  final int IR;
+  public final am Vw;
   
   zzck(int paramInt, IBinder paramIBinder)
   {
-    this.Hc = paramInt;
+    this.IR = paramInt;
     if (paramIBinder != null)
     {
-      this.TH = an.p(paramIBinder);
+      this.Vw = an.p(paramIBinder);
       return;
     }
-    this.TH = null;
+    this.Vw = null;
   }
   
   public zzck(am paramam)
   {
-    this.Hc = 1;
-    this.TH = paramam;
+    this.IR = 1;
+    this.Vw = paramam;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

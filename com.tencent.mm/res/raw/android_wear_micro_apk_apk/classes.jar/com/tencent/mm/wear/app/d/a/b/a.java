@@ -5,25 +5,25 @@ import java.util.concurrent.BlockingQueue;
 public final class a
   extends Thread
 {
-  private String aas;
-  private BlockingQueue<g> adP;
-  private boolean adQ;
+  private String adT;
+  private BlockingQueue<g> ahr;
+  private boolean ahs;
   
   public a(String paramString, BlockingQueue<g> paramBlockingQueue)
   {
-    this.aas = paramString;
-    this.adP = paramBlockingQueue;
+    this.adT = paramString;
+    this.ahr = paramBlockingQueue;
   }
   
-  public final void mL()
+  public final void nx()
   {
-    this.adQ = true;
-    this.adP.add(new g());
+    this.ahs = true;
+    this.ahr.add(new g());
   }
   
-  public final String mM()
+  public final String ny()
   {
-    return this.aas;
+    return this.adT;
   }
   
   /* Error */
@@ -37,13 +37,13 @@ public final class a
     //   8: dup
     //   9: iconst_0
     //   10: aload_0
-    //   11: getfield 18	com/tencent/mm/wear/app/d/a/b/a:aas	Ljava/lang/String;
+    //   11: getfield 18	com/tencent/mm/wear/app/d/a/b/a:adT	Ljava/lang/String;
     //   14: aastore
     //   15: invokestatic 56	com/tencent/mm/wear/a/c/d:c	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   18: new 58	java/io/File
     //   21: dup
     //   22: aload_0
-    //   23: getfield 18	com/tencent/mm/wear/app/d/a/b/a:aas	Ljava/lang/String;
+    //   23: getfield 18	com/tencent/mm/wear/app/d/a/b/a:adT	Ljava/lang/String;
     //   26: invokespecial 61	java/io/File:<init>	(Ljava/lang/String;)V
     //   29: astore_1
     //   30: aload_1
@@ -94,7 +94,7 @@ public final class a
     //   119: aconst_null
     //   120: astore_2
     //   121: aload_0
-    //   122: getfield 26	com/tencent/mm/wear/app/d/a/b/a:adQ	Z
+    //   122: getfield 26	com/tencent/mm/wear/app/d/a/b/a:ahs	Z
     //   125: ifne +40 -> 165
     //   128: aload_2
     //   129: ifnull +20 -> 149
@@ -108,7 +108,7 @@ public final class a
     //   145: aload_1
     //   146: invokevirtual 107	java/io/OutputStream:flush	()V
     //   149: aload_0
-    //   150: getfield 20	com/tencent/mm/wear/app/d/a/b/a:adP	Ljava/util/concurrent/BlockingQueue;
+    //   150: getfield 20	com/tencent/mm/wear/app/d/a/b/a:ahr	Ljava/util/concurrent/BlockingQueue;
     //   153: invokeinterface 111 1 0
     //   158: checkcast 28	com/tencent/mm/wear/app/d/a/b/g
     //   161: astore_2
@@ -120,7 +120,7 @@ public final class a
     //   173: new 58	java/io/File
     //   176: dup
     //   177: aload_0
-    //   178: getfield 18	com/tencent/mm/wear/app/d/a/b/a:aas	Ljava/lang/String;
+    //   178: getfield 18	com/tencent/mm/wear/app/d/a/b/a:adT	Ljava/lang/String;
     //   181: invokespecial 61	java/io/File:<init>	(Ljava/lang/String;)V
     //   184: astore_1
     //   185: ldc 46
@@ -130,7 +130,7 @@ public final class a
     //   193: dup
     //   194: iconst_0
     //   195: aload_0
-    //   196: getfield 18	com/tencent/mm/wear/app/d/a/b/a:aas	Ljava/lang/String;
+    //   196: getfield 18	com/tencent/mm/wear/app/d/a/b/a:adT	Ljava/lang/String;
     //   199: aastore
     //   200: dup
     //   201: iconst_1

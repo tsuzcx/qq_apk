@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@raw/delete_icon_sel" android:state_activated="true" />
-    <item android:drawable="@raw/delete_icon_nor" />
-</selector>
+    <corners android:radius="8.0dip" />
+    <stroke android:width="1.0px" android:color="#ff969696" />
+</shape>

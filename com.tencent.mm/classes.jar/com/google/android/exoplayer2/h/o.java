@@ -3,7 +3,6 @@ package com.google.android.exoplayer2.h;
 import android.net.Uri;
 import android.text.TextUtils;
 import com.google.android.exoplayer2.d.b;
-import com.google.android.exoplayer2.i.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.EOFException;
 import java.io.IOException;
@@ -26,70 +25,70 @@ import java.util.regex.Pattern;
 public final class o
   implements s
 {
-  private static final Pattern aYZ;
-  private static final AtomicReference<byte[]> aZa;
-  private j aQI;
-  private final w<? super o> aYq;
-  private InputStream aYr;
-  private final boolean aZb;
-  private final int aZc;
-  private final int aZd;
-  private final com.google.android.exoplayer2.i.o<String> aZe;
-  private final s.f aZf;
-  private final s.f aZg;
-  private long aZh;
-  private long aZi;
-  private long aZj;
-  private long aZk;
+  private static final Pattern bxa;
+  private static final AtomicReference<byte[]> bxb;
+  private j bml;
+  private final x<? super o> bws;
+  private final boolean bxc;
+  private final int bxd;
+  private final int bxe;
+  private final com.google.android.exoplayer2.i.o<String> bxf;
+  private final s.f bxg;
+  private final s.f bxh;
+  private long bxi;
+  private long bxj;
+  private long bxk;
+  private long bxl;
   private HttpURLConnection connection;
+  private InputStream inputStream;
   private boolean opened;
   private final String userAgent;
   
   static
   {
-    AppMethodBeat.i(95833);
-    aYZ = Pattern.compile("^bytes (\\d+)-(\\d+)/(\\d+)$");
-    aZa = new AtomicReference();
-    AppMethodBeat.o(95833);
+    AppMethodBeat.i(93077);
+    bxa = Pattern.compile("^bytes (\\d+)-(\\d+)/(\\d+)$");
+    bxb = new AtomicReference();
+    AppMethodBeat.o(93077);
   }
   
-  public o(String paramString, w<? super o> paramw, int paramInt1, int paramInt2, boolean paramBoolean, s.f paramf)
+  public o(String paramString, x<? super o> paramx, int paramInt1, int paramInt2, boolean paramBoolean, s.f paramf)
   {
-    AppMethodBeat.i(95825);
+    AppMethodBeat.i(93069);
     if (TextUtils.isEmpty(paramString))
     {
       paramString = new IllegalArgumentException();
-      AppMethodBeat.o(95825);
+      AppMethodBeat.o(93069);
       throw paramString;
     }
     this.userAgent = paramString;
-    this.aZe = null;
-    this.aYq = paramw;
-    this.aZg = new s.f();
-    this.aZc = paramInt1;
-    this.aZd = paramInt2;
-    this.aZb = paramBoolean;
-    this.aZf = paramf;
-    AppMethodBeat.o(95825);
+    this.bxf = null;
+    this.bws = paramx;
+    this.bxh = new s.f();
+    this.bxd = paramInt1;
+    this.bxe = paramInt2;
+    this.bxc = paramBoolean;
+    this.bxg = paramf;
+    AppMethodBeat.o(93069);
   }
   
   private HttpURLConnection a(URL paramURL, byte[] paramArrayOfByte, long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(95830);
+    AppMethodBeat.i(93074);
     HttpURLConnection localHttpURLConnection = (HttpURLConnection)paramURL.openConnection();
-    localHttpURLConnection.setConnectTimeout(this.aZc);
-    localHttpURLConnection.setReadTimeout(this.aZd);
+    localHttpURLConnection.setConnectTimeout(this.bxd);
+    localHttpURLConnection.setReadTimeout(this.bxe);
     Object localObject;
-    if (this.aZf != null)
+    if (this.bxg != null)
     {
-      paramURL = this.aZf.qv().entrySet().iterator();
+      paramURL = this.bxg.vq().entrySet().iterator();
       while (paramURL.hasNext())
       {
         localObject = (Map.Entry)paramURL.next();
         localHttpURLConnection.setRequestProperty((String)((Map.Entry)localObject).getKey(), (String)((Map.Entry)localObject).getValue());
       }
     }
-    paramURL = this.aZg.qv().entrySet().iterator();
+    paramURL = this.bxh.vq().entrySet().iterator();
     while (paramURL.hasNext())
     {
       localObject = (Map.Entry)paramURL.next();
@@ -128,7 +127,7 @@ public final class o
     }
     for (;;)
     {
-      AppMethodBeat.o(95830);
+      AppMethodBeat.o(93074);
       return localHttpURLConnection;
       paramBoolean1 = false;
       break;
@@ -137,9 +136,9 @@ public final class o
     }
   }
   
-  private static long b(HttpURLConnection paramHttpURLConnection)
+  private static long getContentLength(HttpURLConnection paramHttpURLConnection)
   {
-    AppMethodBeat.i(95831);
+    AppMethodBeat.i(93075);
     l2 = -1L;
     String str = paramHttpURLConnection.getHeaderField("Content-Length");
     l1 = l2;
@@ -152,7 +151,7 @@ public final class o
       Matcher localMatcher;
       if (!TextUtils.isEmpty(paramHttpURLConnection))
       {
-        localMatcher = aYZ.matcher(paramHttpURLConnection);
+        localMatcher = bxa.matcher(paramHttpURLConnection);
         l2 = l1;
         if (!localMatcher.find()) {}
       }
@@ -175,7 +174,7 @@ public final class o
           l2 = l1;
         }
       }
-      AppMethodBeat.o(95831);
+      AppMethodBeat.o(93075);
       return l2;
     }
     catch (NumberFormatException localNumberFormatException2)
@@ -196,15 +195,15 @@ public final class o
     }
   }
   
-  private void qu()
+  private void vp()
   {
-    AppMethodBeat.i(95832);
+    AppMethodBeat.i(93076);
     if (this.connection != null) {}
     try
     {
       this.connection.disconnect();
       this.connection = null;
-      AppMethodBeat.o(95832);
+      AppMethodBeat.o(93076);
       return;
     }
     catch (Exception localException)
@@ -218,21 +217,21 @@ public final class o
   
   public final long a(j paramj)
   {
-    AppMethodBeat.i(95827);
-    this.aQI = paramj;
-    this.aZk = 0L;
-    this.aZj = 0L;
+    AppMethodBeat.i(93071);
+    this.bml = paramj;
+    this.bxl = 0L;
+    this.bxk = 0L;
     long l1;
     Object localObject3;
     int j;
     try
     {
       localObject1 = new URL(paramj.uri.toString());
-      arrayOfByte = paramj.aYx;
+      arrayOfByte = paramj.bwy;
       l1 = paramj.position;
-      l2 = paramj.aPF;
-      bool = paramj.ej(1);
-      if (!this.aZb)
+      l2 = paramj.length;
+      bool = paramj.fh(1);
+      if (!this.bxc)
       {
         localObject3 = a((URL)localObject1, arrayOfByte, l1, l2, bool, true);
         this.connection = ((HttpURLConnection)localObject3);
@@ -245,7 +244,7 @@ public final class o
       long l2;
       boolean bool;
       paramj = new s.c("Unable to connect to " + paramj.uri.toString(), localIOException1, paramj);
-      AppMethodBeat.o(95827);
+      AppMethodBeat.o(93071);
       throw paramj;
     }
     try
@@ -255,20 +254,20 @@ public final class o
       if ((i < 200) || (i > 299))
       {
         localObject1 = this.connection.getHeaderFields();
-        qu();
+        vp();
         paramj = new s.e(i, (Map)localObject1, paramj);
         if (i == 416) {
           paramj.initCause(new h());
         }
-        AppMethodBeat.o(95827);
+        AppMethodBeat.o(93071);
         throw paramj;
       }
     }
     catch (IOException localIOException2)
     {
-      qu();
+      vp();
       paramj = new s.c("Unable to connect to " + paramj.uri.toString(), localIOException2, paramj);
-      AppMethodBeat.o(95827);
+      AppMethodBeat.o(93071);
       throw paramj;
     }
     for (int i = 0;; i = j)
@@ -298,7 +297,7 @@ public final class o
         if (localObject3 == null)
         {
           localObject1 = new ProtocolException("Null location redirect");
-          AppMethodBeat.o(95827);
+          AppMethodBeat.o(93071);
           throw ((Throwable)localObject1);
         }
         localObject2 = new URL(localIOException1, (String)localObject3);
@@ -307,67 +306,67 @@ public final class o
           continue;
         }
         localObject2 = new ProtocolException("Unsupported protocol redirect: ".concat(String.valueOf(localObject3)));
-        AppMethodBeat.o(95827);
+        AppMethodBeat.o(93071);
         throw ((Throwable)localObject2);
       }
       Object localObject2 = new NoRouteToHostException("Too many redirects: ".concat(String.valueOf(j)));
-      AppMethodBeat.o(95827);
+      AppMethodBeat.o(93071);
       throw ((Throwable)localObject2);
       String str = this.connection.getContentType();
-      if ((this.aZe != null) && (!this.aZe.R(str)))
+      if ((this.bxf != null) && (!this.bxf.ae(str)))
       {
-        qu();
+        vp();
         paramj = new s.d(str, paramj);
-        AppMethodBeat.o(95827);
+        AppMethodBeat.o(93071);
         throw paramj;
       }
       if ((i == 200) && (paramj.position != 0L))
       {
         l1 = paramj.position;
-        this.aZh = l1;
-        if (paramj.ej(1)) {
+        this.bxi = l1;
+        if (paramj.fh(1)) {
           break label715;
         }
-        if (paramj.aPF == -1L) {
+        if (paramj.length == -1L) {
           break label671;
         }
-        this.aZi = paramj.aPF;
+        this.bxj = paramj.length;
       }
       for (;;)
       {
         try
         {
-          this.aYr = this.connection.getInputStream();
+          this.inputStream = this.connection.getInputStream();
           this.opened = true;
-          if (this.aYq != null) {
-            this.aYq.qq();
+          if (this.bws != null) {
+            this.bws.vl();
           }
-          l1 = this.aZi;
-          AppMethodBeat.o(95827);
+          l1 = this.bxj;
+          AppMethodBeat.o(93071);
           return l1;
         }
         catch (IOException localIOException3)
         {
           label671:
           label715:
-          qu();
+          vp();
           paramj = new s.c(localIOException3, paramj, 1);
-          AppMethodBeat.o(95827);
+          AppMethodBeat.o(93071);
           throw paramj;
         }
         l1 = 0L;
         break;
-        l1 = b(this.connection);
+        l1 = getContentLength(this.connection);
         if (l1 != -1L)
         {
-          l1 -= this.aZh;
-          this.aZi = l1;
+          l1 -= this.bxi;
+          this.bxj = l1;
         }
         else
         {
           l1 = -1L;
           continue;
-          this.aZi = paramj.aPF;
+          this.bxj = paramj.length;
         }
       }
     }
@@ -375,22 +374,22 @@ public final class o
   
   public final void close()
   {
-    AppMethodBeat.i(95829);
+    AppMethodBeat.i(93073);
     try
     {
       Object localObject1;
       long l1;
       int i;
-      if (this.aYr != null)
+      if (this.inputStream != null)
       {
         localObject1 = this.connection;
-        if (this.aZi != -1L) {
+        if (this.bxj != -1L) {
           break label130;
         }
-        l1 = this.aZi;
-        if (x.SDK_INT != 19)
+        l1 = this.bxj;
+        if (com.google.android.exoplayer2.i.x.SDK_INT != 19)
         {
-          i = x.SDK_INT;
+          i = com.google.android.exoplayer2.i.x.SDK_INT;
           if (i != 20) {
             break label79;
           }
@@ -419,17 +418,17 @@ public final class o
         }
         try
         {
-          this.aYr.close();
+          this.inputStream.close();
           return;
         }
         catch (IOException localIOException)
         {
-          s.c localc = new s.c(localIOException, this.aQI, 3);
-          AppMethodBeat.o(95829);
+          s.c localc = new s.c(localIOException, this.bml, 3);
+          AppMethodBeat.o(93073);
           throw localc;
         }
-        l1 = this.aZi;
-        l2 = this.aZk;
+        l1 = this.bxj;
+        l2 = this.bxl;
         l1 -= l2;
         break;
         if (l1 > 2048L)
@@ -443,116 +442,116 @@ public final class o
           }
         }
       }
-      AppMethodBeat.o(95829);
+      AppMethodBeat.o(93073);
     }
     finally
     {
-      this.aYr = null;
-      qu();
+      this.inputStream = null;
+      vp();
       if (this.opened)
       {
         this.opened = false;
-        if (this.aYq != null) {
-          this.aYq.qr();
+        if (this.bws != null) {
+          this.bws.vm();
         }
       }
-      AppMethodBeat.o(95829);
+      AppMethodBeat.o(93073);
     }
   }
   
   public final Uri getUri()
   {
-    AppMethodBeat.i(95826);
+    AppMethodBeat.i(93070);
     if (this.connection == null)
     {
-      AppMethodBeat.o(95826);
+      AppMethodBeat.o(93070);
       return null;
     }
     Uri localUri = Uri.parse(this.connection.getURL().toString());
-    AppMethodBeat.o(95826);
+    AppMethodBeat.o(93070);
     return localUri;
   }
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(95828);
+    AppMethodBeat.i(93072);
     byte[] arrayOfByte1;
     for (;;)
     {
       try
       {
-        if (this.aZj == this.aZh) {
+        if (this.bxk == this.bxi) {
           break label199;
         }
-        byte[] arrayOfByte2 = (byte[])aZa.getAndSet(null);
+        byte[] arrayOfByte2 = (byte[])bxb.getAndSet(null);
         arrayOfByte1 = arrayOfByte2;
         if (arrayOfByte2 == null) {
           arrayOfByte1 = new byte[4096];
         }
-        if (this.aZj == this.aZh) {
+        if (this.bxk == this.bxi) {
           break;
         }
-        i = (int)Math.min(this.aZh - this.aZj, arrayOfByte1.length);
-        i = this.aYr.read(arrayOfByte1, 0, i);
+        i = (int)Math.min(this.bxi - this.bxk, arrayOfByte1.length);
+        i = this.inputStream.read(arrayOfByte1, 0, i);
         if (Thread.interrupted())
         {
           paramArrayOfByte = new InterruptedIOException();
-          AppMethodBeat.o(95828);
+          AppMethodBeat.o(93072);
           throw paramArrayOfByte;
         }
       }
       catch (IOException paramArrayOfByte)
       {
-        paramArrayOfByte = new s.c(paramArrayOfByte, this.aQI, 2);
-        AppMethodBeat.o(95828);
+        paramArrayOfByte = new s.c(paramArrayOfByte, this.bml, 2);
+        AppMethodBeat.o(93072);
         throw paramArrayOfByte;
       }
       if (i == -1)
       {
         paramArrayOfByte = new EOFException();
-        AppMethodBeat.o(95828);
+        AppMethodBeat.o(93072);
         throw paramArrayOfByte;
       }
-      this.aZj += i;
-      if (this.aYq != null) {
-        this.aYq.el(i);
+      this.bxk += i;
+      if (this.bws != null) {
+        this.bws.fj(i);
       }
     }
-    aZa.set(arrayOfByte1);
+    bxb.set(arrayOfByte1);
     label199:
     if (paramInt2 == 0)
     {
-      AppMethodBeat.o(95828);
+      AppMethodBeat.o(93072);
       return 0;
     }
     int i = paramInt2;
-    if (this.aZi != -1L)
+    if (this.bxj != -1L)
     {
-      long l = this.aZi - this.aZk;
+      long l = this.bxj - this.bxl;
       if (l == 0L)
       {
-        AppMethodBeat.o(95828);
+        AppMethodBeat.o(93072);
         return -1;
       }
       i = (int)Math.min(paramInt2, l);
     }
-    paramInt1 = this.aYr.read(paramArrayOfByte, paramInt1, i);
+    paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, i);
     if (paramInt1 == -1)
     {
-      if (this.aZi != -1L)
+      if (this.bxj != -1L)
       {
         paramArrayOfByte = new EOFException();
-        AppMethodBeat.o(95828);
+        AppMethodBeat.o(93072);
         throw paramArrayOfByte;
       }
-      AppMethodBeat.o(95828);
+      AppMethodBeat.o(93072);
       return -1;
     }
-    this.aZk += paramInt1;
-    if (this.aYq != null) {
-      this.aYq.el(paramInt1);
+    this.bxl += paramInt1;
+    if (this.bws != null) {
+      this.bws.fj(paramInt1);
     }
-    AppMethodBeat.o(95828);
+    AppMethodBeat.o(93072);
     return paramInt1;
   }
 }

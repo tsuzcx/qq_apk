@@ -1,39 +1,1225 @@
 package com.tencent.mm.api;
 
-import android.content.Context;
-import android.widget.FrameLayout;
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.j;
+import com.tencent.mm.g.c.ak;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class c
-  extends FrameLayout
+public final class c
+  extends ak
 {
-  r bVT = new c.1(this);
+  public static int cIb;
+  public static int cIc;
+  public static int cId;
+  private static int cIg;
+  private static b cIh;
+  public static com.tencent.mm.sdk.e.c.a info;
+  private List<a> cIe;
+  public b cIf;
   
-  public c(Context paramContext)
+  static
   {
-    super(paramContext);
+    AppMethodBeat.i(116408);
+    cIb = 1;
+    cIc = 0;
+    cId = 1;
+    com.tencent.mm.sdk.e.c.a locala = new com.tencent.mm.sdk.e.c.a();
+    locala.EYt = new Field[20];
+    locala.columns = new String[21];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "username";
+    locala.EYv.put("username", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" username TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.EYu = "username";
+    locala.columns[1] = "appId";
+    locala.EYv.put("appId", "TEXT");
+    localStringBuilder.append(" appId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "brandList";
+    locala.EYv.put("brandList", "TEXT default '' ");
+    localStringBuilder.append(" brandList TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "brandListVersion";
+    locala.EYv.put("brandListVersion", "TEXT");
+    localStringBuilder.append(" brandListVersion TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "brandListContent";
+    locala.EYv.put("brandListContent", "TEXT");
+    localStringBuilder.append(" brandListContent TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "brandFlag";
+    locala.EYv.put("brandFlag", "INTEGER");
+    localStringBuilder.append(" brandFlag INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "extInfo";
+    locala.EYv.put("extInfo", "TEXT");
+    localStringBuilder.append(" extInfo TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[7] = "brandInfo";
+    locala.EYv.put("brandInfo", "TEXT");
+    localStringBuilder.append(" brandInfo TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[8] = "brandIconURL";
+    locala.EYv.put("brandIconURL", "TEXT");
+    localStringBuilder.append(" brandIconURL TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[9] = "updateTime";
+    locala.EYv.put("updateTime", "LONG");
+    localStringBuilder.append(" updateTime LONG");
+    localStringBuilder.append(", ");
+    locala.columns[10] = "hadAlert";
+    locala.EYv.put("hadAlert", "INTEGER");
+    localStringBuilder.append(" hadAlert INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[11] = "acceptType";
+    locala.EYv.put("acceptType", "INTEGER default '0' ");
+    localStringBuilder.append(" acceptType INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[12] = "type";
+    locala.EYv.put("type", "INTEGER default '0' ");
+    localStringBuilder.append(" type INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[13] = "status";
+    locala.EYv.put("status", "INTEGER default '0' ");
+    localStringBuilder.append(" status INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[14] = "enterpriseFather";
+    locala.EYv.put("enterpriseFather", "TEXT");
+    localStringBuilder.append(" enterpriseFather TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[15] = "kfWorkerId";
+    locala.EYv.put("kfWorkerId", "TEXT");
+    localStringBuilder.append(" kfWorkerId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[16] = "specialType";
+    locala.EYv.put("specialType", "INTEGER");
+    localStringBuilder.append(" specialType INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[17] = "attrSyncVersion";
+    locala.EYv.put("attrSyncVersion", "TEXT");
+    localStringBuilder.append(" attrSyncVersion TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[18] = "incrementUpdateTime";
+    locala.EYv.put("incrementUpdateTime", "LONG");
+    localStringBuilder.append(" incrementUpdateTime LONG");
+    localStringBuilder.append(", ");
+    locala.columns[19] = "bitFlag";
+    locala.EYv.put("bitFlag", "INTEGER default '0' ");
+    localStringBuilder.append(" bitFlag INTEGER default '0' ");
+    locala.columns[20] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    cIg = 0;
+    cIh = null;
+    AppMethodBeat.o(116408);
   }
   
-  public r getSelectedFeatureListener()
+  private boolean ht(int paramInt)
   {
-    return this.bVT;
+    return (this.field_bitFlag & paramInt) != 0;
   }
   
-  public abstract void setActionBarCallback(g paramg);
-  
-  public abstract void setActionBarVisible(boolean paramBoolean);
-  
-  public abstract void setAutoShowFooterAndBar(boolean paramBoolean);
-  
-  public abstract void setFooterVisible(boolean paramBoolean);
-  
-  public void setSelectedFeatureListener(r paramr)
+  private void hu(int paramInt)
   {
-    this.bVT = paramr;
+    this.field_bitFlag |= paramInt;
+  }
+  
+  public final boolean IW()
+  {
+    return (this.field_brandFlag & 0x1) == 0;
+  }
+  
+  public final boolean IX()
+  {
+    return (this.field_brandFlag & 0x4) != 0;
+  }
+  
+  public final boolean IY()
+  {
+    AppMethodBeat.i(116390);
+    if (System.currentTimeMillis() - this.field_updateTime > 86400000L)
+    {
+      AppMethodBeat.o(116390);
+      return true;
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    if (this.field_updateTime < localCalendar.getTimeInMillis())
+    {
+      AppMethodBeat.o(116390);
+      return true;
+    }
+    AppMethodBeat.o(116390);
+    return false;
+  }
+  
+  public final void IZ()
+  {
+    AppMethodBeat.i(116391);
+    bU(false);
+    b localb = this.cIf;
+    if (localb.cIj != null) {
+      localb.cIy = localb.cIj.optInt("ConnectorMsgType");
+    }
+    this.field_acceptType = localb.cIy;
+    this.field_type = bU(false).getServiceType();
+    if (Jg())
+    {
+      hu(1);
+      AppMethodBeat.o(116391);
+      return;
+    }
+    this.field_bitFlag &= 0xFFFFFFFE;
+    AppMethodBeat.o(116391);
+  }
+  
+  public final boolean Ja()
+  {
+    AppMethodBeat.i(116392);
+    bU(false);
+    ad.i("MicroMsg.BizInfo", "is report location, user %s %B", new Object[] { this.field_username, Boolean.valueOf(this.cIf.Ja()) });
+    boolean bool = this.cIf.Ja();
+    AppMethodBeat.o(116392);
+    return bool;
+  }
+  
+  public final boolean Jb()
+  {
+    AppMethodBeat.i(116393);
+    bU(false);
+    if (this.field_type == 1)
+    {
+      AppMethodBeat.o(116393);
+      return true;
+    }
+    AppMethodBeat.o(116393);
+    return false;
+  }
+  
+  public final boolean Jc()
+  {
+    AppMethodBeat.i(116394);
+    bU(false);
+    if (this.field_type == 0)
+    {
+      AppMethodBeat.o(116394);
+      return true;
+    }
+    AppMethodBeat.o(116394);
+    return false;
+  }
+  
+  public final boolean Jd()
+  {
+    AppMethodBeat.i(116395);
+    bU(false);
+    if ((this.field_type == 2) || (this.field_type == 3))
+    {
+      AppMethodBeat.o(116395);
+      return true;
+    }
+    AppMethodBeat.o(116395);
+    return false;
+  }
+  
+  public final boolean Je()
+  {
+    AppMethodBeat.i(116396);
+    bU(false);
+    if (this.field_type == 2)
+    {
+      AppMethodBeat.o(116396);
+      return true;
+    }
+    AppMethodBeat.o(116396);
+    return false;
+  }
+  
+  public final boolean Jf()
+  {
+    AppMethodBeat.i(116397);
+    bU(false);
+    if (this.field_type == 3)
+    {
+      AppMethodBeat.o(116397);
+      return true;
+    }
+    AppMethodBeat.o(116397);
+    return false;
+  }
+  
+  public final boolean Jg()
+  {
+    AppMethodBeat.i(116398);
+    bU(false);
+    boolean bool;
+    if ((this.cIf != null) && (this.cIf.JH() != null)) {
+      if (this.cIf.cIv.cIX == 1)
+      {
+        bool = true;
+        if ((bool) && (!ht(1)))
+        {
+          hu(1);
+          ((o)g.ab(o.class)).a(this);
+        }
+        if (bool) {
+          ad.d("MicroMsg.BizInfo", "EnterpriseChat,userName : %s", new Object[] { this.field_username });
+        }
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(116398);
+      return bool;
+      bool = false;
+      break;
+      bool = false;
+    }
+  }
+  
+  public final boolean Jh()
+  {
+    AppMethodBeat.i(116399);
+    bU(false);
+    boolean bool;
+    if ((this.cIf != null) && (this.cIf.JH() != null)) {
+      if (this.cIf.cIv.cIX == 2)
+      {
+        bool = true;
+        if ((bool) && (!ht(2)))
+        {
+          hu(2);
+          ((o)g.ab(o.class)).a(this);
+        }
+        if (bool) {
+          ad.d("MicroMsg.BizInfo", "EnterpriseWeb,userName : %s", new Object[] { this.field_username });
+        }
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(116399);
+      return bool;
+      bool = false;
+      break;
+      bool = false;
+    }
+  }
+  
+  public final String Ji()
+  {
+    AppMethodBeat.i(116400);
+    bU(false);
+    if (this.cIf != null)
+    {
+      Object localObject = this.cIf.JH();
+      if ((localObject != null) && (((c.b.c.a)localObject).cIY != null) && (!((c.b.c.a)localObject).cIY.isEmpty()))
+      {
+        localObject = ((c.b.c.a)localObject).cIY;
+        AppMethodBeat.o(116400);
+        return localObject;
+      }
+    }
+    AppMethodBeat.o(116400);
+    return null;
+  }
+  
+  public final long Jj()
+  {
+    AppMethodBeat.i(116401);
+    bU(false);
+    if (this.cIf != null)
+    {
+      c.b.c.a locala = this.cIf.JH();
+      if ((locala != null) && (locala.appid != 0L))
+      {
+        long l = locala.appid;
+        AppMethodBeat.o(116401);
+        return l;
+      }
+    }
+    AppMethodBeat.o(116401);
+    return 0L;
+  }
+  
+  public final boolean Jk()
+  {
+    AppMethodBeat.i(116402);
+    bU(false);
+    if (this.cIf == null)
+    {
+      ad.i("MicroMsg.BizInfo", "isShowUserName bizInfo.getExtInfo() null");
+      AppMethodBeat.o(116402);
+      return true;
+    }
+    if (this.cIf.JB() == null)
+    {
+      ad.i("MicroMsg.BizInfo", "isShowUserName bizInfo.getExtInfo().getRegisterSource() null");
+      AppMethodBeat.o(116402);
+      return true;
+    }
+    if (!this.cIf.JB().cJn)
+    {
+      AppMethodBeat.o(116402);
+      return true;
+    }
+    AppMethodBeat.o(116402);
+    return false;
+  }
+  
+  public final String Jl()
+  {
+    AppMethodBeat.i(116403);
+    bU(false);
+    if (this.cIf != null)
+    {
+      Object localObject = this.cIf.JH();
+      if (localObject != null)
+      {
+        localObject = ((c.b.c.a)localObject).cIZ;
+        AppMethodBeat.o(116403);
+        return localObject;
+      }
+    }
+    AppMethodBeat.o(116403);
+    return null;
+  }
+  
+  public final String Jm()
+  {
+    AppMethodBeat.i(116404);
+    try
+    {
+      String str1 = bU(false).JH().cIV;
+      if (bt.isNullOrNil(str1)) {
+        ad.e("MicroMsg.BizInfo", "check father: %s, %s", new Object[] { this.field_username, str1 });
+      }
+      AppMethodBeat.o(116404);
+      return str1;
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      for (;;)
+      {
+        String str2 = "";
+      }
+    }
+  }
+  
+  /* Error */
+  public final List<a> Jn()
+  {
+    // Byte code:
+    //   0: ldc_w 416
+    //   3: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 418	com/tencent/mm/api/c:cIe	Ljava/util/List;
+    //   10: ifnull +16 -> 26
+    //   13: aload_0
+    //   14: getfield 418	com/tencent/mm/api/c:cIe	Ljava/util/List;
+    //   17: astore_2
+    //   18: ldc_w 416
+    //   21: invokestatic 210	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   24: aload_2
+    //   25: areturn
+    //   26: aload_0
+    //   27: new 420	java/util/LinkedList
+    //   30: dup
+    //   31: invokespecial 421	java/util/LinkedList:<init>	()V
+    //   34: putfield 418	com/tencent/mm/api/c:cIe	Ljava/util/List;
+    //   37: aload_0
+    //   38: getfield 424	com/tencent/mm/api/c:field_brandInfo	Ljava/lang/String;
+    //   41: ifnull +13 -> 54
+    //   44: aload_0
+    //   45: getfield 424	com/tencent/mm/api/c:field_brandInfo	Ljava/lang/String;
+    //   48: invokevirtual 427	java/lang/String:length	()I
+    //   51: ifne +16 -> 67
+    //   54: aload_0
+    //   55: getfield 418	com/tencent/mm/api/c:cIe	Ljava/util/List;
+    //   58: astore_2
+    //   59: ldc_w 416
+    //   62: invokestatic 210	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   65: aload_2
+    //   66: areturn
+    //   67: new 267	org/json/JSONObject
+    //   70: dup
+    //   71: aload_0
+    //   72: getfield 424	com/tencent/mm/api/c:field_brandInfo	Ljava/lang/String;
+    //   75: invokespecial 430	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   78: ldc_w 432
+    //   81: invokevirtual 436	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   84: astore_2
+    //   85: iconst_0
+    //   86: istore_1
+    //   87: iload_1
+    //   88: aload_2
+    //   89: invokevirtual 439	org/json/JSONArray:length	()I
+    //   92: if_icmpge +105 -> 197
+    //   95: new 6	com/tencent/mm/api/c$a
+    //   98: dup
+    //   99: invokespecial 440	com/tencent/mm/api/c$a:<init>	()V
+    //   102: astore_3
+    //   103: aload_2
+    //   104: iload_1
+    //   105: invokevirtual 444	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
+    //   108: astore 4
+    //   110: aload_3
+    //   111: aload 4
+    //   113: ldc_w 446
+    //   116: invokevirtual 450	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   119: putfield 452	com/tencent/mm/api/c$a:title	Ljava/lang/String;
+    //   122: aload_3
+    //   123: aload 4
+    //   125: ldc_w 454
+    //   128: invokevirtual 450	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   131: putfield 456	com/tencent/mm/api/c$a:url	Ljava/lang/String;
+    //   134: aload_3
+    //   135: aload 4
+    //   137: ldc_w 458
+    //   140: invokevirtual 450	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   143: putfield 461	com/tencent/mm/api/c$a:cIi	Ljava/lang/String;
+    //   146: aload_3
+    //   147: aload 4
+    //   149: ldc_w 463
+    //   152: invokevirtual 450	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   155: putfield 465	com/tencent/mm/api/c$a:description	Ljava/lang/String;
+    //   158: aload_0
+    //   159: getfield 418	com/tencent/mm/api/c:cIe	Ljava/util/List;
+    //   162: aload_3
+    //   163: invokeinterface 471 2 0
+    //   168: pop
+    //   169: iload_1
+    //   170: iconst_1
+    //   171: iadd
+    //   172: istore_1
+    //   173: goto -86 -> 87
+    //   176: astore_2
+    //   177: ldc_w 293
+    //   180: ldc_w 473
+    //   183: iconst_1
+    //   184: anewarray 297	java/lang/Object
+    //   187: dup
+    //   188: iconst_0
+    //   189: aload_2
+    //   190: invokestatic 477	com/tencent/mm/sdk/platformtools/bt:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   193: aastore
+    //   194: invokestatic 409	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   197: aload_0
+    //   198: getfield 418	com/tencent/mm/api/c:cIe	Ljava/util/List;
+    //   201: astore_2
+    //   202: ldc_w 416
+    //   205: invokestatic 210	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   208: aload_2
+    //   209: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	210	0	this	c
+    //   86	87	1	i	int
+    //   17	87	2	localObject	Object
+    //   176	14	2	localException	Exception
+    //   201	8	2	localList	List
+    //   102	61	3	locala	a
+    //   108	40	4	localJSONObject	JSONObject
+    // Exception table:
+    //   from	to	target	type
+    //   67	85	176	java/lang/Exception
+    //   87	169	176	java/lang/Exception
+  }
+  
+  public final b bU(boolean paramBoolean)
+  {
+    AppMethodBeat.i(116389);
+    if ((this.cIf == null) || (paramBoolean))
+    {
+      if ((bt.isNullOrNil(this.field_extInfo)) || (cIg != this.field_extInfo.hashCode())) {
+        break label60;
+      }
+      this.cIf = cIh;
+    }
+    for (;;)
+    {
+      b localb = this.cIf;
+      AppMethodBeat.o(116389);
+      return localb;
+      label60:
+      localb = b.dN(this.field_extInfo);
+      this.cIf = localb;
+      cIh = localb;
+      cIg = bt.nullAsNil(this.field_extInfo).hashCode();
+    }
+  }
+  
+  public final void convertFrom(Cursor paramCursor)
+  {
+    AppMethodBeat.i(116405);
+    super.convertFrom(paramCursor);
+    AppMethodBeat.o(116405);
+  }
+  
+  public final ContentValues convertTo()
+  {
+    AppMethodBeat.i(116406);
+    ContentValues localContentValues = super.convertTo();
+    AppMethodBeat.o(116406);
+    return localContentValues;
+  }
+  
+  public final com.tencent.mm.sdk.e.c.a getDBInfo()
+  {
+    return info;
+  }
+  
+  public static final class a
+  {
+    public String cIi;
+    public String description;
+    public String title;
+    public String url;
+  }
+  
+  public static final class b
+  {
+    public int cIA = 0;
+    private int cIB = 0;
+    private String cIC;
+    private c.b.b cID = null;
+    private int cIE = 0;
+    private int cIF = c.cIc;
+    private String cIG;
+    private boolean cIH = false;
+    private int cII;
+    private h cIJ;
+    private String cIK;
+    private String cIL;
+    private boolean cIM = false;
+    public c.b.a cIN;
+    private List<WxaAttributes.WxaEntryInfo> cIO;
+    public JSONObject cIj = null;
+    private boolean cIk = true;
+    public boolean cIl = false;
+    private boolean cIm = false;
+    public boolean cIn = false;
+    private String cIo;
+    private String cIp;
+    private List<c.b.g> cIq = null;
+    private e cIr = null;
+    private c.b.d cIs = null;
+    private c cIt = null;
+    private f cIu = null;
+    c.b.c.a cIv = null;
+    private boolean cIw = false;
+    public boolean cIx = false;
+    int cIy;
+    public boolean cIz = false;
+    
+    static b dN(String paramString)
+    {
+      AppMethodBeat.i(116387);
+      b localb = new b();
+      if (bt.isNullOrNil(paramString))
+      {
+        AppMethodBeat.o(116387);
+        return localb;
+      }
+      try
+      {
+        System.currentTimeMillis();
+        localb.cIj = new JSONObject(paramString);
+        AppMethodBeat.o(116387);
+        return localb;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          ad.e("MicroMsg.BizInfo", "exception:%s", new Object[] { bt.m(paramString) });
+        }
+      }
+    }
+    
+    public final c.b.d JA()
+    {
+      AppMethodBeat.i(116378);
+      if ((this.cIj != null) && (this.cIs == null)) {
+        this.cIs = c.b.d.dS(this.cIj.optString("PersonVerifyInfo"));
+      }
+      c.b.d locald = this.cIs;
+      AppMethodBeat.o(116378);
+      return locald;
+    }
+    
+    public final h JB()
+    {
+      AppMethodBeat.i(116379);
+      if ((this.cIj != null) && (this.cIJ == null))
+      {
+        localObject = this.cIj.optString("RegisterSource");
+        if (localObject != null) {
+          this.cIJ = h.dV((String)localObject);
+        }
+      }
+      Object localObject = this.cIJ;
+      AppMethodBeat.o(116379);
+      return localObject;
+    }
+    
+    public final boolean JC()
+    {
+      boolean bool = true;
+      AppMethodBeat.i(116381);
+      if (this.cIj != null) {
+        if (bt.getInt(this.cIj.optString("IsTrademarkProtection"), 0) != 1) {
+          break label48;
+        }
+      }
+      for (;;)
+      {
+        this.cIH = bool;
+        bool = this.cIH;
+        AppMethodBeat.o(116381);
+        return bool;
+        label48:
+        bool = false;
+      }
+    }
+    
+    public final String JD()
+    {
+      AppMethodBeat.i(116383);
+      if (this.cIj != null) {
+        this.cIC = this.cIj.optString("SupportEmoticonLinkPrefix");
+      }
+      String str = this.cIC;
+      AppMethodBeat.o(116383);
+      return str;
+    }
+    
+    public final c JE()
+    {
+      AppMethodBeat.i(116384);
+      if ((this.cIj != null) && (this.cIt == null))
+      {
+        localObject = this.cIj.optString("MMBizMenu");
+        if (localObject != null) {
+          this.cIt = c.dQ((String)localObject);
+        }
+      }
+      Object localObject = this.cIt;
+      AppMethodBeat.o(116384);
+      return localObject;
+    }
+    
+    public final String JF()
+    {
+      AppMethodBeat.i(116385);
+      if (this.cIj != null) {
+        this.cIG = this.cIj.optString("ServicePhone");
+      }
+      String str = this.cIG;
+      AppMethodBeat.o(116385);
+      return str;
+    }
+    
+    public final boolean JG()
+    {
+      AppMethodBeat.i(116386);
+      if (this.cIj != null) {
+        this.cII = this.cIj.optInt("FunctionFlag");
+      }
+      if ((this.cII & c.cId) > 0)
+      {
+        AppMethodBeat.o(116386);
+        return true;
+      }
+      AppMethodBeat.o(116386);
+      return false;
+    }
+    
+    public final c.b.c.a JH()
+    {
+      AppMethodBeat.i(116388);
+      if ((this.cIj != null) && (this.cIv == null))
+      {
+        localObject = this.cIj.optString("EnterpriseBizInfo");
+        if (localObject != null) {
+          this.cIv = c.b.c.a.dR((String)localObject);
+        }
+      }
+      Object localObject = this.cIv;
+      AppMethodBeat.o(116388);
+      return localObject;
+    }
+    
+    public final boolean Ja()
+    {
+      boolean bool = false;
+      AppMethodBeat.i(116380);
+      if (this.cIj != null)
+      {
+        if (bt.getInt(this.cIj.optString("ReportLocationType"), 0) > 0) {
+          bool = true;
+        }
+        this.cIw = bool;
+      }
+      bool = this.cIw;
+      AppMethodBeat.o(116380);
+      return bool;
+    }
+    
+    public final boolean Jo()
+    {
+      AppMethodBeat.i(116366);
+      if ((this.cIj != null) && (this.cIj.optJSONObject("WifiBizInfo") != null) && (this.cIj.optJSONObject("WifiBizInfo").optInt("IsWXWiFi") == 1)) {
+        this.cIM = true;
+      }
+      boolean bool = this.cIM;
+      AppMethodBeat.o(116366);
+      return bool;
+    }
+    
+    public final boolean Jp()
+    {
+      AppMethodBeat.i(116367);
+      if (this.cIj != null) {
+        this.cIm = "1".equals(this.cIj.optString("IsShowMember"));
+      }
+      boolean bool = this.cIm;
+      AppMethodBeat.o(116367);
+      return bool;
+    }
+    
+    public final boolean Jq()
+    {
+      AppMethodBeat.i(116368);
+      if (this.cIj != null) {
+        this.cIF = bt.getInt(this.cIj.optString("NotifyManage"), c.cIc);
+      }
+      if (this.cIF == c.cIb)
+      {
+        AppMethodBeat.o(116368);
+        return true;
+      }
+      AppMethodBeat.o(116368);
+      return false;
+    }
+    
+    public final String Jr()
+    {
+      AppMethodBeat.i(116369);
+      if (this.cIj != null) {
+        this.cIo = this.cIj.optString("VerifyContactPromptTitle");
+      }
+      String str = this.cIo;
+      AppMethodBeat.o(116369);
+      return str;
+    }
+    
+    public final String Js()
+    {
+      AppMethodBeat.i(116370);
+      if (this.cIj != null) {
+        this.cIK = this.cIj.optString("TrademarkUrl");
+      }
+      String str = this.cIK;
+      AppMethodBeat.o(116370);
+      return str;
+    }
+    
+    public final String Jt()
+    {
+      AppMethodBeat.i(116371);
+      if (this.cIj != null) {
+        this.cIL = this.cIj.optString("TrademarkName");
+      }
+      String str = this.cIL;
+      AppMethodBeat.o(116371);
+      return str;
+    }
+    
+    public final String Ju()
+    {
+      AppMethodBeat.i(116372);
+      if (this.cIj != null) {
+        this.cIp = this.cIj.optString("ConferenceContactExpireTime");
+      }
+      String str = this.cIp;
+      AppMethodBeat.o(116372);
+      return str;
+    }
+    
+    public final List<c.b.g> Jv()
+    {
+      AppMethodBeat.i(116373);
+      if ((this.cIj != null) && (this.cIq == null)) {
+        this.cIq = c.b.g.d(this.cIj.optJSONArray("Privilege"));
+      }
+      List localList = this.cIq;
+      AppMethodBeat.o(116373);
+      return localList;
+    }
+    
+    public final int Jw()
+    {
+      AppMethodBeat.i(116374);
+      if (this.cIj != null) {
+        this.cIE = this.cIj.optInt("InteractiveMode");
+      }
+      int i = this.cIE;
+      AppMethodBeat.o(116374);
+      return i;
+    }
+    
+    public final f Jx()
+    {
+      AppMethodBeat.i(116375);
+      if ((this.cIj != null) && (this.cIu == null)) {
+        this.cIu = f.dU(this.cIj.optString("PayShowInfo"));
+      }
+      f localf = this.cIu;
+      AppMethodBeat.o(116375);
+      return localf;
+    }
+    
+    public final c.b.b Jy()
+    {
+      AppMethodBeat.i(116376);
+      if ((this.cIj != null) && (this.cID == null))
+      {
+        localObject = this.cIj.optString("HardwareBizInfo");
+        if (localObject != null) {
+          this.cID = c.b.b.dP((String)localObject);
+        }
+      }
+      Object localObject = this.cID;
+      AppMethodBeat.o(116376);
+      return localObject;
+    }
+    
+    public final e Jz()
+    {
+      AppMethodBeat.i(116377);
+      if ((this.cIj != null) && (this.cIr == null)) {
+        this.cIr = e.dT(this.cIj.optString("VerifySource"));
+      }
+      e locale = this.cIr;
+      AppMethodBeat.o(116377);
+      return locale;
+    }
+    
+    public final int getServiceType()
+    {
+      AppMethodBeat.i(116382);
+      if (this.cIj != null) {
+        this.cIB = this.cIj.optInt("ServiceType", 0);
+      }
+      int i = this.cIB;
+      AppMethodBeat.o(116382);
+      return i;
+    }
+    
+    public final List<WxaAttributes.WxaEntryInfo> getWxaEntryInfoList()
+    {
+      AppMethodBeat.i(116365);
+      Object localObject1;
+      if (this.cIO == null)
+      {
+        this.cIO = new LinkedList();
+        if (this.cIj != null)
+        {
+          localObject1 = this.cIj.optString("BindWxaInfo");
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+        }
+      }
+      for (;;)
+      {
+        try
+        {
+          localObject1 = new JSONObject((String)localObject1);
+          if (localObject1 == null) {
+            break label232;
+          }
+          localObject1 = ((JSONObject)localObject1).optJSONArray("wxaEntryInfo");
+          if (localObject1 == null) {
+            break label219;
+          }
+          int i = 0;
+          if (i >= ((JSONArray)localObject1).length()) {
+            break label219;
+          }
+          Object localObject2 = ((JSONArray)localObject1).optJSONObject(i);
+          if (localObject2 != null)
+          {
+            String str1 = ((JSONObject)localObject2).optString("username");
+            String str2 = ((JSONObject)localObject2).optString("title");
+            String str3 = ((JSONObject)localObject2).optString("title_key");
+            localObject2 = ((JSONObject)localObject2).optString("icon_url");
+            if ((!TextUtils.isEmpty(str1)) && ((!TextUtils.isEmpty(str2)) || (!TextUtils.isEmpty(str3))))
+            {
+              WxaAttributes.WxaEntryInfo localWxaEntryInfo = new WxaAttributes.WxaEntryInfo();
+              localWxaEntryInfo.username = str1;
+              localWxaEntryInfo.title = str2;
+              localWxaEntryInfo.jfu = str3;
+              localWxaEntryInfo.iconUrl = ((String)localObject2);
+              this.cIO.add(localWxaEntryInfo);
+            }
+          }
+          i += 1;
+          continue;
+          localList = null;
+        }
+        catch (JSONException localJSONException) {}
+        continue;
+        label219:
+        List localList = this.cIO;
+        AppMethodBeat.o(116365);
+        return localList;
+        label232:
+        localList = null;
+      }
+    }
+    
+    public static final class c
+    {
+      public int cIT;
+      public List<j> cIU = null;
+      public int type;
+      
+      public static c dQ(String paramString)
+      {
+        AppMethodBeat.i(116359);
+        ad.i("MicroMsg.BizInfo", "MenuInfo = ".concat(String.valueOf(paramString)));
+        c localc = new c();
+        if ((paramString == null) || (paramString.length() <= 0))
+        {
+          AppMethodBeat.o(116359);
+          return localc;
+        }
+        try
+        {
+          paramString = new JSONObject(paramString);
+          localc.cIT = paramString.optInt("update_time");
+          localc.type = paramString.optInt("type", 0);
+          localc.cIU = j.e(paramString.optJSONArray("button_list"));
+          AppMethodBeat.o(116359);
+          return localc;
+        }
+        catch (JSONException paramString)
+        {
+          for (;;)
+          {
+            ad.e("MicroMsg.BizInfo", "exception:%s", new Object[] { bt.m(paramString) });
+          }
+        }
+      }
+      
+      public static final class a
+      {
+        public long appid = 0L;
+        public String cIV;
+        public String cIW;
+        public int cIX;
+        public String cIY;
+        public String cIZ;
+        
+        public static a dR(String paramString)
+        {
+          AppMethodBeat.i(116358);
+          ad.i("MicroMsg.BizInfo", "EnterpriseBizInfo = ".concat(String.valueOf(paramString)));
+          a locala = new a();
+          if ((paramString == null) || (paramString.length() <= 0))
+          {
+            AppMethodBeat.o(116358);
+            return locala;
+          }
+          try
+          {
+            paramString = new JSONObject(paramString);
+            locala.cIV = paramString.optString("belong");
+            locala.cIW = paramString.optString("freeze_wording");
+            locala.cIX = paramString.optInt("child_type");
+            locala.cIY = paramString.optString("home_url");
+            paramString = paramString.optString("exattr");
+            if (bt.isNullOrNil(paramString)) {
+              locala.cIZ = null;
+            }
+            for (;;)
+            {
+              AppMethodBeat.o(116358);
+              return locala;
+              paramString = new JSONObject(paramString);
+              locala.cIZ = paramString.optString("chat_extension_url");
+              locala.appid = paramString.optLong("app_id");
+            }
+          }
+          catch (JSONException paramString)
+          {
+            for (;;)
+            {
+              ad.e("MicroMsg.BizInfo", "exception:%s", new Object[] { bt.m(paramString) });
+            }
+          }
+        }
+      }
+    }
+    
+    public static final class e
+    {
+      public int cJb = 0;
+      public String cJc;
+      public String cJd;
+      public String cJe;
+      public String cJf;
+      
+      public static e dT(String paramString)
+      {
+        AppMethodBeat.i(116361);
+        if (bt.isNullOrNil(paramString))
+        {
+          AppMethodBeat.o(116361);
+          return null;
+        }
+        ad.i("MicroMsg.BizInfo", "biz verify info is [%s]", new Object[] { paramString });
+        e locale = new e();
+        try
+        {
+          paramString = new JSONObject(paramString);
+          locale.cJb = paramString.optInt("Type");
+          locale.cJc = paramString.optString("Description");
+          locale.cJd = paramString.optString("Name");
+          locale.cJe = paramString.optString("IntroUrl");
+          locale.cJf = paramString.optString("VerifySubTitle");
+          ad.i("MicroMsg.BizInfo", "type[%d],desc[%s],name[%s],url[%s]", new Object[] { Integer.valueOf(locale.cJb), locale.cJc, locale.cJd, locale.cJe });
+          AppMethodBeat.o(116361);
+          return locale;
+        }
+        catch (Exception paramString)
+        {
+          for (;;)
+          {
+            ad.e("MicroMsg.BizInfo", "exception:%s", new Object[] { bt.m(paramString) });
+          }
+        }
+      }
+    }
+    
+    public static final class f
+    {
+      public int cJg;
+      public String cJh;
+      public List<String> cJi;
+      public String cJj;
+      
+      public static f dU(String paramString)
+      {
+        AppMethodBeat.i(116362);
+        if (bt.isNullOrNil(paramString))
+        {
+          AppMethodBeat.o(116362);
+          return null;
+        }
+        try
+        {
+          f localf = new f();
+          paramString = new JSONObject(paramString);
+          localf.cJg = paramString.optInt("reputation_level", -1);
+          localf.cJh = paramString.optString("scope_of_business");
+          localf.cJj = paramString.optString("guarantee_detail_h5_url");
+          paramString = paramString.optJSONArray("guarantee_info");
+          if (paramString != null)
+          {
+            int j = paramString.length();
+            if (j > 0)
+            {
+              localf.cJi = new ArrayList();
+              int i = 0;
+              while (i < j)
+              {
+                String str = paramString.getString(i);
+                if (!bt.isNullOrNil(str)) {
+                  localf.cJi.add(str);
+                }
+                i += 1;
+              }
+            }
+          }
+          AppMethodBeat.o(116362);
+          return localf;
+        }
+        catch (Exception paramString)
+        {
+          ad.e("MicroMsg.BizInfo", "exception:%s", new Object[] { bt.m(paramString) });
+          AppMethodBeat.o(116362);
+        }
+        return null;
+      }
+    }
+    
+    public static final class h
+    {
+      public String cJl;
+      public String cJm;
+      public boolean cJn;
+      public String cJo;
+      
+      public static h dV(String paramString)
+      {
+        AppMethodBeat.i(116364);
+        ad.i("MicroMsg.BizInfo", "RegisterSource = %s", new Object[] { paramString });
+        h localh = new h();
+        if ((paramString == null) || (paramString.length() <= 0))
+        {
+          AppMethodBeat.o(116364);
+          return localh;
+        }
+        for (;;)
+        {
+          try
+          {
+            paramString = new JSONObject(paramString);
+            localh.cJl = paramString.optString("RegisterBody");
+            localh.cJm = paramString.optString("IntroUrl");
+            if (paramString.optInt("IsClose", 0) != 1) {
+              continue;
+            }
+            bool = true;
+            localh.cJn = bool;
+            localh.cJo = paramString.optString("AboutBizUrl");
+          }
+          catch (JSONException paramString)
+          {
+            boolean bool;
+            ad.e("MicroMsg.BizInfo", "exception in RegisterSource:%s", new Object[] { bt.m(paramString) });
+            continue;
+          }
+          AppMethodBeat.o(116364);
+          return localh;
+          bool = false;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.api.c
  * JD-Core Version:    0.7.0.1
  */

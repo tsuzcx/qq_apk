@@ -1,18 +1,20 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
-import java.util.List;
+import java.util.Map;
 
 public abstract interface c
 {
-  public abstract long Ta(String paramString);
+  public abstract boolean aA(String paramString, long paramLong);
   
-  public abstract long Tb(String paramString);
+  public abstract boolean aB(String paramString, long paramLong);
   
-  public abstract boolean ad(String paramString, long paramLong);
+  public abstract long agd(String paramString);
   
-  public abstract boolean ae(String paramString, long paramLong);
+  public abstract long age(String paramString);
   
-  public abstract List<String> bPU();
+  public abstract Map<String, Long> cOM();
+  
+  public abstract boolean cON();
 }
 
 

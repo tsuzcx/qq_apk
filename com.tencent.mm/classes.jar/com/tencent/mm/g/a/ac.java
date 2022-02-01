@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ac
   extends b
 {
-  public ac.a cni;
+  public a dbU;
   
   public ac()
   {
@@ -15,16 +15,21 @@ public final class ac
   
   private ac(byte paramByte)
   {
-    AppMethodBeat.i(145223);
-    this.cni = new ac.a();
-    this.ymq = false;
+    AppMethodBeat.i(19789);
+    this.dbU = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(145223);
+    AppMethodBeat.o(19789);
+  }
+  
+  public static final class a
+  {
+    public int dbV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.ac
  * JD-Core Version:    0.7.0.1
  */

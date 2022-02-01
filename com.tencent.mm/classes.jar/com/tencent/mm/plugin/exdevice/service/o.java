@@ -5,19 +5,19 @@ import android.os.IInterface;
 public abstract interface o
   extends IInterface
 {
-  public abstract long bqr();
+  public abstract long bZZ();
   
-  public abstract byte[] bqs();
+  public abstract byte[] caa();
   
-  public abstract int bqt();
+  public abstract int cab();
   
-  public abstract int bqu();
+  public abstract int cac();
   
-  public abstract int bqv();
+  public abstract int cad();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.o
  * JD-Core Version:    0.7.0.1
  */

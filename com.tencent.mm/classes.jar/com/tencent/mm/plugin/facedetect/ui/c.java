@@ -6,39 +6,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  boolean mmJ = false;
-  public boolean mmK = true;
-  boolean mmL = true;
-  boolean mmM = false;
-  boolean mmN = false;
-  boolean mmO = false;
-  boolean mmP = false;
-  int mmQ = 0;
-  Bitmap mmR = null;
-  public String mmS = null;
-  String mmT = null;
-  String mmU = null;
-  String mmV = null;
-  int mmW = -1;
-  String mmX = null;
-  a.a mmY = null;
-  View.OnClickListener mmZ;
-  View.OnClickListener mna;
-  View.OnClickListener mnb;
-  View.OnClickListener mnc;
+  String hJD = null;
+  boolean pTA = false;
+  boolean pTB = false;
+  int pTC = 0;
+  Bitmap pTD = null;
+  public String pTE = null;
+  String pTF = null;
+  String pTG = null;
+  int pTH = -1;
+  String pTI = null;
+  a.a pTJ = null;
+  View.OnClickListener pTK;
+  View.OnClickListener pTL;
+  View.OnClickListener pTM;
+  View.OnClickListener pTN;
+  boolean pTv = false;
+  public boolean pTw = true;
+  boolean pTx = true;
+  boolean pTy = false;
+  boolean pTz = false;
   public int status = 1;
   
   public final String toString()
   {
-    AppMethodBeat.i(528);
-    String str = "JumperConfig{isShowMainButton=" + this.mmJ + ", isShowStatusWordingTv=" + this.mmK + ", isShowUploadStatusIv=" + this.mmL + ", isShowCancelBtn=" + this.mmM + ", isShowSubButton=" + this.mmN + ", isShowOneByOne=" + this.mmO + ", isShowFeedback=" + this.mmP + ", oneByOneIndexStart=" + this.mmQ + ", bgBm=" + this.mmR + ", statusWording='" + this.mmS + '\'' + ", mainBtnText='" + this.mmT + '\'' + ", subBtnText='" + this.mmU + '\'' + ", cancelBtnText='" + this.mmV + '\'' + ", statusIvRes=" + this.mmW + ", feedbackText='" + this.mmX + '\'' + ", status=" + this.status + ", onJumperShowEndCallback=" + this.mmY + ", onMainBtnClickListener=" + this.mmZ + ", onSubBtnClickListener=" + this.mna + ", onFeedbackClickListener=" + this.mnb + ", onCancelBtnClickListener=" + this.mnc + '}';
-    AppMethodBeat.o(528);
+    AppMethodBeat.i(104047);
+    String str = "JumperConfig{isShowMainButton=" + this.pTv + ", isShowStatusWordingTv=" + this.pTw + ", isShowUploadStatusIv=" + this.pTx + ", isShowCancelBtn=" + this.pTy + ", isShowSubButton=" + this.pTz + ", isShowOneByOne=" + this.pTA + ", isShowFeedback=" + this.pTB + ", oneByOneIndexStart=" + this.pTC + ", bgBm=" + this.pTD + ", statusWording='" + this.pTE + '\'' + ", mainBtnText='" + this.pTF + '\'' + ", subBtnText='" + this.pTG + '\'' + ", cancelBtnText='" + this.hJD + '\'' + ", statusIvRes=" + this.pTH + ", feedbackText='" + this.pTI + '\'' + ", status=" + this.status + ", onJumperShowEndCallback=" + this.pTJ + ", onMainBtnClickListener=" + this.pTK + ", onSubBtnClickListener=" + this.pTL + ", onFeedbackClickListener=" + this.pTM + ", onCancelBtnClickListener=" + this.pTN + '}';
+    AppMethodBeat.o(104047);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.ui.c
  * JD-Core Version:    0.7.0.1
  */

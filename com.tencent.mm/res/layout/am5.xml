@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="#ffcccac6" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="top" android:orientation="horizontal" android:background="@color/vg" android:paddingLeft="@dimen/a_j" android:paddingTop="@dimen/a_k" android:paddingRight="@dimen/a_j" android:paddingBottom="@dimen/a_k" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="#ff8a8a8a" android:id="@id/dso" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="8.0dip" android:layout_centerVertical="true" />
-    <com.tencent.mm.plugin.location.ui.SimpleImageView android:id="@id/dsp" android:layout_width="wrap_content" android:layout_height="13.0dip" android:layout_marginRight="5.0dip" android:scaleType="centerInside" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/vi" android:id="@id/dhd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/a_l" android:includeFontPadding="false" />
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/vh" android:gravity="right" android:id="@id/dhc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:includeFontPadding="false" />
+</LinearLayout>

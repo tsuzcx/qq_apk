@@ -8,38 +8,38 @@ import java.util.List;
 
 public final class b
 {
+  private List<String> FTp;
   private final String TAG;
-  private List<String> zfY;
   
   public b()
   {
-    AppMethodBeat.i(106140);
+    AppMethodBeat.i(141500);
     this.TAG = "MicroMsg.Accessibility.Tool";
-    this.zfY = new ArrayList();
-    AppMethodBeat.o(106140);
+    this.FTp = new ArrayList();
+    AppMethodBeat.o(141500);
   }
   
-  public final b atr(String paramString)
+  public final b aKd(String paramString)
   {
-    AppMethodBeat.i(106141);
-    this.zfY.add(paramString);
-    AppMethodBeat.o(106141);
+    AppMethodBeat.i(141501);
+    this.FTp.add(paramString);
+    AppMethodBeat.o(141501);
     return this;
   }
   
-  public final void eK(View paramView)
+  public final void fB(View paramView)
   {
-    AppMethodBeat.i(106142);
-    if ((paramView != null) && (this.zfY.size() > 0))
+    AppMethodBeat.i(141502);
+    if ((paramView != null) && (this.FTp.size() > 0))
     {
-      Iterator localIterator = this.zfY.iterator();
+      Iterator localIterator = this.FTp.iterator();
       String str2;
       for (String str1 = ""; localIterator.hasNext(); str1 = str1 + str2 + ",") {
         str2 = (String)localIterator.next();
       }
       paramView.setContentDescription(str1);
     }
-    AppMethodBeat.o(106142);
+    AppMethodBeat.o(141502);
   }
 }
 

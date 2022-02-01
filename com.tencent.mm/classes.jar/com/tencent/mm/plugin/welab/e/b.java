@@ -5,12 +5,12 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.x.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.z.c;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -18,48 +18,48 @@ import java.util.Map;
 
 public final class b
 {
-  private static final b vvH;
+  private static final b BCp;
+  public Map<String, Integer> BBH;
   public String tag;
-  public Map<String, Integer> vuY;
   
   static
   {
-    AppMethodBeat.i(80636);
-    vvH = new b();
-    AppMethodBeat.o(80636);
+    AppMethodBeat.i(146307);
+    BCp = new b();
+    AppMethodBeat.o(146307);
   }
   
   private b()
   {
-    AppMethodBeat.i(80628);
-    this.vuY = new HashMap();
+    AppMethodBeat.i(146299);
+    this.BBH = new HashMap();
     this.tag = "";
-    dhD();
-    AppMethodBeat.o(80628);
+    ess();
+    AppMethodBeat.o(146299);
   }
   
-  private boolean ajC(String paramString)
+  private boolean azg(String paramString)
   {
-    AppMethodBeat.i(80631);
-    if ((this.vuY.containsKey(paramString)) && (((Integer)this.vuY.get(paramString)).intValue() == 1))
+    AppMethodBeat.i(146302);
+    if ((this.BBH.containsKey(paramString)) && (((Integer)this.BBH.get(paramString)).intValue() == 1))
     {
-      AppMethodBeat.o(80631);
+      AppMethodBeat.o(146302);
       return true;
     }
-    AppMethodBeat.o(80631);
+    AppMethodBeat.o(146302);
     return false;
   }
   
-  public static b dhC()
+  public static b esr()
   {
-    return vvH;
+    return BCp;
   }
   
-  private void dhD()
+  private void ess()
   {
-    AppMethodBeat.i(80629);
-    this.tag = ((String)g.RL().Ru().get(ac.a.yGD, null));
-    ab.i("WeLabRedPointMgr", "load red tag " + this.tag);
+    AppMethodBeat.i(146300);
+    this.tag = ((String)g.afB().afk().get(ae.a.Fpm, null));
+    ad.i("WeLabRedPointMgr", "load red tag " + this.tag);
     if (!TextUtils.isEmpty(this.tag))
     {
       String[] arrayOfString = this.tag.split("&");
@@ -72,19 +72,19 @@ public final class b
         {
           localObject = ((String)localObject).split("=");
           if ((localObject != null) && (localObject.length == 2)) {
-            this.vuY.put(localObject[0], Integer.valueOf(bo.apV(localObject[1])));
+            this.BBH.put(localObject[0], Integer.valueOf(bt.aGh(localObject[1])));
           }
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(80629);
+    AppMethodBeat.o(146300);
   }
   
-  public static void dhE()
+  public static void est()
   {
-    AppMethodBeat.i(80633);
-    Object localObject = com.tencent.mm.plugin.welab.a.dhl().dhm();
+    AppMethodBeat.i(146304);
+    Object localObject = com.tencent.mm.plugin.welab.a.esb().esc();
     if ((localObject != null) && (((List)localObject).isEmpty())) {}
     localObject = ((List)localObject).iterator();
     com.tencent.mm.plugin.welab.d.a.a locala;
@@ -94,62 +94,62 @@ public final class b
         break;
       }
       locala = (com.tencent.mm.plugin.welab.d.a.a)((Iterator)localObject).next();
-    } while ((locala == null) || (!vvH.e(locala)));
+    } while ((locala == null) || (!BCp.e(locala)));
     for (int i = 0;; i = 1)
     {
       if (i != 0) {
-        c.PJ().ce(266267, 266241);
+        c.adr().cK(266267, 266241);
       }
-      AppMethodBeat.o(80633);
+      AppMethodBeat.o(146304);
       return;
     }
   }
   
-  public static boolean dhF()
+  public static boolean esu()
   {
-    AppMethodBeat.i(80634);
-    boolean bool = c.PJ().cd(266267, 266241);
-    AppMethodBeat.o(80634);
+    AppMethodBeat.i(146305);
+    boolean bool = c.adr().cJ(266267, 266241);
+    AppMethodBeat.o(146305);
     return bool;
   }
   
-  public static boolean dhG()
+  public static boolean esv()
   {
-    AppMethodBeat.i(80635);
-    boolean bool = ah.dsQ().getBoolean("key_has_enter_welab", false);
-    AppMethodBeat.o(80635);
+    AppMethodBeat.i(146306);
+    boolean bool = aj.eFE().getBoolean("key_has_enter_welab", false);
+    AppMethodBeat.o(146306);
     return bool;
   }
   
   public final boolean e(com.tencent.mm.plugin.welab.d.a.a parama)
   {
-    AppMethodBeat.i(80630);
-    if ((parama.field_RedPoint != 1) || (parama.dhu()))
+    AppMethodBeat.i(146301);
+    if ((parama.field_RedPoint != 1) || (parama.esk()))
     {
-      AppMethodBeat.o(80630);
+      AppMethodBeat.o(146301);
       return false;
     }
-    if (ajC(parama.field_LabsAppId))
+    if (azg(parama.field_LabsAppId))
     {
-      AppMethodBeat.o(80630);
+      AppMethodBeat.o(146301);
       return false;
     }
-    AppMethodBeat.o(80630);
+    AppMethodBeat.o(146301);
     return true;
   }
   
   public final void f(com.tencent.mm.plugin.welab.d.a.a parama)
   {
-    AppMethodBeat.i(80632);
-    if ((parama.field_RedPoint == 1) && (!ajC(parama.field_LabsAppId)) && (parama.dhv())) {
-      c.PJ().y(266267, true);
+    AppMethodBeat.i(146303);
+    if ((parama.field_RedPoint == 1) && (!azg(parama.field_LabsAppId)) && (parama.esl())) {
+      c.adr().x(266267, true);
     }
-    AppMethodBeat.o(80632);
+    AppMethodBeat.o(146303);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.e.b
  * JD-Core Version:    0.7.0.1
  */

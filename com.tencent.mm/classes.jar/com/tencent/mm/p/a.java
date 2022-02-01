@@ -13,9 +13,9 @@ public final class a
     
     static
     {
-      AppMethodBeat.i(125782);
+      AppMethodBeat.i(89138);
       CONTENT_URI = Uri.parse("content://com.tencent.mm.coolassist.debugprovider/config");
-      AppMethodBeat.o(125782);
+      AppMethodBeat.o(89138);
     }
   }
 }

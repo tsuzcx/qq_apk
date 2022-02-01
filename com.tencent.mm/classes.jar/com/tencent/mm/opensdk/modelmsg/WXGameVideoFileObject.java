@@ -3,12 +3,12 @@ package com.tencent.mm.opensdk.modelmsg;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
-import java.io.File;
+import com.tencent.mm.opensdk.utils.d;
 
 public class WXGameVideoFileObject
   implements WXMediaMessage.IMediaObject
 {
-  private static final int FILE_SIZE_LIMIT = 10485760;
+  private static final int FILE_SIZE_LIMIT = 104857600;
   private static final String TAG = "MicroMsg.SDK.WXGameVideoFileObject";
   private static final int URL_LENGTH_LIMIT = 10240;
   public String filePath;
@@ -31,61 +31,50 @@ public class WXGameVideoFileObject
   
   private int getFileSize(String paramString)
   {
-    AppMethodBeat.i(128327);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      AppMethodBeat.o(128327);
-      return 0;
-    }
-    paramString = new File(paramString);
-    if (!paramString.exists())
-    {
-      AppMethodBeat.o(128327);
-      return 0;
-    }
-    int i = (int)paramString.length();
-    AppMethodBeat.o(128327);
+    AppMethodBeat.i(4027);
+    int i = d.getFileSize(paramString);
+    AppMethodBeat.o(4027);
     return i;
   }
   
   public boolean checkArgs()
   {
-    AppMethodBeat.i(128326);
+    AppMethodBeat.i(4026);
     if ((this.filePath == null) || (this.filePath.length() == 0))
     {
       Log.e("MicroMsg.SDK.WXGameVideoFileObject", "checkArgs fail, filePath is null");
-      AppMethodBeat.o(128326);
+      AppMethodBeat.o(4026);
       return false;
     }
-    if (getFileSize(this.filePath) > 10485760)
+    if (getFileSize(this.filePath) > 104857600)
     {
       Log.e("MicroMsg.SDK.WXGameVideoFileObject", "checkArgs fail, video file size is too large");
-      AppMethodBeat.o(128326);
+      AppMethodBeat.o(4026);
       return false;
     }
     if ((this.videoUrl != null) && (this.videoUrl.length() > 10240))
     {
       Log.e("MicroMsg.SDK.WXGameVideoFileObject", "checkArgs fail, videoUrl is too long");
-      AppMethodBeat.o(128326);
+      AppMethodBeat.o(4026);
       return false;
     }
     if ((this.thumbUrl != null) && (this.thumbUrl.length() > 10240))
     {
       Log.e("MicroMsg.SDK.WXGameVideoFileObject", "checkArgs fail, thumbUrl is too long");
-      AppMethodBeat.o(128326);
+      AppMethodBeat.o(4026);
       return false;
     }
-    AppMethodBeat.o(128326);
+    AppMethodBeat.o(4026);
     return true;
   }
   
   public void serialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128324);
+    AppMethodBeat.i(4024);
     paramBundle.putString("_wxvideofileobject_filePath", this.filePath);
     paramBundle.putString("_wxvideofileobject_cdnUrl", this.videoUrl);
     paramBundle.putString("_wxvideofileobject_thumbUrl", this.thumbUrl);
-    AppMethodBeat.o(128324);
+    AppMethodBeat.o(4024);
   }
   
   public int type()
@@ -95,16 +84,16 @@ public class WXGameVideoFileObject
   
   public void unserialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128325);
+    AppMethodBeat.i(4025);
     this.filePath = paramBundle.getString("_wxvideofileobject_filePath");
     this.videoUrl = paramBundle.getString("_wxvideofileobject_cdnUrl");
     this.thumbUrl = paramBundle.getString("_wxvideofileobject_thumbUrl");
-    AppMethodBeat.o(128325);
+    AppMethodBeat.o(4025);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXGameVideoFileObject
  * JD-Core Version:    0.7.0.1
  */

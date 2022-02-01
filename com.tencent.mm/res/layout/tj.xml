@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/vy" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bco" android:layout_width="150.0dip" android:layout_height="150.0dip" android:src="@drawable/apj" />
-    <TextView android:textSize="@dimen/lg" android:textColor="@color/h6" android:gravity="center" android:id="@id/bcp" android:paddingLeft="@dimen/ft" android:paddingRight="@dimen/ft" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/l6" android:text="@string/d8s" android:lineSpacingExtra="4.0dip" />
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/tc" android:id="@id/bcq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="50.0dip" android:text="@string/cg2" />
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/a20" android:layout_width="0.0dip" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8">
+        <ViewStub android:id="@id/azl" android:layout="@layout/tl" style="@style/fe" />
+        <ViewStub android:id="@id/azo" android:layout="@layout/tp" style="@style/fe" />
+        <ViewStub android:id="@id/azm" android:layout="@layout/tn" style="@style/fe" />
+        <ViewStub android:id="@id/azk" android:layout="@layout/tk" style="@style/fe" />
+        <ViewStub android:id="@id/azn" android:layout="@layout/to" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/jn" />
+        <ViewStub android:id="@id/a1v" android:layout="@layout/th" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View android:id="@id/a21" android:background="@color/tn" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="@dimen/bk" android:layout_marginStart="@dimen/ha" android:layout_marginEnd="84.0dip" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" />
+    <ImageView android:id="@id/a22" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+</android.support.constraint.ConstraintLayout>

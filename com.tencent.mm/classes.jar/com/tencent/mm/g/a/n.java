@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class n
   extends b
 {
-  public n.a cmD;
+  public a dbp;
   
   public n()
   {
@@ -15,11 +15,17 @@ public final class n
   
   private n(byte paramByte)
   {
-    AppMethodBeat.i(93724);
-    this.cmD = new n.a();
-    this.ymq = false;
+    AppMethodBeat.i(190254);
+    this.dbp = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(93724);
+    AppMethodBeat.o(190254);
+  }
+  
+  public static final class a
+  {
+    public String appId;
+    public boolean dbq;
   }
 }
 

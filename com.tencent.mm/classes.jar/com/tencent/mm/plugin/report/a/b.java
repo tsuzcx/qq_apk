@@ -10,9 +10,9 @@ public final class b
   
   static
   {
-    AppMethodBeat.i(72664);
+    AppMethodBeat.i(143780);
     SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "DuplicateKVLog") };
-    AppMethodBeat.o(72664);
+    AppMethodBeat.o(143780);
   }
 }
 

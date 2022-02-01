@@ -1,7 +1,6 @@
 package com.tencent.mm.boot.svg.a.a;
 
 import android.graphics.Canvas;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Paint.Cap;
 import android.graphics.Paint.Join;
@@ -29,69 +28,54 @@ public final class i
       return 96;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      Object localObject1 = c.h(paramVarArgs);
-      Object localObject2 = c.g(paramVarArgs);
-      Object localObject3 = c.k(paramVarArgs);
-      ((Paint)localObject3).setFlags(385);
-      ((Paint)localObject3).setStyle(Paint.Style.FILL);
-      Object localObject4 = c.k(paramVarArgs);
-      ((Paint)localObject4).setFlags(385);
-      ((Paint)localObject4).setStyle(Paint.Style.STROKE);
-      ((Paint)localObject3).setColor(-16777216);
-      ((Paint)localObject4).setStrokeWidth(1.0F);
-      ((Paint)localObject4).setStrokeCap(Paint.Cap.BUTT);
-      ((Paint)localObject4).setStrokeJoin(Paint.Join.MITER);
-      ((Paint)localObject4).setStrokeMiter(4.0F);
-      ((Paint)localObject4).setPathEffect(null);
-      c.a((Paint)localObject4, paramVarArgs).setStrokeWidth(1.0F);
-      localCanvas.save();
-      localObject3 = c.a((Paint)localObject3, paramVarArgs);
-      ((Paint)localObject3).setColor(1090519039);
-      localObject4 = c.a((float[])localObject2, 1.0F, 0.0F, 8.0F, 0.0F, 1.0F, 8.0F);
-      ((Matrix)localObject1).reset();
-      ((Matrix)localObject1).setValues((float[])localObject4);
-      localCanvas.concat((Matrix)localObject1);
-      localCanvas.save();
-      localObject2 = c.a((Paint)localObject3, paramVarArgs);
-      localObject3 = c.a((float[])localObject4, 0.7071068F, 0.7071068F, -16.568542F, -0.7071068F, 0.7071068F, 40.0F);
-      ((Matrix)localObject1).reset();
-      ((Matrix)localObject1).setValues((float[])localObject3);
-      localCanvas.concat((Matrix)localObject1);
-      localObject1 = c.l(paramVarArgs);
-      ((Path)localObject1).moveTo(37.0F, 37.0F);
-      ((Path)localObject1).lineTo(37.0F, 12.995752F);
-      ((Path)localObject1).cubicTo(37.0F, 12.450768F, 37.443588F, 12.0F, 37.99078F, 12.0F);
-      ((Path)localObject1).lineTo(42.00922F, 12.0F);
-      ((Path)localObject1).cubicTo(42.549026F, 12.0F, 43.0F, 12.445813F, 43.0F, 12.995752F);
-      ((Path)localObject1).lineTo(43.0F, 37.0F);
-      ((Path)localObject1).lineTo(67.00425F, 37.0F);
-      ((Path)localObject1).cubicTo(67.549232F, 37.0F, 68.0F, 37.443588F, 68.0F, 37.99078F);
-      ((Path)localObject1).lineTo(68.0F, 42.00922F);
-      ((Path)localObject1).cubicTo(68.0F, 42.549026F, 67.554184F, 43.0F, 67.00425F, 43.0F);
-      ((Path)localObject1).lineTo(43.0F, 43.0F);
-      ((Path)localObject1).lineTo(43.0F, 67.00425F);
-      ((Path)localObject1).cubicTo(43.0F, 67.549232F, 42.556412F, 68.0F, 42.00922F, 68.0F);
-      ((Path)localObject1).lineTo(37.99078F, 68.0F);
-      ((Path)localObject1).cubicTo(37.450974F, 68.0F, 37.0F, 67.554184F, 37.0F, 67.00425F);
-      ((Path)localObject1).lineTo(37.0F, 43.0F);
-      ((Path)localObject1).lineTo(12.995752F, 43.0F);
-      ((Path)localObject1).cubicTo(12.450768F, 43.0F, 12.0F, 42.556412F, 12.0F, 42.00922F);
-      ((Path)localObject1).lineTo(12.0F, 37.99078F);
-      ((Path)localObject1).cubicTo(12.0F, 37.450974F, 12.445813F, 37.0F, 12.995752F, 37.0F);
-      ((Path)localObject1).lineTo(37.0F, 37.0F);
-      ((Path)localObject1).lineTo(37.0F, 37.0F);
-      ((Path)localObject1).close();
-      WeChatSVGRenderC2Java.setFillType((Path)localObject1, 2);
-      localCanvas.drawPath((Path)localObject1, (Paint)localObject2);
-      localCanvas.restore();
-      localCanvas.restore();
       c.j(paramVarArgs);
+      c.i(paramVarArgs);
+      Paint localPaint = c.m(paramVarArgs);
+      localPaint.setFlags(385);
+      localPaint.setStyle(Paint.Style.FILL);
+      Object localObject = c.m(paramVarArgs);
+      ((Paint)localObject).setFlags(385);
+      ((Paint)localObject).setStyle(Paint.Style.STROKE);
+      localPaint.setColor(-16777216);
+      ((Paint)localObject).setStrokeWidth(1.0F);
+      ((Paint)localObject).setStrokeCap(Paint.Cap.BUTT);
+      ((Paint)localObject).setStrokeJoin(Paint.Join.MITER);
+      ((Paint)localObject).setStrokeMiter(4.0F);
+      ((Paint)localObject).setPathEffect(null);
+      c.a((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
+      localPaint = c.a(localPaint, paramVarArgs);
+      localPaint.setColor(-8617594);
+      localCanvas.save();
+      localPaint = c.a(localPaint, paramVarArgs);
+      localObject = c.n(paramVarArgs);
+      ((Path)localObject).moveTo(48.0F, 30.0F);
+      ((Path)localObject).cubicTo(45.238575F, 30.0F, 43.0F, 27.761423F, 43.0F, 25.0F);
+      ((Path)localObject).cubicTo(43.0F, 22.238577F, 45.238575F, 20.0F, 48.0F, 20.0F);
+      ((Path)localObject).cubicTo(50.761425F, 20.0F, 53.0F, 22.238577F, 53.0F, 25.0F);
+      ((Path)localObject).cubicTo(53.0F, 27.761423F, 50.761425F, 30.0F, 48.0F, 30.0F);
+      ((Path)localObject).close();
+      ((Path)localObject).moveTo(48.0F, 53.0F);
+      ((Path)localObject).cubicTo(45.238575F, 53.0F, 43.0F, 50.761425F, 43.0F, 48.0F);
+      ((Path)localObject).cubicTo(43.0F, 45.238575F, 45.238575F, 43.0F, 48.0F, 43.0F);
+      ((Path)localObject).cubicTo(50.761425F, 43.0F, 53.0F, 45.238575F, 53.0F, 48.0F);
+      ((Path)localObject).cubicTo(53.0F, 50.761425F, 50.761425F, 53.0F, 48.0F, 53.0F);
+      ((Path)localObject).close();
+      ((Path)localObject).moveTo(48.0F, 76.0F);
+      ((Path)localObject).cubicTo(45.238575F, 76.0F, 43.0F, 73.761421F, 43.0F, 71.0F);
+      ((Path)localObject).cubicTo(43.0F, 68.238579F, 45.238575F, 66.0F, 48.0F, 66.0F);
+      ((Path)localObject).cubicTo(50.761425F, 66.0F, 53.0F, 68.238579F, 53.0F, 71.0F);
+      ((Path)localObject).cubicTo(53.0F, 73.761421F, 50.761425F, 76.0F, 48.0F, 76.0F);
+      ((Path)localObject).close();
+      WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
+      localCanvas.drawPath((Path)localObject, localPaint);
+      localCanvas.restore();
+      c.l(paramVarArgs);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.i
  * JD-Core Version:    0.7.0.1
  */

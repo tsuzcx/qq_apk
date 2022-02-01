@@ -1,19 +1,17 @@
 package com.tencent.mm.service;
 
 import android.content.Intent;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
 import android.os.Message;
+import com.tencent.e.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public abstract class MMIntentService
   extends MMService
 {
+  private volatile a EZK;
   private String mName;
-  private volatile Looper ytH;
-  private volatile a ytI;
   
   public MMIntentService(String paramString)
   {
@@ -23,25 +21,22 @@ public abstract class MMIntentService
   public final void onCreate()
   {
     super.onCreate();
-    HandlerThread localHandlerThread = new HandlerThread("IntentService[" + this.mName + "]");
-    localHandlerThread.start();
-    this.ytH = localHandlerThread.getLooper();
-    this.ytI = new a(this.ytH);
+    this.EZK = new a(a.aOc("close-db-while-crash"));
   }
   
   public final void onDestroy()
   {
-    this.ytH.quit();
+    this.EZK.getSerial().quit();
   }
   
   protected abstract void onHandleIntent(Intent paramIntent);
   
   public final void onStart(Intent paramIntent, int paramInt)
   {
-    Message localMessage = this.ytI.obtainMessage();
+    Message localMessage = this.EZK.obtainMessage();
     localMessage.arg1 = paramInt;
     localMessage.obj = paramIntent;
-    this.ytI.sendMessage(localMessage);
+    this.EZK.sendMessage(localMessage);
   }
   
   public final int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
@@ -51,30 +46,30 @@ public abstract class MMIntentService
   }
   
   final class a
-    extends Handler
+    extends ap
   {
-    public a(Looper paramLooper)
+    public a(a parama)
     {
       super();
     }
     
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(115272);
+      AppMethodBeat.i(125309);
       MMIntentService.this.onHandleIntent((Intent)paramMessage.obj);
       MMIntentService localMMIntentService = MMIntentService.this;
       int i = paramMessage.arg1;
-      ab.i(localMMIntentService.getTag(), "%s stopSelf() startId = %d mStartId = %d", new Object[] { "MicroMsg.MMService", Integer.valueOf(i), Integer.valueOf(localMMIntentService.bOJ) });
-      if (i == localMMIntentService.bOJ) {
-        localMMIntentService.q(new Intent(), "stop");
+      ad.i(localMMIntentService.getTag(), "%s stopSelf() startId = %d mStartId = %d", new Object[] { "MicroMsg.MMService", Integer.valueOf(i), Integer.valueOf(localMMIntentService.cxv) });
+      if (i == localMMIntentService.cxv) {
+        localMMIntentService.s(new Intent(), "stop");
       }
-      AppMethodBeat.o(115272);
+      AppMethodBeat.o(125309);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.service.MMIntentService
  * JD-Core Version:    0.7.0.1
  */

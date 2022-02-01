@@ -11,32 +11,32 @@ import java.util.regex.Pattern;
 
 public final class b
 {
-  private final LinkedList<Pair<c, Pattern>> bFK;
+  private final LinkedList<Pair<c, Pattern>> cju;
   
   public b()
   {
-    AppMethodBeat.i(90944);
-    this.bFK = new LinkedList();
-    AppMethodBeat.o(90944);
+    AppMethodBeat.i(140557);
+    this.cju = new LinkedList();
+    AppMethodBeat.o(140557);
   }
   
   public final void a(c paramc)
   {
-    AppMethodBeat.i(90945);
-    Object localObject = paramc.xd();
+    AppMethodBeat.i(140558);
+    Object localObject = paramc.Eu();
     if (TextUtils.isEmpty((CharSequence)localObject)) {}
     for (localObject = null;; localObject = Pattern.compile((String)localObject))
     {
-      this.bFK.add(new Pair(paramc, localObject));
-      AppMethodBeat.o(90945);
+      this.cju.add(new Pair(paramc, localObject));
+      AppMethodBeat.o(140558);
       return;
     }
   }
   
-  public final WebResourceResponse cj(String paramString)
+  public final WebResourceResponse cC(String paramString)
   {
-    AppMethodBeat.i(90946);
-    Iterator localIterator = this.bFK.iterator();
+    AppMethodBeat.i(140559);
+    Iterator localIterator = this.cju.iterator();
     while (localIterator.hasNext())
     {
       Object localObject2 = (Pair)localIterator.next();
@@ -44,21 +44,21 @@ public final class b
       localObject2 = (Pattern)((Pair)localObject2).second;
       if ((localObject2 != null) && (((Pattern)localObject2).matcher(paramString).matches()))
       {
-        localObject1 = ((c)localObject1).bG(paramString);
+        localObject1 = ((c)localObject1).bW(paramString);
         if (localObject1 != null)
         {
-          AppMethodBeat.o(90946);
+          AppMethodBeat.o(140559);
           return localObject1;
         }
       }
     }
-    AppMethodBeat.o(90946);
+    AppMethodBeat.o(140559);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.webview.a.b
  * JD-Core Version:    0.7.0.1
  */

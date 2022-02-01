@@ -16,12 +16,12 @@ public class UpdateInfoReportManager
   {
     try
     {
-      AppMethodBeat.i(75826);
+      AppMethodBeat.i(102072);
       if (mInstance == null) {
         mInstance = new UpdateInfoReportManager();
       }
       UpdateInfoReportManager localUpdateInfoReportManager = mInstance;
-      AppMethodBeat.o(75826);
+      AppMethodBeat.o(102072);
       return localUpdateInfoReportManager;
     }
     finally {}
@@ -29,20 +29,20 @@ public class UpdateInfoReportManager
   
   public UpdateInfoLog createUpdateInfoLog(String paramString, long paramLong)
   {
-    AppMethodBeat.i(75827);
+    AppMethodBeat.i(102073);
     TMLog.i("UpdateInfoReportManager", "createUpdateInfoLog");
     UpdateInfoLog localUpdateInfoLog = new UpdateInfoLog();
     localUpdateInfoLog.packageName = paramString;
     localUpdateInfoLog.appid = paramLong;
-    AppMethodBeat.o(75827);
+    AppMethodBeat.o(102073);
     return localUpdateInfoLog;
   }
   
   protected BaseLogTable getLogTable()
   {
-    AppMethodBeat.i(75828);
+    AppMethodBeat.i(102074);
     UpdateInfoLogTable localUpdateInfoLogTable = UpdateInfoLogTable.getInstance();
-    AppMethodBeat.o(75828);
+    AppMethodBeat.o(102074);
     return localUpdateInfoLogTable;
   }
   
@@ -53,7 +53,7 @@ public class UpdateInfoReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.logreport.UpdateInfoReportManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,54 @@
 package com.tencent.mm.ba;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.f.a;
+import com.tencent.mm.al.f.b;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.model.bi;
+import com.tencent.mm.plugin.messenger.foundation.a.o;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
+import java.util.Map;
 
 public final class g
-  extends com.tencent.mm.bv.a
+  implements o
 {
-  public int cFd;
-  public int fMA;
-  public int fMB;
-  
-  public final int op(int paramInt, Object... paramVarArgs)
+  public final f.b a(String paramString, Map<String, String> paramMap, f.a parama)
   {
-    AppMethodBeat.i(78445);
-    if (paramInt == 0)
+    AppMethodBeat.i(184639);
+    ad.d("MicroMsg.UpgradeAssociateChatRoomNewXmlMsg", "consumeNewXml， subType:%s", new Object[] { bt.by(paramString, "") });
+    if ((bt.nullAsNil(paramString).equals("NewXmlUpgradeAssociateChatRoom")) && (paramMap != null))
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.cFd);
-      paramVarArgs.aO(2, this.fMA);
-      paramVarArgs.aO(3, this.fMB);
-      AppMethodBeat.o(78445);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = e.a.a.b.b.a.bl(1, this.cFd);
-      int i = e.a.a.b.b.a.bl(2, this.fMA);
-      int j = e.a.a.b.b.a.bl(3, this.fMB);
-      AppMethodBeat.o(78445);
-      return paramInt + 0 + i + j;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
+      if (!paramMap.containsKey(".sysmsg.NewXmlUpgradeAssociateChatRoom.text")) {
+        break label230;
       }
-      AppMethodBeat.o(78445);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-      g localg = (g)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(78445);
-        return -1;
-      case 1: 
-        localg.cFd = locala.CLY.sl();
-        AppMethodBeat.o(78445);
-        return 0;
-      case 2: 
-        localg.fMA = locala.CLY.sl();
-        AppMethodBeat.o(78445);
-        return 0;
+      paramString = bt.nullAsNil((String)paramMap.get(".sysmsg.NewXmlUpgradeAssociateChatRoom.text"));
+      paramMap = bt.nullAsNil((String)paramMap.get(".sysmsg.NewXmlUpgradeAssociateChatRoom.roomname"));
+      if ((bt.isNullOrNil(paramString)) || (bt.isNullOrNil(paramMap))) {
+        break label200;
       }
-      localg.fMB = locala.CLY.sl();
-      AppMethodBeat.o(78445);
-      return 0;
+      parama = new bl();
+      parama.jV(0);
+      parama.nY(paramMap);
+      parama.setStatus(3);
+      parama.setContent(paramString);
+      parama.kY(bi.y(paramMap, System.currentTimeMillis() / 1000L));
+      parama.setType(10000);
+      parama.setFlag(parama.field_flag | 0x8);
+      long l = bi.u(parama);
+      ad.i("MicroMsg.UpgradeAssociateChatRoomNewXmlMsg", "chatroom:%s text:%s msgId:%s", new Object[] { paramMap, bt.aGs(paramString), Long.valueOf(l) });
     }
-    AppMethodBeat.o(78445);
-    return -1;
+    for (;;)
+    {
+      AppMethodBeat.o(184639);
+      return null;
+      label200:
+      ad.i("MicroMsg.UpgradeAssociateChatRoomNewXmlMsg", "chatroom:%s text:%s ", new Object[] { bt.by(paramMap, ""), bt.aGs(paramString) });
+      continue;
+      label230:
+      ad.i("MicroMsg.UpgradeAssociateChatRoomNewXmlMsg", "no contains text");
+    }
   }
 }
 

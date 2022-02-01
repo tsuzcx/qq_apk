@@ -4,8 +4,8 @@ import android.util.Log;
 
 public final class c
 {
-  private static a bUe;
-  private static a bUf;
+  private static a cFL;
+  private static a cFM;
   
   static
   {
@@ -65,54 +65,54 @@ public final class c
         String.format(paramAnonymousString2, paramAnonymousVarArgs);
       }
     };
-    bUe = local1;
-    bUf = local1;
+    cFL = local1;
+    cFM = local1;
   }
   
   public static void b(a parama)
   {
-    bUf = parama;
+    cFM = parama;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (bUf != null) {
-      bUf.d(paramString1, paramString2, paramVarArgs);
+    if (cFM != null) {
+      cFM.d(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (bUf != null) {
-      bUf.e(paramString1, paramString2, paramVarArgs);
+    if (cFM != null) {
+      cFM.e(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (bUf != null) {
-      bUf.i(paramString1, paramString2, paramVarArgs);
+    if (cFM != null) {
+      cFM.i(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
-    if (bUf != null) {
-      bUf.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    if (cFM != null) {
+      cFM.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     }
   }
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (bUf != null) {
-      bUf.v(paramString1, paramString2, paramVarArgs);
+    if (cFM != null) {
+      cFM.v(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (bUf != null) {
-      bUf.w(paramString1, paramString2, paramVarArgs);
+    if (cFM != null) {
+      cFM.w(paramString1, paramString2, paramVarArgs);
     }
   }
   

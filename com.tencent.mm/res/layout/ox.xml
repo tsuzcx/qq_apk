@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:background="#ffdfe0e0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout style="@style/ge"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/axn" android:background="@raw/sns_shoot_location_normal" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m1" android:layout_marginTop="@dimen/m1" android:layout_marginBottom="@dimen/m1" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/a1i" android:id="@id/axo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:layout_marginTop="@dimen/m1" android:layout_marginBottom="@dimen/m1" android:singleLine="true" />
-</LinearLayout>
+    <include layout="@layout/o5" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/akx" style="@style/gp">
+        <TextView android:id="@id/aob" android:visibility="gone" style="@style/gu" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.MMNeat7extView android:id="@id/ala" android:background="@drawable/l8" android:maxWidth="@dimen/w9" android:maxHeight="@dimen/c1" android:minHeight="@dimen/aa" style="@style/h0" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

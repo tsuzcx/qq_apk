@@ -4,8 +4,8 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +16,9 @@ public final class g
   
   static
   {
-    AppMethodBeat.i(111533);
+    AppMethodBeat.i(41699);
     SQL_CREATE = new String[] { j.getCreateSQLs(d.info, "GameSilentDownload") };
-    AppMethodBeat.o(111533);
+    AppMethodBeat.o(41699);
   }
   
   public g(e parame)
@@ -26,20 +26,20 @@ public final class g
     super(parame, d.info, "GameSilentDownload", null);
   }
   
-  public final d Qi(String paramString)
+  public final d acH(String paramString)
   {
-    AppMethodBeat.i(111524);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(41689);
+    if (bt.isNullOrNil(paramString))
     {
-      ab.i("MicroMsg.GameSilentDownloadStorage", "getDownloadInfo: appid is null");
-      AppMethodBeat.o(111524);
+      ad.i("MicroMsg.GameSilentDownloadStorage", "getDownloadInfo: appid is null");
+      AppMethodBeat.o(41689);
       return null;
     }
     Cursor localCursor = rawQuery(String.format("select * from %s where %s=?", new Object[] { "GameSilentDownload", "appId" }), new String[] { paramString });
     if (localCursor == null)
     {
-      ab.i("MicroMsg.GameSilentDownloadStorage", "cursor is null");
-      AppMethodBeat.o(111524);
+      ad.i("MicroMsg.GameSilentDownloadStorage", "cursor is null");
+      AppMethodBeat.o(41689);
       return null;
     }
     if (localCursor.moveToFirst())
@@ -47,212 +47,170 @@ public final class g
       paramString = new d();
       paramString.convertFrom(localCursor);
       localCursor.close();
-      AppMethodBeat.o(111524);
+      AppMethodBeat.o(41689);
       return paramString;
     }
-    ab.i("MicroMsg.GameSilentDownloadStorage", "getDownloadInfo appid:%s, no record in DB", new Object[] { paramString });
+    ad.i("MicroMsg.GameSilentDownloadStorage", "getDownloadInfo appid:%s, no record in DB", new Object[] { paramString });
     localCursor.close();
-    AppMethodBeat.o(111524);
+    AppMethodBeat.o(41689);
     return null;
   }
   
-  public final boolean Qj(String paramString)
+  public final boolean acI(String paramString)
   {
-    AppMethodBeat.i(111528);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(41693);
+    if (bt.isNullOrNil(paramString))
     {
-      ab.i("MicroMsg.GameSilentDownloadStorage", "updateWifiState: appid is null");
-      AppMethodBeat.o(111528);
+      ad.i("MicroMsg.GameSilentDownloadStorage", "updateWifiState: appid is null");
+      AppMethodBeat.o(41693);
       return false;
     }
-    paramString = Qi(paramString);
+    paramString = acH(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(111528);
+      AppMethodBeat.o(41693);
       return false;
     }
     paramString.field_noWifi = false;
     boolean bool = super.update(paramString, new String[0]);
-    ab.i("MicroMsg.GameSilentDownloadStorage", "updateWifiState, ret:%b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(111528);
+    ad.i("MicroMsg.GameSilentDownloadStorage", "updateWifiState, ret:%b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(41693);
     return bool;
   }
   
-  public final boolean Qk(String paramString)
+  public final boolean acJ(String paramString)
   {
-    AppMethodBeat.i(111529);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(41694);
+    if (bt.isNullOrNil(paramString))
     {
-      ab.i("MicroMsg.GameSilentDownloadStorage", "updateSdcardAvailableState: appid is null");
-      AppMethodBeat.o(111529);
+      ad.i("MicroMsg.GameSilentDownloadStorage", "updateSdcardAvailableState: appid is null");
+      AppMethodBeat.o(41694);
       return false;
     }
-    paramString = Qi(paramString);
+    paramString = acH(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(111529);
+      AppMethodBeat.o(41694);
       return false;
     }
     paramString.field_noSdcard = false;
     boolean bool = super.update(paramString, new String[0]);
-    ab.i("MicroMsg.GameSilentDownloadStorage", "updateSdcardAvailableState, ret:%b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(111529);
+    ad.i("MicroMsg.GameSilentDownloadStorage", "updateSdcardAvailableState, ret:%b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(41694);
     return bool;
   }
   
-  public final boolean Ql(String paramString)
+  public final boolean acK(String paramString)
   {
-    AppMethodBeat.i(111530);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(41695);
+    if (bt.isNullOrNil(paramString))
     {
-      ab.i("MicroMsg.GameSilentDownloadStorage", "updateSdcardSpaceState: appid is null");
-      AppMethodBeat.o(111530);
+      ad.i("MicroMsg.GameSilentDownloadStorage", "updateSdcardSpaceState: appid is null");
+      AppMethodBeat.o(41695);
       return false;
     }
-    paramString = Qi(paramString);
+    paramString = acH(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(111530);
+      AppMethodBeat.o(41695);
       return false;
     }
     paramString.field_noEnoughSpace = false;
     boolean bool = super.update(paramString, new String[0]);
-    ab.i("MicroMsg.GameSilentDownloadStorage", "updateSdcardSpaceState, ret:%b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(111530);
+    ad.i("MicroMsg.GameSilentDownloadStorage", "updateSdcardSpaceState, ret:%b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(41695);
     return bool;
   }
   
-  public final boolean Qm(String paramString)
+  public final boolean acL(String paramString)
   {
-    AppMethodBeat.i(111531);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(41696);
+    if (bt.isNullOrNil(paramString))
     {
-      ab.i("MicroMsg.GameSilentDownloadStorage", "updateBatteryState: appid is null");
-      AppMethodBeat.o(111531);
+      ad.i("MicroMsg.GameSilentDownloadStorage", "updateBatteryState: appid is null");
+      AppMethodBeat.o(41696);
       return false;
     }
-    paramString = Qi(paramString);
+    paramString = acH(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(111531);
+      AppMethodBeat.o(41696);
       return false;
     }
     paramString.field_lowBattery = false;
     boolean bool = super.update(paramString, new String[0]);
-    ab.i("MicroMsg.GameSilentDownloadStorage", "updateBatteryState, ret:%b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(111531);
+    ad.i("MicroMsg.GameSilentDownloadStorage", "updateBatteryState, ret:%b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(41696);
     return bool;
   }
   
-  public final boolean Qn(String paramString)
+  public final boolean acM(String paramString)
   {
-    AppMethodBeat.i(111532);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(41697);
+    if (bt.isNullOrNil(paramString))
     {
-      ab.i("MicroMsg.GameSilentDownloadStorage", "updateDelayState: appid is null");
-      AppMethodBeat.o(111532);
+      ad.i("MicroMsg.GameSilentDownloadStorage", "updateDelayState: appid is null");
+      AppMethodBeat.o(41697);
       return false;
     }
-    paramString = Qi(paramString);
+    paramString = acH(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(111532);
+      AppMethodBeat.o(41697);
       return false;
     }
     paramString.field_continueDelay = false;
     boolean bool = super.update(paramString, new String[0]);
-    ab.i("MicroMsg.GameSilentDownloadStorage", "updateDelayState, ret:%b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(111532);
+    ad.i("MicroMsg.GameSilentDownloadStorage", "updateDelayState, ret:%b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(41697);
     return bool;
   }
   
-  public final boolean X(String paramString, long paramLong)
+  public final boolean at(String paramString, long paramLong)
   {
-    AppMethodBeat.i(111526);
-    if ((bo.isNullOrNil(paramString)) || (paramLong < 0L))
+    AppMethodBeat.i(41691);
+    if ((bt.isNullOrNil(paramString)) || (paramLong < 0L))
     {
-      ab.i("MicroMsg.GameSilentDownloadStorage", "updateNextCheckTime: appid is null");
-      AppMethodBeat.o(111526);
+      ad.i("MicroMsg.GameSilentDownloadStorage", "updateNextCheckTime: appid is null");
+      AppMethodBeat.o(41691);
       return false;
     }
     boolean bool = execSQL("GameSilentDownload", String.format("update %s set %s=%s where %s='%s'", new Object[] { "GameSilentDownload", "nextCheckTime", String.valueOf(paramLong), "appId", paramString }));
-    ab.i("MicroMsg.GameSilentDownloadStorage", "updateNextCheckTime ret:%b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(111526);
+    ad.i("MicroMsg.GameSilentDownloadStorage", "updateNextCheckTime ret:%b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(41691);
     return bool;
   }
   
-  public final boolean aW(String paramString, boolean paramBoolean)
+  public final boolean be(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(111527);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(41692);
+    if (bt.isNullOrNil(paramString))
     {
-      ab.i("MicroMsg.GameSilentDownloadStorage", "updateRunningState: appid is null");
-      AppMethodBeat.o(111527);
+      ad.i("MicroMsg.GameSilentDownloadStorage", "updateRunningState: appid is null");
+      AppMethodBeat.o(41692);
       return false;
     }
-    paramString = Qi(paramString);
+    paramString = acH(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(111527);
+      AppMethodBeat.o(41692);
       return false;
     }
     paramString.field_isRunning = paramBoolean;
     paramBoolean = super.update(paramString, new String[0]);
-    ab.i("MicroMsg.GameSilentDownloadStorage", "updateRunningState, ret:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(111527);
+    ad.i("MicroMsg.GameSilentDownloadStorage", "updateRunningState, ret:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(41692);
     return paramBoolean;
   }
   
-  public final d bGZ()
+  public final List<d> cDU()
   {
-    AppMethodBeat.i(111523);
-    Cursor localCursor = rawQuery(String.format("select * from %s where %s=1 limit 1", new Object[] { "GameSilentDownload", "isRunning" }), new String[0]);
-    if (localCursor == null)
-    {
-      ab.i("MicroMsg.GameSilentDownloadStorage", "first cursor is null");
-      AppMethodBeat.o(111523);
-      return null;
-    }
-    d locald;
-    if (localCursor.moveToFirst())
-    {
-      locald = new d();
-      locald.convertFrom(localCursor);
-      localCursor.close();
-      AppMethodBeat.o(111523);
-      return locald;
-    }
-    ab.i("MicroMsg.GameSilentDownloadStorage", "no running task");
-    localCursor.close();
-    localCursor = rawQuery(String.format("select * from %s where %s < ? limit 1", new Object[] { "GameSilentDownload", "nextCheckTime" }), new String[] { String.valueOf(bo.aox()) });
-    if (localCursor == null)
-    {
-      ab.i("MicroMsg.GameSilentDownloadStorage", "second cursor is null");
-      AppMethodBeat.o(111523);
-      return null;
-    }
-    if (localCursor.moveToFirst())
-    {
-      locald = new d();
-      locald.convertFrom(localCursor);
-      localCursor.close();
-      AppMethodBeat.o(111523);
-      return locald;
-    }
-    localCursor.close();
-    ab.i("MicroMsg.GameSilentDownloadStorage", "no record");
-    AppMethodBeat.o(111523);
-    return null;
-  }
-  
-  public final List<d> bHa()
-  {
-    AppMethodBeat.i(111525);
+    AppMethodBeat.i(41690);
     Cursor localCursor = rawQuery(String.format("select * from %s", new Object[] { "GameSilentDownload" }), new String[0]);
     if (localCursor == null)
     {
-      ab.i("MicroMsg.GameSilentDownloadStorage", "cursor is null");
-      AppMethodBeat.o(111525);
+      ad.i("MicroMsg.GameSilentDownloadStorage", "cursor is null");
+      AppMethodBeat.o(41690);
       return null;
     }
     if (localCursor.moveToFirst())
@@ -265,19 +223,41 @@ public final class g
         localArrayList.add(locald);
       } while (localCursor.moveToNext());
       localCursor.close();
-      ab.i("MicroMsg.GameSilentDownloadStorage", "getDownloadInfoList size:%s", new Object[] { Integer.valueOf(localArrayList.size()) });
-      AppMethodBeat.o(111525);
+      ad.i("MicroMsg.GameSilentDownloadStorage", "getDownloadInfoList size:%s", new Object[] { Integer.valueOf(localArrayList.size()) });
+      AppMethodBeat.o(41690);
       return localArrayList;
     }
     localCursor.close();
-    ab.i("MicroMsg.GameSilentDownloadStorage", "getDownloadInfoList no record");
-    AppMethodBeat.o(111525);
+    ad.i("MicroMsg.GameSilentDownloadStorage", "getDownloadInfoList no record");
+    AppMethodBeat.o(41690);
     return null;
+  }
+  
+  public final boolean dt(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(41698);
+    if (bt.isNullOrNil(paramString))
+    {
+      ad.i("MicroMsg.GameSilentDownloadStorage", "updateForceUpdateFlag: appid is null");
+      AppMethodBeat.o(41698);
+      return false;
+    }
+    paramString = acH(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(41698);
+      return false;
+    }
+    paramString.field_forceUpdateFlag = paramInt;
+    boolean bool = super.update(paramString, new String[0]);
+    ad.i("MicroMsg.GameSilentDownloadStorage", "updateForceUpdateFlag, ret:%b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(41698);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.a.g
  * JD-Core Version:    0.7.0.1
  */

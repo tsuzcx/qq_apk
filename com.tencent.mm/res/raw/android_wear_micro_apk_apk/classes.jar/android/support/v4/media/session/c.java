@@ -7,11 +7,11 @@ import java.util.List;
 final class c
   implements a
 {
-  private IBinder hO;
+  private IBinder jN;
   
   c(IBinder paramIBinder)
   {
-    this.hO = paramIBinder;
+    this.jN = paramIBinder;
   }
   
   /* Error */
@@ -33,7 +33,7 @@ final class c
     //   21: iconst_0
     //   22: invokevirtual 40	android/support/v4/media/MediaMetadataCompat:writeToParcel	(Landroid/os/Parcel;I)V
     //   25: aload_0
-    //   26: getfield 15	android/support/v4/media/session/c:hO	Landroid/os/IBinder;
+    //   26: getfield 15	android/support/v4/media/session/c:jN	Landroid/os/IBinder;
     //   29: iconst_4
     //   30: aload_2
     //   31: aconst_null
@@ -84,7 +84,7 @@ final class c
     //   21: iconst_0
     //   22: invokevirtual 53	android/support/v4/media/session/ParcelableVolumeInfo:writeToParcel	(Landroid/os/Parcel;I)V
     //   25: aload_0
-    //   26: getfield 15	android/support/v4/media/session/c:hO	Landroid/os/IBinder;
+    //   26: getfield 15	android/support/v4/media/session/c:jN	Landroid/os/IBinder;
     //   29: bipush 8
     //   31: aload_2
     //   32: aconst_null
@@ -135,7 +135,7 @@ final class c
     //   21: iconst_0
     //   22: invokevirtual 57	android/support/v4/media/session/PlaybackStateCompat:writeToParcel	(Landroid/os/Parcel;I)V
     //   25: aload_0
-    //   26: getfield 15	android/support/v4/media/session/c:hO	Landroid/os/IBinder;
+    //   26: getfield 15	android/support/v4/media/session/c:jN	Landroid/os/IBinder;
     //   29: iconst_3
     //   30: aload_2
     //   31: aconst_null
@@ -189,7 +189,7 @@ final class c
     //   26: iconst_0
     //   27: invokevirtual 64	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
     //   30: aload_0
-    //   31: getfield 15	android/support/v4/media/session/c:hO	Landroid/os/IBinder;
+    //   31: getfield 15	android/support/v4/media/session/c:jN	Landroid/os/IBinder;
     //   34: iconst_1
     //   35: aload_3
     //   36: aconst_null
@@ -224,11 +224,26 @@ final class c
   
   public final IBinder asBinder()
   {
-    return this.hO;
+    return this.jN;
+  }
+  
+  public final void bf()
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");
+      this.jN.transact(13, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
   }
   
   /* Error */
-  public final void e(boolean paramBoolean)
+  public final void h(boolean paramBoolean)
   {
     // Byte code:
     //   0: iconst_1
@@ -244,7 +259,7 @@ final class c
     //   17: iload_2
     //   18: invokevirtual 34	android/os/Parcel:writeInt	(I)V
     //   21: aload_0
-    //   22: getfield 15	android/support/v4/media/session/c:hO	Landroid/os/IBinder;
+    //   22: getfield 15	android/support/v4/media/session/c:jN	Landroid/os/IBinder;
     //   25: bipush 10
     //   27: aload_3
     //   28: aconst_null
@@ -276,7 +291,7 @@ final class c
   }
   
   /* Error */
-  public final void f(boolean paramBoolean)
+  public final void i(boolean paramBoolean)
   {
     // Byte code:
     //   0: iconst_1
@@ -292,7 +307,7 @@ final class c
     //   17: iload_2
     //   18: invokevirtual 34	android/os/Parcel:writeInt	(I)V
     //   21: aload_0
-    //   22: getfield 15	android/support/v4/media/session/c:hO	Landroid/os/IBinder;
+    //   22: getfield 15	android/support/v4/media/session/c:jN	Landroid/os/IBinder;
     //   25: bipush 11
     //   27: aload_3
     //   28: aconst_null
@@ -323,38 +338,6 @@ final class c
     //   16	36	46	finally
   }
   
-  public final void l(int paramInt)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");
-      localParcel.writeInt(paramInt);
-      this.hO.transact(9, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public final void m(int paramInt)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");
-      localParcel.writeInt(paramInt);
-      this.hO.transact(12, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
   /* Error */
   public final void onExtrasChanged(android.os.Bundle paramBundle)
   {
@@ -374,7 +357,7 @@ final class c
     //   21: iconst_0
     //   22: invokevirtual 64	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
     //   25: aload_0
-    //   26: getfield 15	android/support/v4/media/session/c:hO	Landroid/os/IBinder;
+    //   26: getfield 15	android/support/v4/media/session/c:jN	Landroid/os/IBinder;
     //   29: bipush 7
     //   31: aload_2
     //   32: aconst_null
@@ -413,7 +396,7 @@ final class c
     {
       localParcel.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");
       localParcel.writeTypedList(paramList);
-      this.hO.transact(5, localParcel, null, 1);
+      this.jN.transact(5, localParcel, null, 1);
       return;
     }
     finally
@@ -439,9 +422,9 @@ final class c
     //   19: aload_1
     //   20: aload_2
     //   21: iconst_0
-    //   22: invokestatic 87	android/text/TextUtils:writeToParcel	(Ljava/lang/CharSequence;Landroid/os/Parcel;I)V
+    //   22: invokestatic 86	android/text/TextUtils:writeToParcel	(Ljava/lang/CharSequence;Landroid/os/Parcel;I)V
     //   25: aload_0
-    //   26: getfield 15	android/support/v4/media/session/c:hO	Landroid/os/IBinder;
+    //   26: getfield 15	android/support/v4/media/session/c:jN	Landroid/os/IBinder;
     //   29: bipush 6
     //   31: aload_2
     //   32: aconst_null
@@ -479,7 +462,39 @@ final class c
     try
     {
       localParcel.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");
-      this.hO.transact(2, localParcel, null, 1);
+      this.jN.transact(2, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public final void v(int paramInt)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");
+      localParcel.writeInt(paramInt);
+      this.jN.transact(9, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public final void w(int paramInt)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");
+      localParcel.writeInt(paramInt);
+      this.jN.transact(12, localParcel, null, 1);
       return;
     }
     finally

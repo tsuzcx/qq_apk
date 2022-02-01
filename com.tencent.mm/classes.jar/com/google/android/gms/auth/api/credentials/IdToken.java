@@ -28,15 +28,15 @@ public final class IdToken
   
   static
   {
-    AppMethodBeat.i(50353);
+    AppMethodBeat.i(88248);
     CREATOR = new zzl();
-    AppMethodBeat.o(50353);
+    AppMethodBeat.o(88248);
   }
   
   @SafeParcelable.Constructor
   public IdToken(@SafeParcelable.Param(id=1) String paramString1, @SafeParcelable.Param(id=2) String paramString2)
   {
-    AppMethodBeat.i(50351);
+    AppMethodBeat.i(88246);
     if (!TextUtils.isEmpty(paramString1))
     {
       bool1 = true;
@@ -51,7 +51,7 @@ public final class IdToken
       Preconditions.checkArgument(bool1, "id token string cannot be null or empty");
       this.zzbx = paramString1;
       this.zzdf = paramString2;
-      AppMethodBeat.o(50351);
+      AppMethodBeat.o(88246);
       return;
       bool1 = false;
       break;
@@ -70,12 +70,12 @@ public final class IdToken
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(50352);
+    AppMethodBeat.i(88247);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeString(paramParcel, 1, getAccountType(), false);
     SafeParcelWriter.writeString(paramParcel, 2, getIdToken(), false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(50352);
+    AppMethodBeat.o(88247);
   }
 }
 

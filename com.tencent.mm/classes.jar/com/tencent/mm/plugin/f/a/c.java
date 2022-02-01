@@ -1,119 +1,119 @@
 package com.tencent.mm.plugin.f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.at.g;
-import com.tencent.mm.at.o;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.pluginsdk.model.app.al;
-import com.tencent.mm.pluginsdk.model.app.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.aw.g;
+import com.tencent.mm.aw.o;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.pluginsdk.model.app.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.vfs.i;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class c
   extends a
 {
-  protected final List<com.tencent.mm.plugin.f.b.a> Q(bi parambi)
+  protected final List<com.tencent.mm.plugin.f.b.a> ac(bl parambl)
   {
     long l = 0L;
-    b localb2 = null;
+    com.tencent.mm.pluginsdk.model.app.c localc2 = null;
     Object localObject2 = null;
-    b localb1 = null;
-    AppMethodBeat.i(18619);
-    if (parambi == null)
+    com.tencent.mm.pluginsdk.model.app.c localc1 = null;
+    AppMethodBeat.i(22728);
+    if (parambl == null)
     {
-      AppMethodBeat.o(18619);
+      AppMethodBeat.o(22728);
       return null;
     }
-    Object localObject1 = bo.apU(parambi.field_content);
+    Object localObject1 = bt.aGg(parambl.field_content);
     if (localObject1 != null) {}
-    for (localObject1 = j.b.mY((String)localObject1);; localObject1 = null)
+    for (localObject1 = k.b.rx((String)localObject1);; localObject1 = null)
     {
       if (localObject1 == null)
       {
-        ab.e("MicroMsg.AppMsgMsgHandler", "content is null");
-        AppMethodBeat.o(18619);
+        ad.e("MicroMsg.AppMsgMsgHandler", "content is null");
+        AppMethodBeat.o(22728);
         return null;
       }
-      com.tencent.mm.plugin.f.b.a locala = R(parambi);
+      com.tencent.mm.plugin.f.b.a locala = ad(parambl);
       int i;
-      switch (((j.b)localObject1).type)
+      switch (((k.b)localObject1).type)
       {
       case 3: 
       case 4: 
       case 5: 
       default: 
-        AppMethodBeat.o(18619);
+        AppMethodBeat.o(22728);
         return null;
       case 2: 
-        localb2 = al.aUJ().alo(((j.b)localObject1).cmN);
-        localObject1 = localb1;
-        if (localb2 != null)
+        localc2 = ap.bxS().aAL(((k.b)localObject1).dbA);
+        localObject1 = localc1;
+        if (localc2 != null)
         {
-          localObject1 = localb2.field_fileFullPath;
-          l = e.avI((String)localObject1);
+          localObject1 = localc2.field_fileFullPath;
+          l = i.aMN((String)localObject1);
         }
         locala.field_msgSubType = 30;
-        locala.field_path = Hw((String)localObject1);
+        locala.field_path = aUM((String)localObject1);
         locala.field_size = l;
         i = 31;
       }
       for (;;)
       {
-        localObject1 = o.ahC().J(parambi.field_imgPath, true);
-        l = e.avI((String)localObject1);
-        parambi = R(parambi);
-        parambi.field_msgSubType = i;
-        parambi.field_path = Hw((String)localObject1);
-        parambi.field_size = l;
-        ab.i("MicroMsg.AppMsgMsgHandler", "%s create app msg wx file index app[%s] thumb[%s]", new Object[] { bau(), locala, parambi });
+        localObject1 = o.ayF().Q(parambl.field_imgPath, true);
+        l = i.aMN((String)localObject1);
+        parambl = ad(parambl);
+        parambl.field_msgSubType = i;
+        parambl.field_path = aUM((String)localObject1);
+        parambl.field_size = l;
+        ad.i("MicroMsg.AppMsgMsgHandler", "%s create app msg wx file index app[%s] thumb[%s]", new Object[] { info(), locala, parambl });
         localObject1 = new ArrayList();
         ((List)localObject1).add(locala);
-        ((List)localObject1).add(parambi);
-        AppMethodBeat.o(18619);
+        ((List)localObject1).add(parambl);
+        AppMethodBeat.o(22728);
         return localObject1;
-        localb1 = al.aUJ().alo(((j.b)localObject1).cmN);
-        localObject1 = localb2;
-        if (localb1 != null)
+        localc1 = ap.bxS().aAL(((k.b)localObject1).dbA);
+        localObject1 = localc2;
+        if (localc1 != null)
         {
-          localObject1 = localb1.field_fileFullPath;
-          l = e.avI((String)localObject1);
+          localObject1 = localc1.field_fileFullPath;
+          l = i.aMN((String)localObject1);
         }
         locala.field_msgSubType = 32;
-        locala.field_path = Hw((String)localObject1);
+        locala.field_path = aUM((String)localObject1);
         locala.field_size = l;
         i = 33;
         continue;
-        localb1 = al.aUJ().alo(((j.b)localObject1).cmN);
+        localc1 = ap.bxS().aAL(((k.b)localObject1).dbA);
         localObject1 = localObject2;
-        if (localb1 != null)
+        if (localc1 != null)
         {
-          localObject1 = localb1.field_fileFullPath;
-          l = e.avI((String)localObject1);
+          localObject1 = localc1.field_fileFullPath;
+          l = i.aMN((String)localObject1);
         }
         locala.field_msgSubType = 34;
-        locala.field_path = Hw((String)localObject1);
+        locala.field_path = aUM((String)localObject1);
         locala.field_size = l;
         i = 35;
       }
     }
   }
   
-  protected final String bau()
+  protected final String info()
   {
-    AppMethodBeat.i(18620);
+    AppMethodBeat.i(22729);
     String str = "AppMsg_" + hashCode();
-    AppMethodBeat.o(18620);
+    AppMethodBeat.o(22729);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.f.a.c
  * JD-Core Version:    0.7.0.1
  */

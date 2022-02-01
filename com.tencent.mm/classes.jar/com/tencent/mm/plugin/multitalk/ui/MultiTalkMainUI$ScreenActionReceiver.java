@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class MultiTalkMainUI$ScreenActionReceiver
   extends BroadcastReceiver
@@ -14,21 +14,21 @@ public class MultiTalkMainUI$ScreenActionReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(54128);
+    AppMethodBeat.i(114662);
     paramContext = paramIntent.getAction();
     if ((paramContext != null) && (paramContext.equals("android.intent.action.SCREEN_OFF")))
     {
-      ab.i("MicroMsg.MT.MultiTalkMainUI", "receive action screen off");
-      paramContext = this.oVe;
-      paramContext.oVd.removeCallbacksAndMessages(null);
-      paramContext.oVd.sendEmptyMessage(0);
+      ad.i("MicroMsg.MT.MultiTalkMainUI", "receive action screen off");
+      paramContext = this.tQz;
+      paramContext.tQy.removeCallbacksAndMessages(null);
+      paramContext.tQy.sendEmptyMessage(0);
     }
-    AppMethodBeat.o(54128);
+    AppMethodBeat.o(114662);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.MultiTalkMainUI.ScreenActionReceiver
  * JD-Core Version:    0.7.0.1
  */

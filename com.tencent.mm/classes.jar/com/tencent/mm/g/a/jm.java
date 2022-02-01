@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class jm
   extends b
 {
-  public jm.a cyZ;
-  public jm.b cza;
+  public a dnE;
   
   public jm()
   {
@@ -16,17 +15,22 @@ public final class jm
   
   private jm(byte paramByte)
   {
-    AppMethodBeat.i(113285);
-    this.cyZ = new jm.a();
-    this.cza = new jm.b();
-    this.ymq = false;
+    AppMethodBeat.i(121034);
+    this.dnE = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(113285);
+    AppMethodBeat.o(121034);
+  }
+  
+  public static final class a
+  {
+    public String dnB;
+    public String dnF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.jm
  * JD-Core Version:    0.7.0.1
  */

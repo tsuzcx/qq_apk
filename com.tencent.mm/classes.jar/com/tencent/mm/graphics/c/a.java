@@ -3,48 +3,48 @@ package com.tencent.mm.graphics.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.b.b;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public enum a
 {
   static
   {
-    AppMethodBeat.i(57098);
-    eBb = new a("INSTANCE");
-    eBc = new a[] { eBb };
-    AppMethodBeat.o(57098);
+    AppMethodBeat.i(136217);
+    fWH = new a("INSTANCE");
+    fWI = new a[] { fWH };
+    AppMethodBeat.o(136217);
   }
   
   private a() {}
   
-  private static void a(long paramLong, a.a parama)
+  private static void a(long paramLong, a parama)
   {
-    AppMethodBeat.i(57096);
+    AppMethodBeat.i(136215);
     if (parama == null)
     {
-      AppMethodBeat.o(57096);
+      AppMethodBeat.o(136215);
       return;
     }
-    ab.i("MicroMsg.ImageReporter", "alvinluo reportImageDecodeInfo sessionId: %d, from: %s, imageType: %d, w: %d, h: %d, fileSize: %d, orientation: %d, decodeResult: %d, decodeTime: %d, fullSampleSzie: %d, onlyDecodeTime: %d", new Object[] { Long.valueOf(paramLong), parama.cEG, Integer.valueOf(parama.eBd), Integer.valueOf(parama.width), Integer.valueOf(parama.height), Integer.valueOf(parama.fileSize), Integer.valueOf(parama.orientation), Integer.valueOf(parama.eBe), Integer.valueOf(parama.eBf), Integer.valueOf(parama.arC), Integer.valueOf(parama.eBg) });
-    h.qsU.e(15467, new Object[] { Long.valueOf(paramLong), parama.cEG, Integer.valueOf(parama.eBd), Integer.valueOf(parama.width), Integer.valueOf(parama.height), Integer.valueOf(parama.fileSize), Integer.valueOf(parama.orientation), Integer.valueOf(parama.eBe), Integer.valueOf(parama.eBf), Integer.valueOf(parama.arC), Integer.valueOf(parama.eBg) });
-    AppMethodBeat.o(57096);
+    ad.i("MicroMsg.ImageReporter", "alvinluo reportImageDecodeInfo sessionId: %d, from: %s, imageType: %d, w: %d, h: %d, fileSize: %d, orientation: %d, decodeResult: %d, decodeTime: %d, fullSampleSzie: %d, onlyDecodeTime: %d", new Object[] { Long.valueOf(paramLong), parama.dvh, Integer.valueOf(parama.imageType), Integer.valueOf(parama.width), Integer.valueOf(parama.height), Integer.valueOf(parama.fileSize), Integer.valueOf(parama.orientation), Integer.valueOf(parama.fWJ), Integer.valueOf(parama.fWK), Integer.valueOf(parama.aMn), Integer.valueOf(parama.fWL) });
+    h.vKh.f(15467, new Object[] { Long.valueOf(paramLong), parama.dvh, Integer.valueOf(parama.imageType), Integer.valueOf(parama.width), Integer.valueOf(parama.height), Integer.valueOf(parama.fileSize), Integer.valueOf(parama.orientation), Integer.valueOf(parama.fWJ), Integer.valueOf(parama.fWK), Integer.valueOf(parama.aMn), Integer.valueOf(parama.fWL) });
+    AppMethodBeat.o(136215);
   }
   
   public static void a(b paramb)
   {
-    AppMethodBeat.i(57097);
+    AppMethodBeat.i(136216);
     long l = System.currentTimeMillis();
     if (paramb != null)
     {
-      ab.i("MicroMsg.ImageReporter", "alvinluo reportPerformance sessionId: %d, fps.maxFps: %f, fps.minFps: %f, fps.averageFps: %f, memory.memoryUsedWhenInit: %f, memory.currentMaxUsedMemory: %f, memory.currentMinUsedMemory: %f, memory.averUsed: %f, memory.currentVarianceSum: %f", new Object[] { Long.valueOf(l), Double.valueOf(0.0D), Double.valueOf(0.0D), Double.valueOf(0.0D), Double.valueOf(paramb.eAK), Double.valueOf(paramb.eAL), Double.valueOf(paramb.eAM), Double.valueOf(paramb.eAO), Double.valueOf(paramb.eAN) });
-      h.qsU.e(15471, new Object[] { Long.valueOf(l), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf((int)paramb.eAK), Integer.valueOf((int)paramb.eAL), Integer.valueOf((int)paramb.eAO), Integer.valueOf((int)paramb.eAN), Integer.valueOf(1) });
+      ad.i("MicroMsg.ImageReporter", "alvinluo reportPerformance sessionId: %d, fps.maxFps: %f, fps.minFps: %f, fps.averageFps: %f, memory.memoryUsedWhenInit: %f, memory.currentMaxUsedMemory: %f, memory.currentMinUsedMemory: %f, memory.averUsed: %f, memory.currentVarianceSum: %f", new Object[] { Long.valueOf(l), Double.valueOf(0.0D), Double.valueOf(0.0D), Double.valueOf(0.0D), Double.valueOf(paramb.fWn), Double.valueOf(paramb.fWo), Double.valueOf(paramb.fWp), Double.valueOf(paramb.fWr), Double.valueOf(paramb.fWq) });
+      h.vKh.f(15471, new Object[] { Long.valueOf(l), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf((int)paramb.fWn), Integer.valueOf((int)paramb.fWo), Integer.valueOf((int)paramb.fWr), Integer.valueOf((int)paramb.fWq), Integer.valueOf(1) });
     }
-    AppMethodBeat.o(57097);
+    AppMethodBeat.o(136216);
   }
   
-  public static void a(a.a parama1, a.a parama2)
+  public static void a(a parama1, a parama2)
   {
-    AppMethodBeat.i(57095);
+    AppMethodBeat.i(136214);
     long l = System.currentTimeMillis();
     if (parama1 != null) {
       a(l, parama1);
@@ -52,12 +52,27 @@ public enum a
     if (parama2 != null) {
       a(l, parama2);
     }
-    AppMethodBeat.o(57095);
+    AppMethodBeat.o(136214);
+  }
+  
+  public static final class a
+  {
+    public int aMn;
+    public String dvh;
+    public int fWJ;
+    public int fWK;
+    public int fWL;
+    public int fileSize;
+    public int height;
+    public String imagePath;
+    public int imageType;
+    public int orientation;
+    public int width;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.graphics.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ final class zzeq
   
   zzeq(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Long paramLong5, Long paramLong6, Boolean paramBoolean)
   {
-    AppMethodBeat.i(68725);
+    AppMethodBeat.i(1248);
     Preconditions.checkNotEmpty(paramString1);
     Preconditions.checkNotEmpty(paramString2);
     if (paramLong1 >= 0L)
@@ -25,16 +25,17 @@ final class zzeq
       bool = true;
       Preconditions.checkArgument(bool);
       if (paramLong2 < 0L) {
-        break label126;
+        break label128;
       }
       bool = true;
-      label43:
+      label44:
       Preconditions.checkArgument(bool);
       if (paramLong4 < 0L) {
-        break label132;
+        break label134;
       }
     }
-    label132:
+    label128:
+    label134:
     for (boolean bool = true;; bool = false)
     {
       Preconditions.checkArgument(bool);
@@ -47,57 +48,56 @@ final class zzeq
       this.zzafv = paramLong5;
       this.zzafw = paramLong6;
       this.zzafx = paramBoolean;
-      AppMethodBeat.o(68725);
+      AppMethodBeat.o(1248);
       return;
       bool = false;
       break;
-      label126:
       bool = false;
-      break label43;
+      break label44;
     }
   }
   
   final zzeq zza(Long paramLong1, Long paramLong2, Boolean paramBoolean)
   {
-    AppMethodBeat.i(68729);
+    AppMethodBeat.i(1252);
     if ((paramBoolean != null) && (!paramBoolean.booleanValue())) {
       paramBoolean = null;
     }
     for (;;)
     {
       paramLong1 = new zzeq(this.zzti, this.name, this.zzafr, this.zzafs, this.zzaft, this.zzafu, paramLong1, paramLong2, paramBoolean);
-      AppMethodBeat.o(68729);
+      AppMethodBeat.o(1252);
       return paramLong1;
     }
   }
   
   final zzeq zzac(long paramLong)
   {
-    AppMethodBeat.i(68727);
+    AppMethodBeat.i(1250);
     zzeq localzzeq = new zzeq(this.zzti, this.name, this.zzafr, this.zzafs, paramLong, this.zzafu, this.zzafv, this.zzafw, this.zzafx);
-    AppMethodBeat.o(68727);
+    AppMethodBeat.o(1250);
     return localzzeq;
   }
   
   final zzeq zzad(long paramLong)
   {
-    AppMethodBeat.i(68728);
+    AppMethodBeat.i(1251);
     zzeq localzzeq = new zzeq(this.zzti, this.name, this.zzafr, this.zzafs, this.zzaft, paramLong, this.zzafv, this.zzafw, this.zzafx);
-    AppMethodBeat.o(68728);
+    AppMethodBeat.o(1251);
     return localzzeq;
   }
   
   final zzeq zzie()
   {
-    AppMethodBeat.i(68726);
+    AppMethodBeat.i(1249);
     zzeq localzzeq = new zzeq(this.zzti, this.name, this.zzafr + 1L, this.zzafs + 1L, this.zzaft, this.zzafu, this.zzafv, this.zzafw, this.zzafx);
-    AppMethodBeat.o(68726);
+    AppMethodBeat.o(1249);
     return localzzeq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzeq
  * JD-Core Version:    0.7.0.1
  */

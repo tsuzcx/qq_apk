@@ -1,30 +1,31 @@
 package com.tencent.mm.plugin.translate;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.m;
 
 public class Plugin
-  implements c
+  implements d
 {
-  public o createApplication()
+  public m createApplication()
   {
-    AppMethodBeat.i(26045);
+    AppMethodBeat.i(29728);
     b localb = new b();
-    AppMethodBeat.o(26045);
+    AppMethodBeat.o(29728);
     return localb;
   }
   
-  public at createSubCore()
+  public aw createSubCore()
   {
-    AppMethodBeat.i(26046);
+    AppMethodBeat.i(29729);
     a locala = new a();
-    AppMethodBeat.o(26046);
+    AppMethodBeat.o(29729);
     return locala;
   }
   
-  public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }

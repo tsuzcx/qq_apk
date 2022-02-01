@@ -4,19 +4,19 @@ import com.tencent.mm.plugin.notification.ui.FailSendMsgNotification;
 
 public abstract interface c
 {
-  public abstract void bXS();
+  public abstract void cXE();
   
-  public abstract void bXX();
+  public abstract void cXJ();
   
-  public abstract FailSendMsgNotification bXZ();
+  public abstract FailSendMsgNotification cXL();
   
-  public abstract void bYi();
+  public abstract void cXU();
   
-  public abstract void bYj();
+  public abstract void cXV();
   
-  public abstract void bYk();
+  public abstract void cXW();
   
-  public abstract void bYl();
+  public abstract void cXX();
 }
 
 

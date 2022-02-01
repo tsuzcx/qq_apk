@@ -1,28 +1,20 @@
 package com.tencent.mm.plugin.appbrand.page.b;
 
+import com.tencent.mm.plugin.appbrand.s.a.e.a;
+
 public abstract interface d
 {
-  public abstract void Eq(String paramString);
+  public abstract boolean Cv();
   
-  public abstract void a(d.a parama, int paramInt);
+  public abstract String Cw();
   
-  public abstract void aJs();
+  public abstract void a(e.a parama);
   
-  public abstract void aJt();
-  
-  public abstract void cO(String paramString1, String paramString2);
-  
-  public abstract void eE(boolean paramBoolean);
-  
-  public abstract void eF(boolean paramBoolean);
-  
-  public abstract void requestDisallowInterceptTouchEvent(boolean paramBoolean);
-  
-  public abstract void setPullDownText(String paramString);
+  public abstract void cm(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.b.d
  * JD-Core Version:    0.7.0.1
  */

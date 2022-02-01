@@ -10,17 +10,17 @@ public class ContactProfileUI
 {
   public int getResourceId()
   {
-    AppMethodBeat.i(23427);
+    AppMethodBeat.i(27043);
     int i = super.getResourceId();
-    AppMethodBeat.o(23427);
+    AppMethodBeat.o(27043);
     return i;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(23426);
+    AppMethodBeat.i(27042);
     super.onCreate(paramBundle);
-    AppMethodBeat.o(23426);
+    AppMethodBeat.o(27042);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -31,7 +31,7 @@ public class ContactProfileUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.ContactProfileUI
  * JD-Core Version:    0.7.0.1
  */

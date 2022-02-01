@@ -10,8 +10,8 @@ public final class cf
   static void a(zzh paramzzh, Parcel paramParcel)
   {
     int i = c.b(paramParcel);
-    c.a(paramParcel, 2, paramzzh.kN());
-    c.a(paramParcel, 3, paramzzh.kO());
+    c.a(paramParcel, 2, paramzzh.kW());
+    c.a(paramParcel, 3, paramzzh.kX());
     c.a(paramParcel, 4, paramzzh.getValue());
     c.v(paramParcel, i);
   }

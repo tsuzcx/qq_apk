@@ -1,32 +1,32 @@
 package com.tencent.mm.emoji.a;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.k;
+import d.l;
 import org.xmlpull.v1.XmlPullParser;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/model/BaseXmlContent;", "", "()V", "ns", "", "getNs", "()Ljava/lang/String;", "next", "", "parse", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "readAttrInt", "", "name", "readAttrString", "readInt", "readString", "skip", "Companion", "plugin-emojisdk_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/model/BaseXmlContent;", "", "()V", "ns", "", "getNs", "()Ljava/lang/String;", "next", "", "parse", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "readAttrInt", "", "name", "readAttrString", "readInt", "readString", "skip", "Companion", "plugin-emojisdk_release"})
 public class a
 {
   private static final String TAG = "MicroMsg.BaseXmlContent";
-  public static final a.a ewm;
+  public static final a fMz;
   
   static
   {
-    AppMethodBeat.i(151768);
-    ewm = new a.a((byte)0);
+    AppMethodBeat.i(105500);
+    fMz = new a((byte)0);
     TAG = "MicroMsg.BaseXmlContent";
-    AppMethodBeat.o(151768);
+    AppMethodBeat.o(105500);
   }
   
   protected static void a(XmlPullParser paramXmlPullParser)
   {
-    AppMethodBeat.i(151765);
-    j.q(paramXmlPullParser, "parser");
+    AppMethodBeat.i(105497);
+    k.h(paramXmlPullParser, "parser");
     if (paramXmlPullParser.getEventType() != 2)
     {
       paramXmlPullParser = (Throwable)new IllegalStateException();
-      AppMethodBeat.o(151765);
+      AppMethodBeat.o(105497);
       throw paramXmlPullParser;
     }
     int i = 1;
@@ -42,84 +42,84 @@ public class a
         i -= 1;
       }
     }
-    AppMethodBeat.o(151765);
+    AppMethodBeat.o(105497);
   }
   
-  protected static String d(XmlPullParser paramXmlPullParser)
+  protected static String k(XmlPullParser paramXmlPullParser, String paramString)
   {
-    AppMethodBeat.i(151761);
-    j.q(paramXmlPullParser, "parser");
-    String str = "";
-    if (paramXmlPullParser.next() == 4)
-    {
-      str = paramXmlPullParser.getText();
-      j.p(str, "parser.text");
-      paramXmlPullParser.nextTag();
-    }
-    AppMethodBeat.o(151761);
-    return str;
-  }
-  
-  protected static String d(XmlPullParser paramXmlPullParser, String paramString)
-  {
-    AppMethodBeat.i(151763);
-    j.q(paramXmlPullParser, "parser");
-    j.q(paramString, "name");
+    AppMethodBeat.i(105495);
+    k.h(paramXmlPullParser, "parser");
+    k.h(paramString, "name");
     paramString = paramXmlPullParser.getAttributeValue(null, paramString);
     paramXmlPullParser = paramString;
     if (paramString == null) {
       paramXmlPullParser = "";
     }
-    AppMethodBeat.o(151763);
+    AppMethodBeat.o(105495);
     return paramXmlPullParser;
   }
   
-  protected static int e(XmlPullParser paramXmlPullParser)
+  protected static int l(XmlPullParser paramXmlPullParser, String paramString)
   {
-    AppMethodBeat.i(151762);
-    j.q(paramXmlPullParser, "parser");
-    paramXmlPullParser = d(paramXmlPullParser);
+    AppMethodBeat.i(105496);
+    k.h(paramXmlPullParser, "parser");
+    k.h(paramString, "name");
+    paramXmlPullParser = k(paramXmlPullParser, paramString);
     if (((CharSequence)paramXmlPullParser).length() == 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(151762);
+      AppMethodBeat.o(105496);
       return 0;
     }
     i = Integer.parseInt(paramXmlPullParser);
-    AppMethodBeat.o(151762);
+    AppMethodBeat.o(105496);
     return i;
   }
   
-  protected static int e(XmlPullParser paramXmlPullParser, String paramString)
+  protected static String o(XmlPullParser paramXmlPullParser)
   {
-    AppMethodBeat.i(151764);
-    j.q(paramXmlPullParser, "parser");
-    j.q(paramString, "name");
-    paramXmlPullParser = d(paramXmlPullParser, paramString);
+    AppMethodBeat.i(105493);
+    k.h(paramXmlPullParser, "parser");
+    String str = "";
+    if (paramXmlPullParser.next() == 4)
+    {
+      str = paramXmlPullParser.getText();
+      k.g(str, "parser.text");
+      paramXmlPullParser.nextTag();
+    }
+    AppMethodBeat.o(105493);
+    return str;
+  }
+  
+  protected static int p(XmlPullParser paramXmlPullParser)
+  {
+    AppMethodBeat.i(105494);
+    k.h(paramXmlPullParser, "parser");
+    paramXmlPullParser = o(paramXmlPullParser);
     if (((CharSequence)paramXmlPullParser).length() == 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(151764);
+      AppMethodBeat.o(105494);
       return 0;
     }
     i = Integer.parseInt(paramXmlPullParser);
-    AppMethodBeat.o(151764);
+    AppMethodBeat.o(105494);
     return i;
   }
   
   protected void a(String paramString, XmlPullParser paramXmlPullParser)
   {
-    AppMethodBeat.i(151767);
-    j.q(paramString, "tag");
-    j.q(paramXmlPullParser, "parser");
-    AppMethodBeat.o(151767);
+    AppMethodBeat.i(105499);
+    k.h(paramString, "tag");
+    k.h(paramXmlPullParser, "parser");
+    AppMethodBeat.o(105499);
   }
   
-  public void f(XmlPullParser paramXmlPullParser)
+  public void q(XmlPullParser paramXmlPullParser)
   {
-    AppMethodBeat.i(151766);
-    j.q(paramXmlPullParser, "parser");
-    while (paramXmlPullParser.next() != 3) {
+    AppMethodBeat.i(105498);
+    k.h(paramXmlPullParser, "parser");
+    while ((paramXmlPullParser.next() != 3) && (paramXmlPullParser.getEventType() != 1)) {
       if (paramXmlPullParser.getEventType() == 2)
       {
         String str = paramXmlPullParser.getName();
@@ -128,12 +128,15 @@ public class a
         }
       }
     }
-    AppMethodBeat.o(151766);
+    AppMethodBeat.o(105498);
   }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/model/BaseXmlContent$Companion;", "", "()V", "TAG", "", "safeParse", "", "filePath", "xmlContent", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "plugin-emojisdk_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.a.a
  * JD-Core Version:    0.7.0.1
  */

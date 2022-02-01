@@ -12,14 +12,14 @@ public class WebViewJSSDKVoiceItem
   
   static
   {
-    AppMethodBeat.i(6735);
+    AppMethodBeat.i(79028);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(6735);
+    AppMethodBeat.o(79028);
   }
   
   public WebViewJSSDKVoiceItem()
   {
-    this.cth = 2;
+    this.mediaType = 2;
   }
   
   protected WebViewJSSDKVoiceItem(Parcel paramParcel)
@@ -27,40 +27,40 @@ public class WebViewJSSDKVoiceItem
     super(paramParcel);
   }
   
-  public final WebViewJSSDKFileItem dca()
-  {
-    AppMethodBeat.i(6733);
-    this.hgj = s.getFullPath(this.fileName);
-    this.ctV = ar.ahn(this.hgj);
-    AppMethodBeat.o(6733);
-    return this;
-  }
-  
   public int describeContents()
   {
     return 0;
   }
   
-  public final String dyR()
+  public final WebViewJSSDKFileItem fZw()
+  {
+    AppMethodBeat.i(79026);
+    this.jau = s.getFullPath(this.fileName);
+    this.diQ = aw.awH(this.jau);
+    AppMethodBeat.o(79026);
+    return this;
+  }
+  
+  public final String fZx()
   {
     return "speex";
   }
   
-  public final String dzk()
+  public final String fZy()
   {
     return "voice";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(6734);
+    AppMethodBeat.i(79027);
     super.writeToParcel(paramParcel, paramInt);
-    AppMethodBeat.o(6734);
+    AppMethodBeat.o(79027);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.WebViewJSSDKVoiceItem
  * JD-Core Version:    0.7.0.1
  */

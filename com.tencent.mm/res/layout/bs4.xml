@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@id/haz" android:layout_margin="10.0dip" android:layout_marginTop="@dimen/ha" android:layout_marginBottom="@dimen/hu" android:text="@string/hlt" style="@style/o8" />
+        <Button android:id="@id/hay" android:layout_margin="10.0dip" android:layout_marginTop="@dimen/ha" android:layout_marginBottom="@dimen/hu" android:text="@string/hlw" style="@style/o8" />
+        <Button android:id="@id/hax" android:layout_margin="10.0dip" android:layout_marginTop="@dimen/ha" android:layout_marginBottom="@dimen/hu" android:text="@string/hls" style="@style/o8" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/jt" android:textColor="@color/fc" android:id="@id/hht" android:background="@color/BW_0_Alpha_0_2" android:padding="10.0dip" android:scrollbars="vertical" android:layout_width="300.0dip" android:layout_height="115.0dip" android:fadeScrollbars="false" />
+    <TextView android:textSize="@dimen/jt" android:textColor="@color/fc" android:id="@id/hhu" android:background="@color/BW_0_Alpha_0_2" android:padding="10.0dip" android:scrollbars="vertical" android:layout_width="300.0dip" android:layout_height="200.0dip" android:layout_marginTop="5.0dip" android:fadeScrollbars="false" />
+</LinearLayout>

@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import com.tencent.mm.plugin.fts.a.a.l;
+import com.tencent.mm.plugin.fts.a.a.m;
 import java.util.Comparator;
 
 final class a$a
-  implements Comparator<l>
+  implements Comparator<m>
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

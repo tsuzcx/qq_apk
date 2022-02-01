@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.card.model;
 
-import com.tencent.mm.protocal.protobuf.ot;
+import com.tencent.mm.protocal.protobuf.rb;
 
 public final class e
-  extends ot
+  extends rb
 {
   public String code;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.e
  * JD-Core Version:    0.7.0.1
  */

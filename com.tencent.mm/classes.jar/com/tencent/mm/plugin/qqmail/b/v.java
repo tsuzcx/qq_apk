@@ -1,321 +1,186 @@
 package com.tencent.mm.plugin.qqmail.b;
 
-import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.net.HttpURLConnection;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.util.Collection;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.h;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.n.a;
+import com.tencent.mm.al.n.b;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.i;
+import java.util.Random;
 
 public final class v
+  extends n
+  implements k
 {
-  private static SparseArray<String> pJH = null;
-  public p pJC;
-  public i pJD;
-  private k pJE;
-  private Map<Long, v.d> pJF;
-  private Map<Long, v.b> pJG;
-  private Map<String, String> pJc;
+  private int cWU;
+  private g callback;
+  private String dvT;
+  public String filePath;
+  private int gTY;
+  private h hhI;
+  private b rr;
   
-  public v(int paramInt, String paramString)
+  public v(String paramString1, String paramString2, h paramh)
   {
-    AppMethodBeat.i(68004);
-    this.pJc = new HashMap();
-    this.pJF = new HashMap();
-    this.pJG = new HashMap();
-    af.setHost("qqmail.weixin.qq.com:443");
-    af.setUserAgent("weixin/" + paramString + "/0x" + Integer.toHexString(paramInt));
-    reset();
-    AppMethodBeat.o(68004);
+    AppMethodBeat.i(122722);
+    this.filePath = null;
+    this.cWU = 0;
+    this.gTY = 0;
+    this.filePath = paramString1;
+    this.dvT = (paramString2 + "_" + System.nanoTime() + "_" + Math.abs(new Random().nextInt() / 2));
+    this.hhI = paramh;
+    ad.i("MicroMsg.NetSceneUploadFie", "msgId: %s, filePath: %s", new Object[] { this.dvT, this.filePath });
+    AppMethodBeat.o(122722);
   }
   
-  private static String BV(int paramInt)
+  public final ai deb()
   {
-    AppMethodBeat.i(68018);
-    Object localObject1;
-    if (pJH == null)
+    if (this.rr != null) {
+      return (ai)this.rr.gUT.gUX;
+    }
+    return null;
+  }
+  
+  public final int doScene(e parame, g paramg)
+  {
+    AppMethodBeat.i(122725);
+    this.callback = paramg;
+    if (bt.isNullOrNil(this.filePath))
     {
-      pJH = new SparseArray();
-      localObject1 = HttpURLConnection.class.getDeclaredFields();
-      int k = localObject1.length;
-      int i = 0;
-      while (i < k)
+      ad.e("MicroMsg.NetSceneUploadFie", "doScene, filePath is null");
+      AppMethodBeat.o(122725);
+      return -1;
+    }
+    if (!i.eK(this.filePath))
+    {
+      ad.e("MicroMsg.NetSceneUploadFie", "doScene, file: %s not exist", new Object[] { this.filePath });
+      AppMethodBeat.o(122725);
+      return -1;
+    }
+    if (this.gTY == 0)
+    {
+      this.gTY = ((int)i.aMN(this.filePath));
+      ad.i("MicroMsg.NetSceneUploadFie", "doScene, totalLen: %d", new Object[] { Integer.valueOf(this.gTY) });
+    }
+    int i = Math.min(this.gTY - this.cWU, 32768);
+    ad.i("MicroMsg.NetSceneUploadFie", "doScene, startPos: %d, dataLen: %d", new Object[] { Integer.valueOf(this.cWU), Integer.valueOf(i) });
+    paramg = i.aR(this.filePath, this.cWU, i);
+    if (paramg == null)
+    {
+      ad.e("MicroMsg.NetSceneUploadFie", "doScene, read file buf is null");
+      AppMethodBeat.o(122725);
+      return -1;
+    }
+    ad.i("MicroMsg.NetSceneUploadFie", "doScene, buf.length: %d", new Object[] { Integer.valueOf(paramg.length) });
+    Object localObject = new b.a();
+    ((b.a)localObject).gUU = new ah();
+    ((b.a)localObject).gUV = new ai();
+    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/uploadfile";
+    ((b.a)localObject).funcId = 484;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).atI();
+    localObject = (ah)this.rr.gUS.gUX;
+    ((ah)localObject).gKn = this.dvT;
+    ((ah)localObject).uKQ = this.gTY;
+    ((ah)localObject).uKR = this.cWU;
+    ((ah)localObject).uKS = i;
+    ((ah)localObject).uKT = z.am(paramg);
+    i = dispatch(parame, this.rr, this);
+    ad.i("MicroMsg.NetSceneUploadFie", "doScene, ret: %d", new Object[] { Integer.valueOf(i) });
+    AppMethodBeat.o(122725);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 484;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(122723);
+    ad.i("MicroMsg.NetSceneUploadFie", "onGYNetEnd, netId: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      if (this.callback != null) {
+        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      }
+      AppMethodBeat.o(122723);
+      return;
+    }
+    paramq = (ai)((b)paramq).gUT.gUX;
+    paramArrayOfByte = paramq.gKn;
+    ad.i("MicroMsg.NetSceneUploadFie", "onGYNetEnd, clientId: %s, totalLen: %d, attachId: %s", new Object[] { paramq.gKn, Integer.valueOf(paramq.uKQ), paramq.uKY });
+    if (!paramArrayOfByte.equals(this.dvT))
+    {
+      AppMethodBeat.o(122723);
+      return;
+    }
+    this.cWU = paramq.uKR;
+    if (this.cWU < this.gTY)
+    {
+      ad.i("MicroMsg.NetSceneUploadFie", "onGYNetEnd, startPos: %d, totalLen: %d, continue to upload", new Object[] { Integer.valueOf(this.cWU), Integer.valueOf(this.gTY) });
+      if (doScene(dispatcher(), this.callback) < 0)
       {
-        StringBuilder localStringBuilder = localObject1[i];
-        int j = localStringBuilder.getModifiers();
-        Object localObject2 = localStringBuilder.getName();
-        if ((localObject2 != null) && (((String)localObject2).startsWith("HTTP_")) && (Modifier.isPublic(j)) && (Modifier.isFinal(j)) && (Modifier.isStatic(j))) {}
-        try
-        {
-          int m = localStringBuilder.getInt(Integer.valueOf(0));
-          localStringBuilder = new StringBuilder();
-          localObject2 = ((String)localObject2).split("_");
-          if (localObject2 != null)
-          {
-            j = 1;
-            while (j < localObject2.length)
-            {
-              localStringBuilder.append(localObject2[j]).append(' ');
-              j += 1;
-            }
-            localStringBuilder.append("error");
-          }
-          pJH.put(m, localStringBuilder.toString().toLowerCase());
+        ad.e("MicroMsg.NetSceneUploadFie", "continue to upload fail");
+        if (this.callback != null) {
+          this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         }
-        catch (Exception localException)
-        {
-          label183:
-          break label183;
+        if (this.hhI != null) {
+          this.hhI.a(this.cWU, this.gTY, this);
         }
-        i += 1;
+        AppMethodBeat.o(122723);
+        return;
       }
     }
-    else
+    paramq = paramq.uKY;
+    ad.i("MicroMsg.NetSceneUploadFie", "onGYNetEnd, finish upload, startPos: %d, totalLen: %d, attachId: %s", new Object[] { Integer.valueOf(this.cWU), Integer.valueOf(this.gTY), paramq });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    if (this.hhI != null) {
+      this.hhI.a(this.cWU, this.gTY, this);
+    }
+    AppMethodBeat.o(122723);
+  }
+  
+  public final int securityLimitCount()
+  {
+    return 640;
+  }
+  
+  public final n.b securityVerificationChecked(q paramq)
+  {
+    AppMethodBeat.i(122724);
+    if ((bt.isNullOrNil(this.filePath)) || (!i.eK(this.filePath)))
     {
-      localObject1 = (String)pJH.get(paramInt);
-      if (localObject1 == null)
-      {
-        localObject1 = aX(paramInt, "request error");
-        AppMethodBeat.o(68018);
-        return localObject1;
-      }
-      AppMethodBeat.o(68018);
-      return localObject1;
+      ad.e("MicroMsg.NetSceneUploadFie", "securityVerificationChecked failed, file not exist");
+      paramq = n.b.gVC;
+      AppMethodBeat.o(122724);
+      return paramq;
     }
+    paramq = n.b.gVB;
+    AppMethodBeat.o(122724);
+    return paramq;
   }
   
-  private long a(String paramString, int paramInt, Map<String, String> paramMap, n.d paramd, v.c paramc, v.a parama)
-  {
-    AppMethodBeat.i(68010);
-    Object localObject = paramMap;
-    if (paramMap == null) {
-      localObject = new HashMap();
-    }
-    ((Map)localObject).put("appname", "qqmail_weixin");
-    ((Map)localObject).put("f", "xml");
-    ((Map)localObject).put("charset", "utf-8");
-    ((Map)localObject).put("clientip", getLocalIp());
-    paramString = new v.d(this, paramString, new n.b(paramInt, (Map)localObject, getCookie(), paramd), parama);
-    paramString.pJQ = paramc;
-    al.d(new v.1(this, paramString));
-    long l = paramString.id;
-    AppMethodBeat.o(68010);
-    return l;
-  }
-  
-  private static String aX(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(68019);
-    int i = 0;
-    switch (paramInt)
-    {
-    default: 
-      paramInt = i;
-    }
-    while (paramInt == 0)
-    {
-      AppMethodBeat.o(68019);
-      return paramString;
-      paramInt = 2131302142;
-      continue;
-      paramInt = 2131302147;
-      continue;
-      paramInt = 2131302149;
-      continue;
-      paramInt = 2131302146;
-      continue;
-      paramInt = 2131302148;
-      continue;
-      paramInt = 2131302144;
-      continue;
-      paramInt = 2131302145;
-    }
-    paramString = a.aq(ah.getContext(), paramInt);
-    AppMethodBeat.o(68019);
-    return paramString;
-  }
-  
-  private void cancel()
-  {
-    AppMethodBeat.i(68011);
-    Iterator localIterator = this.pJG.values().iterator();
-    while (localIterator.hasNext()) {
-      ((v.b)localIterator.next()).cancel(true);
-    }
-    this.pJG.clear();
-    this.pJF.clear();
-    AppMethodBeat.o(68011);
-  }
-  
-  public static String cdK()
-  {
-    return "https://qqmail.weixin.qq.com:443";
-  }
-  
-  private static String cdL()
-  {
-    AppMethodBeat.i(68020);
-    Object localObject = new StringBuilder();
-    g.RM();
-    localObject = g.RL().eHR + "mailapp/";
-    AppMethodBeat.o(68020);
-    return localObject;
-  }
-  
-  public static String getDownloadPath()
-  {
-    AppMethodBeat.i(68015);
-    String str = com.tencent.mm.compatible.util.e.esq;
-    com.tencent.mm.vfs.e.um(str);
-    AppMethodBeat.o(68015);
-    return str;
-  }
-  
-  private static String getLocalIp()
-  {
-    AppMethodBeat.i(68016);
-    try
-    {
-      InetAddress localInetAddress;
-      do
-      {
-        localObject = NetworkInterface.getNetworkInterfaces();
-        Enumeration localEnumeration;
-        while (!localEnumeration.hasMoreElements())
-        {
-          if (!((Enumeration)localObject).hasMoreElements()) {
-            break;
-          }
-          localEnumeration = ((NetworkInterface)((Enumeration)localObject).nextElement()).getInetAddresses();
-        }
-        localInetAddress = (InetAddress)localEnumeration.nextElement();
-      } while (localInetAddress.isLoopbackAddress());
-      Object localObject = localInetAddress.getHostAddress();
-      AppMethodBeat.o(68016);
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      AppMethodBeat.o(68016);
-      return null;
-    }
-    catch (SocketException localSocketException)
-    {
-      label72:
-      break label72;
-    }
-  }
-  
-  public final long a(String paramString1, String paramString2, String paramString3, v.c paramc, v.a parama)
-  {
-    AppMethodBeat.i(68009);
-    long l = a(paramString1, 1, null, new n.d(paramString2, paramString3), paramc, parama);
-    AppMethodBeat.o(68009);
-    return l;
-  }
-  
-  public final long a(String paramString, Map<String, String> paramMap, v.a parama)
-  {
-    AppMethodBeat.i(68005);
-    long l = a(paramString, paramMap, new v.c(), parama);
-    AppMethodBeat.o(68005);
-    return l;
-  }
-  
-  public final long a(String paramString, Map<String, String> paramMap, v.c paramc, v.a parama)
-  {
-    AppMethodBeat.i(68006);
-    long l = a(paramString, 1, paramMap, null, paramc, parama);
-    AppMethodBeat.o(68006);
-    return l;
-  }
-  
-  public final long b(String paramString, Map<String, String> paramMap, v.a parama)
-  {
-    AppMethodBeat.i(68007);
-    long l = b(paramString, paramMap, new v.c(), parama);
-    AppMethodBeat.o(68007);
-    return l;
-  }
-  
-  public final long b(String paramString, Map<String, String> paramMap, v.c paramc, v.a parama)
-  {
-    AppMethodBeat.i(68008);
-    long l = a(paramString, 0, paramMap, null, paramc, parama);
-    AppMethodBeat.o(68008);
-    return l;
-  }
-  
-  public final void cancel(long paramLong)
-  {
-    AppMethodBeat.i(68012);
-    v.b localb = (v.b)this.pJG.get(Long.valueOf(paramLong));
-    if (localb != null)
-    {
-      localb.onCancelled();
-      localb.cancel(true);
-    }
-    this.pJG.remove(Long.valueOf(paramLong));
-    this.pJF.remove(Long.valueOf(paramLong));
-    AppMethodBeat.o(68012);
-  }
-  
-  public final void clearData()
-  {
-    AppMethodBeat.i(68014);
-    com.tencent.mm.vfs.e.O(cdL(), true);
-    reset();
-    AppMethodBeat.o(68014);
-  }
-  
-  public final Map<String, String> getCookie()
-  {
-    AppMethodBeat.i(68017);
-    String str = (String)g.RL().Ru().get(-1535680990, null);
-    Map localMap = this.pJc;
-    if (str == null) {}
-    for (Object localObject = "";; localObject = str)
-    {
-      localMap.put("skey", localObject);
-      int i = bo.f(g.RL().Ru().get(9, null), 0);
-      this.pJc.put("uin", "o" + new com.tencent.mm.a.p(i));
-      ab.d("MicroMsg.NormalMailAppService", "sKey:%b, uin:%d", new Object[] { Boolean.valueOf(bo.isNullOrNil(str)), Integer.valueOf(i) });
-      localObject = this.pJc;
-      AppMethodBeat.o(68017);
-      return localObject;
-    }
-  }
-  
-  public final void reset()
-  {
-    AppMethodBeat.i(68013);
-    af.Xq(getDownloadPath());
-    cancel();
-    this.pJc.clear();
-    String str = cdL();
-    this.pJC = new p(str + "addr/");
-    this.pJD = new i(str + "draft/");
-    this.pJE = new k(str + "http/", 0);
-    AppMethodBeat.o(68013);
-  }
+  public final void setSecurityCheckError(n.a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.v
  * JD-Core Version:    0.7.0.1
  */

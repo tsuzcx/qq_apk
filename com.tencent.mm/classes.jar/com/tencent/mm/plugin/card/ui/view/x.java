@@ -10,11 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.d.l;
+import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.sharecard.model.r;
 import com.tencent.mm.plugin.card.ui.a.g;
+import com.tencent.mm.plugin.card.ui.e.d;
 import com.tencent.mm.plugin.card.ui.n;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.d.j;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,86 +23,167 @@ import java.util.Iterator;
 public final class x
   extends i
 {
-  MMActivity jpX;
-  private boolean kBF;
-  private View kBG;
-  private View kBH;
-  private ImageView kBI;
-  private TextView kBJ;
-  private TextView kBK;
-  private ImageView kBL;
-  View kBM;
-  private LinearLayout kBN;
-  private View.OnClickListener kBO;
+  private boolean nIE;
+  private View nIF;
+  private View nIG;
+  private ImageView nIH;
+  private TextView nII;
+  private TextView nIJ;
+  private ImageView nIK;
+  View nIL;
+  private LinearLayout nIM;
+  private View.OnClickListener nIN;
+  MMActivity nqt;
   
   public x()
   {
-    AppMethodBeat.i(88785);
-    this.kBF = false;
-    this.kBO = new x.1(this);
-    AppMethodBeat.o(88785);
+    AppMethodBeat.i(113712);
+    this.nIE = false;
+    this.nIN = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(113711);
+        if (!(paramAnonymousView.getTag() instanceof r))
+        {
+          AppMethodBeat.o(113711);
+          return;
+        }
+        Object localObject = x.this.nIg.bKt();
+        x.this.nIg.bKv();
+        paramAnonymousView = (r)paramAnonymousView.getTag();
+        if (paramAnonymousView == null)
+        {
+          AppMethodBeat.o(113711);
+          return;
+        }
+        if ((paramAnonymousView.nvE == null) || (paramAnonymousView.nvE.isEmpty()))
+        {
+          AppMethodBeat.o(113711);
+          return;
+        }
+        if ((paramAnonymousView.nvC != null) && (paramAnonymousView.nvC.equals(((com.tencent.mm.plugin.card.base.b)localObject).bIb())))
+        {
+          x.this.nIL.setVisibility(8);
+          x.this.nIg.bJG();
+          AppMethodBeat.o(113711);
+          return;
+        }
+        if ((TextUtils.isEmpty(paramAnonymousView.nvC)) && (TextUtils.isEmpty(((com.tencent.mm.plugin.card.base.b)localObject).bIb())))
+        {
+          x.this.nIL.setVisibility(8);
+          x.this.nIg.bJG();
+          AppMethodBeat.o(113711);
+          return;
+        }
+        localObject = com.tencent.mm.plugin.card.sharecard.a.b.QC(paramAnonymousView.nrr);
+        int k;
+        if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+        {
+          int j = 0;
+          int i = 0;
+          k = i;
+          if (j < ((ArrayList)localObject).size())
+          {
+            r localr = (r)((ArrayList)localObject).get(j);
+            if (((localr.nvC != null) && (localr.nvC.equals(paramAnonymousView.nvC))) || ((TextUtils.isEmpty(localr.nvC)) && (TextUtils.isEmpty(paramAnonymousView.nvC))))
+            {
+              localr.nvF = true;
+              if (!localr.nvG)
+              {
+                localr.nvG = true;
+                i = 1;
+              }
+              ((ArrayList)localObject).set(j, localr);
+            }
+            for (;;)
+            {
+              j += 1;
+              break;
+              localr.nvF = false;
+              ((ArrayList)localObject).set(j, localr);
+            }
+          }
+        }
+        else
+        {
+          k = 0;
+        }
+        paramAnonymousView = (String)paramAnonymousView.nvE.get(0);
+        paramAnonymousView = am.bJd().QJ(paramAnonymousView);
+        if (paramAnonymousView != null) {
+          x.this.nIg.b(paramAnonymousView);
+        }
+        if ((k != 0) && (x.this.nIg.bKz() != null)) {
+          x.this.nIg.bKz().bKm();
+        }
+        x.this.nIL.setVisibility(8);
+        AppMethodBeat.o(113711);
+      }
+    };
+    AppMethodBeat.o(113712);
   }
   
-  public final void bfq()
+  public final void bMB()
   {
-    AppMethodBeat.i(88788);
-    this.kBG.setVisibility(8);
-    AppMethodBeat.o(88788);
+    AppMethodBeat.i(113715);
+    this.nIF.setVisibility(8);
+    AppMethodBeat.o(113715);
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(88786);
-    this.kBG = findViewById(2131822071);
-    this.kBH = findViewById(2131822363);
-    this.kBI = ((ImageView)findViewById(2131822365));
-    this.kBJ = ((TextView)findViewById(2131822366));
-    this.kBK = ((TextView)findViewById(2131822367));
-    this.kBL = ((ImageView)findViewById(2131822368));
-    this.kBG.setVisibility(8);
-    this.kBM = findViewById(2131822369);
-    this.kBN = ((LinearLayout)findViewById(2131822370));
-    this.kBM.setVisibility(8);
-    this.jpX = this.kBh.bdy();
-    AppMethodBeat.o(88786);
+    AppMethodBeat.i(113713);
+    this.nIF = findViewById(2131304760);
+    this.nIG = findViewById(2131304762);
+    this.nIH = ((ImageView)findViewById(2131304754));
+    this.nII = ((TextView)findViewById(2131304755));
+    this.nIJ = ((TextView)findViewById(2131304757));
+    this.nIK = ((ImageView)findViewById(2131304756));
+    this.nIF.setVisibility(8);
+    this.nIL = findViewById(2131304758);
+    this.nIM = ((LinearLayout)findViewById(2131304759));
+    this.nIL.setVisibility(8);
+    this.nqt = this.nIg.bKw();
+    AppMethodBeat.o(113713);
   }
   
   public final void update()
   {
-    AppMethodBeat.i(88787);
-    Object localObject4 = this.kBh.bdv();
-    Object localObject3 = com.tencent.mm.plugin.card.sharecard.a.b.HS(((com.tencent.mm.plugin.card.base.b)localObject4).bbi());
-    Object localObject1 = this.kBh.bdA();
+    AppMethodBeat.i(113714);
+    Object localObject4 = this.nIg.bKt();
+    Object localObject3 = com.tencent.mm.plugin.card.sharecard.a.b.QC(((com.tencent.mm.plugin.card.base.b)localObject4).bIa());
+    Object localObject1 = this.nIg.bKy();
     Object localObject2;
     Object localObject5;
     Object localObject6;
     label347:
     int i;
-    if (((g)localObject1).beN())
+    if (((g)localObject1).bLJ())
     {
-      this.kBG.setVisibility(0);
-      if (com.tencent.mm.plugin.card.sharecard.a.b.HR(((com.tencent.mm.plugin.card.base.b)localObject4).bbi()) > 1) {
-        this.kBH.setOnClickListener(this.kBh.bdz());
+      this.nIF.setVisibility(0);
+      if (com.tencent.mm.plugin.card.sharecard.a.b.QB(((com.tencent.mm.plugin.card.base.b)localObject4).bIa()) > 1) {
+        this.nIG.setOnClickListener(this.nIg.bKx());
       }
       for (;;)
       {
-        localObject4 = this.kBh.bdv();
-        if (!this.kBh.bdw()) {
+        localObject4 = this.nIg.bKt();
+        if (!this.nIg.bKu()) {
           break;
         }
-        this.kBI.setVisibility(8);
-        this.kBJ.setVisibility(8);
-        this.kBK.setVisibility(0);
-        this.kBL.setImageResource(2130838167);
-        this.kBK.setText(this.jpX.getString(2131298043));
-        if (!this.kBh.bdw()) {
+        this.nIH.setVisibility(8);
+        this.nII.setVisibility(8);
+        this.nIJ.setVisibility(0);
+        this.nIK.setImageResource(2131231498);
+        this.nIJ.setText(this.nqt.getString(2131756985));
+        if (!this.nIg.bKu()) {
           break label881;
         }
-        this.kBM.setVisibility(0);
-        if ((this.kBN.getChildCount() != 0) || (localObject3 == null)) {
+        this.nIL.setVisibility(0);
+        if ((this.nIM.getChildCount() != 0) || (localObject3 == null)) {
           break label751;
         }
-        localObject1 = (LayoutInflater)this.jpX.getSystemService("layout_inflater");
+        localObject1 = (LayoutInflater)this.nqt.getSystemService("layout_inflater");
         localObject2 = ((ArrayList)localObject3).iterator();
         for (;;)
         {
@@ -109,43 +191,43 @@ public final class x
             break label733;
           }
           localObject3 = (r)((Iterator)localObject2).next();
-          localObject4 = ((LayoutInflater)localObject1).inflate(2130970727, this.kBN, false);
-          Object localObject7 = (ImageView)((View)localObject4).findViewById(2131827763);
-          localObject5 = (TextView)((View)localObject4).findViewById(2131824605);
-          localObject6 = (TextView)((View)localObject4).findViewById(2131827766);
-          if (!TextUtils.isEmpty(((r)localObject3).kqi))
+          localObject4 = ((LayoutInflater)localObject1).inflate(2131495431, this.nIM, false);
+          Object localObject7 = (ImageView)((View)localObject4).findViewById(2131306234);
+          localObject5 = (TextView)((View)localObject4).findViewById(2131306243);
+          localObject6 = (TextView)((View)localObject4).findViewById(2131304738);
+          if (!TextUtils.isEmpty(((r)localObject3).nvC))
           {
-            a.b.c((ImageView)localObject7, ((r)localObject3).kqi);
-            localObject7 = l.ID(((r)localObject3).kqi);
+            a.b.c((ImageView)localObject7, ((r)localObject3).nvC);
+            localObject7 = l.Ro(((r)localObject3).nvC);
             if (TextUtils.isEmpty((CharSequence)localObject7)) {
               break;
             }
-            ((TextView)localObject5).setText(j.f(this.jpX, (CharSequence)localObject7, this.jpX.getResources().getDimensionPixelOffset(2131427862)));
+            ((TextView)localObject5).setText(com.tencent.mm.pluginsdk.ui.span.k.e(this.nqt, (CharSequence)localObject7, this.nqt.getResources().getDimensionPixelOffset(2131165576)));
           }
-          ((TextView)localObject6).setText("x " + ((r)localObject3).kqj);
+          ((TextView)localObject6).setText("x " + ((r)localObject3).nvD);
           ((View)localObject4).setTag(localObject3);
-          ((View)localObject4).setOnClickListener(this.kBO);
-          localObject5 = (ImageView)((View)localObject4).findViewById(2131827765);
-          localObject6 = (ImageView)((View)localObject4).findViewById(2131827764);
-          if (!((r)localObject3).kql) {
+          ((View)localObject4).setOnClickListener(this.nIN);
+          localObject5 = (ImageView)((View)localObject4).findViewById(2131306236);
+          localObject6 = (ImageView)((View)localObject4).findViewById(2131306235);
+          if (!((r)localObject3).nvF) {
             break label716;
           }
           ((ImageView)localObject5).setVisibility(0);
           ((ImageView)localObject6).setVisibility(0);
           label434:
-          this.kBN.addView((View)localObject4);
+          this.nIM.addView((View)localObject4);
         }
-        this.kBL.setVisibility(8);
-        this.kBM.setVisibility(8);
-        this.kBN.removeAllViews();
-        this.kBh.bdx();
+        this.nIK.setVisibility(8);
+        this.nIL.setVisibility(8);
+        this.nIM.removeAllViews();
+        this.nIg.bKv();
       }
-      this.kBI.setVisibility(0);
-      this.kBJ.setVisibility(0);
-      this.kBK.setVisibility(8);
-      if (com.tencent.mm.plugin.card.sharecard.a.b.HR(((com.tencent.mm.plugin.card.base.b)localObject4).bbi()) <= 1)
+      this.nIH.setVisibility(0);
+      this.nII.setVisibility(0);
+      this.nIJ.setVisibility(8);
+      if (com.tencent.mm.plugin.card.sharecard.a.b.QB(((com.tencent.mm.plugin.card.base.b)localObject4).bIa()) <= 1)
       {
-        this.kBL.setVisibility(8);
+        this.nIK.setVisibility(8);
         label531:
         if ((localObject3 == null) || (((ArrayList)localObject3).size() <= 0)) {
           break label1070;
@@ -156,32 +238,32 @@ public final class x
           break label1070;
         }
         localObject1 = (r)((ArrayList)localObject3).get(i);
-        if (!((r)localObject1).kql) {
+        if (!((r)localObject1).nvF) {
           break label698;
         }
       }
     }
     label1065:
     label1070:
-    for (localObject1 = ((r)localObject1).kqi;; localObject1 = "")
+    for (localObject1 = ((r)localObject1).nvC;; localObject1 = "")
     {
       localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1))
       {
         localObject2 = localObject1;
-        if (!TextUtils.isEmpty(((com.tencent.mm.plugin.card.base.b)localObject4).bbj())) {
-          localObject2 = ((com.tencent.mm.plugin.card.base.b)localObject4).bbj();
+        if (!TextUtils.isEmpty(((com.tencent.mm.plugin.card.base.b)localObject4).bIb())) {
+          localObject2 = ((com.tencent.mm.plugin.card.base.b)localObject4).bIb();
         }
       }
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         break;
       }
-      a.b.c(this.kBI, (String)localObject2);
-      localObject1 = this.jpX.getString(2131298048, new Object[] { l.ID((String)localObject2) });
-      this.kBJ.setText(j.f(this.jpX, (CharSequence)localObject1, this.jpX.getResources().getDimensionPixelOffset(2131427809)));
+      a.b.c(this.nIH, (String)localObject2);
+      localObject1 = this.nqt.getString(2131756990, new Object[] { l.Ro((String)localObject2) });
+      this.nII.setText(com.tencent.mm.pluginsdk.ui.span.k.e(this.nqt, (CharSequence)localObject1, this.nqt.getResources().getDimensionPixelOffset(2131165517)));
       break;
-      this.kBL.setVisibility(0);
-      this.kBL.setImageResource(2130838166);
+      this.nIK.setVisibility(0);
+      this.nIK.setImageResource(2131231497);
       break label531;
       label698:
       i += 1;
@@ -193,24 +275,24 @@ public final class x
       ((ImageView)localObject6).setVisibility(8);
       break label434;
       label733:
-      this.kBN.invalidate();
-      this.kBF = true;
-      AppMethodBeat.o(88787);
+      this.nIM.invalidate();
+      this.nIE = true;
+      AppMethodBeat.o(113714);
       return;
       label751:
       i = 0;
-      if (i < this.kBN.getChildCount())
+      if (i < this.nIM.getChildCount())
       {
-        localObject2 = this.kBN.getChildAt(i);
-        if ((localObject3 == null) || (((ArrayList)localObject3).size() < this.kBN.getChildCount())) {
+        localObject2 = this.nIM.getChildAt(i);
+        if ((localObject3 == null) || (((ArrayList)localObject3).size() < this.nIM.getChildCount())) {
           break label1065;
         }
       }
       for (localObject1 = (r)((ArrayList)localObject3).get(i);; localObject1 = null)
       {
-        localObject4 = (ImageView)((View)localObject2).findViewById(2131827765);
-        localObject2 = (ImageView)((View)localObject2).findViewById(2131827764);
-        if ((localObject1 != null) && (((r)localObject1).kql))
+        localObject4 = (ImageView)((View)localObject2).findViewById(2131306236);
+        localObject2 = (ImageView)((View)localObject2).findViewById(2131306235);
+        if ((localObject1 != null) && (((r)localObject1).nvF))
         {
           ((ImageView)localObject4).setVisibility(0);
           ((ImageView)localObject2).setVisibility(0);
@@ -222,37 +304,37 @@ public final class x
           ((ImageView)localObject4).setVisibility(8);
           ((ImageView)localObject2).setVisibility(8);
         }
-        this.kBN.invalidate();
+        this.nIM.invalidate();
         break;
         label881:
-        this.kBM.setVisibility(8);
-        this.kBN.removeAllViews();
+        this.nIL.setVisibility(8);
+        this.nIM.removeAllViews();
         break;
-        if (!((g)localObject1).beN())
+        if (!((g)localObject1).bLJ())
         {
-          this.kBG.setVisibility(0);
-          this.kBI.setVisibility(0);
-          this.kBJ.setVisibility(0);
-          this.kBK.setVisibility(8);
-          this.kBL.setVisibility(8);
+          this.nIF.setVisibility(0);
+          this.nIH.setVisibility(0);
+          this.nII.setVisibility(0);
+          this.nIJ.setVisibility(8);
+          this.nIK.setVisibility(8);
           localObject2 = "";
           localObject1 = localObject2;
           if (TextUtils.isEmpty(""))
           {
             localObject1 = localObject2;
-            if (!TextUtils.isEmpty(((com.tencent.mm.plugin.card.base.b)localObject4).bbj())) {
-              localObject1 = ((com.tencent.mm.plugin.card.base.b)localObject4).bbj();
+            if (!TextUtils.isEmpty(((com.tencent.mm.plugin.card.base.b)localObject4).bIb())) {
+              localObject1 = ((com.tencent.mm.plugin.card.base.b)localObject4).bIb();
             }
           }
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
-            a.b.c(this.kBI, (String)localObject1);
-            localObject1 = this.jpX.getString(2131298048, new Object[] { l.ID((String)localObject1) });
-            this.kBJ.setText(j.f(this.jpX, (CharSequence)localObject1, this.jpX.getResources().getDimensionPixelOffset(2131427809)));
+            a.b.c(this.nIH, (String)localObject1);
+            localObject1 = this.nqt.getString(2131756990, new Object[] { l.Ro((String)localObject1) });
+            this.nII.setText(com.tencent.mm.pluginsdk.ui.span.k.e(this.nqt, (CharSequence)localObject1, this.nqt.getResources().getDimensionPixelOffset(2131165517)));
           }
-          this.kBF = true;
+          this.nIE = true;
         }
-        AppMethodBeat.o(88787);
+        AppMethodBeat.o(113714);
         return;
       }
     }
@@ -260,7 +342,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.x
  * JD-Core Version:    0.7.0.1
  */

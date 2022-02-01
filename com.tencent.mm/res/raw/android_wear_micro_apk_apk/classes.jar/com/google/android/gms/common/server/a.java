@@ -10,9 +10,9 @@ public final class a
   static void a(FavaDiagnosticsEntity paramFavaDiagnosticsEntity, Parcel paramParcel)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramFavaDiagnosticsEntity.Hc);
-    c.a(paramParcel, 2, paramFavaDiagnosticsEntity.KJ);
-    c.c(paramParcel, 3, paramFavaDiagnosticsEntity.KK);
+    c.c(paramParcel, 1, paramFavaDiagnosticsEntity.IR);
+    c.a(paramParcel, 2, paramFavaDiagnosticsEntity.My);
+    c.c(paramParcel, 3, paramFavaDiagnosticsEntity.Mz);
     c.v(paramParcel, i);
   }
 }

@@ -13,18 +13,18 @@ final class m$3
   
   public final void onCreateMMMenu(l paraml)
   {
-    AppMethodBeat.i(30599);
-    paraml.aw(1193046, 2131301549, 2130838235);
-    Iterator localIterator = this.zyw.iterator();
+    AppMethodBeat.i(34463);
+    paraml.aI(1193046, 2131761219, 2131231571);
+    Iterator localIterator = this.GmX.iterator();
     while (localIterator.hasNext()) {
       paraml.add((String)localIterator.next());
     }
-    AppMethodBeat.o(30599);
+    AppMethodBeat.o(34463);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.m.3
  * JD-Core Version:    0.7.0.1
  */

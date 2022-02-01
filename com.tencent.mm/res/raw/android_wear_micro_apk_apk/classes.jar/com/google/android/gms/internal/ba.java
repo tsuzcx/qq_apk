@@ -23,14 +23,14 @@ public final class ba
   extends Fragment
   implements az
 {
-  private static WeakHashMap<Activity, WeakReference<ba>> OS = new WeakHashMap();
-  private Map<String, ay> OT = new a();
-  private int OU = 0;
-  private Bundle OV;
+  private static WeakHashMap<Activity, WeakReference<ba>> QH = new WeakHashMap();
+  private Map<String, ay> QI = new a();
+  private int QJ = 0;
+  private Bundle QK;
   
   public static ba b(Activity paramActivity)
   {
-    Object localObject = (WeakReference)OS.get(paramActivity);
+    Object localObject = (WeakReference)QH.get(paramActivity);
     if (localObject != null)
     {
       localObject = (ba)((WeakReference)localObject).get();
@@ -51,7 +51,7 @@ public final class ba
         localObject = new ba();
         paramActivity.getFragmentManager().beginTransaction().add((Fragment)localObject, "LifecycleFragmentImpl").commitAllowingStateLoss();
       }
-      OS.put(paramActivity, new WeakReference(localObject));
+      QH.put(paramActivity, new WeakReference(localObject));
       return localObject;
     }
     catch (ClassCastException paramActivity)
@@ -62,15 +62,15 @@ public final class ba
   
   public final <T extends ay> T a(String paramString, Class<T> paramClass)
   {
-    return (ay)paramClass.cast(this.OT.get(paramString));
+    return (ay)paramClass.cast(this.QI.get(paramString));
   }
   
   public final void a(final String paramString, final ay paramay)
   {
-    if (!this.OT.containsKey(paramString))
+    if (!this.QI.containsKey(paramString))
     {
-      this.OT.put(paramString, paramay);
-      if (this.OU > 0) {
+      this.QI.put(paramString, paramay);
+      if (this.QJ > 0) {
         new Handler(Looper.getMainLooper()).post(new Runnable()
         {
           public final void run()
@@ -107,13 +107,13 @@ public final class ba
   public final void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
     super.dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
-    Iterator localIterator = this.OT.values().iterator();
+    Iterator localIterator = this.QI.values().iterator();
     while (localIterator.hasNext()) {
       ((ay)localIterator.next()).dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
     }
   }
   
-  public final Activity jb()
+  public final Activity jk()
   {
     return getActivity();
   }
@@ -121,7 +121,7 @@ public final class ba
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    Iterator localIterator = this.OT.values().iterator();
+    Iterator localIterator = this.QI.values().iterator();
     while (localIterator.hasNext()) {
       ((ay)localIterator.next()).onActivityResult(paramInt1, paramInt2, paramIntent);
     }
@@ -130,9 +130,9 @@ public final class ba
   public final void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.OU = 1;
-    this.OV = paramBundle;
-    Iterator localIterator = this.OT.entrySet().iterator();
+    this.QJ = 1;
+    this.QK = paramBundle;
+    Iterator localIterator = this.QI.entrySet().iterator();
     if (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
@@ -149,8 +149,8 @@ public final class ba
   public final void onDestroy()
   {
     super.onDestroy();
-    this.OU = 4;
-    Iterator localIterator = this.OT.values().iterator();
+    this.QJ = 4;
+    Iterator localIterator = this.QI.values().iterator();
     while (localIterator.hasNext()) {
       localIterator.next();
     }
@@ -163,7 +163,7 @@ public final class ba
     for (;;)
     {
       return;
-      Iterator localIterator = this.OT.entrySet().iterator();
+      Iterator localIterator = this.QI.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -177,8 +177,8 @@ public final class ba
   public final void onStart()
   {
     super.onStart();
-    this.OU = 2;
-    Iterator localIterator = this.OT.values().iterator();
+    this.QJ = 2;
+    Iterator localIterator = this.QI.values().iterator();
     while (localIterator.hasNext()) {
       ((ay)localIterator.next()).onStart();
     }
@@ -187,8 +187,8 @@ public final class ba
   public final void onStop()
   {
     super.onStop();
-    this.OU = 3;
-    Iterator localIterator = this.OT.values().iterator();
+    this.QJ = 3;
+    Iterator localIterator = this.QI.values().iterator();
     while (localIterator.hasNext()) {
       ((ay)localIterator.next()).onStop();
     }

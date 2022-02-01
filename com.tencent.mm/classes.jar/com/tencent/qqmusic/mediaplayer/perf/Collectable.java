@@ -8,7 +8,7 @@ public abstract interface Collectable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.perf.Collectable
  * JD-Core Version:    0.7.0.1
  */

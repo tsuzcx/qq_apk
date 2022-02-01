@@ -27,19 +27,17 @@ public abstract class HeaderContainer
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public abstract boolean aOY();
+  public abstract void brI();
   
-  public abstract void aPm();
+  public abstract boolean brv();
   
-  public void b(Configuration paramConfiguration) {}
+  public void e(Configuration paramConfiguration) {}
   
-  public void dr(int paramInt1, int paramInt2) {}
+  public void en(int paramInt1, int paramInt2) {}
   
-  public void ds(int paramInt1, int paramInt2) {}
+  public void eo(int paramInt1, int paramInt2) {}
   
-  public abstract void e(View paramView1, View paramView2);
-  
-  public void fg(boolean paramBoolean) {}
+  public abstract void g(View paramView1, View paramView2);
   
   public abstract int getAnimationScrollOffset();
   
@@ -64,22 +62,22 @@ public abstract class HeaderContainer
     return 0;
   }
   
+  public void hu(boolean paramBoolean) {}
+  
   public boolean isFullScreen()
   {
     return false;
   }
   
-  public void j(long paramLong, int paramInt) {}
-  
   public void k(long paramLong, int paramInt) {}
+  
+  public void l(long paramLong, int paramInt) {}
   
   public void onDestroy() {}
   
   public void onPause() {}
   
   public void onResume() {}
-  
-  public void pZ(int paramInt) {}
   
   public void setActionBar(View paramView) {}
   
@@ -92,6 +90,8 @@ public abstract class HeaderContainer
   public abstract void setExtraBottomHeight(int paramInt);
   
   public abstract void setFixedHeight(boolean paramBoolean);
+  
+  public void uD(int paramInt) {}
 }
 
 

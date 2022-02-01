@@ -2,86 +2,86 @@ package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class b
 {
-  private List<c> otK;
-  private boolean otL;
-  private boolean otM;
-  private TextView otN;
+  private List<c> tmu;
+  private boolean tmv;
+  private boolean tmw;
+  private TextView tmx;
   
   public b()
   {
-    AppMethodBeat.i(42732);
-    this.otK = new LinkedList();
-    this.otL = false;
-    this.otM = false;
-    AppMethodBeat.o(42732);
+    AppMethodBeat.i(65609);
+    this.tmu = new LinkedList();
+    this.tmv = false;
+    this.tmw = false;
+    AppMethodBeat.o(65609);
   }
   
-  private void Sx(String paramString)
+  private void afv(String paramString)
   {
-    AppMethodBeat.i(42737);
-    if ((this.otN != null) && (!bo.isNullOrNil(paramString)))
+    AppMethodBeat.i(65614);
+    if ((this.tmx != null) && (!bt.isNullOrNil(paramString)))
     {
-      if (!this.otL) {
-        this.otN.setText(paramString);
+      if (!this.tmv) {
+        this.tmx.setText(paramString);
       }
-      this.otN.setVisibility(0);
-      this.otL = true;
+      this.tmx.setVisibility(0);
+      this.tmv = true;
     }
-    AppMethodBeat.o(42737);
+    AppMethodBeat.o(65614);
   }
   
-  public final void EC(String paramString)
+  public final void Mp(String paramString)
   {
-    AppMethodBeat.i(42738);
-    if ((this.otN != null) && (!bo.isNullOrNil(paramString)))
+    AppMethodBeat.i(65615);
+    if ((this.tmx != null) && (!bt.isNullOrNil(paramString)))
     {
-      this.otN.setText(paramString);
-      this.otN.setVisibility(0);
-      this.otL = true;
-      AppMethodBeat.o(42738);
+      this.tmx.setText(paramString);
+      this.tmx.setVisibility(0);
+      this.tmv = true;
+      AppMethodBeat.o(65615);
       return;
     }
-    if (this.otN != null)
+    if (this.tmx != null)
     {
-      this.otN.setVisibility(8);
-      this.otL = false;
+      this.tmx.setVisibility(8);
+      this.tmv = false;
     }
-    AppMethodBeat.o(42738);
+    AppMethodBeat.o(65615);
   }
   
   public final void a(c paramc)
   {
-    AppMethodBeat.i(42733);
+    AppMethodBeat.i(65610);
     if (paramc == null)
     {
-      AppMethodBeat.o(42733);
+      AppMethodBeat.o(65610);
       return;
     }
-    this.otK.add(paramc);
-    AppMethodBeat.o(42733);
+    this.tmu.add(paramc);
+    AppMethodBeat.o(65610);
   }
   
-  public final boolean bNY()
+  public final boolean cMw()
   {
-    AppMethodBeat.i(42735);
-    this.otM = false;
-    this.otL = false;
+    AppMethodBeat.i(65612);
+    this.tmw = false;
+    this.tmv = false;
     int i = 0;
-    if (i < this.otK.size())
+    if (i < this.tmu.size())
     {
-      c localc = (c)this.otK.get(i);
-      int j = localc.bMP();
+      c localc = (c)this.tmu.get(i);
+      int j = localc.cKY();
       if (j != 0)
       {
         localc.onError();
-        Sx(localc.yf(j));
-        this.otM = true;
+        afv(localc.FI(j));
+        this.tmw = true;
       }
       for (;;)
       {
@@ -90,51 +90,51 @@ public final class b
         localc.restore();
       }
     }
-    if ((!this.otM) && (this.otN != null))
+    if ((!this.tmw) && (this.tmx != null))
     {
-      this.otN.setVisibility(8);
-      this.otL = false;
+      this.tmx.setVisibility(8);
+      this.tmv = false;
     }
-    boolean bool = this.otM;
-    AppMethodBeat.o(42735);
+    boolean bool = this.tmw;
+    AppMethodBeat.o(65612);
     return bool;
   }
   
-  public final boolean bNZ()
+  public final boolean cMx()
   {
-    AppMethodBeat.i(42736);
+    AppMethodBeat.i(65613);
     int i = 0;
-    while (i < this.otK.size())
+    while (i < this.tmu.size())
     {
-      if (((c)this.otK.get(i)).bMP() != 0)
+      if (((c)this.tmu.get(i)).cKY() != 0)
       {
-        AppMethodBeat.o(42736);
+        AppMethodBeat.o(65613);
         return true;
       }
       i += 1;
     }
-    AppMethodBeat.o(42736);
+    AppMethodBeat.o(65613);
     return false;
   }
   
   public final void clear()
   {
-    AppMethodBeat.i(42734);
-    this.otK.clear();
-    this.otN = null;
-    AppMethodBeat.o(42734);
+    AppMethodBeat.i(65611);
+    this.tmu.clear();
+    this.tmx = null;
+    AppMethodBeat.o(65611);
   }
   
-  public final void i(TextView paramTextView)
+  public final void n(TextView paramTextView)
   {
     if (paramTextView != null) {
-      this.otN = paramTextView;
+      this.tmx = paramTextView;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,297 +1,191 @@
 package com.tencent.mm.storage;
 
 import android.database.Cursor;
-import android.text.TextUtils;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.g;
-import com.tencent.mm.cg.g.a;
-import com.tencent.mm.model.ag;
-import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.c;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.e.l;
+import com.tencent.mm.storagebase.h;
 import java.util.LinkedList;
 import java.util.List;
-import junit.framework.Assert;
 
 public final class v
-  extends j<u>
-  implements g.a, ag
+  extends j<s>
 {
   public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  private e db;
+  private final l<t.c, t.a> Feu;
+  public final h gPa;
   
   static
   {
-    AppMethodBeat.i(1077);
-    SQL_CREATE = new String[] { j.getCreateSQLs(u.info, "chatroom") };
-    INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS serverChatRoomUserIndex ON chatroom ( chatroomname )" };
-    AppMethodBeat.o(1077);
+    AppMethodBeat.i(124702);
+    SQL_CREATE = new String[] { j.getCreateSQLs(s.info, "BizTimeLineSingleMsgInfo") };
+    INDEX_CREATE = new String[] { "CREATE  INDEX IF NOT EXISTS msg_svr_id_index ON BizTimeLineSingleMsgInfo ( msgSvrId ) ", "CREATE  INDEX IF NOT EXISTS talker_index ON BizTimeLineSingleMsgInfo ( talker ) ", "CREATE  INDEX IF NOT EXISTS  create_time_index ON BizTimeLineSingleMsgInfo ( createTime ) ", "CREATE  INDEX IF NOT EXISTS  status_talker_index ON BizTimeLineSingleMsgInfo ( status,talker ) ", "CREATE  INDEX IF NOT EXISTS  status_talker_id_index ON BizTimeLineSingleMsgInfo ( status,talkerId ) ", "CREATE  INDEX IF NOT EXISTS  status_create_time_index ON BizTimeLineSingleMsgInfo ( status,createTime ) ", "CREATE  INDEX IF NOT EXISTS  system_reject_id_index ON BizTimeLineSingleMsgInfo ( bizRejectMsgId ) " };
+    AppMethodBeat.o(124702);
   }
   
-  public v(e parame)
+  public v(h paramh)
   {
-    super(parame, u.info, "chatroom", INDEX_CREATE);
-    this.db = parame;
+    super(paramh, s.info, "BizTimeLineSingleMsgInfo", INDEX_CREATE);
+    AppMethodBeat.i(124691);
+    this.Feu = new l() {};
+    this.gPa = paramh;
+    AppMethodBeat.o(124691);
   }
   
-  public final int a(g paramg)
+  public static List<s> p(Cursor paramCursor)
   {
-    return 0;
+    AppMethodBeat.i(124694);
+    LinkedList localLinkedList = new LinkedList();
+    while (paramCursor.moveToNext())
+    {
+      s locals = new s();
+      locals.convertFrom(paramCursor);
+      localLinkedList.add(locals);
+    }
+    paramCursor.close();
+    AppMethodBeat.o(124694);
+    return localLinkedList;
   }
   
-  public final String nE(String paramString)
+  public final void a(t.a parama)
   {
-    AppMethodBeat.i(1072);
-    boolean bool;
-    Cursor localCursor;
-    if (paramString.length() > 0)
-    {
-      bool = true;
-      Assert.assertTrue(bool);
-      paramString = "select displayname from chatroom where chatroomname='" + bo.wC(paramString) + "'";
-      localCursor = this.db.a(paramString, null, 2);
-      if (!localCursor.moveToFirst()) {
-        break label115;
-      }
-      paramString = new u();
-      paramString.convertFrom(localCursor);
+    AppMethodBeat.i(124688);
+    if (this.Feu.dR(parama)) {
+      this.Feu.doNotify();
     }
-    for (;;)
-    {
-      localCursor.close();
-      if (paramString == null)
-      {
-        AppMethodBeat.o(1072);
-        return null;
-        bool = false;
-        break;
-      }
-      paramString = paramString.field_displayname;
-      AppMethodBeat.o(1072);
-      return paramString;
-      label115:
-      paramString = null;
-    }
+    AppMethodBeat.o(124688);
   }
   
-  public final u oU(String paramString)
+  public final void a(t.c paramc)
   {
-    AppMethodBeat.i(1066);
-    u localu = new u();
-    localu.field_chatroomname = paramString;
-    if (super.get(localu, new String[] { "chatroomname" }))
-    {
-      AppMethodBeat.o(1066);
-      return localu;
-    }
-    AppMethodBeat.o(1066);
-    return null;
+    AppMethodBeat.i(124690);
+    this.Feu.remove(paramc);
+    AppMethodBeat.o(124690);
   }
   
-  public final u oV(String paramString)
+  public final void a(t.c paramc, Looper paramLooper)
   {
-    AppMethodBeat.i(1067);
-    u localu = new u();
-    localu.field_chatroomname = paramString;
-    if (super.get(localu, new String[] { "chatroomname" }))
-    {
-      AppMethodBeat.o(1067);
-      return localu;
-    }
-    AppMethodBeat.o(1067);
-    return localu;
+    AppMethodBeat.i(124689);
+    this.Feu.a(paramc, paramLooper);
+    AppMethodBeat.o(124689);
   }
   
-  public final String oW(String paramString)
+  public final boolean agh(String paramString)
   {
-    AppMethodBeat.i(1069);
-    if (paramString.length() > 0) {}
-    Cursor localCursor;
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      paramString = "select roomowner from chatroom where chatroomname='" + bo.wC(paramString) + "'";
-      localCursor = this.db.a(paramString, null, 2);
-      if (localCursor != null) {
-        break;
-      }
-      ab.e("MicroMsg.ChatroomStorage", "getChatroomOwner fail, cursor is null");
-      AppMethodBeat.o(1069);
-      return null;
-    }
-    if (localCursor.moveToFirst())
-    {
-      paramString = new u();
-      paramString.convertFrom(localCursor);
-    }
-    for (;;)
-    {
-      localCursor.close();
-      if (paramString == null)
-      {
-        AppMethodBeat.o(1069);
-        return null;
-      }
-      paramString = paramString.field_roomowner;
-      AppMethodBeat.o(1069);
-      return paramString;
-      paramString = null;
-    }
+    AppMethodBeat.i(124699);
+    s locals = new s();
+    locals.field_talker = paramString;
+    boolean bool = super.delete(locals, false, new String[] { "talker" });
+    paramString = new t.a();
+    paramString.talker = locals.field_talker;
+    paramString.mXB = locals;
+    paramString.FeG = t.b.FeJ;
+    a(paramString);
+    AppMethodBeat.o(124699);
+    return bool;
   }
   
-  public final String oX(String paramString)
+  public final int bIR()
   {
-    AppMethodBeat.i(1070);
-    boolean bool;
-    Cursor localCursor;
-    if (paramString.length() > 0)
-    {
-      bool = true;
-      Assert.assertTrue(bool);
-      paramString = "select memberlist from chatroom where chatroomname='" + bo.wC(paramString) + "'";
-      localCursor = this.db.a(paramString, null, 2);
-      if (!localCursor.moveToFirst()) {
-        break label115;
-      }
-      paramString = new u();
-      paramString.convertFrom(localCursor);
-    }
-    for (;;)
-    {
-      localCursor.close();
-      if (paramString == null)
-      {
-        AppMethodBeat.o(1070);
-        return null;
-        bool = false;
-        break;
-      }
-      paramString = paramString.field_memberlist;
-      AppMethodBeat.o(1070);
-      return paramString;
-      label115:
-      paramString = null;
-    }
-  }
-  
-  public final List<String> oY(String paramString)
-  {
-    AppMethodBeat.i(1073);
-    Object localObject = oX(paramString);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(1073);
-      return null;
-    }
-    paramString = new LinkedList();
-    if (!((String)localObject).equals(""))
-    {
-      localObject = ((String)localObject).split(";");
-      int i = 0;
-      while (i < localObject.length)
-      {
-        paramString.add(localObject[i]);
-        i += 1;
-      }
-    }
-    AppMethodBeat.o(1073);
-    return paramString;
-  }
-  
-  public final boolean oZ(String paramString)
-  {
-    Object localObject = null;
-    AppMethodBeat.i(1074);
-    paramString = "select * from chatroom where chatroomname='" + bo.wC(paramString) + "'";
-    Cursor localCursor = this.db.a(paramString, null, 2);
-    paramString = localObject;
-    if (localCursor.moveToFirst())
-    {
-      paramString = new u();
-      paramString.convertFrom(localCursor);
+    int i = 0;
+    AppMethodBeat.i(124697);
+    Cursor localCursor = this.gPa.a("SELECT count(*) FROM BizTimeLineSingleMsgInfo where status != 4", null, 0);
+    if (localCursor.moveToFirst()) {
+      i = localCursor.getInt(0);
     }
     localCursor.close();
-    if ((paramString != null) && ((paramString.field_roomflag & 0x1) == 0))
-    {
-      AppMethodBeat.o(1074);
-      return true;
-    }
-    AppMethodBeat.o(1074);
-    return false;
+    AppMethodBeat.o(124697);
+    return i;
   }
   
-  public final boolean pa(String paramString)
+  public final s eJU()
   {
-    AppMethodBeat.i(1075);
-    if (paramString.length() > 0) {}
-    for (boolean bool = true;; bool = false)
+    s locals = null;
+    AppMethodBeat.i(124695);
+    Cursor localCursor = this.gPa.a("SELECT * FROM BizTimeLineSingleMsgInfo order by createTime DESC limit 1", null, 0);
+    if (localCursor.moveToFirst())
     {
-      Assert.assertTrue(bool);
-      if (this.db.delete("chatroom", "chatroomname=?", new String[] { paramString }) != 0) {
-        break;
-      }
-      AppMethodBeat.o(1075);
-      return false;
+      locals = new s();
+      locals.convertFrom(localCursor);
     }
-    doNotify(paramString);
-    AppMethodBeat.o(1075);
-    return true;
+    localCursor.close();
+    AppMethodBeat.o(124695);
+    return locals;
   }
   
-  public final int pb(String paramString)
+  public final s eKl()
   {
-    u localu = null;
-    AppMethodBeat.i(1071);
-    if (TextUtils.isEmpty(paramString))
+    s locals = null;
+    AppMethodBeat.i(124696);
+    Cursor localCursor = this.gPa.a("SELECT * FROM BizTimeLineSingleMsgInfo where status != 4 order by createTime DESC limit 1", null, 0);
+    if (localCursor.moveToFirst())
     {
-      AppMethodBeat.o(1071);
-      return 0;
+      locals = new s();
+      locals.convertFrom(localCursor);
     }
-    long l = System.currentTimeMillis();
-    try
-    {
-      Object localObject = "select memberCount from chatroom where chatroomname='" + bo.wC(paramString) + "'";
-      localObject = this.db.a((String)localObject, null, 2);
-      if (((Cursor)localObject).moveToFirst())
-      {
-        localu = new u();
-        localu.convertFrom((Cursor)localObject);
-      }
-      ((Cursor)localObject).close();
-      if (localu == null) {
-        return 0;
-      }
-      if (localu.field_memberCount < 0)
-      {
-        i = oX(paramString).split(";").length;
-        localu.field_memberCount = i;
-        localObject = "update chatroom set memberCount = " + i + " where chatroomname = '" + bo.wC(paramString) + "'";
-        this.db.execSQL("chatroom", (String)localObject);
-        ab.i("MicroMsg.ChatroomStorage", "[getMemberCount] init field_memberCount! username:%s count:%s", new Object[] { paramString, Integer.valueOf(i) });
-      }
-      int i = localu.field_memberCount;
-      return i;
-    }
-    finally
-    {
-      ab.i("MicroMsg.ChatroomStorage", "[getMemberCount] cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-      AppMethodBeat.o(1071);
-    }
+    localCursor.close();
+    AppMethodBeat.o(124696);
+    return locals;
   }
   
-  public final void u(String paramString, long paramLong)
+  public final boolean j(s params)
   {
-    AppMethodBeat.i(1068);
-    paramString = "update chatroom set modifytime = " + paramLong + " where chatroomname = '" + bo.wC(paramString) + "'";
-    this.db.execSQL("chatroom", paramString);
-    AppMethodBeat.o(1068);
+    AppMethodBeat.i(124692);
+    boolean bool = super.insertNotify(params, false);
+    t.a locala = new t.a();
+    locala.talker = params.field_talker;
+    locala.mXB = params;
+    locala.FeG = t.b.FeI;
+    a(locala);
+    AppMethodBeat.o(124692);
+    return bool;
+  }
+  
+  public final boolean k(s params)
+  {
+    AppMethodBeat.i(124693);
+    boolean bool = super.updateNotify(params, false, new String[] { "msgSvrId" });
+    t.a locala = new t.a();
+    locala.talker = params.field_talker;
+    locala.mXB = params;
+    locala.FeG = t.b.FeK;
+    a(locala);
+    AppMethodBeat.o(124693);
+    return bool;
+  }
+  
+  public final void wc(long paramLong)
+  {
+    AppMethodBeat.i(124700);
+    Object localObject = new s();
+    ((s)localObject).field_msgId = paramLong;
+    super.delete((c)localObject, false, new String[] { "msgId" });
+    localObject = new t.a();
+    ((t.a)localObject).FeG = t.b.FeJ;
+    a((t.a)localObject);
+    AppMethodBeat.o(124700);
+  }
+  
+  public final int wi(long paramLong)
+  {
+    int i = 0;
+    AppMethodBeat.i(124698);
+    Object localObject = "SELECT count(*) FROM BizTimeLineSingleMsgInfo where status != 4 and talkerId = " + paramLong + " ";
+    localObject = this.gPa.a((String)localObject, null, 0);
+    if (((Cursor)localObject).moveToFirst()) {
+      i = ((Cursor)localObject).getInt(0);
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(124698);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.storage.v
  * JD-Core Version:    0.7.0.1
  */

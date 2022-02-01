@@ -17,17 +17,17 @@ public class LuckMoneyUseCaseCallback
   public void call(ITransmitKvData paramITransmitKvData)
   {
     boolean bool = false;
-    AppMethodBeat.i(144598);
+    AppMethodBeat.i(18710);
     Object localObject = this.mBean.getContext();
     if ((localObject instanceof LuckyMoneyPrepareUI))
     {
       localObject = (LuckyMoneyPrepareUI)localObject;
       if (paramITransmitKvData.getString("closeLoading").equals("1"))
       {
-        if ((((LuckyMoneyPrepareUI)localObject).gKM != null) && (((LuckyMoneyPrepareUI)localObject).gKM.isShowing())) {
-          ((LuckyMoneyPrepareUI)localObject).gKM.dismiss();
+        if ((((LuckyMoneyPrepareUI)localObject).tipDialog != null) && (((LuckyMoneyPrepareUI)localObject).tipDialog.isShowing())) {
+          ((LuckyMoneyPrepareUI)localObject).tipDialog.dismiss();
         }
-        AppMethodBeat.o(144598);
+        AppMethodBeat.o(18710);
         return;
       }
       int i = paramITransmitKvData.getInt("retcode");
@@ -39,31 +39,31 @@ public class LuckMoneyUseCaseCallback
       {
         localIntent = new Intent();
         localIntent.putExtra("key_trans_id", paramITransmitKvData);
-        if (localPayInfo.wgv != null) {
-          bool = localPayInfo.wgv.getBoolean("isF2FHongBao", false);
+        if (localPayInfo.Cos != null) {
+          bool = localPayInfo.Cos.getBoolean("isF2FHongBao", false);
         }
         if (!bool) {
           break;
         }
         ((LuckyMoneyPrepareUI)localObject).h(i, localIntent);
-        AppMethodBeat.o(144598);
+        AppMethodBeat.o(18710);
         return;
       }
       ((LuckyMoneyPrepareUI)localObject).i(i, localIntent);
     }
-    AppMethodBeat.o(144598);
+    AppMethodBeat.o(18710);
   }
   
   public void setData(Context paramContext, PayInfo paramPayInfo)
   {
-    AppMethodBeat.i(144597);
+    AppMethodBeat.i(18709);
     this.mBean = new SnsServiceBean(paramContext, paramPayInfo);
-    AppMethodBeat.o(144597);
+    AppMethodBeat.o(18709);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.LuckMoneyUseCaseCallback
  * JD-Core Version:    0.7.0.1
  */

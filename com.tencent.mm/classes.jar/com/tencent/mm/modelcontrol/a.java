@@ -1,26 +1,26 @@
 package com.tencent.mm.modelcontrol;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a
 {
-  private static f[] fzF;
+  private static f[] hbG;
   
   static
   {
-    AppMethodBeat.i(50591);
-    fzF = null;
+    AppMethodBeat.i(126746);
+    hbG = null;
     f[] arrayOff = new f[2];
-    fzF = arrayOff;
+    hbG = arrayOff;
     arrayOff[0] = new f(0, 120, 540, 960, 30, 1200000, 1200000);
-    fzF[1] = new f(120, 300, 360, 640, 24, 544000, 544000);
-    AppMethodBeat.o(50591);
+    hbG[1] = new f(120, 300, 360, 640, 24, 544000, 544000);
+    AppMethodBeat.o(126746);
   }
   
   public static int a(f[] paramArrayOff, VideoTransPara paramVideoTransPara1, VideoTransPara paramVideoTransPara2)
   {
-    AppMethodBeat.i(50590);
+    AppMethodBeat.i(126745);
     f[] arrayOff;
     if (paramArrayOff != null) {
       arrayOff = paramArrayOff;
@@ -28,7 +28,7 @@ public final class a
     try
     {
       if (paramArrayOff.length <= 0) {
-        arrayOff = fzF;
+        arrayOff = hbG;
       }
       n = arrayOff.length;
       paramVideoTransPara2.width = paramVideoTransPara1.width;
@@ -51,10 +51,10 @@ public final class a
       j = paramVideoTransPara1.height;
       label102:
       i1 = paramVideoTransPara1.duration;
-      if (paramVideoTransPara2.duration < arrayOff[(n - 1)].fAa) {
+      if (paramVideoTransPara2.duration < arrayOff[(n - 1)].hcc) {
         break label855;
       }
-      if (paramVideoTransPara2.duration >= fzF[1].fAa) {
+      if (paramVideoTransPara2.duration >= hbG[1].hcc) {
         break label794;
       }
     }
@@ -70,7 +70,7 @@ public final class a
         label430:
         label438:
         label462:
-        ab.e("MicroMsg.BitrateCalculator", "do calc bitrate error: " + paramArrayOff.toString());
+        ad.e("MicroMsg.BitrateCalculator", "do calc bitrate error: " + paramArrayOff.toString());
         label777:
         label794:
         int i = 0;
@@ -133,10 +133,10 @@ public final class a
       }
     }
     if (m < n) {
-      if ((i1 >= arrayOff[m].fzZ) && (i1 < arrayOff[m].fAa))
+      if ((i1 >= arrayOff[m].hcb) && (i1 < arrayOff[m].hcc))
       {
-        i1 = arrayOff[m].fAb;
-        i2 = arrayOff[m].fAc;
+        i1 = arrayOff[m].hcd;
+        i2 = arrayOff[m].hce;
         if (i <= i1) {
           if (j > i2)
           {
@@ -151,17 +151,17 @@ public final class a
                 break label923;
               }
               paramVideoTransPara2.height = i;
-              if (paramVideoTransPara2.fps <= arrayOff[m].fAd) {
+              if (paramVideoTransPara2.fps <= arrayOff[m].hcf) {
                 break label462;
               }
-              i = arrayOff[m].fAd;
+              i = arrayOff[m].hcf;
               paramVideoTransPara2.fps = i;
-              paramVideoTransPara2.videoBitrate = ((int)((arrayOff[m].fAe * arrayOff[m].fAa + arrayOff[m].fAf * paramVideoTransPara2.duration - arrayOff[m].fAe * paramVideoTransPara2.duration - arrayOff[m].fAf * arrayOff[m].fzZ) / (arrayOff[m].fAa - arrayOff[m].fzZ) * Math.sqrt(1.0D * (paramVideoTransPara2.width * paramVideoTransPara2.height) / (arrayOff[m].fAb * arrayOff[m].fAc)) * (paramVideoTransPara2.fps + 10) / 40.0D));
+              paramVideoTransPara2.videoBitrate = ((int)((arrayOff[m].hcg * arrayOff[m].hcc + arrayOff[m].hch * paramVideoTransPara2.duration - arrayOff[m].hcg * paramVideoTransPara2.duration - arrayOff[m].hch * arrayOff[m].hcb) / (arrayOff[m].hcc - arrayOff[m].hcb) * Math.sqrt(1.0D * (paramVideoTransPara2.width * paramVideoTransPara2.height) / (arrayOff[m].hcd * arrayOff[m].hce)) * (paramVideoTransPara2.fps + 10) / 40.0D));
               i = paramVideoTransPara2.videoBitrate;
             }
             for (;;)
             {
-              AppMethodBeat.o(50590);
+              AppMethodBeat.o(126745);
               return i;
               k = 0;
               break;
@@ -179,10 +179,10 @@ public final class a
                 if (m >= 2) {
                   break label794;
                 }
-                if ((i1 >= fzF[m].fzZ) && (i1 < fzF[m].fAa))
+                if ((i1 >= hbG[m].hcb) && (i1 < hbG[m].hcc))
                 {
-                  i1 = fzF[m].fAb;
-                  i2 = fzF[m].fAc;
+                  i1 = hbG[m].hcd;
+                  i2 = hbG[m].hce;
                   if (i > i1) {
                     break label944;
                   }
@@ -200,14 +200,14 @@ public final class a
                       break label1006;
                     }
                     paramVideoTransPara2.height = i;
-                    if (paramVideoTransPara2.fps <= fzF[m].fAd) {
+                    if (paramVideoTransPara2.fps <= hbG[m].hcf) {
                       break label777;
                     }
                   }
-                  for (i = fzF[m].fAd;; i = paramVideoTransPara2.fps)
+                  for (i = hbG[m].hcf;; i = paramVideoTransPara2.fps)
                   {
                     paramVideoTransPara2.fps = i;
-                    paramVideoTransPara2.videoBitrate = ((int)((fzF[m].fAe * fzF[m].fAa + fzF[m].fAf * paramVideoTransPara2.duration - fzF[m].fAe * paramVideoTransPara2.duration - fzF[m].fAf * fzF[m].fzZ) / (fzF[m].fAa - fzF[m].fzZ) * Math.sqrt(1.0D * (paramVideoTransPara2.width * paramVideoTransPara2.height) / (fzF[m].fAb * fzF[m].fAc)) * (paramVideoTransPara2.fps + 10) / 40.0D));
+                    paramVideoTransPara2.videoBitrate = ((int)((hbG[m].hcg * hbG[m].hcc + hbG[m].hch * paramVideoTransPara2.duration - hbG[m].hcg * paramVideoTransPara2.duration - hbG[m].hch * hbG[m].hcb) / (hbG[m].hcc - hbG[m].hcb) * Math.sqrt(1.0D * (paramVideoTransPara2.width * paramVideoTransPara2.height) / (hbG[m].hcd * hbG[m].hce)) * (paramVideoTransPara2.fps + 10) / 40.0D));
                     i = paramVideoTransPara2.videoBitrate;
                     break;
                     j = i * i2 / j;
@@ -227,7 +227,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelcontrol.a
  * JD-Core Version:    0.7.0.1
  */

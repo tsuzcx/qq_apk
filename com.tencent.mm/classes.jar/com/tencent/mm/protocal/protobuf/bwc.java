@@ -3,72 +3,65 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bwc
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String xJE;
-  private boolean xJF;
+  public String hNI;
   
-  public final bwc aoF(String paramString)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    this.xJE = paramString;
-    this.xJF = true;
-    return this;
-  }
-  
-  public final int computeSize()
-  {
-    AppMethodBeat.i(51853);
-    int i = 0;
-    if (this.xJF) {
-      i = e.a.a.b.b.a.f(1, this.xJE) + 0;
-    }
-    AppMethodBeat.o(51853);
-    return i + 0;
-  }
-  
-  public final boolean populateBuilderWithField(e.a.a.a.a parama, com.tencent.mm.bv.a parama1, int paramInt)
-  {
-    AppMethodBeat.i(51856);
-    parama1 = (bwc)parama1;
-    boolean bool = true;
-    switch (paramInt)
+    AppMethodBeat.i(152652);
+    if (paramInt == 0)
     {
-    default: 
-      bool = false;
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.hNI != null) {
+        paramVarArgs.d(1, this.hNI);
+      }
+      AppMethodBeat.o(152652);
+      return 0;
     }
-    for (;;)
+    if (paramInt == 1) {
+      if (this.hNI == null) {
+        break label213;
+      }
+    }
+    label213:
+    for (paramInt = f.a.a.b.b.a.e(1, this.hNI) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(51856);
-      return bool;
-      parama1.aoF(parama.CLY.readString());
+      AppMethodBeat.o(152652);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.fMq();
+          }
+        }
+        AppMethodBeat.o(152652);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        bwc localbwc = (bwc)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(152652);
+          return -1;
+        }
+        localbwc.hNI = locala.KhF.readString();
+        AppMethodBeat.o(152652);
+        return 0;
+      }
+      AppMethodBeat.o(152652);
+      return -1;
     }
-  }
-  
-  public final byte[] toByteArray()
-  {
-    AppMethodBeat.i(51854);
-    byte[] arrayOfByte = super.toByteArray();
-    AppMethodBeat.o(51854);
-    return arrayOfByte;
-  }
-  
-  public final String toString()
-  {
-    return this.xJE;
-  }
-  
-  public final void writeFields(e.a.a.c.a parama)
-  {
-    AppMethodBeat.i(51855);
-    if (this.xJF) {
-      parama.e(1, this.xJE);
-    }
-    AppMethodBeat.o(51855);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bwc
  * JD-Core Version:    0.7.0.1
  */

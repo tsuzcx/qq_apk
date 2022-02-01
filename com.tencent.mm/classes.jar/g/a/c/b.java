@@ -5,9 +5,9 @@ import java.io.InputStream;
 
 public final class b
 {
-  public int CSV;
-  public InputStream CSW;
-  public int xRf;
+  public int Epz;
+  public int KtT;
+  public InputStream KtU;
   
   public static void c(short[] paramArrayOfShort)
   {
@@ -19,38 +19,38 @@ public final class b
     }
   }
   
-  public final int g(short[] paramArrayOfShort, int paramInt)
+  public final int f(short[] paramArrayOfShort, int paramInt)
   {
-    AppMethodBeat.i(86247);
+    AppMethodBeat.i(155362);
     int i = paramArrayOfShort[paramInt];
-    int j = (this.CSV >>> 11) * i;
-    if ((this.xRf ^ 0x80000000) < (0x80000000 ^ j))
+    int j = (this.KtT >>> 11) * i;
+    if ((this.Epz ^ 0x80000000) < (0x80000000 ^ j))
     {
-      this.CSV = j;
+      this.KtT = j;
       paramArrayOfShort[paramInt] = ((short)(i + (2048 - i >>> 5)));
-      if ((this.CSV & 0xFF000000) == 0)
+      if ((this.KtT & 0xFF000000) == 0)
       {
-        this.xRf = (this.xRf << 8 | this.CSW.read());
-        this.CSV <<= 8;
+        this.Epz = (this.Epz << 8 | this.KtU.read());
+        this.KtT <<= 8;
       }
-      AppMethodBeat.o(86247);
+      AppMethodBeat.o(155362);
       return 0;
     }
-    this.CSV -= j;
-    this.xRf -= j;
+    this.KtT -= j;
+    this.Epz -= j;
     paramArrayOfShort[paramInt] = ((short)(i - (i >>> 5)));
-    if ((this.CSV & 0xFF000000) == 0)
+    if ((this.KtT & 0xFF000000) == 0)
     {
-      this.xRf = (this.xRf << 8 | this.CSW.read());
-      this.CSV <<= 8;
+      this.Epz = (this.Epz << 8 | this.KtU.read());
+      this.KtT <<= 8;
     }
-    AppMethodBeat.o(86247);
+    AppMethodBeat.o(155362);
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     g.a.c.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,12 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.al.n;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.MMPreference;
-import com.tencent.mm.wallet_core.c;
+import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.d.f;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
@@ -22,17 +22,17 @@ public abstract class WalletPreferenceUI
 {
   protected g mNetController = null;
   protected i mNetSceneMgr = null;
-  protected c mProcess = null;
+  protected d mProcess = null;
   
-  public final i dSV()
+  public abstract boolean e(int paramInt1, int paramInt2, String paramString, n paramn);
+  
+  public final i fkC()
   {
     if (this.mNetSceneMgr == null) {
       this.mNetSceneMgr = new i(this, this);
     }
     return this.mNetSceneMgr;
   }
-  
-  public abstract boolean e(int paramInt1, int paramInt2, String paramString, m paramm);
   
   public void onCreate(Bundle paramBundle)
   {
@@ -43,7 +43,7 @@ public abstract class WalletPreferenceUI
     this.mNetSceneMgr.addSceneEndListener(385);
     this.mNetSceneMgr.addSceneEndListener(1518);
     if (getLayoutId() > 0) {
-      e.dSS();
+      e.fkz();
     }
   }
   
@@ -55,21 +55,21 @@ public abstract class WalletPreferenceUI
     super.onDestroy();
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm, boolean paramBoolean)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn, boolean paramBoolean)
   {
-    if ((!e(paramInt1, paramInt2, paramString, paramm)) && (paramInt2 != 0))
+    if ((!e(paramInt1, paramInt2, paramString, paramn)) && (paramInt2 != 0))
     {
-      paramm = paramString;
-      if (bo.isNullOrNil(paramString)) {
-        paramm = getString(2131305032);
+      paramn = paramString;
+      if (bt.isNullOrNil(paramString)) {
+        paramn = getString(2131765224);
       }
-      h.a(this, paramm, null, false, new DialogInterface.OnClickListener()
+      h.a(this, paramn, null, false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(49334);
+          AppMethodBeat.i(73060);
           WalletPreferenceUI.this.finish();
-          AppMethodBeat.o(49334);
+          AppMethodBeat.o(73060);
         }
       });
     }

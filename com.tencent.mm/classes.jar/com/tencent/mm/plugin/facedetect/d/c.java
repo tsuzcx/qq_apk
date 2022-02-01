@@ -9,202 +9,231 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.model.FaceCharacteristicsResult;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bd;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public final class c
   implements b
 {
   private static String TAG = "MicroMsg.NormalFaceMotion";
-  private static long mjq = 500L;
-  private Animation mjA;
-  private volatile boolean mjB;
-  private volatile boolean mjC;
-  private boolean mjr;
-  private boolean mjs;
-  private View mjt;
-  private View mju;
-  private String mjv;
-  private long mjw;
-  private final Object mjx;
-  private Timer mjy;
-  private volatile boolean mjz;
+  private static long pQb = 500L;
+  private boolean pQc;
+  private boolean pQd;
+  private View pQe;
+  private View pQf;
+  private String pQg;
+  private long pQh;
+  private final Object pQi;
+  private Timer pQj;
+  private volatile boolean pQk;
+  private Animation pQl;
+  private volatile boolean pQm;
+  private volatile boolean pQn;
   
   public c(String paramString, long paramLong)
   {
-    AppMethodBeat.i(300);
-    this.mjr = false;
-    this.mjs = false;
-    this.mjt = null;
-    this.mju = null;
-    this.mjx = new Object();
-    this.mjy = null;
-    this.mjz = false;
-    this.mjB = false;
-    this.mjC = false;
-    this.mjv = paramString;
-    this.mjw = paramLong;
-    this.mjA = AnimationUtils.loadAnimation(ah.getContext(), 2131034266);
-    AppMethodBeat.o(300);
+    AppMethodBeat.i(103819);
+    this.pQc = false;
+    this.pQd = false;
+    this.pQe = null;
+    this.pQf = null;
+    this.pQi = new Object();
+    this.pQj = null;
+    this.pQk = false;
+    this.pQm = false;
+    this.pQn = false;
+    this.pQg = paramString;
+    this.pQh = paramLong;
+    this.pQl = AnimationUtils.loadAnimation(aj.getContext(), 2130772144);
+    AppMethodBeat.o(103819);
   }
   
   public final void a(Context paramContext, ViewGroup paramViewGroup1, ViewGroup paramViewGroup2)
   {
-    AppMethodBeat.i(303);
-    this.mjt = LayoutInflater.from(paramContext).inflate(2130969494, paramViewGroup1);
-    this.mju = LayoutInflater.from(paramContext).inflate(2130969495, paramViewGroup2);
-    this.mju.setVisibility(4);
-    if (buS() != null) {
-      buS().setText(this.mjv);
+    AppMethodBeat.i(103822);
+    this.pQe = LayoutInflater.from(paramContext).inflate(2131493907, paramViewGroup1);
+    this.pQf = LayoutInflater.from(paramContext).inflate(2131493908, paramViewGroup2);
+    this.pQf.setVisibility(4);
+    if (cgm() != null) {
+      cgm().setText(this.pQg);
     }
-    long l = this.mjw;
-    ab.i(TAG, "hy: starting tween timer: tween: %d", new Object[] { Long.valueOf(l) });
-    if (this.mjy != null) {
-      this.mjy.cancel();
+    long l = this.pQh;
+    ad.i(TAG, "hy: starting tween timer: tween: %d", new Object[] { Long.valueOf(l) });
+    if (this.pQj != null) {
+      this.pQj.cancel();
     }
-    this.mjy = new Timer("FaceDetect_hint", true);
-    this.mjz = true;
-    this.mjy.scheduleAtFixedRate(new c.2(this), 0L, l);
-    AppMethodBeat.o(303);
+    this.pQj = new Timer("FaceDetect_hint", true);
+    this.pQk = true;
+    this.pQj.scheduleAtFixedRate(new TimerTask()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(103818);
+        synchronized (c.b(c.this))
+        {
+          if (!c.c(c.this))
+          {
+            ad.w(c.TAG, "hy: already stopped");
+            cancel();
+          }
+          aq.f(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(103817);
+              if (c.this.cgm() != null) {
+                c.this.cgm().startAnimation(c.d(c.this));
+              }
+              AppMethodBeat.o(103817);
+            }
+          });
+          AppMethodBeat.o(103818);
+          return;
+        }
+      }
+    }, 0L, l);
+    AppMethodBeat.o(103822);
   }
   
   public final boolean a(FaceCharacteristicsResult paramFaceCharacteristicsResult)
   {
-    AppMethodBeat.i(304);
-    if ((this.mjr) && (paramFaceCharacteristicsResult != null) && (paramFaceCharacteristicsResult.errCode == 18))
+    AppMethodBeat.i(103823);
+    if ((this.pQc) && (paramFaceCharacteristicsResult != null) && (paramFaceCharacteristicsResult.errCode == 18))
     {
-      ab.d(TAG, "hy: ignore too active");
-      AppMethodBeat.o(304);
+      ad.d(TAG, "hy: ignore too active");
+      AppMethodBeat.o(103823);
       return true;
     }
-    AppMethodBeat.o(304);
+    AppMethodBeat.o(103823);
     return false;
   }
   
   public final boolean b(FaceCharacteristicsResult paramFaceCharacteristicsResult)
   {
-    AppMethodBeat.i(305);
+    AppMethodBeat.i(103824);
     if (paramFaceCharacteristicsResult.errCode == -1)
     {
-      this.mjr = true;
-      if (!this.mjB)
+      this.pQc = true;
+      if (!this.pQm)
       {
-        ay.ax(ah.getContext(), 2131302240);
-        paramFaceCharacteristicsResult = (TextView)this.mjt.findViewById(2131823891);
-        Animation localAnimation1 = AnimationUtils.loadAnimation(ah.getContext(), 2131034174);
-        Animation localAnimation2 = AnimationUtils.loadAnimation(ah.getContext(), 2131034181);
-        localAnimation1.setDuration(mjq);
-        localAnimation2.setDuration(mjq);
+        bd.az(aj.getContext(), 2131762119);
+        paramFaceCharacteristicsResult = (TextView)this.pQe.findViewById(2131300745);
+        Animation localAnimation1 = AnimationUtils.loadAnimation(aj.getContext(), 2130772040);
+        Animation localAnimation2 = AnimationUtils.loadAnimation(aj.getContext(), 2130772047);
+        localAnimation1.setDuration(pQb);
+        localAnimation2.setDuration(pQb);
         paramFaceCharacteristicsResult.startAnimation(localAnimation1);
         paramFaceCharacteristicsResult.setVisibility(4);
-        this.mju.setVisibility(0);
-        this.mju.startAnimation(localAnimation2);
-        this.mju.findViewById(2131823892).setOnClickListener(new c.1(this));
-        this.mjB = true;
-        AppMethodBeat.o(305);
+        this.pQf.setVisibility(0);
+        this.pQf.startAnimation(localAnimation2);
+        this.pQf.findViewById(2131299694).setOnClickListener(new c.1(this));
+        this.pQm = true;
+        AppMethodBeat.o(103824);
         return true;
       }
     }
-    AppMethodBeat.o(305);
+    AppMethodBeat.o(103824);
     return false;
   }
   
-  public final boolean buN()
+  public final boolean cgh()
   {
-    return (this.mjr) && (this.mjs);
+    return (this.pQc) && (this.pQd);
   }
   
-  public final boolean buO()
+  public final boolean cgi()
   {
     return false;
   }
   
-  public final void buP()
+  public final void cgj()
   {
-    AppMethodBeat.i(306);
-    this.mjz = false;
-    if (this.mjy != null) {
-      this.mjy.cancel();
+    AppMethodBeat.i(103825);
+    this.pQk = false;
+    if (this.pQj != null) {
+      this.pQj.cancel();
     }
-    this.mjr = false;
-    this.mjB = false;
-    this.mjC = false;
-    this.mjs = false;
-    AppMethodBeat.o(306);
+    this.pQc = false;
+    this.pQm = false;
+    this.pQn = false;
+    this.pQd = false;
+    AppMethodBeat.o(103825);
   }
   
-  public final b.b buQ()
+  public final b.b cgk()
   {
-    AppMethodBeat.i(307);
-    if (this.mjr)
+    AppMethodBeat.i(103826);
+    if (this.pQc)
     {
       localb = new b.b(90025, "user cancelled in intermediate page");
-      AppMethodBeat.o(307);
+      AppMethodBeat.o(103826);
       return localb;
     }
     b.b localb = new b.b(90004, "user cancelled in processing");
-    AppMethodBeat.o(307);
+    AppMethodBeat.o(103826);
     return localb;
   }
   
-  public final b.a buR()
+  public final b.a cgl()
   {
-    AppMethodBeat.i(308);
-    if ((this.mjr) && (!this.mjC))
+    AppMethodBeat.i(103827);
+    if ((this.pQc) && (!this.pQn))
     {
-      this.mjC = true;
+      this.pQn = true;
       b.a locala = new b.a();
-      AppMethodBeat.o(308);
+      AppMethodBeat.o(103827);
       return locala;
     }
-    AppMethodBeat.o(308);
+    AppMethodBeat.o(103827);
     return null;
   }
   
-  public final TextView buS()
+  public final TextView cgm()
   {
-    AppMethodBeat.i(301);
+    AppMethodBeat.i(103820);
     TextView localTextView;
-    if ((!this.mjr) && (this.mjt != null))
+    if ((!this.pQc) && (this.pQe != null))
     {
-      localTextView = (TextView)this.mjt.findViewById(2131823891);
-      AppMethodBeat.o(301);
+      localTextView = (TextView)this.pQe.findViewById(2131300745);
+      AppMethodBeat.o(103820);
       return localTextView;
     }
-    if ((this.mjr) && (this.mju != null))
+    if ((this.pQc) && (this.pQf != null))
     {
-      localTextView = (TextView)this.mju.findViewById(2131823891);
-      AppMethodBeat.o(301);
+      localTextView = (TextView)this.pQf.findViewById(2131300745);
+      AppMethodBeat.o(103820);
       return localTextView;
     }
-    AppMethodBeat.o(301);
+    AppMethodBeat.o(103820);
     return null;
   }
   
   public final void setBusinessTip(String paramString)
   {
-    AppMethodBeat.i(302);
+    AppMethodBeat.i(103821);
     String str = TAG;
     StringBuilder localStringBuilder = new StringBuilder("getHintMsgTv() == null : ");
-    if (buS() == null) {}
+    if (cgm() == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ab.d(str, bool);
-      if (buS() != null) {
+      ad.d(str, bool);
+      if (cgm() != null) {
         break;
       }
-      AppMethodBeat.o(302);
+      AppMethodBeat.o(103821);
       return;
     }
-    buS().setText(paramString);
-    AppMethodBeat.o(302);
+    cgm().setText(paramString);
+    AppMethodBeat.o(103821);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.d.c
  * JD-Core Version:    0.7.0.1
  */

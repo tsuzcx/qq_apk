@@ -1,79 +1,100 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.d.n;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Iterator;
-import java.util.LinkedList;
-import org.json.JSONException;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.plugin.webview.luggage.c.b;
+import com.tencent.mm.plugin.webview.luggage.f;
+import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.MMActivity.a;
+import com.tencent.mm.vfs.i;
 import org.json.JSONObject;
 
 public class aq
-  extends bh<n>
+  extends bo<f>
 {
-  private static void a(JSONObject paramJSONObject, LinkedList<String> paramLinkedList)
+  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  
+  public final void b(final a<f>.a parama)
   {
-    AppMethodBeat.i(6356);
-    if (bo.es(paramLinkedList))
+    AppMethodBeat.i(78598);
+    ad.i("MicroMsg.GameJsApiPreviewVideo", "invoke");
+    if (bt.isNullOrNil(parama.bZV.bZb.optString("localId")))
     {
-      AppMethodBeat.o(6356);
+      ad.i("MicroMsg.GameJsApiPreviewVideo", "data is invalid");
+      parama.a("invalid_data", null);
+      AppMethodBeat.o(78598);
       return;
     }
-    paramLinkedList = paramLinkedList.iterator();
-    while (paramLinkedList.hasNext())
+    String str = parama.bZV.bZb.optString("localId");
+    ad.i("MicroMsg.GameJsApiPreviewVideo", "localId:%s", new Object[] { str });
+    final MMActivity localMMActivity = (MMActivity)((f)parama.bZU).mContext;
+    localMMActivity.mmSetOnActivityResultCallback(new MMActivity.a()
     {
-      String str = (String)paramLinkedList.next();
-      JSONObject localJSONObject = new JSONObject();
-      try
+      public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
-        localJSONObject.put("download_id", -1);
-        localJSONObject.put("state", "default");
-        paramJSONObject.put(str, localJSONObject);
+        AppMethodBeat.i(78597);
+        if (paramAnonymousInt1 == (aq.this.hashCode() & 0xFFFF)) {
+          switch (paramAnonymousInt2)
+          {
+          default: 
+            parama.a("fail", null);
+          }
+        }
+        for (;;)
+        {
+          localMMActivity.mmSetOnActivityResultCallback(null);
+          AppMethodBeat.o(78597);
+          return;
+          parama.a("cancel", null);
+          continue;
+          parama.a("", null);
+        }
       }
-      catch (Exception localException)
-      {
-        ab.e("MicroMsg.JsApiQueryDownloadTask", localException.getMessage());
-      }
-    }
-    AppMethodBeat.o(6356);
-  }
-  
-  public final void a(Context paramContext, String paramString, bh.a parama)
-  {
-    AppMethodBeat.i(6355);
-    ab.i("MicroMsg.JsApiQueryDownloadTask", "invokeInMM");
-    try
+    });
+    Intent localIntent = new Intent();
+    if (bt.nullAsNil(str).trim().startsWith("weixin://bgmixid/"))
     {
-      paramContext = new JSONObject(paramString);
-      com.tencent.mm.ch.a.post(new aq.1(this, paramContext, parama));
-      AppMethodBeat.o(6355);
+      localIntent.putExtra("game_bg_mix_fake_local_id", bt.nullAsNil(str).trim());
+      d.b(localMMActivity, "game", ".media.background.GameFakeVideoUI", localIntent, hashCode() & 0xFFFF);
+      AppMethodBeat.o(78598);
       return;
     }
-    catch (JSONException paramContext)
+    WebViewJSSDKFileItem localWebViewJSSDKFileItem = b.awq(str);
+    if ((localWebViewJSSDKFileItem == null) || (TextUtils.isEmpty(localWebViewJSSDKFileItem.jau)) || (!i.eK(localWebViewJSSDKFileItem.jau)))
     {
-      ab.e("MicroMsg.JsApiQueryDownloadTask", "paras data error: " + paramContext.getMessage());
-      parama.c("fail", null);
-      AppMethodBeat.o(6355);
+      ad.e("MicroMsg.GameJsApiPreviewVideo", "the item is null or the File item not exist for localId: %s", new Object[] { str });
+      parama.a("fail", null);
+      AppMethodBeat.o(78598);
+      return;
     }
+    localIntent.putExtra("key_video_path", localWebViewJSSDKFileItem.jau);
+    d.b(localMMActivity, "card", ".ui.CardGiftVideoUI", localIntent, hashCode() & 0xFFFF);
+    AppMethodBeat.o(78598);
   }
   
-  public final void b(com.tencent.luggage.d.a<n>.a parama) {}
-  
-  public final int bjL()
+  public final int bQV()
   {
-    return 1;
+    return 0;
   }
   
   public final String name()
   {
-    return "queryDownloadTask";
+    return "previewVideo";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.aq
  * JD-Core Version:    0.7.0.1
  */

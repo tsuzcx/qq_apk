@@ -8,34 +8,34 @@ public class LifecycleService
   extends Service
   implements LifecycleOwner
 {
-  private final ServiceLifecycleDispatcher cG = new ServiceLifecycleDispatcher(this);
+  private final ServiceLifecycleDispatcher cJ = new ServiceLifecycleDispatcher(this);
   
   public Lifecycle getLifecycle()
   {
-    return this.cG.getLifecycle();
+    return this.cJ.getLifecycle();
   }
   
   public IBinder onBind(Intent paramIntent)
   {
-    this.cG.onServicePreSuperOnBind();
+    this.cJ.onServicePreSuperOnBind();
     return null;
   }
   
   public void onCreate()
   {
-    this.cG.onServicePreSuperOnCreate();
+    this.cJ.onServicePreSuperOnCreate();
     super.onCreate();
   }
   
   public void onDestroy()
   {
-    this.cG.onServicePreSuperOnDestroy();
+    this.cJ.onServicePreSuperOnDestroy();
     super.onDestroy();
   }
   
   public void onStart(Intent paramIntent, int paramInt)
   {
-    this.cG.onServicePreSuperOnStart();
+    this.cJ.onServicePreSuperOnStart();
     super.onStart(paramIntent, paramInt);
   }
   

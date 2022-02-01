@@ -14,27 +14,27 @@ public class AudioPlayerConfigure
   
   static
   {
-    AppMethodBeat.i(128352);
+    AppMethodBeat.i(114397);
     sIsNlogEnabled = false;
     minAudioTrackWaitTimeMs = 300;
     mISoLibraryLoader = new AudioPlayerConfigure.1();
-    AppMethodBeat.o(128352);
+    AppMethodBeat.o(114397);
   }
   
   public static boolean enableNativeLog(String paramString)
   {
-    AppMethodBeat.i(128350);
+    AppMethodBeat.i(114395);
     boolean bool = enableNativeLog(NativeLibs.nlog.getName(), paramString);
-    AppMethodBeat.o(128350);
+    AppMethodBeat.o(114395);
     return bool;
   }
   
   public static boolean enableNativeLog(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(128351);
+    AppMethodBeat.i(114396);
     if (sIsNlogEnabled)
     {
-      AppMethodBeat.o(128351);
+      AppMethodBeat.o(114396);
       return true;
     }
     String str = getSoLibraryLoader().findLibPath(paramString1);
@@ -53,7 +53,7 @@ public class AudioPlayerConfigure
     for (;;)
     {
       bool = sIsNlogEnabled;
-      AppMethodBeat.o(128351);
+      AppMethodBeat.o(114396);
       return bool;
       bool = false;
       break;
@@ -64,9 +64,9 @@ public class AudioPlayerConfigure
   
   private static byte[] findLibPath(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(128348);
+    AppMethodBeat.i(114393);
     paramArrayOfByte = mISoLibraryLoader.findLibPath(new String(paramArrayOfByte)).getBytes();
-    AppMethodBeat.o(128348);
+    AppMethodBeat.o(114393);
     return paramArrayOfByte;
   }
   
@@ -82,12 +82,12 @@ public class AudioPlayerConfigure
   
   public static void setLog(ILog paramILog)
   {
-    AppMethodBeat.i(128349);
+    AppMethodBeat.i(114394);
     if (paramILog != null) {
-      paramILog.i("AudioPlayerConfigure", "QQMusicAudioPlayer codec version:1.2");
+      paramILog.i("AudioPlayerConfigure", "QQMusicAudioPlayer codec version:1.19.1");
     }
     Logger.setLog(paramILog);
-    AppMethodBeat.o(128349);
+    AppMethodBeat.o(114394);
   }
   
   public static void setSoLibraryLoader(ISoLibraryLoader paramISoLibraryLoader)
@@ -99,7 +99,7 @@ public class AudioPlayerConfigure
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.AudioPlayerConfigure
  * JD-Core Version:    0.7.0.1
  */

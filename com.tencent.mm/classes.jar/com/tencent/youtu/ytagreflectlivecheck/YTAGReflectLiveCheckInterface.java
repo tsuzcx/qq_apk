@@ -1,6 +1,7 @@
 package com.tencent.youtu.ytagreflectlivecheck;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.hardware.Camera;
 import android.os.Handler;
 import android.os.Looper;
@@ -8,35 +9,187 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.youtu.ytagreflectlivecheck.jni.YTAGReflectLiveCheckJNIInterface;
 import com.tencent.youtu.ytagreflectlivecheck.manager.ProcessManager;
 import com.tencent.youtu.ytagreflectlivecheck.requester.LightDiffResponse;
+import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.YTLiveStyleReq;
+import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleResponse;
 import com.tencent.youtu.ytagreflectlivecheck.requester.RGBConfigRequester;
 import com.tencent.youtu.ytagreflectlivecheck.requester.UploadVideoRequester;
+import com.tencent.youtu.ytagreflectlivecheck.requester.UploadVideoRequesterV2;
+import com.tencent.youtu.ytagreflectlivecheck.requester.UploadVideoRequesterV3;
 import com.tencent.youtu.ytagreflectlivecheck.ui.YTReflectLayout;
 import com.tencent.youtu.ytagreflectlivecheck.worker.CameraWorker;
 import com.tencent.youtu.ytagreflectlivecheck.worker.DataWorker;
-import com.tencent.youtu.ytcommon.YTCommonExInterface;
-import com.tencent.youtu.ytcommon.tools.CameraSetting;
+import com.tencent.youtu.ytagreflectlivecheck.worker.SensorManagerWorker;
+import com.tencent.youtu.ytagreflectlivecheck.worker.SensorManagerWorker.OnGetValue;
+import com.tencent.youtu.ytagreflectlivecheck.worker.TimerWorker;
+import com.tencent.youtu.ytcommon.tools.YTCameraSetting;
 import com.tencent.youtu.ytcommon.tools.YTException;
 import com.tencent.youtu.ytcommon.tools.YTLogger;
+import java.util.ArrayList;
 
 public class YTAGReflectLiveCheckInterface
 {
   private static final String TAG = "YoutuLightLiveCheck";
-  public static final String VERSION = "3.1.0";
-  private static YTAGReflectLiveCheckInterface.LightLiveCheckResult mCheckResult;
-  private static boolean mInitModel = false;
+  public static final String VERSION = "3.4.2.2_wx";
+  private static GetLiveStyleResult getLiveStyleResultHandler;
+  public static YTAGReflectSettings mAGSettings;
+  public static String mAppId;
+  private static ArrayList mCanceledList;
+  private static LightLiveCheckResult mCheckResult;
+  private static long mCurrentTag;
+  private static TimerWorker mGetValueTimer;
+  private static boolean mInitModel;
+  private static int mOnGetValueCount;
   public static YTReflectLayout mReflectLayout;
   public static RGBConfigRequester mRgbConfigRequester;
   public static UploadVideoRequester mUploadVideoRequester;
-  private static boolean mUserCanceled = false;
+  public static UploadVideoRequesterV2 mUploadVideoRequesterV2;
+  public static UploadVideoRequesterV3 mUploadVideoRequesterV3;
+  private static long tagIndex;
+  
+  static
+  {
+    AppMethodBeat.i(43327);
+    mAppId = "";
+    mAGSettings = new YTAGReflectSettings();
+    mInitModel = false;
+    tagIndex = 0L;
+    getLiveStyleResultHandler = null;
+    AppMethodBeat.o(43327);
+  }
   
   public static void cancel()
   {
-    AppMethodBeat.i(123141);
-    YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.cancel] ---");
-    ProcessManager.cancel();
-    noticeFailed(3, "user canceled", "YTAGReflectLiveCheckInterface.cancel() be called.");
-    mUserCanceled = true;
-    AppMethodBeat.o(123141);
+    AppMethodBeat.i(43321);
+    YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.cancel] --- " + ProcessManager.mProcessState + " current: " + mCurrentTag);
+    if ((ProcessManager.mProcessState != 0) && (!isCanceled(mCurrentTag)))
+    {
+      ProcessManager.cancel();
+      noticeFailed(3, "user canceled", "YTAGReflectLiveCheckInterface.cancel() be called.", mCurrentTag);
+      if (mCanceledList != null) {
+        mCanceledList.add(Long.valueOf(mCurrentTag));
+      }
+    }
+    AppMethodBeat.o(43321);
+  }
+  
+  public static void clean()
+  {
+    mCanceledList = null;
+  }
+  
+  public static YTAGReflectSettings getAGSettings()
+  {
+    return mAGSettings;
+  }
+  
+  public static Bitmap getBestImage(boolean paramBoolean)
+  {
+    AppMethodBeat.i(43323);
+    int i = -1;
+    if (paramBoolean) {
+      i = YTCameraSetting.getRotateTag(ProcessManager.dataWorker().mCameraRotate, 1);
+    }
+    Bitmap localBitmap = YTAGReflectLiveCheckJNIInterface.getInstance().FRGetBestImg(i);
+    AppMethodBeat.o(43323);
+    return localBitmap;
+  }
+  
+  public static int getLiveCheckType(Context paramContext, GetLiveStyleResult paramGetLiveStyleResult)
+  {
+    int i = 1;
+    AppMethodBeat.i(43314);
+    YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType] --- start");
+    if (paramGetLiveStyleResult == null) {}
+    for (;;)
+    {
+      YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType] --- finish. ret: ".concat(String.valueOf(i)));
+      AppMethodBeat.o(43314);
+      return i;
+      if (paramContext == null)
+      {
+        paramGetLiveStyleResult.onFailed(1, "Input context is null.", "You can try to input getActivity().getApplicationContext() and test again.");
+        i = 2;
+      }
+      else
+      {
+        if (getLiveStyleResultHandler != null) {
+          YTLogger.w("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType] repeated calls. this may cause the previous call lost callback.");
+        }
+        getLiveStyleResultHandler = paramGetLiveStyleResult;
+        mOnGetValueCount = 0;
+        i = SensorManagerWorker.getInstance().start(paramContext, new SensorManagerWorker.OnGetValue()
+        {
+          public final void onGetValue(float paramAnonymousFloat)
+          {
+            AppMethodBeat.i(43307);
+            YTAGReflectLiveCheckInterface.access$008();
+            YTLogger.d("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType.onGetValue] get value: " + paramAnonymousFloat + " mOnGetValueCount: " + YTAGReflectLiveCheckInterface.mOnGetValueCount);
+            if (YTAGReflectLiveCheckInterface.mOnGetValueCount > 1)
+            {
+              YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType.onGetValue] get value: ".concat(String.valueOf(paramAnonymousFloat)));
+              if (YTAGReflectLiveCheckInterface.mGetValueTimer != null)
+              {
+                YTAGReflectLiveCheckInterface.mGetValueTimer.cancel();
+                YTAGReflectLiveCheckInterface.access$102(null);
+              }
+              if (YTAGReflectLiveCheckInterface.getLiveStyleResultHandler != null)
+              {
+                YTAGReflectLiveCheckInterface.getLiveStyleResultHandler.onSuccess(new LiveStyleRequester.YTLiveStyleReq(paramAnonymousFloat, YTAGReflectLiveCheckInterface.mAppId), new LiveStyleResponse());
+                YTAGReflectLiveCheckInterface.access$202(null);
+              }
+              SensorManagerWorker.getInstance().stop();
+            }
+            AppMethodBeat.o(43307);
+          }
+        });
+        if (i == 1)
+        {
+          YTLogger.w("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType] Can't find light sensor.");
+          if (getLiveStyleResultHandler != null)
+          {
+            getLiveStyleResultHandler.onSuccess(new LiveStyleRequester.YTLiveStyleReq(-1.0F, mAppId), new LiveStyleResponse());
+            getLiveStyleResultHandler = null;
+          }
+          i = 0;
+        }
+        else if (i != 0)
+        {
+          if (getLiveStyleResultHandler != null)
+          {
+            getLiveStyleResultHandler.onSuccess(new LiveStyleRequester.YTLiveStyleReq(SensorManagerWorker.getInstance().getLux(), mAppId), new LiveStyleResponse());
+            getLiveStyleResultHandler = null;
+          }
+          i = 0;
+        }
+        else
+        {
+          paramContext = new TimerWorker(3000L, 3000L)
+          {
+            public final void onFinish()
+            {
+              AppMethodBeat.i(43309);
+              YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType.onFinish] ");
+              if (YTAGReflectLiveCheckInterface.getLiveStyleResultHandler != null)
+              {
+                YTAGReflectLiveCheckInterface.getLiveStyleResultHandler.onFailed(3, "Get light from sensor overtime.", "Maybe try again will work. if have tryed times, please record the device and report to server.");
+                YTAGReflectLiveCheckInterface.access$202(null);
+              }
+              AppMethodBeat.o(43309);
+            }
+            
+            public final void onTick(long paramAnonymousLong)
+            {
+              AppMethodBeat.i(43308);
+              YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType.onTick] onTick");
+              AppMethodBeat.o(43308);
+            }
+          };
+          mGetValueTimer = paramContext;
+          paramContext.start();
+          i = 0;
+        }
+      }
+    }
   }
   
   public static int getProcessState()
@@ -44,47 +197,69 @@ public class YTAGReflectLiveCheckInterface
     return ProcessManager.mProcessState;
   }
   
-  public static int initModel(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  private static long getTag()
   {
-    AppMethodBeat.i(123135);
-    try
-    {
-      YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.initModel] ---");
-      if (mInitModel)
-      {
-        YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.initModel] has already inited.");
-        AppMethodBeat.o(123135);
-        return 0;
-      }
-      boolean bool = YTAGReflectLiveCheckJNIInterface.FRInitFaceSDK(paramArrayOfByte1, paramArrayOfByte2);
-      YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.initModel] -=-=-=-=reflect init");
-      if (bool)
-      {
-        mInitModel = true;
-        ProcessManager.initAll();
-        AppMethodBeat.o(123135);
-        return 0;
-      }
-      AppMethodBeat.o(123135);
-      return 1;
-    }
-    catch (Exception paramArrayOfByte1)
-    {
-      YTLogger.w("YoutuLightLiveCheck", "initModel failed. message: " + paramArrayOfByte1.getMessage());
-      YTException.report(paramArrayOfByte1);
-      AppMethodBeat.o(123135);
-    }
-    return 10;
+    long l = tagIndex + 1L;
+    tagIndex = l;
+    return l;
   }
   
-  public static void noticeFailed(int paramInt, String paramString1, String paramString2)
+  public static int initModel(String paramString)
   {
-    AppMethodBeat.i(123143);
-    YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.noticeFailed] resultCode: " + paramInt + " \r\nmessage: " + paramString1 + " \r\ntips: " + paramString2);
-    if (mUserCanceled)
+    AppMethodBeat.i(43312);
+    try
     {
-      YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.noticeSuccess] user canceled before notice failed");
-      AppMethodBeat.o(123143);
+      mInitModel = true;
+      ProcessManager.initAll();
+      if (mCanceledList == null) {
+        mCanceledList = new ArrayList();
+      }
+      if (paramString == null) {}
+      for (mAppId = "";; mAppId = paramString)
+      {
+        AppMethodBeat.o(43312);
+        return 0;
+      }
+      return 10;
+    }
+    catch (Exception paramString)
+    {
+      YTLogger.w("YoutuLightLiveCheck", "initModel failed. message: " + paramString.getMessage());
+      YTException.report(paramString);
+      AppMethodBeat.o(43312);
+    }
+  }
+  
+  public static boolean isCanceled(long paramLong)
+  {
+    AppMethodBeat.i(43322);
+    if (mCanceledList == null)
+    {
+      AppMethodBeat.o(43322);
+      return true;
+    }
+    int i = 0;
+    while (i < mCanceledList.size())
+    {
+      if (((Long)mCanceledList.get(i)).longValue() == paramLong)
+      {
+        AppMethodBeat.o(43322);
+        return true;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(43322);
+    return false;
+  }
+  
+  public static void noticeFailed(int paramInt, final String paramString1, final String paramString2, long paramLong)
+  {
+    AppMethodBeat.i(43325);
+    YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.noticeFailed] resultCode: " + paramInt + " \r\nmessage: " + paramString1 + " \r\ntips: " + paramString2 + " tag: " + paramLong);
+    if (isCanceled(paramLong))
+    {
+      YTLogger.d("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.noticeFailed] user canceled before notice failed. tag: ".concat(String.valueOf(paramLong)));
+      AppMethodBeat.o(43325);
       return;
     }
     if (mInitModel)
@@ -96,22 +271,31 @@ public class YTAGReflectLiveCheckInterface
     {
       mCheckResult.onFailed(paramInt, paramString1, paramString2);
       mCheckResult = null;
-      AppMethodBeat.o(123143);
+      AppMethodBeat.o(43325);
       return;
       YTLogger.w("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.noticeSuccess] releaseModel be called before notice failed");
     }
-    new Handler(Looper.getMainLooper()).post(new YTAGReflectLiveCheckInterface.2(paramInt, paramString1, paramString2));
-    AppMethodBeat.o(123143);
+    new Handler(Looper.getMainLooper()).post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(43311);
+        YTAGReflectLiveCheckInterface.mCheckResult.onFailed(this.val$resultCode, paramString1, paramString2);
+        YTAGReflectLiveCheckInterface.access$302(null);
+        AppMethodBeat.o(43311);
+      }
+    });
+    AppMethodBeat.o(43325);
   }
   
-  public static void noticeSuccess(boolean paramBoolean, LightDiffResponse paramLightDiffResponse)
+  public static void noticeSuccess(boolean paramBoolean, final LightDiffResponse paramLightDiffResponse, final String paramString, long paramLong)
   {
-    AppMethodBeat.i(123142);
-    YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.noticeSuccess] ---isAlive: ".concat(String.valueOf(paramBoolean)));
-    if (mUserCanceled)
+    AppMethodBeat.i(43324);
+    YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.noticeSuccess] ---isAlive: " + paramBoolean + " tag: " + paramLong);
+    if (isCanceled(paramLong))
     {
-      YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.noticeSuccess] user canceled before notice success");
-      AppMethodBeat.o(123142);
+      YTLogger.d("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.noticeSuccess] user canceled before notice success. tag: ".concat(String.valueOf(paramLong)));
+      AppMethodBeat.o(43324);
       return;
     }
     if (mInitModel)
@@ -121,90 +305,145 @@ public class YTAGReflectLiveCheckInterface
     }
     while (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
-      mCheckResult.onSuccess(paramBoolean, paramLightDiffResponse);
+      mCheckResult.onSuccess(paramBoolean, paramLightDiffResponse, paramString);
       mCheckResult = null;
-      AppMethodBeat.o(123142);
+      AppMethodBeat.o(43324);
       return;
       YTLogger.w("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.noticeSuccess] releaseModel be called before notice success");
     }
-    new Handler(Looper.getMainLooper()).post(new YTAGReflectLiveCheckInterface.1(paramBoolean, paramLightDiffResponse));
-    AppMethodBeat.o(123142);
+    new Handler(Looper.getMainLooper()).post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(43310);
+        YTAGReflectLiveCheckInterface.mCheckResult.onSuccess(this.val$isAlive, paramLightDiffResponse, paramString);
+        YTAGReflectLiveCheckInterface.access$302(null);
+        AppMethodBeat.o(43310);
+      }
+    });
+    AppMethodBeat.o(43324);
   }
   
   public static void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    AppMethodBeat.i(123139);
+    AppMethodBeat.i(43319);
     if (ProcessManager.cameraWorker() != null) {
       ProcessManager.cameraWorker().onPreviewFrame(paramArrayOfByte, paramCamera);
     }
-    AppMethodBeat.o(123139);
+    AppMethodBeat.o(43319);
   }
   
   public static void releaseModel()
   {
-    AppMethodBeat.i(123136);
+    AppMethodBeat.i(43313);
     if (ProcessManager.mProcessState != 0)
     {
       YTLogger.w("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.releaseModel] release model be called when processing. processState: " + ProcessManager.mProcessState);
       YTException.report(new Exception("\"[YTAGReflectLiveCheckInterface.releaseModel] release model be called when processing. processState: \" + ProcessManager.mProcessState"));
     }
     ProcessManager.clearAll();
-    if (mInitModel)
-    {
-      YTAGReflectLiveCheckJNIInterface.FRReleaseFaceSDK();
-      YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.initModel] -=-=-=-=reflect releae");
-      mInitModel = false;
-    }
-    AppMethodBeat.o(123136);
+    mInitModel = false;
+    AppMethodBeat.o(43313);
+  }
+  
+  public static void setAGSettings(YTAGReflectSettings paramYTAGReflectSettings)
+  {
+    mAGSettings = paramYTAGReflectSettings;
   }
   
   public static void setRGBConfigRequest(RGBConfigRequester paramRGBConfigRequester)
   {
-    AppMethodBeat.i(123137);
+    AppMethodBeat.i(43315);
     YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.setRGBConfigRequest] ---");
     mRgbConfigRequester = paramRGBConfigRequester;
-    AppMethodBeat.o(123137);
+    AppMethodBeat.o(43315);
+  }
+  
+  public static void setSafetyLevel(int paramInt)
+  {
+    AppMethodBeat.i(43318);
+    YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.setSafetyLevel] --- level: ".concat(String.valueOf(paramInt)));
+    mAGSettings.safetylevel = paramInt;
+    AppMethodBeat.o(43318);
   }
   
   public static void setUploadVideoRequester(UploadVideoRequester paramUploadVideoRequester)
   {
-    AppMethodBeat.i(123138);
+    AppMethodBeat.i(43326);
     YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.setUploadVideoRequester] ---");
     mUploadVideoRequester = paramUploadVideoRequester;
-    AppMethodBeat.o(123138);
+    AppMethodBeat.o(43326);
   }
   
-  public static void start(Context paramContext, Camera paramCamera, int paramInt, YTReflectLayout paramYTReflectLayout, YTAGReflectLiveCheckInterface.LightLiveCheckResult paramLightLiveCheckResult)
+  public static void setUploadVideoRequesterV2(UploadVideoRequesterV2 paramUploadVideoRequesterV2)
   {
-    AppMethodBeat.i(123140);
+    AppMethodBeat.i(43316);
+    YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.setUploadVideoRequesterV2] ---");
+    mUploadVideoRequesterV2 = paramUploadVideoRequesterV2;
+    AppMethodBeat.o(43316);
+  }
+  
+  public static void setUploadVideoRequesterV3(UploadVideoRequesterV3 paramUploadVideoRequesterV3)
+  {
+    AppMethodBeat.i(43317);
+    YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.setUploadVideoRequesterV3] ---");
+    mUploadVideoRequesterV3 = paramUploadVideoRequesterV3;
+    AppMethodBeat.o(43317);
+  }
+  
+  public static void start(Context paramContext, Camera paramCamera, int paramInt, YTReflectLayout paramYTReflectLayout, LightLiveCheckResult paramLightLiveCheckResult)
+  {
+    AppMethodBeat.i(43320);
     YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.start] ---");
     mCheckResult = paramLightLiveCheckResult;
     mReflectLayout = paramYTReflectLayout;
-    ProcessManager.dataWorker().mCameraRotate = CameraSetting.getVideoRotate(paramContext, paramInt);
-    mUserCanceled = false;
-    if (!YTCommonExInterface.isAuthSuccess())
-    {
-      noticeFailed(1, "Auth check failed.", "1. Check your lisence. 2. Call YTCommonExInterface.initAuth() before.");
-      AppMethodBeat.o(123140);
-      return;
-    }
+    ProcessManager.dataWorker().mCameraRotate = YTCameraSetting.getVideoRotate(paramContext, paramInt);
+    mCurrentTag = getTag();
     if (!mInitModel)
     {
-      noticeFailed(2, "Not init model.", "Call YTAGReflectLiveCheckInterface.initModel() before.");
-      AppMethodBeat.o(123140);
+      noticeFailed(2, "Not init model.", "Call YTAGReflectLiveCheckInterface.initModel() before.", mCurrentTag);
+      AppMethodBeat.o(43320);
+      return;
+    }
+    if (mRgbConfigRequester == null)
+    {
+      noticeFailed(4, "Not set rgbRequest.", "Call YTAGReflectLiveCheckInterface.setRGBConfigRequest() before.", mCurrentTag);
+      AppMethodBeat.o(43320);
+      return;
+    }
+    if ((mUploadVideoRequesterV3 == null) && (mUploadVideoRequesterV2 == null) && (mUploadVideoRequester == null))
+    {
+      noticeFailed(5, "Not set uploadRequest.", "Call YTAGReflectLiveCheckInterface.setUploadVideoRequesterV2() or setUploadVideoRequesterV3() before.", mCurrentTag);
+      AppMethodBeat.o(43320);
       return;
     }
     ProcessManager.cameraWorker().setCamera(paramCamera);
-    ProcessManager.start();
-    AppMethodBeat.o(123140);
+    ProcessManager.start(mCurrentTag);
+    AppMethodBeat.o(43320);
   }
   
-  public static abstract interface LightLiveProcessState
+  public static abstract interface GetLiveStyleResult
   {
-    public static final int GET_RGBCONFIG = 1;
-    public static final int HANGUP = 0;
-    public static final int REFLECTING = 2;
-    public static final int UPLOAD = 3;
+    public abstract void onFailed(int paramInt, String paramString1, String paramString2);
+    
+    public abstract void onSuccess(LiveStyleRequester.YTLiveStyleReq paramYTLiveStyleReq, LiveStyleResponse paramLiveStyleResponse);
+  }
+  
+  public static abstract interface LightLiveCheckResult
+  {
+    public static final int AUTH_FAILED = 1;
+    public static final int FINISH_ERRORBASE = 300;
+    public static final int INIT_ERRORBASE = 100;
+    public static final int NOT_INIT_MODEL = 2;
+    public static final int NOT_SET_RGBREQUEST = 4;
+    public static final int NOT_SET_UPLOADREQUEST = 5;
+    public static final int REFLECT_ERRORBASE = 200;
+    public static final int SUCCESS = 0;
+    public static final int USER_CANCEL = 3;
+    
+    public abstract void onFailed(int paramInt, String paramString1, String paramString2);
+    
+    public abstract void onSuccess(boolean paramBoolean, LightDiffResponse paramLightDiffResponse, String paramString);
   }
 }
 

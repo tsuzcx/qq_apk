@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.backup.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import f.a.a.b;
 
 public final class t
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
   public String ID;
-  public int jKn;
+  public int mBC;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(18068);
+    AppMethodBeat.i(22125);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.ID == null)
       {
         paramVarArgs = new b("Not all required fields were included: ID");
-        AppMethodBeat.o(18068);
+        AppMethodBeat.o(22125);
         throw paramVarArgs;
       }
       if (this.ID != null) {
-        paramVarArgs.e(1, this.ID);
+        paramVarArgs.d(1, this.ID);
       }
-      paramVarArgs.aO(2, this.jKn);
-      AppMethodBeat.o(18068);
+      paramVarArgs.aR(2, this.mBC);
+      AppMethodBeat.o(22125);
       return 0;
     }
     if (paramInt == 1) {
@@ -34,47 +34,47 @@ public final class t
       }
     }
     label318:
-    for (paramInt = e.a.a.b.b.a.f(1, this.ID) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.ID) + 0;; paramInt = 0)
     {
-      int i = e.a.a.b.b.a.bl(2, this.jKn);
-      AppMethodBeat.o(18068);
+      int i = f.a.a.b.b.a.bA(2, this.mBC);
+      AppMethodBeat.o(22125);
       return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
         if (this.ID == null)
         {
           paramVarArgs = new b("Not all required fields were included: ID");
-          AppMethodBeat.o(18068);
+          AppMethodBeat.o(22125);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(18068);
+        AppMethodBeat.o(22125);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         t localt = (t)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(18068);
+          AppMethodBeat.o(22125);
           return -1;
         case 1: 
-          localt.ID = locala.CLY.readString();
-          AppMethodBeat.o(18068);
+          localt.ID = locala.KhF.readString();
+          AppMethodBeat.o(22125);
           return 0;
         }
-        localt.jKn = locala.CLY.sl();
-        AppMethodBeat.o(18068);
+        localt.mBC = locala.KhF.xS();
+        AppMethodBeat.o(22125);
         return 0;
       }
-      AppMethodBeat.o(18068);
+      AppMethodBeat.o(22125);
       return -1;
     }
   }

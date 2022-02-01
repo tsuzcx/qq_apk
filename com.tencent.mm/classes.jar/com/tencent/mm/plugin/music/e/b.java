@@ -7,13 +7,13 @@ import com.tencent.mm.plugin.music.f.c.a;
 public abstract interface b
   extends a
 {
-  public abstract AudioTrack ab(int paramInt1, int paramInt2, int paramInt3);
+  public abstract AudioTrack ak(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract MediaPlayer bVt();
+  public abstract MediaPlayer cUU();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.e.b
  * JD-Core Version:    0.7.0.1
  */

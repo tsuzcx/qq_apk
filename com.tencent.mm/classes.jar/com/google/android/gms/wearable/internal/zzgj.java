@@ -8,7 +8,7 @@ public final class zzgj
 {
   public static IntentFilter zza(String paramString, Uri paramUri, int paramInt)
   {
-    AppMethodBeat.i(71370);
+    AppMethodBeat.i(101353);
     paramString = new IntentFilter(paramString);
     if (paramUri.getScheme() != null) {
       paramString.addDataScheme(paramUri.getScheme());
@@ -19,23 +19,23 @@ public final class zzgj
     if (paramUri.getPath() != null) {
       paramString.addDataPath(paramUri.getPath(), paramInt);
     }
-    AppMethodBeat.o(71370);
+    AppMethodBeat.o(101353);
     return paramString;
   }
   
   public static IntentFilter zzc(String paramString)
   {
-    AppMethodBeat.i(71369);
+    AppMethodBeat.i(101352);
     paramString = new IntentFilter(paramString);
     paramString.addDataScheme("wear");
     paramString.addDataAuthority("*", null);
-    AppMethodBeat.o(71369);
+    AppMethodBeat.o(101352);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzgj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,60 @@
 package com.tencent.mm.plugin.appbrand.jsapi.l;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.b.d.a;
-import com.tencent.mm.plugin.appbrand.s.g;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.page.t;
+import d.g.b.k;
+import d.l;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiRewriteRoute;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "dispatchInJsThread", "", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wxa-app_release"})
 public final class n
-  extends j<com.tencent.mm.plugin.appbrand.d, com.tencent.mm.plugin.appbrand.page.b.d>
+  extends a<d>
 {
-  public static final int CTRL_INDEX = 453;
-  public static final String NAME = "setBackgroundColor";
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "rewriteRoute";
+  @Deprecated
+  public static final a kes;
   
-  public n()
+  static
   {
-    super(com.tencent.mm.plugin.appbrand.page.b.d.class);
+    AppMethodBeat.i(194370);
+    kes = new a((byte)0);
+    AppMethodBeat.o(194370);
   }
   
-  private String a(JSONObject paramJSONObject, com.tencent.mm.plugin.appbrand.page.b.d paramd)
+  public final boolean aXA()
   {
-    AppMethodBeat.i(141751);
-    paramJSONObject = paramJSONObject.optString("backgroundColor", "");
-    try
+    return true;
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiRewriteRoute$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-wxa-app_release"})
+  static final class a {}
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  static final class b
+    implements Runnable
+  {
+    b(n paramn, d paramd, String paramString, int paramInt) {}
+    
+    public final void run()
     {
-      int i = g.Fn(paramJSONObject);
-      paramd.a(d.a.iAw, i);
-      paramJSONObject = j("ok", null);
-      AppMethodBeat.o(141751);
-      return paramJSONObject;
+      AppMethodBeat.i(194368);
+      Object localObject = this.jyZ.getRuntime();
+      k.g(localObject, "env.runtime");
+      boolean bool = ((AppBrandRuntime)localObject).aLK().Lx(this.keu);
+      d locald = this.jyZ;
+      int i = this.jxb;
+      n localn = this.ket;
+      if (bool) {}
+      for (localObject = "ok";; localObject = "fail")
+      {
+        locald.h(i, localn.HI((String)localObject));
+        AppMethodBeat.o(194368);
+        return;
+      }
     }
-    catch (Exception paramJSONObject)
-    {
-      paramJSONObject = j("fail:invalid color", null);
-      AppMethodBeat.o(141751);
-    }
-    return paramJSONObject;
   }
 }
 

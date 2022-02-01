@@ -14,29 +14,29 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.a.i;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.lang.ref.WeakReference;
 
 public class k
   implements LeadingMarginSpan, f<Boolean>, g<Boolean>
 {
-  private int vAX;
-  public boolean vAY;
-  public boolean vBb;
-  public boolean vBc;
-  public boolean vBd;
-  public boolean vBe;
-  private WeakReference<Drawable> vBf;
+  private int opX;
+  public boolean opY;
+  public boolean oqA;
+  private WeakReference<Drawable> oqB;
+  public boolean oqe;
+  public boolean oqf;
+  public boolean oqz;
   
   public k(boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    AppMethodBeat.i(26947);
-    this.vBb = false;
-    this.vBc = false;
-    this.vBd = false;
-    this.vBe = false;
-    this.vAX = paramInt;
+    AppMethodBeat.i(30641);
+    this.oqe = false;
+    this.oqf = false;
+    this.oqz = false;
+    this.oqA = false;
+    this.opX = paramInt;
     boolean bool1 = bool2;
     if (paramBoolean2)
     {
@@ -49,56 +49,56 @@ public class k
         }
       }
     }
-    this.vAY = bool1;
-    this.vBe = paramBoolean1;
-    this.vBb = paramBoolean3;
-    this.vBc = paramBoolean4;
-    this.vBd = paramBoolean2;
-    AppMethodBeat.o(26947);
+    this.opY = bool1;
+    this.oqA = paramBoolean1;
+    this.oqe = paramBoolean3;
+    this.oqf = paramBoolean4;
+    this.oqz = paramBoolean2;
+    AppMethodBeat.o(30641);
   }
   
-  private k djF()
+  private k esY()
   {
-    AppMethodBeat.i(26949);
-    k localk = new k(this.vBe, this.vAX, this.vBd, this.vBb, this.vBc);
-    AppMethodBeat.o(26949);
+    AppMethodBeat.i(30643);
+    k localk = new k(this.oqA, this.opX, this.oqz, this.oqe, this.oqf);
+    AppMethodBeat.o(30643);
     return localk;
   }
   
   public final void a(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent, k paramk)
   {
-    AppMethodBeat.i(26950);
-    if (paramMotionEvent.getX() > this.vAX)
+    AppMethodBeat.i(30644);
+    if (paramMotionEvent.getX() > this.opX)
     {
-      ab.e("MicroMsg.NoteTodoSpan", "x > mGapWidth");
-      AppMethodBeat.o(26950);
+      ad.e("MicroMsg.NoteTodoSpan", "x > mGapWidth");
+      AppMethodBeat.o(30644);
       return;
     }
     int i = paramSpannable.getSpanStart(paramk);
     int j = paramSpannable.getSpanEnd(paramk);
-    if (this.vBe)
+    if (this.oqA)
     {
       paramMotionEvent = "true";
-      ab.i("MicroMsg.NoteTodoSpan", "current mIsTodoCheck: %s", new Object[] { paramMotionEvent });
+      ad.i("MicroMsg.NoteTodoSpan", "current mIsTodoCheck: %s", new Object[] { paramMotionEvent });
       paramSpannable.removeSpan(this);
-      if (this.vBe) {
+      if (this.oqA) {
         break label176;
       }
     }
     label176:
     for (boolean bool = true;; bool = false)
     {
-      this.vBe = bool;
-      paramSpannable.setSpan(djF(), i, j, 33);
+      this.oqA = bool;
+      paramSpannable.setSpan(esY(), i, j, 33);
       paramTextView = (WXRTEditText)paramTextView;
       if (paramTextView.getEditTextType() == 0)
       {
-        paramTextView = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().Lj(paramTextView.getRecyclerItemPosition());
+        paramTextView = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.esI().TZ(paramTextView.getRecyclerItemPosition());
         if ((paramTextView != null) && (paramTextView.getType() == 1)) {
           ((i)paramTextView).content = com.tencent.mm.plugin.wenote.model.nativenote.a.b.a(paramSpannable);
         }
       }
-      AppMethodBeat.o(26950);
+      AppMethodBeat.o(30644);
       return;
       paramMotionEvent = "false";
       break;
@@ -107,30 +107,30 @@ public class k
   
   public void drawLeadingMargin(Canvas paramCanvas, Paint paramPaint, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, CharSequence paramCharSequence, int paramInt6, int paramInt7, boolean paramBoolean, Layout paramLayout)
   {
-    AppMethodBeat.i(26948);
+    AppMethodBeat.i(30642);
     paramCharSequence = (Spanned)paramCharSequence;
-    if ((!this.vAY) && (paramCharSequence.getSpanStart(this) == paramInt6))
+    if ((!this.opY) && (paramCharSequence.getSpanStart(this) == paramInt6))
     {
-      paramLayout = this.vBf;
+      paramLayout = this.oqB;
       paramCharSequence = null;
       if (paramLayout != null) {
         paramCharSequence = (Drawable)paramLayout.get();
       }
       paramLayout = paramCharSequence;
       if (paramCharSequence == null) {
-        if (!this.vBe) {
+        if (!this.oqA) {
           break label112;
         }
       }
       label112:
-      for (paramCharSequence = android.support.v4.content.b.k(ah.getContext(), 2130839833);; paramCharSequence = android.support.v4.content.b.k(ah.getContext(), 2130839834))
+      for (paramCharSequence = android.support.v4.content.b.l(aj.getContext(), 2131233488);; paramCharSequence = android.support.v4.content.b.l(aj.getContext(), 2131233489))
       {
-        this.vBf = new WeakReference(paramCharSequence);
+        this.oqB = new WeakReference(paramCharSequence);
         paramLayout = paramCharSequence;
         if (paramLayout != null) {
           break;
         }
-        AppMethodBeat.o(26948);
+        AppMethodBeat.o(30642);
         return;
       }
       paramLayout.setBounds(0, 0, paramLayout.getIntrinsicWidth(), paramLayout.getIntrinsicHeight());
@@ -141,20 +141,20 @@ public class k
       paramLayout.draw(paramCanvas);
       paramCanvas.restore();
     }
-    AppMethodBeat.o(26948);
+    AppMethodBeat.o(30642);
   }
   
   public int getLeadingMargin(boolean paramBoolean)
   {
-    if (this.vAY) {
+    if (this.opY) {
       return 0;
     }
-    return this.vAX;
+    return this.opX;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.spans.k
  * JD-Core Version:    0.7.0.1
  */

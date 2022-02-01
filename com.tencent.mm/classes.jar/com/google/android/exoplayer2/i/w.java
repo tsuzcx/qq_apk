@@ -8,11 +8,11 @@ public final class w
 {
   private static String a(StringBuilder paramStringBuilder, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(95950);
+    AppMethodBeat.i(93214);
     if (paramInt1 >= paramInt2)
     {
       paramStringBuilder = paramStringBuilder.toString();
-      AppMethodBeat.o(95950);
+      AppMethodBeat.o(93214);
       return paramStringBuilder;
     }
     int i = paramInt1;
@@ -67,18 +67,18 @@ public final class w
       paramInt1 = paramInt2;
     }
     paramStringBuilder = paramStringBuilder.toString();
-    AppMethodBeat.o(95950);
+    AppMethodBeat.o(93214);
     return paramStringBuilder;
   }
   
-  private static int[] aM(String paramString)
+  private static int[] aR(String paramString)
   {
-    AppMethodBeat.i(95951);
+    AppMethodBeat.i(93215);
     int[] arrayOfInt = new int[4];
     if (TextUtils.isEmpty(paramString))
     {
       arrayOfInt[0] = -1;
-      AppMethodBeat.o(95951);
+      AppMethodBeat.o(93215);
       return arrayOfInt;
     }
     int j = paramString.length();
@@ -134,7 +134,7 @@ public final class w
         arrayOfInt[1] = k;
         arrayOfInt[2] = i;
         arrayOfInt[3] = j;
-        AppMethodBeat.o(95951);
+        AppMethodBeat.o(93215);
         return arrayOfInt;
         k = 0;
         break;
@@ -143,17 +143,17 @@ public final class w
     }
   }
   
-  public static Uri m(String paramString1, String paramString2)
+  public static Uri l(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(95948);
-    paramString1 = Uri.parse(n(paramString1, paramString2));
-    AppMethodBeat.o(95948);
+    AppMethodBeat.i(93212);
+    paramString1 = Uri.parse(m(paramString1, paramString2));
+    AppMethodBeat.o(93212);
     return paramString1;
   }
   
-  private static String n(String paramString1, String paramString2)
+  public static String m(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(95949);
+    AppMethodBeat.i(93213);
     StringBuilder localStringBuilder = new StringBuilder();
     String str = paramString1;
     if (paramString1 == null) {
@@ -163,26 +163,26 @@ public final class w
     if (paramString2 == null) {
       paramString1 = "";
     }
-    paramString2 = aM(paramString1);
+    paramString2 = aR(paramString1);
     if (paramString2[0] != -1)
     {
       localStringBuilder.append(paramString1);
       a(localStringBuilder, paramString2[1], paramString2[2]);
       paramString1 = localStringBuilder.toString();
-      AppMethodBeat.o(95949);
+      AppMethodBeat.o(93213);
       return paramString1;
     }
-    int[] arrayOfInt = aM(str);
+    int[] arrayOfInt = aR(str);
     if (paramString2[3] == 0)
     {
       paramString1 = paramString1;
-      AppMethodBeat.o(95949);
+      AppMethodBeat.o(93213);
       return paramString1;
     }
     if (paramString2[2] == 0)
     {
       paramString1 = paramString1;
-      AppMethodBeat.o(95949);
+      AppMethodBeat.o(93213);
       return paramString1;
     }
     if (paramString2[1] != 0)
@@ -190,7 +190,7 @@ public final class w
       i = arrayOfInt[0] + 1;
       localStringBuilder.append(str, 0, i).append(paramString1);
       paramString1 = a(localStringBuilder, paramString2[1] + i, i + paramString2[2]);
-      AppMethodBeat.o(95949);
+      AppMethodBeat.o(93213);
       return paramString1;
     }
     int j;
@@ -200,7 +200,7 @@ public final class w
       i = arrayOfInt[1];
       j = arrayOfInt[1];
       paramString1 = a(localStringBuilder, i, paramString2[2] + j);
-      AppMethodBeat.o(95949);
+      AppMethodBeat.o(93213);
       return paramString1;
     }
     if ((arrayOfInt[0] + 2 < arrayOfInt[1]) && (arrayOfInt[1] == arrayOfInt[2]))
@@ -209,7 +209,7 @@ public final class w
       i = arrayOfInt[1];
       j = arrayOfInt[1];
       paramString1 = a(localStringBuilder, i, paramString2[2] + j + 1);
-      AppMethodBeat.o(95949);
+      AppMethodBeat.o(93213);
       return paramString1;
     }
     int i = str.lastIndexOf('/', arrayOfInt[2] - 1);
@@ -220,7 +220,7 @@ public final class w
     {
       localStringBuilder.append(str, 0, i).append(paramString1);
       paramString1 = a(localStringBuilder, arrayOfInt[1], i + paramString2[2]);
-      AppMethodBeat.o(95949);
+      AppMethodBeat.o(93213);
       return paramString1;
       i += 1;
     }
@@ -228,7 +228,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.i.w
  * JD-Core Version:    0.7.0.1
  */

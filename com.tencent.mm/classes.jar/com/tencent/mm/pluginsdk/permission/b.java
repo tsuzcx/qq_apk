@@ -2,50 +2,51 @@ package com.tencent.mm.pluginsdk.permission;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Build.VERSION;
-import android.support.v4.app.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.h;
 import java.util.HashMap;
 
 public final class b
 {
-  private static HashMap<String, c> vMr;
-  private static HashMap<String, d> vMs;
+  private static HashMap<String, c> BRe;
+  private static HashMap<String, d> BRf;
   
   static
   {
-    AppMethodBeat.i(79426);
-    vMr = new HashMap();
-    vMs = new HashMap();
-    AppMethodBeat.o(79426);
+    AppMethodBeat.i(151866);
+    BRe = new HashMap();
+    BRf = new HashMap();
+    AppMethodBeat.o(151866);
   }
   
   public static void a(Activity paramActivity, String[] paramArrayOfString, int paramInt)
   {
-    AppMethodBeat.i(79418);
-    a.a(paramActivity, paramArrayOfString, paramInt);
-    AppMethodBeat.o(79418);
+    AppMethodBeat.i(151857);
+    android.support.v4.app.a.a(paramActivity, paramArrayOfString, paramInt);
+    AppMethodBeat.o(151857);
   }
   
   public static void a(Intent paramIntent, d paramd)
   {
-    AppMethodBeat.i(79421);
+    AppMethodBeat.i(151861);
     a(paramIntent, "", "", paramd);
-    AppMethodBeat.o(79421);
+    AppMethodBeat.o(151861);
   }
   
   public static void a(Intent paramIntent, String paramString1, String paramString2, d paramd)
   {
-    AppMethodBeat.i(79420);
-    ab.i("MicroMsg.MPermissionUtil", "startSettings reasonTitle:%s, reasonMsg:%s", new Object[] { paramString1, paramString2 });
+    AppMethodBeat.i(151860);
+    ad.i("MicroMsg.MPermissionUtil", "startSettings reasonTitle:%s, reasonMsg:%s", new Object[] { paramString1, paramString2 });
     String str = String.valueOf(System.currentTimeMillis());
-    vMs.put(str, paramd);
-    paramd = ah.getContext();
+    BRf.put(str, paramd);
+    paramd = aj.getContext();
     Intent localIntent = new Intent(paramd, PermissionActivity.class);
     localIntent.putExtra("scene", 2);
     localIntent.setSelector(paramIntent);
@@ -53,46 +54,65 @@ public final class b
     localIntent.putExtra("reasonTitle", paramString1);
     localIntent.putExtra("reasonMsg", paramString2);
     localIntent.addFlags(268435456);
-    paramd.startActivity(localIntent);
-    AppMethodBeat.o(79420);
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramd, paramIntent.adn(), "com/tencent/mm/pluginsdk/permission/MPermissionUtil", "startSettings", "(Landroid/content/Intent;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/pluginsdk/permission/SettingsListener;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramd.startActivity((Intent)paramIntent.lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramd, "com/tencent/mm/pluginsdk/permission/MPermissionUtil", "startSettings", "(Landroid/content/Intent;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/pluginsdk/permission/SettingsListener;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(151860);
+  }
+  
+  public static void a(c paramc, String paramString)
+  {
+    AppMethodBeat.i(151858);
+    a(paramc, new String[] { paramString });
+    AppMethodBeat.o(151858);
   }
   
   public static void a(c paramc, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(79419);
-    ab.i("MicroMsg.MPermissionUtil", "requestPermission requestCode:%s", new Object[] { Integer.valueOf(1001) });
-    Context localContext = ah.getContext();
-    Object localObject = new int[2];
+    AppMethodBeat.i(151859);
+    if (paramc == null)
+    {
+      ad.i("MicroMsg.MPermissionUtil", "listener is null");
+      AppMethodBeat.o(151859);
+      return;
+    }
+    ad.i("MicroMsg.MPermissionUtil", "requestPermission requestCode:%s", new Object[] { Integer.valueOf(1001) });
+    Context localContext = aj.getContext();
+    Object localObject = new int[paramArrayOfString.length];
     int i = 0;
-    while (i < 2)
+    while (i < localObject.length)
     {
       localObject[i] = 0;
       i += 1;
     }
     if ((Build.VERSION.SDK_INT < 23) || (e(localContext, paramArrayOfString)))
     {
-      paramc.t((int[])localObject);
-      AppMethodBeat.o(79419);
+      paramc.s((int[])localObject);
+      AppMethodBeat.o(151859);
       return;
     }
     localObject = String.valueOf(System.currentTimeMillis());
-    vMr.put(localObject, paramc);
+    BRe.put(localObject, paramc);
     paramc = new Intent(localContext, PermissionActivity.class);
     paramc.putExtra("scene", 1);
     paramc.putExtra("requestCode", 1001);
     paramc.putExtra("permission", paramArrayOfString);
     paramc.putExtra("key", (String)localObject);
     paramc.addFlags(268435456);
-    localContext.startActivity(paramc);
-    AppMethodBeat.o(79419);
+    paramc = new com.tencent.mm.hellhoundlib.b.a().bd(paramc);
+    com.tencent.mm.hellhoundlib.a.a.a(localContext, paramc.adn(), "com/tencent/mm/pluginsdk/permission/MPermissionUtil", "requestPermission", "(ILcom/tencent/mm/pluginsdk/permission/PermissionListener;[Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localContext.startActivity((Intent)paramc.lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/pluginsdk/permission/MPermissionUtil", "requestPermission", "(ILcom/tencent/mm/pluginsdk/permission/PermissionListener;[Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(151859);
   }
   
-  public static boolean a(Activity paramActivity, String paramString1, int paramInt, String paramString2, String paramString3)
+  public static boolean a(Activity paramActivity, final String paramString1, final int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(79412);
+    AppMethodBeat.i(151851);
     if ((Build.VERSION.SDK_INT < 23) && (!"MNC".equals(Build.VERSION.CODENAME)))
     {
-      AppMethodBeat.o(79412);
+      AppMethodBeat.o(151851);
       return true;
     }
     try
@@ -100,230 +120,188 @@ public final class b
       int i = android.support.v4.content.b.checkSelfPermission(paramActivity, paramString1);
       if (i == 0)
       {
-        AppMethodBeat.o(79412);
+        AppMethodBeat.o(151851);
         return true;
       }
     }
     catch (Exception paramActivity)
     {
-      ab.e("MicroMsg.MPermissionUtil", "check mpermission exception:%s.", new Object[] { paramActivity });
-      AppMethodBeat.o(79412);
+      ad.e("MicroMsg.MPermissionUtil", "check mpermission exception:%s.", new Object[] { paramActivity });
+      AppMethodBeat.o(151851);
       return true;
     }
-    if (!bo.isNullOrNil(paramString3)) {
-      h.a(paramActivity, paramString3, paramString2, false, new b.2(paramActivity, paramString1, paramInt));
+    if (!bt.isNullOrNil(paramString3)) {
+      h.a(paramActivity, paramString3, paramString2, false, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(151849);
+          paramAnonymousDialogInterface.dismiss();
+          paramAnonymousDialogInterface = this.val$activity;
+          String str = paramString1;
+          paramAnonymousInt = paramInt;
+          android.support.v4.app.a.a(paramAnonymousDialogInterface, new String[] { str }, paramAnonymousInt);
+          AppMethodBeat.o(151849);
+        }
+      });
     }
     for (;;)
     {
-      AppMethodBeat.o(79412);
+      AppMethodBeat.o(151851);
       return false;
-      a.a(paramActivity, new String[] { paramString1 }, paramInt);
+      android.support.v4.app.a.a(paramActivity, new String[] { paramString1 }, paramInt);
     }
   }
   
-  static c alB(String paramString)
+  public static boolean a(Activity paramActivity, final String[] paramArrayOfString, final int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(79424);
-    paramString = (c)vMr.remove(paramString);
-    AppMethodBeat.o(79424);
+    AppMethodBeat.i(177303);
+    if ((Build.VERSION.SDK_INT < 23) && (!"MNC".equals(Build.VERSION.CODENAME)))
+    {
+      AppMethodBeat.o(177303);
+      return true;
+    }
+    try
+    {
+      int m = paramArrayOfString.length;
+      int j = 0;
+      int i = 0;
+      int k;
+      for (;;)
+      {
+        k = i;
+        if (j >= m) {
+          break;
+        }
+        i = android.support.v4.content.b.checkSelfPermission(paramActivity, paramArrayOfString[j]);
+        k = i;
+        if (i != 0) {
+          break;
+        }
+        j += 1;
+      }
+      if (k != 0) {
+        break label115;
+      }
+    }
+    catch (Exception paramActivity)
+    {
+      ad.e("MicroMsg.MPermissionUtil", "check mpermission exception:%s.", new Object[] { paramActivity });
+      AppMethodBeat.o(177303);
+      return true;
+    }
+    AppMethodBeat.o(177303);
+    return true;
+    label115:
+    if (!bt.isNullOrNil(paramString2)) {
+      h.a(paramActivity, paramString2, paramString1, false, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(151848);
+          paramAnonymousDialogInterface.dismiss();
+          android.support.v4.app.a.a(this.val$activity, paramArrayOfString, paramInt);
+          AppMethodBeat.o(151848);
+        }
+      });
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(177303);
+      return false;
+      android.support.v4.app.a.a(paramActivity, paramArrayOfString, paramInt);
+    }
+  }
+  
+  static c aBb(String paramString)
+  {
+    AppMethodBeat.i(151864);
+    paramString = (c)BRe.remove(paramString);
+    AppMethodBeat.o(151864);
     return paramString;
   }
   
-  static d alC(String paramString)
+  static d aBc(String paramString)
   {
-    AppMethodBeat.i(79425);
-    paramString = (d)vMs.remove(paramString);
-    AppMethodBeat.o(79425);
+    AppMethodBeat.i(151865);
+    paramString = (d)BRf.remove(paramString);
+    AppMethodBeat.o(151865);
     return paramString;
   }
   
-  public static boolean aq(Activity paramActivity)
+  public static boolean aL(Activity paramActivity)
   {
-    AppMethodBeat.i(79413);
-    boolean bool = j(paramActivity, "android.permission.WRITE_EXTERNAL_STORAGE");
-    ab.i("MicroMsg.MPermissionUtil", "summerper checkPermission checkStorage[%b]", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.i(151852);
+    ad.i("MicroMsg.MPermissionUtil", "summerper checkPermission checkStorage[%b]", new Object[] { Boolean.valueOf(k(paramActivity, "android.permission.WRITE_EXTERNAL_STORAGE")) });
+    boolean bool = k(paramActivity, "android.permission.READ_PHONE_STATE");
+    ad.i("MicroMsg.MPermissionUtil", "summerper checkPermission checkPhone[%b]", new Object[] { Boolean.valueOf(bool) });
     if (!bool)
     {
-      AppMethodBeat.o(79413);
+      AppMethodBeat.o(151852);
       return false;
     }
-    bool = j(paramActivity, "android.permission.READ_PHONE_STATE");
-    ab.i("MicroMsg.MPermissionUtil", "summerper checkPermission checkPhone[%b]", new Object[] { Boolean.valueOf(bool) });
-    if (!bool)
-    {
-      AppMethodBeat.o(79413);
-      return false;
-    }
-    AppMethodBeat.o(79413);
+    AppMethodBeat.o(151852);
     return true;
   }
   
   public static void b(Activity paramActivity, String paramString, int paramInt)
   {
-    AppMethodBeat.i(79417);
-    a.a(paramActivity, new String[] { paramString }, paramInt);
-    AppMethodBeat.o(79417);
+    AppMethodBeat.i(151856);
+    android.support.v4.app.a.a(paramActivity, new String[] { paramString }, paramInt);
+    AppMethodBeat.o(151856);
   }
   
-  public static boolean b(Activity paramActivity, String[] paramArrayOfString, int paramInt)
+  private static boolean bL(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(151621);
-    if ((Build.VERSION.SDK_INT < 23) && (!"MNC".equals(Build.VERSION.CODENAME)))
-    {
-      AppMethodBeat.o(151621);
-      return true;
-    }
-    int j = 0;
-    int i = 0;
-    int k;
-    for (;;)
-    {
-      k = i;
-      if (j < 2) {
-        try
-        {
-          i = android.support.v4.content.b.checkSelfPermission(paramActivity, paramArrayOfString[j]);
-          k = i;
-          if (i == 0) {
-            j += 1;
-          }
-        }
-        catch (Exception paramActivity)
-        {
-          ab.e("MicroMsg.MPermissionUtil", "check mpermission exception:%s.", new Object[] { paramActivity });
-          AppMethodBeat.o(151621);
-          return true;
-        }
-      }
-    }
-    if (k == 0)
-    {
-      AppMethodBeat.o(151621);
-      return true;
-    }
-    if (!bo.isNullOrNil(null)) {
-      h.a(paramActivity, null, null, false, new b.1(paramActivity, paramArrayOfString, paramInt));
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(151621);
-      return false;
-      a.a(paramActivity, paramArrayOfString, paramInt);
-    }
-  }
-  
-  private static boolean bx(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(79423);
+    AppMethodBeat.i(151863);
     try
     {
       int i = android.support.v4.content.b.checkSelfPermission(paramContext, paramString);
       if (i != 0)
       {
-        AppMethodBeat.o(79423);
+        AppMethodBeat.o(151863);
         return false;
       }
     }
     catch (Exception paramContext)
     {
-      ab.e("MicroMsg.MPermissionUtil", "check mpermission exception:%s.", new Object[] { paramContext });
-      AppMethodBeat.o(79423);
+      ad.e("MicroMsg.MPermissionUtil", "check mpermission exception:%s.", new Object[] { paramContext });
+      AppMethodBeat.o(151863);
       return false;
     }
-    AppMethodBeat.o(79423);
+    AppMethodBeat.o(151863);
     return true;
   }
   
   public static boolean e(Context paramContext, String... paramVarArgs)
   {
-    AppMethodBeat.i(79422);
+    AppMethodBeat.i(151862);
     if (paramVarArgs.length == 0)
     {
-      AppMethodBeat.o(79422);
+      AppMethodBeat.o(151862);
       return false;
     }
     int j = paramVarArgs.length;
     int i = 0;
     while (i < j)
     {
-      if (!bx(paramContext, paramVarArgs[i]))
+      if (!bL(paramContext, paramVarArgs[i]))
       {
-        AppMethodBeat.o(79422);
+        AppMethodBeat.o(151862);
         return false;
       }
       i += 1;
     }
-    AppMethodBeat.o(79422);
+    AppMethodBeat.o(151862);
     return true;
   }
   
-  public static boolean i(Context paramContext, String paramString, boolean paramBoolean)
+  private static boolean k(Activity paramActivity, String paramString)
   {
-    AppMethodBeat.i(79416);
-    int i;
-    try
-    {
-      i = android.support.v4.content.b.checkSelfPermission(paramContext, paramString);
-      if (i != 0)
-      {
-        AppMethodBeat.o(79416);
-        return false;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      ab.e("MicroMsg.MPermissionUtil", "check mpermission exception:%s.", new Object[] { paramContext });
-      AppMethodBeat.o(79416);
-      return false;
-    }
-    if (!paramBoolean)
-    {
-      AppMethodBeat.o(79416);
-      return true;
-    }
-    String str = null;
-    if (paramString.equals("android.permission.READ_CONTACTS"))
-    {
-      str = "android.permission.WRITE_CONTACTS";
-      if (bo.isNullOrNil(str)) {
-        break label144;
-      }
-    }
-    label137:
-    label144:
-    for (;;)
-    {
-      try
-      {
-        i = android.support.v4.content.b.checkSelfPermission(paramContext, str);
-        if (i != 0) {
-          break label137;
-        }
-        AppMethodBeat.o(79416);
-        return true;
-      }
-      catch (Exception paramContext)
-      {
-        ab.e("MicroMsg.MPermissionUtil", "check mpermission otherPermisson exception:%s.", new Object[] { paramContext });
-        AppMethodBeat.o(79416);
-        return false;
-      }
-      if (!paramString.equals("android.permission.WRITE_CONTACTS")) {
-        break;
-      }
-      str = "android.permission.READ_CONTACTS";
-      break;
-      AppMethodBeat.o(79416);
-      return false;
-    }
-  }
-  
-  private static boolean j(Activity paramActivity, String paramString)
-  {
-    AppMethodBeat.i(79414);
+    AppMethodBeat.i(151853);
     if ((Build.VERSION.SDK_INT < 23) && (!"MNC".equals(Build.VERSION.CODENAME)))
     {
-      AppMethodBeat.o(79414);
+      AppMethodBeat.o(151853);
       return true;
     }
     try
@@ -331,31 +309,92 @@ public final class b
       int i = android.support.v4.content.b.checkSelfPermission(paramActivity, paramString);
       if (i == 0)
       {
-        AppMethodBeat.o(79414);
+        AppMethodBeat.o(151853);
         return true;
       }
     }
     catch (Exception paramActivity)
     {
-      ab.e("MicroMsg.MPermissionUtil", "check mpermission exception:%s.", new Object[] { paramActivity });
-      AppMethodBeat.o(79414);
+      ad.e("MicroMsg.MPermissionUtil", "check mpermission exception:%s.", new Object[] { paramActivity });
+      AppMethodBeat.o(151853);
       return true;
     }
-    AppMethodBeat.o(79414);
+    AppMethodBeat.o(151853);
     return false;
+  }
+  
+  public static boolean k(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(151855);
+    int i;
+    try
+    {
+      i = android.support.v4.content.b.checkSelfPermission(paramContext, paramString);
+      if (i != 0)
+      {
+        AppMethodBeat.o(151855);
+        return false;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      ad.e("MicroMsg.MPermissionUtil", "check mpermission exception:%s.", new Object[] { paramContext });
+      AppMethodBeat.o(151855);
+      return false;
+    }
+    if (!paramBoolean)
+    {
+      AppMethodBeat.o(151855);
+      return true;
+    }
+    String str = null;
+    if (paramString.equals("android.permission.READ_CONTACTS"))
+    {
+      str = "android.permission.WRITE_CONTACTS";
+      if (bt.isNullOrNil(str)) {
+        break label156;
+      }
+    }
+    label148:
+    label156:
+    for (;;)
+    {
+      try
+      {
+        i = android.support.v4.content.b.checkSelfPermission(paramContext, str);
+        if (i != 0) {
+          break label148;
+        }
+        AppMethodBeat.o(151855);
+        return true;
+      }
+      catch (Exception paramContext)
+      {
+        ad.e("MicroMsg.MPermissionUtil", "check mpermission otherPermisson exception:%s.", new Object[] { paramContext });
+        AppMethodBeat.o(151855);
+        return false;
+      }
+      if (!paramString.equals("android.permission.WRITE_CONTACTS")) {
+        break;
+      }
+      str = "android.permission.READ_CONTACTS";
+      break;
+      AppMethodBeat.o(151855);
+      return false;
+    }
   }
   
   public static boolean o(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(79415);
-    boolean bool = i(paramContext, paramString, true);
-    AppMethodBeat.o(79415);
+    AppMethodBeat.i(151854);
+    boolean bool = k(paramContext, paramString, true);
+    AppMethodBeat.o(151854);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.permission.b
  * JD-Core Version:    0.7.0.1
  */

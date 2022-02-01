@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:id="@id/dmr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/d95" />
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/w_" android:id="@id/dms" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1" android:text="@string/d8y" />
-    <CheckBox android:textSize="@dimen/m2" android:textColor="@color/h6" android:id="@id/dmt" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1" android:minHeight="20.0dip" android:text="@string/d91" style="@style/o1" />
-</LinearLayout>
+    <ImageView android:id="@id/dbi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bow" android:scaleType="fitXY" />
+    <ImageView android:id="@id/dbt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/box" android:scaleType="fitXY" />
+</RelativeLayout>

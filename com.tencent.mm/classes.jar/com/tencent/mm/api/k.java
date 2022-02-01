@@ -1,13 +1,13 @@
 package com.tencent.mm.api;
 
-import android.content.Context;
-import android.graphics.Bitmap;
+import com.tencent.mm.kernel.c.a;
 
 public abstract interface k
+  extends a
 {
-  public abstract String Al();
+  public abstract com.tencent.mm.am.a.k ea(String paramString);
   
-  public abstract Bitmap y(Context paramContext, int paramInt);
+  public abstract String eb(String paramString);
 }
 
 

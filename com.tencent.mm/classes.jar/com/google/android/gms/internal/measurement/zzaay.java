@@ -24,17 +24,17 @@ class zzaay<K extends Comparable<K>, V>
   
   private zzaay(int paramInt)
   {
-    AppMethodBeat.i(3367);
+    AppMethodBeat.i(40157);
     this.zzbtx = paramInt;
     this.zzbty = Collections.emptyList();
     this.zzbtz = Collections.emptyMap();
     this.zzbub = Collections.emptyMap();
-    AppMethodBeat.o(3367);
+    AppMethodBeat.o(40157);
   }
   
   private final int zza(K paramK)
   {
-    AppMethodBeat.i(3379);
+    AppMethodBeat.i(40169);
     int j = 0;
     int i = this.zzbty.size() - 1;
     int k;
@@ -44,12 +44,12 @@ class zzaay<K extends Comparable<K>, V>
       if (k > 0)
       {
         i = -(i + 2);
-        AppMethodBeat.o(3379);
+        AppMethodBeat.o(40169);
         return i;
       }
       if (k == 0)
       {
-        AppMethodBeat.o(3379);
+        AppMethodBeat.o(40169);
         return i;
       }
     }
@@ -69,14 +69,14 @@ class zzaay<K extends Comparable<K>, V>
         }
         else
         {
-          AppMethodBeat.o(3379);
+          AppMethodBeat.o(40169);
           return k;
         }
       }
       else
       {
         i = -(j + 1);
-        AppMethodBeat.o(3379);
+        AppMethodBeat.o(40169);
         return i;
       }
     }
@@ -84,15 +84,15 @@ class zzaay<K extends Comparable<K>, V>
   
   static <FieldDescriptorType extends zzzo<FieldDescriptorType>> zzaay<FieldDescriptorType, Object> zzag(int paramInt)
   {
-    AppMethodBeat.i(3366);
+    AppMethodBeat.i(40156);
     zzaaz localzzaaz = new zzaaz(paramInt);
-    AppMethodBeat.o(3366);
+    AppMethodBeat.o(40156);
     return localzzaaz;
   }
   
   private final V zzai(int paramInt)
   {
-    AppMethodBeat.i(3378);
+    AppMethodBeat.i(40168);
     zzul();
     Object localObject = ((zzabd)this.zzbty.remove(paramInt)).getValue();
     if (!this.zzbtz.isEmpty())
@@ -101,25 +101,25 @@ class zzaay<K extends Comparable<K>, V>
       this.zzbty.add(new zzabd(this, (Map.Entry)localIterator.next()));
       localIterator.remove();
     }
-    AppMethodBeat.o(3378);
+    AppMethodBeat.o(40168);
     return localObject;
   }
   
   private final void zzul()
   {
-    AppMethodBeat.i(3381);
+    AppMethodBeat.i(40171);
     if (this.zzbls)
     {
       UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
-      AppMethodBeat.o(3381);
+      AppMethodBeat.o(40171);
       throw localUnsupportedOperationException;
     }
-    AppMethodBeat.o(3381);
+    AppMethodBeat.o(40171);
   }
   
   private final SortedMap<K, V> zzum()
   {
-    AppMethodBeat.i(3382);
+    AppMethodBeat.i(40172);
     zzul();
     if ((this.zzbtz.isEmpty()) && (!(this.zzbtz instanceof TreeMap)))
     {
@@ -127,13 +127,13 @@ class zzaay<K extends Comparable<K>, V>
       this.zzbub = ((TreeMap)this.zzbtz).descendingMap();
     }
     SortedMap localSortedMap = (SortedMap)this.zzbtz;
-    AppMethodBeat.o(3382);
+    AppMethodBeat.o(40172);
     return localSortedMap;
   }
   
   public void clear()
   {
-    AppMethodBeat.i(3376);
+    AppMethodBeat.i(40166);
     zzul();
     if (!this.zzbty.isEmpty()) {
       this.zzbty.clear();
@@ -141,60 +141,60 @@ class zzaay<K extends Comparable<K>, V>
     if (!this.zzbtz.isEmpty()) {
       this.zzbtz.clear();
     }
-    AppMethodBeat.o(3376);
+    AppMethodBeat.o(40166);
   }
   
   public boolean containsKey(Object paramObject)
   {
-    AppMethodBeat.i(3373);
+    AppMethodBeat.i(40163);
     paramObject = (Comparable)paramObject;
     if ((zza(paramObject) >= 0) || (this.zzbtz.containsKey(paramObject)))
     {
-      AppMethodBeat.o(3373);
+      AppMethodBeat.o(40163);
       return true;
     }
-    AppMethodBeat.o(3373);
+    AppMethodBeat.o(40163);
     return false;
   }
   
   public Set<Map.Entry<K, V>> entrySet()
   {
-    AppMethodBeat.i(3380);
+    AppMethodBeat.i(40170);
     if (this.zzbua == null) {
       this.zzbua = new zzabf(this, null);
     }
     zzabf localzzabf = this.zzbua;
-    AppMethodBeat.o(3380);
+    AppMethodBeat.o(40170);
     return localzzabf;
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(3383);
+    AppMethodBeat.i(40173);
     if (this == paramObject)
     {
-      AppMethodBeat.o(3383);
+      AppMethodBeat.o(40173);
       return true;
     }
     boolean bool;
     if (!(paramObject instanceof zzaay))
     {
       bool = super.equals(paramObject);
-      AppMethodBeat.o(3383);
+      AppMethodBeat.o(40173);
       return bool;
     }
     paramObject = (zzaay)paramObject;
     int j = size();
     if (j != paramObject.size())
     {
-      AppMethodBeat.o(3383);
+      AppMethodBeat.o(40173);
       return false;
     }
     int k = zzuj();
     if (k != paramObject.zzuj())
     {
       bool = entrySet().equals(paramObject.entrySet());
-      AppMethodBeat.o(3383);
+      AppMethodBeat.o(40173);
       return bool;
     }
     int i = 0;
@@ -202,7 +202,7 @@ class zzaay<K extends Comparable<K>, V>
     {
       if (!zzah(i).equals(paramObject.zzah(i)))
       {
-        AppMethodBeat.o(3383);
+        AppMethodBeat.o(40173);
         return false;
       }
       i += 1;
@@ -210,32 +210,32 @@ class zzaay<K extends Comparable<K>, V>
     if (k != j)
     {
       bool = this.zzbtz.equals(paramObject.zzbtz);
-      AppMethodBeat.o(3383);
+      AppMethodBeat.o(40173);
       return bool;
     }
-    AppMethodBeat.o(3383);
+    AppMethodBeat.o(40173);
     return true;
   }
   
   public V get(Object paramObject)
   {
-    AppMethodBeat.i(3374);
+    AppMethodBeat.i(40164);
     paramObject = (Comparable)paramObject;
     int i = zza(paramObject);
     if (i >= 0)
     {
       paramObject = ((zzabd)this.zzbty.get(i)).getValue();
-      AppMethodBeat.o(3374);
+      AppMethodBeat.o(40164);
       return paramObject;
     }
     paramObject = this.zzbtz.get(paramObject);
-    AppMethodBeat.o(3374);
+    AppMethodBeat.o(40164);
     return paramObject;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(3384);
+    AppMethodBeat.i(40174);
     int k = zzuj();
     int j = 0;
     int i = 0;
@@ -249,7 +249,7 @@ class zzaay<K extends Comparable<K>, V>
     }
     for (;;)
     {
-      AppMethodBeat.o(3384);
+      AppMethodBeat.o(40174);
       return i;
     }
   }
@@ -261,44 +261,44 @@ class zzaay<K extends Comparable<K>, V>
   
   public V remove(Object paramObject)
   {
-    AppMethodBeat.i(3377);
+    AppMethodBeat.i(40167);
     zzul();
     paramObject = (Comparable)paramObject;
     int i = zza(paramObject);
     if (i >= 0)
     {
       paramObject = zzai(i);
-      AppMethodBeat.o(3377);
+      AppMethodBeat.o(40167);
       return paramObject;
     }
     if (this.zzbtz.isEmpty())
     {
-      AppMethodBeat.o(3377);
+      AppMethodBeat.o(40167);
       return null;
     }
     paramObject = this.zzbtz.remove(paramObject);
-    AppMethodBeat.o(3377);
+    AppMethodBeat.o(40167);
     return paramObject;
   }
   
   public int size()
   {
-    AppMethodBeat.i(3372);
+    AppMethodBeat.i(40162);
     int i = this.zzbty.size();
     int j = this.zzbtz.size();
-    AppMethodBeat.o(3372);
+    AppMethodBeat.o(40162);
     return i + j;
   }
   
   public final V zza(K paramK, V paramV)
   {
-    AppMethodBeat.i(3375);
+    AppMethodBeat.i(40165);
     zzul();
     int i = zza(paramK);
     if (i >= 0)
     {
       paramK = ((zzabd)this.zzbty.get(i)).setValue(paramV);
-      AppMethodBeat.o(3375);
+      AppMethodBeat.o(40165);
       return paramK;
     }
     zzul();
@@ -309,7 +309,7 @@ class zzaay<K extends Comparable<K>, V>
     if (i >= this.zzbtx)
     {
       paramK = zzum().put(paramK, paramV);
-      AppMethodBeat.o(3375);
+      AppMethodBeat.o(40165);
       return paramK;
     }
     if (this.zzbty.size() == this.zzbtx)
@@ -318,39 +318,39 @@ class zzaay<K extends Comparable<K>, V>
       zzum().put((Comparable)localzzabd.getKey(), localzzabd.getValue());
     }
     this.zzbty.add(i, new zzabd(this, paramK, paramV));
-    AppMethodBeat.o(3375);
+    AppMethodBeat.o(40165);
     return null;
   }
   
   public final Map.Entry<K, V> zzah(int paramInt)
   {
-    AppMethodBeat.i(3370);
+    AppMethodBeat.i(40160);
     Map.Entry localEntry = (Map.Entry)this.zzbty.get(paramInt);
-    AppMethodBeat.o(3370);
+    AppMethodBeat.o(40160);
     return localEntry;
   }
   
   public void zzrg()
   {
-    AppMethodBeat.i(3368);
+    AppMethodBeat.i(40158);
     if (!this.zzbls)
     {
       if (!this.zzbtz.isEmpty()) {
-        break label67;
+        break label65;
       }
       localMap = Collections.emptyMap();
       this.zzbtz = localMap;
       if (!this.zzbub.isEmpty()) {
-        break label78;
+        break label76;
       }
     }
-    label67:
-    label78:
+    label65:
+    label76:
     for (Map localMap = Collections.emptyMap();; localMap = Collections.unmodifiableMap(this.zzbub))
     {
       this.zzbub = localMap;
       this.zzbls = true;
-      AppMethodBeat.o(3368);
+      AppMethodBeat.o(40158);
       return;
       localMap = Collections.unmodifiableMap(this.zzbtz);
       break;
@@ -359,29 +359,29 @@ class zzaay<K extends Comparable<K>, V>
   
   public final int zzuj()
   {
-    AppMethodBeat.i(3369);
+    AppMethodBeat.i(40159);
     int i = this.zzbty.size();
-    AppMethodBeat.o(3369);
+    AppMethodBeat.o(40159);
     return i;
   }
   
   public final Iterable<Map.Entry<K, V>> zzuk()
   {
-    AppMethodBeat.i(3371);
+    AppMethodBeat.i(40161);
     if (this.zzbtz.isEmpty())
     {
       localObject = zzaba.zzun();
-      AppMethodBeat.o(3371);
+      AppMethodBeat.o(40161);
       return localObject;
     }
     Object localObject = this.zzbtz.entrySet();
-    AppMethodBeat.o(3371);
+    AppMethodBeat.o(40161);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzaay
  * JD-Core Version:    0.7.0.1
  */

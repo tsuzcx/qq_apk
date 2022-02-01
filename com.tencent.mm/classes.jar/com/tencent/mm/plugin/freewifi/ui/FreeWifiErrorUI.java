@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.freewifi.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -12,10 +14,10 @@ import com.tencent.mm.ui.MMActivity;
 public class FreeWifiErrorUI
   extends MMActivity
 {
-  private ImageView mNl;
-  private TextView mNm;
-  private TextView mNn;
-  private TextView mNo;
+  private ImageView rkd;
+  private TextView rke;
+  private TextView rkf;
+  private TextView rkg;
   
   public int getForceOrientation()
   {
@@ -24,35 +26,44 @@ public class FreeWifiErrorUI
   
   public int getLayoutId()
   {
-    return 2130969627;
+    return 2131494169;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(20958);
+    AppMethodBeat.i(25017);
     super.onCreate(paramBundle);
-    setMMTitle(2131300181);
-    this.mNl = ((ImageView)findViewById(2131824250));
+    setMMTitle(2131759653);
+    this.rkd = ((ImageView)findViewById(2131300262));
     if (getIntent().getIntExtra("free_wifi_show_detail_error", 0) == 1) {
-      this.mNl.setImageResource(2130838887);
+      this.rkd.setImageResource(2131232426);
     }
-    this.mNm = ((TextView)findViewById(2131824251));
-    this.mNn = ((TextView)findViewById(2131824252));
-    this.mNo = ((TextView)findViewById(2131824253));
+    this.rke = ((TextView)findViewById(2131300261));
+    this.rkf = ((TextView)findViewById(2131300259));
+    this.rkg = ((TextView)findViewById(2131300260));
     paramBundle = getIntent().getStringExtra("free_wifi_error_ui_error_msg");
     String str1 = getIntent().getStringExtra("free_wifi_error_ui_error_msg_detail1");
     String str2 = getIntent().getStringExtra("free_wifi_error_ui_error_msg_detail12");
-    if (!m.isEmpty(paramBundle)) {
-      this.mNm.setText(paramBundle);
+    if (!m.dq(paramBundle)) {
+      this.rke.setText(paramBundle);
     }
-    if (!m.isEmpty(str1)) {
-      this.mNn.setText(str1);
+    if (!m.dq(str1)) {
+      this.rkf.setText(str1);
     }
-    if (!m.isEmpty(str2)) {
-      this.mNo.setText(str2);
+    if (!m.dq(str2)) {
+      this.rkg.setText(str2);
     }
-    setBackBtn(new FreeWifiErrorUI.1(this));
-    AppMethodBeat.o(20958);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(25016);
+        FreeWifiErrorUI.this.finish();
+        AppMethodBeat.o(25016);
+        return true;
+      }
+    });
+    AppMethodBeat.o(25017);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

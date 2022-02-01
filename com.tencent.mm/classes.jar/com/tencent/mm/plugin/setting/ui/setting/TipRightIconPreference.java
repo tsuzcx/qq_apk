@@ -23,18 +23,18 @@ public class TipRightIconPreference
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(127631);
+    AppMethodBeat.i(74567);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2130970233, localViewGroup);
-    AppMethodBeat.o(127631);
+    View.inflate(this.mContext, 2131494860, localViewGroup);
+    AppMethodBeat.o(74567);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.TipRightIconPreference
  * JD-Core Version:    0.7.0.1
  */

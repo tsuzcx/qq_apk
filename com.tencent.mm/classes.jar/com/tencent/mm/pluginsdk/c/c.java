@@ -1,10 +1,8 @@
 package com.tencent.mm.pluginsdk.c;
 
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.a.kt;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.ly;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
 import java.util.HashMap;
@@ -14,15 +12,15 @@ import java.util.Set;
 
 public abstract class c<T extends b>
   extends com.tencent.mm.sdk.b.c<T>
-  implements f
+  implements com.tencent.mm.al.g
 {
-  private static HashMap<b, c<? extends b>> bat = new HashMap();
-  private static HashMap<m, b> vJR = new HashMap();
-  private int vJQ = 0;
+  private static HashMap<n, b> BNL = new HashMap();
+  private static HashMap<b, c<? extends b>> byu = new HashMap();
+  private int BNK = 0;
   
   public static void j(b paramb)
   {
-    Iterator localIterator = vJR.entrySet().iterator();
+    Iterator localIterator = BNL.entrySet().iterator();
     Map.Entry localEntry;
     do
     {
@@ -31,72 +29,72 @@ public abstract class c<T extends b>
       }
       localEntry = (Map.Entry)localIterator.next();
     } while (localEntry.getValue() != paramb);
-    for (paramb = (m)localEntry.getKey();; paramb = null)
+    for (paramb = (n)localEntry.getKey();; paramb = null)
     {
       if (paramb != null)
       {
-        g.Rc().a(paramb);
-        vJR.remove(paramb);
+        com.tencent.mm.kernel.g.aeS().a(paramb);
+        BNL.remove(paramb);
       }
       return;
     }
   }
   
-  public abstract int Jx();
+  public abstract int UO();
   
-  public abstract m a(T paramT);
+  public abstract n a(T paramT);
   
-  public abstract b a(int paramInt, m paramm, T paramT);
+  public abstract b a(int paramInt, n paramn, T paramT);
   
-  public final void bKR()
+  public final void cIO()
   {
-    if (this.vJQ == 0) {}
+    if (this.BNK == 0) {}
     do
     {
       return;
-      this.vJQ -= 1;
-    } while (this.vJQ != 0);
-    g.Rc().b(Jx(), this);
+      this.BNK -= 1;
+    } while (this.BNK != 0);
+    com.tencent.mm.kernel.g.aeS().b(UO(), this);
   }
   
-  public final void cjv()
+  public final void euV()
   {
-    if (this.vJQ == 0) {
-      g.Rc().a(Jx(), this);
+    if (this.BNK == 0) {
+      com.tencent.mm.kernel.g.aeS().a(UO(), this);
     }
-    this.vJQ += 1;
+    this.BNK += 1;
   }
   
   public final void k(T paramT)
   {
-    m localm = a(paramT);
-    g.Rc().a(localm, 0);
-    vJR.put(localm, paramT);
+    n localn = a(paramT);
+    com.tencent.mm.kernel.g.aeS().a(localn, 0);
+    BNL.put(localn, paramT);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     b localb;
-    if (Jx() == paramm.getType())
+    if (UO() == paramn.getType())
     {
-      localb = (b)vJR.remove(paramm);
+      localb = (b)BNL.remove(paramn);
       if (localb != null) {}
     }
     else
     {
       return;
     }
-    kt localkt = new kt();
-    localkt.cAR.cAS = a(paramInt2, paramm, localb);
-    localkt.cAR.errType = paramInt1;
-    localkt.cAR.errCode = paramInt2;
-    localkt.cAR.errMsg = paramString;
-    a.ymk.l(localkt);
+    ly locally = new ly();
+    locally.dra.drb = a(paramInt2, paramn, localb);
+    locally.dra.errType = paramInt1;
+    locally.dra.errCode = paramInt2;
+    locally.dra.errMsg = paramString;
+    a.ESL.l(locally);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.c.c
  * JD-Core Version:    0.7.0.1
  */

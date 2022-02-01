@@ -10,14 +10,14 @@ final class FileSelectorFolderView$c
   
   FileSelectorFolderView$c(View paramView)
   {
-    AppMethodBeat.i(28163);
-    this.titleTv = ((TextView)paramView.findViewById(2131823680));
-    AppMethodBeat.o(28163);
+    AppMethodBeat.i(31953);
+    this.titleTv = ((TextView)paramView.findViewById(2131301198));
+    AppMethodBeat.o(31953);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.FileSelectorFolderView.c
  * JD-Core Version:    0.7.0.1
  */

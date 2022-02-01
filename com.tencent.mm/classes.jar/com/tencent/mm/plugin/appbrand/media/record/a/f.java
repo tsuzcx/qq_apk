@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.appbrand.media.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.i;
 import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
 public class f
   extends c
 {
-  protected File gVL;
-  private OutputStream pU;
+  protected e fGL;
+  private OutputStream wy;
   
-  private boolean eL(String paramString)
+  private boolean KP(String paramString)
   {
-    AppMethodBeat.i(140662);
+    AppMethodBeat.i(146353);
     try
     {
-      this.gVL = new File(paramString);
-      if (this.gVL.exists()) {
-        this.gVL.delete();
+      this.fGL = new e(paramString);
+      if (this.fGL.exists()) {
+        this.fGL.delete();
       }
-      this.gVL.createNewFile();
-      this.pU = new DataOutputStream(new FileOutputStream(paramString));
-      AppMethodBeat.o(140662);
+      this.fGL.createNewFile();
+      this.wy = new DataOutputStream(i.cM(paramString, false));
+      AppMethodBeat.o(146353);
       return true;
     }
     catch (Exception paramString)
     {
-      ab.b("Luggage.PCMAudioEncoder", "", new Object[] { paramString });
-      AppMethodBeat.o(140662);
+      ad.m("Luggage.PCMAudioEncoder", "", new Object[] { paramString });
+      AppMethodBeat.o(146353);
     }
     return false;
   }
   
   public final boolean a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(140659);
-    f(paramArrayOfByte, paramInt, paramBoolean);
+    AppMethodBeat.i(146350);
+    d(paramArrayOfByte, paramInt, paramBoolean);
     try
     {
-      if (this.pU != null) {
-        this.pU.write(paramArrayOfByte);
+      if (this.wy != null) {
+        this.wy.write(paramArrayOfByte);
       }
       label27:
-      AppMethodBeat.o(140659);
+      AppMethodBeat.o(146350);
       return true;
     }
     catch (Exception paramArrayOfByte)
@@ -57,15 +57,15 @@ public class f
   
   public void close()
   {
-    AppMethodBeat.i(140661);
-    if (this.pU != null) {}
+    AppMethodBeat.i(146352);
+    if (this.wy != null) {}
     try
     {
-      this.pU.flush();
-      this.pU.close();
+      this.wy.flush();
+      this.wy.close();
       label26:
-      this.pU = null;
-      AppMethodBeat.o(140661);
+      this.wy = null;
+      AppMethodBeat.o(146352);
       return;
     }
     catch (IOException localIOException)
@@ -76,22 +76,22 @@ public class f
   
   public final void flush()
   {
-    AppMethodBeat.i(140660);
-    f(new byte[0], 0, true);
-    AppMethodBeat.o(140660);
+    AppMethodBeat.i(146351);
+    d(new byte[0], 0, true);
+    AppMethodBeat.o(146351);
   }
   
-  public boolean h(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public boolean i(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(140658);
-    eL(paramString);
-    AppMethodBeat.o(140658);
+    AppMethodBeat.i(146349);
+    KP(paramString);
+    AppMethodBeat.o(146349);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.a.f
  * JD-Core Version:    0.7.0.1
  */

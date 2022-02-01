@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class gc
   extends b
 {
-  public gc.a cuC;
-  public gc.b cuD;
+  public a dje;
   
   public gc()
   {
@@ -16,17 +15,21 @@ public final class gc
   
   private gc(byte paramByte)
   {
-    AppMethodBeat.i(62223);
-    this.cuC = new gc.a();
-    this.cuD = new gc.b();
-    this.ymq = false;
+    AppMethodBeat.i(63287);
+    this.dje = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(62223);
+    AppMethodBeat.o(63287);
+  }
+  
+  public static final class a
+  {
+    public boolean djf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.gc
  * JD-Core Version:    0.7.0.1
  */

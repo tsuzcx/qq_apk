@@ -1,63 +1,40 @@
 package com.tencent.mm.plugin.appbrand.task;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.backgroundrunning.service.AppBrandForegroundNotificationService;
+import com.tencent.mm.plugin.appbrand.keepalive.AppBrandKeepAliveService;
+import com.tencent.mm.plugin.appbrand.loading.AppBrandProcessTriggerService0;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandPreLoadingForPluginUI;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.LinkedHashMap;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/task/AppBrandForcePreloadConfig;", "", "()V", "FORCE_PRELOAD_TAG", "", "TAG", "sShouldForcePreload", "", "disableForcePreload", "", "enableForcePreload", "shouldForcePreload", "plugin-appbrand-integration_release"})
 public final class b
+  extends i
 {
-  private static boolean iJU;
-  public static final b iJV;
-  
-  static
+  b()
   {
-    AppMethodBeat.i(134962);
-    iJV = new b();
-    long l = bo.yB();
-    int i = as.apq("appbrand_process_force_preload").decodeInt("appbrand_process_force_preload", 0);
-    if (i == 1)
+    super(AppBrandPluginUI.class, AppBrandTaskPreloadReceiver.class, AppBrandKeepAliveService.class, AppBrandForegroundNotificationService.class, AppBrandProcessTriggerService0.class, AppBrandPreLoadingForPluginUI.class);
+  }
+  
+  final void MX()
+  {
+    AppMethodBeat.i(48360);
+    if (!this.lwU.isEmpty()) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      ab.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] storage config = [%d] == 1, accepted (mmkv cost [%d]ms)", new Object[] { Integer.valueOf(i), Long.valueOf(bo.av(l)) });
-      iJU = true;
-      AppMethodBeat.o(134962);
+      ad.e("MicroMsg.AppBrandPluginUITask", "preload, already attached");
+      AppMethodBeat.o(48360);
       return;
     }
-    ab.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] storage config = [%d] != 1, buildConfig = [%b] reject (mmkv cost [%d]ms)", new Object[] { Integer.valueOf(i), Boolean.FALSE, Long.valueOf(bo.av(l)) });
-    AppMethodBeat.o(134962);
+    super.i(e.lwx);
+    super.MX();
+    AppMethodBeat.o(48360);
   }
   
-  public static final boolean aLC()
+  protected final boolean b(e parame)
   {
-    AppMethodBeat.i(134959);
-    ab.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] forcePreload = [%b]", new Object[] { Boolean.valueOf(iJU) });
-    boolean bool = iJU;
-    AppMethodBeat.o(134959);
-    return bool;
-  }
-  
-  public static final void aLD()
-  {
-    AppMethodBeat.i(134960);
-    ab.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] enableForcePreload");
-    iJU = true;
-    as localas = as.apq("appbrand_process_force_preload");
-    localas.encode("appbrand_process_force_preload", 1);
-    localas.apply();
-    AppMethodBeat.o(134960);
-  }
-  
-  public static final void aLE()
-  {
-    AppMethodBeat.i(134961);
-    ab.i("MicroMsg.AppBrandForcePreloadConfig", "[ForcePreload] disableForcePreload");
-    iJU = false;
-    as localas = as.apq("appbrand_process_force_preload");
-    localas.encode("appbrand_process_force_preload", -1);
-    localas.apply();
-    AppMethodBeat.o(134961);
+    return parame != e.lwy;
   }
 }
 

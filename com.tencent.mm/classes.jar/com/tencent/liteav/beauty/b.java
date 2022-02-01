@@ -7,6 +7,7 @@ import android.opengl.GLES30;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.Message;
 import com.tencent.liteav.basic.d.g;
 import com.tencent.liteav.basic.d.h;
@@ -33,67 +34,86 @@ class b
   private int A;
   private int B;
   private int C;
-  private boolean D;
-  private float[] E;
+  private int D;
+  private Context E;
   private boolean F;
-  private int G;
-  private int H;
-  private com.tencent.liteav.basic.d.a I;
-  private Bitmap J;
-  private k K;
-  private o L;
-  private com.tencent.liteav.beauty.b.b M;
-  private com.tencent.liteav.beauty.b.a.a N;
-  private com.tencent.liteav.beauty.b.b.a O;
-  private com.tencent.liteav.beauty.b.c P;
-  private Bitmap Q;
-  private Bitmap R;
-  private float S;
-  private float T;
-  private float U;
-  private m V;
-  private n W;
-  private x X;
-  private j Y;
-  private com.tencent.liteav.beauty.b.i Z;
+  private c.d G;
+  private c.e H;
+  private int I;
+  private int J;
+  private int K;
+  private int L;
+  private int M;
+  private int N;
+  private int O;
+  private int P;
+  private float Q;
+  private int R;
+  private int S;
+  private int T;
+  private int U;
+  private int V;
+  private boolean W;
+  private float[] X;
+  private boolean Y;
+  private int Z;
   boolean a;
-  private int[] aA;
-  private boolean aB;
-  private byte[] aC;
-  private int aD;
+  private Object aA;
+  private Handler aB;
+  private a aC;
+  private float aD;
   private int aE;
   private int aF;
   private int aG;
-  private d aH;
-  private WeakReference<com.tencent.liteav.basic.c.a> aI;
-  private i.a aJ;
-  private g aa;
-  private l ab;
-  private h ac;
-  private g ad;
-  private final Queue<Runnable> ae;
-  private boolean af;
-  private Object ag;
-  private Object ah;
-  private Handler ai;
-  private b.a aj;
-  private float ak;
-  private int al;
-  private int am;
-  private int an;
-  private int ao;
-  private int ap;
-  private boolean aq;
-  private com.tencent.liteav.beauty.a.a.c ar;
-  private com.tencent.liteav.beauty.a.a.a as;
-  private Bitmap at;
-  private List<c.e> au;
-  private long av;
-  private int aw;
-  private final int ax;
-  private final float ay;
-  private byte[] az;
+  private int aH;
+  private int aI;
+  private boolean aJ;
+  private com.tencent.liteav.beauty.a.a.c aK;
+  private com.tencent.liteav.beauty.a.a.a aL;
+  private Bitmap aM;
+  private List<c.e> aN;
+  private long aO;
+  private int aP;
+  private final int aQ;
+  private final float aR;
+  private byte[] aS;
+  private int[] aT;
+  private boolean aU;
+  private byte[] aV;
+  private int aW;
+  private int aX;
+  private int aY;
+  private int aZ;
+  private int aa;
+  private com.tencent.liteav.basic.d.a ab;
+  private Bitmap ac;
+  private k ad;
+  private o ae;
+  private com.tencent.liteav.beauty.b.b af;
+  private com.tencent.liteav.beauty.b.a.a ag;
+  private com.tencent.liteav.beauty.b.b.a ah;
+  private com.tencent.liteav.beauty.b.c ai;
+  private Bitmap aj;
+  private Bitmap ak;
+  private float al;
+  private float am;
+  private float an;
+  private m ao;
+  private n ap;
+  private x aq;
+  private j ar;
+  private com.tencent.liteav.beauty.b.i as;
+  private g at;
+  private l au;
+  private h av;
+  private g aw;
+  private final Queue<Runnable> ax;
+  private boolean ay;
+  private Object az;
   protected int[] b;
+  private d ba;
+  private WeakReference<com.tencent.liteav.basic.c.a> bb;
+  private i.a bc;
   protected int[] c;
   com.tencent.liteav.beauty.b.a d;
   com.tencent.liteav.beauty.b.a e;
@@ -104,10 +124,10 @@ class b
   private int j;
   private int k;
   private int l;
-  private Context m;
-  private boolean n;
-  private c.d o;
-  private c.e p;
+  private int m;
+  private int n;
+  private int o;
+  private int p;
   private int q;
   private int r;
   private int s;
@@ -116,136 +136,164 @@ class b
   private int v;
   private int w;
   private int x;
-  private float y;
+  private int y;
   private int z;
   
   b(Context paramContext, boolean paramBoolean)
   {
     super("TXCFilterDrawer");
-    AppMethodBeat.i(66847);
+    AppMethodBeat.i(15162);
     this.g = 0;
     this.h = 0;
     this.i = 0;
     this.j = 0;
     this.k = 0;
     this.l = 0;
-    this.m = null;
-    this.n = true;
-    this.o = new c.d();
-    this.p = null;
-    this.q = -1;
-    this.r = -1;
-    this.s = -1;
-    this.t = -1;
-    this.u = -1;
-    this.v = -1;
-    this.w = -1;
-    this.x = -1;
-    this.y = 1.0F;
-    this.z = -1;
-    this.A = -1;
+    this.m = 0;
+    this.n = 0;
+    this.o = 0;
+    this.p = 0;
+    this.q = 0;
+    this.r = 0;
+    this.s = 0;
+    this.t = 0;
+    this.u = 0;
+    this.v = 0;
+    this.w = 0;
+    this.x = 0;
+    this.y = 0;
+    this.z = 0;
+    this.A = 0;
     this.B = 0;
     this.C = 0;
-    this.D = false;
+    this.D = 0;
     this.E = null;
-    this.F = false;
-    this.G = 0;
-    this.H = 0;
-    this.I = null;
-    this.J = null;
-    this.K = null;
-    this.L = null;
-    this.M = null;
-    this.N = null;
-    this.O = null;
-    this.P = null;
-    this.W = null;
+    this.F = true;
+    this.G = new c.d();
+    this.H = null;
+    this.I = -1;
+    this.J = -1;
+    this.K = -1;
+    this.L = -1;
+    this.M = -1;
+    this.N = -1;
+    this.O = -1;
+    this.P = -1;
+    this.Q = 1.0F;
+    this.R = -1;
+    this.S = -1;
+    this.T = 0;
+    this.U = 0;
+    this.V = 1;
+    this.W = false;
     this.X = null;
-    this.Y = null;
-    this.Z = null;
-    this.aa = null;
+    this.Y = false;
+    this.Z = 0;
+    this.aa = 0;
     this.ab = null;
     this.ac = null;
     this.ad = null;
-    this.ae = new LinkedList();
-    this.a = false;
-    this.ag = new Object();
-    this.ah = new Object();
-    this.ak = 0.5F;
-    this.al = 0;
-    this.am = 0;
-    this.an = 0;
-    this.ao = 0;
-    this.ap = 0;
-    this.aq = false;
+    this.ae = null;
+    this.af = null;
+    this.ag = null;
+    this.ah = null;
+    this.ai = null;
+    this.ap = null;
+    this.aq = null;
     this.ar = null;
     this.as = null;
     this.at = null;
     this.au = null;
-    this.av = 0L;
-    this.aw = 0;
-    this.ax = 100;
-    this.ay = 1000.0F;
-    this.az = null;
-    this.aA = null;
-    this.aB = false;
-    this.aC = null;
+    this.av = null;
+    this.aw = null;
+    this.ax = new LinkedList();
+    this.a = false;
+    this.az = new Object();
+    this.aA = new Object();
+    this.aD = 0.5F;
+    this.aE = 0;
+    this.aF = 0;
+    this.aG = 0;
+    this.aH = 0;
+    this.aI = 0;
+    this.aJ = false;
+    this.aK = null;
+    this.aL = null;
+    this.aM = null;
+    this.aN = null;
+    this.aO = 0L;
+    this.aP = 0;
+    this.aQ = 100;
+    this.aR = 1000.0F;
+    this.aS = null;
+    this.aT = null;
+    this.aU = false;
+    this.aV = null;
     this.b = null;
     this.c = null;
-    this.aD = -1;
-    this.aE = 0;
-    this.aF = 1;
-    this.aG = this.aD;
-    this.aH = null;
-    this.aI = new WeakReference(null);
+    this.aW = -1;
+    this.aX = 0;
+    this.aY = 1;
+    this.aZ = this.aW;
+    this.ba = null;
+    this.bb = new WeakReference(null);
     this.d = new com.tencent.liteav.beauty.b.a();
     this.e = new com.tencent.liteav.beauty.b.a();
     this.f = new com.tencent.liteav.beauty.b.a();
-    this.aJ = new b.11(this);
-    this.m = paramContext;
-    this.ai = new Handler(this.m.getMainLooper());
-    this.af = paramBoolean;
-    AppMethodBeat.o(66847);
+    this.bc = new i.a() {};
+    this.E = paramContext;
+    this.aB = new Handler(this.E.getMainLooper());
+    this.ay = paramBoolean;
+    AppMethodBeat.o(15162);
+  }
+  
+  private int A(int paramInt)
+  {
+    AppMethodBeat.i(15178);
+    GLES20.glViewport(0, 0, this.I, this.J);
+    paramInt = a(this.ad.q(), paramInt, 0L);
+    AppMethodBeat.o(15178);
+    return paramInt;
   }
   
   private int a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(66849);
-    if (true == this.af) {
-      if (this.aH != null)
+    AppMethodBeat.i(15175);
+    if (true == this.ay) {
+      if (this.ba != null)
       {
         NativeLoad.getInstance();
-        NativeLoad.nativeGlReadPixs(paramInt1, paramInt2, this.az);
-        this.aH.a(this.az, this.z, this.A, this.H, TXCTimeUtil.getTimeTick());
+        NativeLoad.nativeGlReadPixs(paramInt1, paramInt2, this.aS);
+        this.ba.a(this.aS, this.R, this.S, this.aa, TXCTimeUtil.generatePtsMS());
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(66849);
+      AppMethodBeat.o(15175);
       return 0;
-      if (this.aC != null)
+      if (this.aV != null)
       {
         NativeLoad.getInstance();
-        NativeLoad.nativeGlReadPixs(paramInt1, paramInt2, this.aC);
+        NativeLoad.nativeGlReadPixs(paramInt1, paramInt2, this.aV);
         continue;
         if (3 == com.tencent.liteav.basic.d.i.a())
         {
-          if (0L == this.av) {
-            this.av = TXCTimeUtil.getTimeTick();
+          if (0L == this.aO) {
+            this.aO = TXCTimeUtil.getTimeTick();
           }
-          int i1 = this.aw + 1;
-          this.aw = i1;
+          int i1 = this.aP + 1;
+          this.aP = i1;
           if (i1 >= 100)
           {
-            TXCLog.i("TXCFilterDrawer", "Real fps ".concat(String.valueOf(100.0F / ((float)(TXCTimeUtil.getTimeTick() - this.av) / 1000.0F))));
-            this.aw = 0;
-            this.av = TXCTimeUtil.getTimeTick();
+            TXCLog.i("TXCFilterDrawer", "Real fps ".concat(String.valueOf(100.0F / ((float)(TXCTimeUtil.getTimeTick() - this.aO) / 1000.0F))));
+            this.aP = 0;
+            this.aO = TXCTimeUtil.getTimeTick();
           }
           GLES30.glPixelStorei(3333, 1);
           if (Build.VERSION.SDK_INT >= 18) {
             GLES30.glReadBuffer(1029);
           }
-          GLES30.glBindBuffer(35051, this.aA[0]);
+          GLES30.glBindBuffer(35051, this.aT[0]);
           NativeLoad.getInstance();
           NativeLoad.nativeGlReadPixs(paramInt1, paramInt2, null);
           Object localObject = null;
@@ -256,7 +304,7 @@ class b
             if (localByteBuffer == null)
             {
               TXCLog.e("TXCFilterDrawer", "glMapBufferRange is null");
-              AppMethodBeat.o(66849);
+              AppMethodBeat.o(15175);
               return -1;
             }
           }
@@ -278,133 +326,133 @@ class b
   
   private int a(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(146399);
-    if (this.H == 0) {
-      if (this.aH != null)
+    AppMethodBeat.i(15174);
+    if (this.aa == 0) {
+      if (this.ba != null)
       {
         if (paramLong != 0L) {
           break label211;
         }
-        paramLong = TXCTimeUtil.getTimeTick();
+        paramLong = TXCTimeUtil.generatePtsMS();
       }
     }
     label211:
     for (;;)
     {
-      this.aH.a(paramInt, this.z, this.A, paramLong);
-      AppMethodBeat.o(146399);
+      this.ba.a(paramInt, this.R, this.S, paramLong);
+      AppMethodBeat.o(15174);
       return paramInt;
-      if ((1 == this.H) || (3 == this.H) || (2 == this.H))
+      if ((1 == this.aa) || (3 == this.aa) || (2 == this.aa))
       {
-        GLES20.glViewport(0, 0, this.z, this.A);
-        if (this.L == null)
+        GLES20.glViewport(0, 0, this.R, this.S);
+        if (this.ae == null)
         {
           TXCLog.e("TXCFilterDrawer", "mRGBA2I420Filter is null!");
-          AppMethodBeat.o(146399);
+          AppMethodBeat.o(15174);
           return paramInt;
         }
         GLES20.glBindFramebuffer(36160, this.b[0]);
-        this.L.a(paramInt);
-        if (2 == this.H) {
-          a(this.z, this.A);
+        this.ae.a(paramInt);
+        if (2 == this.aa) {
+          a(this.R, this.S);
         }
         for (;;)
         {
           GLES20.glBindFramebuffer(36160, 0);
-          AppMethodBeat.o(146399);
+          AppMethodBeat.o(15174);
           return paramInt;
-          a(this.z, this.A * 3 / 8);
+          a(this.R, this.S * 3 / 8);
         }
       }
       TXCLog.e("TXCFilterDrawer", "Don't support format!");
-      AppMethodBeat.o(146399);
+      AppMethodBeat.o(15174);
       return -1;
     }
   }
   
   private void a(int paramInt1, int paramInt2, float paramFloat1, Bitmap paramBitmap1, float paramFloat2, Bitmap paramBitmap2, float paramFloat3)
   {
-    AppMethodBeat.i(66879);
-    if (this.V == null)
+    AppMethodBeat.i(15195);
+    if (this.ao == null)
     {
       TXCLog.i("TXCFilterDrawer", "createComLooKupFilter");
-      this.V = new m(paramFloat1, paramBitmap1, paramFloat2, paramBitmap2, paramFloat3);
-      if (true == this.V.a())
+      this.ao = new m(paramFloat1, paramBitmap1, paramFloat2, paramBitmap2, paramFloat3);
+      if (true == this.ao.a())
       {
-        this.V.a(true);
-        this.V.a(paramInt1, paramInt2);
-        AppMethodBeat.o(66879);
+        this.ao.a(true);
+        this.ao.a(paramInt1, paramInt2);
+        AppMethodBeat.o(15195);
         return;
       }
       TXCLog.e("TXCFilterDrawer", "mLookupFilterGroup init failed!");
     }
-    AppMethodBeat.o(66879);
+    AppMethodBeat.o(15195);
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(66877);
+    AppMethodBeat.i(15193);
     TXCLog.i("TXCFilterDrawer", "create Beauty Filter!");
     if (paramInt3 == 0)
     {
-      if (this.N == null) {
-        this.N = new com.tencent.liteav.beauty.b.a.a();
+      if (this.ag == null) {
+        this.ag = new com.tencent.liteav.beauty.b.a.a();
       }
-      this.M = this.N;
+      this.af = this.ag;
     }
-    while (this.M == null)
+    while (this.af == null)
     {
       TXCLog.e("TXCFilterDrawer", "mBeautyFilter set error!");
-      AppMethodBeat.o(66877);
+      AppMethodBeat.o(15193);
       return;
       if (1 == paramInt3)
       {
-        if (this.O == null) {
-          this.O = new com.tencent.liteav.beauty.b.b.a();
+        if (this.ah == null) {
+          this.ah = new com.tencent.liteav.beauty.b.b.a();
         }
-        this.M = this.O;
+        this.af = this.ah;
       }
       else if (2 == paramInt3)
       {
-        if (this.P == null) {
-          this.P = new com.tencent.liteav.beauty.b.c();
+        if (this.ai == null) {
+          this.ai = new com.tencent.liteav.beauty.b.c();
         }
-        this.M = this.P;
+        this.af = this.ai;
       }
     }
-    this.M.a(true);
-    if (true == this.M.c(paramInt1, paramInt2))
+    this.af.a(true);
+    if (true == this.af.c(paramInt1, paramInt2))
     {
-      if (this.am > 0) {
-        this.M.c(this.am);
+      if (this.aF > 0) {
+        this.af.c(this.aF);
       }
-      if (this.an > 0) {
-        this.M.d(this.an);
+      if (this.aG > 0) {
+        this.af.d(this.aG);
       }
-      if (this.ap > 0) {
-        this.M.e(this.ap);
+      if (this.aI > 0) {
+        this.af.e(this.aI);
       }
-      if (this.ao > 0)
+      if (this.aH > 0)
       {
-        this.M.f(this.ao);
-        AppMethodBeat.o(66877);
+        this.af.f(this.aH);
+        AppMethodBeat.o(15193);
       }
     }
     else
     {
       TXCLog.e("TXCFilterDrawer", "mBeautyFilter init failed!");
     }
-    AppMethodBeat.o(66877);
+    AppMethodBeat.o(15193);
   }
   
   /* Error */
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
     // Byte code:
-    //   0: ldc_w 521
-    //   3: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: sipush 15170
+    //   3: invokestatic 187	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 254	com/tencent/liteav/beauty/b:ah	Ljava/lang/Object;
+    //   7: getfield 332	com/tencent/liteav/beauty/b:aA	Ljava/lang/Object;
     //   10: astore 7
     //   12: aload 7
     //   14: monitorenter
@@ -416,14 +464,14 @@ class b
     //   23: sipush 360
     //   26: irem
     //   27: istore_3
-    //   28: ldc 138
-    //   30: ldc_w 523
+    //   28: ldc 179
+    //   30: ldc_w 604
     //   33: iload_3
-    //   34: invokestatic 526	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   37: invokevirtual 391	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   40: invokestatic 396	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   34: invokestatic 607	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   37: invokevirtual 483	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   40: invokestatic 488	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   43: aload_0
-    //   44: getfield 234	com/tencent/liteav/beauty/b:aa	Lcom/tencent/liteav/basic/d/g;
+    //   44: getfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/g;
     //   47: ifnonnull +67 -> 114
     //   50: iload_1
     //   51: iload 4
@@ -433,56 +481,56 @@ class b
     //   59: if_icmpne +25 -> 84
     //   62: iload_3
     //   63: ifne +21 -> 84
-    //   66: ldc 138
-    //   68: ldc_w 528
-    //   71: invokestatic 396	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   66: ldc 179
+    //   68: ldc_w 609
+    //   71: invokestatic 488	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   74: aload 7
     //   76: monitorexit
-    //   77: ldc_w 521
-    //   80: invokestatic 348	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   77: sipush 15170
+    //   80: invokestatic 424	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   83: return
     //   84: aload_0
-    //   85: new 530	com/tencent/liteav/basic/d/g
+    //   85: new 611	com/tencent/liteav/basic/d/g
     //   88: dup
-    //   89: invokespecial 531	com/tencent/liteav/basic/d/g:<init>	()V
-    //   92: putfield 234	com/tencent/liteav/beauty/b:aa	Lcom/tencent/liteav/basic/d/g;
+    //   89: invokespecial 612	com/tencent/liteav/basic/d/g:<init>	()V
+    //   92: putfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/g;
     //   95: iconst_1
     //   96: aload_0
-    //   97: getfield 234	com/tencent/liteav/beauty/b:aa	Lcom/tencent/liteav/basic/d/g;
-    //   100: invokevirtual 532	com/tencent/liteav/basic/d/g:a	()Z
+    //   97: getfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/g;
+    //   100: invokevirtual 613	com/tencent/liteav/basic/d/g:a	()Z
     //   103: if_icmpne +49 -> 152
     //   106: aload_0
-    //   107: getfield 234	com/tencent/liteav/beauty/b:aa	Lcom/tencent/liteav/basic/d/g;
+    //   107: getfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/g;
     //   110: iconst_1
-    //   111: invokevirtual 533	com/tencent/liteav/basic/d/g:a	(Z)V
+    //   111: invokevirtual 614	com/tencent/liteav/basic/d/g:a	(Z)V
     //   114: aload_0
-    //   115: getfield 234	com/tencent/liteav/beauty/b:aa	Lcom/tencent/liteav/basic/d/g;
+    //   115: getfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/g;
     //   118: iload 4
     //   120: iload 5
-    //   122: invokevirtual 534	com/tencent/liteav/basic/d/g:a	(II)V
+    //   122: invokevirtual 615	com/tencent/liteav/basic/d/g:a	(II)V
     //   125: aload_0
-    //   126: getfield 234	com/tencent/liteav/beauty/b:aa	Lcom/tencent/liteav/basic/d/g;
+    //   126: getfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/g;
     //   129: sipush 720
     //   132: iload_3
     //   133: isub
     //   134: sipush 360
     //   137: irem
     //   138: aconst_null
-    //   139: invokevirtual 537	com/tencent/liteav/basic/d/g:a	(ILjava/nio/FloatBuffer;)V
+    //   139: invokevirtual 618	com/tencent/liteav/basic/d/g:a	(ILjava/nio/FloatBuffer;)V
     //   142: aload 7
     //   144: monitorexit
-    //   145: ldc_w 521
-    //   148: invokestatic 348	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   145: sipush 15170
+    //   148: invokestatic 424	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   151: return
-    //   152: ldc 138
-    //   154: ldc_w 539
-    //   157: invokestatic 424	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   152: ldc 179
+    //   154: ldc_w 620
+    //   157: invokestatic 516	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   160: goto -46 -> 114
     //   163: astore 8
     //   165: aload 7
     //   167: monitorexit
-    //   168: ldc_w 521
-    //   171: invokestatic 348	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   168: sipush 15170
+    //   171: invokestatic 424	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   174: aload 8
     //   176: athrow
     // Local variable table:
@@ -508,24 +556,24 @@ class b
   
   private void a(com.tencent.liteav.basic.d.a parama, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5, int paramInt6)
   {
-    AppMethodBeat.i(146397);
-    if (this.ab == null)
+    AppMethodBeat.i(15169);
+    if (this.au == null)
     {
       TXCLog.i("TXCFilterDrawer", "Create CropFilter");
       if (4 == paramInt6)
       {
-        this.ab = new l("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n \nuniform mat4 textureTransform;\nvarying vec2 textureCoordinate;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = (textureTransform * inputTextureCoordinate).xy;\n}", "#extension GL_OES_EGL_image_external : require\n\nvarying lowp vec2 textureCoordinate;\n \nuniform samplerExternalOES inputImageTexture;\n \nvoid main()\n{\n     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}", true);
-        if (true != this.ab.a()) {
+        this.au = new l("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n \nuniform mat4 textureTransform;\nvarying vec2 textureCoordinate;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = (textureTransform * inputTextureCoordinate).xy;\n}", "#extension GL_OES_EGL_image_external : require\n\nvarying lowp vec2 textureCoordinate;\n \nuniform samplerExternalOES inputImageTexture;\n \nvoid main()\n{\n     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}", true);
+        if (true != this.au.a()) {
           break label188;
         }
-        this.ab.a(true);
+        this.au.a(true);
       }
     }
     else
     {
       label64:
-      this.ab.a(paramInt3, paramInt4);
-      parama = this.ab.a(this.q, this.r, null, parama, paramInt6);
+      this.au.a(paramInt3, paramInt4);
+      parama = this.au.a(this.I, this.J, null, parama, paramInt6);
       paramInt6 = (720 - paramInt5) % 360;
       if ((paramInt6 != 90) && (paramInt6 != 270)) {
         break label199;
@@ -538,10 +586,10 @@ class b
       if ((paramInt6 == 90) || (paramInt6 == 270)) {
         paramInt4 = paramInt3;
       }
-      this.ab.a(paramInt1, paramInt2, paramInt6, parama, paramInt5 / paramInt4, paramBoolean, false);
-      AppMethodBeat.o(146397);
+      this.au.a(paramInt1, paramInt2, paramInt6, parama, paramInt5 / paramInt4, paramBoolean, false);
+      AppMethodBeat.o(15169);
       return;
-      this.ab = new l();
+      this.au = new l();
       break;
       TXCLog.e("TXCFilterDrawer", "mInputCropFilter init failed!");
       break label64;
@@ -550,18 +598,18 @@ class b
   
   private void a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(66881);
-    synchronized (this.ae)
+    AppMethodBeat.i(15197);
+    synchronized (this.ax)
     {
-      this.ae.add(paramRunnable);
-      AppMethodBeat.o(66881);
+      this.ax.add(paramRunnable);
+      AppMethodBeat.o(15197);
       return;
     }
   }
   
   private void a(Queue<Runnable> paramQueue)
   {
-    AppMethodBeat.i(66882);
+    AppMethodBeat.i(15198);
     for (;;)
     {
       Runnable localRunnable = null;
@@ -576,123 +624,123 @@ class b
       }
       finally
       {
-        AppMethodBeat.o(66882);
+        AppMethodBeat.o(15198);
       }
     }
-    AppMethodBeat.o(66882);
+    AppMethodBeat.o(15198);
   }
   
   private void a(byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    AppMethodBeat.i(66861);
+    AppMethodBeat.i(15177);
     if (!paramBoolean)
     {
-      if (this.aH != null)
+      if (this.ba != null)
       {
-        this.aH.a(paramArrayOfByte, this.z, this.A, this.H, TXCTimeUtil.getTimeTick());
-        AppMethodBeat.o(66861);
+        this.ba.a(paramArrayOfByte, this.R, this.S, this.aa, TXCTimeUtil.generatePtsMS());
+        AppMethodBeat.o(15177);
         return;
       }
       TXCLog.i("TXCFilterDrawer", "First Frame, don't process!");
-      AppMethodBeat.o(66861);
+      AppMethodBeat.o(15177);
       return;
     }
-    int i1 = this.A * 3 / 8;
-    if (2 == this.H) {
-      i1 = this.A;
+    int i1 = this.S * 3 / 8;
+    if (2 == this.aa) {
+      i1 = this.S;
     }
-    if (this.aH != null)
+    if (this.ba != null)
     {
       NativeLoad.getInstance();
-      if (true == NativeLoad.nativeGlReadPixsFromQueue(this.z, i1, this.az))
+      if (true == NativeLoad.nativeGlReadPixsFromQueue(this.R, i1, this.aS))
       {
-        this.aH.a(this.az, this.z, this.A, this.H, TXCTimeUtil.getTimeTick());
-        AppMethodBeat.o(66861);
+        this.ba.a(this.aS, this.R, this.S, this.aa, TXCTimeUtil.generatePtsMS());
+        AppMethodBeat.o(15177);
         return;
       }
       TXCLog.d("TXCFilterDrawer", "nativeGlReadPixsFromQueue Failed");
-      this.aH.a(paramArrayOfByte, this.z, this.A, this.H, TXCTimeUtil.getTimeTick());
-      AppMethodBeat.o(66861);
+      this.ba.a(paramArrayOfByte, this.R, this.S, this.aa, TXCTimeUtil.generatePtsMS());
+      AppMethodBeat.o(15177);
       return;
     }
     NativeLoad.getInstance();
-    if (!NativeLoad.nativeGlReadPixsFromQueue(this.z, i1, this.aC)) {
+    if (!NativeLoad.nativeGlReadPixsFromQueue(this.R, i1, this.aV)) {
       TXCLog.d("TXCFilterDrawer", "nativeGlReadPixsFromQueue Failed");
     }
-    AppMethodBeat.o(66861);
+    AppMethodBeat.o(15177);
   }
   
   private void a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(66868);
+    AppMethodBeat.i(15184);
     GLES20.glGenFramebuffers(1, paramArrayOfInt1, 0);
     paramArrayOfInt2[0] = com.tencent.liteav.basic.d.i.a(paramInt1, paramInt2, 6408, 6408, paramArrayOfInt2);
     GLES20.glBindFramebuffer(36160, paramArrayOfInt1[0]);
     GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramArrayOfInt2[0], 0);
     GLES20.glBindFramebuffer(36160, 0);
-    AppMethodBeat.o(66868);
+    AppMethodBeat.o(15184);
   }
   
   private void b()
   {
-    AppMethodBeat.i(66865);
+    AppMethodBeat.i(15181);
     TXCLog.i("TXCFilterDrawer", "come into releaseInternal");
-    this.aB = false;
-    if (this.K != null)
-    {
-      this.K.d();
-      this.K = null;
-    }
-    if (this.L != null)
-    {
-      this.L.d();
-      this.L = null;
-    }
-    c();
-    if (this.V != null)
-    {
-      this.V.d();
-      this.V = null;
-    }
-    if (this.W != null)
-    {
-      this.W.a();
-      this.W = null;
-    }
-    if (this.ac != null)
-    {
-      this.ac.d();
-      this.ac = null;
-    }
-    if (this.ab != null)
-    {
-      this.ab.d();
-      this.ab = null;
-    }
-    if (this.aa != null)
-    {
-      this.aa.d();
-      this.aa = null;
-    }
-    if (this.X != null)
-    {
-      this.X.d();
-      this.X = null;
-    }
-    if (this.Y != null)
-    {
-      this.Y.a();
-      this.Y = null;
-    }
-    if (this.Z != null)
-    {
-      this.Z.d();
-      this.Z = null;
-    }
+    this.aU = false;
     if (this.ad != null)
     {
       this.ad.d();
       this.ad = null;
+    }
+    if (this.ae != null)
+    {
+      this.ae.d();
+      this.ae = null;
+    }
+    c();
+    if (this.ao != null)
+    {
+      this.ao.d();
+      this.ao = null;
+    }
+    if (this.ap != null)
+    {
+      this.ap.a();
+      this.ap = null;
+    }
+    if (this.av != null)
+    {
+      this.av.d();
+      this.av = null;
+    }
+    if (this.au != null)
+    {
+      this.au.d();
+      this.au = null;
+    }
+    if (this.at != null)
+    {
+      this.at.d();
+      this.at = null;
+    }
+    if (this.aq != null)
+    {
+      this.aq.d();
+      this.aq = null;
+    }
+    if (this.ar != null)
+    {
+      this.ar.a();
+      this.ar = null;
+    }
+    if (this.as != null)
+    {
+      this.as.d();
+      this.as = null;
+    }
+    if (this.aw != null)
+    {
+      this.aw.d();
+      this.aw = null;
     }
     if (this.b != null)
     {
@@ -704,29 +752,28 @@ class b
       GLES20.glDeleteTextures(1, this.c, 0);
       this.c = null;
     }
-    this.p = null;
     TXCLog.i("TXCFilterDrawer", "come out releaseInternal");
-    AppMethodBeat.o(66865);
+    AppMethodBeat.o(15181);
   }
   
   private void b(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(146400);
-    if (this.ad == null)
+    AppMethodBeat.i(15196);
+    if (this.aw == null)
     {
       TXCLog.i("TXCFilterDrawer", "createRecoverScaleFilter");
-      this.ad = new g();
-      if (true != this.ad.a()) {
+      this.aw = new g();
+      if (true != this.aw.a()) {
         break label74;
       }
-      this.ad.a(true);
+      this.aw.a(true);
     }
     for (;;)
     {
-      if (this.ad != null) {
-        this.ad.a(paramInt1, paramInt2);
+      if (this.aw != null) {
+        this.aw.a(paramInt1, paramInt2);
       }
-      AppMethodBeat.o(146400);
+      AppMethodBeat.o(15196);
       return;
       label74:
       TXCLog.e("TXCFilterDrawer", "mRecoverScaleFilter init failed!");
@@ -735,93 +782,93 @@ class b
   
   private void b(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(66863);
-    if (this.K == null)
+    AppMethodBeat.i(15179);
+    if (this.ad == null)
     {
       TXCLog.e("TXCFilterDrawer", "mI4202RGBAFilter is null!");
-      AppMethodBeat.o(66863);
+      AppMethodBeat.o(15179);
       return;
     }
-    this.K.a(paramArrayOfByte);
-    AppMethodBeat.o(66863);
+    this.ad.a(paramArrayOfByte);
+    AppMethodBeat.o(15179);
   }
   
   private void c()
   {
-    AppMethodBeat.i(66878);
-    if (this.N != null)
+    AppMethodBeat.i(15194);
+    if (this.ag != null)
     {
-      this.N.d();
-      this.N = null;
+      this.ag.d();
+      this.ag = null;
     }
-    if (this.O != null)
+    if (this.ah != null)
     {
-      this.O.d();
-      this.O = null;
+      this.ah.d();
+      this.ah = null;
     }
-    if (this.P != null)
+    if (this.ai != null)
     {
-      this.P.d();
-      this.P = null;
+      this.ai.d();
+      this.ai = null;
     }
-    this.M = null;
-    AppMethodBeat.o(66878);
+    this.af = null;
+    AppMethodBeat.o(15194);
   }
   
   private boolean c(c.b paramb)
   {
-    AppMethodBeat.i(66866);
+    AppMethodBeat.i(15182);
     TXCLog.i("TXCFilterDrawer", "come into initInternal");
     b();
-    this.af = paramb.j;
-    this.q = paramb.d;
-    this.r = paramb.e;
-    this.I = paramb.m;
-    this.s = paramb.g;
-    this.t = paramb.f;
-    this.B = paramb.h;
-    this.D = paramb.i;
-    this.z = paramb.b;
-    this.A = paramb.c;
-    this.C = paramb.a;
-    this.u = paramb.g;
-    this.v = paramb.f;
-    if ((this.B == 90) || (this.B == 270))
+    this.ay = paramb.j;
+    this.I = paramb.d;
+    this.J = paramb.e;
+    this.ab = paramb.m;
+    this.K = paramb.g;
+    this.L = paramb.f;
+    this.T = paramb.h;
+    this.W = paramb.i;
+    this.R = paramb.b;
+    this.S = paramb.c;
+    this.U = paramb.a;
+    this.M = paramb.g;
+    this.N = paramb.f;
+    if ((this.T == 90) || (this.T == 270))
     {
-      this.u = paramb.f;
-      this.v = paramb.g;
+      this.M = paramb.f;
+      this.N = paramb.g;
     }
-    this.H = paramb.l;
-    this.G = paramb.k;
-    this.az = new byte[this.z * this.A * 4];
-    TXCLog.i("TXCFilterDrawer", "processWidth mPituScaleRatio is " + this.y);
+    this.aa = paramb.l;
+    this.Z = paramb.k;
+    this.aS = new byte[this.R * this.S * 4];
+    TXCLog.i("TXCFilterDrawer", "processWidth mPituScaleRatio is " + this.Q);
     int i1;
-    if (this.y != 1.0F)
+    if (this.Q != 1.0F)
     {
-      if (this.u >= this.v) {
+      if (this.M >= this.N) {
         break label607;
       }
-      i1 = this.u;
+      i1 = this.M;
       if (i1 > 368) {
-        this.y = (432.0F / i1);
+        this.Q = (432.0F / i1);
       }
-      if (this.y > 1.0F) {
-        this.y = 1.0F;
+      if (this.Q > 1.0F) {
+        this.Q = 1.0F;
       }
     }
-    this.w = ((int)(this.u * this.y));
-    this.x = ((int)(this.v * this.y));
-    a(this.w, this.x, this.al);
-    if ((this.p != null) && (this.p.a != null) && (this.X == null))
+    this.O = ((int)(this.M * this.Q));
+    this.P = ((int)(this.N * this.Q));
+    a(this.O, this.P, this.aE);
+    if ((this.H != null) && (this.H.a != null) && (this.aq == null))
     {
       TXCLog.i("TXCFilterDrawer", "reset water mark!");
-      a(this.p.a, this.p.b, this.p.c, this.p.d);
+      a(this.H.a, this.H.b, this.H.c, this.H.d);
     }
-    if (((this.Q != null) || (this.R != null)) && (this.V == null)) {
-      a(this.w, this.x, this.S, this.Q, this.T, this.R, this.U);
+    if (((this.aj != null) || (this.ak != null)) && (this.ao == null)) {
+      a(this.O, this.P, this.al, this.aj, this.am, this.ak, this.an);
     }
-    a(this.I, this.s, this.t, this.w, this.x, this.D, this.B, this.G);
-    a(this.u, this.v, this.B, this.z, this.A, this.C);
+    a(this.ab, this.K, this.L, this.O, this.P, this.W, this.T, this.Z);
+    a(this.M, this.N, this.T, this.R, this.S, this.U);
     if (this.b == null)
     {
       this.b = new int[1];
@@ -831,24 +878,24 @@ class b
       }
       this.c = new int[1];
       label526:
-      a(this.b, this.c, this.z, this.A);
+      a(this.b, this.c, this.R, this.S);
       if (3 == com.tencent.liteav.basic.d.i.a())
       {
-        if (this.aA != null) {
+        if (this.aT != null) {
           break label639;
         }
-        this.aA = new int[1];
+        this.aT = new int[1];
       }
     }
     for (;;)
     {
       TXCLog.i("TXCFilterDrawer", "opengl es 3.0, use PBO");
-      com.tencent.liteav.basic.d.i.a(this.s, this.t, this.aA);
+      com.tencent.liteav.basic.d.i.a(this.K, this.L, this.aT);
       TXCLog.i("TXCFilterDrawer", "come out initInternal");
-      AppMethodBeat.o(66866);
+      AppMethodBeat.o(15182);
       return true;
       label607:
-      i1 = this.v;
+      i1 = this.N;
       break;
       GLES20.glDeleteFramebuffers(1, this.b, 0);
       break label512;
@@ -857,130 +904,121 @@ class b
       break label526;
       label639:
       TXCLog.i("TXCFilterDrawer", "m_pbo0 is not null, delete Buffers, and recreate");
-      GLES30.glDeleteBuffers(1, this.aA, 0);
+      GLES30.glDeleteBuffers(1, this.aT, 0);
     }
   }
   
   private boolean d(c.b paramb)
   {
-    AppMethodBeat.i(66869);
-    if (((1 == paramb.k) || (3 == paramb.k) || (2 == paramb.k)) && (this.K == null))
+    AppMethodBeat.i(15185);
+    if (((1 == paramb.k) || (3 == paramb.k) || (2 == paramb.k)) && (this.ad == null))
     {
-      this.K = new k(paramb.k);
-      this.K.a(true);
-      if (!this.K.a())
+      this.ad = new k(paramb.k);
+      this.ad.a(true);
+      if (!this.ad.a())
       {
         TXCLog.e("TXCFilterDrawer", "mI4202RGBAFilter init failed!!, break init");
-        AppMethodBeat.o(66869);
+        AppMethodBeat.o(15185);
         return false;
       }
-      this.K.a(paramb.d, paramb.e);
+      this.ad.a(paramb.d, paramb.e);
     }
-    if (((1 == paramb.l) || (3 == paramb.l) || (2 == paramb.l)) && (this.L == null))
+    if (((1 == paramb.l) || (3 == paramb.l) || (2 == paramb.l)) && (this.ae == null))
     {
-      this.L = new o(paramb.l);
-      if (!this.L.a())
+      this.ae = new o(paramb.l);
+      if (!this.ae.a())
       {
         TXCLog.e("TXCFilterDrawer", "mRGBA2I420Filter init failed!!, break init");
-        AppMethodBeat.o(66869);
+        AppMethodBeat.o(15185);
         return false;
       }
-      this.L.a(paramb.b, paramb.c);
+      this.ae.a(paramb.b, paramb.c);
     }
-    AppMethodBeat.o(66869);
+    AppMethodBeat.o(15185);
     return true;
-  }
-  
-  private int m(int paramInt)
-  {
-    AppMethodBeat.i(66858);
-    GLES20.glViewport(0, 0, this.q, this.r);
-    paramInt = a(this.K.q(), paramInt, 0L);
-    AppMethodBeat.o(66858);
-    return paramInt;
   }
   
   public int a(int paramInt1, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(146395);
-    a(this.ae);
+    AppMethodBeat.i(15164);
+    a(this.ax);
     int i1;
-    if (this.y != 1.0F)
+    if (this.Q != 1.0F)
     {
       i1 = 1;
-      GLES20.glViewport(0, 0, this.w, this.x);
+      GLES20.glViewport(0, 0, this.O, this.P);
       int i2 = paramInt1;
-      if (this.ab != null)
+      if (this.au != null)
       {
-        if ((4 == paramInt2) || (true == this.F))
+        if ((4 == paramInt2) || (true == this.Y))
         {
-          this.ab.a(this.E);
-          this.ab.c(this.F);
+          this.au.a(this.X);
+          this.au.c(this.Y);
         }
-        i2 = this.ab.b(paramInt1);
+        i2 = this.au.b(paramInt1);
       }
       paramInt2 = i2;
-      if (this.M != null) {
-        if ((this.am <= 0) && (this.an <= 0))
+      if (this.af != null) {
+        if ((this.aF <= 0) && (this.aG <= 0))
         {
           paramInt2 = i2;
-          if (this.ap <= 0) {}
+          if (this.aI <= 0) {}
         }
         else
         {
-          paramInt2 = this.M.b(i2);
+          paramInt2 = this.af.b(i2);
         }
       }
       paramInt1 = paramInt2;
-      if (this.V != null) {
-        paramInt1 = this.V.b(paramInt2);
+      if (this.ao != null) {
+        paramInt1 = this.ao.b(paramInt2);
       }
-      GLES20.glViewport(0, 0, this.u, this.v);
+      GLES20.glViewport(0, 0, this.M, this.N);
       paramInt2 = paramInt1;
-      if (this.Y != null)
+      if (this.ar != null)
       {
-        paramInt2 = this.Y.a(paramInt1);
+        paramInt2 = this.ar.a(paramInt1);
         i1 = 0;
       }
-      if (this.Z == null) {
+      if (this.as == null) {
         break label382;
       }
-      paramInt1 = this.Z.b(paramInt2);
+      paramInt1 = this.as.b(paramInt2);
       i1 = 0;
     }
     for (;;)
     {
       if (i1 != 0)
       {
-        b(this.u, this.v);
-        if (this.ad != null) {
-          GLES20.glViewport(0, 0, this.u, this.v);
+        b(this.M, this.N);
+        if (this.aw != null) {
+          GLES20.glViewport(0, 0, this.M, this.N);
         }
       }
-      for (paramInt2 = this.ad.b(paramInt1);; paramInt2 = paramInt1)
+      for (paramInt2 = this.aw.b(paramInt1);; paramInt2 = paramInt1)
       {
         paramInt1 = paramInt2;
-        if (this.aH != null)
+        if (this.ba != null)
         {
-          i1 = this.aH.a(paramInt2, this.u, this.v);
+          i1 = this.ba.a(paramInt2, this.M, this.N);
           paramInt1 = paramInt2;
           if (i1 > 0) {
             paramInt1 = i1;
           }
         }
-        GLES20.glViewport(0, 0, this.u, this.v);
+        GLES20.glViewport(0, 0, this.M, this.N);
         paramInt2 = paramInt1;
-        if (this.X != null) {
-          paramInt2 = this.X.b(paramInt1);
+        if (this.aq != null) {
+          paramInt2 = this.aq.b(paramInt1);
         }
         paramInt1 = paramInt2;
-        if (this.aa != null)
+        if (this.at != null)
         {
-          GLES20.glViewport(0, 0, this.z, this.A);
-          paramInt1 = this.aa.b(paramInt2);
+          GLES20.glViewport(0, 0, this.R, this.S);
+          paramInt1 = this.at.b(paramInt2);
         }
         a(paramInt1, paramLong);
-        AppMethodBeat.o(146395);
+        AppMethodBeat.o(15164);
         return paramInt1;
         i1 = 0;
         break;
@@ -992,25 +1030,25 @@ class b
   
   public int a(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(66850);
+    AppMethodBeat.i(15165);
     a(paramArrayOfByte);
-    if (!this.af)
+    if (!this.ay)
     {
       paramArrayOfByte = (byte[])paramArrayOfByte.clone();
-      this.aj.obtainMessage(2, paramArrayOfByte).sendToTarget();
-      if (!this.aB)
+      this.aC.obtainMessage(2, paramArrayOfByte).sendToTarget();
+      if (!this.aU)
       {
         TXCLog.i("TXCFilterDrawer", "First Frame, clear queue");
         NativeLoad.getInstance();
         NativeLoad.nativeClearQueue();
       }
-      this.aj.obtainMessage(3, paramInt, 0).sendToTarget();
-      a(paramArrayOfByte, this.aB);
-      this.aB = true;
+      this.aC.obtainMessage(3, paramInt, 0).sendToTarget();
+      a(paramArrayOfByte, this.aU);
+      this.aU = true;
     }
-    for (paramInt = -1;; paramInt = m(paramInt))
+    for (paramInt = -1;; paramInt = A(paramInt))
     {
-      AppMethodBeat.o(66850);
+      AppMethodBeat.o(15165);
       return paramInt;
       b(paramArrayOfByte);
     }
@@ -1018,143 +1056,235 @@ class b
   
   public void a()
   {
-    AppMethodBeat.i(66864);
-    if (!this.af)
+    AppMethodBeat.i(15180);
+    if (!this.ay)
     {
-      if (this.aj == null) {
+      if (this.aC == null) {
         break label57;
       }
-      this.aj.obtainMessage(1).sendToTarget();
+      this.aC.obtainMessage(1).sendToTarget();
       try
       {
         this.d.b();
-        AppMethodBeat.o(66864);
+        AppMethodBeat.o(15180);
         return;
       }
       catch (InterruptedException localInterruptedException)
       {
-        AppMethodBeat.o(66864);
+        AppMethodBeat.o(15180);
         return;
       }
     }
     b();
     label57:
-    AppMethodBeat.o(66864);
+    AppMethodBeat.o(15180);
   }
   
-  public void a(float paramFloat)
+  public void a(final float paramFloat)
   {
-    AppMethodBeat.i(66851);
-    this.ak = paramFloat;
-    a(new b.1(this, paramFloat));
-    AppMethodBeat.o(66851);
-  }
-  
-  public void a(float paramFloat1, Bitmap paramBitmap1, float paramFloat2, Bitmap paramBitmap2, float paramFloat3)
-  {
-    AppMethodBeat.i(66876);
-    if ((this.Q != paramBitmap1) || (this.R != paramBitmap2))
+    AppMethodBeat.i(15166);
+    this.aD = paramFloat;
+    a(new Runnable()
     {
-      this.Q = paramBitmap1;
-      this.R = paramBitmap2;
-      this.S = paramFloat1;
-      this.T = paramFloat2;
-      this.U = paramFloat3;
-      a(new b.5(this, paramFloat1, paramBitmap1, paramFloat2, paramBitmap2, paramFloat3));
-      AppMethodBeat.o(66876);
+      public void run()
+      {
+        AppMethodBeat.i(15266);
+        if (b.a(b.this) != null) {
+          b.a(b.this).a(paramFloat);
+        }
+        AppMethodBeat.o(15266);
+      }
+    });
+    AppMethodBeat.o(15166);
+  }
+  
+  public void a(final float paramFloat1, final Bitmap paramBitmap1, final float paramFloat2, final Bitmap paramBitmap2, final float paramFloat3)
+  {
+    AppMethodBeat.i(15192);
+    if ((this.aj != paramBitmap1) || (this.ak != paramBitmap2))
+    {
+      this.aj = paramBitmap1;
+      this.ak = paramBitmap2;
+      this.al = paramFloat1;
+      this.am = paramFloat2;
+      this.an = paramFloat3;
+      a(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(15123);
+          if (b.a(b.this) != null) {
+            a.a().e();
+          }
+          if ((b.h(b.this) == null) && (b.i(b.this) == null))
+          {
+            if (b.a(b.this) != null)
+            {
+              b.a(b.this).d();
+              b.a(b.this, null);
+              AppMethodBeat.o(15123);
+            }
+          }
+          else
+          {
+            if (b.a(b.this) == null)
+            {
+              b.a(b.this, b.f(b.this), b.g(b.this), b.j(b.this), b.h(b.this), b.k(b.this), b.i(b.this), b.l(b.this));
+              AppMethodBeat.o(15123);
+              return;
+            }
+            b.a(b.this).a(paramFloat1, paramBitmap1, paramFloat2, paramBitmap2, paramFloat3);
+          }
+          AppMethodBeat.o(15123);
+        }
+      });
+      AppMethodBeat.o(15192);
       return;
     }
-    if ((this.V != null) && ((this.S != paramFloat1) || (this.T != paramFloat2) || (this.U != paramFloat3)))
+    if ((this.ao != null) && ((this.al != paramFloat1) || (this.am != paramFloat2) || (this.an != paramFloat3)))
     {
-      this.S = paramFloat1;
-      this.T = paramFloat2;
-      this.U = paramFloat3;
-      a(new b.6(this, paramFloat1, paramFloat2, paramFloat3));
+      this.al = paramFloat1;
+      this.am = paramFloat2;
+      this.an = paramFloat3;
+      a(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(15268);
+          b.a(b.this).a(paramFloat1, paramFloat2, paramFloat3);
+          AppMethodBeat.o(15268);
+        }
+      });
     }
-    AppMethodBeat.o(66876);
+    AppMethodBeat.o(15192);
   }
   
-  public void a(int paramInt)
-  {
-    AppMethodBeat.i(66860);
-    a(new b.10(this, paramInt));
-    AppMethodBeat.o(66860);
-  }
+  public void a(int paramInt) {}
   
   public void a(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(66875);
-    a(1.0F, paramBitmap, this.ak, null, 0.0F);
-    AppMethodBeat.o(66875);
+    AppMethodBeat.i(15191);
+    a(1.0F, paramBitmap, this.aD, null, 0.0F);
+    AppMethodBeat.o(15191);
   }
   
-  public void a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, float paramFloat3)
+  public void a(final Bitmap paramBitmap, final float paramFloat1, final float paramFloat2, final float paramFloat3)
   {
-    AppMethodBeat.i(66855);
-    if (this.p == null) {
-      this.p = new c.e();
+    AppMethodBeat.i(15171);
+    if (this.H == null) {
+      this.H = new c.e();
     }
-    if ((this.p.a != null) && (paramBitmap != null) && (true == this.p.a.equals(paramBitmap)) && (paramFloat1 == this.p.b) && (paramFloat2 == this.p.c) && (paramFloat3 == this.p.d))
+    if ((this.H.a != null) && (paramBitmap != null) && (true == this.H.a.equals(paramBitmap)) && (paramFloat1 == this.H.b) && (paramFloat2 == this.H.c) && (paramFloat3 == this.H.d) && (this.aq != null))
     {
-      AppMethodBeat.o(66855);
+      AppMethodBeat.o(15171);
       return;
     }
-    this.p.a = paramBitmap;
-    this.p.b = paramFloat1;
-    this.p.c = paramFloat2;
-    this.p.d = paramFloat3;
-    a(new b.9(this, paramBitmap, paramFloat1, paramFloat2, paramFloat3));
-    AppMethodBeat.o(66855);
+    this.H.a = paramBitmap;
+    this.H.b = paramFloat1;
+    this.H.c = paramFloat2;
+    this.H.d = paramFloat3;
+    a(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(15210);
+        if (paramBitmap != null) {
+          a.a().g();
+        }
+        if (paramBitmap == null)
+        {
+          if (b.b(b.this) != null)
+          {
+            b.b(b.this).d();
+            b.a(b.this, null);
+          }
+          AppMethodBeat.o(15210);
+          return;
+        }
+        if (b.b(b.this) == null)
+        {
+          if ((b.c(b.this) <= 0) || (b.d(b.this) <= 0))
+          {
+            TXCLog.e("TXCFilterDrawer", "output Width and Height is error!");
+            AppMethodBeat.o(15210);
+            return;
+          }
+          b.a(b.this, new x());
+          b.b(b.this).a(true);
+          if (!b.b(b.this).a())
+          {
+            TXCLog.e("TXCFilterDrawer", "mWatermarkFilter.init failed!");
+            b.b(b.this).d();
+            b.a(b.this, null);
+            AppMethodBeat.o(15210);
+            return;
+          }
+          b.b(b.this).a(b.c(b.this), b.d(b.this));
+        }
+        b.b(b.this).c(true);
+        b.b(b.this).a(paramBitmap, paramFloat1, paramFloat2, paramFloat3);
+        AppMethodBeat.o(15210);
+      }
+    });
+    AppMethodBeat.o(15171);
   }
   
   void a(com.tencent.liteav.basic.c.a parama)
   {
-    AppMethodBeat.i(146398);
+    AppMethodBeat.i(15173);
     TXCLog.i("TXCFilterDrawer", "set notify");
-    this.aI = new WeakReference(parama);
-    if (this.Y != null) {
-      this.Y.a((com.tencent.liteav.basic.c.a)this.aI.get());
+    this.bb = new WeakReference(parama);
+    if (this.ar != null) {
+      this.ar.a((com.tencent.liteav.basic.c.a)this.bb.get());
     }
-    AppMethodBeat.o(146398);
+    AppMethodBeat.o(15173);
   }
   
   void a(d paramd)
   {
-    AppMethodBeat.i(66856);
+    AppMethodBeat.i(15172);
     TXCLog.i("TXCFilterDrawer", "set listener");
-    this.aH = paramd;
-    AppMethodBeat.o(66856);
+    this.ba = paramd;
+    AppMethodBeat.o(15172);
   }
   
   public void a(String paramString) {}
   
   public void a(String paramString, boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean)
+  public void a(final boolean paramBoolean)
   {
-    AppMethodBeat.i(146396);
-    a(new b.8(this, paramBoolean));
-    AppMethodBeat.o(146396);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    this.aC = paramArrayOfByte;
-  }
-  
-  public void a(final float[] paramArrayOfFloat)
-  {
-    AppMethodBeat.i(66852);
+    AppMethodBeat.i(15168);
     a(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(66827);
-        b.a(b.this, paramArrayOfFloat);
-        AppMethodBeat.o(66827);
+        AppMethodBeat.i(15267);
+        b.a(b.this, paramBoolean);
+        AppMethodBeat.o(15267);
       }
     });
-    AppMethodBeat.o(66852);
+    AppMethodBeat.o(15168);
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    this.aV = paramArrayOfByte;
+  }
+  
+  public void a(final float[] paramArrayOfFloat)
+  {
+    AppMethodBeat.i(15167);
+    a(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(15161);
+        b.a(b.this, paramArrayOfFloat);
+        AppMethodBeat.o(15161);
+      }
+    });
+    AppMethodBeat.o(15167);
   }
   
   /* Error */
@@ -1163,46 +1293,46 @@ class b
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 933
-    //   5: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: sipush 15163
+    //   5: invokestatic 187	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: iconst_1
     //   9: istore_2
     //   10: aload_1
-    //   11: getfield 707	com/tencent/liteav/beauty/c$b:j	Z
+    //   11: getfield 769	com/tencent/liteav/beauty/c$b:j	Z
     //   14: ifne +63 -> 77
     //   17: aload_0
-    //   18: getfield 840	com/tencent/liteav/beauty/b:aj	Lcom/tencent/liteav/beauty/b$a;
+    //   18: getfield 892	com/tencent/liteav/beauty/b:aC	Lcom/tencent/liteav/beauty/b$a;
     //   21: ifnonnull +27 -> 48
     //   24: aload_0
-    //   25: invokevirtual 936	com/tencent/liteav/beauty/b:start	()V
+    //   25: invokevirtual 962	com/tencent/liteav/beauty/b:start	()V
     //   28: aload_0
-    //   29: new 10	com/tencent/liteav/beauty/b$a
+    //   29: new 32	com/tencent/liteav/beauty/b$a
     //   32: dup
     //   33: aload_0
     //   34: aload_0
-    //   35: invokevirtual 939	com/tencent/liteav/beauty/b:getLooper	()Landroid/os/Looper;
+    //   35: invokevirtual 965	com/tencent/liteav/beauty/b:getLooper	()Landroid/os/Looper;
     //   38: aload_0
-    //   39: getfield 161	com/tencent/liteav/beauty/b:m	Landroid/content/Context;
-    //   42: invokespecial 942	com/tencent/liteav/beauty/b$a:<init>	(Lcom/tencent/liteav/beauty/b;Landroid/os/Looper;Landroid/content/Context;)V
-    //   45: putfield 840	com/tencent/liteav/beauty/b:aj	Lcom/tencent/liteav/beauty/b$a;
+    //   39: getfield 237	com/tencent/liteav/beauty/b:E	Landroid/content/Context;
+    //   42: invokespecial 968	com/tencent/liteav/beauty/b$a:<init>	(Lcom/tencent/liteav/beauty/b;Landroid/os/Looper;Landroid/content/Context;)V
+    //   45: putfield 892	com/tencent/liteav/beauty/b:aC	Lcom/tencent/liteav/beauty/b$a;
     //   48: aload_0
-    //   49: getfield 840	com/tencent/liteav/beauty/b:aj	Lcom/tencent/liteav/beauty/b$a;
+    //   49: getfield 892	com/tencent/liteav/beauty/b:aC	Lcom/tencent/liteav/beauty/b$a;
     //   52: iconst_0
     //   53: aload_1
-    //   54: invokevirtual 844	com/tencent/liteav/beauty/b$a:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
-    //   57: invokevirtual 849	android/os/Message:sendToTarget	()V
+    //   54: invokevirtual 896	com/tencent/liteav/beauty/b$a:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
+    //   57: invokevirtual 901	android/os/Message:sendToTarget	()V
     //   60: aload_0
-    //   61: getfield 840	com/tencent/liteav/beauty/b:aj	Lcom/tencent/liteav/beauty/b$a;
-    //   64: invokevirtual 943	com/tencent/liteav/beauty/b$a:b	()V
-    //   67: ldc_w 933
-    //   70: invokestatic 348	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   61: getfield 892	com/tencent/liteav/beauty/b:aC	Lcom/tencent/liteav/beauty/b$a;
+    //   64: invokevirtual 969	com/tencent/liteav/beauty/b$a:b	()V
+    //   67: sipush 15163
+    //   70: invokestatic 424	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   73: aload_0
     //   74: monitorexit
     //   75: iload_2
     //   76: ireturn
     //   77: aload_0
     //   78: aload_1
-    //   79: invokespecial 636	com/tencent/liteav/beauty/b:c	(Lcom/tencent/liteav/beauty/c$b;)Z
+    //   79: invokespecial 707	com/tencent/liteav/beauty/b:c	(Lcom/tencent/liteav/beauty/c$b;)Z
     //   82: istore_2
     //   83: goto -16 -> 67
     //   86: astore_1
@@ -1224,32 +1354,39 @@ class b
     //   77	83	86	finally
   }
   
-  public void b(int paramInt)
+  public void b(final int paramInt)
   {
-    AppMethodBeat.i(66870);
-    this.am = paramInt;
-    a(new b.12(this, paramInt));
-    AppMethodBeat.o(66870);
+    AppMethodBeat.i(15176);
+    a(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(15209);
+        b.a(b.this, paramInt);
+        AppMethodBeat.o(15209);
+      }
+    });
+    AppMethodBeat.o(15176);
   }
   
   public void b(boolean paramBoolean) {}
   
   public boolean b(c.b paramb)
   {
-    AppMethodBeat.i(66867);
-    if (!this.af)
+    AppMethodBeat.i(15183);
+    if (!this.ay)
     {
-      if (this.aj == null)
+      if (this.aC == null)
       {
         TXCLog.e("TXCFilterDrawer", "mThreadHandler is null!");
-        AppMethodBeat.o(66867);
+        AppMethodBeat.o(15183);
         return false;
       }
-      this.aj.obtainMessage(5, 0, 0, paramb).sendToTarget();
+      this.aC.obtainMessage(5, 0, 0, paramb).sendToTarget();
     }
     for (;;)
     {
-      AppMethodBeat.o(66867);
+      AppMethodBeat.o(15183);
       return true;
       d(paramb);
     }
@@ -1257,50 +1394,108 @@ class b
   
   public void c(final int paramInt)
   {
-    AppMethodBeat.i(66871);
-    if ((this.al == paramInt) || (paramInt > 2) || (paramInt < 0))
-    {
-      AppMethodBeat.o(66871);
-      return;
-    }
-    this.al = paramInt;
+    AppMethodBeat.i(15186);
+    this.aF = paramInt;
     a(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(146331);
-        b.a(b.this, b.f(b.this), b.g(b.this), paramInt);
-        AppMethodBeat.o(146331);
+        AppMethodBeat.i(15285);
+        if (paramInt > 0) {
+          a.a().b();
+        }
+        if ((b.e(b.this) != null) && (paramInt >= 0)) {
+          b.e(b.this).c(paramInt);
+        }
+        AppMethodBeat.o(15285);
       }
     });
-    AppMethodBeat.o(66871);
+    AppMethodBeat.o(15186);
   }
   
-  public void d(int paramInt)
+  public void d(final int paramInt)
   {
-    AppMethodBeat.i(66872);
-    this.an = paramInt;
-    a(new b.2(this, paramInt));
-    AppMethodBeat.o(66872);
+    AppMethodBeat.i(15187);
+    if ((this.aE == paramInt) || (paramInt > 2) || (paramInt < 0))
+    {
+      AppMethodBeat.o(15187);
+      return;
+    }
+    this.aE = paramInt;
+    a(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(15272);
+        b.a(b.this, b.f(b.this), b.g(b.this), paramInt);
+        AppMethodBeat.o(15272);
+      }
+    });
+    AppMethodBeat.o(15187);
   }
   
-  public void e(int paramInt)
+  public void e(final int paramInt)
   {
-    AppMethodBeat.i(66873);
-    this.ao = paramInt;
-    a(new b.3(this, paramInt));
-    AppMethodBeat.o(66873);
+    AppMethodBeat.i(15188);
+    this.aG = paramInt;
+    a(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(15261);
+        if (paramInt > 0) {
+          a.a().c();
+        }
+        if ((b.e(b.this) != null) && (paramInt >= 0)) {
+          b.e(b.this).d(paramInt);
+        }
+        AppMethodBeat.o(15261);
+      }
+    });
+    AppMethodBeat.o(15188);
   }
   
-  public void f(int paramInt)
+  public void f(final int paramInt)
   {
-    AppMethodBeat.i(66874);
-    this.ap = paramInt;
-    a(new b.4(this, paramInt));
-    AppMethodBeat.o(66874);
+    AppMethodBeat.i(15189);
+    this.aH = paramInt;
+    a(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(15124);
+        if (paramInt > 0) {
+          a.a().f();
+        }
+        if ((b.e(b.this) != null) && (paramInt >= 0)) {
+          b.e(b.this).f(paramInt);
+        }
+        AppMethodBeat.o(15124);
+      }
+    });
+    AppMethodBeat.o(15189);
   }
   
-  public void g(int paramInt) {}
+  public void g(final int paramInt)
+  {
+    AppMethodBeat.i(15190);
+    this.aI = paramInt;
+    a(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(15208);
+        if (paramInt > 0) {
+          a.a().d();
+        }
+        if ((b.e(b.this) != null) && (paramInt >= 0)) {
+          b.e(b.this).e(paramInt);
+        }
+        AppMethodBeat.o(15208);
+      }
+    });
+    AppMethodBeat.o(15190);
+  }
   
   public void h(int paramInt) {}
   
@@ -1311,10 +1506,184 @@ class b
   public void k(int paramInt) {}
   
   public void l(int paramInt) {}
+  
+  public void m(int paramInt) {}
+  
+  public void n(int paramInt) {}
+  
+  public void o(int paramInt) {}
+  
+  public void p(int paramInt) {}
+  
+  public void q(int paramInt) {}
+  
+  public void r(int paramInt) {}
+  
+  public void s(int paramInt) {}
+  
+  public void t(int paramInt) {}
+  
+  public void u(int paramInt) {}
+  
+  public void v(int paramInt) {}
+  
+  public void w(int paramInt) {}
+  
+  public void x(int paramInt) {}
+  
+  public void y(int paramInt) {}
+  
+  public void z(int paramInt) {}
+  
+  class a
+    extends Handler
+  {
+    private String b = "EGLDrawThreadHandler";
+    
+    a(Looper paramLooper, Context paramContext)
+    {
+      super();
+    }
+    
+    private void a(Object paramObject)
+    {
+      AppMethodBeat.i(15262);
+      TXCLog.i(this.b, "come into InitEGL");
+      paramObject = (c.b)paramObject;
+      a();
+      b.a(b.this, new com.tencent.liteav.beauty.a.a.a());
+      b.a(b.this, new com.tencent.liteav.beauty.a.a.c(b.m(b.this), paramObject.g, paramObject.f, false));
+      b.n(b.this).b();
+      if (!b.a(b.this, paramObject))
+      {
+        TXCLog.e(this.b, "initInternal failed!");
+        AppMethodBeat.o(15262);
+        return;
+      }
+      TXCLog.i(this.b, "come out InitEGL");
+      AppMethodBeat.o(15262);
+    }
+    
+    public void a()
+    {
+      AppMethodBeat.i(15263);
+      TXCLog.i(this.b, "come into releaseEGL");
+      if ((b.o(b.this) != null) && (b.o(b.this)[0] > 0))
+      {
+        GLES20.glDeleteBuffers(1, b.o(b.this), 0);
+        b.a(b.this, null);
+      }
+      b.p(b.this);
+      if (b.n(b.this) != null)
+      {
+        b.n(b.this).c();
+        b.a(b.this, null);
+      }
+      if (b.m(b.this) != null)
+      {
+        b.m(b.this).a();
+        b.a(b.this, null);
+      }
+      b.b(b.this, false);
+      NativeLoad.getInstance();
+      NativeLoad.nativeDeleteYuv2Yuv();
+      TXCLog.i(this.b, "come out releaseEGL");
+      AppMethodBeat.o(15263);
+    }
+    
+    /* Error */
+    void b()
+    {
+      // Byte code:
+      //   0: sipush 15265
+      //   3: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   6: aload_0
+      //   7: monitorenter
+      //   8: aload_0
+      //   9: invokevirtual 129	java/lang/Object:wait	()V
+      //   12: aload_0
+      //   13: monitorexit
+      //   14: sipush 15265
+      //   17: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   20: return
+      //   21: astore_1
+      //   22: aload_0
+      //   23: monitorexit
+      //   24: sipush 15265
+      //   27: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   30: aload_1
+      //   31: athrow
+      //   32: astore_1
+      //   33: goto -21 -> 12
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	36	0	this	a
+      //   21	10	1	localObject	Object
+      //   32	1	1	localInterruptedException	InterruptedException
+      // Exception table:
+      //   from	to	target	type
+      //   8	12	21	finally
+      //   12	14	21	finally
+      //   22	24	21	finally
+      //   8	12	32	java/lang/InterruptedException
+    }
+    
+    public void handleMessage(Message paramMessage)
+    {
+      AppMethodBeat.i(15264);
+      super.handleMessage(paramMessage);
+      switch (paramMessage.what)
+      {
+      }
+      for (;;)
+      {
+        int i = 0;
+        for (;;)
+        {
+          if (1 == i) {}
+          try
+          {
+            notify();
+            return;
+          }
+          finally
+          {
+            AppMethodBeat.o(15264);
+          }
+          a(paramMessage.obj);
+          b.b(b.this, true);
+          i = 1;
+          continue;
+          a();
+          b.this.d.a();
+          i = 0;
+          continue;
+          b.a(b.this, (byte[])paramMessage.obj);
+          i = 0;
+          continue;
+          b.b(b.this, paramMessage.arg1);
+          i = 1;
+          continue;
+          b.a(b.this, (float)(paramMessage.arg1 / 100.0D));
+          if (b.a(b.this) == null) {
+            break;
+          }
+          b.a(b.this).a(b.q(b.this));
+          i = 0;
+          continue;
+          paramMessage = (c.b)paramMessage.obj;
+          b.b(b.this, paramMessage);
+          i = 0;
+        }
+        b.a(b.this, b.c(b.this), b.d(b.this), b.r(b.this), paramMessage.arg1, paramMessage.arg2, ((Integer)paramMessage.obj).intValue());
+        b.this.f.a();
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b
  * JD-Core Version:    0.7.0.1
  */

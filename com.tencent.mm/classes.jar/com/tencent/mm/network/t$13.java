@@ -1,28 +1,28 @@
 package com.tencent.mm.network;
 
-import com.tencent.mars.stn.StnLogic;
+import com.tencent.mars.mm.MMLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bj;
+import com.tencent.mm.sdk.platformtools.bo;
 
-public final class t$13
-  extends bj<Object>
+final class t$13
+  extends bo<Object>
 {
-  public t$13(t paramt, String paramString1, String paramString2)
+  t$13(t paramt, String paramString1, String paramString2)
   {
     super(1000L, null, (byte)0);
   }
   
   public final Object run()
   {
-    AppMethodBeat.i(58563);
-    StnLogic.setDebugIP(this.gec, this.gea);
-    AppMethodBeat.o(58563);
+    AppMethodBeat.i(132785);
+    MMLogic.setNewDnsDebugHost(this.val$ip, this.hLD);
+    AppMethodBeat.o(132785);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.t.13
  * JD-Core Version:    0.7.0.1
  */

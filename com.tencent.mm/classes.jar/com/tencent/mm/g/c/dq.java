@@ -3,74 +3,40 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public abstract class dq
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dHY = "musicId".hashCode();
-  private static final int dJQ = "musicUrl".hashCode();
-  private static final int dJR = "indexBitData".hashCode();
-  private static final int dJS = "fileCacheComplete".hashCode();
-  private static final int dJT = "pieceFileMIMEType".hashCode();
-  private static final int dJU = "removeDirtyBit".hashCode();
-  private static final int dxX = "fileName".hashCode();
+  private static final int eOd = "packet_id".hashCode();
+  private static final int eOk = "media_type".hashCode();
+  private static final int eOl = "media_url".hashCode();
+  private static final int eOm = "media_md5".hashCode();
+  private static final int eOn = "media_fuzzy_thumbnail_url".hashCode();
+  private static final int eOo = "media_fuzzy_thumbnail_md5".hashCode();
+  private static final int ezr;
+  private static final int ezs = "height".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dHr = true;
-  private boolean dJL = true;
-  private boolean dJM = true;
-  private boolean dJN = true;
-  private boolean dJO = true;
-  private boolean dJP = true;
-  private boolean dxw = true;
-  public int field_fileCacheComplete;
-  public String field_fileName;
-  public byte[] field_indexBitData;
-  public String field_musicId;
-  public String field_musicUrl;
-  public String field_pieceFileMIMEType;
-  public int field_removeDirtyBit;
+  private boolean eNV = true;
+  private boolean eOf = true;
+  private boolean eOg = true;
+  private boolean eOh = true;
+  private boolean eOi = true;
+  private boolean eOj = true;
+  private boolean eyF = true;
+  private boolean eyG = true;
+  public int field_height;
+  public String field_media_fuzzy_thumbnail_md5;
+  public String field_media_fuzzy_thumbnail_url;
+  public String field_media_md5;
+  public int field_media_type;
+  public String field_media_url;
+  public String field_packet_id;
+  public int field_width;
   
-  public static c.a Hm()
+  static
   {
-    c.a locala = new c.a();
-    locala.yrK = new Field[7];
-    locala.columns = new String[8];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "musicId";
-    locala.yrM.put("musicId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" musicId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "musicId";
-    locala.columns[1] = "musicUrl";
-    locala.yrM.put("musicUrl", "TEXT");
-    localStringBuilder.append(" musicUrl TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "fileName";
-    locala.yrM.put("fileName", "TEXT");
-    localStringBuilder.append(" fileName TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "indexBitData";
-    locala.yrM.put("indexBitData", "BLOB");
-    localStringBuilder.append(" indexBitData BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "fileCacheComplete";
-    locala.yrM.put("fileCacheComplete", "INTEGER");
-    localStringBuilder.append(" fileCacheComplete INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "pieceFileMIMEType";
-    locala.yrM.put("pieceFileMIMEType", "TEXT");
-    localStringBuilder.append(" pieceFileMIMEType TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "removeDirtyBit";
-    locala.yrM.put("removeDirtyBit", "INTEGER");
-    localStringBuilder.append(" removeDirtyBit INTEGER");
-    locala.columns[7] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    ezr = "width".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -86,30 +52,31 @@ public abstract class dq
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dHY != k) {
-        break label65;
+      if (eOk != k) {
+        break label60;
       }
-      this.field_musicId = paramCursor.getString(i);
-      this.dHr = true;
+      this.field_media_type = paramCursor.getInt(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (dJQ == k) {
-        this.field_musicUrl = paramCursor.getString(i);
-      } else if (dxX == k) {
-        this.field_fileName = paramCursor.getString(i);
-      } else if (dJR == k) {
-        this.field_indexBitData = paramCursor.getBlob(i);
-      } else if (dJS == k) {
-        this.field_fileCacheComplete = paramCursor.getInt(i);
-      } else if (dJT == k) {
-        this.field_pieceFileMIMEType = paramCursor.getString(i);
-      } else if (dJU == k) {
-        this.field_removeDirtyBit = paramCursor.getInt(i);
+      label60:
+      if (eOl == k) {
+        this.field_media_url = paramCursor.getString(i);
+      } else if (eOm == k) {
+        this.field_media_md5 = paramCursor.getString(i);
+      } else if (ezs == k) {
+        this.field_height = paramCursor.getInt(i);
+      } else if (ezr == k) {
+        this.field_width = paramCursor.getInt(i);
+      } else if (eOd == k) {
+        this.field_packet_id = paramCursor.getString(i);
+      } else if (eOn == k) {
+        this.field_media_fuzzy_thumbnail_url = paramCursor.getString(i);
+      } else if (eOo == k) {
+        this.field_media_fuzzy_thumbnail_md5 = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -119,26 +86,29 @@ public abstract class dq
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dHr) {
-      localContentValues.put("musicId", this.field_musicId);
+    if (this.eOf) {
+      localContentValues.put("media_type", Integer.valueOf(this.field_media_type));
     }
-    if (this.dJL) {
-      localContentValues.put("musicUrl", this.field_musicUrl);
+    if (this.eOg) {
+      localContentValues.put("media_url", this.field_media_url);
     }
-    if (this.dxw) {
-      localContentValues.put("fileName", this.field_fileName);
+    if (this.eOh) {
+      localContentValues.put("media_md5", this.field_media_md5);
     }
-    if (this.dJM) {
-      localContentValues.put("indexBitData", this.field_indexBitData);
+    if (this.eyG) {
+      localContentValues.put("height", Integer.valueOf(this.field_height));
     }
-    if (this.dJN) {
-      localContentValues.put("fileCacheComplete", Integer.valueOf(this.field_fileCacheComplete));
+    if (this.eyF) {
+      localContentValues.put("width", Integer.valueOf(this.field_width));
     }
-    if (this.dJO) {
-      localContentValues.put("pieceFileMIMEType", this.field_pieceFileMIMEType);
+    if (this.eNV) {
+      localContentValues.put("packet_id", this.field_packet_id);
     }
-    if (this.dJP) {
-      localContentValues.put("removeDirtyBit", Integer.valueOf(this.field_removeDirtyBit));
+    if (this.eOi) {
+      localContentValues.put("media_fuzzy_thumbnail_url", this.field_media_fuzzy_thumbnail_url);
+    }
+    if (this.eOj) {
+      localContentValues.put("media_fuzzy_thumbnail_md5", this.field_media_fuzzy_thumbnail_md5);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -148,7 +118,7 @@ public abstract class dq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.dq
  * JD-Core Version:    0.7.0.1
  */

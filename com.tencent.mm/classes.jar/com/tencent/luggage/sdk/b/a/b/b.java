@@ -1,131 +1,128 @@
 package com.tencent.luggage.sdk.b.a.b;
 
-import a.f.b.j;
-import a.l;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.ab;
 import com.tencent.mm.plugin.appbrand.jsapi.f.b;
 import com.tencent.mm.plugin.appbrand.jsapi.f.c;
 import com.tencent.mm.plugin.appbrand.jsapi.f.d;
-import com.tencent.mm.plugin.appbrand.jsapi.w;
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.widget.input.n;
 import com.tencent.mm.plugin.appbrand.widget.input.u;
 import com.tencent.mm.plugin.appbrand.widget.input.u.c;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/luggage/sdk/jsapi/component/page/AppBrandPageViewKeyboardHeightEmitter;", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandKeyboardListener$OnKeyboardStateChangedListener;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnForegroundListener;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnBackgroundListener;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnDestroyListener;", "mPageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "mEvent", "Lcom/tencent/mm/plugin/appbrand/jsapi/EventOnKeyboardHeightChange;", "mRegistry", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandKeyboardListener;", "mSavedKeyboardHeight", "", "getHeight", "onBackground", "", "onDestroy", "onForeground", "onKeyboardStateChanged", "shown", "", "refreshHeight", "height", "Companion", "luggage-wechat-full-sdk_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/luggage/sdk/jsapi/component/page/AppBrandPageViewKeyboardHeightEmitter;", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandKeyboardListener$OnKeyboardStateChangedListener;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnForegroundListener;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnBackgroundListener;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnDestroyListener;", "mPageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "mEvent", "Lcom/tencent/mm/plugin/appbrand/jsapi/EventOnKeyboardHeightChange;", "mRegistry", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandKeyboardListener;", "mSavedKeyboardHeight", "", "getHeight", "onBackground", "", "onDestroy", "onForeground", "onKeyboardStateChanged", "shown", "", "refreshHeight", "height", "Companion", "luggage-wechat-full-sdk_release"})
 public final class b
   implements f.b, f.c, f.d, u.c
 {
-  public static final a bEo;
-  private final v bBK;
-  private final w bEl;
-  private int bEm;
-  private u bEn;
+  public static final b.a cgT;
+  private final aa cdz;
+  private final ab cgQ;
+  private int cgR;
+  private u cgS;
   
   static
   {
-    AppMethodBeat.i(140997);
-    bEo = new a((byte)0);
-    AppMethodBeat.o(140997);
+    AppMethodBeat.i(147831);
+    cgT = new b.a((byte)0);
+    AppMethodBeat.o(147831);
   }
   
-  private b(v paramv)
+  private b(aa paramaa)
   {
-    AppMethodBeat.i(140996);
-    this.bBK = paramv;
-    this.bEl = new w();
-    AppMethodBeat.o(140996);
+    AppMethodBeat.i(147830);
+    this.cdz = paramaa;
+    this.cgQ = new ab();
+    AppMethodBeat.o(147830);
   }
   
-  public static final void a(v paramv)
+  public static final void a(aa paramaa)
   {
-    AppMethodBeat.i(140998);
-    j.q(paramv, "pv");
-    b localb = new b(paramv, (byte)0);
-    paramv.a((f.d)localb);
-    paramv.a((f.b)localb);
-    paramv.a((f.c)localb);
-    AppMethodBeat.o(140998);
+    AppMethodBeat.i(147832);
+    k.h(paramaa, "pv");
+    b localb = new b(paramaa, (byte)0);
+    paramaa.a((f.d)localb);
+    paramaa.a((f.b)localb);
+    paramaa.a((f.c)localb);
+    AppMethodBeat.o(147832);
   }
   
-  public final void bc(boolean paramBoolean)
+  public final void bu(boolean paramBoolean)
   {
-    AppMethodBeat.i(140992);
-    w localw = this.bEl;
+    AppMethodBeat.i(147826);
+    ab localab = this.cgQ;
     if (paramBoolean) {}
-    for (int i = this.bEm;; i = 0)
+    for (int i = this.cgR;; i = 0)
     {
-      r localr = this.bBK.ws();
-      j.p(localr, "mPageView.service");
-      w.a(localw, i, localr, this.bBK);
-      AppMethodBeat.o(140992);
+      q localq = this.cdz.Du();
+      k.g(localq, "mPageView.service");
+      ab.a(localab, i, localq, this.cdz);
+      AppMethodBeat.o(147826);
       return;
     }
   }
   
-  public final void fu(int paramInt)
+  public final void gM(int paramInt)
   {
-    this.bEm = paramInt;
+    this.cgR = paramInt;
   }
   
   public final int getHeight()
   {
-    return this.bEm;
+    return this.cgR;
   }
   
   public final void onBackground()
   {
-    AppMethodBeat.i(140994);
-    u localu = this.bEn;
+    AppMethodBeat.i(147828);
+    u localu = this.cgS;
     if (localu != null)
     {
       localu.b((u.c)this);
-      AppMethodBeat.o(140994);
+      AppMethodBeat.o(147828);
       return;
     }
-    AppMethodBeat.o(140994);
+    AppMethodBeat.o(147828);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(140993);
-    u localu = this.bEn;
+    AppMethodBeat.i(147827);
+    u localu = this.cgS;
     if (localu != null)
     {
       localu.b((u.c)this);
-      AppMethodBeat.o(140993);
+      AppMethodBeat.o(147827);
       return;
     }
-    AppMethodBeat.o(140993);
+    AppMethodBeat.o(147827);
   }
   
   public final void onForeground()
   {
-    AppMethodBeat.i(140995);
-    if (this.bBK.getContentView() == null)
+    AppMethodBeat.i(147829);
+    if (this.cdz.getContentView() == null)
     {
-      AppMethodBeat.o(140995);
+      AppMethodBeat.o(147829);
       return;
     }
-    Object localObject = this.bBK.getContentView();
+    Object localObject = this.cdz.getContentView();
     if (localObject == null) {
-      j.ebi();
+      k.fvU();
     }
-    this.bEn = n.cL((View)localObject);
-    localObject = this.bEn;
+    this.cgS = n.db((View)localObject);
+    localObject = this.cgS;
     if (localObject != null)
     {
       ((u)localObject).a((u.c)this);
-      AppMethodBeat.o(140995);
+      AppMethodBeat.o(147829);
       return;
     }
-    AppMethodBeat.o(140995);
+    AppMethodBeat.o(147829);
   }
-  
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/luggage/sdk/jsapi/component/page/AppBrandPageViewKeyboardHeightEmitter$Companion;", "", "()V", "install", "", "pv", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "luggage-wechat-full-sdk_release"})
-  public static final class a {}
 }
 
 

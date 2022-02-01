@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.webview.fts;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.mx;
+import com.tencent.mm.g.a.oj;
 import com.tencent.mm.sdk.b.c;
 
 final class h$2
-  extends c<mx>
+  extends c<oj>
 {
   h$2(h paramh)
   {
-    AppMethodBeat.i(5738);
-    this.__eventId = mx.class.getName().hashCode();
-    AppMethodBeat.o(5738);
+    AppMethodBeat.i(160417);
+    this.__eventId = oj.class.getName().hashCode();
+    AppMethodBeat.o(160417);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.h.2
  * JD-Core Version:    0.7.0.1
  */

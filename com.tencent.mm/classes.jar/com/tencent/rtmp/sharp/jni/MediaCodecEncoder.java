@@ -1,13 +1,13 @@
 package com.tencent.rtmp.sharp.jni;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
 import android.os.Build;
 import android.os.Build.VERSION;
-import android.os.Environment;
-import com.tencent.d.a.a.a;
+import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -23,6 +23,7 @@ public class MediaCodecEncoder
   private MediaFormat mAudioFormat;
   private int mBitrate;
   private int mChannels;
+  private Context mContext;
   private ByteBuffer mEncInBuffer;
   private ByteBuffer mEncOutBuffer;
   private boolean mFormatChangeFlag;
@@ -39,7 +40,7 @@ public class MediaCodecEncoder
   
   public MediaCodecEncoder()
   {
-    AppMethodBeat.i(146930);
+    AppMethodBeat.i(13694);
     this.mAudioAACEncoder = null;
     this.mAudioFormat = null;
     this.mAACEncBufferInfo = null;
@@ -52,11 +53,35 @@ public class MediaCodecEncoder
     this.mFormatChangeFlag = false;
     this.mRecFileDump = null;
     this.mRecFileOut = null;
+    this.mContext = TXCCommonUtil.getAppContext();
     this.mEncInBuffer = ByteBuffer.allocateDirect(7680);
     this.mTempBufEncIn = new byte[7680];
     this.mEncOutBuffer = ByteBuffer.allocateDirect(this.nMaxBitRate * 2 / 8 / 50 + 100);
     this.mTempBufEncOut = new byte[this.nMaxBitRate * 2 / 8 / 50 + 100];
-    AppMethodBeat.o(146930);
+    AppMethodBeat.o(13694);
+  }
+  
+  public MediaCodecEncoder(Context paramContext)
+  {
+    AppMethodBeat.i(182239);
+    this.mAudioAACEncoder = null;
+    this.mAudioFormat = null;
+    this.mAACEncBufferInfo = null;
+    this.mInputBuffer = null;
+    this.mOutputBuffer = null;
+    this.mSampleRate = 48000;
+    this.mChannels = 1;
+    this.mBitrate = 32000;
+    this.nMaxBitRate = 256000;
+    this.mFormatChangeFlag = false;
+    this.mRecFileDump = null;
+    this.mRecFileOut = null;
+    this.mContext = paramContext;
+    this.mEncInBuffer = ByteBuffer.allocateDirect(7680);
+    this.mTempBufEncIn = new byte[7680];
+    this.mEncOutBuffer = ByteBuffer.allocateDirect(this.nMaxBitRate * 2 / 8 / 50 + 100);
+    this.mTempBufEncOut = new byte[this.nMaxBitRate * 2 / 8 / 50 + 100];
+    AppMethodBeat.o(182239);
   }
   
   private void addADTStoPacket(byte[] paramArrayOfByte, int paramInt)
@@ -92,18 +117,37 @@ public class MediaCodecEncoder
   
   private String getDumpFilePath(String paramString)
   {
-    AppMethodBeat.i(146931);
-    a.dUd();
-    a.iP("TRAE", "manufacture:" + Build.MANUFACTURER);
-    a.dUd();
-    a.iP("TRAE", "MODEL:" + Build.MODEL);
-    paramString = Environment.getExternalStorageDirectory().getPath() + "/MF-" + Build.MANUFACTURER + "-M-" + Build.MODEL + "-" + paramString;
-    a.dUd();
-    a.iP("TRAE", "dump:".concat(String.valueOf(paramString)));
-    a.dUd();
-    a.iP("TRAE", "dump replace:" + paramString.replace(" ", "_"));
+    AppMethodBeat.i(13695);
+    if (QLog.isColorLevel()) {
+      QLog.w("TRAE", 2, "manufacture:" + Build.MANUFACTURER);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("TRAE", 2, "MODEL:" + Build.MODEL);
+    }
+    if (this.mContext == null)
+    {
+      AppMethodBeat.o(13695);
+      return null;
+    }
+    File localFile = this.mContext.getExternalFilesDir(null);
+    if (localFile == null)
+    {
+      AppMethodBeat.o(13695);
+      return null;
+    }
+    paramString = localFile.getPath() + "/MF-" + Build.MANUFACTURER + "-M-" + Build.MODEL + "-" + paramString;
+    localFile = new File(paramString);
+    if (!localFile.getParentFile().exists()) {
+      localFile.getParentFile().mkdirs();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("TRAE", 2, "dump:".concat(String.valueOf(paramString)));
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("TRAE", 2, "dump replace:" + paramString.replace(" ", "_"));
+    }
     paramString = paramString.replace(" ", "_");
-    AppMethodBeat.o(146931);
+    AppMethodBeat.o(13695);
     return paramString;
   }
   
@@ -112,157 +156,159 @@ public class MediaCodecEncoder
   public int createAACEncoder(int paramInt1, int paramInt2, int paramInt3)
   {
     // Byte code:
-    //   0: ldc 187
-    //   2: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: ldc 189
-    //   8: invokestatic 195	android/media/MediaCodec:createEncoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
-    //   11: putfield 54	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioAACEncoder	Landroid/media/MediaCodec;
-    //   14: aload_0
-    //   15: ldc 189
-    //   17: iload_1
-    //   18: iload_2
-    //   19: invokestatic 201	android/media/MediaFormat:createAudioFormat	(Ljava/lang/String;II)Landroid/media/MediaFormat;
-    //   22: putfield 56	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioFormat	Landroid/media/MediaFormat;
-    //   25: aload_0
-    //   26: getfield 56	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioFormat	Landroid/media/MediaFormat;
-    //   29: ldc 203
-    //   31: iconst_2
-    //   32: invokevirtual 207	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
-    //   35: aload_0
-    //   36: getfield 56	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioFormat	Landroid/media/MediaFormat;
-    //   39: ldc 209
-    //   41: iload_1
-    //   42: invokevirtual 207	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
-    //   45: aload_0
-    //   46: getfield 56	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioFormat	Landroid/media/MediaFormat;
-    //   49: ldc 211
-    //   51: iload_2
-    //   52: invokevirtual 207	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
-    //   55: aload_0
-    //   56: getfield 56	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioFormat	Landroid/media/MediaFormat;
-    //   59: ldc 213
-    //   61: iload_3
-    //   62: invokevirtual 207	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
-    //   65: aload_0
-    //   66: getfield 54	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioAACEncoder	Landroid/media/MediaCodec;
-    //   69: aload_0
-    //   70: getfield 56	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioFormat	Landroid/media/MediaFormat;
-    //   73: aconst_null
+    //   0: sipush 13696
+    //   3: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: ldc 209
+    //   9: invokestatic 215	android/media/MediaCodec:createEncoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
+    //   12: putfield 55	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioAACEncoder	Landroid/media/MediaCodec;
+    //   15: aload_0
+    //   16: ldc 209
+    //   18: iload_1
+    //   19: iload_2
+    //   20: invokestatic 221	android/media/MediaFormat:createAudioFormat	(Ljava/lang/String;II)Landroid/media/MediaFormat;
+    //   23: putfield 57	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioFormat	Landroid/media/MediaFormat;
+    //   26: aload_0
+    //   27: getfield 57	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioFormat	Landroid/media/MediaFormat;
+    //   30: ldc 223
+    //   32: iconst_2
+    //   33: invokevirtual 227	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
+    //   36: aload_0
+    //   37: getfield 57	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioFormat	Landroid/media/MediaFormat;
+    //   40: ldc 229
+    //   42: iload_1
+    //   43: invokevirtual 227	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
+    //   46: aload_0
+    //   47: getfield 57	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioFormat	Landroid/media/MediaFormat;
+    //   50: ldc 231
+    //   52: iload_2
+    //   53: invokevirtual 227	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
+    //   56: aload_0
+    //   57: getfield 57	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioFormat	Landroid/media/MediaFormat;
+    //   60: ldc 233
+    //   62: iload_3
+    //   63: invokevirtual 227	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
+    //   66: aload_0
+    //   67: getfield 55	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioAACEncoder	Landroid/media/MediaCodec;
+    //   70: aload_0
+    //   71: getfield 57	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioFormat	Landroid/media/MediaFormat;
     //   74: aconst_null
-    //   75: iconst_1
-    //   76: invokevirtual 217	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
-    //   79: aload_0
-    //   80: getfield 54	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioAACEncoder	Landroid/media/MediaCodec;
-    //   83: ifnull +36 -> 119
-    //   86: aload_0
-    //   87: getfield 54	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioAACEncoder	Landroid/media/MediaCodec;
-    //   90: invokevirtual 220	android/media/MediaCodec:start	()V
-    //   93: aload_0
-    //   94: new 222	android/media/MediaCodec$BufferInfo
-    //   97: dup
-    //   98: invokespecial 223	android/media/MediaCodec$BufferInfo:<init>	()V
-    //   101: putfield 58	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAACEncBufferInfo	Landroid/media/MediaCodec$BufferInfo;
-    //   104: aload_0
-    //   105: iload_1
-    //   106: putfield 65	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mSampleRate	I
-    //   109: aload_0
-    //   110: iload_2
-    //   111: putfield 67	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mChannels	I
-    //   114: aload_0
-    //   115: iload_3
-    //   116: putfield 69	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mBitrate	I
-    //   119: getstatic 41	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mDumpEnable	Z
-    //   122: ifeq +35 -> 157
-    //   125: aload_0
-    //   126: new 147	java/io/File
-    //   129: dup
-    //   130: aload_0
-    //   131: ldc 225
-    //   133: invokespecial 227	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:getDumpFilePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   136: invokespecial 228	java/io/File:<init>	(Ljava/lang/String;)V
-    //   139: putfield 76	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mRecFileDump	Ljava/io/File;
-    //   142: aload_0
-    //   143: new 230	java/io/FileOutputStream
-    //   146: dup
-    //   147: aload_0
-    //   148: getfield 76	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mRecFileDump	Ljava/io/File;
-    //   151: invokespecial 233	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   154: putfield 78	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mRecFileOut	Ljava/io/FileOutputStream;
-    //   157: invokestatic 107	com/tencent/d/a/a/a:dUd	()Z
-    //   160: pop
-    //   161: ldc 8
-    //   163: new 111	java/lang/StringBuilder
-    //   166: dup
-    //   167: ldc 235
-    //   169: invokespecial 116	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   172: iload_1
-    //   173: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   176: ldc 240
-    //   178: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   181: iload_2
-    //   182: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   185: ldc 240
-    //   187: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   190: iload_3
-    //   191: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   194: ldc 242
-    //   196: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   199: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   202: invokestatic 133	com/tencent/d/a/a/a:iP	(Ljava/lang/String;Ljava/lang/String;)V
-    //   205: ldc 187
-    //   207: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   210: iconst_0
-    //   211: ireturn
-    //   212: astore 4
-    //   214: invokestatic 107	com/tencent/d/a/a/a:dUd	()Z
-    //   217: pop
-    //   218: ldc 8
-    //   220: new 111	java/lang/StringBuilder
-    //   223: dup
-    //   224: ldc 244
-    //   226: invokespecial 116	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   229: iload_1
-    //   230: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   233: ldc 240
-    //   235: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   238: iload_2
-    //   239: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   242: ldc 240
-    //   244: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   247: iload_3
-    //   248: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   251: ldc 242
-    //   253: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   256: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   259: invokestatic 247	com/tencent/d/a/a/a:iO	(Ljava/lang/String;Ljava/lang/String;)V
-    //   262: ldc 187
-    //   264: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   267: iconst_m1
-    //   268: ireturn
-    //   269: astore 4
-    //   271: goto -114 -> 157
+    //   75: aconst_null
+    //   76: iconst_1
+    //   77: invokevirtual 237	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
+    //   80: aload_0
+    //   81: getfield 55	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioAACEncoder	Landroid/media/MediaCodec;
+    //   84: ifnull +36 -> 120
+    //   87: aload_0
+    //   88: getfield 55	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAudioAACEncoder	Landroid/media/MediaCodec;
+    //   91: invokevirtual 240	android/media/MediaCodec:start	()V
+    //   94: aload_0
+    //   95: new 242	android/media/MediaCodec$BufferInfo
+    //   98: dup
+    //   99: invokespecial 243	android/media/MediaCodec$BufferInfo:<init>	()V
+    //   102: putfield 59	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mAACEncBufferInfo	Landroid/media/MediaCodec$BufferInfo;
+    //   105: aload_0
+    //   106: iload_1
+    //   107: putfield 66	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mSampleRate	I
+    //   110: aload_0
+    //   111: iload_2
+    //   112: putfield 68	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mChannels	I
+    //   115: aload_0
+    //   116: iload_3
+    //   117: putfield 70	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mBitrate	I
+    //   120: getstatic 43	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mDumpEnable	Z
+    //   123: ifeq +35 -> 158
+    //   126: aload_0
+    //   127: new 157	java/io/File
+    //   130: dup
+    //   131: aload_0
+    //   132: ldc 245
+    //   134: invokespecial 247	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:getDumpFilePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   137: invokespecial 167	java/io/File:<init>	(Ljava/lang/String;)V
+    //   140: putfield 77	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mRecFileDump	Ljava/io/File;
+    //   143: aload_0
+    //   144: new 249	java/io/FileOutputStream
+    //   147: dup
+    //   148: aload_0
+    //   149: getfield 77	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mRecFileDump	Ljava/io/File;
+    //   152: invokespecial 252	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   155: putfield 79	com/tencent/rtmp/sharp/jni/MediaCodecEncoder:mRecFileOut	Ljava/io/FileOutputStream;
+    //   158: invokestatic 117	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   161: ifeq +51 -> 212
+    //   164: ldc 8
+    //   166: iconst_2
+    //   167: new 121	java/lang/StringBuilder
+    //   170: dup
+    //   171: ldc 254
+    //   173: invokespecial 126	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   176: iload_1
+    //   177: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   180: ldc_w 259
+    //   183: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   186: iload_2
+    //   187: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   190: ldc_w 259
+    //   193: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   196: iload_3
+    //   197: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   200: ldc_w 261
+    //   203: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   206: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   209: invokestatic 143	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   212: sipush 13696
+    //   215: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   218: iconst_0
+    //   219: ireturn
+    //   220: astore 4
+    //   222: invokestatic 117	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   225: ifeq +52 -> 277
+    //   228: ldc 8
+    //   230: iconst_2
+    //   231: new 121	java/lang/StringBuilder
+    //   234: dup
+    //   235: ldc_w 263
+    //   238: invokespecial 126	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   241: iload_1
+    //   242: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   245: ldc_w 259
+    //   248: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   251: iload_2
+    //   252: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   255: ldc_w 259
+    //   258: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: iload_3
+    //   262: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   265: ldc_w 261
+    //   268: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   271: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   274: invokestatic 266	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   277: sipush 13696
+    //   280: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   283: iconst_m1
+    //   284: ireturn
+    //   285: astore 4
+    //   287: goto -129 -> 158
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	274	0	this	MediaCodecEncoder
-    //   0	274	1	paramInt1	int
-    //   0	274	2	paramInt2	int
-    //   0	274	3	paramInt3	int
-    //   212	1	4	localException	Exception
-    //   269	1	4	localFileNotFoundException	java.io.FileNotFoundException
+    //   0	290	0	this	MediaCodecEncoder
+    //   0	290	1	paramInt1	int
+    //   0	290	2	paramInt2	int
+    //   0	290	3	paramInt3	int
+    //   220	1	4	localException	Exception
+    //   285	1	4	localFileNotFoundException	java.io.FileNotFoundException
     // Exception table:
     //   from	to	target	type
-    //   5	119	212	java/lang/Exception
-    //   119	142	212	java/lang/Exception
-    //   142	157	212	java/lang/Exception
-    //   157	205	212	java/lang/Exception
-    //   142	157	269	java/io/FileNotFoundException
+    //   6	120	220	java/lang/Exception
+    //   120	143	220	java/lang/Exception
+    //   143	158	220	java/lang/Exception
+    //   158	212	220	java/lang/Exception
+    //   143	158	285	java/io/FileNotFoundException
   }
   
   @SuppressLint({"NewApi"})
   public int encodeAACFrame(int paramInt)
   {
-    AppMethodBeat.i(146933);
+    AppMethodBeat.i(13697);
     if (this.mFormatChangeFlag)
     {
       this.mFormatChangeFlag = false;
@@ -301,7 +347,7 @@ public class MediaCodecEncoder
           paramInt = i;
         }
       }
-      AppMethodBeat.o(146933);
+      AppMethodBeat.o(13697);
       return paramInt;
     }
   }
@@ -309,7 +355,7 @@ public class MediaCodecEncoder
   @SuppressLint({"NewApi"})
   public int encodeInternalAACFrame(int paramInt)
   {
-    AppMethodBeat.i(146934);
+    AppMethodBeat.i(13698);
     int i;
     try
     {
@@ -329,20 +375,20 @@ public class MediaCodecEncoder
         if (i >= 0) {
           break;
         }
-        AppMethodBeat.o(146934);
+        AppMethodBeat.o(13698);
         return 0;
         label109:
         this.mMediaInputBuffers = this.mAudioAACEncoder.getInputBuffers();
       }
-      AppMethodBeat.o(146934);
+      AppMethodBeat.o(13698);
     }
     catch (Exception localException1)
     {
-      paramInt = 0;
+      i = 0;
     }
     for (;;)
     {
-      return paramInt;
+      return i;
       int j = this.mAACEncBufferInfo.size;
       if (Build.VERSION.SDK_INT >= 21)
       {
@@ -361,18 +407,22 @@ public class MediaCodecEncoder
           this.mOutputBuffer.get(this.mTempBufEncOut, 0, paramInt);
           this.mOutputBuffer.position(0);
           this.mAudioAACEncoder.releaseOutputBuffer(i, false);
-          AppMethodBeat.o(146934);
+          AppMethodBeat.o(13698);
           return paramInt;
         }
         catch (Exception localException2)
         {
           label286:
-          a.dUd();
-          a.iO("MediaCodecEncoder", "[ERROR] encoding aac stream failed!!!");
+          i = paramInt;
         }
         this.mMediaOutputBuffers = this.mAudioAACEncoder.getOutputBuffers();
         this.mOutputBuffer = this.mMediaOutputBuffers[i];
         break;
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.e("MediaCodecEncoder", 2, "[ERROR] encoding aac stream failed!!!");
+        i = paramInt;
       }
     }
   }
@@ -380,7 +430,7 @@ public class MediaCodecEncoder
   @SuppressLint({"NewApi"})
   public int releaseAACEncoder()
   {
-    AppMethodBeat.i(146935);
+    AppMethodBeat.i(13699);
     try
     {
       if (this.mAudioAACEncoder != null)
@@ -388,17 +438,19 @@ public class MediaCodecEncoder
         this.mAudioAACEncoder.stop();
         this.mAudioAACEncoder.release();
         this.mAudioAACEncoder = null;
-        a.dUd();
-        a.iP("MediaCodecEncoder", "releaseAACEncoder, release aac encode stream succeed!!");
-        AppMethodBeat.o(146935);
+        if (QLog.isColorLevel()) {
+          QLog.w("MediaCodecEncoder", 2, "releaseAACEncoder, release aac encode stream succeed!!");
+        }
+        AppMethodBeat.o(13699);
         return 0;
       }
     }
     catch (Exception localException)
     {
-      a.dUd();
-      a.iO("MediaCodecEncoder", "[ERROR] releaseAACEncoder, release aac encode stream failed!!!");
-      AppMethodBeat.o(146935);
+      if (QLog.isColorLevel()) {
+        QLog.e("MediaCodecEncoder", 2, "[ERROR] releaseAACEncoder, release aac encode stream failed!!!");
+      }
+      AppMethodBeat.o(13699);
     }
     return -1;
   }
@@ -406,15 +458,16 @@ public class MediaCodecEncoder
   @SuppressLint({"NewApi"})
   public int setAACEncodeBitrate(int paramInt)
   {
-    AppMethodBeat.i(146936);
+    AppMethodBeat.i(13700);
     if ((this.mAudioAACEncoder != null) && (this.mBitrate != paramInt))
     {
       this.mFormatChangeFlag = true;
       this.mBitrate = paramInt;
-      a.dUd();
-      a.iP("MediaCodecEncoder", "Set AAC bitrate = ".concat(String.valueOf(paramInt)));
+      if (QLog.isColorLevel()) {
+        QLog.w("MediaCodecEncoder", 2, "Set AAC bitrate = ".concat(String.valueOf(paramInt)));
+      }
     }
-    AppMethodBeat.o(146936);
+    AppMethodBeat.o(13700);
     return 0;
   }
 }

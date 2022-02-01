@@ -1,85 +1,104 @@
 package com.tencent.mm.plugin.offline.ui;
 
-import android.content.res.Resources;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckedTextView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mm.plugin.newtips.a.a;
+import com.tencent.mm.plugin.newtips.a.g;
+import com.tencent.mm.plugin.newtips.a.k;
+import com.tencent.mm.protocal.protobuf.dcb;
 
-final class WalletOfflineCoinPurseUI$a
-  extends BaseAdapter
+abstract class WalletOfflineCoinPurseUI$a
+  implements a
 {
-  ArrayList<String> iVH;
-  ArrayList<Boolean> pnW;
+  protected ImageView umO;
+  protected TextView umP;
+  protected ImageView umQ;
   
   public WalletOfflineCoinPurseUI$a(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI)
   {
-    AppMethodBeat.i(43556);
-    this.iVH = new ArrayList();
-    this.pnW = new ArrayList();
-    AppMethodBeat.o(43556);
+    cZe();
   }
   
-  public final int getCount()
+  public final void a(k paramk, boolean paramBoolean)
   {
-    AppMethodBeat.i(43557);
-    int i = this.iVH.size();
-    AppMethodBeat.o(43557);
-    return i;
+    g.a(this, paramk, paramBoolean);
   }
   
-  public final Object getItem(int paramInt)
+  public final boolean a(boolean paramBoolean, dcb paramdcb)
   {
-    AppMethodBeat.i(43558);
-    Object localObject = this.iVH.get(paramInt);
-    AppMethodBeat.o(43558);
-    return localObject;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(43560);
-    paramView = (CheckedTextView)View.inflate(this.pny, 2130971195, null);
-    paramView.setText((String)this.iVH.get(paramInt));
-    if (WalletOfflineCoinPurseUI.bZs() == paramInt)
+    if (paramBoolean)
     {
-      paramView.setChecked(true);
-      if (!isEnabled(paramInt)) {
-        break label90;
-      }
-      paramView.setTextColor(this.pny.getResources().getColor(2131690322));
-      paramView.setEnabled(true);
+      this.umQ.setVisibility(0);
+      this.umP.setVisibility(0);
+      this.umP.setText(paramdcb.title);
     }
     for (;;)
     {
-      AppMethodBeat.o(43560);
-      return paramView;
-      paramView.setChecked(false);
-      break;
-      label90:
-      paramView.setTextColor(this.pny.getResources().getColor(2131690168));
-      paramView.setEnabled(false);
+      return true;
+      this.umQ.setVisibility(8);
+      this.umP.setVisibility(8);
     }
   }
   
-  public final boolean isEnabled(int paramInt)
+  public final boolean b(boolean paramBoolean, dcb paramdcb)
   {
-    AppMethodBeat.i(43559);
-    boolean bool = ((Boolean)this.pnW.get(paramInt)).booleanValue();
-    AppMethodBeat.o(43559);
-    return bool;
+    return false;
+  }
+  
+  public final boolean c(boolean paramBoolean, dcb paramdcb)
+  {
+    return false;
+  }
+  
+  public final boolean cND()
+  {
+    return false;
+  }
+  
+  public boolean cNE()
+  {
+    return false;
+  }
+  
+  public abstract void cZe();
+  
+  public final boolean d(boolean paramBoolean, dcb paramdcb)
+  {
+    return false;
+  }
+  
+  public final boolean mY(boolean paramBoolean)
+  {
+    return g.a(paramBoolean, this);
+  }
+  
+  public final boolean mZ(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.umQ.setVisibility(0);
+    }
+    for (;;)
+    {
+      return true;
+      this.umQ.setVisibility(8);
+    }
+  }
+  
+  public final boolean na(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.umO.setVisibility(0);
+    }
+    for (;;)
+    {
+      return true;
+      this.umO.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.WalletOfflineCoinPurseUI.a
  * JD-Core Version:    0.7.0.1
  */

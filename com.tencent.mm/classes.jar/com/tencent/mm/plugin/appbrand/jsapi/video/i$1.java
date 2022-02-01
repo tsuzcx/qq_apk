@@ -1,22 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.video.videoview.a.c;
 
-final class i$1
-  implements Runnable
+public final class i$1
+  implements f
 {
-  i$1(i parami, AppBrandVideoView paramAppBrandVideoView) {}
-  
-  public final void run()
+  public final e jdMethod_do(Context paramContext)
   {
-    AppMethodBeat.i(126565);
-    this.idM.clean();
-    AppMethodBeat.o(126565);
+    AppMethodBeat.i(193777);
+    paramContext = new c(paramContext);
+    AppMethodBeat.o(193777);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.i.1
  * JD-Core Version:    0.7.0.1
  */

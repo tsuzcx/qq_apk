@@ -2,90 +2,100 @@ package com.tencent.mm.plugin.appbrand.jsapi.offlinevoice;
 
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.nl;
+import com.tencent.mm.g.a.oy;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.loader.j.b;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import java.util.HashSet;
 import java.util.Set;
 
 public final class d
 {
-  public static final String hVk;
-  private static d hVm;
-  private Set<String> hVl;
+  public static final String kdE;
+  private static d kdG;
+  private Set<String> kdF;
   private Object lock;
   
   static
   {
-    AppMethodBeat.i(131382);
-    hVk = com.tencent.mm.compatible.util.e.eQu + "files/wxofflinevoice/";
-    AppMethodBeat.o(131382);
+    AppMethodBeat.i(46668);
+    kdE = b.ahY() + "files/wxofflinevoicenew/";
+    AppMethodBeat.o(46668);
   }
   
   public d()
   {
-    AppMethodBeat.i(131375);
+    AppMethodBeat.i(46661);
     this.lock = new Object();
-    AppMethodBeat.o(131375);
+    AppMethodBeat.o(46661);
   }
   
-  public static void CI(String paramString)
+  public static void IO(String paramString)
   {
-    AppMethodBeat.i(131378);
-    g.RL().Ru().set(ac.a.yLU, paramString);
-    a.ymk.l(new nl());
-    AppMethodBeat.o(131378);
+    AppMethodBeat.i(46664);
+    g.afB().afk().set(ae.a.Fvv, paramString);
+    a.ESL.l(new oy());
+    AppMethodBeat.o(46664);
   }
   
-  public static String CJ(String paramString)
+  public static String IP(String paramString)
   {
-    AppMethodBeat.i(131379);
-    paramString = as.apq("voice_offline_res").getString(paramString, "");
-    AppMethodBeat.o(131379);
+    AppMethodBeat.i(46665);
+    paramString = ax.aFC("voice_offline_res_new").getString(paramString, "");
+    AppMethodBeat.o(46665);
     return paramString;
   }
   
-  public static String aEn()
+  public static String IQ(String paramString)
   {
-    AppMethodBeat.i(131377);
-    String str = (String)g.RL().Ru().get(ac.a.yLT, "");
-    AppMethodBeat.o(131377);
+    AppMethodBeat.i(195923);
+    paramString = ax.aFC("voice_offline_res_new").getString(paramString + "_md5", "");
+    AppMethodBeat.o(195923);
+    return paramString;
+  }
+  
+  public static String bbu()
+  {
+    AppMethodBeat.i(46663);
+    String str = (String)g.afB().afk().get(ae.a.Fvu, "");
+    AppMethodBeat.o(46663);
     return str;
   }
   
-  public static String aEo()
+  public static String bbv()
   {
-    AppMethodBeat.i(131380);
-    String str = (String)g.RL().Ru().get(ac.a.yLU, "0");
-    AppMethodBeat.o(131380);
+    AppMethodBeat.i(46666);
+    String str = (String)g.afB().afk().get(ae.a.Fvv, "0");
+    AppMethodBeat.o(46666);
     return str;
   }
   
-  public static d aEp()
+  public static d bbw()
   {
-    AppMethodBeat.i(131381);
-    if (hVm == null) {
-      hVm = new d();
+    AppMethodBeat.i(46667);
+    if (kdG == null) {
+      kdG = new d();
     }
-    d locald = hVm;
-    AppMethodBeat.o(131381);
+    d locald = kdG;
+    AppMethodBeat.o(46667);
     return locald;
   }
   
-  public final boolean D(String paramString1, String paramString2, String paramString3)
+  public final boolean C(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(154329);
+    AppMethodBeat.i(46662);
     synchronized (this.lock)
     {
-      if (this.hVl == null)
+      if (this.kdF == null)
       {
-        this.hVl = new HashSet();
-        Object localObject2 = (String)g.RL().Ru().get(ac.a.yLT, "");
-        if (!bo.isNullOrNil((String)localObject2))
+        this.kdF = new HashSet();
+        Object localObject2 = (String)g.afB().afk().get(ae.a.Fvu, "");
+        if (!bt.isNullOrNil((String)localObject2))
         {
           localObject2 = ((String)localObject2).split(",");
           int j = localObject2.length;
@@ -93,34 +103,34 @@ public final class d
           while (i < j)
           {
             Object localObject3 = localObject2[i];
-            this.hVl.add(localObject3);
+            this.kdF.add(localObject3);
             i += 1;
           }
         }
       }
-      as.apq("voice_offline_res").edit().putString(paramString1, paramString2).commit();
-      as.apq("voice_offline_res").edit().putString(paramString1 + "_md5", paramString3).commit();
-      if (!this.hVl.contains(paramString1))
+      ax.aFC("voice_offline_res_new").edit().putString(paramString1, paramString2).commit();
+      ax.aFC("voice_offline_res_new").edit().putString(paramString1 + "_md5", paramString3).commit();
+      if (!this.kdF.contains(paramString1))
       {
-        paramString2 = new StringBuilder((String)g.RL().Ru().get(ac.a.yLT, ""));
-        if (this.hVl.size() <= 0)
+        paramString2 = new StringBuilder((String)g.afB().afk().get(ae.a.Fvu, ""));
+        if (this.kdF.size() <= 0)
         {
           paramString2.append(paramString1);
-          g.RL().Ru().set(ac.a.yLT, paramString2.toString());
-          boolean bool = this.hVl.add(paramString1);
-          AppMethodBeat.o(154329);
+          g.afB().afk().set(ae.a.Fvu, paramString2.toString());
+          boolean bool = this.kdF.add(paramString1);
+          AppMethodBeat.o(46662);
           return bool;
         }
         paramString2.append(",").append(paramString1);
       }
     }
-    AppMethodBeat.o(154329);
+    AppMethodBeat.o(46662);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.offlinevoice.d
  * JD-Core Version:    0.7.0.1
  */

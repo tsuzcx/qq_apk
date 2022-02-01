@@ -1,69 +1,93 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ds;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.appcache.a.a;
+import com.tencent.mm.pluginsdk.h.a.c.m;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class ac
-  extends ds
 {
-  static final String[] gUa;
-  static final c.a gUb;
+  private static final Set<b> iMO;
   
   static
   {
-    int i = 0;
-    AppMethodBeat.i(129409);
-    gUa = new String[] { "appId", "type" };
-    Object localObject1 = new c.a();
-    ((c.a)localObject1).yrK = new Field[4];
-    ((c.a)localObject1).columns = new String[5];
-    Object localObject2 = new StringBuilder();
-    ((c.a)localObject1).columns[0] = "appId";
-    ((c.a)localObject1).yrM.put("appId", "TEXT");
-    ((StringBuilder)localObject2).append(" appId TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[1] = "type";
-    ((c.a)localObject1).yrM.put("type", "INTEGER");
-    ((StringBuilder)localObject2).append(" type INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[2] = "hit";
-    ((c.a)localObject1).yrM.put("hit", "INTEGER");
-    ((StringBuilder)localObject2).append(" hit INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[3] = "hitTimeMS";
-    ((c.a)localObject1).yrM.put("hitTimeMS", "LONG");
-    ((StringBuilder)localObject2).append(" hitTimeMS LONG");
-    ((c.a)localObject1).columns[4] = "rowid";
-    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    gUb = (c.a)localObject1;
-    localObject1 = " PRIMARY KEY (";
-    localObject2 = gUa;
-    int j = localObject2.length;
-    while (i < j)
-    {
-      localObject3 = localObject2[i];
-      localObject1 = (String)localObject1 + ", " + (String)localObject3;
-      i += 1;
-    }
-    localObject1 = ((String)localObject1).replaceFirst(",", "");
-    localObject1 = (String)localObject1 + " )";
-    localObject2 = new StringBuilder();
-    Object localObject3 = gUb;
-    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
-    AppMethodBeat.o(129409);
+    AppMethodBeat.i(90557);
+    iMO = new HashSet();
+    AppMethodBeat.o(90557);
   }
   
-  public final c.a getDBInfo()
+  static a a(a parama)
   {
-    return gUb;
+    AppMethodBeat.i(90556);
+    for (;;)
+    {
+      int i;
+      synchronized (iMO)
+      {
+        Object[] arrayOfObject = iMO.toArray();
+        int j = arrayOfObject.length;
+        i = 0;
+        if (i >= j) {
+          break;
+        }
+        ??? = ((b)arrayOfObject[i]).a(parama);
+        if (??? != null)
+        {
+          AppMethodBeat.o(90556);
+          return ???;
+        }
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(90556);
+    return null;
+  }
+  
+  public static void a(b paramb)
+  {
+    AppMethodBeat.i(90555);
+    synchronized (iMO)
+    {
+      iMO.add(paramb);
+      AppMethodBeat.o(90555);
+      return;
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(m paramm);
+    
+    public abstract void aPi();
+    
+    public abstract void aPj();
+    
+    public abstract void aPk();
+    
+    public abstract void aPl();
+    
+    public abstract void aPm();
+    
+    public abstract void aPn();
+    
+    public abstract void aPo();
+    
+    public abstract void fj(boolean paramBoolean);
+    
+    public abstract void fk(boolean paramBoolean);
+    
+    public abstract void qE(int paramInt);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract ac.a a(a parama);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ac
  * JD-Core Version:    0.7.0.1
  */

@@ -1,61 +1,75 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
+import android.content.Context;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.h;
-import com.tencent.mm.plugin.appbrand.appstorage.o;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.tbs.reader.ITbsReaderCallback;
+import com.tencent.tbs.reader.ReaderEngine;
+import com.tencent.tbs.reader.ReaderMixerMode;
+import com.tencent.tbs.reader.TbsReaderManager;
 
-final class at
-  extends f
+public final class at
 {
-  final h.a a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString, JSONObject paramJSONObject)
+  public static at jRb;
+  private TbsReaderManager jRc;
+  
+  private at(Context paramContext)
   {
-    AppMethodBeat.i(102825);
-    paramJSONObject = new LinkedList();
-    com.tencent.mm.plugin.appbrand.s.j localj = new com.tencent.mm.plugin.appbrand.s.j();
-    paramc = paramc.wX().a(paramString, localj);
-    com.tencent.luggage.g.c.c(paramJSONObject, (List)localj.value);
-    switch (at.1.hMg[paramc.ordinal()])
+    AppMethodBeat.i(195892);
+    this.jRc = null;
+    ReaderEngine.getInstance().initReaderEntry(paramContext);
+    this.jRc = new TbsReaderManager();
+    AppMethodBeat.o(195892);
+  }
+  
+  public static boolean canOpenFile(String paramString)
+  {
+    AppMethodBeat.i(195894);
+    boolean bool = ReaderEngine.getInstance().isSupportExt(3, paramString);
+    AppMethodBeat.o(195894);
+    return bool;
+  }
+  
+  public static at dl(Context paramContext)
+  {
+    try
     {
-    default: 
-      paramc = new h.a("fail " + paramc.name(), new Object[0]);
-      AppMethodBeat.o(102825);
-      return paramc;
-    case 1: 
-    case 2: 
-      paramc = new h.a("fail no such file or directory \"%s\"", new Object[] { paramString });
-      AppMethodBeat.o(102825);
-      return paramc;
-    case 3: 
-      paramc = new h.a("fail not a directory \"%s\"", new Object[] { paramString });
-      AppMethodBeat.o(102825);
-      return paramc;
-    case 4: 
-      paramc = new h.a("fail permission denied, open \"%s\"", new Object[] { paramString });
-      AppMethodBeat.o(102825);
-      return paramc;
-    case 5: 
-      paramc = new h.a("fail \"%s\" is not a regular file", new Object[] { paramString });
-      AppMethodBeat.o(102825);
-      return paramc;
+      AppMethodBeat.i(195891);
+      if (jRb == null) {
+        jRb = new at(paramContext);
+      }
+      paramContext = jRb;
+      AppMethodBeat.o(195891);
+      return paramContext;
     }
-    paramc = new JSONArray();
-    paramString = paramJSONObject.iterator();
-    while (paramString.hasNext()) {
-      paramc.put(((h)paramString.next()).fileName);
+    finally {}
+  }
+  
+  public final int a(Context paramContext, Bundle paramBundle, ITbsReaderCallback paramITbsReaderCallback)
+  {
+    AppMethodBeat.i(195893);
+    if (this.jRc == null)
+    {
+      AppMethodBeat.o(195893);
+      return -1;
     }
-    paramc = new h.a("ok", new Object[0]).n("files", paramc);
-    AppMethodBeat.o(102825);
-    return paramc;
+    int i = this.jRc.createReaderMode(paramContext, paramITbsReaderCallback).openFile(paramBundle, null);
+    AppMethodBeat.o(195893);
+    return i;
+  }
+  
+  public final void closeFileReader()
+  {
+    AppMethodBeat.i(195895);
+    if (this.jRc != null) {
+      this.jRc.destroy();
+    }
+    AppMethodBeat.o(195895);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.at
  * JD-Core Version:    0.7.0.1
  */

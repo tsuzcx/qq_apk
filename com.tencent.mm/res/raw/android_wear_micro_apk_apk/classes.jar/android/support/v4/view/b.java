@@ -1,8 +1,7 @@
 package android.support.v4.view;
 
 import android.os.Bundle;
-import android.support.v4.view.a.e;
-import android.support.v4.view.a.r;
+import android.support.v4.view.a.f;
 import android.view.View;
 import android.view.View.AccessibilityDelegate;
 import android.view.ViewGroup;
@@ -13,11 +12,11 @@ import android.view.accessibility.AccessibilityNodeProvider;
 final class b
   extends c
 {
-  public final r a(View.AccessibilityDelegate paramAccessibilityDelegate, View paramView)
+  public final f a(View.AccessibilityDelegate paramAccessibilityDelegate, View paramView)
   {
     paramAccessibilityDelegate = paramAccessibilityDelegate.getAccessibilityNodeProvider(paramView);
     if (paramAccessibilityDelegate != null) {
-      return new r(paramAccessibilityDelegate);
+      return new f(paramAccessibilityDelegate);
     }
     return null;
   }
@@ -33,9 +32,9 @@ final class b
       
       public final AccessibilityNodeProvider getAccessibilityNodeProvider(View paramAnonymousView)
       {
-        paramAnonymousView = a.b(paramAnonymousView);
+        paramAnonymousView = a.c(paramAnonymousView);
         if (paramAnonymousView != null) {
-          return (AccessibilityNodeProvider)paramAnonymousView.bO();
+          return (AccessibilityNodeProvider)paramAnonymousView.bY();
         }
         return null;
       }
@@ -47,7 +46,7 @@ final class b
       
       public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
       {
-        parama.a(paramAnonymousView, e.a(paramAnonymousAccessibilityNodeInfo));
+        parama.a(paramAnonymousView, android.support.v4.view.a.b.a(paramAnonymousAccessibilityNodeInfo));
       }
       
       public final void onPopulateAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)

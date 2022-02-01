@@ -9,44 +9,44 @@ public class ArrayBuffer
   
   public ArrayBuffer(int paramInt)
   {
-    AppMethodBeat.i(75040);
+    AppMethodBeat.i(61664);
     this.byteBuffer = ByteBuffer.allocateDirect(paramInt);
-    AppMethodBeat.o(75040);
+    AppMethodBeat.o(61664);
   }
   
   public ArrayBuffer(ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(75042);
+    AppMethodBeat.i(61666);
     this.byteBuffer = validateByteBuffer(paramByteBuffer);
-    AppMethodBeat.o(75042);
+    AppMethodBeat.o(61666);
   }
   
   public ArrayBuffer(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(75041);
+    AppMethodBeat.i(61665);
     this.byteBuffer = ByteBuffer.allocateDirect(paramArrayOfByte.length);
     this.byteBuffer.put(paramArrayOfByte, 0, paramArrayOfByte.length);
-    AppMethodBeat.o(75041);
+    AppMethodBeat.o(61665);
   }
   
   private ByteBuffer validateByteBuffer(ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(75043);
+    AppMethodBeat.i(61667);
     if (!paramByteBuffer.isDirect())
     {
       paramByteBuffer = new IllegalArgumentException("ByteBuffer must be a allocated as a direct ByteBuffer");
-      AppMethodBeat.o(75043);
+      AppMethodBeat.o(61667);
       throw paramByteBuffer;
     }
-    AppMethodBeat.o(75043);
+    AppMethodBeat.o(61667);
     return paramByteBuffer;
   }
   
   public byte getByte(int paramInt)
   {
-    AppMethodBeat.i(75044);
+    AppMethodBeat.i(61668);
     byte b = this.byteBuffer.get(paramInt);
-    AppMethodBeat.o(75044);
+    AppMethodBeat.o(61668);
     return b;
   }
   
@@ -57,25 +57,25 @@ public class ArrayBuffer
   
   public short getUnsignedByte(int paramInt)
   {
-    AppMethodBeat.i(75045);
+    AppMethodBeat.i(61669);
     short s = (short)(this.byteBuffer.get(paramInt) & 0xFF);
-    AppMethodBeat.o(75045);
+    AppMethodBeat.o(61669);
     return s;
   }
   
   public int limit()
   {
-    AppMethodBeat.i(75047);
+    AppMethodBeat.i(61671);
     int i = this.byteBuffer.limit();
-    AppMethodBeat.o(75047);
+    AppMethodBeat.o(61671);
     return i;
   }
   
   public void put(int paramInt, byte paramByte)
   {
-    AppMethodBeat.i(75046);
+    AppMethodBeat.i(61670);
     this.byteBuffer.put(paramInt, paramByte);
-    AppMethodBeat.o(75046);
+    AppMethodBeat.o(61670);
   }
   
   public String toString()

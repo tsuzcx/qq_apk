@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class EmotionCDNUrl
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
   public String AesKey;
   public int FileSize;
@@ -11,18 +11,18 @@ public class EmotionCDNUrl
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(62535);
+    AppMethodBeat.i(104771);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.Url != null) {
-        paramVarArgs.e(1, this.Url);
+        paramVarArgs.d(1, this.Url);
       }
       if (this.AesKey != null) {
-        paramVarArgs.e(2, this.AesKey);
+        paramVarArgs.d(2, this.AesKey);
       }
-      paramVarArgs.aO(3, this.FileSize);
-      AppMethodBeat.o(62535);
+      paramVarArgs.aR(3, this.FileSize);
+      AppMethodBeat.o(104771);
       return 0;
     }
     if (paramInt == 1) {
@@ -31,56 +31,56 @@ public class EmotionCDNUrl
       }
     }
     label318:
-    for (paramInt = e.a.a.b.b.a.f(1, this.Url) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.Url) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.AesKey != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.AesKey);
+        i = paramInt + f.a.a.b.b.a.e(2, this.AesKey);
       }
-      paramInt = e.a.a.b.b.a.bl(3, this.FileSize);
-      AppMethodBeat.o(62535);
+      paramInt = f.a.a.b.b.a.bA(3, this.FileSize);
+      AppMethodBeat.o(104771);
       return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(62535);
+        AppMethodBeat.o(104771);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         EmotionCDNUrl localEmotionCDNUrl = (EmotionCDNUrl)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(62535);
+          AppMethodBeat.o(104771);
           return -1;
         case 1: 
-          localEmotionCDNUrl.Url = locala.CLY.readString();
-          AppMethodBeat.o(62535);
+          localEmotionCDNUrl.Url = locala.KhF.readString();
+          AppMethodBeat.o(104771);
           return 0;
         case 2: 
-          localEmotionCDNUrl.AesKey = locala.CLY.readString();
-          AppMethodBeat.o(62535);
+          localEmotionCDNUrl.AesKey = locala.KhF.readString();
+          AppMethodBeat.o(104771);
           return 0;
         }
-        localEmotionCDNUrl.FileSize = locala.CLY.sl();
-        AppMethodBeat.o(62535);
+        localEmotionCDNUrl.FileSize = locala.KhF.xS();
+        AppMethodBeat.o(104771);
         return 0;
       }
-      AppMethodBeat.o(62535);
+      AppMethodBeat.o(104771);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.EmotionCDNUrl
  * JD-Core Version:    0.7.0.1
  */

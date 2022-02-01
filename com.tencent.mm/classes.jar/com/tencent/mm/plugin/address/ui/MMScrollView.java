@@ -7,13 +7,14 @@ import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class MMScrollView
   extends ScrollView
   implements View.OnFocusChangeListener
 {
-  private MMScrollView.a gMA;
+  private a iAi;
   
   public MMScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,7 +28,7 @@ public class MMScrollView
   
   final void a(ViewGroup paramViewGroup, View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    AppMethodBeat.i(16909);
+    AppMethodBeat.i(20953);
     int j = paramViewGroup.getChildCount();
     int i = 0;
     if (i < j)
@@ -45,39 +46,49 @@ public class MMScrollView
         }
       }
     }
-    AppMethodBeat.o(16909);
+    AppMethodBeat.o(20953);
   }
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onFocusChange(final View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(16910);
-    ab.d("MicroMsg.MMScrollView", "onFocusChange:".concat(String.valueOf(paramBoolean)));
+    AppMethodBeat.i(20954);
+    ad.d("MicroMsg.MMScrollView", "onFocusChange:".concat(String.valueOf(paramBoolean)));
     if (!paramBoolean)
     {
-      AppMethodBeat.o(16910);
+      AppMethodBeat.o(20954);
       return;
     }
-    postDelayed(new MMScrollView.1(this, paramView), 200L);
-    AppMethodBeat.o(16910);
+    postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(20952);
+        MMScrollView.this.scrollTo(0, paramView.getTop() - a.fromDPToPix(MMScrollView.this.getContext(), 10));
+        AppMethodBeat.o(20952);
+      }
+    }, 200L);
+    AppMethodBeat.o(20954);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(16911);
+    AppMethodBeat.i(20955);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(16911);
+    AppMethodBeat.o(20955);
   }
   
-  public void setOnSizeChangeListener(MMScrollView.a parama)
+  public void setOnSizeChangeListener(a parama)
   {
     if (parama != null) {
-      this.gMA = parama;
+      this.iAi = parama;
     }
   }
+  
+  public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.MMScrollView
  * JD-Core Version:    0.7.0.1
  */

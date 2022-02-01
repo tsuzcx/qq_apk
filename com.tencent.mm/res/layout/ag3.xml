@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
+<RelativeLayout android:gravity="center_horizontal" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:layout_marginBottom="7.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/cz" android:layout_width="@dimen/i5" android:layout_height="wrap_content" android:layout_marginRight="@dimen/lb" android:singleLine="true" style="@style/lg" />
-    <ImageView android:id="@id/ahw" android:layout_width="@dimen/n8" android:layout_height="@dimen/n8" android:layout_marginRight="@dimen/ne" />
-    <TextView android:ellipsize="end" android:id="@id/a9c" android:singleLine="true" style="@style/lj" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/crj" android:background="@null" android:paddingTop="@dimen/fd" android:paddingBottom="@dimen/fd" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/mj">
+        <RelativeLayout android:id="@id/ccd" android:duplicateParentState="true" android:layout_width="@dimen/es" android:layout_height="@dimen/es">
+            <ImageView android:id="@id/cbw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/ao1" android:scaleType="fitXY" />
+            <ImageView android:background="@drawable/w_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ccy" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:gravity="center" android:id="@id/cdk" android:layout_marginTop="@dimen/ez" style="@style/mk" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:gravity="center" android:id="@id/ce8" android:layout_marginTop="@dimen/ez" style="@style/mf" />
+                <ImageView android:id="@id/cei" android:visibility="gone" android:layout_width="@dimen/jv" android:layout_height="@dimen/jv" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

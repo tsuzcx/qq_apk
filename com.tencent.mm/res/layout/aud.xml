@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bv8" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:background="@color/kh" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/ej8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <TextView android:textColor="@color/a6q" android:gravity="center" android:id="@id/bq1" android:padding="@dimen/l2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/l6" android:text="@string/elo" android:layout_alignParentBottom="true" />
-    <ImageView android:id="@id/bv9" android:background="@color/la" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" android:layout_centerInParent="true" />
-    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/ej9" android:visibility="gone" android:layout_width="@dimen/a81" android:layout_height="@dimen/a81" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/ej_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/avn" android:scaleType="center" android:layout_centerInParent="true" />
-    <include layout="@layout/auz" />
-</RelativeLayout>
+    <ListView android:id="@id/by6" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/jm" android:listSelector="@color/a7c" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/s5" android:layout_gravity="center" android:id="@id/by1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/jm" android:text="@string/c6c" />
+    <RelativeLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/by5" android:background="@color/bg" android:padding="@dimen/jn" android:layout_width="fill_parent" android:layout_height="@dimen/jm">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/by2" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/a_x" android:id="@id/by4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c6d" />
+            <ImageView android:background="@null" android:paddingTop="@dimen/jn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d" android:src="@drawable/aet" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/jo" android:textColor="@color/a_x" android:id="@id/fb6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <com.tencent.mm.pluginsdk.ui.tools.FileSelectorFolderView android:id="@id/by3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/jm" />
+</FrameLayout>

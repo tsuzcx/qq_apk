@@ -11,40 +11,40 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class CleanLocationHeaderView
   extends LinearLayout
 {
-  private ImageView iQd;
-  private TextView pcA;
+  private ImageView fxT;
+  private TextView tZY;
   
   public CleanLocationHeaderView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(55409);
-    aA(paramContext);
-    AppMethodBeat.o(55409);
+    AppMethodBeat.i(89807);
+    aL(paramContext);
+    AppMethodBeat.o(89807);
   }
   
   public CleanLocationHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(55408);
-    aA(paramContext);
-    AppMethodBeat.o(55408);
+    AppMethodBeat.i(89806);
+    aL(paramContext);
+    AppMethodBeat.o(89806);
   }
   
-  private void aA(Context paramContext)
+  private void aL(Context paramContext)
   {
-    AppMethodBeat.i(55410);
-    paramContext = View.inflate(paramContext, 2130970342, this);
-    this.pcA = ((TextView)paramContext.findViewById(2131826487));
-    this.pcA.setSingleLine(false);
-    this.iQd = ((ImageView)paramContext.findViewById(2131826486));
-    this.pcA.setText(2131298381);
-    this.iQd.setImageResource(2131231857);
-    AppMethodBeat.o(55410);
+    AppMethodBeat.i(89808);
+    paramContext = View.inflate(paramContext, 2131494999, this);
+    this.tZY = ((TextView)paramContext.findViewById(2131302701));
+    this.tZY.setSingleLine(false);
+    this.fxT = ((ImageView)paramContext.findViewById(2131302683));
+    this.tZY.setText(2131757391);
+    this.fxT.setImageResource(2131691025);
+    AppMethodBeat.o(89808);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.ui.CleanLocationHeaderView
  * JD-Core Version:    0.7.0.1
  */

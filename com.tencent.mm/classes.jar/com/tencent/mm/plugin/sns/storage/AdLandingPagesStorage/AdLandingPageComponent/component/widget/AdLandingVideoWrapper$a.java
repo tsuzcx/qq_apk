@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 
 public abstract interface AdLandingVideoWrapper$a
 {
-  public abstract void Ef(int paramInt);
+  public abstract void sa(int paramInt);
 }
 
 

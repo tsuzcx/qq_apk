@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class oo
   extends b
 {
-  public oo.a cFf;
+  public a dtK;
+  public b dtL;
   
   public oo()
   {
@@ -15,11 +16,27 @@ public final class oo
   
   private oo(byte paramByte)
   {
-    AppMethodBeat.i(15793);
-    this.cFf = new oo.a();
-    this.ymq = false;
+    AppMethodBeat.i(149879);
+    this.dtK = new a();
+    this.dtL = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15793);
+    AppMethodBeat.o(149879);
+  }
+  
+  public static final class a
+  {
+    public int dpd = 10;
+    public int dtM = 0;
+    public String dtN;
+    public String label;
+    public double lat = -1.0D;
+    public double lng = -1.0D;
+  }
+  
+  public static final class b
+  {
+    public int ret = 0;
   }
 }
 

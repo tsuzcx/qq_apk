@@ -16,7 +16,7 @@ final class zzabm
   private static final Unsafe zzbtj;
   private static final boolean zzbun;
   private static final boolean zzbuo;
-  private static final zzabm.zzd zzbup;
+  private static final zzd zzbup;
   private static final boolean zzbuq;
   private static final boolean zzbur;
   private static final long zzbus;
@@ -39,7 +39,7 @@ final class zzabm
   static
   {
     Object localObject2 = null;
-    AppMethodBeat.i(3424);
+    AppMethodBeat.i(40214);
     logger = Logger.getLogger(zzabm.class.getName());
     zzbtj = zzur();
     zzbqv = zzyv.zzsw();
@@ -49,7 +49,7 @@ final class zzabm
     if (zzbtj == null)
     {
       localObject1 = null;
-      zzbup = (zzabm.zzd)localObject1;
+      zzbup = (zzd)localObject1;
       zzbuq = zzut();
       zzbur = zzus();
       zzbus = zzi([B.class);
@@ -77,56 +77,56 @@ final class zzabm
       }
       zzbvg = zza((Field)localObject1);
       if (ByteOrder.nativeOrder() != ByteOrder.BIG_ENDIAN) {
-        break label320;
+        break label318;
       }
     }
-    label320:
+    label318:
     for (boolean bool = true;; bool = false)
     {
       zzbvh = bool;
-      AppMethodBeat.o(3424);
+      AppMethodBeat.o(40214);
       return;
       if (zzyv.zzsv())
       {
         if (zzbun)
         {
-          localObject1 = new zzabm.zzb(zzbtj);
+          localObject1 = new zzb(zzbtj);
           break;
         }
         if (zzbuo)
         {
-          localObject1 = new zzabm.zza(zzbtj);
+          localObject1 = new zza(zzbtj);
           break;
         }
         localObject1 = null;
         break;
       }
-      localObject1 = new zzabm.zzc(zzbtj);
+      localObject1 = new zzc(zzbtj);
       break;
     }
   }
   
   private static long zza(Field paramField)
   {
-    AppMethodBeat.i(3422);
+    AppMethodBeat.i(40212);
     if ((paramField == null) || (zzbup == null))
     {
-      AppMethodBeat.o(3422);
+      AppMethodBeat.o(40212);
       return -1L;
     }
     long l = zzbup.zzbvi.objectFieldOffset(paramField);
-    AppMethodBeat.o(3422);
+    AppMethodBeat.o(40212);
     return l;
   }
   
   private static Field zza(Class<?> paramClass, String paramString)
   {
-    AppMethodBeat.i(3423);
+    AppMethodBeat.i(40213);
     try
     {
       paramClass = paramClass.getDeclaredField(paramString);
       paramClass.setAccessible(true);
-      AppMethodBeat.o(3423);
+      AppMethodBeat.o(40213);
       return paramClass;
     }
     catch (Throwable paramClass)
@@ -140,36 +140,36 @@ final class zzabm
   
   private static int zzi(Class<?> paramClass)
   {
-    AppMethodBeat.i(3415);
+    AppMethodBeat.i(40205);
     if (zzbur)
     {
       int i = zzbup.zzbvi.arrayBaseOffset(paramClass);
-      AppMethodBeat.o(3415);
+      AppMethodBeat.o(40205);
       return i;
     }
-    AppMethodBeat.o(3415);
+    AppMethodBeat.o(40205);
     return -1;
   }
   
   private static int zzj(Class<?> paramClass)
   {
-    AppMethodBeat.i(3416);
+    AppMethodBeat.i(40206);
     if (zzbur)
     {
       int i = zzbup.zzbvi.arrayIndexScale(paramClass);
-      AppMethodBeat.o(3416);
+      AppMethodBeat.o(40206);
       return i;
     }
-    AppMethodBeat.o(3416);
+    AppMethodBeat.o(40206);
     return -1;
   }
   
   private static boolean zzk(Class<?> paramClass)
   {
-    AppMethodBeat.i(3420);
+    AppMethodBeat.i(40210);
     if (!zzyv.zzsv())
     {
-      AppMethodBeat.o(3420);
+      AppMethodBeat.o(40210);
       return false;
     }
     try
@@ -183,23 +183,23 @@ final class zzabm
       localClass.getMethod("peekByte", new Class[] { paramClass });
       localClass.getMethod("pokeByteArray", new Class[] { paramClass, [B.class, Integer.TYPE, Integer.TYPE });
       localClass.getMethod("peekByteArray", new Class[] { paramClass, [B.class, Integer.TYPE, Integer.TYPE });
-      AppMethodBeat.o(3420);
+      AppMethodBeat.o(40210);
       return true;
     }
     catch (Throwable paramClass)
     {
-      AppMethodBeat.o(3420);
+      AppMethodBeat.o(40210);
     }
     return false;
   }
   
   static Unsafe zzur()
   {
-    AppMethodBeat.i(3417);
+    AppMethodBeat.i(40207);
     try
     {
       Unsafe localUnsafe = (Unsafe)AccessController.doPrivileged(new zzabn());
-      AppMethodBeat.o(3417);
+      AppMethodBeat.o(40207);
       return localUnsafe;
     }
     catch (Throwable localThrowable)
@@ -213,10 +213,10 @@ final class zzabm
   
   private static boolean zzus()
   {
-    AppMethodBeat.i(3418);
+    AppMethodBeat.i(40208);
     if (zzbtj == null)
     {
-      AppMethodBeat.o(3418);
+      AppMethodBeat.o(40208);
       return false;
     }
     try
@@ -234,7 +234,7 @@ final class zzabm
       boolean bool = zzyv.zzsv();
       if (bool)
       {
-        AppMethodBeat.o(3418);
+        AppMethodBeat.o(40208);
         return true;
       }
       ((Class)localObject).getMethod("getByte", new Class[] { Object.class, Long.TYPE });
@@ -245,7 +245,7 @@ final class zzabm
       ((Class)localObject).getMethod("putFloat", new Class[] { Object.class, Long.TYPE, Float.TYPE });
       ((Class)localObject).getMethod("getDouble", new Class[] { Object.class, Long.TYPE });
       ((Class)localObject).getMethod("putDouble", new Class[] { Object.class, Long.TYPE, Double.TYPE });
-      AppMethodBeat.o(3418);
+      AppMethodBeat.o(40208);
       return true;
     }
     catch (Throwable localThrowable)
@@ -254,17 +254,17 @@ final class zzabm
       Level localLevel = Level.WARNING;
       String str = String.valueOf(localThrowable);
       ((Logger)localObject).logp(localLevel, "com.google.protobuf.UnsafeUtil", "supportsUnsafeArrayOperations", String.valueOf(str).length() + 71 + "platform method missing - proto runtime falling back to safer methods: " + str);
-      AppMethodBeat.o(3418);
+      AppMethodBeat.o(40208);
     }
     return false;
   }
   
   private static boolean zzut()
   {
-    AppMethodBeat.i(3419);
+    AppMethodBeat.i(40209);
     if (zzbtj == null)
     {
-      AppMethodBeat.o(3419);
+      AppMethodBeat.o(40209);
       return false;
     }
     try
@@ -275,13 +275,13 @@ final class zzabm
       localObject2 = zzuu();
       if (localObject2 == null)
       {
-        AppMethodBeat.o(3419);
+        AppMethodBeat.o(40209);
         return false;
       }
       boolean bool = zzyv.zzsv();
       if (bool)
       {
-        AppMethodBeat.o(3419);
+        AppMethodBeat.o(40209);
         return true;
       }
       ((Class)localObject1).getMethod("getByte", new Class[] { Long.TYPE });
@@ -292,7 +292,7 @@ final class zzabm
       ((Class)localObject1).getMethod("putLong", new Class[] { Long.TYPE, Long.TYPE });
       ((Class)localObject1).getMethod("copyMemory", new Class[] { Long.TYPE, Long.TYPE, Long.TYPE });
       ((Class)localObject1).getMethod("copyMemory", new Class[] { Object.class, Long.TYPE, Object.class, Long.TYPE, Long.TYPE });
-      AppMethodBeat.o(3419);
+      AppMethodBeat.o(40209);
       return true;
     }
     catch (Throwable localThrowable)
@@ -301,36 +301,73 @@ final class zzabm
       Object localObject2 = Level.WARNING;
       String str = String.valueOf(localThrowable);
       ((Logger)localObject1).logp((Level)localObject2, "com.google.protobuf.UnsafeUtil", "supportsUnsafeByteBufferOperations", String.valueOf(str).length() + 71 + "platform method missing - proto runtime falling back to safer methods: " + str);
-      AppMethodBeat.o(3419);
+      AppMethodBeat.o(40209);
     }
     return false;
   }
   
   private static Field zzuu()
   {
-    AppMethodBeat.i(3421);
+    AppMethodBeat.i(40211);
     if (zzyv.zzsv())
     {
       localField = zza(Buffer.class, "effectiveDirectAddress");
       if (localField != null)
       {
-        AppMethodBeat.o(3421);
+        AppMethodBeat.o(40211);
         return localField;
       }
     }
     Field localField = zza(Buffer.class, "address");
     if ((localField != null) && (localField.getType() == Long.TYPE))
     {
-      AppMethodBeat.o(3421);
+      AppMethodBeat.o(40211);
       return localField;
     }
-    AppMethodBeat.o(3421);
+    AppMethodBeat.o(40211);
     return null;
+  }
+  
+  static final class zza
+    extends zzabm.zzd
+  {
+    zza(Unsafe paramUnsafe)
+    {
+      super();
+    }
+  }
+  
+  static final class zzb
+    extends zzabm.zzd
+  {
+    zzb(Unsafe paramUnsafe)
+    {
+      super();
+    }
+  }
+  
+  static final class zzc
+    extends zzabm.zzd
+  {
+    zzc(Unsafe paramUnsafe)
+    {
+      super();
+    }
+  }
+  
+  static abstract class zzd
+  {
+    Unsafe zzbvi;
+    
+    zzd(Unsafe paramUnsafe)
+    {
+      this.zzbvi = paramUnsafe;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzabm
  * JD-Core Version:    0.7.0.1
  */

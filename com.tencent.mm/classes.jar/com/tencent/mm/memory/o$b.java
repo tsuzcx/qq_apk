@@ -5,17 +5,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class o$b
   implements Comparable
 {
-  private String fdY;
+  private String gEj;
   public int height;
   public int width;
   
   public o$b(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(115407);
+    AppMethodBeat.i(156453);
     this.width = paramInt1;
     this.height = paramInt2;
-    this.fdY = String.format("SightBitmapSize: [%s, %s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(115407);
+    this.gEj = String.format("SightBitmapSize: [%s, %s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(156453);
   }
   
   public final int compareTo(Object paramObject)
@@ -39,12 +39,12 @@ public final class o$b
   
   public final String toString()
   {
-    return this.fdY;
+    return this.gEj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.memory.o.b
  * JD-Core Version:    0.7.0.1
  */

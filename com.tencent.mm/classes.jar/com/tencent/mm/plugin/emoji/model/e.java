@@ -1,75 +1,46 @@
 package com.tencent.mm.plugin.emoji.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.a.a.f;
-import com.tencent.mm.protocal.protobuf.EmotionBanner;
-import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
-import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.g.a.dh;
+import com.tencent.mm.sdk.b.a;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class e
 {
-  public int lhk;
-  public List<f> lhl;
-  public EmotionBanner lhm;
-  public List<EmotionBanner> lhn;
-  public List<EmotionBannerSet> lho;
-  public List<EmotionBannerSet> lhp;
+  private dh owW;
+  public final Map<String, Integer> owX;
   
-  public final void bll()
+  public e()
   {
-    AppMethodBeat.i(53047);
-    if (this.lhp == null)
-    {
-      AppMethodBeat.o(53047);
-      return;
-    }
-    if (this.lhp.isEmpty())
-    {
-      AppMethodBeat.o(53047);
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(this.lhp);
-    int i = localArrayList.size() - 1;
-    while (i >= 0)
-    {
-      this.lhl.add(0, new f((EmotionBannerSet)localArrayList.get(i)));
-      this.lhk += 1;
-      this.lhp.remove(localArrayList.get(i));
-      i -= 1;
-    }
-    AppMethodBeat.o(53047);
+    AppMethodBeat.i(108585);
+    this.owX = new HashMap();
+    this.owW = new dh();
+    AppMethodBeat.o(108585);
   }
   
-  public final void bo(List<f> paramList)
+  public final void g(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    AppMethodBeat.i(53048);
-    if (this.lhl == null) {
-      this.lhl = new ArrayList();
-    }
-    for (;;)
+    AppMethodBeat.i(108586);
+    this.owW.dfs.dft = paramString1;
+    this.owW.dfs.status = paramInt1;
+    this.owW.dfs.progress = paramInt2;
+    this.owW.dfs.dfu = paramString2;
+    a.ESL.l(this.owW);
+    if (paramInt1 == 6)
     {
-      this.lhl.addAll(paramList);
-      AppMethodBeat.o(53048);
-      return;
-      int i = this.lhl.size() - 1;
-      if ((i >= 0) && (i < this.lhl.size()))
+      if ((paramInt2 < 0) || (paramInt2 >= 100))
       {
-        f localf = (f)this.lhl.get(i);
-        if ((localf != null) && (localf.lfa != null) && (!bo.isNullOrNil(localf.lfa.ProductID)) && (localf.lfa.ProductID.equals(EmojiGroupInfo.yPd))) {
-          this.lhl.remove(localf);
-        }
+        this.owX.remove(paramString1);
+        AppMethodBeat.o(108586);
+        return;
       }
+      this.owX.put(paramString1, Integer.valueOf(paramInt2));
+      AppMethodBeat.o(108586);
+      return;
     }
-  }
-  
-  public final void uq(int paramInt)
-  {
-    this.lhk += paramInt;
+    this.owX.remove(paramString1);
+    AppMethodBeat.o(108586);
   }
 }
 

@@ -1,22 +1,19 @@
 package com.tencent.mm.ui.base;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class t$6
-  implements View.OnClickListener
+  implements Runnable
 {
-  t$6(o paramo, View.OnClickListener paramOnClickListener) {}
+  t$6(o paramo, Activity paramActivity, int paramInt) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    AppMethodBeat.i(106876);
-    this.zmZ.dismiss();
-    if (this.znc != null) {
-      this.znc.onClick(paramView);
-    }
-    AppMethodBeat.o(106876);
+    AppMethodBeat.i(142237);
+    this.GaG.showAtLocation(this.hUJ.getWindow().getDecorView(), 48, 0, this.GaI);
+    AppMethodBeat.o(142237);
   }
 }
 

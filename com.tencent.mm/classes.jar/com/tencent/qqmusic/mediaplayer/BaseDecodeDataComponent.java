@@ -1,76 +1,58 @@
 package com.tencent.qqmusic.mediaplayer;
 
+import android.media.AudioAttributes.Builder;
+import android.media.AudioFormat;
+import android.media.AudioFormat.Builder;
 import android.media.AudioTrack;
+import android.media.AudioTrack.Builder;
 import android.os.Build.VERSION;
 import android.os.Handler;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.audiofx.IAudioListener;
 import com.tencent.qqmusic.mediaplayer.perf.PerformanceTracer;
 import com.tencent.qqmusic.mediaplayer.util.Logger;
 import com.tencent.qqmusic.mediaplayer.util.PcmConvertionUtil;
-import com.tencent.qqmusic.mediaplayer.util.ReferenceTimer;
 import com.tencent.qqmusic.mediaplayer.util.WaitNotify;
+import com.tencent.qqmusic.mediaplayer.util.WaitNotify.WaitListener;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 abstract class BaseDecodeDataComponent
 {
-  protected static final int CALL_PREPARED_DELAY_TIME = 20;
-  protected static final boolean CAN_USE_FLOAT_IN_HI_RES;
-  protected static final long MAX_PLAY_SAMPLE_RATE;
+  static final int CALL_PREPARED_DELAY_TIME = 20;
+  private static int MAX_PLAY_SAMPLE_RATE = 0;
   private static final String TAG = "BaseDecodeDataComponent";
-  protected final List<IAudioListener> audioEffects = new ArrayList(3);
-  protected boolean isUseFloatInHiRes = false;
-  protected int mAudioStreamType = getAudioStreamType();
-  protected AudioTrack mAudioTrack;
-  protected int mBuffSize;
-  protected PlayerCallback mCallback;
-  protected CorePlayer mCorePlayer;
-  protected boolean mCreateAudioTrackFail = false;
-  protected long mCurPosition = 0L;
-  protected final BufferInfo mDTSBufferInfo = new BufferInfo();
-  protected final BufferInfo mDecodeBufferInfo = new BufferInfo();
-  protected Handler mEventHandler;
-  protected final FloatBufferInfo mFloatBufferInfo = new FloatBufferInfo();
-  protected final BaseDecodeDataComponent.HandleDecodeDataCallback mHandleDecodeDataCallback;
-  protected boolean mHasDecode = false;
-  protected boolean mHasDecodeSuccess = false;
-  protected boolean mHasInit = false;
-  protected AudioInformation mInformation;
-  protected volatile boolean mNeedChangePlayThreadPriority = false;
-  protected final BufferInfo mNewBitDepthBufferInfo = new BufferInfo();
-  protected int mPlayBitDepth = 2;
-  protected long mPlaySample;
-  private int mPlayerID;
-  protected final BufferInfo mReSampleBufferInfo = new BufferInfo();
-  protected final WaitNotify mSignalControl = new WaitNotify();
-  protected PlayerStateRunner mStateRunner;
-  protected final List<IAudioListener> mTerminalAudioEffectList = new ArrayList();
-  protected ReferenceTimer mTimer = new ReferenceTimer();
-  protected PerformanceTracer performanceTracer = null;
+  final List<IAudioListener> audioEffects = new ArrayList(3);
+  boolean isUseFloatForHighDepth = false;
+  int mAudioStreamType = getAudioStreamType();
+  AudioTrack mAudioTrack;
+  int mBuffSize;
+  final PlayerCallback mCallback;
+  final CorePlayer mCorePlayer;
+  boolean mCreateAudioTrackFail = false;
+  long mCurPosition = 0L;
+  final BufferInfo mDecodeBufferInfo = new BufferInfo();
+  private final Handler mEventHandler;
+  final FloatBufferInfo mFloatBufferInfo = new FloatBufferInfo();
+  final HandleDecodeDataCallback mHandleDecodeDataCallback;
+  boolean mHasDecode = false;
+  boolean mHasDecodeSuccess = false;
+  boolean mHasInit = false;
+  final AudioInformation mInformation;
+  int mLeastCommonMultiple = 1;
+  volatile boolean mNeedChangePlayThreadPriority = false;
+  private final int mPlayerID;
+  final WaitNotify mSignalControl = new WaitNotify();
+  Float mSpeedToSet = null;
+  final PlayerStateRunner mStateRunner;
+  int mTargetBitDepth = 2;
+  long mTargetPlaySample;
+  final List<IAudioListener> mTerminalAudioEffectList = new ArrayList();
+  PerformanceTracer performanceTracer = null;
   
-  static
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      bool = true;
-      CAN_USE_FLOAT_IN_HI_RES = bool;
-      if (Build.VERSION.SDK_INT < 23) {
-        break label36;
-      }
-    }
-    label36:
-    for (long l = 192000L;; l = 48000L)
-    {
-      MAX_PLAY_SAMPLE_RATE = l;
-      return;
-      bool = false;
-      break;
-    }
-  }
-  
-  BaseDecodeDataComponent(CorePlayer paramCorePlayer, PlayerStateRunner paramPlayerStateRunner, AudioInformation paramAudioInformation, PlayerCallback paramPlayerCallback, BaseDecodeDataComponent.HandleDecodeDataCallback paramHandleDecodeDataCallback, Handler paramHandler, int paramInt)
+  BaseDecodeDataComponent(CorePlayer paramCorePlayer, PlayerStateRunner paramPlayerStateRunner, AudioInformation paramAudioInformation, PlayerCallback paramPlayerCallback, HandleDecodeDataCallback paramHandleDecodeDataCallback, Handler paramHandler, int paramInt)
   {
     this.mCorePlayer = paramCorePlayer;
     this.mStateRunner = paramPlayerStateRunner;
@@ -81,7 +63,30 @@ abstract class BaseDecodeDataComponent
     this.mPlayerID = paramInt;
   }
   
-  protected static int getAudioTrackPosition(long paramLong, AudioTrack paramAudioTrack)
+  private void callExceptionCallback(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.mCallback.playerException(this.mCorePlayer, paramInt1, paramInt2, paramInt3);
+  }
+  
+  private void destroyAudioListeners()
+  {
+    synchronized (this.audioEffects)
+    {
+      Iterator localIterator1 = this.audioEffects.iterator();
+      if (localIterator1.hasNext()) {
+        ((IAudioListener)localIterator1.next()).onPlayerStopped();
+      }
+    }
+    synchronized (this.mTerminalAudioEffectList)
+    {
+      Iterator localIterator2 = this.mTerminalAudioEffectList.iterator();
+      if (localIterator2.hasNext()) {
+        ((IAudioListener)localIterator2.next()).onPlayerStopped();
+      }
+    }
+  }
+  
+  static int getAudioTrackPosition(long paramLong, AudioTrack paramAudioTrack)
   {
     long l2 = 0L;
     long l1 = l2;
@@ -101,12 +106,30 @@ abstract class BaseDecodeDataComponent
     }
   }
   
-  private static boolean processAudioListener(IAudioListener paramIAudioListener, BufferInfo paramBufferInfo1, BufferInfo paramBufferInfo2)
+  static AudioTrack instantiateAudioTrackCompat(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      AudioAttributes.Builder localBuilder = new AudioAttributes.Builder();
+      localBuilder.setLegacyStreamType(paramInt1);
+      AudioFormat.Builder localBuilder1 = new AudioFormat.Builder();
+      localBuilder1.setSampleRate(paramInt2);
+      localBuilder1.setEncoding(paramInt4);
+      localBuilder1.setChannelMask(paramInt3);
+      if (Build.VERSION.SDK_INT >= 23) {
+        return new AudioTrack.Builder().setAudioAttributes(localBuilder.build()).setAudioFormat(localBuilder1.build()).setBufferSizeInBytes(paramInt5).setTransferMode(paramInt6).build();
+      }
+      return new AudioTrack(localBuilder.build(), localBuilder1.build(), paramInt5, paramInt6, 0);
+    }
+    return new AudioTrack(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
+  }
+  
+  private static boolean processAudioListener(IAudioListener paramIAudioListener, BufferInfo paramBufferInfo1, BufferInfo paramBufferInfo2, long paramLong)
   {
     try
     {
       paramBufferInfo2.setByteBufferCapacity(paramBufferInfo1.bufferSize);
-      boolean bool = paramIAudioListener.onPcm(paramBufferInfo1, paramBufferInfo2);
+      boolean bool = paramIAudioListener.onPcm(paramBufferInfo1, paramBufferInfo2, paramLong);
       return bool;
     }
     catch (Throwable paramBufferInfo1)
@@ -116,12 +139,12 @@ abstract class BaseDecodeDataComponent
     return false;
   }
   
-  private static boolean processAudioListener(IAudioListener paramIAudioListener, FloatBufferInfo paramFloatBufferInfo1, FloatBufferInfo paramFloatBufferInfo2)
+  private static boolean processAudioListener(IAudioListener paramIAudioListener, FloatBufferInfo paramFloatBufferInfo1, FloatBufferInfo paramFloatBufferInfo2, long paramLong)
   {
     try
     {
       paramFloatBufferInfo2.setFloatBufferCapacity(paramFloatBufferInfo1.bufferSize);
-      boolean bool = paramIAudioListener.onPcm(paramFloatBufferInfo1, paramFloatBufferInfo2);
+      boolean bool = paramIAudioListener.onPcm(paramFloatBufferInfo1, paramFloatBufferInfo2, paramLong);
       return bool;
     }
     catch (Throwable paramFloatBufferInfo1)
@@ -142,7 +165,7 @@ abstract class BaseDecodeDataComponent
           Logger.i("BaseDecodeDataComponent", "[addAudioListener] terminal audio added: ".concat(String.valueOf(paramIAudioListener)));
         }
         if ((this.mInformation == null) || (this.mInformation.getPlaySample() <= 0L) || (this.mInformation.getChannels() <= 0)) {
-          break label232;
+          break label228;
         }
       }
     }
@@ -150,7 +173,7 @@ abstract class BaseDecodeDataComponent
     {
       for (;;)
       {
-        l = paramIAudioListener.onPlayerReady(this.mInformation.getPlaySample(), this.mPlayBitDepth, this.mInformation.getChannels());
+        l = paramIAudioListener.onPlayerReady(this.mTargetBitDepth, this.mInformation, getCurPosition());
         if (l != 0L) {
           Logger.e("BaseDecodeDataComponent", "[addAudioListener] failed to init audio %s, ret: %d", new Object[] { paramIAudioListener, Long.valueOf(l) });
         }
@@ -175,23 +198,18 @@ abstract class BaseDecodeDataComponent
         long l = 0L;
       }
     }
-    label232:
+    label228:
     Logger.i("BaseDecodeDataComponent", "[addAudioListener] audio information not ready. init will be delayed.");
   }
   
-  protected String axiliary(String paramString)
+  String axiliary(String paramString)
   {
     return "ID: " + this.mPlayerID + ". " + paramString;
   }
   
-  protected void callExceptionCallback(int paramInt1, int paramInt2)
+  void callExceptionCallback(int paramInt1, int paramInt2)
   {
     callExceptionCallback(paramInt1, paramInt2, 0);
-  }
-  
-  protected void callExceptionCallback(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.mCallback.playerException(this.mCorePlayer, paramInt1, paramInt2, paramInt3);
   }
   
   void changePlayThreadPriorityImmediately()
@@ -200,11 +218,11 @@ abstract class BaseDecodeDataComponent
     this.mNeedChangePlayThreadPriority = true;
   }
   
-  protected void convertBytePcmToFloatPcm(BufferInfo paramBufferInfo, FloatBufferInfo paramFloatBufferInfo)
+  void convertBytePcmToFloatPcm(BufferInfo paramBufferInfo, FloatBufferInfo paramFloatBufferInfo)
   {
     try
     {
-      PcmConvertionUtil.convertByteBufferToFloatBuffer(paramBufferInfo, paramFloatBufferInfo, this.mInformation.getBitDept());
+      PcmConvertionUtil.convertByteBufferToFloatBuffer(paramBufferInfo, paramFloatBufferInfo, this.mInformation.getBitDepth());
       return;
     }
     catch (Throwable paramBufferInfo)
@@ -213,47 +231,76 @@ abstract class BaseDecodeDataComponent
     }
   }
   
-  protected void destroyAudioListeners()
+  void doWaitForPaused()
   {
-    synchronized (this.audioEffects)
+    this.mSignalControl.doWait(2000L, 5, new WaitNotify.WaitListener()
     {
-      Iterator localIterator1 = this.audioEffects.iterator();
-      if (localIterator1.hasNext()) {
-        ((IAudioListener)localIterator1.next()).onPlayerStopped();
+      public boolean keepWaiting()
+      {
+        AppMethodBeat.i(76569);
+        boolean bool = BaseDecodeDataComponent.this.isPaused();
+        AppMethodBeat.o(76569);
+        return bool;
       }
-    }
-    synchronized (this.mTerminalAudioEffectList)
-    {
-      Iterator localIterator2 = this.mTerminalAudioEffectList.iterator();
-      if (localIterator2.hasNext()) {
-        ((IAudioListener)localIterator2.next()).onPlayerStopped();
-      }
-    }
-  }
-  
-  protected void doWaitForPaused()
-  {
-    this.mSignalControl.doWait(2000L, 5, new BaseDecodeDataComponent.1(this));
+    });
   }
   
   void flush() {}
   
   abstract int getAudioStreamType();
   
-  protected int getBytesPerSampleInPlay(int paramInt)
+  abstract long getCurPosition();
+  
+  int getMaxSupportSampleRate()
   {
-    int i = paramInt;
-    if (paramInt > 2)
+    if (MAX_PLAY_SAMPLE_RATE > 0) {
+      return MAX_PLAY_SAMPLE_RATE;
+    }
+    try
     {
-      i = paramInt;
-      if (!CAN_USE_FLOAT_IN_HI_RES) {
-        i = 2;
+      Field localField1 = AudioFormat.class.getDeclaredField("SAMPLE_RATE_HZ_MAX");
+      localField1.setAccessible(true);
+      MAX_PLAY_SAMPLE_RATE = localField1.getInt(null);
+      Logger.i("BaseDecodeDataComponent", axiliary("get the max sample rate support by system from AudioFormat = " + MAX_PLAY_SAMPLE_RATE));
+      i = MAX_PLAY_SAMPLE_RATE;
+      return i;
+    }
+    catch (Throwable localThrowable1)
+    {
+      try
+      {
+        Field localField2 = AudioTrack.class.getDeclaredField("SAMPLE_RATE_HZ_MAX");
+        localField2.setAccessible(true);
+        MAX_PLAY_SAMPLE_RATE = localField2.getInt(null);
+        Logger.i("BaseDecodeDataComponent", axiliary("get the max sample rate support by system from AudioTrack = " + MAX_PLAY_SAMPLE_RATE));
+        int i = MAX_PLAY_SAMPLE_RATE;
+        return i;
       }
+      catch (Throwable localThrowable2)
+      {
+        Logger.i("BaseDecodeDataComponent", axiliary("can't reflect max sample rate, use default sample rate"));
+        if (Build.VERSION.SDK_INT < 21) {
+          return 48000;
+        }
+        if (Build.VERSION.SDK_INT < 22) {
+          return 96000;
+        }
+      }
+    }
+    return 192000;
+  }
+  
+  int getMinBufferSize(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int j = AudioTrack.getMinBufferSize((int)paramLong, paramInt1, paramInt2);
+    int i = j;
+    if (j < 0)
+    {
+      Logger.i("BaseDecodeDataComponent", axiliary("minBufferSize = " + j + " mTargetPlaySample = " + paramLong + "  channelConfiguration = " + paramInt1 + "   pcmEncoding = " + paramInt2));
+      i = paramInt3 * 3536 * paramInt4;
     }
     return i;
   }
-  
-  abstract long getCurPosition();
   
   int getPlayerState()
   {
@@ -262,7 +309,7 @@ abstract class BaseDecodeDataComponent
   
   int getSessionId()
   {
-    if ((this.mAudioTrack != null) && (Build.VERSION.SDK_INT >= 9)) {
+    if (this.mAudioTrack != null) {
       return this.mAudioTrack.getAudioSessionId();
     }
     return 0;
@@ -270,16 +317,16 @@ abstract class BaseDecodeDataComponent
   
   abstract void handleDecodeData();
   
-  protected void handleHighBitDept(BufferInfo paramBufferInfo1, BufferInfo paramBufferInfo2)
+  void handleHighBitDepth(BufferInfo paramBufferInfo1, BufferInfo paramBufferInfo2)
   {
-    if (this.isUseFloatInHiRes)
+    if (this.isUseFloatForHighDepth)
     {
-      paramBufferInfo1.copy(paramBufferInfo2);
+      paramBufferInfo1.fillInto(paramBufferInfo2);
       return;
     }
     try
     {
-      PcmConvertionUtil.convertBitDepthTo16(paramBufferInfo1, paramBufferInfo2, this.mInformation.getBitDept());
+      PcmConvertionUtil.convertBitDepthTo16(paramBufferInfo1, paramBufferInfo2, this.mInformation.getBitDepth());
       return;
     }
     catch (Throwable paramBufferInfo1)
@@ -288,11 +335,11 @@ abstract class BaseDecodeDataComponent
     }
   }
   
-  protected void handleHighSample(BufferInfo paramBufferInfo1, BufferInfo paramBufferInfo2)
+  void handleHighSample(BufferInfo paramBufferInfo1, BufferInfo paramBufferInfo2)
   {
     try
     {
-      PcmConvertionUtil.reSample(paramBufferInfo1, paramBufferInfo2, this.mInformation.getSampleRate(), this.mPlaySample, this.mPlayBitDepth);
+      PcmConvertionUtil.reSample(paramBufferInfo1, paramBufferInfo2, this.mInformation.getSampleRate(), this.mTargetPlaySample, this.mTargetBitDepth);
       return;
     }
     catch (Throwable paramBufferInfo1)
@@ -329,25 +376,26 @@ abstract class BaseDecodeDataComponent
     }
   }
   
-  protected void initAudioListeners(long paramLong, int paramInt1, int paramInt2)
+  void initAudioListeners(int paramInt, AudioInformation paramAudioInformation, long paramLong)
   {
+    Iterator localIterator;
     synchronized (this.audioEffects)
     {
-      Iterator localIterator1 = this.audioEffects.iterator();
-      if (localIterator1.hasNext()) {
-        ((IAudioListener)localIterator1.next()).onPlayerReady(paramLong, paramInt1, paramInt2);
+      localIterator = this.audioEffects.iterator();
+      if (localIterator.hasNext()) {
+        ((IAudioListener)localIterator.next()).onPlayerReady(paramInt, paramAudioInformation, paramLong);
       }
     }
     synchronized (this.mTerminalAudioEffectList)
     {
-      Iterator localIterator2 = this.mTerminalAudioEffectList.iterator();
-      if (localIterator2.hasNext()) {
-        ((IAudioListener)localIterator2.next()).onPlayerReady(paramLong, paramInt1, paramInt2);
+      localIterator = this.mTerminalAudioEffectList.iterator();
+      if (localIterator.hasNext()) {
+        ((IAudioListener)localIterator.next()).onPlayerReady(paramInt, paramAudioInformation, paramLong);
       }
     }
   }
   
-  protected boolean isCompleted()
+  boolean isCompleted()
   {
     try
     {
@@ -359,11 +407,6 @@ abstract class BaseDecodeDataComponent
       localObject = finally;
       throw localObject;
     }
-  }
-  
-  boolean isCreateAudioTrackFail()
-  {
-    return this.mCreateAudioTrackFail;
   }
   
   protected boolean isError()
@@ -413,7 +456,7 @@ abstract class BaseDecodeDataComponent
     }
   }
   
-  protected boolean isPlaying()
+  boolean isPlaying()
   {
     try
     {
@@ -441,7 +484,12 @@ abstract class BaseDecodeDataComponent
     }
   }
   
-  protected void notifySeekCompleteForAudioListeners(long paramLong)
+  boolean isSupportHighBitDepth()
+  {
+    return Build.VERSION.SDK_INT >= 23;
+  }
+  
+  void notifySeekCompleteForAudioListeners(long paramLong)
   {
     synchronized (this.audioEffects)
     {
@@ -459,7 +507,7 @@ abstract class BaseDecodeDataComponent
     }
   }
   
-  void pause()
+  void pause(boolean paramBoolean)
   {
     Logger.i("BaseDecodeDataComponent", axiliary("pause"));
     this.mStateRunner.transfer(Integer.valueOf(5), new Integer[] { Integer.valueOf(4), Integer.valueOf(2) });
@@ -468,8 +516,7 @@ abstract class BaseDecodeDataComponent
   void play()
   {
     Logger.i("BaseDecodeDataComponent", axiliary("play"));
-    this.mTimer.refreshTimeInMs(this.mCurPosition);
-    this.mStateRunner.transfer(Integer.valueOf(4));
+    this.mStateRunner.transfer(Integer.valueOf(4), new Integer[] { Integer.valueOf(5), Integer.valueOf(2), Integer.valueOf(6), Integer.valueOf(4) });
     if (this.mSignalControl.isWaiting())
     {
       Logger.d("BaseDecodeDataComponent", axiliary("lock is Waiting, event: play, doNotify"));
@@ -477,7 +524,7 @@ abstract class BaseDecodeDataComponent
     }
   }
   
-  protected void postRunnable(Runnable paramRunnable, int paramInt)
+  void postRunnable(Runnable paramRunnable, int paramInt)
   {
     this.mEventHandler.postDelayed(paramRunnable, paramInt);
   }
@@ -492,33 +539,33 @@ abstract class BaseDecodeDataComponent
       {
         if (this.audioEffects.size() == 0)
         {
-          paramBufferInfo1.copy(paramBufferInfo2);
+          paramBufferInfo1.fillInto(paramBufferInfo2);
           return;
         }
         Iterator localIterator = this.audioEffects.iterator();
         localObject1 = paramBufferInfo2;
         localObject2 = paramBufferInfo1;
         if (!localIterator.hasNext()) {
-          break label129;
+          break label136;
         }
         Object localObject3 = (IAudioListener)localIterator.next();
         if (((IAudioListener)localObject3).isEnabled())
         {
-          if (processAudioListener((IAudioListener)localObject3, (BufferInfo)localObject2, (BufferInfo)localObject1))
+          if (processAudioListener((IAudioListener)localObject3, (BufferInfo)localObject2, (BufferInfo)localObject1, this.mCorePlayer.getCurPositionByDecoder()))
           {
             localObject3 = localObject1;
             localObject1 = localObject2;
             localObject2 = localObject3;
             continue;
           }
-          ((BufferInfo)localObject2).copy((BufferInfo)localObject1);
+          ((BufferInfo)localObject2).fillInto((BufferInfo)localObject1);
         }
       }
-      ((BufferInfo)localObject2).copy((BufferInfo)localObject1);
+      ((BufferInfo)localObject2).fillInto((BufferInfo)localObject1);
       continue;
-      label129:
+      label136:
       if (localObject2 == paramBufferInfo1) {
-        paramBufferInfo1.copy(paramBufferInfo2);
+        paramBufferInfo1.fillInto(paramBufferInfo2);
       }
     }
   }
@@ -540,12 +587,12 @@ abstract class BaseDecodeDataComponent
         localObject1 = paramFloatBufferInfo2;
         localObject2 = paramFloatBufferInfo1;
         if (!localIterator.hasNext()) {
-          break label129;
+          break label136;
         }
         Object localObject3 = (IAudioListener)localIterator.next();
         if (((IAudioListener)localObject3).isEnabled())
         {
-          if (processAudioListener((IAudioListener)localObject3, (FloatBufferInfo)localObject2, (FloatBufferInfo)localObject1))
+          if (processAudioListener((IAudioListener)localObject3, (FloatBufferInfo)localObject2, (FloatBufferInfo)localObject1, this.mCorePlayer.getCurPositionByDecoder()))
           {
             localObject3 = localObject1;
             localObject1 = localObject2;
@@ -557,16 +604,15 @@ abstract class BaseDecodeDataComponent
       }
       ((FloatBufferInfo)localObject2).copy((FloatBufferInfo)localObject1);
       continue;
-      label129:
+      label136:
       if (localObject2 == paramFloatBufferInfo1) {
         paramFloatBufferInfo1.copy(paramFloatBufferInfo2);
       }
     }
   }
   
-  protected void refreshTimeAndNotify(int paramInt)
+  void refreshTimeAndNotify(int paramInt)
   {
-    this.mTimer.refreshTimeInMs(paramInt);
     if (this.mSignalControl.isWaiting())
     {
       Logger.d("BaseDecodeDataComponent", axiliary("lock is Waiting, event: seek, doNotify"));
@@ -600,7 +646,7 @@ abstract class BaseDecodeDataComponent
             for (;;)
             {
               destroyAudioListeners();
-              this.mAudioTrack = null;
+              setAudioTrack(null);
               Logger.d("BaseDecodeDataComponent", axiliary("finally release audioTrack"));
               if (!this.mCorePlayer.mIsExit)
               {
@@ -671,9 +717,30 @@ abstract class BaseDecodeDataComponent
     this.mAudioStreamType = paramInt;
   }
   
+  void setAudioTrack(AudioTrack paramAudioTrack)
+  {
+    this.mAudioTrack = paramAudioTrack;
+    this.mHandleDecodeDataCallback.onAudioTrackChanged(paramAudioTrack);
+  }
+  
+  void setLeastCommonMultiple(int paramInt)
+  {
+    if (paramInt <= 0)
+    {
+      Logger.e("BaseDecodeDataComponent", "wrong least common multiple: ".concat(String.valueOf(paramInt)));
+      return;
+    }
+    this.mLeastCommonMultiple = paramInt;
+  }
+  
   void setPerformanceTracer(PerformanceTracer paramPerformanceTracer)
   {
     this.performanceTracer = paramPerformanceTracer;
+  }
+  
+  void setSpeed(float paramFloat)
+  {
+    this.mSpeedToSet = Float.valueOf(paramFloat);
   }
   
   void setVolume(float paramFloat1, float paramFloat2)
@@ -699,10 +766,25 @@ abstract class BaseDecodeDataComponent
       this.mSignalControl.doNotify();
     }
   }
+  
+  static abstract interface HandleDecodeDataCallback
+  {
+    public abstract long getCurPositionByDecoder();
+    
+    public abstract long getMinPcmBufferSize();
+    
+    public abstract void onAudioTrackChanged(AudioTrack paramAudioTrack);
+    
+    public abstract void onPullDecodeDataEndOrFailed(int paramInt1, int paramInt2);
+    
+    public abstract int pullDecodeData(int paramInt, byte[] paramArrayOfByte);
+    
+    public abstract int seekTo(int paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.BaseDecodeDataComponent
  * JD-Core Version:    0.7.0.1
  */

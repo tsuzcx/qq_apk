@@ -1,89 +1,108 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.g.c.fv;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class bw
-  extends j<bv>
-  implements m
+  extends fv
 {
-  public static final String[] SQL_CREATE;
-  private e db;
-  private final l<m.a, bv> ywD;
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(1482);
-    SQL_CREATE = new String[] { j.getCreateSQLs(bv.info, "Stranger") };
-    AppMethodBeat.o(1482);
+    AppMethodBeat.i(43306);
+    c.a locala = new c.a();
+    locala.EYt = new Field[5];
+    locala.columns = new String[6];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "encryptUsername";
+    locala.EYv.put("encryptUsername", "TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(" encryptUsername TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.EYu = "encryptUsername";
+    locala.columns[1] = "conRemark";
+    locala.EYv.put("conRemark", "TEXT default '' ");
+    localStringBuilder.append(" conRemark TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "contactLabels";
+    locala.EYv.put("contactLabels", "TEXT default '' ");
+    localStringBuilder.append(" contactLabels TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "conDescription";
+    locala.EYv.put("conDescription", "TEXT default '' ");
+    localStringBuilder.append(" conDescription TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "conPhone";
+    locala.EYv.put("conPhone", "TEXT default '' ");
+    localStringBuilder.append(" conPhone TEXT default '' ");
+    locala.columns[5] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(43306);
   }
   
-  public bw(e parame)
+  public bw()
   {
-    super(parame, bv.info, "Stranger", null);
-    AppMethodBeat.i(1477);
-    this.ywD = new l() {};
-    this.db = parame;
-    AppMethodBeat.o(1477);
+    AppMethodBeat.i(43304);
+    this.field_encryptUsername = "";
+    this.field_conRemark = "";
+    AppMethodBeat.o(43304);
   }
   
-  private void b(bv parambv)
+  public bw(String paramString)
   {
-    AppMethodBeat.i(1474);
-    if (this.ywD.cy(parambv)) {
-      this.ywD.doNotify();
+    this();
+    AppMethodBeat.i(43302);
+    this.field_conRemark = "";
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    AppMethodBeat.o(1474);
+    this.field_encryptUsername = str;
+    AppMethodBeat.o(43302);
   }
   
-  public final bv TM(String paramString)
+  public bw(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(1478);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      AppMethodBeat.o(1478);
-      return null;
+    this();
+    AppMethodBeat.i(43303);
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "";
     }
-    bv localbv = new bv();
-    paramString = this.db.a("Stranger", null, "encryptUsername = ?", new String[] { paramString }, null, null, null, 2);
-    if (paramString.moveToFirst()) {
-      localbv.convertFrom(paramString);
+    this.field_encryptUsername = str;
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
     }
-    paramString.close();
-    AppMethodBeat.o(1478);
-    return localbv;
+    this.field_conRemark = paramString1;
+    AppMethodBeat.o(43303);
   }
   
-  public final int TN(String paramString)
+  public final String St()
   {
-    AppMethodBeat.i(1479);
-    int i = this.db.delete("Stranger", "(encryptUsername=?)", new String[] { String.valueOf(paramString) });
-    if (i > 0) {
-      doNotify();
-    }
-    ab.i("MicroMsg.StrangerStorage", "delByEncryptUsername:" + paramString + " result:" + i);
-    AppMethodBeat.o(1479);
-    return i;
+    return this.field_conRemark;
   }
   
-  public final void a(m.a parama)
+  public final String Sx()
   {
-    AppMethodBeat.i(1475);
-    this.ywD.a(parama, null);
-    AppMethodBeat.o(1475);
+    return this.field_encryptUsername;
   }
   
-  public final void b(m.a parama)
+  protected final Object clone()
   {
-    AppMethodBeat.i(1476);
-    this.ywD.remove(parama);
-    AppMethodBeat.o(1476);
+    AppMethodBeat.i(43305);
+    Object localObject = super.clone();
+    AppMethodBeat.o(43305);
+    return localObject;
+  }
+  
+  public final c.a getDBInfo()
+  {
+    return info;
   }
 }
 

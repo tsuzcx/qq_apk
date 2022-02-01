@@ -5,15 +5,27 @@ import android.view.ViewParent;
 
 public final class j
 {
-  private final View bo;
-  private ViewParent jP;
-  private ViewParent jQ;
-  private boolean jR;
-  private int[] jS;
+  private final View cZ;
+  private ViewParent lM;
+  private ViewParent lN;
+  private boolean lO;
+  private int[] lP;
   
   public j(View paramView)
   {
-    this.bo = paramView;
+    this.cZ = paramView;
+  }
+  
+  private ViewParent F(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 0: 
+      return this.lM;
+    }
+    return this.lN;
   }
   
   private void a(int paramInt, ViewParent paramViewParent)
@@ -23,22 +35,25 @@ public final class j
     default: 
       return;
     case 0: 
-      this.jP = paramViewParent;
+      this.lM = paramViewParent;
       return;
     }
-    this.jQ = paramViewParent;
+    this.lN = paramViewParent;
   }
   
-  private ViewParent v(int paramInt)
+  public final boolean D(int paramInt)
   {
-    switch (paramInt)
+    return F(paramInt) != null;
+  }
+  
+  public final void E(int paramInt)
+  {
+    ViewParent localViewParent = F(paramInt);
+    if (localViewParent != null)
     {
-    default: 
-      return null;
-    case 0: 
-      return this.jP;
+      ao.a(localViewParent, this.cZ, paramInt);
+      a(paramInt, null);
     }
-    return this.jQ;
   }
   
   public final boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt, int paramInt5)
@@ -46,9 +61,9 @@ public final class j
     ViewParent localViewParent;
     int j;
     int i;
-    if (this.jR)
+    if (this.lO)
     {
-      localViewParent = v(paramInt5);
+      localViewParent = F(paramInt5);
       if (localViewParent == null) {
         return false;
       }
@@ -57,17 +72,17 @@ public final class j
         if (paramArrayOfInt == null) {
           break label136;
         }
-        this.bo.getLocationInWindow(paramArrayOfInt);
+        this.cZ.getLocationInWindow(paramArrayOfInt);
         j = paramArrayOfInt[0];
         i = paramArrayOfInt[1];
       }
     }
     for (;;)
     {
-      ao.a(localViewParent, this.bo, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+      ao.a(localViewParent, this.cZ, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
       if (paramArrayOfInt != null)
       {
-        this.bo.getLocationInWindow(paramArrayOfInt);
+        this.cZ.getLocationInWindow(paramArrayOfInt);
         paramArrayOfInt[0] -= j;
         paramArrayOfInt[1] -= i;
       }
@@ -89,9 +104,9 @@ public final class j
     ViewParent localViewParent;
     int j;
     int i;
-    if (this.jR)
+    if (this.lO)
     {
-      localViewParent = v(paramInt3);
+      localViewParent = F(paramInt3);
       if (localViewParent == null) {
         return false;
       }
@@ -100,7 +115,7 @@ public final class j
         if (paramArrayOfInt2 == null) {
           break label173;
         }
-        this.bo.getLocationInWindow(paramArrayOfInt2);
+        this.cZ.getLocationInWindow(paramArrayOfInt2);
         j = paramArrayOfInt2[0];
         i = paramArrayOfInt2[1];
       }
@@ -109,19 +124,19 @@ public final class j
     {
       if (paramArrayOfInt1 == null)
       {
-        if (this.jS == null) {
-          this.jS = new int[2];
+        if (this.lP == null) {
+          this.lP = new int[2];
         }
-        paramArrayOfInt1 = this.jS;
+        paramArrayOfInt1 = this.lP;
       }
       for (;;)
       {
         paramArrayOfInt1[0] = 0;
         paramArrayOfInt1[1] = 0;
-        ao.a(localViewParent, this.bo, paramInt1, paramInt2, paramArrayOfInt1, paramInt3);
+        ao.a(localViewParent, this.cZ, paramInt1, paramInt2, paramArrayOfInt1, paramInt3);
         if (paramArrayOfInt2 != null)
         {
-          this.bo.getLocationInWindow(paramArrayOfInt2);
+          this.cZ.getLocationInWindow(paramArrayOfInt2);
           paramArrayOfInt2[0] -= j;
           paramArrayOfInt2[1] -= i;
         }
@@ -141,19 +156,19 @@ public final class j
   
   public final boolean c(int paramInt1, int paramInt2)
   {
-    if (t(paramInt2)) {
+    if (D(paramInt2)) {
       return true;
     }
-    if (this.jR)
+    if (this.lO)
     {
-      ViewParent localViewParent = this.bo.getParent();
-      View localView = this.bo;
+      ViewParent localViewParent = this.cZ.getParent();
+      View localView = this.cZ;
       while (localViewParent != null)
       {
-        if (ao.a(localViewParent, localView, this.bo, paramInt1, paramInt2))
+        if (ao.a(localViewParent, localView, this.cZ, paramInt1, paramInt2))
         {
           a(paramInt2, localViewParent);
-          ao.b(localViewParent, localView, this.bo, paramInt1, paramInt2);
+          ao.b(localViewParent, localView, this.cZ, paramInt1, paramInt2);
           return true;
         }
         if ((localViewParent instanceof View)) {
@@ -169,12 +184,12 @@ public final class j
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.jR)
+    if (this.lO)
     {
-      ViewParent localViewParent = v(0);
+      ViewParent localViewParent = F(0);
       bool1 = bool2;
       if (localViewParent != null) {
-        bool1 = ao.a(localViewParent, this.bo, paramFloat1, paramFloat2, paramBoolean);
+        bool1 = ao.a(localViewParent, this.cZ, paramFloat1, paramFloat2, paramBoolean);
       }
     }
     return bool1;
@@ -184,12 +199,12 @@ public final class j
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.jR)
+    if (this.lO)
     {
-      ViewParent localViewParent = v(0);
+      ViewParent localViewParent = F(0);
       bool1 = bool2;
       if (localViewParent != null) {
-        bool1 = ao.a(localViewParent, this.bo, paramFloat1, paramFloat2);
+        bool1 = ao.a(localViewParent, this.cZ, paramFloat1, paramFloat2);
       }
     }
     return bool1;
@@ -207,20 +222,20 @@ public final class j
   
   public final boolean hasNestedScrollingParent()
   {
-    return t(0);
+    return D(0);
   }
   
   public final boolean isNestedScrollingEnabled()
   {
-    return this.jR;
+    return this.lO;
   }
   
   public final void setNestedScrollingEnabled(boolean paramBoolean)
   {
-    if (this.jR) {
-      r.u(this.bo);
+    if (this.lO) {
+      r.w(this.cZ);
     }
-    this.jR = paramBoolean;
+    this.lO = paramBoolean;
   }
   
   public final boolean startNestedScroll(int paramInt)
@@ -230,22 +245,7 @@ public final class j
   
   public final void stopNestedScroll()
   {
-    u(0);
-  }
-  
-  public final boolean t(int paramInt)
-  {
-    return v(paramInt) != null;
-  }
-  
-  public final void u(int paramInt)
-  {
-    ViewParent localViewParent = v(paramInt);
-    if (localViewParent != null)
-    {
-      ao.a(localViewParent, this.bo, paramInt);
-      a(paramInt, null);
-    }
+    E(0);
   }
 }
 

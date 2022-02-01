@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ob
   extends b
 {
-  public ob.a cEN;
+  public a dtk;
   
   public ob()
   {
@@ -15,16 +15,21 @@ public final class ob
   
   private ob(byte paramByte)
   {
-    AppMethodBeat.i(77561);
-    this.cEN = new ob.a();
-    this.ymq = false;
+    AppMethodBeat.i(148770);
+    this.dtk = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77561);
+    AppMethodBeat.o(148770);
+  }
+  
+  public static final class a
+  {
+    public int dbV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.ob
  * JD-Core Version:    0.7.0.1
  */

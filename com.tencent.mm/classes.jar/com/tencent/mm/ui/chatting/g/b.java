@@ -1,104 +1,86 @@
 package com.tencent.mm.ui.chatting.g;
 
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d.a;
-import com.tencent.mm.bq.d.b;
+import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.ui.base.MMPullDownView;
+import com.tencent.mm.ui.chatting.c.b.q;
+import com.tencent.mm.ui.chatting.c.b.s;
 import com.tencent.mm.ui.chatting.d.a;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.WeakHashMap;
+import com.tencent.mm.ui.chatting.view.MMChattingListView;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class b
-  implements d.b
+  implements f<bl>
 {
-  private static WeakHashMap<Fragment, HashMap<Integer, d.a>> zOQ;
-  private WeakReference<a> zOR;
+  private MMChattingListView GER;
+  public a GES;
+  private a cOd;
   
-  static
+  public b(a parama, MMChattingListView paramMMChattingListView)
   {
-    AppMethodBeat.i(32501);
-    zOQ = new WeakHashMap();
-    AppMethodBeat.o(32501);
+    this.GER = paramMMChattingListView;
+    this.cOd = parama;
   }
   
-  public b(a parama)
+  public final void a(d.d paramd)
   {
-    AppMethodBeat.i(32495);
-    this.zOR = new WeakReference(parama);
-    AppMethodBeat.o(32495);
-  }
-  
-  private static void a(Fragment paramFragment, int paramInt, d.a parama)
-  {
-    AppMethodBeat.i(32497);
-    HashMap localHashMap2 = (HashMap)zOQ.get(paramFragment);
-    HashMap localHashMap1 = localHashMap2;
-    if (localHashMap2 == null)
+    AppMethodBeat.i(36420);
+    this.cOd.GzP = false;
+    ad.i("MicroMsg.ChattingLoader.ChattingViewCallback", "[onViewUpdate] result:%s", new Object[] { paramd.toString() });
+    Object localObject = (q)this.cOd.be(q.class);
+    if ((localObject != null) && (((q)localObject).eXs() != null) && (((q)localObject).eXs().srJ))
     {
-      localHashMap1 = new HashMap();
-      zOQ.put(paramFragment, localHashMap1);
+      ad.i("MicroMsg.ChattingLoader.ChattingViewCallback", "keyboard is shown! scroll to last");
+      this.cOd.wc(true);
     }
-    localHashMap1.put(Integer.valueOf(paramInt), parama);
-    AppMethodBeat.o(32497);
-  }
-  
-  public static d.a c(Fragment paramFragment, int paramInt)
-  {
-    AppMethodBeat.i(32496);
-    paramFragment = (HashMap)zOQ.get(paramFragment);
-    if (paramFragment != null)
+    if (paramd.GFc != d.a.GEW)
     {
-      paramFragment = (d.a)paramFragment.remove(Integer.valueOf(paramInt));
-      AppMethodBeat.o(32496);
-      return paramFragment;
+      localObject = this.GER;
+      MMPullDownView.m((ViewGroup)((MMPullDownView)localObject).FYV, 4);
+      MMPullDownView.m((ViewGroup)((MMPullDownView)localObject).FJA, 4);
     }
-    AppMethodBeat.o(32496);
-    return null;
+    ((s)this.cOd.be(s.class)).startTimer();
+    if (this.GES != null) {
+      this.GES.a(this.GER, paramd);
+    }
+    AppMethodBeat.o(36420);
   }
   
-  public final void a(Intent paramIntent, int paramInt, d.a parama)
+  public final boolean b(d.a parama)
   {
-    AppMethodBeat.i(32499);
-    Fragment localFragment = getFragment();
-    if (localFragment == null)
+    AppMethodBeat.i(191564);
+    if (!this.cOd.ctF)
     {
-      AppMethodBeat.o(32499);
-      return;
+      ad.e("MicroMsg.ChattingLoader.ChattingViewCallback", "[onViewUpdate] this ChattingUI has been in background!");
+      AppMethodBeat.o(191564);
+      return false;
     }
-    a(localFragment, paramInt, parama);
-    localFragment.startActivityForResult(paramIntent, paramInt);
-    AppMethodBeat.o(32499);
-  }
-  
-  public final Context getContext()
-  {
-    AppMethodBeat.i(32500);
-    FragmentActivity localFragmentActivity = getFragment().getActivity();
-    AppMethodBeat.o(32500);
-    return localFragmentActivity;
-  }
-  
-  public final Fragment getFragment()
-  {
-    AppMethodBeat.i(32498);
-    Object localObject = (a)this.zOR.get();
-    if (localObject != null)
+    if (!this.cOd.GzO)
     {
-      localObject = ((a)localObject).zJz;
-      AppMethodBeat.o(32498);
-      return localObject;
+      ad.e("MicroMsg.ChattingLoader.ChattingViewCallback", "current ChattingUI lose focus! action=%s", new Object[] { parama });
+      a locala = this.cOd;
+      ad.i("MicroMsg.ChattingContext", "trace setNeedUpdateUI, needUpdateUI %s, trace %s", new Object[] { Boolean.TRUE, bt.eGN() });
+      locala.GzP = true;
+      locala.GzR.add(parama);
+      AppMethodBeat.o(191564);
+      return false;
     }
-    AppMethodBeat.o(32498);
-    return null;
+    AppMethodBeat.o(191564);
+    return true;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(MMChattingListView paramMMChattingListView, d.d<bl> paramd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.g.b
  * JD-Core Version:    0.7.0.1
  */

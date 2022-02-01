@@ -1,7 +1,11 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
+import com.tencent.mm.ui.chatting.h.b;
+
 public abstract interface ChatFooter$b
 {
+  public abstract b ezT();
+  
   public abstract String getTalkerUserName();
 }
 

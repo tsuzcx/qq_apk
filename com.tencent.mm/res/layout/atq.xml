@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:gravity="center" android:id="@id/egk" android:padding="@dimen/dl" android:layout_width="@dimen/lv" android:layout_height="@dimen/lv" android:src="@drawable/aex" />
-        <ImageView android:gravity="center" android:layout_gravity="center|right|top" android:id="@id/egl" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/d0" />
-    </FrameLayout>
-    <TextView android:ellipsize="end" android:gravity="center" android:id="@id/egm" android:layout_width="@dimen/lt" android:layout_height="wrap_content" android:maxLines="1" android:layout_centerHorizontal="true" />
-</LinearLayout>
+    <ImageButton android:id="@id/d4h" android:background="@drawable/a6n" android:layout_width="60.0dip" android:layout_height="60.0dip" android:src="@drawable/ayr" android:contentDescription="@string/dbv" />
+    <LinearLayout android:gravity="center" android:id="@id/eki" android:background="@drawable/a6n" android:visibility="gone" android:layout_width="42.0dip" android:layout_height="42.0dip">
+        <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a5o" />
+    </LinearLayout>
+</FrameLayout>

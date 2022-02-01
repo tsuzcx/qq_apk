@@ -2,7 +2,207 @@ package com.tencent.recovery.wx.util;
 
 public class MyDES
 {
-  public static char a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong, int paramInt, byte[] paramArrayOfByte3)
+  public static final int DECRYPTION = 1;
+  public static final int ENCRYPTION = 0;
+  
+  private static void BitToByte(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, int paramInt)
+  {
+    int i = 0;
+    memset(paramMyByteArray1, 0, paramInt >> 3);
+    while (i < paramInt)
+    {
+      byte[] arrayOfByte = paramMyByteArray1.array;
+      int j = paramMyByteArray1.begin + (i >> 3);
+      arrayOfByte[j] = ((byte)(arrayOfByte[j] | paramMyByteArray2.array[(paramMyByteArray2.begin + i)] << (i & 0x7)));
+      i += 1;
+    }
+  }
+  
+  private static void ByteToBit(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, int paramInt)
+  {
+    int i = 0;
+    while (i < paramInt)
+    {
+      paramMyByteArray1.array[(paramMyByteArray1.begin + i)] = ((byte)(paramMyByteArray2.array[((i >> 3) + paramMyByteArray2.begin)] >> (i & 0x7) & 0x1));
+      i += 1;
+    }
+  }
+  
+  private static void CYCLELEFT(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, int paramInt1, int paramInt2)
+  {
+    int k = 0;
+    memcpy(paramMyByteArray2, paramMyByteArray1, paramInt2);
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= paramInt1 - paramInt2) {
+        break;
+      }
+      paramMyByteArray1.array[(paramMyByteArray1.begin + i)] = paramMyByteArray1.array[(paramMyByteArray1.begin + i + paramInt2)];
+      i += 1;
+    }
+    while (j < paramInt2)
+    {
+      paramMyByteArray1.array[(paramMyByteArray1.begin + j + paramInt1 - paramInt2)] = paramMyByteArray2.array[(paramMyByteArray2.begin + j)];
+      j += 1;
+    }
+  }
+  
+  private static void DES(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, MyByteArray[] paramArrayOfMyByteArray, int paramInt, MyByteArray paramMyByteArray3, MyByteArray paramMyByteArray4, MyByteArray paramMyByteArray5, MyByteArray paramMyByteArray6, MyByteArray paramMyByteArray7, MyByteArray paramMyByteArray8)
+  {
+    ByteToBit(paramMyByteArray3, paramMyByteArray2, 64);
+    TRANSFORM(paramMyByteArray3, paramMyByteArray3, new byte[] { 58, 50, 42, 34, 26, 18, 10, 2, 60, 52, 44, 36, 28, 20, 12, 4, 62, 54, 46, 38, 30, 22, 14, 6, 64, 56, 48, 40, 32, 24, 16, 8, 57, 49, 41, 33, 25, 17, 9, 1, 59, 51, 43, 35, 27, 19, 11, 3, 61, 53, 45, 37, 29, 21, 13, 5, 63, 55, 47, 39, 31, 23, 15, 7 }, 64, paramMyByteArray8);
+    if (paramInt == 0)
+    {
+      paramInt = 0;
+      while (paramInt < 16)
+      {
+        memcpy(paramMyByteArray5, paramMyByteArray7, 32);
+        F_FUNCTION(paramMyByteArray7, paramArrayOfMyByteArray[paramInt], paramMyByteArray4, paramMyByteArray8);
+        XOR(paramMyByteArray7, paramMyByteArray6, 32);
+        memcpy(paramMyByteArray6, paramMyByteArray5, 32);
+        paramInt += 1;
+      }
+    }
+    paramInt = 15;
+    while (paramInt >= 0)
+    {
+      memcpy(paramMyByteArray5, paramMyByteArray6, 32);
+      F_FUNCTION(paramMyByteArray6, paramArrayOfMyByteArray[paramInt], paramMyByteArray4, paramMyByteArray8);
+      XOR(paramMyByteArray6, paramMyByteArray7, 32);
+      memcpy(paramMyByteArray7, paramMyByteArray5, 32);
+      paramInt -= 1;
+    }
+    TRANSFORM(paramMyByteArray3, paramMyByteArray3, new byte[] { 40, 8, 48, 16, 56, 24, 64, 32, 39, 7, 47, 15, 55, 23, 63, 31, 38, 6, 46, 14, 54, 22, 62, 30, 37, 5, 45, 13, 53, 21, 61, 29, 36, 4, 44, 12, 52, 20, 60, 28, 35, 3, 43, 11, 51, 19, 59, 27, 34, 2, 42, 10, 50, 18, 58, 26, 33, 1, 41, 9, 49, 17, 57, 25 }, 64, paramMyByteArray8);
+    BitToByte(paramMyByteArray1, paramMyByteArray3, 64);
+  }
+  
+  private static void F_FUNCTION(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, MyByteArray paramMyByteArray3, MyByteArray paramMyByteArray4)
+  {
+    TRANSFORM(paramMyByteArray3, paramMyByteArray1, new byte[] { 32, 1, 2, 3, 4, 5, 4, 5, 6, 7, 8, 9, 8, 9, 10, 11, 12, 13, 12, 13, 14, 15, 16, 17, 16, 17, 18, 19, 20, 21, 20, 21, 22, 23, 24, 25, 24, 25, 26, 27, 28, 29, 28, 29, 30, 31, 32, 1 }, 48, paramMyByteArray4);
+    XOR(paramMyByteArray3, paramMyByteArray2, 48);
+    S_BOXF(paramMyByteArray1, paramMyByteArray3);
+    TRANSFORM(paramMyByteArray1, paramMyByteArray1, new byte[] { 16, 7, 20, 21, 29, 12, 28, 17, 1, 15, 23, 26, 5, 18, 31, 10, 2, 8, 24, 14, 32, 27, 3, 9, 19, 13, 30, 6, 22, 11, 4, 25 }, 32, paramMyByteArray4);
+  }
+  
+  private static void InitVars(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, MyByteArray paramMyByteArray3, MyByteArray paramMyByteArray4, MyByteArray paramMyByteArray5, MyByteArray paramMyByteArray6)
+  {
+    paramMyByteArray3.begin = 0;
+    paramMyByteArray3.array = paramMyByteArray2.array;
+    paramMyByteArray4.begin = 28;
+    paramMyByteArray4.array = paramMyByteArray2.array;
+    paramMyByteArray5.begin = 0;
+    paramMyByteArray5.array = paramMyByteArray1.array;
+    paramMyByteArray6.begin = 32;
+    paramMyByteArray6.array = paramMyByteArray1.array;
+  }
+  
+  private static void SETKEY(MyByteArray[] paramArrayOfMyByteArray, MyByteArray paramMyByteArray1, byte[] paramArrayOfByte, int paramInt, MyByteArray paramMyByteArray2, MyByteArray paramMyByteArray3, MyByteArray paramMyByteArray4, MyByteArray paramMyByteArray5)
+  {
+    memset(paramMyByteArray1, 0, 24);
+    paramArrayOfByte = new MyByteArray(paramArrayOfByte);
+    int i = paramInt;
+    if (paramInt > 24) {
+      i = 24;
+    }
+    memcpy(paramMyByteArray1, paramArrayOfByte, i);
+    Set_SubKey(paramArrayOfMyByteArray, paramMyByteArray1, paramMyByteArray2, paramMyByteArray3, paramMyByteArray4, paramMyByteArray5);
+  }
+  
+  private static void S_BOXF(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2)
+  {
+    int i = 0;
+    byte[] arrayOfByte1 = { 4, 1, 14, 8, 13, 6, 2, 11, 15, 12, 9, 7, 3, 10, 5, 0 };
+    byte[] arrayOfByte2 = { 15, 12, 8, 2, 4, 9, 1, 7, 5, 11, 3, 14, 10, 0, 6, 13 };
+    byte[] arrayOfByte3 = { 15, 1, 8, 14, 6, 11, 3, 4, 9, 7, 2, 13, 12, 0, 5, 10 };
+    byte[] arrayOfByte4 = { 10, 0, 9, 14, 6, 3, 15, 5, 1, 13, 12, 7, 11, 4, 2, 8 };
+    byte[] arrayOfByte5 = { 13, 7, 0, 9, 3, 4, 6, 10, 2, 8, 5, 14, 12, 11, 15, 1 };
+    byte[] arrayOfByte6 = { 13, 6, 4, 9, 8, 15, 3, 0, 11, 1, 2, 12, 5, 10, 14, 7 };
+    byte[] arrayOfByte7 = { 1, 10, 13, 0, 6, 9, 8, 7, 4, 15, 14, 3, 11, 5, 2, 12 };
+    Object localObject = { 10, 6, 9, 0, 12, 11, 7, 13, 15, 1, 3, 14, 5, 2, 8, 4 };
+    localObject = new byte[][] { { 7, 13, 14, 3, 0, 6, 9, 10, 1, 2, 8, 5, 11, 12, 4, 15 }, { 13, 8, 11, 5, 6, 15, 0, 3, 4, 7, 2, 12, 1, 10, 14, 9 }, localObject, { 3, 15, 0, 6, 10, 1, 13, 8, 9, 4, 5, 11, 12, 7, 2, 14 } };
+    byte[] arrayOfByte12 = { 9, 14, 15, 5, 2, 8, 12, 3, 7, 0, 4, 10, 1, 13, 11, 6 };
+    byte[] arrayOfByte10 = { 1, 4, 11, 13, 12, 3, 7, 14, 10, 15, 6, 8, 0, 5, 9, 2 };
+    byte[] arrayOfByte11 = { 6, 11, 13, 8, 1, 4, 10, 7, 9, 5, 0, 15, 14, 2, 3, 12 };
+    byte[] arrayOfByte8 = { 1, 15, 13, 8, 10, 3, 7, 4, 12, 5, 6, 11, 0, 14, 9, 2 };
+    byte[] arrayOfByte9 = { 7, 11, 4, 1, 9, 12, 14, 2, 0, 6, 10, 13, 15, 3, 5, 8 };
+    int j = paramMyByteArray2.begin;
+    int k = paramMyByteArray1.begin;
+    while (i < 8)
+    {
+      int m = (byte)((paramMyByteArray2.array[(paramMyByteArray2.begin + 0)] << 1) + paramMyByteArray2.array[(paramMyByteArray2.begin + 5)]);
+      int n = (byte)((paramMyByteArray2.array[(paramMyByteArray2.begin + 1)] << 3) + (paramMyByteArray2.array[(paramMyByteArray2.begin + 2)] << 2) + (paramMyByteArray2.array[(paramMyByteArray2.begin + 3)] << 1) + paramMyByteArray2.array[(paramMyByteArray2.begin + 4)]);
+      ByteToBit(paramMyByteArray1, new MyByteArray(new byte[][][] { { { 14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7 }, { 0, 15, 7, 4, 14, 2, 13, 1, 10, 6, 12, 11, 9, 5, 3, 8 }, arrayOfByte1, arrayOfByte2 }, { arrayOfByte3, { 3, 13, 4, 7, 15, 2, 8, 14, 12, 0, 1, 10, 6, 9, 11, 5 }, { 0, 14, 7, 11, 10, 4, 13, 1, 5, 8, 12, 6, 9, 3, 2, 15 }, { 13, 8, 10, 1, 3, 15, 4, 2, 11, 6, 7, 12, 0, 5, 14, 9 } }, { arrayOfByte4, arrayOfByte5, arrayOfByte6, arrayOfByte7 }, localObject, { { 2, 12, 4, 1, 7, 10, 11, 6, 8, 5, 3, 15, 13, 0, 14, 9 }, { 14, 11, 2, 12, 4, 7, 13, 1, 5, 0, 15, 10, 3, 9, 8, 6 }, { 4, 2, 1, 11, 10, 13, 7, 8, 15, 9, 12, 5, 6, 3, 0, 14 }, { 11, 8, 12, 7, 1, 14, 2, 13, 6, 15, 0, 9, 10, 4, 5, 3 } }, { { 12, 1, 10, 15, 9, 2, 6, 8, 0, 13, 3, 4, 14, 7, 5, 11 }, { 10, 15, 4, 2, 7, 12, 9, 5, 6, 1, 13, 14, 0, 11, 3, 8 }, arrayOfByte12, { 4, 3, 2, 12, 9, 5, 15, 10, 11, 14, 1, 7, 6, 0, 8, 13 } }, { { 4, 11, 2, 14, 15, 0, 8, 13, 3, 12, 9, 7, 5, 10, 6, 1 }, { 13, 0, 11, 7, 4, 9, 1, 10, 14, 3, 5, 12, 2, 15, 8, 6 }, arrayOfByte10, arrayOfByte11 }, { { 13, 2, 8, 4, 6, 15, 11, 1, 10, 9, 3, 14, 5, 0, 12, 7 }, arrayOfByte8, arrayOfByte9, { 2, 1, 14, 7, 4, 10, 8, 13, 15, 12, 9, 0, 3, 5, 6, 11 } } }[i][m][n]), 4);
+      i = (byte)(i + 1);
+      paramMyByteArray2.begin += 6;
+      paramMyByteArray1.begin += 4;
+    }
+    paramMyByteArray2.begin = j;
+    paramMyByteArray1.begin = k;
+  }
+  
+  private static void Set_SubKey(MyByteArray[] paramArrayOfMyByteArray, MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, MyByteArray paramMyByteArray3, MyByteArray paramMyByteArray4, MyByteArray paramMyByteArray5)
+  {
+    byte[] arrayOfByte = new byte[16];
+    byte[] tmp8_6 = arrayOfByte;
+    tmp8_6[0] = 1;
+    byte[] tmp13_8 = tmp8_6;
+    tmp13_8[1] = 1;
+    byte[] tmp18_13 = tmp13_8;
+    tmp18_13[2] = 2;
+    byte[] tmp23_18 = tmp18_13;
+    tmp23_18[3] = 2;
+    byte[] tmp28_23 = tmp23_18;
+    tmp28_23[4] = 2;
+    byte[] tmp33_28 = tmp28_23;
+    tmp33_28[5] = 2;
+    byte[] tmp38_33 = tmp33_28;
+    tmp38_33[6] = 2;
+    byte[] tmp44_38 = tmp38_33;
+    tmp44_38[7] = 2;
+    byte[] tmp50_44 = tmp44_38;
+    tmp50_44[8] = 1;
+    byte[] tmp56_50 = tmp50_44;
+    tmp56_50[9] = 2;
+    byte[] tmp62_56 = tmp56_50;
+    tmp62_56[10] = 2;
+    byte[] tmp68_62 = tmp62_56;
+    tmp68_62[11] = 2;
+    byte[] tmp74_68 = tmp68_62;
+    tmp74_68[12] = 2;
+    byte[] tmp80_74 = tmp74_68;
+    tmp80_74[13] = 2;
+    byte[] tmp86_80 = tmp80_74;
+    tmp86_80[14] = 2;
+    byte[] tmp92_86 = tmp86_80;
+    tmp92_86[15] = 1;
+    tmp92_86;
+    ByteToBit(paramMyByteArray2, paramMyByteArray1, 64);
+    TRANSFORM(paramMyByteArray2, paramMyByteArray2, new byte[] { 57, 49, 41, 33, 25, 17, 9, 1, 58, 50, 42, 34, 26, 18, 10, 2, 59, 51, 43, 35, 27, 19, 11, 3, 60, 52, 44, 36, 63, 55, 47, 39, 31, 23, 15, 7, 62, 54, 46, 38, 30, 22, 14, 6, 61, 53, 45, 37, 29, 21, 13, 5, 28, 20, 12, 4 }, 56, paramMyByteArray5);
+    int i = 0;
+    while (i < 16)
+    {
+      CYCLELEFT(paramMyByteArray3, paramMyByteArray5, 28, arrayOfByte[i]);
+      CYCLELEFT(paramMyByteArray4, paramMyByteArray5, 28, arrayOfByte[i]);
+      TRANSFORM(paramArrayOfMyByteArray[i], paramMyByteArray2, new byte[] { 14, 17, 11, 24, 1, 5, 3, 28, 15, 6, 21, 10, 23, 19, 12, 4, 26, 8, 16, 7, 27, 20, 13, 2, 41, 52, 31, 37, 47, 55, 30, 40, 51, 45, 33, 48, 44, 49, 39, 56, 34, 53, 46, 42, 50, 36, 29, 32 }, 48, paramMyByteArray5);
+      i += 1;
+    }
+  }
+  
+  private static void TRANSFORM(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, byte[] paramArrayOfByte, int paramInt, MyByteArray paramMyByteArray3)
+  {
+    int i = 0;
+    while (i < paramInt)
+    {
+      paramMyByteArray3.array[(paramMyByteArray3.begin + i)] = paramMyByteArray2.array[(paramMyByteArray2.begin + paramArrayOfByte[i] - 1)];
+      i += 1;
+    }
+    memcpy(paramMyByteArray1, paramMyByteArray3, paramInt);
+  }
+  
+  public static char Using_DES(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong, int paramInt1, byte[] paramArrayOfByte3, int paramInt2)
   {
     paramArrayOfByte1 = new MyByteArray(paramArrayOfByte1);
     paramArrayOfByte2 = new MyByteArray(paramArrayOfByte2);
@@ -35,223 +235,81 @@ public class MyDES
     {
       return '\000';
     }
-    localMyByteArray4.bVp = 0;
-    localMyByteArray4.bVo = localMyByteArray3.bVo;
-    localMyByteArray5.bVp = 28;
-    localMyByteArray5.bVo = localMyByteArray3.bVo;
-    localMyByteArray6.bVp = 0;
-    localMyByteArray6.bVo = localMyByteArray8.bVo;
-    localMyByteArray7.bVp = 32;
-    localMyByteArray7.bVo = localMyByteArray8.bVo;
-    a(localMyByteArray2, 24);
-    paramArrayOfByte3 = new MyByteArray(paramArrayOfByte3);
-    i = paramInt;
-    if (paramInt > 24) {
-      i = 24;
-    }
-    d(localMyByteArray2, paramArrayOfByte3, i);
-    paramArrayOfByte3 = new byte[16];
-    byte[] tmp348_346 = paramArrayOfByte3;
-    tmp348_346[0] = 1;
-    byte[] tmp353_348 = tmp348_346;
-    tmp353_348[1] = 1;
-    byte[] tmp358_353 = tmp353_348;
-    tmp358_353[2] = 2;
-    byte[] tmp363_358 = tmp358_353;
-    tmp363_358[3] = 2;
-    byte[] tmp368_363 = tmp363_358;
-    tmp368_363[4] = 2;
-    byte[] tmp373_368 = tmp368_363;
-    tmp373_368[5] = 2;
-    byte[] tmp378_373 = tmp373_368;
-    tmp378_373[6] = 2;
-    byte[] tmp384_378 = tmp378_373;
-    tmp384_378[7] = 2;
-    byte[] tmp390_384 = tmp384_378;
-    tmp390_384[8] = 1;
-    byte[] tmp396_390 = tmp390_384;
-    tmp396_390[9] = 2;
-    byte[] tmp402_396 = tmp396_390;
-    tmp402_396[10] = 2;
-    byte[] tmp408_402 = tmp402_396;
-    tmp408_402[11] = 2;
-    byte[] tmp414_408 = tmp408_402;
-    tmp414_408[12] = 2;
-    byte[] tmp420_414 = tmp414_408;
-    tmp420_414[13] = 2;
-    byte[] tmp426_420 = tmp420_414;
-    tmp426_420[14] = 2;
-    byte[] tmp432_426 = tmp426_420;
-    tmp432_426[15] = 1;
-    tmp432_426;
-    b(localMyByteArray3, localMyByteArray2, 64);
-    a(localMyByteArray3, localMyByteArray3, new byte[] { 57, 49, 41, 33, 25, 17, 9, 1, 58, 50, 42, 34, 26, 18, 10, 2, 59, 51, 43, 35, 27, 19, 11, 3, 60, 52, 44, 36, 63, 55, 47, 39, 31, 23, 15, 7, 62, 54, 46, 38, 30, 22, 14, 6, 61, 53, 45, 37, 29, 21, 13, 5, 28, 20, 12, 4 }, 56, localMyByteArray1);
-    paramInt = 0;
-    while (paramInt < 16)
+    InitVars(localMyByteArray8, localMyByteArray3, localMyByteArray4, localMyByteArray5, localMyByteArray6, localMyByteArray7);
+    SETKEY(arrayOfMyByteArray, localMyByteArray2, paramArrayOfByte3, paramInt1, localMyByteArray3, localMyByteArray4, localMyByteArray5, localMyByteArray1);
+    paramInt1 = paramArrayOfByte2.begin;
+    i = paramArrayOfByte1.begin;
+    if (paramInt2 == 0)
     {
-      c(localMyByteArray4, localMyByteArray1, paramArrayOfByte3[paramInt]);
-      c(localMyByteArray5, localMyByteArray1, paramArrayOfByte3[paramInt]);
-      a(arrayOfMyByteArray[paramInt], localMyByteArray3, new byte[] { 14, 17, 11, 24, 1, 5, 3, 28, 15, 6, 21, 10, 23, 19, 12, 4, 26, 8, 16, 7, 27, 20, 13, 2, 41, 52, 31, 37, 47, 55, 30, 40, 51, 45, 33, 48, 44, 49, 39, 56, 34, 53, 46, 42, 50, 36, 29, 32 }, 48, localMyByteArray1);
-      paramInt += 1;
+      DES(paramArrayOfByte1, localMyByteArray11, arrayOfMyByteArray, paramInt2, localMyByteArray8, localMyByteArray9, localMyByteArray10, localMyByteArray6, localMyByteArray7, localMyByteArray1);
+      memcpy(localMyByteArray12, paramArrayOfByte1, 8);
+      paramArrayOfByte1.begin += 8;
+      paramLong = 0L;
+      while (paramLong < l >> 3)
+      {
+        XOR2(localMyByteArray12, localMyByteArray12, paramArrayOfByte2);
+        DES(paramArrayOfByte1, localMyByteArray12, arrayOfMyByteArray, paramInt2, localMyByteArray8, localMyByteArray9, localMyByteArray10, localMyByteArray6, localMyByteArray7, localMyByteArray1);
+        memcpy(localMyByteArray12, paramArrayOfByte1, 8);
+        paramLong += 1L;
+        paramArrayOfByte1.begin += 8;
+        paramArrayOfByte2.begin += 8;
+      }
     }
-    i = paramArrayOfByte2.bVp;
-    int j = paramArrayOfByte1.bVp;
-    a(paramArrayOfByte1, tmp348_346, arrayOfMyByteArray, localMyByteArray8, localMyByteArray9, localMyByteArray10, localMyByteArray6, localMyByteArray7, localMyByteArray1);
-    d(tmp353_348, paramArrayOfByte1, 8);
-    paramArrayOfByte1.bVp += 8;
-    paramLong = 0L;
+    memcpy(localMyByteArray11, paramArrayOfByte2, 8);
+    paramArrayOfByte2.begin += 8;
+    paramLong = 1L;
     while (paramLong < l >> 3)
     {
-      paramInt = 0;
-      while (paramInt < 8)
-      {
-        tmp353_348.bVo[(tmp353_348.bVp + paramInt)] = ((byte)(tmp353_348.bVo[(tmp353_348.bVp + paramInt)] ^ paramArrayOfByte2.bVo[(paramArrayOfByte2.bVp + paramInt)]));
-        paramInt += 1;
-      }
-      a(paramArrayOfByte1, tmp353_348, arrayOfMyByteArray, localMyByteArray8, localMyByteArray9, localMyByteArray10, localMyByteArray6, localMyByteArray7, localMyByteArray1);
-      d(tmp353_348, paramArrayOfByte1, 8);
+      DES(localMyByteArray12, paramArrayOfByte2, arrayOfMyByteArray, paramInt2, localMyByteArray8, localMyByteArray9, localMyByteArray10, localMyByteArray6, localMyByteArray7, localMyByteArray1);
+      XOR2(paramArrayOfByte1, localMyByteArray12, localMyByteArray11);
+      memcpy(localMyByteArray11, paramArrayOfByte2, 8);
       paramLong += 1L;
-      paramArrayOfByte1.bVp += 8;
-      paramArrayOfByte2.bVp += 8;
+      paramArrayOfByte1.begin += 8;
+      paramArrayOfByte2.begin += 8;
     }
-    paramArrayOfByte2.bVp = i;
-    paramArrayOfByte1.bVp = j;
+    paramArrayOfByte2.begin = paramInt1;
+    paramArrayOfByte1.begin = i;
     return '\001';
   }
   
-  private static void a(MyByteArray paramMyByteArray, int paramInt)
+  private static void XOR(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, int paramInt)
   {
     int i = 0;
     while (i < paramInt)
     {
-      paramMyByteArray.bVo[(paramMyByteArray.bVp + i)] = 0;
+      byte[] arrayOfByte = paramMyByteArray1.array;
+      int j = paramMyByteArray1.begin + i;
+      arrayOfByte[j] = ((byte)(arrayOfByte[j] ^ paramMyByteArray2.array[(paramMyByteArray2.begin + i)]));
       i += 1;
     }
   }
   
-  private static void a(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, int paramInt)
+  private static void XOR2(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, MyByteArray paramMyByteArray3)
+  {
+    int i = 0;
+    while (i < 8)
+    {
+      paramMyByteArray1.array[(paramMyByteArray1.begin + i)] = ((byte)(paramMyByteArray2.array[(paramMyByteArray2.begin + i)] ^ paramMyByteArray3.array[(paramMyByteArray3.begin + i)]));
+      i += 1;
+    }
+  }
+  
+  private static void memcpy(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, int paramInt)
   {
     int i = 0;
     while (i < paramInt)
     {
-      byte[] arrayOfByte = paramMyByteArray1.bVo;
-      int j = paramMyByteArray1.bVp + i;
-      arrayOfByte[j] = ((byte)(arrayOfByte[j] ^ paramMyByteArray2.bVo[(paramMyByteArray2.bVp + i)]));
+      paramMyByteArray1.array[(paramMyByteArray1.begin + i)] = paramMyByteArray2.array[(paramMyByteArray2.begin + i)];
       i += 1;
     }
   }
   
-  private static void a(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, byte[] paramArrayOfByte, int paramInt, MyByteArray paramMyByteArray3)
+  private static void memset(MyByteArray paramMyByteArray, int paramInt1, int paramInt2)
   {
     int i = 0;
-    while (i < paramInt)
+    while (i < paramInt2)
     {
-      paramMyByteArray3.bVo[(paramMyByteArray3.bVp + i)] = paramMyByteArray2.bVo[(paramMyByteArray2.bVp + paramArrayOfByte[i] - 1)];
-      i += 1;
-    }
-    d(paramMyByteArray1, paramMyByteArray3, paramInt);
-  }
-  
-  private static void a(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, MyByteArray[] paramArrayOfMyByteArray, MyByteArray paramMyByteArray3, MyByteArray paramMyByteArray4, MyByteArray paramMyByteArray5, MyByteArray paramMyByteArray6, MyByteArray paramMyByteArray7, MyByteArray paramMyByteArray8)
-  {
-    b(paramMyByteArray3, paramMyByteArray2, 64);
-    a(paramMyByteArray3, paramMyByteArray3, new byte[] { 58, 50, 42, 34, 26, 18, 10, 2, 60, 52, 44, 36, 28, 20, 12, 4, 62, 54, 46, 38, 30, 22, 14, 6, 64, 56, 48, 40, 32, 24, 16, 8, 57, 49, 41, 33, 25, 17, 9, 1, 59, 51, 43, 35, 27, 19, 11, 3, 61, 53, 45, 37, 29, 21, 13, 5, 63, 55, 47, 39, 31, 23, 15, 7 }, 64, paramMyByteArray8);
-    int i = 0;
-    int j;
-    while (i < 16)
-    {
-      d(paramMyByteArray5, paramMyByteArray7, 32);
-      paramMyByteArray2 = paramArrayOfMyByteArray[i];
-      a(paramMyByteArray4, paramMyByteArray7, new byte[] { 32, 1, 2, 3, 4, 5, 4, 5, 6, 7, 8, 9, 8, 9, 10, 11, 12, 13, 12, 13, 14, 15, 16, 17, 16, 17, 18, 19, 20, 21, 20, 21, 22, 23, 24, 25, 24, 25, 26, 27, 28, 29, 28, 29, 30, 31, 32, 1 }, 48, paramMyByteArray8);
-      a(paramMyByteArray4, paramMyByteArray2, 48);
-      paramMyByteArray2 = new byte[] { 0, 15, 7, 4, 14, 2, 13, 1, 10, 6, 12, 11, 9, 5, 3, 8 };
-      paramMyByteArray2 = new byte[][] { { 14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7 }, paramMyByteArray2, { 4, 1, 14, 8, 13, 6, 2, 11, 15, 12, 9, 7, 3, 10, 5, 0 }, { 15, 12, 8, 2, 4, 9, 1, 7, 5, 11, 3, 14, 10, 0, 6, 13 } };
-      Object localObject1 = { 0, 14, 7, 11, 10, 4, 13, 1, 5, 8, 12, 6, 9, 3, 2, 15 };
-      Object localObject2 = { 13, 8, 10, 1, 3, 15, 4, 2, 11, 6, 7, 12, 0, 5, 14, 9 };
-      localObject1 = new byte[][] { { 15, 1, 8, 14, 6, 11, 3, 4, 9, 7, 2, 13, 12, 0, 5, 10 }, { 3, 13, 4, 7, 15, 2, 8, 14, 12, 0, 1, 10, 6, 9, 11, 5 }, localObject1, localObject2 };
-      localObject2 = new byte[][] { { 10, 0, 9, 14, 6, 3, 15, 5, 1, 13, 12, 7, 11, 4, 2, 8 }, { 13, 7, 0, 9, 3, 4, 6, 10, 2, 8, 5, 14, 12, 11, 15, 1 }, { 13, 6, 4, 9, 8, 15, 3, 0, 11, 1, 2, 12, 5, 10, 14, 7 }, { 1, 10, 13, 0, 6, 9, 8, 7, 4, 15, 14, 3, 11, 5, 2, 12 } };
-      byte[] arrayOfByte1 = { 3, 15, 0, 6, 10, 1, 13, 8, 9, 4, 5, 11, 12, 7, 2, 14 };
-      byte[][] arrayOfByte = { { 2, 12, 4, 1, 7, 10, 11, 6, 8, 5, 3, 15, 13, 0, 14, 9 }, { 14, 11, 2, 12, 4, 7, 13, 1, 5, 0, 15, 10, 3, 9, 8, 6 }, { 4, 2, 1, 11, 10, 13, 7, 8, 15, 9, 12, 5, 6, 3, 0, 14 }, { 11, 8, 12, 7, 1, 14, 2, 13, 6, 15, 0, 9, 10, 4, 5, 3 } };
-      byte[] arrayOfByte2 = { 12, 1, 10, 15, 9, 2, 6, 8, 0, 13, 3, 4, 14, 7, 5, 11 };
-      byte[] arrayOfByte3 = { 10, 15, 4, 2, 7, 12, 9, 5, 6, 1, 13, 14, 0, 11, 3, 8 };
-      byte[] arrayOfByte4 = { 9, 14, 15, 5, 2, 8, 12, 3, 7, 0, 4, 10, 1, 13, 11, 6 };
-      byte[] arrayOfByte5 = { 4, 3, 2, 12, 9, 5, 15, 10, 11, 14, 1, 7, 6, 0, 8, 13 };
-      byte[] arrayOfByte6 = { 4, 11, 2, 14, 15, 0, 8, 13, 3, 12, 9, 7, 5, 10, 6, 1 };
-      byte[] arrayOfByte7 = { 13, 0, 11, 7, 4, 9, 1, 10, 14, 3, 5, 12, 2, 15, 8, 6 };
-      byte[] arrayOfByte8 = { 1, 4, 11, 13, 12, 3, 7, 14, 10, 15, 6, 8, 0, 5, 9, 2 };
-      byte[] arrayOfByte9 = { 6, 11, 13, 8, 1, 4, 10, 7, 9, 5, 0, 15, 14, 2, 3, 12 };
-      Object localObject3 = { 1, 15, 13, 8, 10, 3, 7, 4, 12, 5, 6, 11, 0, 14, 9, 2 };
-      byte[] arrayOfByte10 = { 2, 1, 14, 7, 4, 10, 8, 13, 15, 12, 9, 0, 3, 5, 6, 11 };
-      localObject3 = new byte[][] { { 13, 2, 8, 4, 6, 15, 11, 1, 10, 9, 3, 14, 5, 0, 12, 7 }, localObject3, { 7, 11, 4, 1, 9, 12, 14, 2, 0, 6, 10, 13, 15, 3, 5, 8 }, arrayOfByte10 };
-      int k = paramMyByteArray4.bVp;
-      int m = paramMyByteArray7.bVp;
-      j = 0;
-      while (j < 8)
-      {
-        int n = (byte)((paramMyByteArray4.bVo[(paramMyByteArray4.bVp + 0)] << 1) + paramMyByteArray4.bVo[(paramMyByteArray4.bVp + 5)]);
-        int i1 = (byte)((paramMyByteArray4.bVo[(paramMyByteArray4.bVp + 1)] << 3) + (paramMyByteArray4.bVo[(paramMyByteArray4.bVp + 2)] << 2) + (paramMyByteArray4.bVo[(paramMyByteArray4.bVp + 3)] << 1) + paramMyByteArray4.bVo[(paramMyByteArray4.bVp + 4)]);
-        b(paramMyByteArray7, new MyByteArray(new byte[][][] { paramMyByteArray2, localObject1, localObject2, { { 7, 13, 14, 3, 0, 6, 9, 10, 1, 2, 8, 5, 11, 12, 4, 15 }, { 13, 8, 11, 5, 6, 15, 0, 3, 4, 7, 2, 12, 1, 10, 14, 9 }, { 10, 6, 9, 0, 12, 11, 7, 13, 15, 1, 3, 14, 5, 2, 8, 4 }, arrayOfByte1 }, arrayOfByte, { arrayOfByte2, arrayOfByte3, arrayOfByte4, arrayOfByte5 }, { arrayOfByte6, arrayOfByte7, arrayOfByte8, arrayOfByte9 }, localObject3 }[j][n][i1]), 4);
-        j = (byte)(j + 1);
-        paramMyByteArray4.bVp += 6;
-        paramMyByteArray7.bVp += 4;
-      }
-      paramMyByteArray4.bVp = k;
-      paramMyByteArray7.bVp = m;
-      a(paramMyByteArray7, paramMyByteArray7, new byte[] { 16, 7, 20, 21, 29, 12, 28, 17, 1, 15, 23, 26, 5, 18, 31, 10, 2, 8, 24, 14, 32, 27, 3, 9, 19, 13, 30, 6, 22, 11, 4, 25 }, 32, paramMyByteArray8);
-      a(paramMyByteArray7, paramMyByteArray6, 32);
-      d(paramMyByteArray6, paramMyByteArray5, 32);
-      i += 1;
-    }
-    a(paramMyByteArray3, paramMyByteArray3, new byte[] { 40, 8, 48, 16, 56, 24, 64, 32, 39, 7, 47, 15, 55, 23, 63, 31, 38, 6, 46, 14, 54, 22, 62, 30, 37, 5, 45, 13, 53, 21, 61, 29, 36, 4, 44, 12, 52, 20, 60, 28, 35, 3, 43, 11, 51, 19, 59, 27, 34, 2, 42, 10, 50, 18, 58, 26, 33, 1, 41, 9, 49, 17, 57, 25 }, 64, paramMyByteArray8);
-    a(paramMyByteArray1, 8);
-    i = 0;
-    while (i < 64)
-    {
-      paramMyByteArray2 = paramMyByteArray1.bVo;
-      j = paramMyByteArray1.bVp + (i >> 3);
-      paramMyByteArray2[j] = ((byte)(paramMyByteArray2[j] | paramMyByteArray3.bVo[(paramMyByteArray3.bVp + i)] << (i & 0x7)));
-      i += 1;
-    }
-  }
-  
-  private static void b(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, int paramInt)
-  {
-    int i = 0;
-    while (i < paramInt)
-    {
-      paramMyByteArray1.bVo[(paramMyByteArray1.bVp + i)] = ((byte)(paramMyByteArray2.bVo[((i >> 3) + paramMyByteArray2.bVp)] >> (i & 0x7) & 0x1));
-      i += 1;
-    }
-  }
-  
-  private static void c(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, int paramInt)
-  {
-    int k = 0;
-    d(paramMyByteArray2, paramMyByteArray1, paramInt);
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = k;
-      if (i >= 28 - paramInt) {
-        break;
-      }
-      paramMyByteArray1.bVo[(paramMyByteArray1.bVp + i)] = paramMyByteArray1.bVo[(paramMyByteArray1.bVp + i + paramInt)];
-      i += 1;
-    }
-    while (j < paramInt)
-    {
-      paramMyByteArray1.bVo[(paramMyByteArray1.bVp + j + 28 - paramInt)] = paramMyByteArray2.bVo[(paramMyByteArray2.bVp + j)];
-      j += 1;
-    }
-  }
-  
-  private static void d(MyByteArray paramMyByteArray1, MyByteArray paramMyByteArray2, int paramInt)
-  {
-    int i = 0;
-    while (i < paramInt)
-    {
-      paramMyByteArray1.bVo[(paramMyByteArray1.bVp + i)] = paramMyByteArray2.bVo[(paramMyByteArray2.bVp + i)];
+      paramMyByteArray.array[(paramMyByteArray.begin + i)] = ((byte)paramInt1);
       i += 1;
     }
   }

@@ -1,77 +1,122 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class cop
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int OpCode;
-  public LinkedList<String> xXt;
-  
-  public cop()
-  {
-    AppMethodBeat.i(62587);
-    this.xXt = new LinkedList();
-    AppMethodBeat.o(62587);
-  }
+  public com.tencent.mm.bx.b DcU;
+  public int EiA;
+  public int EiB;
+  public int EiC;
+  public int EiD;
+  public int EiE;
+  public int EiF;
+  public int Eiz;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(62588);
+    AppMethodBeat.i(32425);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.OpCode);
-      paramVarArgs.e(2, 1, this.xXt);
-      AppMethodBeat.o(62588);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.DcU == null)
+      {
+        paramVarArgs = new f.a.a.b("Not all required fields were included: data");
+        AppMethodBeat.o(32425);
+        throw paramVarArgs;
+      }
+      paramVarArgs.aR(1, this.Eiz);
+      paramVarArgs.aR(2, this.EiA);
+      paramVarArgs.aR(3, this.EiB);
+      paramVarArgs.aR(4, this.EiC);
+      paramVarArgs.aR(5, this.EiD);
+      paramVarArgs.aR(6, this.EiE);
+      paramVarArgs.aR(7, this.EiF);
+      if (this.DcU != null) {
+        paramVarArgs.c(8, this.DcU);
+      }
+      AppMethodBeat.o(32425);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = e.a.a.b.b.a.bl(1, this.OpCode);
-      int i = e.a.a.a.c(2, 1, this.xXt);
-      AppMethodBeat.o(62588);
-      return paramInt + 0 + i;
+      int i = f.a.a.b.b.a.bA(1, this.Eiz) + 0 + f.a.a.b.b.a.bA(2, this.EiA) + f.a.a.b.b.a.bA(3, this.EiB) + f.a.a.b.b.a.bA(4, this.EiC) + f.a.a.b.b.a.bA(5, this.EiD) + f.a.a.b.b.a.bA(6, this.EiE) + f.a.a.b.b.a.bA(7, this.EiF);
+      paramInt = i;
+      if (this.DcU != null) {
+        paramInt = i + f.a.a.b.b.a.b(8, this.DcU);
+      }
+      AppMethodBeat.o(32425);
+      return paramInt;
     }
+    f.a.a.a.a locala;
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.xXt.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+      locala = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(locala); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(locala)) {
+        if (!super.populateBuilderWithField(locala, this, paramInt)) {
+          locala.fMq();
         }
       }
-      AppMethodBeat.o(62588);
+      if (paramVarArgs == null)
+      {
+        paramVarArgs = new f.a.a.b("Not all required fields were included: data");
+        AppMethodBeat.o(32425);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(32425);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      locala = (f.a.a.a.a)paramVarArgs[0];
       cop localcop = (cop)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(62588);
+        AppMethodBeat.o(32425);
         return -1;
       case 1: 
-        localcop.OpCode = locala.CLY.sl();
-        AppMethodBeat.o(62588);
+        localcop.Eiz = locala.KhF.xS();
+        AppMethodBeat.o(32425);
+        return 0;
+      case 2: 
+        localcop.EiA = locala.KhF.xS();
+        AppMethodBeat.o(32425);
+        return 0;
+      case 3: 
+        localcop.EiB = locala.KhF.xS();
+        AppMethodBeat.o(32425);
+        return 0;
+      case 4: 
+        localcop.EiC = locala.KhF.xS();
+        AppMethodBeat.o(32425);
+        return 0;
+      case 5: 
+        localcop.EiD = locala.KhF.xS();
+        AppMethodBeat.o(32425);
+        return 0;
+      case 6: 
+        localcop.EiE = locala.KhF.xS();
+        AppMethodBeat.o(32425);
+        return 0;
+      case 7: 
+        localcop.EiF = locala.KhF.xS();
+        AppMethodBeat.o(32425);
         return 0;
       }
-      localcop.xXt.add(locala.CLY.readString());
-      AppMethodBeat.o(62588);
+      localcop.DcU = locala.KhF.fMu();
+      AppMethodBeat.o(32425);
       return 0;
     }
-    AppMethodBeat.o(62588);
+    AppMethodBeat.o(32425);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cop
  * JD-Core Version:    0.7.0.1
  */

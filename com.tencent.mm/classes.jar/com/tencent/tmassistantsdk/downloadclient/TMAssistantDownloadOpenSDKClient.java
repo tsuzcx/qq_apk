@@ -2,14 +2,14 @@ package com.tencent.tmassistantsdk.downloadclient;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
 import android.os.IBinder;
 import android.text.TextUtils;
-import com.tencent.b.a.a.a;
-import com.tencent.b.a.a.a.a;
-import com.tencent.b.a.a.b;
-import com.tencent.b.a.a.b.a;
+import com.tencent.a.a.a.a;
+import com.tencent.a.a.a.a.a;
+import com.tencent.a.a.a.b;
+import com.tencent.a.a.a.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.tmassistantsdk.util.Base64;
 import com.tencent.tmassistantsdk.util.Cryptor;
 import com.tencent.tmassistantsdk.util.TMLog;
@@ -20,6 +20,7 @@ public class TMAssistantDownloadOpenSDKClient
   extends TMAssistantDownloadSDKClientBase
 {
   protected static final String TAG = "TMAssistantDownloadOpenSDKClient";
+  private byte _hellAccFlag_;
   ArrayList<IAssistantOnActionListener> mListeners;
   protected boolean retryBindResult;
   protected int retryCount;
@@ -27,7 +28,7 @@ public class TMAssistantDownloadOpenSDKClient
   public TMAssistantDownloadOpenSDKClient(Context paramContext, String paramString1, String paramString2)
   {
     super(paramContext, paramString1, paramString2);
-    AppMethodBeat.i(75623);
+    AppMethodBeat.i(101869);
     this.retryBindResult = false;
     this.retryCount = 0;
     this.mListeners = new ArrayList();
@@ -35,13 +36,13 @@ public class TMAssistantDownloadOpenSDKClient
     {
       public void onActionResult(byte[] paramAnonymousArrayOfByte)
       {
-        AppMethodBeat.i(75621);
+        AppMethodBeat.i(101867);
         TMLog.i("TMAssistantDownloadOpenSDKClient", "onActionResult  callBack data:" + paramAnonymousArrayOfByte + "  mListeners.size:" + TMAssistantDownloadOpenSDKClient.this.mListeners.size());
         TMAssistantDownloadSDKMessageThread.getInstance().postActionResult(paramAnonymousArrayOfByte, TMAssistantDownloadOpenSDKClient.this.mListeners);
-        AppMethodBeat.o(75621);
+        AppMethodBeat.o(101867);
       }
     };
-    AppMethodBeat.o(75623);
+    AppMethodBeat.o(101869);
   }
   
   public static String about()
@@ -51,20 +52,20 @@ public class TMAssistantDownloadOpenSDKClient
   
   public void addAssistantOnActionListener(IAssistantOnActionListener paramIAssistantOnActionListener)
   {
-    AppMethodBeat.i(75626);
+    AppMethodBeat.i(101872);
     TMLog.i("TMAssistantDownloadOpenSDKClient", "addAssistantOnActionListener");
     if ((paramIAssistantOnActionListener != null) && (!this.mListeners.contains(paramIAssistantOnActionListener))) {
       this.mListeners.add(paramIAssistantOnActionListener);
     }
-    AppMethodBeat.o(75626);
+    AppMethodBeat.o(101872);
   }
   
   protected Intent getBindServiceIntent()
   {
-    AppMethodBeat.i(75630);
+    AppMethodBeat.i(101876);
     Intent localIntent = new Intent(this.mDwonloadServiceName);
     localIntent.setPackage("com.tencent.android.qqdownloader");
-    AppMethodBeat.o(75630);
+    AppMethodBeat.o(101876);
     return localIntent;
   }
   
@@ -74,101 +75,123 @@ public class TMAssistantDownloadOpenSDKClient
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 94
-    //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc 96
+    //   4: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: invokespecial 96	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:initTMAssistantDownloadSDK	()Z
+    //   8: invokespecial 98	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:initTMAssistantDownloadSDK	()Z
     //   11: istore_1
     //   12: ldc 12
-    //   14: ldc 98
+    //   14: ldc 100
     //   16: iload_1
-    //   17: invokestatic 104	java/lang/String:valueOf	(Z)Ljava/lang/String;
-    //   20: invokevirtual 108	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   23: invokestatic 65	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   17: invokestatic 106	java/lang/String:valueOf	(Z)Ljava/lang/String;
+    //   20: invokevirtual 110	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   23: invokestatic 67	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   26: iload_1
-    //   27: ifne +78 -> 105
-    //   30: new 77	android/content/Intent
+    //   27: ifne +119 -> 146
+    //   30: new 79	android/content/Intent
     //   33: dup
-    //   34: invokespecial 109	android/content/Intent:<init>	()V
-    //   37: astore_2
-    //   38: aload_2
-    //   39: ldc 85
-    //   41: ldc 111
-    //   43: invokevirtual 115	android/content/Intent:setClassName	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   34: invokespecial 111	android/content/Intent:<init>	()V
+    //   37: astore_3
+    //   38: aload_3
+    //   39: ldc 87
+    //   41: ldc 113
+    //   43: invokevirtual 117	android/content/Intent:setClassName	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   46: pop
-    //   47: aload_2
-    //   48: ldc 116
-    //   50: invokevirtual 120	android/content/Intent:addFlags	(I)Landroid/content/Intent;
+    //   47: aload_3
+    //   48: ldc 118
+    //   50: invokevirtual 122	android/content/Intent:addFlags	(I)Landroid/content/Intent;
     //   53: pop
     //   54: aload_0
-    //   55: getfield 124	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadOpenSDKClient:mContext	Landroid/content/Context;
-    //   58: aload_2
-    //   59: invokevirtual 130	android/content/Context:startActivity	(Landroid/content/Intent;)V
-    //   62: new 132	android/os/HandlerThread
-    //   65: dup
-    //   66: ldc 134
-    //   68: invokespecial 135	android/os/HandlerThread:<init>	(Ljava/lang/String;)V
-    //   71: astore_2
-    //   72: aload_2
-    //   73: invokevirtual 138	android/os/HandlerThread:start	()V
-    //   76: new 140	android/os/Handler
-    //   79: dup
-    //   80: aload_2
-    //   81: invokevirtual 144	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
-    //   84: invokespecial 147	android/os/Handler:<init>	(Landroid/os/Looper;)V
-    //   87: astore_2
-    //   88: aload_2
-    //   89: new 8	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadOpenSDKClient$2
-    //   92: dup
-    //   93: aload_0
-    //   94: aload_2
-    //   95: invokespecial 150	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadOpenSDKClient$2:<init>	(Lcom/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadOpenSDKClient;Landroid/os/Handler;)V
-    //   98: ldc2_w 151
-    //   101: invokevirtual 156	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   104: pop
-    //   105: ldc 94
-    //   107: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   110: aload_0
-    //   111: monitorexit
-    //   112: iload_1
-    //   113: ireturn
-    //   114: astore_2
-    //   115: ldc 12
-    //   117: new 158	java/lang/StringBuilder
-    //   120: dup
-    //   121: ldc 160
-    //   123: invokespecial 161	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   126: aload_2
-    //   127: invokevirtual 164	java/lang/Exception:toString	()Ljava/lang/String;
-    //   130: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: invokevirtual 169	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   136: invokestatic 172	com/tencent/tmassistantsdk/util/TMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   139: goto -77 -> 62
-    //   142: astore_2
-    //   143: aload_0
-    //   144: monitorexit
-    //   145: aload_2
-    //   146: athrow
+    //   55: getfield 126	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadOpenSDKClient:mContext	Landroid/content/Context;
+    //   58: astore_2
+    //   59: new 128	com/tencent/mm/hellhoundlib/b/a
+    //   62: dup
+    //   63: invokespecial 129	com/tencent/mm/hellhoundlib/b/a:<init>	()V
+    //   66: aload_3
+    //   67: invokevirtual 133	com/tencent/mm/hellhoundlib/b/a:bd	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
+    //   70: astore_3
+    //   71: aload_2
+    //   72: aload_3
+    //   73: invokevirtual 137	com/tencent/mm/hellhoundlib/b/a:adn	()[Ljava/lang/Object;
+    //   76: ldc 138
+    //   78: ldc 139
+    //   80: ldc 140
+    //   82: ldc 142
+    //   84: ldc 144
+    //   86: ldc 146
+    //   88: invokestatic 152	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;[Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   91: aload_2
+    //   92: aload_3
+    //   93: iconst_0
+    //   94: invokevirtual 156	com/tencent/mm/hellhoundlib/b/a:lS	(I)Ljava/lang/Object;
+    //   97: checkcast 79	android/content/Intent
+    //   100: invokevirtual 160	android/content/Context:startActivity	(Landroid/content/Intent;)V
+    //   103: aload_2
+    //   104: ldc 138
+    //   106: ldc 139
+    //   108: ldc 140
+    //   110: ldc 142
+    //   112: ldc 144
+    //   114: ldc 146
+    //   116: invokestatic 163	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   119: new 165	com/tencent/mm/sdk/platformtools/ap
+    //   122: dup
+    //   123: ldc 167
+    //   125: invokespecial 168	com/tencent/mm/sdk/platformtools/ap:<init>	(Ljava/lang/String;)V
+    //   128: astore_2
+    //   129: aload_2
+    //   130: new 8	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadOpenSDKClient$2
+    //   133: dup
+    //   134: aload_0
+    //   135: aload_2
+    //   136: invokespecial 171	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadOpenSDKClient$2:<init>	(Lcom/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadOpenSDKClient;Lcom/tencent/mm/sdk/platformtools/ap;)V
+    //   139: ldc2_w 172
+    //   142: invokevirtual 177	com/tencent/mm/sdk/platformtools/ap:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   145: pop
+    //   146: ldc 96
+    //   148: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   151: aload_0
+    //   152: monitorexit
+    //   153: iload_1
+    //   154: ireturn
+    //   155: astore_2
+    //   156: ldc 12
+    //   158: new 179	java/lang/StringBuilder
+    //   161: dup
+    //   162: ldc 181
+    //   164: invokespecial 182	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   167: aload_2
+    //   168: invokevirtual 185	java/lang/Exception:toString	()Ljava/lang/String;
+    //   171: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   174: invokevirtual 190	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   177: invokestatic 193	com/tencent/tmassistantsdk/util/TMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   180: goto -61 -> 119
+    //   183: astore_2
+    //   184: aload_0
+    //   185: monitorexit
+    //   186: aload_2
+    //   187: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	147	0	this	TMAssistantDownloadOpenSDKClient
-    //   11	102	1	bool	boolean
-    //   37	58	2	localObject1	Object
-    //   114	13	2	localException	Exception
-    //   142	4	2	localObject2	Object
+    //   0	188	0	this	TMAssistantDownloadOpenSDKClient
+    //   11	143	1	bool	boolean
+    //   58	78	2	localObject1	Object
+    //   155	13	2	localException	Exception
+    //   183	4	2	localObject2	Object
+    //   37	56	3	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   30	62	114	java/lang/Exception
-    //   2	26	142	finally
-    //   30	62	142	finally
-    //   62	105	142	finally
-    //   105	110	142	finally
-    //   115	139	142	finally
+    //   30	119	155	java/lang/Exception
+    //   2	26	183	finally
+    //   30	119	183	finally
+    //   119	146	183	finally
+    //   146	151	183	finally
+    //   156	180	183	finally
   }
   
   protected void onDownloadSDKServiceInvalid()
   {
-    AppMethodBeat.i(75627);
+    AppMethodBeat.i(101873);
     if ((this.mListeners != null) && (this.mListeners.size() > 0))
     {
       Iterator localIterator = this.mListeners.iterator();
@@ -180,12 +203,12 @@ public class TMAssistantDownloadOpenSDKClient
         }
       }
     }
-    AppMethodBeat.o(75627);
+    AppMethodBeat.o(101873);
   }
   
   protected void registerServiceCallback()
   {
-    AppMethodBeat.i(75629);
+    AppMethodBeat.i(101875);
     Object localObject = String.valueOf(System.currentTimeMillis()).getBytes();
     localObject = Base64.encodeToString(new Cryptor().encrypt((byte[])localObject, this.mClientKey.getBytes()), 0);
     int i = ((a)this.mServiceInterface).a(this.mClientKey, (String)localObject, (b)this.mServiceCallback);
@@ -193,58 +216,58 @@ public class TMAssistantDownloadOpenSDKClient
     if (i == 2) {
       onDownloadSDKServiceInvalid();
     }
-    AppMethodBeat.o(75629);
+    AppMethodBeat.o(101875);
   }
   
   public void sendAsyncData(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(75625);
+    AppMethodBeat.i(101871);
     if (!TextUtils.isEmpty(this.mClientKey))
     {
       a locala = (a)super.getServiceInterface();
       if (locala != null) {
-        locala.d(this.mClientKey, paramArrayOfByte);
+        locala.c(this.mClientKey, paramArrayOfByte);
       }
     }
-    AppMethodBeat.o(75625);
+    AppMethodBeat.o(101871);
   }
   
   public byte[] sendSyncData(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(75624);
+    AppMethodBeat.i(101870);
     if (!TextUtils.isEmpty(this.mClientKey))
     {
       a locala = (a)super.getServiceInterface();
       if (locala != null)
       {
-        paramArrayOfByte = locala.c(this.mClientKey, paramArrayOfByte);
-        AppMethodBeat.o(75624);
+        paramArrayOfByte = locala.b(this.mClientKey, paramArrayOfByte);
+        AppMethodBeat.o(101870);
         return paramArrayOfByte;
       }
     }
-    AppMethodBeat.o(75624);
+    AppMethodBeat.o(101870);
     return null;
   }
   
   protected void stubAsInterface(IBinder paramIBinder)
   {
-    AppMethodBeat.i(75628);
+    AppMethodBeat.i(101874);
     this.mServiceInterface = a.a.j(paramIBinder);
-    AppMethodBeat.o(75628);
+    AppMethodBeat.o(101874);
   }
   
   protected void unRegisterServiceCallback()
   {
-    AppMethodBeat.i(75631);
+    AppMethodBeat.i(101877);
     if (((a)this.mServiceInterface).a((b)this.mServiceCallback) == 2) {
       onDownloadSDKServiceInvalid();
     }
-    AppMethodBeat.o(75631);
+    AppMethodBeat.o(101877);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadOpenSDKClient
  * JD-Core Version:    0.7.0.1
  */

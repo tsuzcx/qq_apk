@@ -1,167 +1,262 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
-import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.text.TextPaint;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.g;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.w;
-import com.tencent.mm.sdk.g.a.e;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.sns.data.g;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.vfs.i;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class ab
-  extends h
+  extends k
 {
-  TextView euY;
-  private Runnable gaj;
-  volatile boolean rxV = false;
+  private ImageView djK;
+  ProgressBar progressBar;
+  String wAD;
+  boolean wWo;
+  boolean wZK = true;
+  g wZQ;
   
-  public ab(Context paramContext, w paramw, ViewGroup paramViewGroup)
+  public ab(Context paramContext, s params, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramw, paramViewGroup);
+    super(paramContext, params, paramViewGroup);
   }
   
-  public final void cqA()
+  public final boolean aG(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(37343);
-    super.cqA();
-    AppMethodBeat.o(37343);
-  }
-  
-  public final void cqB()
-  {
-    AppMethodBeat.i(37344);
-    super.cqB();
-    AppMethodBeat.o(37344);
-  }
-  
-  @TargetApi(17)
-  public final void cqK()
-  {
-    AppMethodBeat.i(37342);
-    View localView = this.contentView;
-    localView.setBackgroundColor(this.backgroundColor);
-    localView.findViewById(2131827873).setBackgroundColor(this.backgroundColor);
-    localView.findViewById(2131827874).setBackgroundColor(this.backgroundColor);
-    this.euY = ((TextView)localView.findViewById(2131827874));
-    AppMethodBeat.o(37342);
-  }
-  
-  protected final void cqP()
-  {
-    AppMethodBeat.i(37341);
-    if (((w)this.rve).textSize > 0.0F) {
-      this.euY.setTextSize(0, ((w)this.rve).textSize);
-    }
-    Object localObject;
-    if (((w)this.rve).subType == 1)
+    AppMethodBeat.i(96698);
+    if (!super.aG(paramJSONObject))
     {
-      if (!bo.isNullOrNil(((w)this.rve).rta))
+      AppMethodBeat.o(96698);
+      return false;
+    }
+    try
+    {
+      if (!this.wZK)
       {
-        localObject = ((w)this.rve).rta.trim().replace("<icon", "<img");
-        d.ysm.remove(this.gaj);
-        this.gaj = new ab.1(this, (String)localObject);
-        d.post(this.gaj, "");
+        String str = ai.du(((s)this.xab).wWp);
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("urlMd5", str);
+        localJSONObject.put("needDownload", 1);
+        paramJSONObject.put("imgUrlInfo", localJSONObject);
       }
-      if (((w)this.rve).textAlignment != 0) {
-        break label412;
-      }
-      this.euY.setGravity(3);
-      label145:
-      if ((((w)this.rve).oKE == null) || (((w)this.rve).oKE.length() <= 0)) {
-        break label497;
-      }
+      AppMethodBeat.o(96698);
+      return true;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      ad.printErrStackTrace("AdLandingPagePureImageComponet", paramJSONObject, "", new Object[0]);
+      AppMethodBeat.o(96698);
+    }
+    return false;
+  }
+  
+  public final boolean aj(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(96697);
+    if (paramBitmap == null)
+    {
+      ad.e("AdLandingPagePureImageComponet", "when set image the bmp is null!");
+      AppMethodBeat.o(96697);
+      return false;
+    }
+    if (this.djK == null)
+    {
+      ad.e("AdLandingPagePureImageComponet", "when set image the imageView is null!");
+      AppMethodBeat.o(96697);
+      return false;
+    }
+    if (paramBitmap.getWidth() == 0)
+    {
+      ad.e("AdLandingPagePureImageComponet", "when set image the bmp.getWidth is 0!");
+      AppMethodBeat.o(96697);
+      return false;
+    }
+    this.djK.setImageBitmap(paramBitmap);
+    this.progressBar.setVisibility(8);
+    AppMethodBeat.o(96697);
+    return true;
+  }
+  
+  protected final void dvN()
+  {
+    AppMethodBeat.i(96695);
+    if ((this.contentView == null) || (this.djK == null) || (this.progressBar == null))
+    {
+      AppMethodBeat.o(96695);
+      return;
+    }
+    if ((s)this.xab == null)
+    {
+      AppMethodBeat.o(96695);
+      return;
+    }
+    String str = ((s)this.xab).wWp;
+    Object localObject = ((s)this.xab).wUC;
+    float f2 = ((s)this.xab).height;
+    float f1 = ((s)this.xab).width;
+    this.wWo = ((s)this.xab).wWo;
+    int i;
+    if ((f2 != 0.0F) && (f1 != 0.0F) && (!this.wWo))
+    {
+      i = this.kvn - (int)((s)this.xab).paddingLeft - (int)((s)this.xab).paddingRight;
+      if (f1 >= i) {}
     }
     for (;;)
     {
+      f2 = f1 * ((s)this.xab).height / ((s)this.xab).width;
+      this.djK.setLayoutParams(new RelativeLayout.LayoutParams((int)f1, (int)f2));
+      label205:
+      if ((localObject != null) && (((String)localObject).length() > 0)) {}
       try
       {
-        i = Color.parseColor(((w)this.rve).oKE);
-        this.euY.setTextColor(i);
-        if (((w)this.rve).rte > 0.0F) {
-          this.euY.setLineSpacing(0.0F, ((w)this.rve).rte + 1.0F);
-        }
-        localObject = this.euY.getPaint();
-        if (((w)this.rve).rtb) {
-          ((TextPaint)localObject).setFakeBoldText(true);
-        }
-        if (((w)this.rve).rtc) {
-          ((TextPaint)localObject).setTextSkewX(-0.25F);
-        }
-        if (((w)this.rve).rtd) {
-          ((TextPaint)localObject).setUnderlineText(true);
-        }
-        if (((w)this.rve).maxLines > 0) {
-          this.euY.setMaxLines(((w)this.rve).maxLines);
-        }
-        if (((w)this.rve).rsi == w.rsZ) {
-          this.euY.setTypeface(ae.eW(this.context));
-        }
-        AppMethodBeat.o(37341);
-        return;
-        if (bo.isNullOrNil(((w)this.rve).rta)) {
-          break;
-        }
-        this.euY.setText(g.dvk().b(((w)this.rve).rta.trim(), this.euY.getTextSize()));
-        break;
-        label412:
-        if (((w)this.rve).textAlignment == 1)
+        this.djK.setBackgroundColor(Color.parseColor((String)localObject));
+        label230:
+        if ((str == null) || (str.length() <= 0))
         {
-          this.euY.setGravity(17);
-          break label145;
+          ad.i("AdLandingPagePureImageComponet", "Pure image component fillItem without imageurl.");
+          AppMethodBeat.o(96695);
+          return;
+          f1 = i;
+          continue;
+          if ((this.wWo) && (f2 != 0.0F) && (f1 != 0.0F))
+          {
+            this.djK.setLayoutParams(new RelativeLayout.LayoutParams(this.kvn, this.kvo));
+            break label205;
+          }
+          this.djK.setLayoutParams(new RelativeLayout.LayoutParams(this.kvn, this.kvo));
+          break label205;
         }
-        if (((w)this.rve).textAlignment != 2) {
-          break label145;
+        localObject = h.iY("adId", str);
+        if ((localObject != null) && (aj((Bitmap)localObject)))
+        {
+          ad.i("AdLandingPagePureImageComponet", "loaded cached image with  ".concat(String.valueOf(str)));
+          str = h.iU("adId", str);
+          if ((!TextUtils.isEmpty(str)) && (i.eK(str))) {
+            this.wAD = str;
+          }
+          this.wZK = true;
+          AppMethodBeat.o(96695);
+          return;
         }
-        this.euY.setGravity(5);
+        this.wZK = false;
+        startLoading();
+        h.a(str, ((s)this.xab).wWF, new f.a()
+        {
+          public final void apm(String paramAnonymousString)
+          {
+            AppMethodBeat.i(96685);
+            try
+            {
+              Bitmap localBitmap = f.decodeFile(paramAnonymousString);
+              ab.this.aj(localBitmap);
+              ab.this.wAD = paramAnonymousString;
+              AppMethodBeat.o(96685);
+              return;
+            }
+            catch (Exception paramAnonymousString)
+            {
+              ad.e("AdLandingPagePureImageComponet", "%s" + bt.m(paramAnonymousString));
+              AppMethodBeat.o(96685);
+            }
+          }
+          
+          public final void dsA()
+          {
+            AppMethodBeat.i(96684);
+            ab.this.progressBar.setVisibility(8);
+            AppMethodBeat.o(96684);
+          }
+          
+          public final void duP()
+          {
+            AppMethodBeat.i(96683);
+            ab.this.startLoading();
+            AppMethodBeat.o(96683);
+          }
+        });
+        AppMethodBeat.o(96695);
+        return;
       }
       catch (Exception localException)
       {
-        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.Sns.AdLandingPageTextComponent", "parse the color is error : " + ((w)this.rve).oKE);
-        continue;
+        break label230;
       }
-      label497:
-      int i = Color.parseColor("#FFFFFF");
-      this.euY.setTextColor(i);
     }
   }
   
-  protected final void cqQ()
+  protected final void dvT()
   {
-    AppMethodBeat.i(37340);
-    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
-    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.rve.paddingLeft, (int)this.rve.paddingTop, (int)this.rve.paddingRight, (int)this.rve.paddingBottom);
+    AppMethodBeat.i(96694);
+    Object localObject = this.contentView.getLayoutParams();
+    if ((localObject instanceof ViewGroup.MarginLayoutParams))
+    {
+      localObject = (ViewGroup.MarginLayoutParams)localObject;
+      ((ViewGroup.MarginLayoutParams)localObject).setMargins((int)((s)this.xab).paddingLeft, (int)((s)this.xab).paddingTop, (int)((s)this.xab).paddingRight, (int)((s)this.xab).paddingBottom);
+      this.contentView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    this.contentView.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(37340);
+    AppMethodBeat.o(96694);
   }
   
-  public final void cqz()
+  public final void dvx()
   {
-    AppMethodBeat.i(37339);
-    super.cqz();
-    d.ysm.remove(this.gaj);
-    this.rxV = true;
-    AppMethodBeat.o(37339);
+    AppMethodBeat.i(96693);
+    this.djK = ((ImageView)this.contentView.findViewById(2131304915));
+    this.progressBar = ((ProgressBar)this.contentView.findViewById(2131303535));
+    if (((s)this.xab).wWq)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("qrExtInfo", ((s)this.xab).wWr);
+      this.wZQ = new g(this.context, dwi(), 1, localBundle);
+      this.djK.setOnLongClickListener(new View.OnLongClickListener()
+      {
+        public final boolean onLongClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(176279);
+          ad.i("AdLandingPagePureImageComponet", "onLongClick, filePath=" + ab.this.wAD);
+          boolean bool = ab.this.wZQ.iw(ab.this.wAD, ab.a(ab.this).wWp);
+          AppMethodBeat.o(176279);
+          return bool;
+        }
+      });
+    }
+    AppMethodBeat.o(96693);
   }
   
   protected final int getLayout()
   {
-    return 2130970790;
+    return 2131495507;
+  }
+  
+  public final void startLoading()
+  {
+    AppMethodBeat.i(96696);
+    this.progressBar.setVisibility(0);
+    AppMethodBeat.o(96696);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ab
  * JD-Core Version:    0.7.0.1
  */

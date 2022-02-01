@@ -4,11 +4,11 @@ import android.os.Bundle;
 
 public abstract interface d
 {
-  public abstract boolean e(int paramInt, Bundle paramBundle);
+  public abstract boolean f(int paramInt, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.d
  * JD-Core Version:    0.7.0.1
  */

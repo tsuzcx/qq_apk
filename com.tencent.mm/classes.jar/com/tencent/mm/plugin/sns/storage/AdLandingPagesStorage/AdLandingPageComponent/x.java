@@ -1,38 +1,37 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Collections;
+import java.util.List;
 
-public final class x
+public abstract class x
 {
-  public String cFe;
-  public String heu;
-  public String rpv;
-  public int rtf;
-  public boolean rtg;
-  public int rth;
-  public Map<String, String> rti;
-  public String uin;
+  public float height;
+  public float paddingBottom;
+  public float paddingLeft;
+  public float paddingRight;
+  public float paddingTop;
+  public int subType;
+  public int type;
+  public String wWE;
+  public int wWF;
+  public float wWG = -2.0F;
+  public float wWH = -2.0F;
+  public boolean wWI;
+  public String wWJ = "";
+  public int wWK;
+  public int wWL;
+  public boolean wWM;
+  public boolean wWN;
+  public float width;
   
-  public x()
+  protected List<x> dvE()
   {
-    AppMethodBeat.i(36943);
-    this.rti = new HashMap();
-    AppMethodBeat.o(36943);
-  }
-  
-  public final String abh(String paramString)
-  {
-    AppMethodBeat.i(36944);
-    paramString = (String)this.rti.get(paramString);
-    AppMethodBeat.o(36944);
-    return paramString;
+    return Collections.emptyList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x
  * JD-Core Version:    0.7.0.1
  */

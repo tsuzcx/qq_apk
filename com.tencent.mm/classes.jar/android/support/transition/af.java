@@ -1,18 +1,16 @@
 package android.support.transition;
 
-import android.view.ViewGroup;
+import android.graphics.drawable.Drawable;
 
-public abstract class af
+abstract interface af
 {
-  public abstract long a(ViewGroup paramViewGroup, Transition paramTransition, ah paramah1, ah paramah2);
+  public abstract void add(Drawable paramDrawable);
   
-  public abstract void c(ah paramah);
-  
-  public abstract String[] getPropagationProperties();
+  public abstract void remove(Drawable paramDrawable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.af
  * JD-Core Version:    0.7.0.1
  */

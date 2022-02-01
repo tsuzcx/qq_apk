@@ -1,106 +1,106 @@
 package com.tencent.mm.plugin.appbrand.jsapi.op_report;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.protocal.protobuf.bbr;
-import com.tencent.mm.protocal.protobuf.buv;
-import com.tencent.mm.protocal.protobuf.buw;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.n;
+import com.tencent.mm.protocal.protobuf.bns;
+import com.tencent.mm.protocal.protobuf.ckm;
+import com.tencent.mm.protocal.protobuf.ckn;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/op_report/OpReportUtil;", "", "()V", "getReportIdOrThrows", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "matchNetScene", "", "requestAppID", "", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/op_report/OpReportUtil;", "", "()V", "getReportIdOrThrows", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "matchNetScene", "", "requestAppID", "", "plugin-appbrand-integration_release"})
 public final class c
 {
-  public static final c hVr;
+  public static final c kdL;
   
   static
   {
-    AppMethodBeat.i(134686);
-    hVr = new c();
-    AppMethodBeat.o(134686);
+    AppMethodBeat.i(50632);
+    kdL = new c();
+    AppMethodBeat.o(50632);
   }
   
-  public static final boolean b(m paramm, String paramString)
+  public static final boolean b(n paramn, String paramString)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(134684);
-    j.q(paramString, "requestAppID");
+    AppMethodBeat.i(50630);
+    k.h(paramString, "requestAppID");
     Object localObject1;
-    if (paramm != null)
+    if (paramn != null)
     {
-      paramm = paramm.getReqResp();
-      localObject1 = paramm;
-      if (!(paramm instanceof b)) {
+      paramn = paramn.getReqResp();
+      localObject1 = paramn;
+      if (!(paramn instanceof b)) {
         localObject1 = null;
       }
-      paramm = (b)localObject1;
-      if (paramm == null) {
+      paramn = (b)localObject1;
+      if (paramn == null) {
         break label106;
       }
     }
     label106:
-    for (paramm = paramm.adm();; paramm = null)
+    for (paramn = paramn.auL();; paramn = null)
     {
-      localObject1 = paramm;
-      if (!(paramm instanceof buv)) {
+      localObject1 = paramn;
+      if (!(paramn instanceof ckm)) {
         localObject1 = null;
       }
-      localObject1 = (buv)localObject1;
-      paramm = localObject2;
+      localObject1 = (ckm)localObject1;
+      paramn = localObject2;
       if (localObject1 != null)
       {
-        localObject1 = ((buv)localObject1).xIB;
-        paramm = localObject2;
+        localObject1 = ((ckm)localObject1).EfQ;
+        paramn = localObject2;
         if (localObject1 != null) {
-          paramm = ((bbr)localObject1).cwc;
+          paramn = ((bns)localObject1).dlB;
         }
       }
-      boolean bool = j.e(paramm, paramString);
-      AppMethodBeat.o(134684);
+      boolean bool = k.g(paramn, paramString);
+      AppMethodBeat.o(50630);
       return bool;
-      paramm = null;
+      paramn = null;
       break;
     }
   }
   
-  public static final int f(m paramm)
+  public static final int f(n paramn)
   {
-    AppMethodBeat.i(134685);
-    m localm;
-    if (paramm != null)
+    AppMethodBeat.i(50631);
+    n localn;
+    if (paramn != null)
     {
-      paramm = paramm.getReqResp();
-      localm = paramm;
-      if (!(paramm instanceof b)) {
-        localm = null;
+      paramn = paramn.getReqResp();
+      localn = paramn;
+      if (!(paramn instanceof b)) {
+        localn = null;
       }
-      paramm = (b)localm;
-      if (paramm == null) {
+      paramn = (b)localn;
+      if (paramn == null) {
         break label76;
       }
     }
     label76:
-    for (paramm = paramm.adn();; paramm = null)
+    for (paramn = paramn.auM();; paramn = null)
     {
-      localm = paramm;
-      if (!(paramm instanceof buw)) {
-        localm = null;
+      localn = paramn;
+      if (!(paramn instanceof ckn)) {
+        localn = null;
       }
-      paramm = (buw)localm;
-      if (paramm == null) {
+      paramn = (ckn)localn;
+      if (paramn == null) {
         break label81;
       }
-      int i = paramm.xIC;
-      AppMethodBeat.o(134685);
+      int i = paramn.EfR;
+      AppMethodBeat.o(50631);
       return i;
-      paramm = null;
+      paramn = null;
       break;
     }
     label81:
-    paramm = (Throwable)new IllegalArgumentException();
-    AppMethodBeat.o(134685);
-    throw paramm;
+    paramn = (Throwable)new IllegalArgumentException();
+    AppMethodBeat.o(50631);
+    throw paramn;
   }
 }
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gqv" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/jn" android:paddingEnd="@dimen/jn"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageButton android:id="@id/gqw" android:background="@color/a7c" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/voicepost_beginicon" android:scaleType="centerInside" />
+    <TextView android:textColor="@color/y4" android:id="@id/gqx" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" />
+    <FrameLayout android:id="@id/gqz" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <View android:layout_gravity="center_vertical" android:background="#66000000" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="0.0dip" android:layout_gravity="center_vertical" android:id="@id/gqy" android:background="#ff1aad19" android:layout_width="wrap_content" android:layout_height="3.0px" android:lines="0" />
+            <TextView android:textSize="0.0dip" android:layout_gravity="center_vertical" android:background="@drawable/t5" android:layout_width="wrap_content" android:layout_height="8.0dip" android:lines="0" />
+        </LinearLayout>
+    </FrameLayout>
+    <TextView android:textColor="@color/y4" android:id="@id/gr0" android:paddingLeft="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" />
+</LinearLayout>

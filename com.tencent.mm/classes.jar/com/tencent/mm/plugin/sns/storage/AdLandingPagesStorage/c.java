@@ -1,74 +1,55 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.i;
 
 public final class c
   extends b
 {
   private final String filePath;
-  private boolean rBM;
-  private int rBN;
-  private final String rBO;
-  private final String rBP;
-  private final c.a rBQ;
-  private final int rBR;
   private int scene;
+  private boolean xhp;
+  private int xhq;
+  private final String xhr;
+  private final String xhs;
+  private final a xht;
+  private final int xhu;
   
-  public c(String paramString1, String paramString2, int paramInt, c.a parama)
+  public c(String paramString1, String paramString2, int paramInt, a parama)
   {
-    AppMethodBeat.i(37682);
-    e.um(paramString1);
+    AppMethodBeat.i(97279);
+    i.aMF(paramString1);
     this.filePath = (paramString1 + "/" + paramString2);
-    this.rBM = true;
-    this.rBN = paramInt;
+    this.xhp = true;
+    this.xhq = paramInt;
     this.scene = 0;
-    this.rBP = "temp_".concat(String.valueOf(paramString2));
-    this.rBO = (paramString1 + "/" + this.rBP);
-    this.rBR = 409600;
-    this.rBQ = parama;
-    AppMethodBeat.o(37682);
-  }
-  
-  private int cpS()
-  {
-    int i = 1;
-    switch (this.rBN)
-    {
-    default: 
-      i = 0;
-    case 41: 
-    case 44: 
-    case 45: 
-    case 133: 
-    case 1000000001: 
-      return i;
-    case 61: 
-      return 2;
-    }
-    return 3;
+    this.xhs = "temp_".concat(String.valueOf(paramString2));
+    this.xhr = (paramString1 + "/" + this.xhs);
+    this.xhu = 409600;
+    this.xht = parama;
+    AppMethodBeat.o(97279);
   }
   
   /* Error */
-  private String crU()
+  private String dxl()
   {
     // Byte code:
-    //   0: ldc 90
-    //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 89
+    //   2: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 51	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:filePath	Ljava/lang/String;
-    //   9: invokestatic 93	com/tencent/mm/vfs/e:cN	(Ljava/lang/String;)Z
+    //   6: getfield 52	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:filePath	Ljava/lang/String;
+    //   9: invokestatic 92	com/tencent/mm/vfs/i:eK	(Ljava/lang/String;)Z
     //   12: ifeq +23 -> 35
     //   15: aload_0
-    //   16: getfield 78	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:rBQ	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c$a;
+    //   16: getfield 79	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:xht	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c$a;
     //   19: aload_0
-    //   20: getfield 51	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:filePath	Ljava/lang/String;
-    //   23: invokeinterface 97 2 0
-    //   28: ldc 90
-    //   30: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   20: getfield 52	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:filePath	Ljava/lang/String;
+    //   23: invokeinterface 96 2 0
+    //   28: ldc 89
+    //   30: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   33: aconst_null
     //   34: areturn
-    //   35: invokestatic 103	com/tencent/mm/sdk/platformtools/bo:aoy	()J
+    //   35: invokestatic 102	com/tencent/mm/sdk/platformtools/bt:eGO	()J
     //   38: lstore 7
     //   40: iconst_0
     //   41: istore_2
@@ -113,8 +94,8 @@ public final class c
     //   102: iload_2
     //   103: istore_3
     //   104: aload_0
-    //   105: getfield 73	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:rBO	Ljava/lang/String;
-    //   108: invokestatic 93	com/tencent/mm/vfs/e:cN	(Ljava/lang/String;)Z
+    //   105: getfield 74	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:xhr	Ljava/lang/String;
+    //   108: invokestatic 92	com/tencent/mm/vfs/i:eK	(Ljava/lang/String;)Z
     //   111: ifeq +28 -> 139
     //   114: aload 23
     //   116: astore 12
@@ -127,8 +108,8 @@ public final class c
     //   129: iload_2
     //   130: istore_3
     //   131: aload_0
-    //   132: getfield 73	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:rBO	Ljava/lang/String;
-    //   135: invokestatic 106	com/tencent/mm/vfs/e:deleteFile	(Ljava/lang/String;)Z
+    //   132: getfield 74	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:xhr	Ljava/lang/String;
+    //   135: invokestatic 105	com/tencent/mm/vfs/i:deleteFile	(Ljava/lang/String;)Z
     //   138: pop
     //   139: aload 23
     //   141: astore 12
@@ -140,20 +121,20 @@ public final class c
     //   153: istore_1
     //   154: iload_2
     //   155: istore_3
-    //   156: new 108	java/net/URL
+    //   156: new 107	java/net/URL
     //   159: dup
     //   160: aload_0
-    //   161: getfield 111	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:url	Ljava/lang/String;
-    //   164: invokespecial 113	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   167: invokevirtual 117	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   170: checkcast 119	java/net/HttpURLConnection
+    //   161: getfield 110	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:url	Ljava/lang/String;
+    //   164: invokespecial 112	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   167: invokevirtual 116	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   170: checkcast 118	java/net/HttpURLConnection
     //   173: astore 9
     //   175: aload 17
     //   177: astore 13
     //   179: aload 20
     //   181: astore 12
     //   183: aload 9
-    //   185: invokevirtual 122	java/net/HttpURLConnection:connect	()V
+    //   185: invokevirtual 121	java/net/HttpURLConnection:connect	()V
     //   188: aload 17
     //   190: astore 13
     //   192: aload 20
@@ -172,7 +153,7 @@ public final class c
     //   219: astore 13
     //   221: aload 20
     //   223: astore 12
-    //   225: new 38	java/lang/StringBuilder
+    //   225: new 39	java/lang/StringBuilder
     //   228: dup
     //   229: ldc 127
     //   231: invokespecial 128	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
@@ -180,11 +161,11 @@ public final class c
     //   236: invokevirtual 125	java/net/HttpURLConnection:getResponseCode	()I
     //   239: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   242: ldc 133
-    //   244: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   244: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   247: aload 9
     //   249: invokevirtual 136	java/net/HttpURLConnection:getResponseMessage	()Ljava/lang/String;
-    //   252: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   255: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   252: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   255: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   258: astore 10
     //   260: aload 9
     //   262: ifnull +16 -> 278
@@ -194,48 +175,48 @@ public final class c
     //   273: aload 9
     //   275: invokevirtual 148	java/net/HttpURLConnection:disconnect	()V
     //   278: aload_0
-    //   279: getfield 111	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:url	Ljava/lang/String;
-    //   282: invokestatic 153	com/tencent/mm/sdk/platformtools/ag:cE	(Ljava/lang/String;)Ljava/lang/String;
+    //   279: getfield 110	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:url	Ljava/lang/String;
+    //   282: invokestatic 153	com/tencent/mm/sdk/platformtools/ai:du	(Ljava/lang/String;)Ljava/lang/String;
     //   285: astore 11
     //   287: aload_0
-    //   288: invokespecial 155	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:cpS	()I
+    //   288: invokespecial 156	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:getMediaType	()I
     //   291: istore_1
     //   292: lload 7
-    //   294: invokestatic 159	com/tencent/mm/sdk/platformtools/bo:hl	(J)J
+    //   294: invokestatic 160	com/tencent/mm/sdk/platformtools/bt:vM	(J)J
     //   297: l2i
     //   298: istore_3
-    //   299: new 161	com/tencent/mm/modelsns/d
+    //   299: new 162	com/tencent/mm/modelsns/f
     //   302: dup
-    //   303: invokespecial 162	com/tencent/mm/modelsns/d:<init>	()V
+    //   303: invokespecial 163	com/tencent/mm/modelsns/f:<init>	()V
     //   306: astore 9
     //   308: aload 9
-    //   310: ldc 164
-    //   312: new 38	java/lang/StringBuilder
+    //   310: ldc 165
+    //   312: new 39	java/lang/StringBuilder
     //   315: dup
-    //   316: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   316: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   319: aload 11
-    //   321: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   324: ldc 166
-    //   326: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   329: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   332: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   321: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   324: ldc 167
+    //   326: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   329: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   332: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   335: aload 9
     //   337: ldc 172
-    //   339: new 38	java/lang/StringBuilder
+    //   339: new 39	java/lang/StringBuilder
     //   342: dup
-    //   343: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   343: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   346: iload_1
     //   347: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   350: ldc 166
-    //   352: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   355: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   358: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   361: new 38	java/lang/StringBuilder
+    //   350: ldc 167
+    //   352: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   355: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   358: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   361: new 39	java/lang/StringBuilder
     //   364: dup
-    //   365: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   365: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   368: astore 11
     //   370: aload_0
-    //   371: getfield 53	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:rBM	Z
+    //   371: getfield 54	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:xhp	Z
     //   374: ifeq +213 -> 587
     //   377: iconst_1
     //   378: istore_1
@@ -244,72 +225,72 @@ public final class c
     //   383: aload 11
     //   385: iload_1
     //   386: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   389: ldc 166
-    //   391: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   394: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   397: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   389: ldc 167
+    //   391: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   394: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   397: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   400: aload 9
     //   402: ldc 176
-    //   404: new 38	java/lang/StringBuilder
+    //   404: new 39	java/lang/StringBuilder
     //   407: dup
-    //   408: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   408: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   411: iload_3
     //   412: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   415: ldc 166
-    //   417: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   420: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   423: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   415: ldc 167
+    //   417: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   420: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   423: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   426: aload 9
     //   428: ldc 178
-    //   430: new 38	java/lang/StringBuilder
+    //   430: new 39	java/lang/StringBuilder
     //   433: dup
-    //   434: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   434: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   437: iload_2
     //   438: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   441: ldc 166
-    //   443: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   446: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   449: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   441: ldc 167
+    //   443: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   446: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   449: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   452: aload 9
     //   454: ldc 180
-    //   456: new 38	java/lang/StringBuilder
+    //   456: new 39	java/lang/StringBuilder
     //   459: dup
-    //   460: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   460: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   463: aload_0
-    //   464: getfield 57	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:scene	I
+    //   464: getfield 58	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:scene	I
     //   467: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   470: ldc 166
-    //   472: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   475: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   478: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   470: ldc 167
+    //   472: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   475: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   478: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   481: aload 9
     //   483: ldc 182
     //   485: ldc 184
-    //   487: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   487: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   490: aload 9
     //   492: ldc 186
-    //   494: new 38	java/lang/StringBuilder
+    //   494: new 39	java/lang/StringBuilder
     //   497: dup
-    //   498: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   498: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   501: lload 7
     //   503: ldc2_w 187
     //   506: ldiv
     //   507: invokevirtual 191	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   510: ldc 166
-    //   512: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   515: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   518: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   510: ldc 167
+    //   512: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   515: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   518: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   521: ldc 193
-    //   523: new 38	java/lang/StringBuilder
+    //   523: new 39	java/lang/StringBuilder
     //   526: dup
     //   527: ldc 195
     //   529: invokespecial 128	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   532: aload 9
-    //   534: invokevirtual 198	com/tencent/mm/modelsns/d:Fg	()Ljava/lang/String;
-    //   537: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   540: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   543: invokestatic 203	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   546: getstatic 209	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   534: invokevirtual 198	com/tencent/mm/modelsns/f:PW	()Ljava/lang/String;
+    //   537: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   540: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   543: invokestatic 203	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   546: getstatic 209	com/tencent/mm/plugin/report/service/h:vKh	Lcom/tencent/mm/plugin/report/service/h;
     //   549: sipush 13572
     //   552: iconst_1
     //   553: anewarray 211	java/lang/Object
@@ -317,16 +298,16 @@ public final class c
     //   557: iconst_0
     //   558: aload 9
     //   560: aastore
-    //   561: invokevirtual 215	com/tencent/mm/plugin/report/service/h:e	(I[Ljava/lang/Object;)V
-    //   564: ldc 90
-    //   566: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   561: invokevirtual 215	com/tencent/mm/plugin/report/service/h:f	(I[Ljava/lang/Object;)V
+    //   564: ldc 89
+    //   566: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   569: aload 10
     //   571: areturn
     //   572: astore 11
     //   574: ldc 193
     //   576: aload 11
     //   578: invokevirtual 218	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   581: invokestatic 220	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   581: invokestatic 221	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   584: goto -311 -> 273
     //   587: iconst_0
     //   588: istore_1
@@ -340,7 +321,7 @@ public final class c
     //   604: aload 20
     //   606: astore 12
     //   608: aload 9
-    //   610: invokevirtual 223	java/net/HttpURLConnection:getContentLength	()I
+    //   610: invokevirtual 224	java/net/HttpURLConnection:getContentLength	()I
     //   613: pop
     //   614: aload 16
     //   616: astore 15
@@ -362,9 +343,9 @@ public final class c
     //   649: aload 10
     //   651: astore 12
     //   653: aload_0
-    //   654: getfield 73	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:rBO	Ljava/lang/String;
+    //   654: getfield 74	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:xhr	Ljava/lang/String;
     //   657: iconst_0
-    //   658: invokestatic 227	com/tencent/mm/vfs/e:M	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   658: invokestatic 228	com/tencent/mm/vfs/i:cM	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   661: astore 11
     //   663: aload 11
     //   665: astore 15
@@ -391,7 +372,7 @@ public final class c
     //   704: astore 12
     //   706: aload 10
     //   708: aload 16
-    //   710: invokevirtual 231	java/io/InputStream:read	([B)I
+    //   710: invokevirtual 232	java/io/InputStream:read	([B)I
     //   713: istore 6
     //   715: iload 6
     //   717: iconst_m1
@@ -408,7 +389,7 @@ public final class c
     //   739: aload 16
     //   741: iconst_0
     //   742: iload 6
-    //   744: invokevirtual 237	java/io/OutputStream:write	([BII)V
+    //   744: invokevirtual 238	java/io/OutputStream:write	([BII)V
     //   747: iload 6
     //   749: iload_1
     //   750: iadd
@@ -422,7 +403,7 @@ public final class c
     //   764: aload 10
     //   766: astore 12
     //   768: aload_0
-    //   769: getfield 76	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:rBR	I
+    //   769: getfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:xhu	I
     //   772: ifeq +1314 -> 2086
     //   775: aload 11
     //   777: astore 15
@@ -436,7 +417,7 @@ public final class c
     //   792: iload_3
     //   793: isub
     //   794: aload_0
-    //   795: getfield 76	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:rBR	I
+    //   795: getfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:xhu	I
     //   798: if_icmplt +1288 -> 2086
     //   801: aload 11
     //   803: astore 15
@@ -447,24 +428,24 @@ public final class c
     //   813: aload 10
     //   815: astore 12
     //   817: aload_0
-    //   818: getfield 78	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:rBQ	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c$a;
+    //   818: getfield 79	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:xht	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c$a;
     //   821: aload_0
-    //   822: getfield 73	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:rBO	Ljava/lang/String;
+    //   822: getfield 74	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:xhr	Ljava/lang/String;
     //   825: iload_1
-    //   826: invokeinterface 241 3 0
+    //   826: invokeinterface 242 3 0
     //   831: iload_1
     //   832: istore_3
     //   833: goto -143 -> 690
     //   836: aload_0
-    //   837: getfield 73	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:rBO	Ljava/lang/String;
+    //   837: getfield 74	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:xhr	Ljava/lang/String;
     //   840: aload_0
-    //   841: getfield 51	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:filePath	Ljava/lang/String;
-    //   844: invokestatic 245	com/tencent/mm/vfs/e:aT	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   841: getfield 52	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:filePath	Ljava/lang/String;
+    //   844: invokestatic 246	com/tencent/mm/vfs/i:lD	(Ljava/lang/String;Ljava/lang/String;)Z
     //   847: pop
     //   848: aload 11
     //   850: ifnull +8 -> 858
     //   853: aload 11
-    //   855: invokevirtual 246	java/io/OutputStream:close	()V
+    //   855: invokevirtual 247	java/io/OutputStream:close	()V
     //   858: aload 10
     //   860: ifnull +8 -> 868
     //   863: aload 10
@@ -477,48 +458,48 @@ public final class c
     //   881: aload 9
     //   883: invokevirtual 148	java/net/HttpURLConnection:disconnect	()V
     //   886: aload_0
-    //   887: getfield 111	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:url	Ljava/lang/String;
-    //   890: invokestatic 153	com/tencent/mm/sdk/platformtools/ag:cE	(Ljava/lang/String;)Ljava/lang/String;
+    //   887: getfield 110	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:url	Ljava/lang/String;
+    //   890: invokestatic 153	com/tencent/mm/sdk/platformtools/ai:du	(Ljava/lang/String;)Ljava/lang/String;
     //   893: astore 10
     //   895: aload_0
-    //   896: invokespecial 155	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:cpS	()I
+    //   896: invokespecial 156	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:getMediaType	()I
     //   899: istore_3
     //   900: lload 7
-    //   902: invokestatic 159	com/tencent/mm/sdk/platformtools/bo:hl	(J)J
+    //   902: invokestatic 160	com/tencent/mm/sdk/platformtools/bt:vM	(J)J
     //   905: l2i
     //   906: istore 4
-    //   908: new 161	com/tencent/mm/modelsns/d
+    //   908: new 162	com/tencent/mm/modelsns/f
     //   911: dup
-    //   912: invokespecial 162	com/tencent/mm/modelsns/d:<init>	()V
+    //   912: invokespecial 163	com/tencent/mm/modelsns/f:<init>	()V
     //   915: astore 9
     //   917: aload 9
-    //   919: ldc 164
-    //   921: new 38	java/lang/StringBuilder
+    //   919: ldc 165
+    //   921: new 39	java/lang/StringBuilder
     //   924: dup
-    //   925: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   925: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   928: aload 10
-    //   930: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   933: ldc 166
-    //   935: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   938: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   941: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   930: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   933: ldc 167
+    //   935: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   938: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   941: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   944: aload 9
     //   946: ldc 172
-    //   948: new 38	java/lang/StringBuilder
+    //   948: new 39	java/lang/StringBuilder
     //   951: dup
-    //   952: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   952: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   955: iload_3
     //   956: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   959: ldc 166
-    //   961: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   964: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   967: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   970: new 38	java/lang/StringBuilder
+    //   959: ldc 167
+    //   961: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   964: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   967: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   970: new 39	java/lang/StringBuilder
     //   973: dup
-    //   974: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   974: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   977: astore 10
     //   979: aload_0
-    //   980: getfield 53	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:rBM	Z
+    //   980: getfield 54	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:xhp	Z
     //   983: ifeq +230 -> 1213
     //   986: iconst_1
     //   987: istore_3
@@ -527,79 +508,79 @@ public final class c
     //   992: aload 10
     //   994: iload_3
     //   995: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   998: ldc 166
-    //   1000: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1003: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1006: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   998: ldc 167
+    //   1000: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1003: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1006: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1009: aload 9
     //   1011: ldc 176
-    //   1013: new 38	java/lang/StringBuilder
+    //   1013: new 39	java/lang/StringBuilder
     //   1016: dup
-    //   1017: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1017: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1020: iload 4
     //   1022: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1025: ldc 166
-    //   1027: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1030: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1033: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1025: ldc 167
+    //   1027: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1030: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1033: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1036: aload 9
     //   1038: ldc 178
-    //   1040: new 38	java/lang/StringBuilder
+    //   1040: new 39	java/lang/StringBuilder
     //   1043: dup
-    //   1044: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1044: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1047: iload_2
     //   1048: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1051: ldc 166
-    //   1053: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1056: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1059: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1051: ldc 167
+    //   1053: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1056: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1059: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1062: aload 9
     //   1064: ldc 180
-    //   1066: new 38	java/lang/StringBuilder
+    //   1066: new 39	java/lang/StringBuilder
     //   1069: dup
-    //   1070: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1070: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1073: aload_0
-    //   1074: getfield 57	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:scene	I
+    //   1074: getfield 58	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:scene	I
     //   1077: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1080: ldc 166
-    //   1082: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1085: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1088: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1080: ldc 167
+    //   1082: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1085: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1088: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1091: aload 9
     //   1093: ldc 182
-    //   1095: new 38	java/lang/StringBuilder
+    //   1095: new 39	java/lang/StringBuilder
     //   1098: dup
-    //   1099: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1099: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1102: iload_1
     //   1103: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1106: ldc 166
-    //   1108: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1111: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1114: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1106: ldc 167
+    //   1108: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1111: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1114: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1117: aload 9
     //   1119: ldc 186
-    //   1121: new 38	java/lang/StringBuilder
+    //   1121: new 39	java/lang/StringBuilder
     //   1124: dup
-    //   1125: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1125: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1128: lload 7
     //   1130: ldc2_w 187
     //   1133: ldiv
     //   1134: invokevirtual 191	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1137: ldc 166
-    //   1139: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1142: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1145: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1137: ldc 167
+    //   1139: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1142: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1145: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1148: ldc 193
-    //   1150: new 38	java/lang/StringBuilder
+    //   1150: new 39	java/lang/StringBuilder
     //   1153: dup
     //   1154: ldc 195
     //   1156: invokespecial 128	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1159: aload 9
-    //   1161: invokevirtual 198	com/tencent/mm/modelsns/d:Fg	()Ljava/lang/String;
-    //   1164: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1167: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1170: invokestatic 203	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1173: getstatic 209	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   1161: invokevirtual 198	com/tencent/mm/modelsns/f:PW	()Ljava/lang/String;
+    //   1164: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1167: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1170: invokestatic 203	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1173: getstatic 209	com/tencent/mm/plugin/report/service/h:vKh	Lcom/tencent/mm/plugin/report/service/h;
     //   1176: sipush 13572
     //   1179: iconst_1
     //   1180: anewarray 211	java/lang/Object
@@ -607,16 +588,16 @@ public final class c
     //   1184: iconst_0
     //   1185: aload 9
     //   1187: aastore
-    //   1188: invokevirtual 215	com/tencent/mm/plugin/report/service/h:e	(I[Ljava/lang/Object;)V
-    //   1191: ldc 90
-    //   1193: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1188: invokevirtual 215	com/tencent/mm/plugin/report/service/h:f	(I[Ljava/lang/Object;)V
+    //   1191: ldc 89
+    //   1193: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1196: aconst_null
     //   1197: areturn
     //   1198: astore 10
     //   1200: ldc 193
     //   1202: aload 10
     //   1204: invokevirtual 218	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1207: invokestatic 220	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1207: invokestatic 221	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1210: goto -329 -> 881
     //   1213: iconst_0
     //   1214: istore_3
@@ -646,7 +627,7 @@ public final class c
     //   1258: aload 11
     //   1260: ifnull +8 -> 1268
     //   1263: aload 11
-    //   1265: invokevirtual 246	java/io/OutputStream:close	()V
+    //   1265: invokevirtual 247	java/io/OutputStream:close	()V
     //   1268: aload 10
     //   1270: ifnull +8 -> 1278
     //   1273: aload 10
@@ -659,48 +640,48 @@ public final class c
     //   1291: aload 9
     //   1293: invokevirtual 148	java/net/HttpURLConnection:disconnect	()V
     //   1296: aload_0
-    //   1297: getfield 111	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:url	Ljava/lang/String;
-    //   1300: invokestatic 153	com/tencent/mm/sdk/platformtools/ag:cE	(Ljava/lang/String;)Ljava/lang/String;
+    //   1297: getfield 110	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:url	Ljava/lang/String;
+    //   1300: invokestatic 153	com/tencent/mm/sdk/platformtools/ai:du	(Ljava/lang/String;)Ljava/lang/String;
     //   1303: astore 10
     //   1305: aload_0
-    //   1306: invokespecial 155	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:cpS	()I
+    //   1306: invokespecial 156	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:getMediaType	()I
     //   1309: istore_1
     //   1310: lload 7
-    //   1312: invokestatic 159	com/tencent/mm/sdk/platformtools/bo:hl	(J)J
+    //   1312: invokestatic 160	com/tencent/mm/sdk/platformtools/bt:vM	(J)J
     //   1315: l2i
     //   1316: istore_3
-    //   1317: new 161	com/tencent/mm/modelsns/d
+    //   1317: new 162	com/tencent/mm/modelsns/f
     //   1320: dup
-    //   1321: invokespecial 162	com/tencent/mm/modelsns/d:<init>	()V
+    //   1321: invokespecial 163	com/tencent/mm/modelsns/f:<init>	()V
     //   1324: astore 9
     //   1326: aload 9
-    //   1328: ldc 164
-    //   1330: new 38	java/lang/StringBuilder
+    //   1328: ldc 165
+    //   1330: new 39	java/lang/StringBuilder
     //   1333: dup
-    //   1334: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1334: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1337: aload 10
-    //   1339: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1342: ldc 166
-    //   1344: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1347: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1350: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1339: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1342: ldc 167
+    //   1344: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1347: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1350: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1353: aload 9
     //   1355: ldc 172
-    //   1357: new 38	java/lang/StringBuilder
+    //   1357: new 39	java/lang/StringBuilder
     //   1360: dup
-    //   1361: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1361: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1364: iload_1
     //   1365: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1368: ldc 166
-    //   1370: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1373: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1376: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   1379: new 38	java/lang/StringBuilder
+    //   1368: ldc 167
+    //   1370: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1373: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1376: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1379: new 39	java/lang/StringBuilder
     //   1382: dup
-    //   1383: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1383: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1386: astore 10
     //   1388: aload_0
-    //   1389: getfield 53	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:rBM	Z
+    //   1389: getfield 54	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:xhp	Z
     //   1392: ifeq +213 -> 1605
     //   1395: iconst_1
     //   1396: istore_1
@@ -709,72 +690,72 @@ public final class c
     //   1401: aload 10
     //   1403: iload_1
     //   1404: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1407: ldc 166
-    //   1409: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1412: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1415: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1407: ldc 167
+    //   1409: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1412: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1415: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1418: aload 9
     //   1420: ldc 176
-    //   1422: new 38	java/lang/StringBuilder
+    //   1422: new 39	java/lang/StringBuilder
     //   1425: dup
-    //   1426: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1426: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1429: iload_3
     //   1430: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1433: ldc 166
-    //   1435: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1438: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1441: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1433: ldc 167
+    //   1435: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1438: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1441: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1444: aload 9
     //   1446: ldc 178
-    //   1448: ldc 248
-    //   1450: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1448: ldc 249
+    //   1450: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1453: aload 9
     //   1455: ldc 180
-    //   1457: new 38	java/lang/StringBuilder
+    //   1457: new 39	java/lang/StringBuilder
     //   1460: dup
-    //   1461: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1461: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1464: aload_0
-    //   1465: getfield 57	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:scene	I
+    //   1465: getfield 58	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:scene	I
     //   1468: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1471: ldc 166
-    //   1473: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1476: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1479: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1471: ldc 167
+    //   1473: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1476: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1479: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1482: aload 9
     //   1484: ldc 182
-    //   1486: new 38	java/lang/StringBuilder
+    //   1486: new 39	java/lang/StringBuilder
     //   1489: dup
-    //   1490: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1490: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1493: iload_2
     //   1494: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1497: ldc 166
-    //   1499: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1502: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1505: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1497: ldc 167
+    //   1499: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1502: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1505: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1508: aload 9
     //   1510: ldc 186
-    //   1512: new 38	java/lang/StringBuilder
+    //   1512: new 39	java/lang/StringBuilder
     //   1515: dup
-    //   1516: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1516: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1519: lload 7
     //   1521: ldc2_w 187
     //   1524: ldiv
     //   1525: invokevirtual 191	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1528: ldc 166
-    //   1530: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1533: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1536: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1528: ldc 167
+    //   1530: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1533: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1536: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1539: ldc 193
-    //   1541: new 38	java/lang/StringBuilder
+    //   1541: new 39	java/lang/StringBuilder
     //   1544: dup
     //   1545: ldc 195
     //   1547: invokespecial 128	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1550: aload 9
-    //   1552: invokevirtual 198	com/tencent/mm/modelsns/d:Fg	()Ljava/lang/String;
-    //   1555: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1558: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1561: invokestatic 203	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1564: getstatic 209	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   1552: invokevirtual 198	com/tencent/mm/modelsns/f:PW	()Ljava/lang/String;
+    //   1555: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1558: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1561: invokestatic 203	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1564: getstatic 209	com/tencent/mm/plugin/report/service/h:vKh	Lcom/tencent/mm/plugin/report/service/h;
     //   1567: sipush 13572
     //   1570: iconst_1
     //   1571: anewarray 211	java/lang/Object
@@ -782,16 +763,16 @@ public final class c
     //   1575: iconst_0
     //   1576: aload 9
     //   1578: aastore
-    //   1579: invokevirtual 215	com/tencent/mm/plugin/report/service/h:e	(I[Ljava/lang/Object;)V
-    //   1582: ldc 90
-    //   1584: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1579: invokevirtual 215	com/tencent/mm/plugin/report/service/h:f	(I[Ljava/lang/Object;)V
+    //   1582: ldc 89
+    //   1584: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1587: aload 15
     //   1589: areturn
     //   1590: astore 10
     //   1592: ldc 193
     //   1594: aload 10
     //   1596: invokevirtual 218	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1599: invokestatic 220	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1599: invokestatic 221	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1602: goto -311 -> 1291
     //   1605: iconst_0
     //   1606: istore_1
@@ -806,7 +787,7 @@ public final class c
     //   1622: aload 11
     //   1624: ifnull +8 -> 1632
     //   1627: aload 11
-    //   1629: invokevirtual 246	java/io/OutputStream:close	()V
+    //   1629: invokevirtual 247	java/io/OutputStream:close	()V
     //   1632: aload 10
     //   1634: ifnull +8 -> 1642
     //   1637: aload 10
@@ -819,48 +800,48 @@ public final class c
     //   1655: aload 12
     //   1657: invokevirtual 148	java/net/HttpURLConnection:disconnect	()V
     //   1660: aload_0
-    //   1661: getfield 111	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:url	Ljava/lang/String;
-    //   1664: invokestatic 153	com/tencent/mm/sdk/platformtools/ag:cE	(Ljava/lang/String;)Ljava/lang/String;
+    //   1661: getfield 110	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:url	Ljava/lang/String;
+    //   1664: invokestatic 153	com/tencent/mm/sdk/platformtools/ai:du	(Ljava/lang/String;)Ljava/lang/String;
     //   1667: astore 11
     //   1669: aload_0
-    //   1670: invokespecial 155	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:cpS	()I
+    //   1670: invokespecial 156	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:getMediaType	()I
     //   1673: istore_3
     //   1674: lload 7
-    //   1676: invokestatic 159	com/tencent/mm/sdk/platformtools/bo:hl	(J)J
+    //   1676: invokestatic 160	com/tencent/mm/sdk/platformtools/bt:vM	(J)J
     //   1679: l2i
     //   1680: istore 4
-    //   1682: new 161	com/tencent/mm/modelsns/d
+    //   1682: new 162	com/tencent/mm/modelsns/f
     //   1685: dup
-    //   1686: invokespecial 162	com/tencent/mm/modelsns/d:<init>	()V
+    //   1686: invokespecial 163	com/tencent/mm/modelsns/f:<init>	()V
     //   1689: astore 10
     //   1691: aload 10
-    //   1693: ldc 164
-    //   1695: new 38	java/lang/StringBuilder
+    //   1693: ldc 165
+    //   1695: new 39	java/lang/StringBuilder
     //   1698: dup
-    //   1699: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1699: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1702: aload 11
-    //   1704: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1707: ldc 166
-    //   1709: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1712: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1715: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1704: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1707: ldc 167
+    //   1709: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1712: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1715: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1718: aload 10
     //   1720: ldc 172
-    //   1722: new 38	java/lang/StringBuilder
+    //   1722: new 39	java/lang/StringBuilder
     //   1725: dup
-    //   1726: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1726: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1729: iload_3
     //   1730: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1733: ldc 166
-    //   1735: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1738: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1741: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   1744: new 38	java/lang/StringBuilder
+    //   1733: ldc 167
+    //   1735: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1738: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1741: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1744: new 39	java/lang/StringBuilder
     //   1747: dup
-    //   1748: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1748: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1751: astore 11
     //   1753: aload_0
-    //   1754: getfield 53	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:rBM	Z
+    //   1754: getfield 54	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:xhp	Z
     //   1757: ifeq +231 -> 1988
     //   1760: iconst_1
     //   1761: istore_3
@@ -869,79 +850,79 @@ public final class c
     //   1766: aload 11
     //   1768: iload_3
     //   1769: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1772: ldc 166
-    //   1774: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1777: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1780: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1772: ldc 167
+    //   1774: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1777: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1780: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1783: aload 10
     //   1785: ldc 176
-    //   1787: new 38	java/lang/StringBuilder
+    //   1787: new 39	java/lang/StringBuilder
     //   1790: dup
-    //   1791: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1791: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1794: iload 4
     //   1796: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1799: ldc 166
-    //   1801: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1804: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1807: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1799: ldc 167
+    //   1801: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1804: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1807: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1810: aload 10
     //   1812: ldc 178
-    //   1814: new 38	java/lang/StringBuilder
+    //   1814: new 39	java/lang/StringBuilder
     //   1817: dup
-    //   1818: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1818: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1821: iload_2
     //   1822: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1825: ldc 166
-    //   1827: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1830: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1833: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1825: ldc 167
+    //   1827: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1830: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1833: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1836: aload 10
     //   1838: ldc 180
-    //   1840: new 38	java/lang/StringBuilder
+    //   1840: new 39	java/lang/StringBuilder
     //   1843: dup
-    //   1844: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1844: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1847: aload_0
-    //   1848: getfield 57	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:scene	I
+    //   1848: getfield 58	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/c:scene	I
     //   1851: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1854: ldc 166
-    //   1856: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1859: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1862: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1854: ldc 167
+    //   1856: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1859: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1862: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1865: aload 10
     //   1867: ldc 182
-    //   1869: new 38	java/lang/StringBuilder
+    //   1869: new 39	java/lang/StringBuilder
     //   1872: dup
-    //   1873: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1873: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1876: iload_1
     //   1877: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1880: ldc 166
-    //   1882: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1885: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1888: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1880: ldc 167
+    //   1882: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1885: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1888: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1891: aload 10
     //   1893: ldc 186
-    //   1895: new 38	java/lang/StringBuilder
+    //   1895: new 39	java/lang/StringBuilder
     //   1898: dup
-    //   1899: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   1899: invokespecial 40	java/lang/StringBuilder:<init>	()V
     //   1902: lload 7
     //   1904: ldc2_w 187
     //   1907: ldiv
     //   1908: invokevirtual 191	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1911: ldc 166
-    //   1913: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1916: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1919: invokevirtual 170	com/tencent/mm/modelsns/d:k	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   1911: ldc 167
+    //   1913: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1916: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1919: invokevirtual 170	com/tencent/mm/modelsns/f:o	(Ljava/lang/String;Ljava/lang/Object;)V
     //   1922: ldc 193
-    //   1924: new 38	java/lang/StringBuilder
+    //   1924: new 39	java/lang/StringBuilder
     //   1927: dup
     //   1928: ldc 195
     //   1930: invokespecial 128	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1933: aload 10
-    //   1935: invokevirtual 198	com/tencent/mm/modelsns/d:Fg	()Ljava/lang/String;
-    //   1938: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1941: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1944: invokestatic 203	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1947: getstatic 209	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   1935: invokevirtual 198	com/tencent/mm/modelsns/f:PW	()Ljava/lang/String;
+    //   1938: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1941: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1944: invokestatic 203	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1947: getstatic 209	com/tencent/mm/plugin/report/service/h:vKh	Lcom/tencent/mm/plugin/report/service/h;
     //   1950: sipush 13572
     //   1953: iconst_1
     //   1954: anewarray 211	java/lang/Object
@@ -949,16 +930,16 @@ public final class c
     //   1958: iconst_0
     //   1959: aload 10
     //   1961: aastore
-    //   1962: invokevirtual 215	com/tencent/mm/plugin/report/service/h:e	(I[Ljava/lang/Object;)V
-    //   1965: ldc 90
-    //   1967: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1962: invokevirtual 215	com/tencent/mm/plugin/report/service/h:f	(I[Ljava/lang/Object;)V
+    //   1965: ldc 89
+    //   1967: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1970: aload 9
     //   1972: athrow
     //   1973: astore 10
     //   1975: ldc 193
     //   1977: aload 10
     //   1979: invokevirtual 218	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1982: invokestatic 220	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1982: invokestatic 221	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1985: goto -330 -> 1655
     //   1988: iconst_0
     //   1989: istore_3
@@ -1020,42 +1001,42 @@ public final class c
     //   49	2020	5	n	int
     //   43	708	6	i1	int
     //   38	1865	7	l	long
-    //   52	1525	9	localObject1	java.lang.Object
-    //   1610	391	9	localObject2	java.lang.Object
-    //   2008	41	9	localObject3	java.lang.Object
-    //   55	938	10	localObject4	java.lang.Object
+    //   52	1525	9	localObject1	Object
+    //   1610	391	9	localObject2	Object
+    //   2008	41	9	localObject3	Object
+    //   55	938	10	localObject4	Object
     //   1198	5	10	localException1	java.lang.Exception
-    //   1225	177	10	localObject5	java.lang.Object
+    //   1225	177	10	localObject5	Object
     //   1590	5	10	localException2	java.lang.Exception
-    //   1616	344	10	localObject6	java.lang.Object
+    //   1616	344	10	localObject6	Object
     //   1973	5	10	localException3	java.lang.Exception
     //   1993	1	10	localIOException1	java.io.IOException
-    //   2016	7	10	localObject7	java.lang.Object
-    //   2032	1	10	localObject8	java.lang.Object
+    //   2016	7	10	localObject7	Object
+    //   2032	1	10	localObject8	Object
     //   2053	1	10	localIOException2	java.io.IOException
-    //   2066	1	10	localObject9	java.lang.Object
+    //   2066	1	10	localObject9	Object
     //   2081	1	10	localIOException3	java.io.IOException
-    //   70	314	11	localObject10	java.lang.Object
+    //   70	314	11	localObject10	Object
     //   572	5	11	localException4	java.lang.Exception
-    //   661	1402	11	localObject11	java.lang.Object
-    //   89	1976	12	localObject12	java.lang.Object
-    //   93	1526	13	localObject13	java.lang.Object
-    //   1998	9	13	localObject14	java.lang.Object
-    //   2040	21	13	localObject15	java.lang.Object
-    //   97	1934	14	localObject16	java.lang.Object
-    //   67	737	15	localObject17	java.lang.Object
+    //   661	1402	11	localObject11	Object
+    //   89	1976	12	localObject12	Object
+    //   93	1526	13	localObject13	Object
+    //   1998	9	13	localObject14	Object
+    //   2040	21	13	localObject15	Object
+    //   97	1934	14	localObject16	Object
+    //   67	737	15	localObject17	Object
     //   1218	34	15	localException5	java.lang.Exception
     //   1256	771	15	str	String
     //   2058	1	15	localException6	java.lang.Exception
     //   2074	1	15	localException7	java.lang.Exception
     //   73	667	16	arrayOfByte	byte[]
-    //   76	570	17	localObject18	java.lang.Object
-    //   85	1147	18	localObject19	java.lang.Object
-    //   58	561	19	localObject20	java.lang.Object
-    //   61	566	20	localObject21	java.lang.Object
-    //   79	1149	21	localObject22	java.lang.Object
-    //   64	1160	22	localObject23	java.lang.Object
-    //   82	58	23	localObject24	java.lang.Object
+    //   76	570	17	localObject18	Object
+    //   85	1147	18	localObject19	Object
+    //   58	561	19	localObject20	Object
+    //   61	566	20	localObject21	Object
+    //   79	1149	21	localObject22	Object
+    //   64	1160	22	localObject23	Object
+    //   82	58	23	localObject24	Object
     // Exception table:
     //   from	to	target	type
     //   265	273	572	java/lang/Exception
@@ -1102,10 +1083,38 @@ public final class c
     //   853	858	2081	java/io/IOException
     //   863	868	2081	java/io/IOException
   }
+  
+  private int getMediaType()
+  {
+    int i = 1;
+    switch (this.xhq)
+    {
+    default: 
+      i = 0;
+    case 41: 
+    case 44: 
+    case 45: 
+    case 133: 
+    case 1000000001: 
+      return i;
+    case 61: 
+      return 2;
+    }
+    return 3;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void IK(String paramString);
+    
+    public abstract void cU(String paramString, int paramInt);
+    
+    public abstract void rl(String paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.c
  * JD-Core Version:    0.7.0.1
  */

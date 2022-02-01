@@ -6,24 +6,24 @@ import android.database.Cursor;
 import android.net.Uri;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fn;
+import com.tencent.mm.g.a.ft;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 @JgClassChecked(author=32, fComment="checked", lastDate="20141016", reviewer=20, vComment={com.jg.EType.PROVIDERCHECK})
 public class ExtControlProviderAccountSync
   extends ExtContentProviderBase
 {
-  private static final UriMatcher meo;
+  private static final UriMatcher pKZ;
   
   static
   {
-    AppMethodBeat.i(20342);
+    AppMethodBeat.i(24421);
     UriMatcher localUriMatcher = new UriMatcher(-1);
-    meo = localUriMatcher;
+    pKZ = localUriMatcher;
     localUriMatcher.addURI("com.tencent.mm.plugin.ext.AccountSync", "accountSync", 1);
-    AppMethodBeat.o(20342);
+    AppMethodBeat.o(24421);
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
@@ -48,53 +48,53 @@ public class ExtControlProviderAccountSync
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    AppMethodBeat.i(20341);
-    ab.d("MicroMsg.ExtControlAccountSyncProvider", "query()");
-    a(paramUri, getContext(), meo);
+    AppMethodBeat.i(24420);
+    ad.d("MicroMsg.ExtControlAccountSyncProvider", "query()");
+    a(paramUri, getContext(), pKZ);
     if (paramUri == null)
     {
-      vA(3);
-      AppMethodBeat.o(20341);
+      BS(3);
+      AppMethodBeat.o(24420);
       return null;
     }
-    if ((bo.isNullOrNil(this.mei)) || (bo.isNullOrNil(btD())))
+    if ((bt.isNullOrNil(this.pKT)) || (bt.isNullOrNil(ceX())))
     {
-      vA(3);
-      AppMethodBeat.o(20341);
+      BS(3);
+      AppMethodBeat.o(24420);
       return null;
     }
-    if (!aVH())
+    if (!bBg())
     {
-      vA(1);
-      paramUri = this.jLW;
-      AppMethodBeat.o(20341);
+      BS(1);
+      paramUri = this.mKX;
+      AppMethodBeat.o(24420);
       return paramUri;
     }
-    if (!dO(getContext()))
+    if (!ey(getContext()))
     {
-      ab.w("MicroMsg.ExtControlAccountSyncProvider", "invalid appid ! return null");
-      vA(2);
-      AppMethodBeat.o(20341);
+      ad.w("MicroMsg.ExtControlAccountSyncProvider", "invalid appid ! return null");
+      BS(2);
+      AppMethodBeat.o(24420);
       return null;
     }
-    switch (meo.match(paramUri))
+    switch (pKZ.match(paramUri))
     {
     default: 
-      vA(3);
-      AppMethodBeat.o(20341);
+      BS(3);
+      AppMethodBeat.o(24420);
       return null;
     }
-    ab.i("MicroMsg.ExtControlAccountSyncProvider", "startContactSync()");
-    paramUri = new fn();
-    if (a.ymk.l(paramUri)) {
-      vA(0);
+    ad.i("MicroMsg.ExtControlAccountSyncProvider", "startContactSync()");
+    paramUri = new ft();
+    if (a.ESL.l(paramUri)) {
+      BS(0);
     }
     for (;;)
     {
-      AppMethodBeat.o(20341);
+      AppMethodBeat.o(24420);
       return null;
-      ab.e("MicroMsg.ExtControlAccountSyncProvider", "AccountHelper == null");
-      vA(4);
+      ad.e("MicroMsg.ExtControlAccountSyncProvider", "AccountHelper == null");
+      BS(4);
     }
   }
   
@@ -105,7 +105,7 @@ public class ExtControlProviderAccountSync
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.provider.ExtControlProviderAccountSync
  * JD-Core Version:    0.7.0.1
  */

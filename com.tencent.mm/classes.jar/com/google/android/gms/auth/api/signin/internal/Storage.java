@@ -26,23 +26,23 @@ public class Storage
   
   static
   {
-    AppMethodBeat.i(60406);
+    AppMethodBeat.i(10898);
     zzaf = new ReentrantLock();
-    AppMethodBeat.o(60406);
+    AppMethodBeat.o(10898);
   }
   
   @VisibleForTesting
   private Storage(Context paramContext)
   {
-    AppMethodBeat.i(60392);
+    AppMethodBeat.i(10884);
     this.zzah = new ReentrantLock();
     this.zzai = paramContext.getSharedPreferences("com.google.android.gms.signin", 0);
-    AppMethodBeat.o(60392);
+    AppMethodBeat.o(10884);
   }
   
   public static Storage getInstance(Context paramContext)
   {
-    AppMethodBeat.i(60391);
+    AppMethodBeat.i(10883);
     Preconditions.checkNotNull(paramContext);
     zzaf.lock();
     try
@@ -56,14 +56,14 @@ public class Storage
     finally
     {
       zzaf.unlock();
-      AppMethodBeat.o(60391);
+      AppMethodBeat.o(10883);
     }
   }
   
   @VisibleForTesting
   public static void setInstance(@Nullable Storage paramStorage)
   {
-    AppMethodBeat.i(60390);
+    AppMethodBeat.i(10882);
     zzaf.lock();
     try
     {
@@ -73,15 +73,15 @@ public class Storage
     finally
     {
       zzaf.unlock();
-      AppMethodBeat.o(60390);
+      AppMethodBeat.o(10882);
     }
   }
   
   private static String zza(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(60405);
+    AppMethodBeat.i(10897);
     paramString1 = String.valueOf(paramString1).length() + 1 + String.valueOf(paramString2).length() + paramString1 + ":" + paramString2;
-    AppMethodBeat.o(60405);
+    AppMethodBeat.o(10897);
     return paramString1;
   }
   
@@ -89,10 +89,10 @@ public class Storage
   @VisibleForTesting
   private final GoogleSignInAccount zzb(String paramString)
   {
-    AppMethodBeat.i(60397);
+    AppMethodBeat.i(10889);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(60397);
+      AppMethodBeat.o(10889);
       return null;
     }
     paramString = getFromStore(zza("googleSignInAccount", paramString));
@@ -100,14 +100,14 @@ public class Storage
     try
     {
       paramString = GoogleSignInAccount.fromJsonString(paramString);
-      AppMethodBeat.o(60397);
+      AppMethodBeat.o(10889);
       return paramString;
     }
     catch (JSONException paramString)
     {
-      AppMethodBeat.o(60397);
+      AppMethodBeat.o(10889);
     }
-    AppMethodBeat.o(60397);
+    AppMethodBeat.o(10889);
     return null;
     return null;
   }
@@ -116,10 +116,10 @@ public class Storage
   @VisibleForTesting
   private final GoogleSignInOptions zzc(String paramString)
   {
-    AppMethodBeat.i(60399);
+    AppMethodBeat.i(10891);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(60399);
+      AppMethodBeat.o(10891);
       return null;
     }
     paramString = getFromStore(zza("googleSignInOptions", paramString));
@@ -127,21 +127,21 @@ public class Storage
     try
     {
       paramString = GoogleSignInOptions.fromJsonString(paramString);
-      AppMethodBeat.o(60399);
+      AppMethodBeat.o(10891);
       return paramString;
     }
     catch (JSONException paramString)
     {
-      AppMethodBeat.o(60399);
+      AppMethodBeat.o(10891);
     }
-    AppMethodBeat.o(60399);
+    AppMethodBeat.o(10891);
     return null;
     return null;
   }
   
   public void clear()
   {
-    AppMethodBeat.i(60404);
+    AppMethodBeat.i(10896);
     this.zzah.lock();
     try
     {
@@ -151,14 +151,14 @@ public class Storage
     finally
     {
       this.zzah.unlock();
-      AppMethodBeat.o(60404);
+      AppMethodBeat.o(10896);
     }
   }
   
   @Nullable
   protected String getFromStore(String paramString)
   {
-    AppMethodBeat.i(60401);
+    AppMethodBeat.i(10893);
     this.zzah.lock();
     try
     {
@@ -168,40 +168,40 @@ public class Storage
     finally
     {
       this.zzah.unlock();
-      AppMethodBeat.o(60401);
+      AppMethodBeat.o(10893);
     }
   }
   
   @Nullable
   public GoogleSignInAccount getSavedDefaultGoogleSignInAccount()
   {
-    AppMethodBeat.i(60396);
+    AppMethodBeat.i(10888);
     GoogleSignInAccount localGoogleSignInAccount = zzb(getFromStore("defaultGoogleSignInAccount"));
-    AppMethodBeat.o(60396);
+    AppMethodBeat.o(10888);
     return localGoogleSignInAccount;
   }
   
   @Nullable
   public GoogleSignInOptions getSavedDefaultGoogleSignInOptions()
   {
-    AppMethodBeat.i(60398);
+    AppMethodBeat.i(10890);
     GoogleSignInOptions localGoogleSignInOptions = zzc(getFromStore("defaultGoogleSignInAccount"));
-    AppMethodBeat.o(60398);
+    AppMethodBeat.o(10890);
     return localGoogleSignInOptions;
   }
   
   @Nullable
   public String getSavedRefreshToken()
   {
-    AppMethodBeat.i(60400);
+    AppMethodBeat.i(10892);
     String str = getFromStore("refreshToken");
-    AppMethodBeat.o(60400);
+    AppMethodBeat.o(10892);
     return str;
   }
   
   protected void removeFromStore(String paramString)
   {
-    AppMethodBeat.i(60403);
+    AppMethodBeat.i(10895);
     this.zzah.lock();
     try
     {
@@ -211,13 +211,13 @@ public class Storage
     finally
     {
       this.zzah.unlock();
-      AppMethodBeat.o(60403);
+      AppMethodBeat.o(10895);
     }
   }
   
   public void removeSavedDefaultGoogleSignInAccount()
   {
-    AppMethodBeat.i(60402);
+    AppMethodBeat.i(10894);
     String str = getFromStore("defaultGoogleSignInAccount");
     removeFromStore("defaultGoogleSignInAccount");
     if (!TextUtils.isEmpty(str))
@@ -225,12 +225,12 @@ public class Storage
       removeFromStore(zza("googleSignInAccount", str));
       removeFromStore(zza("googleSignInOptions", str));
     }
-    AppMethodBeat.o(60402);
+    AppMethodBeat.o(10894);
   }
   
   public void saveDefaultGoogleSignInAccount(GoogleSignInAccount paramGoogleSignInAccount, GoogleSignInOptions paramGoogleSignInOptions)
   {
-    AppMethodBeat.i(60393);
+    AppMethodBeat.i(10885);
     Preconditions.checkNotNull(paramGoogleSignInAccount);
     Preconditions.checkNotNull(paramGoogleSignInOptions);
     saveToStore("defaultGoogleSignInAccount", paramGoogleSignInAccount.getObfuscatedIdentifier());
@@ -239,21 +239,21 @@ public class Storage
     String str = paramGoogleSignInAccount.getObfuscatedIdentifier();
     saveToStore(zza("googleSignInAccount", str), paramGoogleSignInAccount.toJsonForStorage());
     saveToStore(zza("googleSignInOptions", str), paramGoogleSignInOptions.toJson());
-    AppMethodBeat.o(60393);
+    AppMethodBeat.o(10885);
   }
   
   public void saveRefreshToken(String paramString)
   {
-    AppMethodBeat.i(60394);
+    AppMethodBeat.i(10886);
     if (!TextUtils.isEmpty(paramString)) {
       saveToStore("refreshToken", paramString);
     }
-    AppMethodBeat.o(60394);
+    AppMethodBeat.o(10886);
   }
   
   protected void saveToStore(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(60395);
+    AppMethodBeat.i(10887);
     this.zzah.lock();
     try
     {
@@ -263,7 +263,7 @@ public class Storage
     finally
     {
       this.zzah.unlock();
-      AppMethodBeat.o(60395);
+      AppMethodBeat.o(10887);
     }
   }
 }

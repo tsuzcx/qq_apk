@@ -16,22 +16,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends RecyclerView.h
 {
-  private final Drawable acK;
-  private final Drawable lcs;
+  private final Drawable ajR;
   private int mSize;
+  private final Drawable ojB;
   
   public a(Resources paramResources)
   {
-    AppMethodBeat.i(136257);
-    this.acK = new ColorDrawable(paramResources.getColor(2131689965));
-    this.mSize = paramResources.getDimensionPixelSize(2131428471);
-    this.lcs = new ColorDrawable(-1);
-    AppMethodBeat.o(136257);
+    AppMethodBeat.i(9025);
+    this.ajR = new ColorDrawable(paramResources.getColor(2131100251));
+    this.mSize = paramResources.getDimensionPixelSize(2131166455);
+    this.ojB = new ColorDrawable(paramResources.getColor(2131101179));
+    AppMethodBeat.o(9025);
   }
   
   public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    AppMethodBeat.i(136258);
+    AppMethodBeat.i(9026);
     int j = paramRecyclerView.getPaddingLeft();
     int k = paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight();
     int m = paramRecyclerView.getChildCount();
@@ -46,8 +46,8 @@ public final class a
       if ((localView2.getVisibility() == 8) || (localView1.getVisibility() == 8)) {
         if ((localView1 instanceof TaskItemView))
         {
-          this.lcs.setBounds(j, n, k, i1);
-          this.lcs.draw(paramCanvas);
+          this.ojB.setBounds(j, n, k, i1);
+          this.ojB.draw(paramCanvas);
         }
       }
       for (;;)
@@ -56,8 +56,8 @@ public final class a
         break;
         if (((localView1 instanceof TaskManagerHeaderView)) || ((localView1 instanceof TaskHeaderView)) || ((localView1 instanceof ExpandView)))
         {
-          this.acK.setBounds(j, n, k, i1);
-          this.acK.draw(paramCanvas);
+          this.ajR.setBounds(j, n, k, i1);
+          this.ajR.draw(paramCanvas);
         }
         else
         {
@@ -68,39 +68,39 @@ public final class a
             {
               localView2 = ((ViewGroup)localView2).getChildAt(0);
               if ((localView2 instanceof TaskHeaderView)) {
-                break label352;
+                break label353;
               }
               if (((localView2 instanceof ExpandView)) && (localView2.getVisibility() == 8))
               {
-                this.acK.setBounds(j, n, k, i1);
-                this.acK.draw(paramCanvas);
+                this.ajR.setBounds(j, n, k, i1);
+                this.ajR.draw(paramCanvas);
                 continue;
               }
             }
-            this.acK.setBounds(((TaskItemView)localView1).getNamePaddingLeft() + j, n, k, i1);
-            this.acK.draw(paramCanvas);
-            this.lcs.setBounds(j, n, ((TaskItemView)localView1).getNamePaddingLeft() + j, i1);
-            this.lcs.draw(paramCanvas);
+            this.ajR.setBounds(((TaskItemView)localView1).getNamePaddingLeft() + j, n, k, i1);
+            this.ajR.draw(paramCanvas);
+            this.ojB.setBounds(j, n, ((TaskItemView)localView1).getNamePaddingLeft() + j, i1);
+            this.ojB.draw(paramCanvas);
             continue;
           }
-          label352:
+          label353:
           super.a(paramCanvas, paramRecyclerView, params);
         }
       }
     }
-    AppMethodBeat.o(136258);
+    AppMethodBeat.o(9026);
   }
   
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    AppMethodBeat.i(136259);
+    AppMethodBeat.i(9027);
     paramRect.set(0, 0, 0, this.mSize);
-    AppMethodBeat.o(136259);
+    AppMethodBeat.o(9027);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.ui.a
  * JD-Core Version:    0.7.0.1
  */

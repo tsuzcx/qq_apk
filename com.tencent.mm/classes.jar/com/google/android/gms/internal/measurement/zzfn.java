@@ -17,7 +17,7 @@ final class zzfn
   
   private zzfn(String paramString, zzfm paramzzfm, int paramInt, Throwable paramThrowable, byte[] paramArrayOfByte, Map<String, List<String>> paramMap)
   {
-    AppMethodBeat.i(68930);
+    AppMethodBeat.i(1453);
     Preconditions.checkNotNull(paramzzfm);
     this.zzajh = paramzzfm;
     this.status = paramInt;
@@ -25,19 +25,19 @@ final class zzfn
     this.zzajj = paramArrayOfByte;
     this.packageName = paramString;
     this.zzajk = paramMap;
-    AppMethodBeat.o(68930);
+    AppMethodBeat.o(1453);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(68931);
+    AppMethodBeat.i(1454);
     this.zzajh.zza(this.packageName, this.status, this.zzaji, this.zzajj, this.zzajk);
-    AppMethodBeat.o(68931);
+    AppMethodBeat.o(1454);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzfn
  * JD-Core Version:    0.7.0.1
  */

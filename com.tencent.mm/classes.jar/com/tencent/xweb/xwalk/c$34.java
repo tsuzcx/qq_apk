@@ -11,14 +11,14 @@ final class c$34
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(85164);
-    this.BIO.BIK.setVisibility(8);
-    AppMethodBeat.o(85164);
+    AppMethodBeat.i(154187);
+    this.IST.ISL.setVisibility(8);
+    AppMethodBeat.o(154187);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.xweb.xwalk.c.34
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ud
   extends b
 {
-  public ud.a cKE;
+  public a dzv;
   
   public ud()
   {
@@ -15,16 +15,22 @@ public final class ud
   
   private ud(byte paramByte)
   {
-    AppMethodBeat.i(111113);
-    this.cKE = new ud.a();
-    this.ymq = false;
+    AppMethodBeat.i(125648);
+    this.dzv = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(111113);
+    AppMethodBeat.o(125648);
+  }
+  
+  public static final class a
+  {
+    public String id;
+    public int type = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.ud
  * JD-Core Version:    0.7.0.1
  */

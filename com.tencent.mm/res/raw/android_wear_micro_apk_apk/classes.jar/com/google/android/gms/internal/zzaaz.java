@@ -8,12 +8,12 @@ import android.net.Uri;
 public final class zzaaz
   extends BroadcastReceiver
 {
-  private final au OP;
+  private final au QE;
   protected Context mContext;
   
   public zzaaz(au paramau)
   {
-    this.OP = paramau;
+    this.QE = paramau;
   }
   
   public final void onReceive(Context paramContext, Intent paramIntent)
@@ -25,7 +25,7 @@ public final class zzaaz
     }
     if ("com.google.android.gms".equals(paramContext))
     {
-      this.OP.jdMethod_if();
+      this.QE.in();
       unregister();
     }
   }

@@ -26,7 +26,7 @@ public class HttpproxyFacade
   
   public static void idKeyReport(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(124406);
+    AppMethodBeat.i(89680);
     try
     {
       if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
@@ -36,7 +36,7 @@ public class HttpproxyFacade
         {
           new StringBuilder("idKeyReport:id=").append(paramString1).append(",key=").append(paramString2).append(",value=").append(paramString3);
           localHttpproxyFacade.mUtils.idKeyReport(paramString1, paramString2, paramString3);
-          AppMethodBeat.o(124406);
+          AppMethodBeat.o(89680);
           return;
         }
       }
@@ -44,7 +44,7 @@ public class HttpproxyFacade
     catch (Throwable paramString1)
     {
       print(6, TAG, "idKeyReport exception");
-      AppMethodBeat.o(124406);
+      AppMethodBeat.o(89680);
     }
   }
   
@@ -52,12 +52,12 @@ public class HttpproxyFacade
   {
     try
     {
-      AppMethodBeat.i(124402);
+      AppMethodBeat.i(89676);
       if (mInstance == null) {
         mInstance = new HttpproxyFacade();
       }
       HttpproxyFacade localHttpproxyFacade = mInstance;
-      AppMethodBeat.o(124402);
+      AppMethodBeat.o(89676);
       return localHttpproxyFacade;
     }
     finally {}
@@ -117,7 +117,7 @@ public class HttpproxyFacade
   
   public static void jsonReport(String paramString)
   {
-    AppMethodBeat.i(124405);
+    AppMethodBeat.i(89679);
     for (;;)
     {
       String str1;
@@ -153,7 +153,7 @@ public class HttpproxyFacade
           if (str1.length() <= 1000)
           {
             paramString.mUtils.httpproxyReport(new String[] { str1 });
-            AppMethodBeat.o(124405);
+            AppMethodBeat.o(89679);
             return;
           }
           int j = str1.length();
@@ -164,18 +164,18 @@ public class HttpproxyFacade
           localObject = str1.substring(0, 1000);
           str1 = str1.substring(1000, i);
           paramString.mUtils.httpproxyReport(new String[] { localObject, str1 });
-          AppMethodBeat.o(124405);
+          AppMethodBeat.o(89679);
         }
       }
       catch (Throwable paramString)
       {
         print(6, TAG, "reportMTA exception");
-        AppMethodBeat.o(124405);
+        AppMethodBeat.o(89679);
         return;
       }
       label303:
       "IUtils.MTA_Report:".concat(String.valueOf(str1));
-      AppMethodBeat.o(124405);
+      AppMethodBeat.o(89679);
       return;
       label320:
       Object localObject = "";
@@ -184,7 +184,7 @@ public class HttpproxyFacade
   
   public static void kvReport(String paramString)
   {
-    AppMethodBeat.i(124407);
+    AppMethodBeat.i(89681);
     try
     {
       String str1 = ConfigStorage.getHttpProxyVersionCode();
@@ -204,29 +204,29 @@ public class HttpproxyFacade
       if (localHttpproxyFacade.mUtils != null)
       {
         localHttpproxyFacade.mUtils.kvReport(new String[] { paramString, str3, str1, str2, str4, str5, str6, str7, str8, str9, str10, localObject });
-        AppMethodBeat.o(124407);
+        AppMethodBeat.o(89681);
         return;
       }
     }
     catch (Throwable paramString)
     {
       print(6, TAG, "kvReport exception");
-      AppMethodBeat.o(124407);
+      AppMethodBeat.o(89681);
     }
   }
   
   public static void print(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(124404);
+    AppMethodBeat.i(89678);
     HttpproxyFacade localHttpproxyFacade = instance();
     if (localHttpproxyFacade.mUtils != null)
     {
       localHttpproxyFacade.mUtils.javaUtilLog(paramInt, paramString1, paramString2);
-      AppMethodBeat.o(124404);
+      AppMethodBeat.o(89678);
       return;
     }
     "IUtils.javaUtilLog not init ".concat(String.valueOf(paramString2));
-    AppMethodBeat.o(124404);
+    AppMethodBeat.o(89678);
   }
   
   public static void setContext(Context paramContext)
@@ -275,7 +275,7 @@ public class HttpproxyFacade
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqvideo.proxy.httpproxy.HttpproxyFacade
  * JD-Core Version:    0.7.0.1
  */

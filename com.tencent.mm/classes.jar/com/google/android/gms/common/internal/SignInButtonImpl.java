@@ -28,56 +28,56 @@ public final class SignInButtonImpl
   
   private static int zza(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(61385);
+    AppMethodBeat.i(11877);
     switch (paramInt1)
     {
     default: 
       IllegalStateException localIllegalStateException = new IllegalStateException(33 + "Unknown color scheme: " + paramInt1);
-      AppMethodBeat.o(61385);
+      AppMethodBeat.o(11877);
       throw localIllegalStateException;
     case 0: 
-      AppMethodBeat.o(61385);
+      AppMethodBeat.o(11877);
       return paramInt2;
     case 1: 
-      AppMethodBeat.o(61385);
+      AppMethodBeat.o(11877);
       return paramInt3;
     }
-    AppMethodBeat.o(61385);
+    AppMethodBeat.o(11877);
     return paramInt4;
   }
   
   public final void configure(Resources paramResources, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(61384);
+    AppMethodBeat.i(11876);
     setTypeface(Typeface.DEFAULT_BOLD);
     setTextSize(14.0F);
     float f = paramResources.getDisplayMetrics().density;
     setMinHeight((int)(f * 48.0F + 0.5F));
     setMinWidth((int)(f * 48.0F + 0.5F));
-    int j = zza(paramInt2, 2130838449, 2130838454, 2130838454);
-    int i = zza(paramInt2, 2130838458, 2130838463, 2130838463);
+    int j = zza(paramInt2, 2131231823, 2131231828, 2131231828);
+    int i = zza(paramInt2, 2131231832, 2131231837, 2131231837);
     switch (paramInt1)
     {
     default: 
       paramResources = new IllegalStateException(32 + "Unknown button size: " + paramInt1);
-      AppMethodBeat.o(61384);
+      AppMethodBeat.o(11876);
       throw paramResources;
     case 2: 
       i = j;
     }
-    Drawable localDrawable = a.e(paramResources.getDrawable(i));
-    a.a(localDrawable, paramResources.getColorStateList(2131690747));
+    Drawable localDrawable = a.i(paramResources.getDrawable(i));
+    a.a(localDrawable, paramResources.getColorStateList(2131100190));
     a.a(localDrawable, PorterDuff.Mode.SRC_ATOP);
     setBackgroundDrawable(localDrawable);
-    setTextColor((ColorStateList)Preconditions.checkNotNull(paramResources.getColorStateList(zza(paramInt2, 2131690745, 2131690746, 2131690746))));
+    setTextColor((ColorStateList)Preconditions.checkNotNull(paramResources.getColorStateList(zza(paramInt2, 2131100180, 2131100185, 2131100185))));
     switch (paramInt1)
     {
     default: 
       paramResources = new IllegalStateException(32 + "Unknown button size: " + paramInt1);
-      AppMethodBeat.o(61384);
+      AppMethodBeat.o(11876);
       throw paramResources;
     case 0: 
-      setText(paramResources.getString(2131296302));
+      setText(paramResources.getString(2131757550));
     }
     for (;;)
     {
@@ -85,9 +85,9 @@ public final class SignInButtonImpl
       if (DeviceProperties.isWearable(getContext())) {
         setGravity(19);
       }
-      AppMethodBeat.o(61384);
+      AppMethodBeat.o(11876);
       return;
-      setText(paramResources.getString(2131296303));
+      setText(paramResources.getString(2131757551));
       continue;
       setText(null);
     }
@@ -95,14 +95,14 @@ public final class SignInButtonImpl
   
   public final void configure(Resources paramResources, SignInButtonConfig paramSignInButtonConfig)
   {
-    AppMethodBeat.i(61383);
+    AppMethodBeat.i(11875);
     configure(paramResources, paramSignInButtonConfig.getButtonSize(), paramSignInButtonConfig.getColorScheme());
-    AppMethodBeat.o(61383);
+    AppMethodBeat.o(11875);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.common.internal.SignInButtonImpl
  * JD-Core Version:    0.7.0.1
  */

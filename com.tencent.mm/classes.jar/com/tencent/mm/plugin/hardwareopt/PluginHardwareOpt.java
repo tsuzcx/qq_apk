@@ -5,8 +5,8 @@ import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.hardwareopt.a.b;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.messenger.foundation.a.q;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class PluginHardwareOpt
   extends f
@@ -14,58 +14,58 @@ public class PluginHardwareOpt
 {
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(59266);
-    if (!paramg.SD())
+    AppMethodBeat.i(55548);
+    if (!paramg.agu())
     {
-      AppMethodBeat.o(59266);
+      AppMethodBeat.o(55548);
       return;
     }
-    ab.v("MicroMsg.PluginHardwareOpt", "hy: on config");
+    ad.v("MicroMsg.PluginHardwareOpt", "hy: on config");
     com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.hardwareopt.a.a.a.class, new com.tencent.mm.plugin.hardwareopt.a.a());
-    AppMethodBeat.o(59266);
+    AppMethodBeat.o(55548);
   }
   
   public void dependency()
   {
-    AppMethodBeat.i(59265);
-    dependsOn(p.class);
-    AppMethodBeat.o(59265);
+    AppMethodBeat.i(55547);
+    dependsOn(q.class);
+    AppMethodBeat.o(55547);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(59267);
-    if (paramg.SD()) {
-      ab.i("MicroMsg.PluginHardwareOpt", "hy: on execute. ");
+    AppMethodBeat.i(55549);
+    if (paramg.agu()) {
+      ad.i("MicroMsg.PluginHardwareOpt", "hy: on execute. ");
     }
-    AppMethodBeat.o(59267);
+    AppMethodBeat.o(55549);
   }
   
   public void installed()
   {
-    AppMethodBeat.i(59264);
+    AppMethodBeat.i(55546);
     alias(b.class);
-    AppMethodBeat.o(59264);
+    AppMethodBeat.o(55546);
   }
   
   public void onAccountInitialized(e.c paramc)
   {
-    AppMethodBeat.i(59268);
-    ab.v("MicroMsg.PluginHardwareOpt", "hy: on onAccountInitialized");
-    ((com.tencent.mm.plugin.hardwareopt.a.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.hardwareopt.a.a.a.class)).ip(false);
-    AppMethodBeat.o(59268);
+    AppMethodBeat.i(55550);
+    ad.v("MicroMsg.PluginHardwareOpt", "hy: on onAccountInitialized");
+    ((com.tencent.mm.plugin.hardwareopt.a.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.hardwareopt.a.a.a.class)).me(false);
+    AppMethodBeat.o(55550);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(59269);
-    ab.v("MicroMsg.PluginHardwareOpt", "hy: on onAccountRelease");
-    AppMethodBeat.o(59269);
+    AppMethodBeat.i(55551);
+    ad.v("MicroMsg.PluginHardwareOpt", "hy: on onAccountRelease");
+    AppMethodBeat.o(55551);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.hardwareopt.PluginHardwareOpt
  * JD-Core Version:    0.7.0.1
  */

@@ -24,9 +24,9 @@ public class SignInRequest
   
   static
   {
-    AppMethodBeat.i(61698);
+    AppMethodBeat.i(12190);
     CREATOR = new SignInRequestCreator();
-    AppMethodBeat.o(61698);
+    AppMethodBeat.o(12190);
   }
   
   @SafeParcelable.Constructor
@@ -48,12 +48,12 @@ public class SignInRequest
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(61697);
+    AppMethodBeat.i(12189);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
     SafeParcelWriter.writeParcelable(paramParcel, 2, getResolveAccountRequest(), paramInt, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(61697);
+    AppMethodBeat.o(12189);
   }
 }
 

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/qm"
+<LinearLayout android:gravity="center|left" android:id="@id/dpa" android:layout_width="wrap_content" android:layout_height="80.0dip" android:layout_weight="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView style="@style/qn" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include layout="@layout/ap8" /> //暂时注掉
-<include layout="@layout/apd" />
-        <TextView android:textColor="@color/s4" android:gravity="center|left" android:id="@id/e2l" android:text="@string/bt0" android:drawableLeft="@raw/chatfrom_voice_playing_new" android:drawablePadding="20.0dip" style="@style/qu" />
-        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/qq" />
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="73.0dip" android:layout_height="fill_parent">
+        <ImageView android:gravity="left" android:id="@id/cou" android:background="@raw/default_avatar" android:layout_width="60.0dip" android:layout_height="60.0dip" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:singleLine="true" style="@style/lw" />
     </LinearLayout>
 </LinearLayout>

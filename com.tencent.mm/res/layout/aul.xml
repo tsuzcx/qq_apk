@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<LinearLayout android:orientation="vertical" android:id="@id/e2w" android:background="@color/a7z" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:scrollbars="none" style="@style/ni">
-        <LinearLayout android:gravity="center_horizontal" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" style="@style/l0">
-            <TextView android:gravity="center" android:id="@id/ejm" android:layout_marginBottom="@dimen/l2" android:lineSpacingExtra="4.0dip" style="@style/l1" />
-            <ImageView android:id="@id/nd" android:layout_width="280.0dip" android:layout_height="280.0dip" android:layout_marginBottom="@dimen/l2" />
-            <Button android:id="@id/ejn" android:text="@string/so" style="@style/nq" />
-        </LinearLayout>
-    </ScrollView>
+    <View android:id="@id/e2q" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:id="@id/e2s" android:background="@drawable/a5_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/e2x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/c8">
+            <TextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/e2y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:text="@string/dz3" />
+            <View android:background="@drawable/x8" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_below="@id/e2y" />
+        </RelativeLayout>
+        <android.support.v7.widget.RecyclerView android:id="@id/e2u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/c8" />
+        <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="44.0dip" android:layout_marginBottom="66.0dip">
+            <Button android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/e2r" android:background="@drawable/a57" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/r5" />
+            <Button android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/e2v" android:background="@drawable/a59" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/ti" android:layout_marginStart="@dimen/c5" android:layout_toEndOf="@id/e2r" />
+        </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

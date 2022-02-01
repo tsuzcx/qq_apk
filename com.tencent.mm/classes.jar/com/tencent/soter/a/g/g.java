@@ -8,73 +8,80 @@ import com.tencent.soter.core.c.d;
 
 public class g
 {
-  private static volatile g BnK = null;
-  private Handler BmO;
-  private Handler BnL;
+  private static volatile g Iwm = null;
+  private Handler Ivh;
+  HandlerThread Iwn;
+  Handler Iwo;
   
   private g()
   {
-    AppMethodBeat.i(10489);
-    this.BnL = null;
-    this.BmO = null;
-    HandlerThread localHandlerThread = new HandlerThread("SoterGenKeyHandlerThreadName");
-    localHandlerThread.start();
-    if (localHandlerThread.getLooper() != null) {}
-    for (this.BnL = new Handler(localHandlerThread.getLooper());; this.BnL = new Handler(Looper.getMainLooper()))
+    AppMethodBeat.i(40);
+    this.Iwo = null;
+    this.Ivh = null;
+    if (this.Iwn == null)
     {
-      this.BmO = new Handler(Looper.getMainLooper());
-      AppMethodBeat.o(10489);
+      this.Iwn = new HandlerThread("SoterGenKeyHandlerThreadName");
+      this.Iwn.start();
+      if (this.Iwn.getLooper() == null) {
+        break label94;
+      }
+    }
+    for (this.Iwo = new Handler(this.Iwn.getLooper());; this.Iwo = new Handler(Looper.getMainLooper()))
+    {
+      this.Ivh = new Handler(Looper.getMainLooper());
+      AppMethodBeat.o(40);
       return;
+      label94:
       d.e("Soter.SoterTaskThread", "soter: task looper is null! use main looper as the task looper", new Object[0]);
     }
   }
   
-  public static g dVG()
+  public static g fnz()
   {
-    AppMethodBeat.i(10490);
-    if (BnK == null) {
+    AppMethodBeat.i(41);
+    if (Iwm == null) {
       try
       {
-        if (BnK == null) {
-          BnK = new g();
+        if (Iwm == null) {
+          Iwm = new g();
         }
-        g localg1 = BnK;
+        g localg1 = Iwm;
         return localg1;
       }
       finally
       {
-        AppMethodBeat.o(10490);
+        AppMethodBeat.o(41);
       }
     }
-    g localg2 = BnK;
-    AppMethodBeat.o(10490);
+    g localg2 = Iwm;
+    AppMethodBeat.o(41);
     return localg2;
   }
   
-  public final void O(Runnable paramRunnable)
+  public final void ae(Runnable paramRunnable)
   {
-    AppMethodBeat.i(10491);
-    this.BnL.post(paramRunnable);
-    AppMethodBeat.o(10491);
+    AppMethodBeat.i(42);
+    this.Iwo.post(paramRunnable);
+    AppMethodBeat.o(42);
   }
   
-  public final void d(Runnable paramRunnable)
+  public final void f(Runnable paramRunnable)
   {
-    AppMethodBeat.i(10493);
-    this.BmO.post(paramRunnable);
-    AppMethodBeat.o(10493);
+    AppMethodBeat.i(44);
+    this.Ivh.post(paramRunnable);
+    AppMethodBeat.o(44);
   }
   
-  public final void t(Runnable paramRunnable, long paramLong)
+  public final void o(Runnable paramRunnable, long paramLong)
   {
-    AppMethodBeat.i(10492);
-    this.BnL.postDelayed(paramRunnable, paramLong);
-    AppMethodBeat.o(10492);
+    AppMethodBeat.i(43);
+    this.Iwo.postDelayed(paramRunnable, paramLong);
+    AppMethodBeat.o(43);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.soter.a.g.g
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,29 @@ import android.widget.ProgressBar;
 public class ContentLoadingProgressBar
   extends ProgressBar
 {
-  boolean Jl = false;
-  boolean Jm = false;
-  private final Runnable Jn = new ContentLoadingProgressBar.1(this);
-  private final Runnable Jo = new ContentLoadingProgressBar.2(this);
+  boolean Ql = false;
+  boolean Qm = false;
+  private final Runnable Qn = new Runnable()
+  {
+    public final void run()
+    {
+      ContentLoadingProgressBar.this.Ql = false;
+      ContentLoadingProgressBar.this.mStartTime = -1L;
+      ContentLoadingProgressBar.this.setVisibility(8);
+    }
+  };
+  private final Runnable Qo = new Runnable()
+  {
+    public final void run()
+    {
+      ContentLoadingProgressBar.this.Qm = false;
+      if (!ContentLoadingProgressBar.this.mDismissed)
+      {
+        ContentLoadingProgressBar.this.mStartTime = System.currentTimeMillis();
+        ContentLoadingProgressBar.this.setVisibility(0);
+      }
+    }
+  };
   boolean mDismissed = false;
   long mStartTime = -1L;
   
@@ -19,22 +38,22 @@ public class ContentLoadingProgressBar
     super(paramContext, paramAttributeSet, 0);
   }
   
-  private void dU()
+  private void fm()
   {
-    removeCallbacks(this.Jn);
-    removeCallbacks(this.Jo);
+    removeCallbacks(this.Qn);
+    removeCallbacks(this.Qo);
   }
   
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    dU();
+    fm();
   }
   
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    dU();
+    fm();
   }
 }
 

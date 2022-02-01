@@ -10,21 +10,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class n$2
   implements View.OnTouchListener
 {
-  float bTE;
-  float bTF;
-  int oMd = -1;
-  int oMe = -1;
-  int oMf;
-  int oMg;
+  float cEZ;
+  float cFa;
+  int tHo = -1;
+  int tHp = -1;
+  int tHq;
+  int tHr;
   
-  n$2(n paramn) {}
+  n$2(SliderSeekBar paramSliderSeekBar) {}
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(55012);
-    if (!n.h(this.oMc))
+    AppMethodBeat.i(94445);
+    if (!SliderSeekBar.h(this.tHn))
     {
-      AppMethodBeat.o(55012);
+      AppMethodBeat.o(94445);
       return false;
     }
     boolean bool;
@@ -32,130 +32,148 @@ final class n$2
     {
     case 4: 
     default: 
-      AppMethodBeat.o(55012);
+      AppMethodBeat.o(94445);
       return false;
     case 2: 
-      if ((!n.a(this.oMc, true)) && (!n.a(this.oMc, false)))
+      if ((!SliderSeekBar.a(this.tHn, true)) && (!SliderSeekBar.a(this.tHn, false)))
       {
-        AppMethodBeat.o(55012);
+        AppMethodBeat.o(94445);
         return false;
       }
-      if (n.i(this.oMc))
+      if (SliderSeekBar.i(this.tHn))
       {
-        AppMethodBeat.o(55012);
+        AppMethodBeat.o(94445);
         return true;
       }
-      this.oMg = 0;
+      this.tHr = 0;
       bool = false;
-      if (this.oMg < paramMotionEvent.getPointerCount())
+      if (this.tHr < paramMotionEvent.getPointerCount())
       {
-        this.oMf = paramMotionEvent.getPointerId(this.oMg);
-        if ((this.oMf == this.oMd) || (this.oMf == this.oMe))
+        this.tHq = paramMotionEvent.getPointerId(this.tHr);
+        if ((this.tHq == this.tHo) || (this.tHq == this.tHp))
         {
-          paramView = this.oMc;
-          if (this.oMf != this.oMd) {
-            break label257;
+          paramView = this.tHn;
+          if (this.tHq != this.tHo) {
+            break label301;
           }
           bool = true;
-          n.a(paramView, bool, paramMotionEvent.getX(this.oMg));
-          if (n.j(this.oMc) != null)
+          bool = paramView.d(bool, paramMotionEvent.getX(this.tHr));
+          if ((SliderSeekBar.j(this.tHn)) && (bool) && (!SliderSeekBar.k(this.tHn))) {
+            this.tHn.performHapticFeedback(0, 2);
+          }
+          SliderSeekBar.b(this.tHn, bool);
+          if (SliderSeekBar.l(this.tHn) != null)
           {
-            paramView = n.j(this.oMc);
-            if (this.oMf != this.oMd) {
-              break label262;
+            paramView = SliderSeekBar.l(this.tHn);
+            if (this.tHq != this.tHo) {
+              break label306;
             }
           }
         }
         for (bool = true;; bool = false)
         {
-          paramView.jq(bool);
+          paramView.nj(bool);
           bool = true;
-          this.oMg += 1;
+          this.tHr += 1;
           break;
           bool = false;
           break label191;
         }
       }
-      AppMethodBeat.o(55012);
+      AppMethodBeat.o(94445);
       return bool;
     case 1: 
     case 3: 
     case 6: 
       label191:
-      this.oMf = paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex());
-      label257:
-      label262:
-      if ((this.oMf != this.oMd) && (this.oMf != this.oMe))
+      this.tHq = paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex());
+      label301:
+      label306:
+      if ((this.tHq != this.tHo) && (this.tHq != this.tHp))
       {
-        AppMethodBeat.o(55012);
+        AppMethodBeat.o(94445);
         return false;
       }
-      if (n.j(this.oMc) != null) {
-        n.j(this.oMc).bRK();
-      }
-      paramView = this.oMc;
-      if (this.oMf == this.oMd)
+      if (SliderSeekBar.l(this.tHn) != null)
       {
-        bool = true;
-        n.a(paramView, bool, false);
-        if (this.oMf != this.oMd) {
-          break label389;
+        paramView = SliderSeekBar.l(this.tHn);
+        if (this.tHq == this.tHo)
+        {
+          bool = true;
+          paramView.yW(bool);
         }
-        this.oMd = -1;
+      }
+      else
+      {
+        paramView = this.tHn;
+        if (this.tHq != this.tHo) {
+          break label458;
+        }
+        bool = true;
+        label415:
+        SliderSeekBar.a(paramView, bool, false);
+        if (this.tHq != this.tHo) {
+          break label463;
+        }
+        this.tHo = -1;
       }
       for (;;)
       {
-        AppMethodBeat.o(55012);
+        SliderSeekBar.b(this.tHn, false);
+        AppMethodBeat.o(94445);
         return true;
         bool = false;
         break;
-        label389:
-        this.oMe = -1;
+        label458:
+        bool = false;
+        break label415;
+        label463:
+        this.tHp = -1;
       }
     }
-    this.oMg = paramMotionEvent.getActionIndex();
-    this.oMf = paramMotionEvent.getPointerId(this.oMg);
-    this.bTE = paramMotionEvent.getX(this.oMg);
-    this.bTF = paramMotionEvent.getY(this.oMg);
-    if (n.a(this.oMc, n.c(this.oMc), this.bTE, this.bTF))
+    this.tHr = paramMotionEvent.getActionIndex();
+    this.tHq = paramMotionEvent.getPointerId(this.tHr);
+    this.cEZ = paramMotionEvent.getX(this.tHr);
+    this.cFa = paramMotionEvent.getY(this.tHr);
+    if (SliderSeekBar.a(this.tHn, SliderSeekBar.c(this.tHn), this.cEZ, this.cFa))
     {
-      if (n.a(this.oMc, true))
+      if (SliderSeekBar.a(this.tHn, true))
       {
-        AppMethodBeat.o(55012);
+        AppMethodBeat.o(94445);
         return false;
       }
-      if (n.j(this.oMc) != null) {
-        n.j(this.oMc).bRJ();
+      if (SliderSeekBar.l(this.tHn) != null) {
+        SliderSeekBar.l(this.tHn).cQD();
       }
-      this.oMd = this.oMf;
-      n.a(this.oMc, n.c(this.oMc).getBounds().left);
-      n.a(this.oMc, true, true);
-      AppMethodBeat.o(55012);
+      this.tHo = this.tHq;
+      SliderSeekBar.b(this.tHn, SliderSeekBar.c(this.tHn).getBounds().left);
+      SliderSeekBar.a(this.tHn, true, true);
+      AppMethodBeat.o(94445);
       return true;
     }
-    if (n.a(this.oMc, n.e(this.oMc), this.bTE, this.bTF))
+    if (SliderSeekBar.a(this.tHn, SliderSeekBar.e(this.tHn), this.cEZ, this.cFa))
     {
-      if (n.a(this.oMc, false))
+      if (SliderSeekBar.a(this.tHn, false))
       {
-        AppMethodBeat.o(55012);
+        AppMethodBeat.o(94445);
         return false;
       }
-      if (n.j(this.oMc) != null) {
-        n.j(this.oMc).bRJ();
+      if (SliderSeekBar.l(this.tHn) != null) {
+        SliderSeekBar.l(this.tHn).cQD();
       }
-      this.oMe = this.oMf;
-      n.b(this.oMc, n.e(this.oMc).getBounds().right);
-      n.a(this.oMc, false, true);
-      AppMethodBeat.o(55012);
+      this.tHp = this.tHq;
+      SliderSeekBar.a(this.tHn, SliderSeekBar.e(this.tHn).getBounds().right);
+      SliderSeekBar.a(this.tHn, false, true);
+      AppMethodBeat.o(94445);
       return true;
     }
-    AppMethodBeat.o(55012);
+    AppMethodBeat.o(94445);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.n.2
  * JD-Core Version:    0.7.0.1
  */

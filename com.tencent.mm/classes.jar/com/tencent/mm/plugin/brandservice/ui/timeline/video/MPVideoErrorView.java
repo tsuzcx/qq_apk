@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video;
 
-import a.f.b.j;
-import a.l;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -10,63 +8,65 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoErrorView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "errIv", "Landroid/widget/ImageView;", "errTv", "Landroid/widget/TextView;", "root", "Landroid/view/View;", "init", "", "controller", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;", "aniHelper", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/MPVideoImageAnimationHelper;", "setCigError", "errMsg", "errCode", "", "setPlayError", "plugin-brandservice_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoErrorView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "errIv", "Landroid/widget/ImageView;", "errTv", "Landroid/widget/TextView;", "root", "Landroid/view/View;", "init", "", "controller", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;", "setCigError", "errMsg", "errCode", "", "setPlayError", "plugin-brandservice_release"})
 public final class MPVideoErrorView
   extends RelativeLayout
 {
   private final String TAG;
-  ImageView kgA;
-  View kgr;
-  TextView kgz;
+  View frN;
+  TextView njU;
+  ImageView njV;
   
   public MPVideoErrorView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(15250);
+    AppMethodBeat.i(7252);
     this.TAG = "MicroMsg.MPVideoErrorView";
-    View.inflate(paramContext, 2130970309, (ViewGroup)this);
-    paramContext = findViewById(2131826360);
-    j.p(paramContext, "findViewById(R.id.biz_video_play_err_info_tv)");
-    this.kgz = ((TextView)paramContext);
-    paramContext = findViewById(2131826359);
-    j.p(paramContext, "findViewById(R.id.biz_video_play_err_info_iv)");
-    this.kgA = ((ImageView)paramContext);
-    paramContext = findViewById(2131821003);
-    j.p(paramContext, "findViewById(R.id.root)");
-    this.kgr = paramContext;
-    AppMethodBeat.o(15250);
+    View.inflate(paramContext, 2131494953, (ViewGroup)this);
+    paramContext = findViewById(2131297398);
+    k.g(paramContext, "findViewById(R.id.biz_video_play_err_info_tv)");
+    this.njU = ((TextView)paramContext);
+    paramContext = findViewById(2131297397);
+    k.g(paramContext, "findViewById(R.id.biz_video_play_err_info_iv)");
+    this.njV = ((ImageView)paramContext);
+    paramContext = findViewById(2131304239);
+    k.g(paramContext, "findViewById(R.id.root)");
+    this.frN = paramContext;
+    AppMethodBeat.o(7252);
   }
   
   public final void setCigError$505cff1c(String paramString)
   {
-    AppMethodBeat.i(156912);
-    this.kgA.setBackgroundResource(2130838005);
-    if (!bo.isNullOrNil(paramString)) {
-      this.kgz.setText((CharSequence)(getContext().getString(2131301634) + ' ' + paramString));
+    AppMethodBeat.i(205025);
+    this.njV.setBackgroundResource(2131231310);
+    if (!bt.isNullOrNil(paramString)) {
+      this.njU.setText((CharSequence)(getContext().getString(2131761343) + ' ' + paramString));
     }
     for (;;)
     {
-      this.kgr.setClickable(true);
-      AppMethodBeat.o(156912);
+      this.frN.setClickable(true);
+      AppMethodBeat.o(205025);
       return;
-      this.kgz.setText((CharSequence)getContext().getString(2131301634));
+      this.njU.setText((CharSequence)getContext().getString(2131761343));
     }
   }
   
   public final void setPlayError$505cff1c(String paramString)
   {
-    AppMethodBeat.i(15248);
-    this.kgA.setBackgroundResource(2130837999);
-    this.kgz.setText((CharSequence)paramString);
-    this.kgr.setClickable(false);
-    AppMethodBeat.o(15248);
+    AppMethodBeat.i(7250);
+    this.njV.setBackgroundResource(2131231304);
+    this.njU.setText((CharSequence)paramString);
+    this.frN.setClickable(false);
+    AppMethodBeat.o(7250);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.video.MPVideoErrorView
  * JD-Core Version:    0.7.0.1
  */

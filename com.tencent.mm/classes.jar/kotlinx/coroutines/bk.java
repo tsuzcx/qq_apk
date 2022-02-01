@@ -1,85 +1,83 @@
 package kotlinx.coroutines;
 
-import a.f.b.j;
-import a.l;
-import a.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlinx.coroutines.a.f;
-import kotlinx.coroutines.a.h;
+import d.g.b.k;
+import d.l;
+import java.util.concurrent.CancellationException;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/NodeList;", "Lkotlinx/coroutines/internal/LockFreeLinkedListHead;", "Lkotlinx/coroutines/Incomplete;", "()V", "isActive", "", "()Z", "list", "getList", "()Lkotlinx/coroutines/NodeList;", "getString", "", "state", "toString", "kotlinx-coroutines-core"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/JobCancellationException;", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "Lkotlinx/coroutines/CopyableThrowable;", "message", "", "cause", "", "job", "Lkotlinx/coroutines/Job;", "(Ljava/lang/String;Ljava/lang/Throwable;Lkotlinx/coroutines/Job;)V", "createCopy", "equals", "", "other", "", "fillInStackTrace", "hashCode", "", "toString", "kotlinx-coroutines-core"})
 public final class bk
-  extends f
-  implements ay
+  extends CancellationException
+  implements w<bk>
 {
-  public final bk epJ()
+  public final bj Kes;
+  
+  public bk(String paramString, Throwable paramThrowable, bj parambj)
   {
-    return this;
+    super(paramString);
+    AppMethodBeat.i(118151);
+    this.Kes = parambj;
+    if (paramThrowable != null) {
+      initCause(paramThrowable);
+    }
+    AppMethodBeat.o(118151);
   }
   
-  public final String getString(String paramString)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(118559);
-    j.q(paramString, "state");
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("List{");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("}[");
-    int i = 1;
-    paramString = eqh();
-    if (paramString == null)
+    AppMethodBeat.i(118149);
+    if ((paramObject == (bk)this) || (((paramObject instanceof bk)) && (k.g(((bk)paramObject).getMessage(), getMessage())) && (k.g(((bk)paramObject).Kes, this.Kes)) && (k.g(((bk)paramObject).getCause(), getCause()))))
     {
-      paramString = new v("null cannot be cast to non-null type kotlinx.coroutines.internal.Node /* = kotlinx.coroutines.internal.LockFreeLinkedListNode */");
-      AppMethodBeat.o(118559);
-      throw paramString;
+      AppMethodBeat.o(118149);
+      return true;
     }
-    paramString = (h)paramString;
-    if ((j.e(paramString, (f)this) ^ true))
-    {
-      int j = i;
-      bf localbf;
-      if ((paramString instanceof bf))
-      {
-        localbf = (bf)paramString;
-        if (i == 0) {
-          break label130;
-        }
-        i = 0;
-      }
-      for (;;)
-      {
-        localStringBuilder.append(localbf);
-        j = i;
-        paramString = paramString.eqi();
-        i = j;
-        break;
-        label130:
-        localStringBuilder.append(", ");
-      }
-    }
-    localStringBuilder.append("]");
-    paramString = localStringBuilder.toString();
-    j.p(paramString, "StringBuilder().apply(builderAction).toString()");
-    AppMethodBeat.o(118559);
-    return paramString;
+    AppMethodBeat.o(118149);
+    return false;
   }
   
-  public final boolean isActive()
+  public final Throwable fillInStackTrace()
   {
-    return true;
+    AppMethodBeat.i(118147);
+    if (ah.getDEBUG())
+    {
+      localThrowable = super.fillInStackTrace();
+      AppMethodBeat.o(118147);
+      return localThrowable;
+    }
+    Throwable localThrowable = (Throwable)this;
+    AppMethodBeat.o(118147);
+    return localThrowable;
+  }
+  
+  public final int hashCode()
+  {
+    AppMethodBeat.i(118150);
+    Object localObject = getMessage();
+    if (localObject == null) {
+      k.fvU();
+    }
+    int j = ((String)localObject).hashCode();
+    int k = this.Kes.hashCode();
+    localObject = getCause();
+    if (localObject != null) {}
+    for (int i = ((Throwable)localObject).hashCode();; i = 0)
+    {
+      AppMethodBeat.o(118150);
+      return i + (j * 31 + k) * 31;
+    }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(118560);
-    String str = getString("Active");
-    AppMethodBeat.o(118560);
+    AppMethodBeat.i(118148);
+    String str = super.toString() + "; job=" + this.Kes;
+    AppMethodBeat.o(118148);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bk
  * JD-Core Version:    0.7.0.1
  */

@@ -10,29 +10,29 @@ public class zzc
   extends zza
 {
   public static final Parcelable.Creator<zzc> CREATOR = new cb();
-  public final am TH;
-  public final IntentFilter[] TI;
-  public final String TJ;
-  public final String TK;
+  public final am Vw;
+  public final IntentFilter[] Vx;
+  public final String Vy;
+  public final String Vz;
   
   zzc(IBinder paramIBinder, IntentFilter[] paramArrayOfIntentFilter, String paramString1, String paramString2)
   {
     if (paramIBinder != null) {}
-    for (this.TH = an.p(paramIBinder);; this.TH = null)
+    for (this.Vw = an.p(paramIBinder);; this.Vw = null)
     {
-      this.TI = paramArrayOfIntentFilter;
-      this.TJ = paramString1;
-      this.TK = paramString2;
+      this.Vx = paramArrayOfIntentFilter;
+      this.Vy = paramString1;
+      this.Vz = paramString2;
       return;
     }
   }
   
   public zzc(bz parambz)
   {
-    this.TH = parambz;
-    this.TI = parambz.kL();
-    this.TJ = parambz.kM();
-    this.TK = null;
+    this.Vw = parambz;
+    this.Vx = parambz.kU();
+    this.Vy = parambz.kV();
+    this.Vz = null;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

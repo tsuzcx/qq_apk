@@ -4,24 +4,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class a
 {
-  public static void ab(Bundle paramBundle)
+  public static void an(Bundle paramBundle)
   {
-    AppMethodBeat.i(26368);
+    AppMethodBeat.i(30050);
     Intent localIntent = new Intent();
-    localIntent.setPackage(ah.getContext().getPackageName());
+    localIntent.setPackage(aj.getContext().getPackageName());
     localIntent.setAction("com.tencent.mm.wear.message");
     localIntent.putExtras(paramBundle);
-    ah.getContext().sendBroadcast(localIntent);
-    AppMethodBeat.o(26368);
+    aj.getContext().sendBroadcast(localIntent);
+    AppMethodBeat.o(30050);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.b.a
  * JD-Core Version:    0.7.0.1
  */

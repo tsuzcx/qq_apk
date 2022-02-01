@@ -1,159 +1,159 @@
 package com.tencent.mm.ui.chatting.c.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.t;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.model.w;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class b
   extends com.tencent.mm.ui.chatting.c.a
   implements com.tencent.mm.ui.chatting.c.b.a
 {
-  private a zJu;
+  private a GzD;
   
   public b(a parama)
   {
-    this.zJu = parama;
+    this.GzD = parama;
   }
   
-  private boolean dJB()
+  private boolean eXa()
   {
-    AppMethodBeat.i(31910);
-    if (bo.isNullOrNil(this.caz.getTalkerUserName()))
+    AppMethodBeat.i(35816);
+    if (bt.isNullOrNil(this.cOd.getTalkerUserName()))
     {
-      AppMethodBeat.o(31910);
+      AppMethodBeat.o(35816);
       return false;
     }
-    if (t.oC(this.caz.getTalkerUserName()))
+    if (w.tm(this.cOd.getTalkerUserName()))
     {
-      AppMethodBeat.o(31910);
+      AppMethodBeat.o(35816);
       return false;
     }
-    if (this.zJu != null)
+    if (this.GzD != null)
     {
-      AppMethodBeat.o(31910);
+      AppMethodBeat.o(35816);
       return true;
     }
-    AppMethodBeat.o(31910);
+    AppMethodBeat.o(35816);
     return false;
   }
   
   public final void a(com.tencent.mm.ui.chatting.d.a parama)
   {
-    AppMethodBeat.i(31898);
+    AppMethodBeat.i(35804);
     super.a(parama);
-    if (this.zJu != null) {
-      this.zJu.a(parama);
+    if (this.GzD != null) {
+      this.GzD.a(parama);
     }
-    AppMethodBeat.o(31898);
+    AppMethodBeat.o(35804);
   }
   
-  public final void dBY()
+  public final void eQA()
   {
-    AppMethodBeat.i(31900);
-    if (dJB()) {
-      this.zJu.dBY();
+    AppMethodBeat.i(35806);
+    if (eXa()) {
+      this.GzD.eQA();
     }
-    AppMethodBeat.o(31900);
+    AppMethodBeat.o(35806);
   }
   
-  public final void dBZ()
+  public final void eQB()
   {
-    AppMethodBeat.i(31901);
-    if (dJB()) {
-      this.zJu.dBZ();
+    AppMethodBeat.i(35807);
+    if (eXa()) {
+      this.GzD.eQB();
     }
-    AppMethodBeat.o(31901);
+    AppMethodBeat.o(35807);
   }
   
-  public final void dCa()
+  public final void eQC()
   {
-    AppMethodBeat.i(31902);
-    if (dJB()) {
-      this.zJu.dCa();
+    AppMethodBeat.i(35808);
+    if (eXa()) {
+      this.GzD.eQC();
     }
-    AppMethodBeat.o(31902);
+    AppMethodBeat.o(35808);
   }
   
-  public final void dCb()
+  public final void eQD()
   {
-    AppMethodBeat.i(31903);
-    if (dJB()) {
-      this.zJu.dCb();
+    AppMethodBeat.i(35809);
+    if (eXa()) {
+      this.GzD.eQD();
     }
-    AppMethodBeat.o(31903);
+    AppMethodBeat.o(35809);
   }
   
-  public final void dCc()
+  public final void eQE()
   {
-    AppMethodBeat.i(31904);
-    if (dJB()) {
-      this.zJu.dCc();
+    AppMethodBeat.i(35810);
+    if (eXa()) {
+      this.GzD.eQE();
     }
-    AppMethodBeat.o(31904);
+    AppMethodBeat.o(35810);
   }
   
-  public final void dCd()
+  public final void eQF()
   {
-    AppMethodBeat.i(31905);
-    if (dJB()) {
-      this.zJu.dCd();
+    AppMethodBeat.i(35811);
+    if (eXa()) {
+      this.GzD.eQF();
     }
-    AppMethodBeat.o(31905);
+    AppMethodBeat.o(35811);
   }
   
-  public final void dCe()
+  public final void eQG()
   {
-    AppMethodBeat.i(31906);
-    if (dJB()) {
-      this.zJu.dCe();
+    AppMethodBeat.i(35812);
+    if (eXa()) {
+      this.GzD.eQG();
     }
-    AppMethodBeat.o(31906);
+    AppMethodBeat.o(35812);
   }
   
-  public final void dHq()
+  public final void eWx()
   {
-    AppMethodBeat.i(31899);
-    super.dHq();
-    if (this.zJu != null) {
-      this.zJu.dHq();
+    AppMethodBeat.i(35805);
+    super.eWx();
+    if (this.GzD != null) {
+      this.GzD.eWx();
     }
-    AppMethodBeat.o(31899);
+    AppMethodBeat.o(35805);
   }
   
-  public final void dIv()
+  public final void eXQ()
   {
-    AppMethodBeat.i(31907);
-    if (dJB()) {
-      this.zJu.dIv();
+    AppMethodBeat.i(35813);
+    if (eXa()) {
+      this.GzD.eXQ();
     }
-    AppMethodBeat.o(31907);
+    AppMethodBeat.o(35813);
   }
   
-  public final String dJA()
+  public final void eYU()
   {
-    AppMethodBeat.i(31909);
-    if (dJB())
+    AppMethodBeat.i(35814);
+    if (eXa()) {
+      this.GzD.eYU();
+    }
+    AppMethodBeat.o(35814);
+  }
+  
+  public final String eYV()
+  {
+    AppMethodBeat.i(35815);
+    if (eXa())
     {
-      String str = this.zJu.dJA();
-      AppMethodBeat.o(31909);
+      String str = this.GzD.eYV();
+      AppMethodBeat.o(35815);
       return str;
     }
-    AppMethodBeat.o(31909);
+    AppMethodBeat.o(35815);
     return null;
-  }
-  
-  public final void dJz()
-  {
-    AppMethodBeat.i(31908);
-    if (dJB()) {
-      this.zJu.dJz();
-    }
-    AppMethodBeat.o(31908);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.c.b
  * JD-Core Version:    0.7.0.1
  */

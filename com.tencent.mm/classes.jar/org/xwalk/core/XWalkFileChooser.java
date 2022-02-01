@@ -43,16 +43,16 @@ public class XWalkFileChooser
   
   private boolean canWriteExternalStorage()
   {
-    AppMethodBeat.i(85636);
+    AppMethodBeat.i(154731);
     try
     {
       boolean bool = Arrays.asList(this.mActivity.getPackageManager().getPackageInfo(this.mActivity.getPackageName(), 4096).requestedPermissions).contains("android.permission.WRITE_EXTERNAL_STORAGE");
-      AppMethodBeat.o(85636);
+      AppMethodBeat.o(154731);
       return bool;
     }
     catch (NullPointerException localNullPointerException)
     {
-      AppMethodBeat.o(85636);
+      AppMethodBeat.o(154731);
       return false;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
@@ -64,11 +64,11 @@ public class XWalkFileChooser
   
   private File createImageFile()
   {
-    AppMethodBeat.i(85637);
+    AppMethodBeat.i(154732);
     if (!Environment.getExternalStorageState().equals("mounted"))
     {
       Log.e("XWalkFileChooser", "External storage is not mounted.");
-      AppMethodBeat.o(85637);
+      AppMethodBeat.o(154732);
       return null;
     }
     Object localObject = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -81,35 +81,35 @@ public class XWalkFileChooser
     {
       localObject = File.createTempFile((String)localObject, ".jpg", localFile);
       Log.d("XWalkFileChooser", "Created image file: " + ((File)localObject).getAbsolutePath());
-      AppMethodBeat.o(85637);
+      AppMethodBeat.o(154732);
       return localObject;
     }
     catch (IOException localIOException)
     {
       Log.e("XWalkFileChooser", "Unable to create Image File, please make sure permission 'WRITE_EXTERNAL_STORAGE' was added.");
-      AppMethodBeat.o(85637);
+      AppMethodBeat.o(154732);
     }
     return null;
   }
   
   private boolean deleteImageFile()
   {
-    AppMethodBeat.i(85638);
+    AppMethodBeat.i(154733);
     if ((this.mCameraPhotoPath == null) || (!this.mCameraPhotoPath.contains("file:")))
     {
-      AppMethodBeat.o(85638);
+      AppMethodBeat.o(154733);
       return false;
     }
     String str = this.mCameraPhotoPath.split("file:")[1];
     boolean bool = new File(str).delete();
     Log.d("XWalkFileChooser", "Delete image file: " + str + " result: " + bool);
-    AppMethodBeat.o(85638);
+    AppMethodBeat.o(154733);
     return bool;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(85635);
+    AppMethodBeat.i(154730);
     if ((paramInt1 == 1) && (this.mFilePathCallback != null))
     {
       Log.d("XWalkFileChooser", "Activity result: ".concat(String.valueOf(paramInt2)));
@@ -131,7 +131,7 @@ public class XWalkFileChooser
     }
     else
     {
-      AppMethodBeat.o(85635);
+      AppMethodBeat.o(154730);
       return;
     }
     paramIntent = paramIntent.getDataString();
@@ -152,7 +152,7 @@ public class XWalkFileChooser
   
   public boolean showFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(85634);
+    AppMethodBeat.i(154729);
     this.mFilePathCallback = paramValueCallback;
     Intent localIntent1 = new Intent("android.media.action.IMAGE_CAPTURE");
     paramValueCallback = localIntent1;
@@ -191,21 +191,21 @@ public class XWalkFileChooser
       }
       this.mActivity.startActivityForResult(paramValueCallback, 1);
       Log.d("XWalkFileChooser", "Started taking picture");
-      AppMethodBeat.o(85634);
+      AppMethodBeat.o(154729);
       return true;
     }
     if (paramString1.startsWith("video/"))
     {
       this.mActivity.startActivityForResult(localIntent2, 1);
       Log.d("XWalkFileChooser", "Started camcorder");
-      AppMethodBeat.o(85634);
+      AppMethodBeat.o(154729);
       return true;
     }
     if (paramString1.startsWith("audio/"))
     {
       this.mActivity.startActivityForResult(localIntent3, 1);
       Log.d("XWalkFileChooser", "Started sound recorder");
-      AppMethodBeat.o(85634);
+      AppMethodBeat.o(154729);
       return true;
       label297:
       if (!paramString1.startsWith("image/")) {
@@ -235,7 +235,7 @@ public class XWalkFileChooser
       }
       this.mActivity.startActivityForResult(paramValueCallback, 1);
       Log.d("XWalkFileChooser", "Started chooser");
-      AppMethodBeat.o(85634);
+      AppMethodBeat.o(154729);
       return true;
       label449:
       if (paramString1.startsWith("video/"))
@@ -253,7 +253,7 @@ public class XWalkFileChooser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     org.xwalk.core.XWalkFileChooser
  * JD-Core Version:    0.7.0.1
  */

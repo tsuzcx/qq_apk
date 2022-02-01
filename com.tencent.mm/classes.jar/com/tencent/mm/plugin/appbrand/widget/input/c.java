@@ -7,51 +7,61 @@ import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.widget.input.d.e;
 import com.tencent.mm.plugin.appbrand.widget.input.d.h;
-import com.tencent.mm.ui.tools.b.c.a;
 import com.tencent.mm.ui.tools.f.a;
 import java.lang.ref.WeakReference;
+import java.util.Iterator;
 
 public abstract class c<Input extends EditText,  extends ab>
   extends com.tencent.mm.ui.widget.g
   implements aa
 {
-  public ae jkA;
-  public final int jkB;
-  final String jkC;
-  public final WeakReference<v> jkD;
-  public final View.OnFocusChangeListener jkE = new View.OnFocusChangeListener()
+  final String KDA;
+  public final View.OnFocusChangeListener KDB = new View.OnFocusChangeListener()
   {
     public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
     {
-      AppMethodBeat.i(123577);
-      c.this.fo(paramAnonymousBoolean);
+      AppMethodBeat.i(136308);
+      c.this.hA(paramAnonymousBoolean);
       if (paramAnonymousBoolean)
       {
-        o.a((v)c.this.jkD.get(), (ab)c.this.aQt());
-        ((ab)c.this.aQt()).setInputId(c.this.jkB);
-        o.b((v)c.this.jkD.get(), c.this);
+        o.a((com.tencent.mm.plugin.appbrand.page.aa)c.this.mar.get(), (ab)c.this.bsJ());
+        ((ab)c.this.bsJ()).setInputId(c.this.mao);
+        o.b((com.tencent.mm.plugin.appbrand.page.aa)c.this.mar.get(), c.this);
       }
-      AppMethodBeat.o(123577);
+      AppMethodBeat.o(136308);
     }
   };
-  private final c.a jkF = new c.2(this);
-  public af jkz;
-  
-  c(String paramString, v paramv, int paramInt)
+  private final com.tencent.mm.ui.tools.b.c.a KDC = new p.a()
   {
-    this.jkC = paramString;
-    this.jkD = new WeakReference(paramv);
-    this.jkB = paramInt;
+    public final void ck(String paramAnonymousString)
+    {
+      AppMethodBeat.i(168762);
+      if (c.this.bsJ() != null) {
+        c.a(c.this, c.this.bsJ().getEditableText());
+      }
+      AppMethodBeat.o(168762);
+    }
+  };
+  public af KDy;
+  public ae KDz;
+  public final int mao;
+  public final WeakReference<com.tencent.mm.plugin.appbrand.page.aa> mar;
+  
+  c(String paramString, com.tencent.mm.plugin.appbrand.page.aa paramaa, int paramInt)
+  {
+    this.KDA = paramString;
+    this.mar = new WeakReference(paramaa);
+    this.mao = paramInt;
   }
   
   private void b(Editable paramEditable)
   {
     af localaf;
-    if (this.jkz != null)
+    if (this.KDy != null)
     {
-      localaf = this.jkz;
+      localaf = this.KDy;
       if (paramEditable != null) {
         break label34;
       }
@@ -59,19 +69,19 @@ public abstract class c<Input extends EditText,  extends ab>
     label34:
     for (String str = "";; str = paramEditable.toString())
     {
-      localaf.a(str, Selection.getSelectionEnd(paramEditable), af.a.jnX);
+      localaf.a(str, Selection.getSelectionEnd(paramEditable), af.a.mdM);
       return;
     }
   }
   
-  public abstract boolean FN(String paramString);
+  public abstract boolean NK(String paramString);
   
   final void a(Editable paramEditable)
   {
     af localaf;
-    if (this.jkz != null)
+    if (this.KDy != null)
     {
-      localaf = this.jkz;
+      localaf = this.KDy;
       if (paramEditable != null) {
         break label34;
       }
@@ -79,19 +89,19 @@ public abstract class c<Input extends EditText,  extends ab>
     label34:
     for (String str = "";; str = paramEditable.toString())
     {
-      localaf.a(str, Selection.getSelectionEnd(paramEditable), af.a.jnV);
+      localaf.a(str, Selection.getSelectionEnd(paramEditable), af.a.mdK);
       return;
     }
   }
   
   public final void a(String paramString, Integer paramInteger)
   {
-    FN(paramString);
+    NK(paramString);
     if (paramInteger == null) {}
     for (int i = -1;; i = paramInteger.intValue())
     {
       paramString = Integer.valueOf(i);
-      dv(paramString.intValue(), paramString.intValue());
+      ja(paramString.intValue(), paramString.intValue());
       return;
     }
   }
@@ -103,64 +113,21 @@ public abstract class c<Input extends EditText,  extends ab>
     for (;;)
     {
       return false;
-      if (paramh.jqR == null) {
-        paramh.jqR = Integer.valueOf(140);
+      if (paramh.mgI == null) {
+        paramh.mgI = Integer.valueOf(140);
       }
-      while (aQt() != null)
+      while (bsJ() != null)
       {
-        paramh = p.a(aQt()).QS(paramh.jqR.intValue());
-        paramh.AyD = false;
-        paramh.jmp = f.a.Avm;
-        paramh.a(this.jkF);
+        paramh = p.a(bsJ()).aaj(paramh.mgI.intValue());
+        paramh.HuM = false;
+        paramh.mcf = f.a.Hrl;
+        paramh.a(this.KDC);
         return true;
-        if (paramh.jqR.intValue() <= 0) {
-          paramh.jqR = Integer.valueOf(2147483647);
+        if (paramh.mgI.intValue() <= 0) {
+          paramh.mgI = Integer.valueOf(2147483647);
         }
       }
     }
-  }
-  
-  public final Editable aQH()
-  {
-    if (aQt() == null) {
-      return null;
-    }
-    return aQt().getEditableText();
-  }
-  
-  public abstract Input aQt();
-  
-  public abstract Rect aQu();
-  
-  public final boolean aQv()
-  {
-    return aQx();
-  }
-  
-  public final Input aQw()
-  {
-    return aQt();
-  }
-  
-  public final boolean aQx()
-  {
-    EditText localEditText = aQt();
-    if (localEditText == null) {
-      return false;
-    }
-    ((ab)localEditText).b(this.jkE);
-    localEditText.removeTextChangedListener(this);
-    ((ab)localEditText).destroy();
-    Object localObject = (v)this.jkD.get();
-    if (localObject == null) {
-      return false;
-    }
-    localObject = (g)((v)localObject).aJk();
-    if (localObject == null) {
-      return false;
-    }
-    ((g)localObject).cI(localEditText);
-    return true;
   }
   
   public final void afterTextChanged(Editable paramEditable)
@@ -170,33 +137,117 @@ public abstract class c<Input extends EditText,  extends ab>
   
   protected abstract h b(h paramh);
   
-  protected final void dv(int paramInt1, int paramInt2)
+  public abstract Input bsJ();
+  
+  public abstract Rect bsK();
+  
+  public final boolean bsL()
   {
-    b.a(aQt(), paramInt1, paramInt2);
+    return bsN();
   }
   
-  protected abstract boolean fo(boolean paramBoolean);
+  public final Input bsM()
+  {
+    return bsJ();
+  }
+  
+  public final boolean bsN()
+  {
+    EditText localEditText = bsJ();
+    if (localEditText == null) {
+      return false;
+    }
+    ((ab)localEditText).b(this.KDB);
+    localEditText.removeTextChangedListener(this);
+    ((ab)localEditText).destroy();
+    Object localObject = (com.tencent.mm.plugin.appbrand.page.aa)this.mar.get();
+    if (localObject == null) {
+      return false;
+    }
+    localObject = (g)((com.tencent.mm.plugin.appbrand.page.aa)localObject).bjD();
+    if (localObject == null) {
+      return false;
+    }
+    ((g)localObject).cY(localEditText);
+    return true;
+  }
+  
+  public final Editable fQZ()
+  {
+    if (bsJ() == null) {
+      return null;
+    }
+    return bsJ().getEditableText();
+  }
   
   public final int getInputId()
   {
-    return this.jkB;
+    return this.mao;
   }
   
-  public final boolean n(v paramv)
+  protected abstract boolean hA(boolean paramBoolean);
+  
+  protected final void ja(int paramInt1, int paramInt2)
   {
-    return (paramv != null) && (paramv == this.jkD.get());
+    b.a(bsJ(), paramInt1, paramInt2);
   }
   
-  public final void qo(int paramInt)
+  public final boolean u(com.tencent.mm.plugin.appbrand.page.aa paramaa)
   {
-    if (this.jkA != null) {
-      this.jkA.qq(paramInt);
+    return (paramaa != null) && (paramaa == this.mar.get());
+  }
+  
+  public final void uQ(int paramInt)
+  {
+    if (this.KDz != null) {
+      this.KDz.uS(paramInt);
+    }
+  }
+  
+  public static enum a
+  {
+    private static final android.support.v4.e.b<a> KDE;
+    
+    static
+    {
+      AppMethodBeat.i(177116);
+      KDF = new a[0];
+      KDE = new android.support.v4.e.b();
+      AppMethodBeat.o(177116);
+    }
+    
+    public static c a(String paramString, com.tencent.mm.plugin.appbrand.page.aa paramaa, e parame)
+    {
+      AppMethodBeat.i(136312);
+      Iterator localIterator = KDE.iterator();
+      while (localIterator.hasNext())
+      {
+        c localc = ((a)localIterator.next()).bsP();
+        if (localc != null)
+        {
+          AppMethodBeat.o(136312);
+          return localc;
+        }
+      }
+      if (("digit".equalsIgnoreCase(paramString)) || ("idcard".equalsIgnoreCase(paramString)) || ("number".equalsIgnoreCase(paramString)))
+      {
+        paramString = new d(paramString, paramaa, parame);
+        AppMethodBeat.o(136312);
+        return paramString;
+      }
+      AppMethodBeat.o(136312);
+      return null;
+    }
+    
+    public static abstract interface a
+    {
+      public abstract c bsP();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.c
  * JD-Core Version:    0.7.0.1
  */

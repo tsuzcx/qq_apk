@@ -14,26 +14,26 @@ import java.util.Map;
 public class Explode
   extends Visibility
 {
-  private static final TimeInterpolator ru = new DecelerateInterpolator();
-  private static final TimeInterpolator rv = new AccelerateInterpolator();
-  private int[] rw = new int[2];
+  private static final TimeInterpolator xT = new DecelerateInterpolator();
+  private static final TimeInterpolator xU = new AccelerateInterpolator();
+  private int[] xV = new int[2];
   
   public Explode()
   {
-    a(new e());
+    a(new b());
   }
   
   public Explode(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a(new e());
+    a(new b());
   }
   
   private void a(View paramView, Rect paramRect, int[] paramArrayOfInt)
   {
-    paramView.getLocationOnScreen(this.rw);
-    int k = this.rw[0];
-    int m = this.rw[1];
+    paramView.getLocationOnScreen(this.xV);
+    int k = this.xV[0];
+    int m = this.xV[1];
     Rect localRect = getEpicenter();
     int i;
     if (localRect == null) {
@@ -57,10 +57,10 @@ public class Explode
           f1 = (float)(Math.random() * 2.0D) - 1.0F;
         }
       }
-      f3 = q(f2, f1);
+      f3 = g(f2, f1);
       f2 /= f3;
       f1 /= f3;
-      f3 = g(paramView, i - k, j - m);
+      f3 = f(paramView, i - k, j - m);
       paramArrayOfInt[0] = Math.round(f2 * f3);
       paramArrayOfInt[1] = Math.round(f3 * f1);
       return;
@@ -68,40 +68,40 @@ public class Explode
     }
   }
   
-  private void c(ah paramah)
+  private void c(u paramu)
   {
-    View localView = paramah.view;
-    localView.getLocationOnScreen(this.rw);
-    int i = this.rw[0];
-    int j = this.rw[1];
+    View localView = paramu.view;
+    localView.getLocationOnScreen(this.xV);
+    int i = this.xV[0];
+    int j = this.xV[1];
     int k = localView.getWidth();
     int m = localView.getHeight();
-    paramah.values.put("android:explode:screenBounds", new Rect(i, j, k + i, m + j));
+    paramu.values.put("android:explode:screenBounds", new Rect(i, j, k + i, m + j));
   }
   
-  private static float g(View paramView, int paramInt1, int paramInt2)
+  private static float f(View paramView, int paramInt1, int paramInt2)
   {
     paramInt1 = Math.max(paramInt1, paramView.getWidth() - paramInt1);
     paramInt2 = Math.max(paramInt2, paramView.getHeight() - paramInt2);
-    return q(paramInt1, paramInt2);
+    return g(paramInt1, paramInt2);
   }
   
-  private static float q(float paramFloat1, float paramFloat2)
+  private static float g(float paramFloat1, float paramFloat2)
   {
     return (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
   }
   
-  public final Animator a(ViewGroup paramViewGroup, View paramView, ah paramah)
+  public final Animator a(ViewGroup paramViewGroup, View paramView, u paramu)
   {
-    if (paramah == null) {
+    if (paramu == null) {
       return null;
     }
-    Rect localRect = (Rect)paramah.values.get("android:explode:screenBounds");
+    Rect localRect = (Rect)paramu.values.get("android:explode:screenBounds");
     int i = localRect.left;
     int j = localRect.top;
     float f3 = paramView.getTranslationX();
     float f4 = paramView.getTranslationY();
-    int[] arrayOfInt = (int[])paramah.view.getTag(2131820684);
+    int[] arrayOfInt = (int[])paramu.view.getTag(2131306068);
     float f2;
     float f1;
     if (arrayOfInt != null)
@@ -113,42 +113,42 @@ public class Explode
     }
     for (;;)
     {
-      a(paramViewGroup, localRect, this.rw);
-      return aj.a(paramView, paramah, i, j, f3, f4, f2 + this.rw[0], f1 + this.rw[1], rv);
+      a(paramViewGroup, localRect, this.xV);
+      return w.a(paramView, paramu, i, j, f3, f4, f2 + this.xV[0], f1 + this.xV[1], xU);
       f1 = f4;
       f2 = f3;
     }
   }
   
-  public final Animator a(ViewGroup paramViewGroup, View paramView, ah paramah1, ah paramah2)
+  public final Animator a(ViewGroup paramViewGroup, View paramView, u paramu1, u paramu2)
   {
-    if (paramah2 == null) {
+    if (paramu2 == null) {
       return null;
     }
-    paramah1 = (Rect)paramah2.values.get("android:explode:screenBounds");
+    paramu1 = (Rect)paramu2.values.get("android:explode:screenBounds");
     float f1 = paramView.getTranslationX();
     float f2 = paramView.getTranslationY();
-    a(paramViewGroup, paramah1, this.rw);
-    float f3 = this.rw[0];
-    float f4 = this.rw[1];
-    return aj.a(paramView, paramah2, paramah1.left, paramah1.top, f1 + f3, f2 + f4, f1, f2, ru);
+    a(paramViewGroup, paramu1, this.xV);
+    float f3 = this.xV[0];
+    float f4 = this.xV[1];
+    return w.a(paramView, paramu2, paramu1.left, paramu1.top, f1 + f3, f2 + f4, f1, f2, xT);
   }
   
-  public final void a(ah paramah)
+  public final void a(u paramu)
   {
-    super.a(paramah);
-    c(paramah);
+    super.a(paramu);
+    c(paramu);
   }
   
-  public final void b(ah paramah)
+  public final void b(u paramu)
   {
-    super.b(paramah);
-    c(paramah);
+    super.b(paramu);
+    c(paramu);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.Explode
  * JD-Core Version:    0.7.0.1
  */

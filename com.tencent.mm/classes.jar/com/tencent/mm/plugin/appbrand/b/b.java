@@ -6,20 +6,20 @@ public enum b
 {
   static
   {
-    AppMethodBeat.i(90974);
-    gYe = new b("FOREGROUND", 0);
-    gYf = new b("BACKGROUND", 1);
-    gYg = new b("SUSPEND", 2);
-    gYh = new b("DESTROYED", 3);
-    gYi = new b[] { gYe, gYf, gYg, gYh };
-    AppMethodBeat.o(90974);
+    AppMethodBeat.i(140585);
+    iQK = new b("FOREGROUND", 0);
+    iQL = new b("BACKGROUND", 1);
+    iQM = new b("SUSPEND", 2);
+    iQN = new b("DESTROYED", 3);
+    iQO = new b[] { iQK, iQL, iQM, iQN };
+    AppMethodBeat.o(140585);
   }
   
   private b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.b.b
  * JD-Core Version:    0.7.0.1
  */

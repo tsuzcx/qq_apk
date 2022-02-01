@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/fkb" style="@style/tf"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/fke" style="@style/te" />
+    <TextView android:id="@id/fkc" style="@style/tc" />
+</LinearLayout>

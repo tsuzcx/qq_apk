@@ -6,11 +6,11 @@ public enum XWalkUIClient$InitiateBy
 {
   static
   {
-    AppMethodBeat.i(85853);
+    AppMethodBeat.i(154954);
     BY_USER_GESTURE = new InitiateBy("BY_USER_GESTURE", 0);
     BY_JAVASCRIPT = new InitiateBy("BY_JAVASCRIPT", 1);
     $VALUES = new InitiateBy[] { BY_USER_GESTURE, BY_JAVASCRIPT };
-    AppMethodBeat.o(85853);
+    AppMethodBeat.o(154954);
   }
   
   private XWalkUIClient$InitiateBy() {}

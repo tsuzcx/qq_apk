@@ -12,19 +12,19 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.appbrand.report.e;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.appbrand.report.h;
 
 public final class AppBrandLauncherBlankPage
   extends AppBrandLauncherUI.Fragment
 {
-  public static ViewGroup X(Context paramContext, String paramString)
+  public static ViewGroup W(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(132969);
+    AppMethodBeat.i(48622);
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     localLinearLayout.setOrientation(1);
     Object localObject1 = new ImageView(paramContext);
-    ((ImageView)localObject1).setImageResource(2131230864);
+    ((ImageView)localObject1).setImageResource(2131689622);
     Object localObject2 = new LinearLayout.LayoutParams(a.fromDPToPix(paramContext, 50), a.fromDPToPix(paramContext, 50));
     ((LinearLayout.LayoutParams)localObject2).topMargin = a.fromDPToPix(paramContext, 91);
     ((LinearLayout.LayoutParams)localObject2).gravity = 1;
@@ -42,19 +42,19 @@ public final class AppBrandLauncherBlankPage
     paramString.topMargin = a.fromDPToPix(paramContext, 16);
     paramString.gravity = 1;
     localLinearLayout.addView((View)localObject2, paramString);
-    AppMethodBeat.o(132969);
+    AppMethodBeat.o(48622);
     return localLinearLayout;
   }
   
-  public static AppBrandLauncherBlankPage cT(String paramString1, String paramString2)
+  public static AppBrandLauncherBlankPage dT(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(132966);
+    AppMethodBeat.i(48619);
     AppBrandLauncherBlankPage localAppBrandLauncherBlankPage = new AppBrandLauncherBlankPage();
     Bundle localBundle = new Bundle(2);
     localBundle.putString("extra_title", paramString1);
     localBundle.putString("extra_tip", paramString2);
     localAppBrandLauncherBlankPage.setArguments(localBundle);
-    AppMethodBeat.o(132966);
+    AppMethodBeat.o(48619);
     return localAppBrandLauncherBlankPage;
   }
   
@@ -65,22 +65,22 @@ public final class AppBrandLauncherBlankPage
   
   public final void initView()
   {
-    AppMethodBeat.i(132968);
+    AppMethodBeat.i(48621);
     FragmentActivity localFragmentActivity = getActivity();
     if (getArguments() == null) {}
     for (Object localObject = null;; localObject = getArguments().getString("extra_tip"))
     {
-      localObject = X(localFragmentActivity, (String)localObject);
-      ((ViewGroup)this.Qz).addView((View)localObject, new ViewGroup.LayoutParams(-1, -1));
-      e.a(this.mScene, "", "", 0, "", this.iMQ);
-      AppMethodBeat.o(132968);
+      localObject = W(localFragmentActivity, (String)localObject);
+      ((ViewGroup)this.mContentView).addView((View)localObject, new ViewGroup.LayoutParams(-1, -1));
+      h.a(this.mScene, "", "", 0, "", this.lzN);
+      AppMethodBeat.o(48621);
       return;
     }
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(132967);
+    AppMethodBeat.i(48620);
     super.onResume();
     FragmentActivity localFragmentActivity;
     if (getActivity() != null)
@@ -94,14 +94,14 @@ public final class AppBrandLauncherBlankPage
     for (String str = "";; str = getArguments().getString("extra_title"))
     {
       localFragmentActivity.setTitle(str);
-      AppMethodBeat.o(132967);
+      AppMethodBeat.o(48620);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherBlankPage
  * JD-Core Version:    0.7.0.1
  */

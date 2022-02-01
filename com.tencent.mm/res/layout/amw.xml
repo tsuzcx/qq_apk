@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheckBox android:textColor="@color/a86" android:ellipsize="end" android:gravity="center" android:id="@id/du2" android:background="@drawable/vb" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="36.0dip" android:maxHeight="36.0dip" android:minHeight="36.0dip" android:singleLine="true" style="@style/px"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/dlh" style="@style/a4o" />
+    <LinearLayout android:orientation="vertical" android:id="@id/dl8" android:background="@drawable/mj" android:paddingLeft="@dimen/h" android:paddingTop="@dimen/h" android:paddingRight="@dimen/h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/jn">
+        <TextView android:id="@id/dl9" style="@style/a4m" />
+        <TextView android:id="@id/dlb" android:layout_marginTop="@dimen/d" android:layout_marginBottom="@dimen/jn" style="@style/a4m" />
+        <View style="@style/a4n" />
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/dlc" android:paddingLeft="@dimen/d" android:paddingRight="@dimen/d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/h" android:layout_marginBottom="@dimen/h" />
+        <View style="@style/a4n" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/dl7" style="@style/a4l" />
+    </LinearLayout>
+</LinearLayout>

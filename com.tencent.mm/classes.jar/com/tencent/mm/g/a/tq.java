@@ -1,14 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class tq
   extends b
 {
-  public tq.a cKf;
-  public tq.b cKg;
-  
   public tq()
   {
     this((byte)0);
@@ -16,17 +12,13 @@ public final class tq
   
   private tq(byte paramByte)
   {
-    AppMethodBeat.i(55698);
-    this.cKf = new tq.a();
-    this.cKg = new tq.b();
-    this.ymq = false;
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(55698);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.tq
  * JD-Core Version:    0.7.0.1
  */

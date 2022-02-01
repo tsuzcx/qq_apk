@@ -3,12 +3,12 @@ package com.tencent.mm.console.a;
 import android.content.Context;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bq;
+import com.tencent.mm.g.a.bv;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import com.tencent.mm.ui.base.t;
 
 public final class n
@@ -16,16 +16,16 @@ public final class n
 {
   static
   {
-    AppMethodBeat.i(16151);
+    AppMethodBeat.i(20196);
     b.a(new n(), new String[] { "//cleanwx", "//showfile", "//hidefile" });
-    AppMethodBeat.o(16151);
+    AppMethodBeat.o(20196);
   }
   
   public static void init() {}
   
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    AppMethodBeat.i(16150);
+    AppMethodBeat.i(20195);
     paramArrayOfString = paramArrayOfString[0];
     int i = -1;
     switch (paramArrayOfString.hashCode())
@@ -36,7 +36,7 @@ public final class n
       switch (i)
       {
       default: 
-        AppMethodBeat.o(16150);
+        AppMethodBeat.o(20195);
         return false;
         if (paramArrayOfString.equals("//cleanwx"))
         {
@@ -54,24 +54,24 @@ public final class n
         break;
       }
     }
-    paramArrayOfString = new bq();
-    com.tencent.mm.sdk.b.a.ymk.l(paramArrayOfString);
+    paramArrayOfString = new bv();
+    com.tencent.mm.sdk.b.a.ESL.l(paramArrayOfString);
     t.makeText(paramContext, "clean wx file index now.", 0).show();
-    AppMethodBeat.o(16150);
+    AppMethodBeat.o(20195);
     return true;
     try
     {
-      g.RL().Ru().set(ac.a.yHJ, Integer.valueOf(1));
+      g.afB().afk().set(ae.a.FqC, Integer.valueOf(1));
       t.makeText(paramContext, "show file now.", 0).show();
       label193:
-      AppMethodBeat.o(16150);
+      AppMethodBeat.o(20195);
       return true;
       try
       {
-        g.RL().Ru().set(ac.a.yHJ, Integer.valueOf(0));
+        g.afB().afk().set(ae.a.FqC, Integer.valueOf(0));
         t.makeText(paramContext, "hide file now.", 0).show();
         label227:
-        AppMethodBeat.o(16150);
+        AppMethodBeat.o(20195);
         return true;
       }
       catch (Exception paramContext)
@@ -87,7 +87,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.console.a.n
  * JD-Core Version:    0.7.0.1
  */

@@ -2,239 +2,241 @@ package com.tencent.mm.plugin.messenger.foundation;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
+import com.tencent.mm.g.c.au;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.t;
-import com.tencent.mm.platformtools.aa;
+import com.tencent.mm.model.w;
+import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.foundation.a.c;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.messenger.foundation.a.r;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.plugin.messenger.foundation.a.u;
-import com.tencent.mm.plugin.messenger.foundation.a.v;
-import com.tencent.mm.protocal.protobuf.baf;
-import com.tencent.mm.protocal.protobuf.bdt;
-import com.tencent.mm.protocal.protobuf.cw;
-import com.tencent.mm.protocal.protobuf.ud;
-import com.tencent.mm.protocal.protobuf.wr;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.messenger.foundation.a.x;
+import com.tencent.mm.plugin.messenger.foundation.a.y;
+import com.tencent.mm.protocal.protobuf.blv;
+import com.tencent.mm.protocal.protobuf.bqj;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.protocal.protobuf.xd;
+import com.tencent.mm.protocal.protobuf.zw;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.vending.b.b;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bh;
 
 public final class a
-  implements r
+  implements u
 {
-  private static final a.a oCY;
+  private static final a txM;
   
   static
   {
-    AppMethodBeat.i(1023);
-    oCY = new a.a((byte)0);
-    AppMethodBeat.o(1023);
+    AppMethodBeat.i(116874);
+    txM = new a((byte)0);
+    AppMethodBeat.o(116874);
   }
   
-  public static b a(c paramc)
+  public static com.tencent.mm.vending.b.b addContactAssembler(c paramc)
   {
-    AppMethodBeat.i(1020);
-    paramc = oCY.at(paramc);
-    AppMethodBeat.o(1020);
+    AppMethodBeat.i(116871);
+    paramc = txM.bv(paramc);
+    AppMethodBeat.o(116871);
     return paramc;
   }
   
-  public static void a(bdt parambdt, String paramString, byte[] paramArrayOfByte, boolean paramBoolean1, boolean paramBoolean2)
+  public static void processModContact(bqj parambqj, String paramString, byte[] paramArrayOfByte, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(1022);
-    if (parambdt == null)
+    AppMethodBeat.i(116873);
+    if (parambqj == null)
     {
-      ab.f("MicroMsg.ContactSyncExtension", "unable to parse mod contact");
-      AppMethodBeat.o(1022);
+      ad.f("MicroMsg.ContactSyncExtension", "unable to parse mod contact");
+      AppMethodBeat.o(116873);
       return;
     }
-    String str1 = aa.a(parambdt.wOT);
-    String str2 = bo.nullAsNil(parambdt.xtu);
-    if ((bo.isNullOrNil(str1)) && (bo.isNullOrNil(str2)))
+    String str1 = z.a(parambqj.Dby);
+    String str2 = bt.nullAsNil(parambqj.DOt);
+    if ((bt.isNullOrNil(str1)) && (bt.isNullOrNil(str2)))
     {
-      ab.e("MicroMsg.ContactSyncExtension", "processModContact user is null user:%s enuser:%s", new Object[] { str1, str2 });
-      AppMethodBeat.o(1022);
+      ad.e("MicroMsg.ContactSyncExtension", "processModContact user is null user:%s enuser:%s", new Object[] { str1, str2 });
+      AppMethodBeat.o(116873);
       return;
     }
-    ab.i("MicroMsg.ContactSyncExtension", "username %s mobileHash %s mobileFullHash %s", new Object[] { parambdt.wOT, parambdt.xtx, parambdt.xty });
-    Object localObject1 = ((j)g.E(j.class)).YA().arw(str1);
-    if ((localObject1 != null) && (str1.equals(((aq)localObject1).field_encryptUsername)))
+    ad.i("MicroMsg.ContactSyncExtension", "username %s mobileHash %s mobileFullHash %s", new Object[] { parambqj.Dby, parambqj.DOw, parambqj.DOx });
+    Object localObject1 = ((k)g.ab(k.class)).apM().aHZ(str1);
+    if ((localObject1 != null) && (str1.equals(((au)localObject1).field_encryptUsername)))
     {
-      ab.w("MicroMsg.ContactSyncExtension", "cat's replace user with stranger  user:%s", new Object[] { str1 });
-      AppMethodBeat.o(1022);
+      ad.w("MicroMsg.ContactSyncExtension", "cat's replace user with stranger  user:%s", new Object[] { str1 });
+      AppMethodBeat.o(116873);
       return;
     }
     Object localObject3 = null;
     Object localObject2;
     if (localObject1 != null)
     {
-      localObject2 = ((ad)localObject1).dwF();
+      localObject2 = ((af)localObject1).eKI();
       if (localObject2 == null) {}
     }
     for (;;)
     {
       localObject3 = localObject1;
       if (localObject1 == null) {
-        localObject3 = new ad(str1);
+        localObject3 = new af(str1);
       }
-      ((ad)localObject3).setUsername(str1);
-      ((ad)localObject3).jm(parambdt.gwU);
-      ((ad)localObject3).setType(parambdt.wNK & parambdt.wNL);
-      if ((paramBoolean1) && (localObject2 != null) && ((int)((com.tencent.mm.n.a)localObject2).euF > 0))
+      ((af)localObject3).setUsername(str1);
+      ((af)localObject3).na(parambqj.ijR);
+      ((af)localObject3).setType(parambqj.Dan & parambqj.Dao);
+      if ((paramBoolean1) && (localObject2 != null) && ((int)((com.tencent.mm.n.b)localObject2).fId > 0))
       {
-        ab.w("MicroMsg.ContactSyncExtension", "processModContact Fuck GETCONTACT can't give the REAL_TYPE (mariohuang), user:%s old:%d get:%d", new Object[] { str1, Integer.valueOf(((aq)localObject2).field_type), Integer.valueOf(((aq)localObject3).field_type) });
-        ((ad)localObject3).setType(((aq)localObject3).field_type | ((aq)localObject2).field_type);
+        ad.w("MicroMsg.ContactSyncExtension", "processModContact Fuck GETCONTACT can't give the REAL_TYPE (mariohuang), user:%s old:%d get:%d", new Object[] { str1, Integer.valueOf(((au)localObject2).field_type), Integer.valueOf(((au)localObject3).field_type) });
+        ((af)localObject3).setType(((au)localObject3).field_type | ((au)localObject2).field_type);
       }
       long l;
-      label346:
-      label740:
+      label342:
       boolean bool;
-      label959:
+      label788:
+      label1007:
       int i;
-      if (!bo.isNullOrNil(str2))
+      if (!bt.isNullOrNil(str2))
       {
-        ((ad)localObject3).jv(str2);
+        ((af)localObject3).nj(str2);
         if (localObject2 != null) {
-          break label1321;
+          break label1373;
         }
         l = 0L;
-        ((ad)localObject3).euF = l;
-        ((ad)localObject3).jp(aa.a(parambdt.xmi));
-        ((ad)localObject3).jq(aa.a(parambdt.wOv));
-        ((ad)localObject3).jr(aa.a(parambdt.wOw));
-        ((ad)localObject3).hy(parambdt.gwP);
-        ((ad)localObject3).hA(parambdt.wNQ);
-        ((ad)localObject3).jo(aa.a(parambdt.xto));
-        ((ad)localObject3).hB(parambdt.wNU);
-        ((ad)localObject3).hC(parambdt.gwT);
-        ((ad)localObject3).jL(RegionCodeDecoder.aF(parambdt.gwY, parambdt.gwQ, parambdt.gwR));
-        ((ad)localObject3).jF(parambdt.gwS);
-        ((ad)localObject3).hu(parambdt.xpe);
-        ((ad)localObject3).jK(parambdt.xpf);
-        if ((parambdt.niK == 9) && (!bo.isNullOrNil(parambdt.xtH)))
+        ((af)localObject3).fId = l;
+        ((af)localObject3).nd(z.a(parambqj.DFJ));
+        ((af)localObject3).ne(z.a(parambqj.Dbb));
+        ((af)localObject3).nf(z.a(parambqj.Dbc));
+        ((af)localObject3).jJ(parambqj.ijM);
+        ((af)localObject3).jL(parambqj.Dat);
+        ((af)localObject3).nc(z.a(parambqj.DOn));
+        ((af)localObject3).jM(parambqj.Dax);
+        ((af)localObject3).jN(parambqj.ijQ);
+        ((af)localObject3).nA(RegionCodeDecoder.aT(parambqj.ijV, parambqj.ijN, parambqj.ijO));
+        ((af)localObject3).nu(parambqj.ijP);
+        ((af)localObject3).jF(parambqj.DIV);
+        ((af)localObject3).nz(parambqj.DIW);
+        if ((parambqj.rNz == 9) && (!bt.isNullOrNil(parambqj.DOG)))
         {
-          ab.i("MicroMsg.ContactSyncExtension", "fix addContactScene!");
-          parambdt.niK = 14;
+          ad.i("MicroMsg.ContactSyncExtension", "fix addContactScene!");
+          parambqj.rNz = 14;
         }
-        ((ad)localObject3).setSource(parambdt.niK);
-        ((ad)localObject3).ht(parambdt.xpi);
-        ((ad)localObject3).js(parambdt.xph);
-        ((ad)localObject3).jz(parambdt.xtH);
-        ab.i("MicroMsg.ContactSyncExtension", "username:%s nickname:%s SourceExtInfo:%s source:%s", new Object[] { ((aq)localObject3).field_username, ((aq)localObject3).field_nickname, ((aq)localObject3).field_sourceExtInfo, Integer.valueOf(parambdt.niK) });
-        if (t.oJ(parambdt.xpg)) {
-          ((ad)localObject3).jJ(parambdt.xpg);
+        ((af)localObject3).setSource(parambqj.rNz);
+        ((af)localObject3).jE(parambqj.DIZ);
+        ((af)localObject3).ng(parambqj.DIY);
+        ((af)localObject3).nn(parambqj.DOG);
+        ((af)localObject3).kQ(parambqj.evU);
+        ad.i("MicroMsg.ContactSyncExtension", "username:%s nickname:%s SourceExtInfo:%s source:%s ChatroomBusinessType:%s", new Object[] { ((au)localObject3).field_username, bt.aGs(((au)localObject3).field_nickname), ((au)localObject3).field_sourceExtInfo, Integer.valueOf(parambqj.rNz), Long.valueOf(parambqj.evU) });
+        if (w.tu(parambqj.DIX)) {
+          ((af)localObject3).ny(parambqj.DIX);
         }
-        if (((ad)localObject3).dwC()) {
-          ((ad)localObject3).hE((int)bo.aox());
+        if (((af)localObject3).eKF()) {
+          ((af)localObject3).jO((int)bt.aGK());
         }
         if (!TextUtils.isEmpty(paramString)) {
-          ((ad)localObject3).jT(paramString);
+          ((af)localObject3).nI(paramString);
         }
-        ((ad)localObject3).jn(aa.a(parambdt.xsT));
-        ((ad)localObject3).jt(aa.a(parambdt.xsV));
-        ((ad)localObject3).ju(aa.a(parambdt.xsU));
-        ((ad)localObject3).jw(parambdt.wOV);
-        ((ad)localObject3).jM(parambdt.woO);
-        ((ad)localObject3).jN(parambdt.xtD);
-        if (bo.ce(paramArrayOfByte)) {
-          break label1333;
+        ad.i("MicroMsg.ContactSyncExtension", "remark (%s -> %s)", new Object[] { ((au)localObject3).field_conRemark, z.a(parambqj.DNT) });
+        ((af)localObject3).nb(z.a(parambqj.DNT));
+        ((af)localObject3).nh(z.a(parambqj.DNV));
+        ((af)localObject3).ni(z.a(parambqj.DNU));
+        ((af)localObject3).nk(parambqj.DbA);
+        ((af)localObject3).nB(parambqj.Cxw);
+        ((af)localObject3).nC(parambqj.DOC);
+        if (bt.cw(paramArrayOfByte)) {
+          break label1385;
         }
-        ((j)g.E(j.class)).YA().F(str1, paramArrayOfByte);
-        ((ad)localObject3).hw(parambdt.DeleteFlag);
-        if ((parambdt.xtz != null) && (parambdt.xtz.wpi != null))
+        ((k)g.ab(k.class)).apM().A(str1, paramArrayOfByte);
+        ((af)localObject3).jH(parambqj.DeleteFlag);
+        if ((parambqj.DOy != null) && (parambqj.DOy.CxP != null))
         {
-          ((ad)localObject3).jO(parambdt.xtz.wpi.wvz);
-          ((ad)localObject3).jP(parambdt.xtz.wpi.wvA);
-          ((ad)localObject3).jQ(parambdt.xtz.wpi.wvB);
+          ((af)localObject3).nD(parambqj.DOy.CxP.CFE);
+          ((af)localObject3).nE(parambqj.DOy.CxP.CFF);
+          ((af)localObject3).nF(parambqj.DOy.CxP.CFG);
         }
-        if (t.oD(str1)) {
-          ((ad)localObject3).NG();
+        if (w.to(str1)) {
+          ((af)localObject3).Zt();
         }
-        if (((ad)localObject3).dwz()) {
-          ((ad)localObject3).NJ();
+        if (((af)localObject3).eKB()) {
+          ((af)localObject3).Zw();
         }
-        ((ad)localObject3).jR(parambdt.dqY);
-        ((ad)localObject3).hG(parambdt.ExtFlag);
-        int j = (int)((com.tencent.mm.n.a)localObject3).euF;
-        localObject1 = ((aq)localObject3).field_nickname;
-        String str3 = ((ad)localObject3).Hu();
-        int k = ((aq)localObject3).field_deleteFlag;
-        int m = ((aq)localObject3).field_type;
-        int n = parambdt.wNK;
-        int i1 = parambdt.wNL;
-        int i2 = ((aq)localObject3).dqH;
-        int i3 = ((aq)localObject3).dqK;
-        String str4 = parambdt.gwY;
-        String str5 = parambdt.gwQ;
-        String str6 = parambdt.gwR;
-        int i4 = ((ad)localObject3).getSource();
-        String str7 = ((aq)localObject3).field_contactLabelIds;
-        if (parambdt.woO != null) {
-          break label1374;
+        ((af)localObject3).nG(parambqj.evN);
+        ((af)localObject3).jQ(parambqj.ExtFlag);
+        int j = (int)((com.tencent.mm.n.b)localObject3).fId;
+        localObject1 = ((au)localObject3).field_nickname;
+        String str3 = ((af)localObject3).Sw();
+        int k = ((au)localObject3).field_deleteFlag;
+        int m = ((au)localObject3).field_type;
+        int n = parambqj.Dan;
+        int i1 = parambqj.Dao;
+        int i2 = ((au)localObject3).evu;
+        int i3 = ((au)localObject3).evx;
+        String str4 = parambqj.ijV;
+        String str5 = parambqj.ijN;
+        String str6 = parambqj.ijO;
+        int i4 = ((af)localObject3).getSource();
+        String str7 = ((au)localObject3).field_contactLabelIds;
+        if (parambqj.Cxw != null) {
+          break label1426;
         }
         bool = true;
-        if (parambdt.woO != null) {
-          break label1380;
+        if (parambqj.Cxw != null) {
+          break label1432;
         }
         i = 0;
-        label969:
-        if (parambdt.woO != null) {
-          break label1392;
+        label1017:
+        if (parambqj.Cxw != null) {
+          break label1444;
         }
         paramString = "";
-        label980:
-        ab.i("MicroMsg.ContactSyncExtension", "processModContact:user[%s,%s] id:%d nick:%s pin:%s delflag:%d type:%d [%d,%d] contype:%d notify:%d region[%s,%s,%s] src:%d LabelIDList:%s fromGetContactService:%b remark_Description:(%s,%s,%s)", new Object[] { str1, str2, Integer.valueOf(j), localObject1, str3, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), str4, str5, str6, Integer.valueOf(i4), str7, Boolean.valueOf(paramBoolean1), Boolean.valueOf(bool), Integer.valueOf(i), paramString });
-        oCY.a((ad)localObject3, (ad)localObject2, parambdt, paramArrayOfByte, paramBoolean2);
-        if (bo.isNullOrNil(str2)) {
-          break label1403;
+        label1028:
+        ad.i("MicroMsg.ContactSyncExtension", "processModContact:user[%s,%s] id:%d nick:%s pin:%s delflag:%d type:%d [%d,%d] contype:%d notify:%d region[%s,%s,%s] src:%d LabelIDList:%s fromGetContactService:%b remark_Description:(%s,%s,%s)", new Object[] { str1, str2, Integer.valueOf(j), localObject1, str3, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), str4, str5, str6, Integer.valueOf(i4), str7, Boolean.valueOf(paramBoolean1), Boolean.valueOf(bool), Integer.valueOf(i), paramString });
+        txM.a((af)localObject3, (af)localObject2, parambqj, paramArrayOfByte, paramBoolean2);
+        com.tencent.mm.n.a.g((af)localObject3);
+        if (bt.isNullOrNil(str2)) {
+          break label1455;
         }
-        ((j)g.E(j.class)).YA().c(str2, (ad)localObject3);
-        label1183:
-        oCY.b((ad)localObject3, (ad)localObject2, parambdt, paramArrayOfByte, paramBoolean2);
-        if ((((aq)localObject3).field_type & 0x800) == 0) {
-          break label1427;
+        ((k)g.ab(k.class)).apM().d(str2, (af)localObject3);
+        label1236:
+        txM.b((af)localObject3, (af)localObject2, parambqj, paramArrayOfByte, paramBoolean2);
+        if ((((au)localObject3).field_type & 0x800) == 0) {
+          break label1479;
         }
-        if ((localObject2 == null) || ((((aq)localObject2).field_type & 0x800) != (((aq)localObject3).field_type & 0x800))) {
-          ((j)g.E(j.class)).YF().arN(((aq)localObject3).field_username);
+        if ((localObject2 == null) || ((((au)localObject2).field_type & 0x800) != (((au)localObject3).field_type & 0x800))) {
+          ((k)g.ab(k.class)).apR().aIt(((au)localObject3).field_username);
         }
       }
       for (;;)
       {
-        ab.i("MicroMsg.ContactSyncExtension", "operationModSnsBlackContact username:%s isSnsBlackContact:%s", new Object[] { str1, Boolean.valueOf(((ad)localObject3).NZ()) });
-        AppMethodBeat.o(1022);
+        ad.i("MicroMsg.ContactSyncExtension", "operationModSnsBlackContact username:%s isSnsBlackContact:%s", new Object[] { str1, Boolean.valueOf(((af)localObject3).ZP()) });
+        AppMethodBeat.o(116873);
         return;
-        if ((localObject2 == null) || ((int)((com.tencent.mm.n.a)localObject2).euF <= 0)) {
+        if ((localObject2 == null) || ((int)((com.tencent.mm.n.b)localObject2).fId <= 0)) {
           break;
         }
-        ((ad)localObject3).jv(((aq)localObject2).field_encryptUsername);
+        ((af)localObject3).nj(((au)localObject2).field_encryptUsername);
         break;
-        label1321:
-        l = (int)((com.tencent.mm.n.a)localObject2).euF;
-        break label346;
-        label1333:
-        ((j)g.E(j.class)).YA().arB(str1);
-        ab.e("MicroMsg.ContactSyncExtension", "[processModContact] cmdBuf is null! user:%s", new Object[] { str1 });
-        break label740;
-        label1374:
+        label1373:
+        l = (int)((com.tencent.mm.n.b)localObject2).fId;
+        break label342;
+        label1385:
+        ((k)g.ab(k.class)).apM().aIe(str1);
+        ad.e("MicroMsg.ContactSyncExtension", "[processModContact] cmdBuf is null! user:%s", new Object[] { str1 });
+        break label788;
+        label1426:
         bool = false;
-        break label959;
-        label1380:
-        i = parambdt.woO.length();
-        break label969;
-        label1392:
-        paramString = bo.aqg(parambdt.woO);
-        break label980;
-        label1403:
-        ((j)g.E(j.class)).YA().X((ad)localObject3);
-        break label1183;
-        label1427:
-        if ((localObject2 == null) || ((((aq)localObject2).field_type & 0x800) != (((aq)localObject3).field_type & 0x800))) {
-          ((j)g.E(j.class)).YF().arO(((aq)localObject3).field_username);
+        break label1007;
+        label1432:
+        i = parambqj.Cxw.length();
+        break label1017;
+        label1444:
+        paramString = bt.aGs(parambqj.Cxw);
+        break label1028;
+        label1455:
+        ((k)g.ab(k.class)).apM().ae((af)localObject3);
+        break label1236;
+        label1479:
+        if ((localObject2 == null) || ((((au)localObject2).field_type & 0x800) != (((au)localObject3).field_type & 0x800))) {
+          ((k)g.ab(k.class)).apR().aIu(((au)localObject3).field_username);
         }
       }
       localObject2 = localObject1;
@@ -242,37 +244,63 @@ public final class a
     }
   }
   
-  public final void a(ud paramud, byte[] paramArrayOfByte, boolean paramBoolean, u paramu)
+  public static void removeContactAssembler(c paramc)
   {
-    AppMethodBeat.i(1021);
-    switch (paramud.wMC)
+    AppMethodBeat.i(169106);
+    txM.remove(paramc);
+    AppMethodBeat.o(169106);
+  }
+  
+  public final void a(xd paramxd, byte[] paramArrayOfByte, boolean paramBoolean, x paramx)
+  {
+    AppMethodBeat.i(116872);
+    switch (paramxd.CYY)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(1021);
+      AppMethodBeat.o(116872);
       return;
-      paramud = (bdt)new bdt().parseFrom(paramArrayOfByte);
+      paramxd = (bqj)new bqj().parseFrom(paramArrayOfByte);
       if (paramBoolean) {}
       for (;;)
       {
-        a(paramud, "", paramArrayOfByte, false, paramBoolean);
-        AppMethodBeat.o(1021);
+        processModContact(paramxd, "", paramArrayOfByte, false, paramBoolean);
+        AppMethodBeat.o(116872);
         return;
         paramArrayOfByte = null;
       }
-      paramud = (wr)new wr().parseFrom(paramArrayOfByte);
-      paramArrayOfByte = aa.a(paramud.wOT);
-      ab.i("MicroMsg.ContactSyncExtension", "processDelContact user:%s", new Object[] { paramArrayOfByte });
-      ((j)g.E(j.class)).YF().arF(paramArrayOfByte);
-      t.nW(paramArrayOfByte);
-      v.b(4, paramud);
+      paramxd = (zw)new zw().parseFrom(paramArrayOfByte);
+      paramArrayOfByte = z.a(paramxd.Dby);
+      ad.i("MicroMsg.ContactSyncExtension", "processDelContact user:%s", new Object[] { paramArrayOfByte });
+      ((k)g.ab(k.class)).apR().aIl(paramArrayOfByte);
+      w.sG(paramArrayOfByte);
+      y.b(4, paramxd);
+    }
+  }
+  
+  static final class a
+    extends com.tencent.mm.co.a<c>
+    implements c
+  {
+    public final void a(final af paramaf1, final af paramaf2, final bqj parambqj, final byte[] paramArrayOfByte, final boolean paramBoolean)
+    {
+      AppMethodBeat.i(116869);
+      a(new com.tencent.mm.co.a.a() {});
+      AppMethodBeat.o(116869);
+    }
+    
+    public final void b(final af paramaf1, final af paramaf2, final bqj parambqj, final byte[] paramArrayOfByte, final boolean paramBoolean)
+    {
+      AppMethodBeat.i(116870);
+      a(new com.tencent.mm.co.a.a() {});
+      AppMethodBeat.o(116870);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a
  * JD-Core Version:    0.7.0.1
  */

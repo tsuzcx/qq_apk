@@ -9,15 +9,17 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pointers.PIntArray;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.ui.base.MMHorList;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,57 +28,86 @@ import java.lang.reflect.Array;
 public class FilterImageView
   extends LinearLayout
 {
-  static c[] ArQ;
-  int[] ArH;
-  private View ArI;
-  private ImageView ArJ;
-  CropImageView ArK;
-  Bitmap ArL;
-  private MMHorList ArM;
-  private a ArN;
-  private Runnable ArO;
-  private Runnable ArP;
-  private Activity cup;
-  private int filterId;
+  static c[] HnJ;
+  int[] HnA;
+  private View HnB;
+  private ImageView HnC;
+  CropImageView HnD;
+  Bitmap HnE;
+  private MMHorList HnF;
+  private a HnG;
+  private Runnable HnH;
+  private Runnable HnI;
+  private Activity djj;
+  private int wBk;
   
   static
   {
-    AppMethodBeat.i(107639);
-    ArQ = new c[] { new c(new FilterImageView.b("原图", "原圖", "Normal"), "icon.png", 0, 0, "MatteOrigin.jpg", 0), new c(new FilterImageView.b("LOMO", "LOMO", "LOMO"), "nuowei_mask%02d.jpg", 2, 1, "0004.jpg", 2), new c(new FilterImageView.b("麦田", "麥田", "Wheat"), "0062_%02d.jpg", 2, 2, "0062.jpg", 20), new c(new FilterImageView.b("玻璃镜", "玻璃鏡", "Glossy"), "habi_mask%02d.jpg", 1, 3, "0005.jpg", 4), new c(new FilterImageView.b("拍立得", "拍立得", "Polaroid"), "0063_%02d.jpg", 2, 4, "0063.jpg", 21), new c(new FilterImageView.b("湖水", "湖水", "Lake"), "0061_%02d.jpg", 1, 5, "0061.jpg", 19), new c(new FilterImageView.b("黄昏", "黃昏", "Twilight"), "0030_mask%01d.jpg", 1, 6, "0030.jpg", 7), new c(new FilterImageView.b("黑白", "黑白", "B&W"), "0065_%02d.jpg", 1, 7, "0065.jpg", 22), new c(new FilterImageView.b("铜版画", "銅版畫", "Aquatint"), "0032_mask%01d.jpg", 1, 8, "0032.jpg", 9), new c(new FilterImageView.b("圆珠笔", "圓珠筆", "Pen"), "0035_mask%01d.jpg", 1, 9, "0035.jpg", 18), new c(new FilterImageView.b("海报", "海報", "Poster"), "0036_mask%01d.jpg", 0, 10, "0036.jpg", 17), new c(new FilterImageView.b("素描", "素描", "Portrait"), "icon.jpg", 0, 11, "0040.jpg", 12) };
-    AppMethodBeat.o(107639);
+    AppMethodBeat.i(143078);
+    HnJ = new c[] { new c(new b("原图", "原圖", "Normal"), "icon.png", 0, 0, "MatteOrigin.jpg", 0), new c(new b("LOMO", "LOMO", "LOMO"), "nuowei_mask%02d.jpg", 2, 1, "0004.jpg", 2), new c(new b("麦田", "麥田", "Wheat"), "0062_%02d.jpg", 2, 2, "0062.jpg", 20), new c(new b("玻璃镜", "玻璃鏡", "Glossy"), "habi_mask%02d.jpg", 1, 3, "0005.jpg", 4), new c(new b("拍立得", "拍立得", "Polaroid"), "0063_%02d.jpg", 2, 4, "0063.jpg", 21), new c(new b("湖水", "湖水", "Lake"), "0061_%02d.jpg", 1, 5, "0061.jpg", 19), new c(new b("黄昏", "黃昏", "Twilight"), "0030_mask%01d.jpg", 1, 6, "0030.jpg", 7), new c(new b("黑白", "黑白", "B&W"), "0065_%02d.jpg", 1, 7, "0065.jpg", 22), new c(new b("铜版画", "銅版畫", "Aquatint"), "0032_mask%01d.jpg", 1, 8, "0032.jpg", 9), new c(new b("圆珠笔", "圓珠筆", "Pen"), "0035_mask%01d.jpg", 1, 9, "0035.jpg", 18), new c(new b("海报", "海報", "Poster"), "0036_mask%01d.jpg", 0, 10, "0036.jpg", 17), new c(new b("素描", "素描", "Portrait"), "icon.jpg", 0, 11, "0040.jpg", 12) };
+    AppMethodBeat.o(143078);
   }
   
   public FilterImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(107629);
-    this.filterId = 0;
-    this.cup = ((Activity)paramContext);
-    paramContext = View.inflate(this.cup, 2130969287, this);
-    this.ArK = ((CropImageView)paramContext.findViewById(2131823274));
-    this.ArJ = ((ImageView)paramContext.findViewById(2131823277));
-    this.ArI = paramContext.findViewById(2131823276);
-    this.ArK.setOnTouchListener(null);
-    this.ArM = ((MMHorList)paramContext.findViewById(2131823278));
-    this.ArN = new a();
-    this.ArM.setAdapter(this.ArN);
-    this.ArM.invalidate();
-    this.ArM.setOnItemClickListener(new FilterImageView.1(this));
-    AppMethodBeat.o(107629);
+    AppMethodBeat.i(143069);
+    this.wBk = 0;
+    this.djj = ((Activity)paramContext);
+    paramContext = View.inflate(this.djj, 2131493675, this);
+    this.HnD = ((CropImageView)paramContext.findViewById(2131298870));
+    this.HnC = ((ImageView)paramContext.findViewById(2131298879));
+    this.HnB = paramContext.findViewById(2131298874);
+    this.HnD.setOnTouchListener(null);
+    this.HnF = ((MMHorList)paramContext.findViewById(2131298867));
+    this.HnG = new a();
+    this.HnF.setAdapter(this.HnG);
+    this.HnF.invalidate();
+    this.HnF.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(143067);
+        paramAnonymousAdapterView = FilterImageView.a(FilterImageView.this);
+        paramAnonymousAdapterView.rZ = paramAnonymousInt;
+        paramAnonymousAdapterView.notifyDataSetChanged();
+        try
+        {
+          FilterImageView.a(FilterImageView.this, FilterImageView.HnJ[paramAnonymousInt].HnU);
+          FilterImageView.a(FilterImageView.this, FilterImageView.HnJ[paramAnonymousInt].HnR, FilterImageView.HnJ[paramAnonymousInt].HnS, FilterImageView.HnJ[paramAnonymousInt].HnT);
+          AppMethodBeat.o(143067);
+          return;
+        }
+        catch (Exception paramAnonymousAdapterView)
+        {
+          ad.e("MicroMsg.FilterView", paramAnonymousAdapterView.toString());
+          ad.printErrStackTrace("MicroMsg.FilterView", paramAnonymousAdapterView, "", new Object[0]);
+          AppMethodBeat.o(143067);
+          return;
+        }
+        catch (OutOfMemoryError paramAnonymousAdapterView)
+        {
+          ad.e("MicroMsg.FilterView", paramAnonymousAdapterView.toString());
+          ad.printErrStackTrace("MicroMsg.FilterView", paramAnonymousAdapterView, "", new Object[0]);
+          AppMethodBeat.o(143067);
+        }
+      }
+    });
+    AppMethodBeat.o(143069);
   }
   
-  private boolean aJ(String paramString, int paramInt1, int paramInt2)
+  private boolean aQ(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(107637);
+    AppMethodBeat.i(143076);
     if (paramInt2 == 0)
     {
-      this.ArL.setPixels(this.ArH, 0, this.ArL.getWidth(), 0, 0, this.ArL.getWidth(), this.ArL.getHeight());
-      this.ArK.invalidate();
-      AppMethodBeat.o(107637);
+      this.HnE.setPixels(this.HnA, 0, this.HnE.getWidth(), 0, 0, this.HnE.getWidth(), this.HnE.getHeight());
+      this.HnD.invalidate();
+      AppMethodBeat.o(143076);
       return true;
     }
-    int j = this.ArL.getWidth() * this.ArL.getHeight();
-    ab.d("MicroMsg.FilterView", "len:" + j + "  maskCount:" + paramInt1);
+    int j = this.HnE.getWidth() * this.HnE.getHeight();
+    ad.d("MicroMsg.FilterView", "len:" + j + "  maskCount:" + paramInt1);
     int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { paramInt1, j });
     int i = 0;
     while (i < paramInt1)
@@ -87,7 +118,7 @@ public class FilterImageView
       Object localObject4;
       try
       {
-        localObject3 = this.cup.getAssets().open("filter/".concat(String.valueOf(localObject3)));
+        localObject3 = this.djj.getAssets().open("filter/".concat(String.valueOf(localObject3)));
         localObject1 = localObject3;
         localObject2 = localObject3;
         localObject4 = new byte[j];
@@ -96,7 +127,7 @@ public class FilterImageView
         ((InputStream)localObject3).read((byte[])localObject4);
         localObject1 = localObject3;
         localObject2 = localObject3;
-        localObject4 = d.bT((byte[])localObject4);
+        localObject4 = f.cl((byte[])localObject4);
         localObject1 = localObject3;
         localObject2 = localObject3;
         ((InputStream)localObject3).close();
@@ -105,14 +136,14 @@ public class FilterImageView
         }
         if (localObject4 == null)
         {
-          AppMethodBeat.o(107637);
+          AppMethodBeat.o(143076);
           return false;
         }
       }
       catch (Exception paramString)
       {
         localObject2 = localObject1;
-        AppMethodBeat.o(107637);
+        AppMethodBeat.o(143076);
         localObject2 = localObject1;
         throw paramString;
       }
@@ -121,153 +152,153 @@ public class FilterImageView
         if (localObject2 != null) {
           localObject2.close();
         }
-        AppMethodBeat.o(107637);
+        AppMethodBeat.o(143076);
       }
-      localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject4, this.ArL.getWidth(), this.ArL.getHeight(), true);
+      localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject4, this.HnE.getWidth(), this.HnE.getHeight(), true);
       if (localObject4 != localObject1)
       {
-        ab.i("MicroMsg.FilterView", "recycle bitmap:%s", new Object[] { localObject4.toString() });
+        ad.i("MicroMsg.FilterView", "recycle bitmap:%s", new Object[] { localObject4.toString() });
         ((Bitmap)localObject4).recycle();
       }
       if (localObject1 == null)
       {
-        AppMethodBeat.o(107637);
+        AppMethodBeat.o(143076);
         return false;
       }
       ((Bitmap)localObject1).getPixels(arrayOfInt[i], 0, ((Bitmap)localObject1).getWidth(), 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
-      ab.i("MicroMsg.FilterView", "recycle bitmap:%s", new Object[] { localObject1.toString() });
+      ad.i("MicroMsg.FilterView", "recycle bitmap:%s", new Object[] { localObject1.toString() });
       ((Bitmap)localObject1).recycle();
       i += 1;
     }
     paramString = new PIntArray();
-    ab.e("MicroMsg.FilterView", "src.len:" + this.ArH.length);
+    ad.e("MicroMsg.FilterView", "src.len:" + this.HnA.length);
     i = 0;
     while (i < arrayOfInt.length)
     {
-      ab.e("MicroMsg.FilterView", "mask[" + i + "].len:" + arrayOfInt[i].length);
+      ad.e("MicroMsg.FilterView", "mask[" + i + "].len:" + arrayOfInt[i].length);
       i += 1;
     }
-    ab.e("MicroMsg.FilterView", "before filter");
-    ImgFilter.FilterInt(paramInt2, this.ArH, arrayOfInt, paramInt1, this.ArL.getWidth(), this.ArL.getHeight(), paramString);
-    ab.e("MicroMsg.FilterView", "after filter");
-    this.ArL.setPixels(paramString.value, 0, this.ArL.getWidth(), 0, 0, this.ArL.getWidth(), this.ArL.getHeight());
-    this.ArK.invalidate();
-    AppMethodBeat.o(107637);
+    ad.e("MicroMsg.FilterView", "before filter");
+    ImgFilter.FilterInt(paramInt2, this.HnA, arrayOfInt, paramInt1, this.HnE.getWidth(), this.HnE.getHeight(), paramString);
+    ad.e("MicroMsg.FilterView", "after filter");
+    this.HnE.setPixels(paramString.value, 0, this.HnE.getWidth(), 0, 0, this.HnE.getWidth(), this.HnE.getHeight());
+    this.HnD.invalidate();
+    AppMethodBeat.o(143076);
     return true;
-  }
-  
-  public final void eW(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(107635);
-    ab.i("MicroMsg.FilterView", "filePath before fiterBmp:".concat(String.valueOf(paramString)));
-    if ((this.ArL == null) || (this.ArL.isRecycled())) {
-      this.ArL = d.b(d.d(paramString, 480, 480, false), paramInt);
-    }
-    ab.d("MicroMsg.FilterView", "filterBmp w:" + this.ArL.getWidth() + " h:" + this.ArL.getHeight());
-    this.ArH = new int[this.ArL.getWidth() * this.ArL.getHeight()];
-    this.ArL.getPixels(this.ArH, 0, this.ArL.getWidth(), 0, 0, this.ArL.getWidth(), this.ArL.getHeight());
-    this.ArK.setImageBitmap(this.ArL);
-    AppMethodBeat.o(107635);
   }
   
   public View getCropAreaView()
   {
-    return this.ArI;
+    return this.HnB;
   }
   
   public CropImageView getCropImageIV()
   {
-    return this.ArK;
+    return this.HnD;
   }
   
   public Bitmap getFilterBmp()
   {
-    return this.ArL;
+    return this.HnE;
   }
   
   public int getFilterId()
   {
-    return this.filterId;
+    return this.wBk;
+  }
+  
+  public final void gi(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(143074);
+    ad.i("MicroMsg.FilterView", "filePath before fiterBmp:".concat(String.valueOf(paramString)));
+    if ((this.HnE == null) || (this.HnE.isRecycled())) {
+      this.HnE = f.a(f.e(paramString, 480, 480, false), paramInt);
+    }
+    ad.d("MicroMsg.FilterView", "filterBmp w:" + this.HnE.getWidth() + " h:" + this.HnE.getHeight());
+    this.HnA = new int[this.HnE.getWidth() * this.HnE.getHeight()];
+    this.HnE.getPixels(this.HnA, 0, this.HnE.getWidth(), 0, 0, this.HnE.getWidth(), this.HnE.getHeight());
+    this.HnD.setImageBitmap(this.HnE);
+    AppMethodBeat.o(143074);
   }
   
   public void setCropMaskBackground(int paramInt)
   {
-    AppMethodBeat.i(107634);
-    if (this.ArJ != null) {
-      this.ArJ.setBackgroundResource(paramInt);
+    AppMethodBeat.i(143073);
+    if (this.HnC != null) {
+      this.HnC.setBackgroundResource(paramInt);
     }
-    AppMethodBeat.o(107634);
+    AppMethodBeat.o(143073);
   }
   
   public void setCropMaskVisible(int paramInt)
   {
-    AppMethodBeat.i(107633);
-    if (this.ArJ != null) {
-      this.ArJ.setVisibility(paramInt);
+    AppMethodBeat.i(143072);
+    if (this.HnC != null) {
+      this.HnC.setVisibility(paramInt);
     }
-    AppMethodBeat.o(107633);
+    AppMethodBeat.o(143072);
   }
   
   public void setImage(Bitmap paramBitmap)
   {
-    this.ArL = paramBitmap;
+    this.HnE = paramBitmap;
   }
   
   public void setLimitZoomIn(boolean paramBoolean)
   {
-    AppMethodBeat.i(107630);
-    if (this.ArK != null) {
-      this.ArK.setLimitZoomIn(paramBoolean);
+    AppMethodBeat.i(143070);
+    if (this.HnD != null) {
+      this.HnD.setLimitZoomIn(paramBoolean);
     }
-    AppMethodBeat.o(107630);
+    AppMethodBeat.o(143070);
   }
   
   public void setMatrix(Matrix paramMatrix)
   {
-    AppMethodBeat.i(107632);
-    if (this.ArK != null) {
-      this.ArK.setImageMatrix(paramMatrix);
+    AppMethodBeat.i(143071);
+    if (this.HnD != null) {
+      this.HnD.setImageMatrix(paramMatrix);
     }
-    AppMethodBeat.o(107632);
+    AppMethodBeat.o(143071);
   }
   
   public void setOnConfirmImp(Runnable paramRunnable)
   {
-    this.ArO = paramRunnable;
+    this.HnH = paramRunnable;
   }
   
   public void setOnExitImp(Runnable paramRunnable)
   {
-    this.ArP = paramRunnable;
+    this.HnI = paramRunnable;
   }
   
   public void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(107636);
+    AppMethodBeat.i(143075);
     if (paramInt == 0)
     {
-      this.ArN.notifyDataSetChanged();
-      this.ArM.invalidate();
+      this.HnG.notifyDataSetChanged();
+      this.HnF.invalidate();
     }
     super.setVisibility(paramInt);
-    AppMethodBeat.o(107636);
+    AppMethodBeat.o(143075);
   }
   
   final class a
     extends BaseAdapter
   {
-    int lxQ = 0;
+    int rZ = 0;
     
     a() {}
     
     public final int getCount()
     {
-      return FilterImageView.ArQ.length;
+      return FilterImageView.HnJ.length;
     }
     
     public final Object getItem(int paramInt)
     {
-      return FilterImageView.ArQ[paramInt];
+      return FilterImageView.HnJ[paramInt];
     }
     
     public final long getItemId(int paramInt)
@@ -277,89 +308,112 @@ public class FilterImageView
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(107628);
+      AppMethodBeat.i(143068);
       FilterImageView.c localc = (FilterImageView.c)getItem(paramInt);
       Object localObject1;
-      if ((paramView == null) || (!(paramView.getTag() instanceof FilterImageView.a.a)))
+      if ((paramView == null) || (!(paramView.getTag() instanceof a)))
       {
-        paramViewGroup = View.inflate(FilterImageView.b(FilterImageView.this), 2130969582, null);
-        localObject1 = new FilterImageView.a.a(this);
-        ((FilterImageView.a.a)localObject1).euY = ((TextView)paramViewGroup.findViewById(2131824134));
-        ((FilterImageView.a.a)localObject1).ArS = ((ImageView)paramViewGroup.findViewById(2131824133));
+        paramViewGroup = View.inflate(FilterImageView.b(FilterImageView.this), 2131494005, null);
+        localObject1 = new a();
+        ((a)localObject1).ss = ((TextView)paramViewGroup.findViewById(2131299965));
+        ((a)localObject1).HnL = ((ImageView)paramViewGroup.findViewById(2131299964));
         paramViewGroup.setTag(localObject1);
       }
       for (;;)
       {
-        Object localObject2 = ((FilterImageView.a.a)localObject1).euY;
-        paramView = localc.ArX;
-        String str = aa.dsG();
+        Object localObject2 = ((a)localObject1).ss;
+        paramView = localc.HnQ;
+        String str = ac.eFu();
         if (str.equals("zh_CN"))
         {
-          paramView = paramView.zLl;
+          paramView = paramView.GBD;
           label120:
           ((TextView)localObject2).setText(paramView);
         }
         try
         {
-          paramView = FilterImageView.b(FilterImageView.this).getAssets().open("filter/" + localc.cDz);
-          ((FilterImageView.a.a)localObject1).ArT = d.decodeStream(paramView);
+          paramView = FilterImageView.b(FilterImageView.this).getAssets().open("filter/" + localc.dub);
+          ((a)localObject1).HnM = f.decodeStream(paramView);
           paramView.close();
-          ((FilterImageView.a.a)localObject1).ArS.setImageBitmap(((FilterImageView.a.a)localObject1).ArT);
+          ((a)localObject1).HnL.setImageBitmap(((a)localObject1).HnM);
           paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-          if (paramInt == this.lxQ)
+          if (paramInt == this.rZ)
           {
-            paramViewGroup.findViewById(2131824133).setBackgroundResource(2130838090);
-            AppMethodBeat.o(107628);
+            paramViewGroup.findViewById(2131299964).setBackgroundResource(2131231418);
+            AppMethodBeat.o(143068);
             return paramViewGroup;
-            localObject2 = (FilterImageView.a.a)paramView.getTag();
+            localObject2 = (a)paramView.getTag();
             localObject1 = localObject2;
             paramViewGroup = paramView;
-            if (((FilterImageView.a.a)localObject2).ArT == null) {
+            if (((a)localObject2).HnM == null) {
               continue;
             }
-            ab.i("MicroMsg.FilterView", "recycle bitmap:%s", new Object[] { ((FilterImageView.a.a)localObject2).ArT.toString() });
-            ((FilterImageView.a.a)localObject2).ArT.recycle();
+            ad.i("MicroMsg.FilterView", "recycle bitmap:%s", new Object[] { ((a)localObject2).HnM.toString() });
+            ((a)localObject2).HnM.recycle();
             localObject1 = localObject2;
             paramViewGroup = paramView;
             continue;
             if ((str.equals("zh_TW")) || (str.equals("zh_HK")))
             {
-              paramView = paramView.ArV;
+              paramView = paramView.HnO;
               break label120;
             }
-            paramView = paramView.ArW;
+            paramView = paramView.HnP;
           }
         }
         catch (IOException paramView)
         {
           for (;;)
           {
-            ab.printErrStackTrace("MicroMsg.FilterView", paramView, "", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.FilterView", paramView, "", new Object[0]);
             continue;
-            paramViewGroup.findViewById(2131824133).setBackgroundResource(2130838091);
+            paramViewGroup.findViewById(2131299964).setBackgroundResource(2131231419);
           }
         }
       }
+    }
+    
+    final class a
+    {
+      ImageView HnL;
+      Bitmap HnM;
+      TextView ss;
+      
+      a() {}
+    }
+  }
+  
+  static final class b
+  {
+    String GBD;
+    String HnO;
+    String HnP;
+    
+    b(String paramString1, String paramString2, String paramString3)
+    {
+      this.GBD = paramString1;
+      this.HnO = paramString2;
+      this.HnP = paramString3;
     }
   }
   
   static final class c
   {
-    FilterImageView.b ArX;
-    String ArY;
-    int ArZ;
-    int Asa;
-    int Asb;
-    String cDz;
+    FilterImageView.b HnQ;
+    String HnR;
+    int HnS;
+    int HnT;
+    int HnU;
+    String dub;
     
     c(FilterImageView.b paramb, String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3)
     {
-      this.ArX = paramb;
-      this.ArY = paramString1;
-      this.ArZ = paramInt1;
-      this.Asa = paramInt2;
-      this.cDz = paramString2;
-      this.Asb = paramInt3;
+      this.HnQ = paramb;
+      this.HnR = paramString1;
+      this.HnS = paramInt1;
+      this.HnT = paramInt2;
+      this.dub = paramString2;
+      this.HnU = paramInt3;
     }
   }
 }

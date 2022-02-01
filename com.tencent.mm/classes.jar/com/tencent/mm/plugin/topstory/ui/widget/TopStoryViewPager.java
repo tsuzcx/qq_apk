@@ -23,27 +23,27 @@ public class TopStoryViewPager
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(2269);
+    AppMethodBeat.i(126677);
     if (!this.canScroll)
     {
-      AppMethodBeat.o(2269);
+      AppMethodBeat.o(126677);
       return false;
     }
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(2269);
+    AppMethodBeat.o(126677);
     return bool;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(2268);
+    AppMethodBeat.i(126676);
     if (!this.canScroll)
     {
-      AppMethodBeat.o(2268);
+      AppMethodBeat.o(126676);
       return false;
     }
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(2268);
+    AppMethodBeat.o(126676);
     return bool;
   }
   
@@ -54,7 +54,7 @@ public class TopStoryViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.widget.TopStoryViewPager
  * JD-Core Version:    0.7.0.1
  */

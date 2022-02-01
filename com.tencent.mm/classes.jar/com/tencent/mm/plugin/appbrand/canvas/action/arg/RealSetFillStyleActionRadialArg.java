@@ -6,9 +6,9 @@ import android.graphics.Shader.TileMode;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.d;
-import com.tencent.mm.plugin.appbrand.s.g;
 import java.util.Arrays;
 import java.util.Objects;
 import org.json.JSONArray;
@@ -18,17 +18,17 @@ public class RealSetFillStyleActionRadialArg
   extends RealSetFillStyleActionArg
 {
   public static final Parcelable.Creator<RealSetFillStyleActionRadialArg> CREATOR;
-  public float heS;
-  public float heT;
-  public int[] heW;
-  public float heY;
-  public float[] positions;
+  public float iZa;
+  public float iZb;
+  public int[] iZe;
+  public float[] iZf;
+  public float iZh;
   
   static
   {
-    AppMethodBeat.i(103397);
-    CREATOR = new RealSetFillStyleActionRadialArg.1();
-    AppMethodBeat.o(103397);
+    AppMethodBeat.i(145080);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145080);
   }
   
   public RealSetFillStyleActionRadialArg() {}
@@ -40,14 +40,14 @@ public class RealSetFillStyleActionRadialArg
   
   public final boolean a(d paramd, Canvas paramCanvas)
   {
-    AppMethodBeat.i(103390);
-    if ((this.heW == null) || (this.positions == null))
+    AppMethodBeat.i(145073);
+    if ((this.iZe == null) || (this.iZf == null))
     {
-      AppMethodBeat.o(103390);
+      AppMethodBeat.o(145073);
       return false;
     }
-    paramd.heC.setShader(new RadialGradient(this.heS, this.heT, this.heY, this.heW, this.positions, Shader.TileMode.CLAMP));
-    AppMethodBeat.o(103390);
+    paramd.iYM.setShader(new RadialGradient(this.iZa, this.iZb, this.iZh, this.iZe, this.iZf, Shader.TileMode.CLAMP));
+    AppMethodBeat.o(145073);
     return true;
   }
   
@@ -58,133 +58,133 @@ public class RealSetFillStyleActionRadialArg
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(103391);
+    AppMethodBeat.i(145074);
     if (this == paramObject)
     {
-      AppMethodBeat.o(103391);
+      AppMethodBeat.o(145074);
       return true;
     }
     if (!(paramObject instanceof RealSetFillStyleActionRadialArg))
     {
-      AppMethodBeat.o(103391);
+      AppMethodBeat.o(145074);
       return false;
     }
     if (!super.equals(paramObject))
     {
-      AppMethodBeat.o(103391);
+      AppMethodBeat.o(145074);
       return false;
     }
     paramObject = (RealSetFillStyleActionRadialArg)paramObject;
-    if ((Float.compare(paramObject.heS, this.heS) == 0) && (Float.compare(paramObject.heT, this.heT) == 0) && (Float.compare(paramObject.heY, this.heY) == 0) && (Arrays.equals(this.heW, paramObject.heW)) && (Arrays.equals(this.positions, paramObject.positions)))
+    if ((Float.compare(paramObject.iZa, this.iZa) == 0) && (Float.compare(paramObject.iZb, this.iZb) == 0) && (Float.compare(paramObject.iZh, this.iZh) == 0) && (Arrays.equals(this.iZe, paramObject.iZe)) && (Arrays.equals(this.iZf, paramObject.iZf)))
     {
-      AppMethodBeat.o(103391);
+      AppMethodBeat.o(145074);
       return true;
     }
-    AppMethodBeat.o(103391);
+    AppMethodBeat.o(145074);
     return false;
   }
   
   public final void f(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103395);
+    AppMethodBeat.i(145078);
     super.f(paramJSONArray);
     if (paramJSONArray.length() < 3)
     {
-      AppMethodBeat.o(103395);
+      AppMethodBeat.o(145078);
       return;
     }
     JSONArray localJSONArray = paramJSONArray.optJSONArray(1);
     if ((localJSONArray == null) || (localJSONArray.length() < 3))
     {
-      AppMethodBeat.o(103395);
+      AppMethodBeat.o(145078);
       return;
     }
-    this.heS = g.d(localJSONArray, 1);
-    this.heT = g.d(localJSONArray, 2);
-    this.heY = g.d(localJSONArray, 3);
+    this.iZa = g.f(localJSONArray, 1);
+    this.iZb = g.f(localJSONArray, 2);
+    this.iZh = g.f(localJSONArray, 3);
     paramJSONArray = paramJSONArray.optJSONArray(2);
-    this.heW = new int[paramJSONArray.length()];
-    this.positions = new float[paramJSONArray.length()];
+    this.iZe = new int[paramJSONArray.length()];
+    this.iZf = new float[paramJSONArray.length()];
     int i = 0;
     while (i < paramJSONArray.length())
     {
       localJSONArray = paramJSONArray.optJSONArray(i);
       if (localJSONArray.length() >= 2)
       {
-        this.positions[i] = ((float)localJSONArray.optDouble(0));
-        this.heW[i] = g.o(localJSONArray.optJSONArray(1));
+        this.iZf[i] = ((float)localJSONArray.optDouble(0));
+        this.iZe[i] = g.p(localJSONArray.optJSONArray(1));
       }
       i += 1;
     }
-    AppMethodBeat.o(103395);
+    AppMethodBeat.o(145078);
   }
   
   public final void h(Parcel paramParcel)
   {
-    AppMethodBeat.i(103393);
+    AppMethodBeat.i(145076);
     super.h(paramParcel);
-    this.heS = paramParcel.readFloat();
-    this.heT = paramParcel.readFloat();
-    this.heY = paramParcel.readFloat();
+    this.iZa = paramParcel.readFloat();
+    this.iZb = paramParcel.readFloat();
+    this.iZh = paramParcel.readFloat();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.heW = new int[i];
-      paramParcel.readIntArray(this.heW);
+      this.iZe = new int[i];
+      paramParcel.readIntArray(this.iZe);
     }
     i = paramParcel.readInt();
     if (i > 0)
     {
-      this.positions = new float[i];
-      paramParcel.readFloatArray(this.positions);
+      this.iZf = new float[i];
+      paramParcel.readFloatArray(this.iZf);
     }
-    AppMethodBeat.o(103393);
+    AppMethodBeat.o(145076);
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(103392);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.heS), Float.valueOf(this.heT), Float.valueOf(this.heY) });
-    int j = Arrays.hashCode(this.heW);
-    int k = Arrays.hashCode(this.positions);
-    AppMethodBeat.o(103392);
+    AppMethodBeat.i(145075);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.iZa), Float.valueOf(this.iZb), Float.valueOf(this.iZh) });
+    int j = Arrays.hashCode(this.iZe);
+    int k = Arrays.hashCode(this.iZf);
+    AppMethodBeat.o(145075);
     return (i * 31 + j) * 31 + k;
   }
   
-  public final void p(JSONObject paramJSONObject)
+  public final void parse(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(103396);
-    super.p(paramJSONObject);
-    AppMethodBeat.o(103396);
+    AppMethodBeat.i(145079);
+    super.parse(paramJSONObject);
+    AppMethodBeat.o(145079);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(103394);
+    AppMethodBeat.i(145077);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.heS);
-    paramParcel.writeFloat(this.heT);
-    paramParcel.writeFloat(this.heY);
-    if (this.heW != null)
+    paramParcel.writeFloat(this.iZa);
+    paramParcel.writeFloat(this.iZb);
+    paramParcel.writeFloat(this.iZh);
+    if (this.iZe != null)
     {
-      paramParcel.writeInt(this.heW.length);
-      paramParcel.writeIntArray(this.heW);
+      paramParcel.writeInt(this.iZe.length);
+      paramParcel.writeIntArray(this.iZe);
     }
-    while (this.positions != null)
+    while (this.iZf != null)
     {
-      paramParcel.writeInt(this.positions.length);
-      paramParcel.writeFloatArray(this.positions);
-      AppMethodBeat.o(103394);
+      paramParcel.writeInt(this.iZf.length);
+      paramParcel.writeFloatArray(this.iZf);
+      AppMethodBeat.o(145077);
       return;
       paramParcel.writeInt(0);
     }
     paramParcel.writeInt(0);
-    AppMethodBeat.o(103394);
+    AppMethodBeat.o(145077);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionRadialArg
  * JD-Core Version:    0.7.0.1
  */

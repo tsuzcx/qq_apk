@@ -1,30 +1,30 @@
 package com.tencent.mm.media.proxy;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.remoteservice.a;
 import com.tencent.mm.remoteservice.d;
 import com.tencent.mm.remoteservice.f;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/proxy/MediaEditorProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "getAccPath", "", "getAccPathRemote", "Companion", "plugin-mediaeditor_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/proxy/MediaEditorProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "getAccPath", "", "getAccPathRemote", "Companion", "plugin-mediaeditor_release"})
 public final class MediaEditorProxy
   extends a
 {
   private static final String RESULT_KEY = "result_key";
   private static final String TAG = "MicroMsg.StoryCaptureProxy";
-  public static MediaEditorProxy eVO;
-  public static final MediaEditorProxy.a eVP;
+  public static MediaEditorProxy gsh;
+  public static final a gsi;
   
   static
   {
-    AppMethodBeat.i(13004);
-    eVP = new MediaEditorProxy.a((byte)0);
+    AppMethodBeat.i(93729);
+    gsi = new a((byte)0);
     TAG = "MicroMsg.StoryCaptureProxy";
     RESULT_KEY = "result_key";
-    AppMethodBeat.o(13004);
+    AppMethodBeat.o(93729);
   }
   
   public MediaEditorProxy(d paramd)
@@ -34,37 +34,42 @@ public final class MediaEditorProxy
   
   public static final void createInstance(d paramd)
   {
-    AppMethodBeat.i(13006);
-    MediaEditorProxy.a.createInstance(paramd);
-    AppMethodBeat.o(13006);
+    AppMethodBeat.i(93730);
+    paramd = new MediaEditorProxy(paramd);
+    k.h(paramd, "<set-?>");
+    access$setInstance$cp(paramd);
+    AppMethodBeat.o(93730);
   }
   
   public final String getAccPath()
   {
-    AppMethodBeat.i(13002);
-    Object localObject = g.RL();
-    j.p(localObject, "MMKernel.storage()");
+    AppMethodBeat.i(93727);
+    Object localObject = g.afB();
+    k.g(localObject, "MMKernel.storage()");
     localObject = ((e)localObject).getAccPath();
-    j.p(localObject, "MMKernel.storage().accPath");
-    AppMethodBeat.o(13002);
+    k.g(localObject, "MMKernel.storage().accPath");
+    AppMethodBeat.o(93727);
     return localObject;
   }
   
   @f
   public final String getAccPathRemote()
   {
-    AppMethodBeat.i(13003);
-    Object localObject = g.RL();
-    j.p(localObject, "MMKernel.storage()");
+    AppMethodBeat.i(93728);
+    Object localObject = g.afB();
+    k.g(localObject, "MMKernel.storage()");
     localObject = ((e)localObject).getAccPath();
-    j.p(localObject, "MMKernel.storage().accPath");
-    AppMethodBeat.o(13003);
+    k.g(localObject, "MMKernel.storage().accPath");
+    AppMethodBeat.o(93728);
     return localObject;
   }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/proxy/MediaEditorProxy$Companion;", "", "()V", "RESULT_KEY", "", "TAG", "getTAG", "()Ljava/lang/String;", "instance", "Lcom/tencent/mm/media/proxy/MediaEditorProxy;", "getInstance", "()Lcom/tencent/mm/media/proxy/MediaEditorProxy;", "setInstance", "(Lcom/tencent/mm/media/proxy/MediaEditorProxy;)V", "createInstance", "", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "plugin-mediaeditor_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.media.proxy.MediaEditorProxy
  * JD-Core Version:    0.7.0.1
  */

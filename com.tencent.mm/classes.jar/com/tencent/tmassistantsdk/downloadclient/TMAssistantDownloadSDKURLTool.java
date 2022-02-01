@@ -18,30 +18,30 @@ public class TMAssistantDownloadSDKURLTool
   
   private TMAssistantDownloadSDKURLTool(ITMAssistantExchangeURLListenner paramITMAssistantExchangeURLListenner)
   {
-    AppMethodBeat.i(75671);
+    AppMethodBeat.i(101917);
     this.mListener = null;
     this.engine = null;
     if (paramITMAssistantExchangeURLListenner != null)
     {
       this.mListener = paramITMAssistantExchangeURLListenner;
       this.engine = new GetAppSimpleDetailEngine(this.mListener);
-      AppMethodBeat.o(75671);
+      AppMethodBeat.o(101917);
       return;
     }
     TMLog.e("TMAssistantDownloadSDKExchangeURL", "ITMAssistantExchangeURLListenner listener shouldn't be null!");
-    AppMethodBeat.o(75671);
+    AppMethodBeat.o(101917);
   }
   
   public static TMAssistantDownloadSDKURLTool getInstance(ITMAssistantExchangeURLListenner paramITMAssistantExchangeURLListenner)
   {
     try
     {
-      AppMethodBeat.i(75672);
+      AppMethodBeat.i(101918);
       if (mInstance == null) {
         mInstance = new TMAssistantDownloadSDKURLTool(paramITMAssistantExchangeURLListenner);
       }
       paramITMAssistantExchangeURLListenner = mInstance;
-      AppMethodBeat.o(75672);
+      AppMethodBeat.o(101918);
       return paramITMAssistantExchangeURLListenner;
     }
     finally {}
@@ -49,7 +49,7 @@ public class TMAssistantDownloadSDKURLTool
   
   public void exchangeUrlsFromPackageNames(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(75673);
+    AppMethodBeat.i(101919);
     if (paramArrayList != null)
     {
       ArrayList localArrayList = new ArrayList();
@@ -70,25 +70,25 @@ public class TMAssistantDownloadSDKURLTool
       if ((localArrayList.size() > 0) && (this.engine != null)) {
         this.engine.sendReuqest(localArrayList);
       }
-      AppMethodBeat.o(75673);
+      AppMethodBeat.o(101919);
       return;
     }
     TMLog.w("TMAssistantDownloadSDKExchangeURL", "packageNames is null!");
-    AppMethodBeat.o(75673);
+    AppMethodBeat.o(101919);
   }
   
   public void onExchangedURLSucceed(ArrayList<AppSimpleDetail> paramArrayList, boolean paramBoolean)
   {
-    AppMethodBeat.i(75674);
+    AppMethodBeat.i(101920);
     if (this.mListener != null) {
       this.mListener.onExchangedURLSucceed(paramArrayList, paramBoolean);
     }
-    AppMethodBeat.o(75674);
+    AppMethodBeat.o(101920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKURLTool
  * JD-Core Version:    0.7.0.1
  */

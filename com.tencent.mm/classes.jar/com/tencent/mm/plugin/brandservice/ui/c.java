@@ -4,10 +4,10 @@ import android.content.Context;
 import android.util.SparseArray;
 import android.widget.AbsListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.nc;
-import com.tencent.mm.protocal.protobuf.ni;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.protocal.protobuf.pf;
+import com.tencent.mm.protocal.protobuf.pm;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.base.sortview.b;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,30 +18,30 @@ import java.util.Map;
 public class c
   extends b
 {
-  private int ejZ;
-  protected String jTm;
-  protected int jTn;
-  private List<c.a> jTq;
-  private boolean jTr;
-  protected boolean jTs;
-  protected boolean jTt;
-  int jTu;
-  protected long[] jTv;
-  protected c.b jTw;
+  private int fwK;
   protected int mScene;
+  protected String mTE;
+  protected int mTF;
+  private List<a> mTI;
+  private boolean mTJ;
+  protected boolean mTK;
+  protected boolean mTL;
+  int mTM;
+  protected long[] mTN;
+  protected b mTO;
   
   public c(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(13886);
-    this.jTq = new ArrayList();
-    v(true, true);
-    this.jTr = true;
-    c(new long[] { 1L });
-    AppMethodBeat.o(13886);
+    AppMethodBeat.i(5624);
+    this.mTI = new ArrayList();
+    E(true, true);
+    this.mTJ = true;
+    b(new long[] { 1L });
+    AppMethodBeat.o(5624);
   }
   
-  private static int a(c.a parama)
+  private static int a(a parama)
   {
     int j = 1;
     if (parama == null) {
@@ -49,10 +49,10 @@ public class c
     }
     int k = parama.count;
     int i;
-    if (parama.jTz)
+    if (parama.mTQ)
     {
       i = 1;
-      if (!parama.jTA) {
+      if (!parama.mTR) {
         break label40;
       }
     }
@@ -66,25 +66,30 @@ public class c
     }
   }
   
-  private c.a a(nc paramnc)
+  private a a(pf parampf)
   {
-    AppMethodBeat.i(13888);
-    c.a locala = new c.a();
-    locala.jTB = new LinkedList();
-    locala.jTB.add(paramnc);
-    locala.cnw = paramnc.wBW;
-    locala.count = paramnc.nrw.size();
-    locala.jTx = paramnc.wBX;
-    locala.eiJ = new LinkedList();
-    locala.eiJ.addAll(paramnc.nrw);
-    locala.jTy = paramnc.wBY;
-    locala.jTz = this.jTt;
-    locala.jTA = b(locala);
-    AppMethodBeat.o(13888);
+    AppMethodBeat.i(5626);
+    a locala = new a();
+    locala.mTS = new LinkedList();
+    locala.mTS.add(parampf);
+    locala.dcn = parampf.CNp;
+    locala.count = parampf.saZ.size();
+    locala.continueFlag = parampf.CNq;
+    locala.fvw = new LinkedList();
+    locala.fvw.addAll(parampf.saZ);
+    locala.mTP = parampf.CNr;
+    locala.mTQ = this.mTL;
+    locala.mTR = b(locala);
+    AppMethodBeat.o(5626);
     return locala;
   }
   
-  private void aWw()
+  private boolean b(a parama)
+  {
+    return (this.mTK) && (parama.continueFlag != 0);
+  }
+  
+  private void bCv()
   {
     boolean bool = true;
     for (;;)
@@ -92,53 +97,53 @@ public class c
       int i;
       try
       {
-        AppMethodBeat.i(13894);
+        AppMethodBeat.i(5632);
         HashMap localHashMap = new HashMap();
         i = 0;
-        c.a locala;
-        if (i < this.jTq.size())
+        a locala;
+        if (i < this.mTI.size())
         {
-          locala = (c.a)this.jTq.get(i);
+          locala = (a)this.mTI.get(i);
           if (locala != null) {
-            localHashMap.put(Long.valueOf(locala.cnw), locala);
+            localHashMap.put(Long.valueOf(locala.dcn), locala);
           }
         }
         else
         {
-          this.jTq.clear();
-          this.ejZ = 0;
+          this.mTI.clear();
+          this.fwK = 0;
           i = 0;
           int j;
-          if (i < this.jTv.length)
+          if (i < this.mTN.length)
           {
-            locala = (c.a)localHashMap.get(Long.valueOf(this.jTv[i]));
+            locala = (a)localHashMap.get(Long.valueOf(this.mTN[i]));
             if (locala == null) {
               break label281;
             }
-            this.jTq.add(locala);
-            j = this.ejZ;
-            this.ejZ = (a(locala) + j);
+            this.mTI.add(locala);
+            j = this.fwK;
+            this.fwK = (a(locala) + j);
             break label281;
           }
-          if (this.jTq.size() > 0)
+          if (this.mTI.size() > 0)
           {
-            locala = (c.a)this.jTq.get(this.jTq.size() - 1);
-            if (locala.jTA == this.jTr)
+            locala = (a)this.mTI.get(this.mTI.size() - 1);
+            if (locala.mTR == this.mTJ)
             {
-              j = this.ejZ;
-              if (!locala.jTA) {
+              j = this.fwK;
+              if (!locala.mTR) {
                 continue;
               }
               i = -1;
-              this.ejZ = (i + j);
-              if (this.jTr) {
+              this.fwK = (i + j);
+              if (this.mTJ) {
                 continue;
               }
-              locala.jTA = bool;
+              locala.mTR = bool;
             }
           }
           localHashMap.clear();
-          AppMethodBeat.o(13894);
+          AppMethodBeat.o(5632);
           return;
           i = 1;
           continue;
@@ -154,177 +159,193 @@ public class c
     }
   }
   
-  private boolean b(c.a parama)
+  private int nB(long paramLong)
   {
-    return (this.jTs) && (parama.jTx != 0);
-  }
-  
-  private int hQ(long paramLong)
-  {
-    AppMethodBeat.i(13891);
+    AppMethodBeat.i(5629);
     int i = 0;
-    while (i < this.jTq.size())
+    while (i < this.mTI.size())
     {
-      if (((c.a)this.jTq.get(i)).cnw == paramLong)
+      if (((a)this.mTI.get(i)).dcn == paramLong)
       {
-        AppMethodBeat.o(13891);
+        AppMethodBeat.o(5629);
         return i;
       }
       i += 1;
     }
-    AppMethodBeat.o(13891);
+    AppMethodBeat.o(5629);
     return -1;
   }
   
-  public void a(nc paramnc, boolean paramBoolean)
+  public final void E(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(13889);
-    if (((this.jTr) && (paramnc == null)) || (paramnc.nrw == null))
+    this.mTL = paramBoolean1;
+    this.mTK = paramBoolean2;
+  }
+  
+  public void a(pf parampf, boolean paramBoolean)
+  {
+    AppMethodBeat.i(5627);
+    if (((this.mTJ) && (parampf == null)) || (parampf.saZ == null))
     {
-      ab.e("MicroMsg.BrandService.BizSearchResultAdapter", "The content or content.ItemList is null or the mode do not support to append data.");
-      AppMethodBeat.o(13889);
+      ad.e("MicroMsg.BrandService.BizSearchResultAdapter", "The content or content.ItemList is null or the mode do not support to append data.");
+      AppMethodBeat.o(5627);
       return;
     }
     if (isEmpty()) {
-      this.jTu = ((int)(System.currentTimeMillis() / 1000L));
+      this.mTM = ((int)(System.currentTimeMillis() / 1000L));
     }
-    c.a locala = hP(paramnc.wBW);
+    a locala = nA(parampf.CNp);
     if (locala == null) {
       if (paramBoolean)
       {
-        paramnc = a(paramnc);
-        this.jTq.add(paramnc);
-        aWw();
+        parampf = a(parampf);
+        this.mTI.add(parampf);
+        bCv();
       }
     }
     for (;;)
     {
-      al.d(this.zsx);
-      AppMethodBeat.o(13889);
+      aq.f(this.Ggn);
+      AppMethodBeat.o(5627);
       return;
-      ab.e("MicroMsg.BrandService.BizSearchResultAdapter", "The type(%d) do not exist.", new Object[] { Long.valueOf(paramnc.wBW) });
-      AppMethodBeat.o(13889);
+      ad.e("MicroMsg.BrandService.BizSearchResultAdapter", "The type(%d) do not exist.", new Object[] { Long.valueOf(parampf.CNp) });
+      AppMethodBeat.o(5627);
       return;
-      if (locala.eiJ == null) {
-        locala.eiJ = new LinkedList();
+      if (locala.fvw == null) {
+        locala.fvw = new LinkedList();
       }
-      locala.eiJ.addAll(paramnc.nrw);
-      if (locala.jTB == null) {
-        locala.jTB = new LinkedList();
+      locala.fvw.addAll(parampf.saZ);
+      if (locala.mTS == null) {
+        locala.mTS = new LinkedList();
       }
-      locala.jTB.add(paramnc);
-      locala.count += paramnc.nrw.size();
-      this.ejZ += paramnc.nrw.size();
+      locala.mTS.add(parampf);
+      locala.count += parampf.saZ.size();
+      this.fwK += parampf.saZ.size();
     }
   }
   
-  public void aWx()
-  {
-    AppMethodBeat.i(13895);
-    i(null, null);
-    this.jTu = 0;
-    AppMethodBeat.o(13895);
-  }
-  
-  public final void c(long... paramVarArgs)
+  public final void b(long... paramVarArgs)
   {
     if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-      this.jTv = paramVarArgs;
+      this.mTN = paramVarArgs;
     }
+  }
+  
+  public void bCw()
+  {
+    AppMethodBeat.i(5633);
+    m(null, null);
+    this.mTM = 0;
+    AppMethodBeat.o(5633);
   }
   
   public int getCount()
   {
-    return this.ejZ;
+    return this.fwK;
   }
   
-  final c.a hP(long paramLong)
+  public void m(String paramString, List<pf> paramList)
   {
-    AppMethodBeat.i(13890);
-    int i = hQ(paramLong);
-    if (i >= 0)
-    {
-      c.a locala = (c.a)this.jTq.get(i);
-      AppMethodBeat.o(13890);
-      return locala;
-    }
-    AppMethodBeat.o(13890);
-    return null;
-  }
-  
-  public void i(String paramString, List<nc> paramList)
-  {
-    AppMethodBeat.i(13887);
-    this.jTq.clear();
-    this.zsw.clear();
-    al.d(this.zsx);
-    this.ejZ = 0;
-    this.jTm = paramString;
+    AppMethodBeat.i(5625);
+    this.mTI.clear();
+    this.Ggm.clear();
+    aq.f(this.Ggn);
+    this.fwK = 0;
+    this.mTE = paramString;
     if (paramList != null)
     {
-      this.jTu = ((int)(System.currentTimeMillis() / 1000L));
+      this.mTM = ((int)(System.currentTimeMillis() / 1000L));
       int i = 0;
       while (i < paramList.size())
       {
-        paramString = (nc)paramList.get(i);
-        if ((paramString != null) && (paramString.nrw != null) && (paramString.nrw.size() > 0))
+        paramString = (pf)paramList.get(i);
+        if ((paramString != null) && (paramString.saZ != null) && (paramString.saZ.size() > 0))
         {
           paramString = a(paramString);
-          this.ejZ += a(paramString);
-          this.jTq.add(paramString);
-          ab.i("MicroMsg.BrandService.BizSearchResultAdapter", "type(%d) , count(%d) , offset(%d)", new Object[] { Long.valueOf(paramString.cnw), Integer.valueOf(paramString.count), Integer.valueOf(this.ejZ) });
+          this.fwK += a(paramString);
+          this.mTI.add(paramString);
+          ad.i("MicroMsg.BrandService.BizSearchResultAdapter", "type(%d) , count(%d) , offset(%d)", new Object[] { Long.valueOf(paramString.dcn), Integer.valueOf(paramString.count), Integer.valueOf(this.fwK) });
         }
         i += 1;
       }
-      aWw();
+      bCv();
     }
-    al.d(this.zsx);
-    AppMethodBeat.o(13887);
+    aq.f(this.Ggn);
+    AppMethodBeat.o(5625);
+  }
+  
+  final a nA(long paramLong)
+  {
+    AppMethodBeat.i(5628);
+    int i = nB(paramLong);
+    if (i >= 0)
+    {
+      a locala = (a)this.mTI.get(i);
+      AppMethodBeat.o(5628);
+      return locala;
+    }
+    AppMethodBeat.o(5628);
+    return null;
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
   
-  protected final c.a rX(int paramInt)
+  public final void setAddContactScene(int paramInt)
   {
-    AppMethodBeat.i(13892);
+    this.mTF = paramInt;
+  }
+  
+  public final void setReporter(b paramb)
+  {
+    this.mTO = paramb;
+  }
+  
+  public final void setScene(int paramInt)
+  {
+    this.mScene = paramInt;
+  }
+  
+  protected final a xG(int paramInt)
+  {
+    AppMethodBeat.i(5630);
     if (paramInt >= 0)
     {
       int i = 0;
       int j = 0;
-      while (i < this.jTq.size())
+      while (i < this.mTI.size())
       {
-        c.a locala = (c.a)this.jTq.get(i);
+        a locala = (a)this.mTI.get(i);
         j += a(locala);
         if (paramInt < j)
         {
-          AppMethodBeat.o(13892);
+          AppMethodBeat.o(5630);
           return locala;
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(13892);
+    AppMethodBeat.o(5630);
     return null;
   }
   
-  protected final nc rY(int paramInt)
+  protected final pf xH(int paramInt)
   {
     int k = 0;
-    AppMethodBeat.i(13893);
+    AppMethodBeat.i(5631);
     if (paramInt >= 0)
     {
       int i = 0;
       int j = 0;
-      while (i < this.jTq.size())
+      while (i < this.mTI.size())
       {
-        c.a locala = (c.a)this.jTq.get(i);
+        a locala = (a)this.mTI.get(i);
         int m = a(locala);
         j += m;
         if (paramInt < j)
         {
-          if (locala.jTz)
+          if (locala.mTQ)
           {
             i = 1;
             j = i + (j - m);
@@ -332,15 +353,15 @@ public class c
           }
           for (;;)
           {
-            if (i >= locala.jTB.size()) {
+            if (i >= locala.mTS.size()) {
               break label156;
             }
-            nc localnc = (nc)locala.jTB.get(i);
-            j += localnc.nrw.size();
+            pf localpf = (pf)locala.mTS.get(i);
+            j += localpf.saZ.size();
             if (paramInt < j)
             {
-              AppMethodBeat.o(13893);
-              return localnc;
+              AppMethodBeat.o(5631);
+              return localpf;
               i = 0;
               break;
             }
@@ -351,59 +372,59 @@ public class c
       }
     }
     label156:
-    AppMethodBeat.o(13893);
+    AppMethodBeat.o(5631);
     return null;
   }
   
-  public final com.tencent.mm.ui.base.sortview.a rZ(int paramInt)
+  public final com.tencent.mm.ui.base.sortview.a xI(int paramInt)
   {
     int k = 0;
-    AppMethodBeat.i(13896);
+    AppMethodBeat.i(5634);
     int i = 0;
     int j = 0;
-    while (i < this.jTq.size())
+    while (i < this.mTI.size())
     {
-      Object localObject2 = (c.a)this.jTq.get(i);
-      int m = a((c.a)localObject2);
+      Object localObject2 = (a)this.mTI.get(i);
+      int m = a((a)localObject2);
       j += m;
-      if ((((c.a)localObject2).jTz) && (paramInt == j - m)) {
-        if (((c.a)localObject2).jTB.size() == 0) {
+      if ((((a)localObject2).mTQ) && (paramInt == j - m)) {
+        if (((a)localObject2).mTS.size() == 0) {
           localObject1 = null;
         }
       }
       while (localObject1 != null)
       {
-        localObject1 = new d(((nc)localObject1).Title);
-        AppMethodBeat.o(13896);
+        localObject1 = new d(((pf)localObject1).Title);
+        AppMethodBeat.o(5634);
         return localObject1;
-        localObject1 = (nc)((c.a)localObject2).jTB.get(0);
+        localObject1 = (pf)((a)localObject2).mTS.get(0);
         continue;
-        if ((((c.a)localObject2).jTA) && (paramInt == j - 1))
+        if ((((a)localObject2).mTR) && (paramInt == j - 1))
         {
-          localObject1 = new e(((c.a)localObject2).cnw, ((c.a)localObject2).count, this.jTm);
-          AppMethodBeat.o(13896);
+          localObject1 = new f(((a)localObject2).dcn, ((a)localObject2).count, this.mTE);
+          AppMethodBeat.o(5634);
           return localObject1;
         }
         if (paramInt < j)
         {
-          m = ((c.a)localObject2).count;
+          m = ((a)localObject2).count;
           i = k;
-          if (((c.a)localObject2).jTA) {
+          if (((a)localObject2).mTR) {
             i = 1;
           }
           i += paramInt - j + m;
-          localObject1 = (ni)((c.a)localObject2).eiJ.get(i);
-          long l = ((c.a)localObject2).cnw;
-          localObject2 = this.jTw;
+          localObject1 = (pm)((a)localObject2).fvw.get(i);
+          long l = ((a)localObject2).dcn;
+          localObject2 = this.mTO;
           if (localObject1 == null)
           {
-            ab.e("MicroMsg.BrandService.BizSearchResultAdapter", "data is null.");
-            AppMethodBeat.o(13896);
+            ad.e("MicroMsg.BrandService.BizSearchResultAdapter", "data is null.");
+            AppMethodBeat.o(5634);
             return null;
           }
           if (l == 1L)
           {
-            ab.v("MicroMsg.BrandService.BizSearchResultAdapter", "Create a BizContactDataItem.");
+            ad.v("MicroMsg.BrandService.BizSearchResultAdapter", "Create a BizContactDataItem.");
             localObject1 = new a(localObject1);
           }
           for (;;)
@@ -411,70 +432,66 @@ public class c
             if ((localObject1 instanceof com.tencent.mm.plugin.brandservice.ui.base.a))
             {
               com.tencent.mm.plugin.brandservice.ui.base.a locala = (com.tencent.mm.plugin.brandservice.ui.base.a)localObject1;
-              locala.sd(i);
+              locala.xO(i);
               locala.setPosition(paramInt);
-              locala.setReporter((c.b)localObject2);
+              locala.setReporter((b)localObject2);
             }
-            AppMethodBeat.o(13896);
+            AppMethodBeat.o(5634);
             return localObject1;
             if (l == 4L) {
-              localObject1 = new g(localObject1);
+              localObject1 = new h(localObject1);
             } else if (l == 1073741824L) {
-              localObject1 = new g(localObject1);
+              localObject1 = new h(localObject1);
             } else {
-              localObject1 = new g(localObject1);
+              localObject1 = new h(localObject1);
             }
           }
         }
       }
       i += 1;
     }
-    Object localObject1 = new g(null);
-    AppMethodBeat.o(13896);
+    Object localObject1 = new h(null);
+    AppMethodBeat.o(5634);
     return localObject1;
   }
   
-  public Object[] sa(int paramInt)
+  public Object[] xJ(int paramInt)
   {
-    AppMethodBeat.i(13897);
-    Object localObject2 = rX(paramInt);
-    Object localObject1 = rY(paramInt);
+    AppMethodBeat.i(5635);
+    Object localObject2 = xG(paramInt);
+    Object localObject1 = xH(paramInt);
     if (localObject1 != null) {}
-    for (localObject1 = ((nc)localObject1).wBZ; localObject2 != null; localObject1 = "")
+    for (localObject1 = ((pf)localObject1).CNs; localObject2 != null; localObject1 = "")
     {
-      localObject2 = ((c.a)localObject2).jTy;
-      paramInt = this.jTn;
-      AppMethodBeat.o(13897);
+      localObject2 = ((a)localObject2).mTP;
+      paramInt = this.mTF;
+      AppMethodBeat.o(5635);
       return new Object[] { this, localObject2, Integer.valueOf(paramInt), localObject1 };
     }
-    AppMethodBeat.o(13897);
+    AppMethodBeat.o(5635);
     return null;
   }
   
-  public final void setAddContactScene(int paramInt)
+  protected static final class a
   {
-    this.jTn = paramInt;
+    public int continueFlag;
+    public int count;
+    public long dcn;
+    public List<pm> fvw;
+    public List<String> mTP;
+    public boolean mTQ;
+    public boolean mTR;
+    public List<pf> mTS;
   }
   
-  public final void setReporter(c.b paramb)
+  public static abstract interface b
   {
-    this.jTw = paramb;
-  }
-  
-  public final void setScene(int paramInt)
-  {
-    this.mScene = paramInt;
-  }
-  
-  public final void v(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jTt = paramBoolean1;
-    this.jTs = paramBoolean2;
+    public abstract void a(c paramc, com.tencent.mm.ui.base.sortview.a parama, int paramInt1, String paramString, int paramInt2, int paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.c
  * JD-Core Version:    0.7.0.1
  */

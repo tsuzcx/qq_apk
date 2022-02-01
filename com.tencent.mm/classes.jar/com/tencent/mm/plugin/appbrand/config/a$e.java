@@ -10,23 +10,23 @@ public final class a$e
   
   public a$e(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(86876);
+    AppMethodBeat.i(134757);
     this.name = paramString;
     this.desc = paramJSONObject.getString("desc");
-    AppMethodBeat.o(86876);
+    AppMethodBeat.o(134757);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(86877);
+    AppMethodBeat.i(134758);
     String str = "Permission{name='" + this.name + '\'' + ", desc='" + this.desc + '\'' + '}';
-    AppMethodBeat.o(86877);
+    AppMethodBeat.o(134758);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.a.e
  * JD-Core Version:    0.7.0.1
  */

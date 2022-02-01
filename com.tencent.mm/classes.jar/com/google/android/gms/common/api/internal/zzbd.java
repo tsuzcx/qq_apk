@@ -48,7 +48,7 @@ public final class zzbd
   
   public zzbd(Context paramContext, zzav paramzzav, Lock paramLock, Looper paramLooper, GoogleApiAvailabilityLight paramGoogleApiAvailabilityLight, Map<Api.AnyClientKey<?>, Api.Client> paramMap, ClientSettings paramClientSettings, Map<Api<?>, Boolean> paramMap1, Api.AbstractClientBuilder<? extends SignInClient, SignInOptions> paramAbstractClientBuilder, ArrayList<zzp> paramArrayList, zzbq paramzzbq)
   {
-    AppMethodBeat.i(60816);
+    AppMethodBeat.i(11308);
     this.zzjb = new HashMap();
     this.zzjd = null;
     this.mContext = paramContext;
@@ -72,13 +72,13 @@ public final class zzbd
     this.zzja = new zzbf(this, paramLooper);
     this.zziz = paramLock.newCondition();
     this.zzjc = new zzau(this);
-    AppMethodBeat.o(60816);
+    AppMethodBeat.o(11308);
   }
   
   @GuardedBy("mLock")
   public final ConnectionResult blockingConnect()
   {
-    AppMethodBeat.i(60820);
+    AppMethodBeat.i(11312);
     connect();
     while (isConnecting()) {
       try
@@ -89,31 +89,31 @@ public final class zzbd
       {
         Thread.currentThread().interrupt();
         localConnectionResult = new ConnectionResult(15, null);
-        AppMethodBeat.o(60820);
+        AppMethodBeat.o(11312);
         return localConnectionResult;
       }
     }
     if (isConnected())
     {
       localConnectionResult = ConnectionResult.RESULT_SUCCESS;
-      AppMethodBeat.o(60820);
+      AppMethodBeat.o(11312);
       return localConnectionResult;
     }
     if (this.zzjd != null)
     {
       localConnectionResult = this.zzjd;
-      AppMethodBeat.o(60820);
+      AppMethodBeat.o(11312);
       return localConnectionResult;
     }
     ConnectionResult localConnectionResult = new ConnectionResult(13, null);
-    AppMethodBeat.o(60820);
+    AppMethodBeat.o(11312);
     return localConnectionResult;
   }
   
   @GuardedBy("mLock")
   public final ConnectionResult blockingConnect(long paramLong, TimeUnit paramTimeUnit)
   {
-    AppMethodBeat.i(60821);
+    AppMethodBeat.i(11313);
     connect();
     for (paramLong = paramTimeUnit.toNanos(paramLong); isConnecting(); paramLong = this.zziz.awaitNanos(paramLong))
     {
@@ -122,55 +122,55 @@ public final class zzbd
       {
         disconnect();
         paramTimeUnit = new ConnectionResult(14, null);
-        AppMethodBeat.o(60821);
+        AppMethodBeat.o(11313);
         return paramTimeUnit;
       }
       catch (InterruptedException paramTimeUnit)
       {
         Thread.currentThread().interrupt();
         paramTimeUnit = new ConnectionResult(15, null);
-        AppMethodBeat.o(60821);
+        AppMethodBeat.o(11313);
         return paramTimeUnit;
       }
     }
     if (isConnected())
     {
       paramTimeUnit = ConnectionResult.RESULT_SUCCESS;
-      AppMethodBeat.o(60821);
+      AppMethodBeat.o(11313);
       return paramTimeUnit;
     }
     if (this.zzjd != null)
     {
       paramTimeUnit = this.zzjd;
-      AppMethodBeat.o(60821);
+      AppMethodBeat.o(11313);
       return paramTimeUnit;
     }
     paramTimeUnit = new ConnectionResult(13, null);
-    AppMethodBeat.o(60821);
+    AppMethodBeat.o(11313);
     return paramTimeUnit;
   }
   
   @GuardedBy("mLock")
   public final void connect()
   {
-    AppMethodBeat.i(60819);
+    AppMethodBeat.i(11311);
     this.zzjc.connect();
-    AppMethodBeat.o(60819);
+    AppMethodBeat.o(11311);
   }
   
   @GuardedBy("mLock")
   public final void disconnect()
   {
-    AppMethodBeat.i(60822);
+    AppMethodBeat.i(11314);
     if (this.zzjc.disconnect()) {
       this.zzjb.clear();
     }
-    AppMethodBeat.o(60822);
+    AppMethodBeat.o(11314);
   }
   
   public final void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(60833);
+    AppMethodBeat.i(11325);
     String str = String.valueOf(paramString).concat("  ");
     paramPrintWriter.append(paramString).append("mState=").println(this.zzjc);
     Iterator localIterator = this.zzgi.keySet().iterator();
@@ -180,50 +180,50 @@ public final class zzbd
       paramPrintWriter.append(paramString).append(localApi.getName()).println(":");
       ((Api.Client)this.zzil.get(localApi.getClientKey())).dump(str, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
     }
-    AppMethodBeat.o(60833);
+    AppMethodBeat.o(11325);
   }
   
   @GuardedBy("mLock")
   public final <A extends Api.AnyClient, R extends Result, T extends BaseImplementation.ApiMethodImpl<R, A>> T enqueue(T paramT)
   {
-    AppMethodBeat.i(60817);
+    AppMethodBeat.i(11309);
     paramT.zzx();
     paramT = this.zzjc.enqueue(paramT);
-    AppMethodBeat.o(60817);
+    AppMethodBeat.o(11309);
     return paramT;
   }
   
   @GuardedBy("mLock")
   public final <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T execute(T paramT)
   {
-    AppMethodBeat.i(60818);
+    AppMethodBeat.i(11310);
     paramT.zzx();
     paramT = this.zzjc.execute(paramT);
-    AppMethodBeat.o(60818);
+    AppMethodBeat.o(11310);
     return paramT;
   }
   
   @GuardedBy("mLock")
   public final ConnectionResult getConnectionResult(Api<?> paramApi)
   {
-    AppMethodBeat.i(60823);
+    AppMethodBeat.i(11315);
     paramApi = paramApi.getClientKey();
     if (this.zzil.containsKey(paramApi))
     {
       if (((Api.Client)this.zzil.get(paramApi)).isConnected())
       {
         paramApi = ConnectionResult.RESULT_SUCCESS;
-        AppMethodBeat.o(60823);
+        AppMethodBeat.o(11315);
         return paramApi;
       }
       if (this.zzjb.containsKey(paramApi))
       {
         paramApi = (ConnectionResult)this.zzjb.get(paramApi);
-        AppMethodBeat.o(60823);
+        AppMethodBeat.o(11315);
         return paramApi;
       }
     }
-    AppMethodBeat.o(60823);
+    AppMethodBeat.o(11315);
     return null;
   }
   
@@ -246,7 +246,7 @@ public final class zzbd
   
   public final void onConnected(Bundle paramBundle)
   {
-    AppMethodBeat.i(60829);
+    AppMethodBeat.i(11321);
     this.zzga.lock();
     try
     {
@@ -256,13 +256,13 @@ public final class zzbd
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60829);
+      AppMethodBeat.o(11321);
     }
   }
   
   public final void onConnectionSuspended(int paramInt)
   {
-    AppMethodBeat.i(60830);
+    AppMethodBeat.i(11322);
     this.zzga.lock();
     try
     {
@@ -272,13 +272,13 @@ public final class zzbd
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60830);
+      AppMethodBeat.o(11322);
     }
   }
   
   public final void zza(ConnectionResult paramConnectionResult, Api<?> paramApi, boolean paramBoolean)
   {
-    AppMethodBeat.i(60828);
+    AppMethodBeat.i(11320);
     this.zzga.lock();
     try
     {
@@ -288,29 +288,29 @@ public final class zzbd
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60828);
+      AppMethodBeat.o(11320);
     }
   }
   
   final void zza(zzbe paramzzbe)
   {
-    AppMethodBeat.i(60831);
+    AppMethodBeat.i(11323);
     paramzzbe = this.zzja.obtainMessage(1, paramzzbe);
     this.zzja.sendMessage(paramzzbe);
-    AppMethodBeat.o(60831);
+    AppMethodBeat.o(11323);
   }
   
   final void zzb(RuntimeException paramRuntimeException)
   {
-    AppMethodBeat.i(60832);
+    AppMethodBeat.i(11324);
     paramRuntimeException = this.zzja.obtainMessage(2, paramRuntimeException);
     this.zzja.sendMessage(paramRuntimeException);
-    AppMethodBeat.o(60832);
+    AppMethodBeat.o(11324);
   }
   
   final void zzbc()
   {
-    AppMethodBeat.i(60824);
+    AppMethodBeat.i(11316);
     this.zzga.lock();
     try
     {
@@ -322,13 +322,13 @@ public final class zzbd
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60824);
+      AppMethodBeat.o(11316);
     }
   }
   
   final void zzbd()
   {
-    AppMethodBeat.i(60825);
+    AppMethodBeat.i(11317);
     this.zzga.lock();
     try
     {
@@ -341,13 +341,13 @@ public final class zzbd
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60825);
+      AppMethodBeat.o(11317);
     }
   }
   
   final void zzf(ConnectionResult paramConnectionResult)
   {
-    AppMethodBeat.i(60826);
+    AppMethodBeat.i(11318);
     this.zzga.lock();
     try
     {
@@ -360,18 +360,18 @@ public final class zzbd
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60826);
+      AppMethodBeat.o(11318);
     }
   }
   
   @GuardedBy("mLock")
   public final void zzz()
   {
-    AppMethodBeat.i(60827);
+    AppMethodBeat.i(11319);
     if (isConnected()) {
       ((zzag)this.zzjc).zzap();
     }
-    AppMethodBeat.o(60827);
+    AppMethodBeat.o(11319);
   }
 }
 

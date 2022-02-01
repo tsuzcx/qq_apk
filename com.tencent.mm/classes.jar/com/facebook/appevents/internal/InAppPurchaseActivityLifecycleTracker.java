@@ -1,10 +1,14 @@
 package com.facebook.appevents.internal;
 
+import android.app.Activity;
 import android.app.Application;
 import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.IBinder;
 import com.facebook.FacebookSdk;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
@@ -13,6 +17,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,80 +37,80 @@ public class InAppPurchaseActivityLifecycleTracker
   
   static
   {
-    AppMethodBeat.i(72191);
+    AppMethodBeat.i(17627);
     TAG = InAppPurchaseActivityLifecycleTracker.class.getCanonicalName();
     isTracking = new AtomicBoolean(false);
     hasBillingService = null;
     hasBiillingActivity = null;
-    AppMethodBeat.o(72191);
+    AppMethodBeat.o(17627);
   }
   
   /* Error */
   private static void initializeIfNotInitialized()
   {
     // Byte code:
-    //   0: ldc 84
-    //   2: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 52	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker:hasBillingService	Ljava/lang/Boolean;
-    //   8: ifnull +9 -> 17
-    //   11: ldc 84
-    //   13: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   16: return
-    //   17: ldc 11
-    //   19: invokestatic 88	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   22: pop
-    //   23: getstatic 93	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
-    //   26: putstatic 52	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker:hasBillingService	Ljava/lang/Boolean;
-    //   29: ldc 8
-    //   31: invokestatic 88	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   34: pop
-    //   35: getstatic 93	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
-    //   38: putstatic 54	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker:hasBiillingActivity	Ljava/lang/Boolean;
-    //   41: invokestatic 98	com/facebook/appevents/internal/InAppPurchaseEventManager:clearSkuDetailsCache	()V
-    //   44: new 100	android/content/Intent
-    //   47: dup
-    //   48: ldc 102
-    //   50: invokespecial 105	android/content/Intent:<init>	(Ljava/lang/String;)V
-    //   53: ldc 107
-    //   55: invokevirtual 111	android/content/Intent:setPackage	(Ljava/lang/String;)Landroid/content/Intent;
-    //   58: putstatic 113	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker:intent	Landroid/content/Intent;
-    //   61: new 115	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker$1
-    //   64: dup
-    //   65: invokespecial 116	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker$1:<init>	()V
-    //   68: putstatic 118	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker:serviceConnection	Landroid/content/ServiceConnection;
-    //   71: new 120	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker$2
-    //   74: dup
-    //   75: invokespecial 121	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker$2:<init>	()V
-    //   78: putstatic 123	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker:callbacks	Landroid/app/Application$ActivityLifecycleCallbacks;
-    //   81: ldc 84
-    //   83: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   86: return
-    //   87: astore_0
-    //   88: getstatic 126	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   91: putstatic 52	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker:hasBillingService	Ljava/lang/Boolean;
-    //   94: ldc 84
-    //   96: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   99: return
-    //   100: astore_0
-    //   101: getstatic 126	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   104: putstatic 54	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker:hasBiillingActivity	Ljava/lang/Boolean;
-    //   107: goto -66 -> 41
+    //   0: sipush 17621
+    //   3: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: getstatic 59	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker:hasBillingService	Ljava/lang/Boolean;
+    //   9: ifnull +10 -> 19
+    //   12: sipush 17621
+    //   15: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   18: return
+    //   19: ldc 19
+    //   21: invokestatic 92	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   24: pop
+    //   25: getstatic 97	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   28: putstatic 59	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker:hasBillingService	Ljava/lang/Boolean;
+    //   31: ldc 16
+    //   33: invokestatic 92	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   36: pop
+    //   37: getstatic 97	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   40: putstatic 61	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker:hasBiillingActivity	Ljava/lang/Boolean;
+    //   43: invokestatic 102	com/facebook/appevents/internal/InAppPurchaseEventManager:clearSkuDetailsCache	()V
+    //   46: new 104	android/content/Intent
+    //   49: dup
+    //   50: ldc 106
+    //   52: invokespecial 109	android/content/Intent:<init>	(Ljava/lang/String;)V
+    //   55: ldc 111
+    //   57: invokevirtual 115	android/content/Intent:setPackage	(Ljava/lang/String;)Landroid/content/Intent;
+    //   60: putstatic 117	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker:intent	Landroid/content/Intent;
+    //   63: new 6	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker$1
+    //   66: dup
+    //   67: invokespecial 118	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker$1:<init>	()V
+    //   70: putstatic 120	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker:serviceConnection	Landroid/content/ServiceConnection;
+    //   73: new 8	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker$2
+    //   76: dup
+    //   77: invokespecial 121	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker$2:<init>	()V
+    //   80: putstatic 123	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker:callbacks	Landroid/app/Application$ActivityLifecycleCallbacks;
+    //   83: sipush 17621
+    //   86: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   89: return
+    //   90: astore_0
+    //   91: getstatic 126	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   94: putstatic 59	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker:hasBillingService	Ljava/lang/Boolean;
+    //   97: sipush 17621
+    //   100: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   103: return
+    //   104: astore_0
+    //   105: getstatic 126	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   108: putstatic 61	com/facebook/appevents/internal/InAppPurchaseActivityLifecycleTracker:hasBiillingActivity	Ljava/lang/Boolean;
+    //   111: goto -68 -> 43
     // Local variable table:
     //   start	length	slot	name	signature
-    //   87	1	0	localClassNotFoundException1	java.lang.ClassNotFoundException
-    //   100	1	0	localClassNotFoundException2	java.lang.ClassNotFoundException
+    //   90	1	0	localClassNotFoundException1	java.lang.ClassNotFoundException
+    //   104	1	0	localClassNotFoundException2	java.lang.ClassNotFoundException
     // Exception table:
     //   from	to	target	type
-    //   17	29	87	java/lang/ClassNotFoundException
-    //   29	41	100	java/lang/ClassNotFoundException
+    //   19	31	90	java/lang/ClassNotFoundException
+    //   31	43	104	java/lang/ClassNotFoundException
   }
   
   private static void logPurchaseInapp(Context paramContext, ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(72187);
+    AppMethodBeat.i(17623);
     if (paramArrayList.isEmpty())
     {
-      AppMethodBeat.o(72187);
+      AppMethodBeat.o(17623);
       return;
     }
     HashMap localHashMap = new HashMap();
@@ -128,15 +133,15 @@ public class InAppPurchaseActivityLifecycleTracker
       paramArrayList = (Map.Entry)paramContext.next();
       AutomaticAnalyticsLogger.logPurchaseInapp((String)localHashMap.get(paramArrayList.getKey()), (String)paramArrayList.getValue());
     }
-    AppMethodBeat.o(72187);
+    AppMethodBeat.o(17623);
   }
   
   private static void logPurchaseSubs(Context paramContext, Map<String, SubscriptionType> paramMap)
   {
-    AppMethodBeat.i(72188);
+    AppMethodBeat.i(17624);
     if (paramMap.isEmpty())
     {
-      AppMethodBeat.o(72188);
+      AppMethodBeat.o(17624);
       return;
     }
     HashMap localHashMap = new HashMap();
@@ -162,15 +167,15 @@ public class InAppPurchaseActivityLifecycleTracker
       str2 = (String)paramContext.get(str2);
       AutomaticAnalyticsLogger.logPurchaseSubs((SubscriptionType)paramMap.get(localObject2), (String)localObject2, str2);
     }
-    AppMethodBeat.o(72188);
+    AppMethodBeat.o(17624);
   }
   
   private static void startTracking()
   {
-    AppMethodBeat.i(72186);
+    AppMethodBeat.i(17622);
     if (!isTracking.compareAndSet(false, true))
     {
-      AppMethodBeat.o(72186);
+      AppMethodBeat.o(17622);
       return;
     }
     Context localContext = FacebookSdk.getApplicationContext();
@@ -179,27 +184,27 @@ public class InAppPurchaseActivityLifecycleTracker
       ((Application)localContext).registerActivityLifecycleCallbacks(callbacks);
       localContext.bindService(intent, serviceConnection, 1);
     }
-    AppMethodBeat.o(72186);
+    AppMethodBeat.o(17622);
   }
   
   public static void update()
   {
-    AppMethodBeat.i(72184);
+    AppMethodBeat.i(17620);
     initializeIfNotInitialized();
     if (!hasBillingService.booleanValue())
     {
-      AppMethodBeat.o(72184);
+      AppMethodBeat.o(17620);
       return;
     }
     if (AutomaticAnalyticsLogger.isImplicitPurchaseLoggingEnabled()) {
       startTracking();
     }
-    AppMethodBeat.o(72184);
+    AppMethodBeat.o(17620);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.internal.InAppPurchaseActivityLifecycleTracker
  * JD-Core Version:    0.7.0.1
  */

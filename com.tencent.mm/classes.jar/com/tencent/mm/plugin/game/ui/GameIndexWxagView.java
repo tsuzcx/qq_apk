@@ -8,12 +8,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.c;
+import com.tencent.mm.game.report.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.j;
-import com.tencent.mm.plugin.game.d.dr;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.service.n;
+import com.tencent.mm.plugin.game.d.ds;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class GameIndexWxagView
   extends LinearLayout
@@ -21,50 +21,62 @@ public class GameIndexWxagView
 {
   ViewGroup mContainer;
   LayoutInflater mInflater;
-  int nok;
+  int rXI;
   
   public GameIndexWxagView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(111989);
+    AppMethodBeat.i(42174);
     setOrientation(1);
     this.mInflater = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
     this.mContainer = this;
-    AppMethodBeat.o(111989);
+    AppMethodBeat.o(42174);
   }
   
   public void onClick(View paramView)
   {
-    AppMethodBeat.i(111991);
-    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof GameIndexWxagView.a)))
+    AppMethodBeat.i(42176);
+    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof a)))
     {
-      AppMethodBeat.o(111991);
+      AppMethodBeat.o(42176);
       return;
     }
-    paramView = (GameIndexWxagView.a)paramView.getTag();
-    if (paramView.nzU == null)
+    paramView = (a)paramView.getTag();
+    if (paramView.sju == null)
     {
-      AppMethodBeat.o(111991);
+      AppMethodBeat.o(42176);
       return;
     }
     AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
     localAppBrandStatObject.scene = 1079;
-    ((j)g.E(j.class)).a(getContext(), paramView.nzU.jJA, paramView.nzU.fKw, paramView.nzU.nuw, 0, paramView.nzU.nuv, localAppBrandStatObject);
-    c.a(getContext(), 10, 1025, paramView.npg, 30, paramView.nzU.fKw, this.nok, null);
-    AppMethodBeat.o(111991);
+    ((n)g.ab(n.class)).a(getContext(), paramView.sju.mAQ, paramView.sju.hnC, paramView.sju.sea, 0, paramView.sju.sdZ, localAppBrandStatObject);
+    e.a(getContext(), 10, 1025, paramView.rYB, 30, paramView.sju.hnC, this.rXI, null);
+    AppMethodBeat.o(42176);
   }
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(111990);
+    AppMethodBeat.i(42175);
     super.onFinishInflate();
-    ab.i("MicroMsg.GameIndexWxagView", "initView finished");
-    AppMethodBeat.o(111990);
+    ad.i("MicroMsg.GameIndexWxagView", "initView finished");
+    AppMethodBeat.o(42175);
+  }
+  
+  static final class a
+  {
+    public int rYB;
+    public ds sju;
+    
+    public a(int paramInt, ds paramds)
+    {
+      this.rYB = paramInt;
+      this.sju = paramds;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameIndexWxagView
  * JD-Core Version:    0.7.0.1
  */

@@ -25,6 +25,8 @@ public class TXEAudioDef
   public static final int TXE_AUDIO_RECORD_ERR_NO_MIC_PERMIT = -1;
   public static final int TXE_AUDIO_RECORD_ERR_OK = 0;
   public static final int TXE_AUDIO_RECORD_ERR_REPEAT_OPTION = -2;
+  public static final int TXE_AUDIO_RECORD_FIRST_FRAME = -6;
+  public static final int TXE_AUDIO_RECORD_RELEASE_MIC = -7;
   public static final int TXE_DEFAULT_AEC_TYPE = 0;
   public static final int TXE_DEFAULT_BITS = 16;
   public static final int TXE_DEFAULT_BYTES = 2;
@@ -48,7 +50,7 @@ public class TXEAudioDef
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.liteav.audio.TXEAudioDef
  * JD-Core Version:    0.7.0.1
  */

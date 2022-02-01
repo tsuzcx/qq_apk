@@ -11,7 +11,7 @@ public class Transformations
     {
       public final void onChanged(X paramAnonymousX)
       {
-        this.dq.setValue(parama.apply(paramAnonymousX));
+        this.dt.setValue(parama.apply(paramAnonymousX));
       }
     });
     return localMediatorLiveData;
@@ -22,25 +22,25 @@ public class Transformations
     final MediatorLiveData localMediatorLiveData = new MediatorLiveData();
     localMediatorLiveData.addSource(paramLiveData, new Observer()
     {
-      LiveData<Y> ds;
+      LiveData<Y> dv;
       
       public final void onChanged(X paramAnonymousX)
       {
-        paramAnonymousX = (LiveData)this.dr.apply(paramAnonymousX);
-        if (this.ds == paramAnonymousX) {}
+        paramAnonymousX = (LiveData)this.du.apply(paramAnonymousX);
+        if (this.dv == paramAnonymousX) {}
         do
         {
           return;
-          if (this.ds != null) {
-            localMediatorLiveData.removeSource(this.ds);
+          if (this.dv != null) {
+            localMediatorLiveData.removeSource(this.dv);
           }
-          this.ds = paramAnonymousX;
-        } while (this.ds == null);
-        localMediatorLiveData.addSource(this.ds, new Observer()
+          this.dv = paramAnonymousX;
+        } while (this.dv == null);
+        localMediatorLiveData.addSource(this.dv, new Observer()
         {
           public void onChanged(Y paramAnonymous2Y)
           {
-            Transformations.2.this.dq.setValue(paramAnonymous2Y);
+            Transformations.2.this.dt.setValue(paramAnonymous2Y);
           }
         });
       }

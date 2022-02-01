@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:id="@id/a9i" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="16.0dip"
+<RelativeLayout android:background="@drawable/ej" android:paddingLeft="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/a9j" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <View android:background="#ffd8d8d8" android:layout_width="20.0dip" android:layout_height="1.0dip" />
-        <TextView android:textColor="#4c000000" android:id="@id/a9k" android:paddingLeft="28.0dip" android:paddingRight="28.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="34.0dip" android:layout_marginBottom="34.0dip" android:text="@string/a_k" android:layout_weight="1.0" />
-        <View android:background="#ffd8d8d8" android:layout_width="20.0dip" android:layout_height="1.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a8o" android:paddingTop="15.0dip" android:paddingBottom="19.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/a8m" android:background="@color/a7c" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/aq8" android:scaleType="centerCrop" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip">
+            <TextView android:textSize="16.0dip" android:textColor="@color/y4" android:id="@id/a8p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/y0" android:id="@id/a8n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+    <View android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/a8o" android:layout_alignParentBottom="true" />
+</RelativeLayout>

@@ -7,50 +7,55 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class KindaUIPageMap
 {
-  private static ConcurrentHashMap<String, KindaUIPageMap.Value> data;
+  private static ConcurrentHashMap<String, Value> data;
   
   static
   {
-    AppMethodBeat.i(144421);
+    AppMethodBeat.i(18528);
     data = new ConcurrentHashMap();
-    AppMethodBeat.o(144421);
+    AppMethodBeat.o(18528);
   }
   
-  public static KindaUIPageMap.Value getAndRemove(String paramString)
+  public static Value getAndRemove(String paramString)
   {
-    AppMethodBeat.i(144420);
-    KindaUIPageMap.Value localValue = null;
+    AppMethodBeat.i(18527);
+    Value localValue = null;
     if (data.containsKey(paramString))
     {
-      localValue = (KindaUIPageMap.Value)data.get(paramString);
+      localValue = (Value)data.get(paramString);
       data.remove(paramString);
     }
-    AppMethodBeat.o(144420);
+    AppMethodBeat.o(18527);
     return localValue;
   }
   
   public static String getUUID()
   {
-    AppMethodBeat.i(144418);
+    AppMethodBeat.i(18525);
     String str = UUID.randomUUID().toString();
-    AppMethodBeat.o(144418);
+    AppMethodBeat.o(18525);
     return str;
   }
   
   public static String put(IUIPage paramIUIPage)
   {
-    AppMethodBeat.i(144419);
+    AppMethodBeat.i(18526);
     String str = getUUID();
-    KindaUIPageMap.Value localValue = new KindaUIPageMap.Value();
+    Value localValue = new Value();
     localValue.uiPage = paramIUIPage;
     data.put(str, localValue);
-    AppMethodBeat.o(144419);
+    AppMethodBeat.o(18526);
     return str;
+  }
+  
+  public static class Value
+  {
+    public IUIPage uiPage;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaUIPageMap
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,31 @@
 package com.tencent.mm.plugin.appbrand.jsapi.u;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.b;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.ar;
+import com.tencent.mm.plugin.appbrand.utils.z.a;
+import java.util.HashMap;
+import java.util.Map;
 
-public final class g
-  extends b
+final class g
+  extends ar
 {
-  public static final int CTRL_INDEX = 299;
-  public static final String NAME = "removeHTMLWebView";
+  static final int CTRL_INDEX = 473;
+  static final String NAME = "onDeviceOrientationChange";
   
-  public final int w(JSONObject paramJSONObject)
+  final void b(z.a parama)
   {
-    AppMethodBeat.i(131676);
-    int i = paramJSONObject.getInt("htmlId");
-    AppMethodBeat.o(131676);
-    return i;
+    AppMethodBeat.i(137639);
+    parama = parama.name().replace("_", "");
+    HashMap localHashMap = new HashMap(2);
+    localHashMap.put("errMsg", "ok");
+    localHashMap.put("value", parama);
+    C(localHashMap).aXQ();
+    AppMethodBeat.o(137639);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.u.g
  * JD-Core Version:    0.7.0.1
  */

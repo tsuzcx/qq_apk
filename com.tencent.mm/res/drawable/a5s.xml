@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#fff3dc9b" />
-    <corners android:radius="3.0dip" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@raw/toolbar_icon_dark_fav_pressed" />
+    <item android:state_enabled="false" android:drawable="@raw/toolbar_icon_dark_fav_disable" />
+    <item android:drawable="@raw/toolbar_icon_dark_fav_normal" />
+</selector>

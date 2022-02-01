@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:color="@color/sa" />
-    <item android:state_pressed="true" android:color="@color/s9" />
-    <item android:color="@color/s8" />
-</selector>
+    <stroke android:width="@dimen/ic" android:color="@color/a_j" />
+    <size android:height="@dimen/a" android:width="@dimen/a" />
+</shape>

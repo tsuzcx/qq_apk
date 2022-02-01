@@ -1,52 +1,52 @@
 package android.support.v7.widget;
 
-public final class ap
+final class ap
 {
-  int Fe = -2147483648;
-  int akX = -2147483648;
-  int akY = 0;
-  int akZ = 0;
-  boolean ala = false;
+  int Mc = -2147483648;
+  int asw = -2147483648;
+  int asx = 0;
+  int asy = 0;
+  boolean asz = false;
   boolean mIsRtl = false;
-  int qO = 0;
-  int qQ = 0;
+  int xo = 0;
+  int xq = 0;
   
-  public final void aE(int paramInt1, int paramInt2)
+  public final void aF(int paramInt1, int paramInt2)
   {
-    this.akX = paramInt1;
-    this.Fe = paramInt2;
-    this.ala = true;
+    this.asw = paramInt1;
+    this.Mc = paramInt2;
+    this.asz = true;
     if (this.mIsRtl)
     {
       if (paramInt2 != -2147483648) {
-        this.qO = paramInt2;
+        this.xo = paramInt2;
       }
       if (paramInt1 != -2147483648) {
-        this.qQ = paramInt1;
+        this.xq = paramInt1;
       }
     }
     do
     {
       return;
       if (paramInt1 != -2147483648) {
-        this.qO = paramInt1;
+        this.xo = paramInt1;
       }
     } while (paramInt2 == -2147483648);
-    this.qQ = paramInt2;
+    this.xq = paramInt2;
   }
   
-  public final void aF(int paramInt1, int paramInt2)
+  public final void aG(int paramInt1, int paramInt2)
   {
-    this.ala = false;
+    this.asz = false;
     if (paramInt1 != -2147483648)
     {
-      this.akY = paramInt1;
-      this.qO = paramInt1;
+      this.asx = paramInt1;
+      this.xo = paramInt1;
     }
     if (paramInt2 != -2147483648)
     {
-      this.akZ = paramInt2;
-      this.qQ = paramInt2;
+      this.asy = paramInt2;
+      this.xq = paramInt2;
     }
   }
 }

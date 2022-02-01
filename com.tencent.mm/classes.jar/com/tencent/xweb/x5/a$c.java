@@ -1,36 +1,34 @@
 package com.tencent.xweb.x5;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.export.external.interfaces.JsResult;
-import com.tencent.xweb.j;
 
 public final class a$c
-  implements JsResult
+  implements com.tencent.smtt.export.external.interfaces.JsResult
 {
-  public j BHP;
+  public com.tencent.xweb.JsResult IRO;
   
-  public a$c(j paramj)
+  public a$c(com.tencent.xweb.JsResult paramJsResult)
   {
-    this.BHP = paramj;
+    this.IRO = paramJsResult;
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(84780);
-    this.BHP.cancel();
-    AppMethodBeat.o(84780);
+    AppMethodBeat.i(153815);
+    this.IRO.cancel();
+    AppMethodBeat.o(153815);
   }
   
   public final void confirm()
   {
-    AppMethodBeat.i(84779);
-    this.BHP.confirm();
-    AppMethodBeat.o(84779);
+    AppMethodBeat.i(153814);
+    this.IRO.confirm();
+    AppMethodBeat.o(153814);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.x5.a.c
  * JD-Core Version:    0.7.0.1
  */

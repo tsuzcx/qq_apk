@@ -16,10 +16,10 @@ import android.view.accessibility.AccessibilityNodeProvider;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.reflect.Method;
 import java.util.Locale;
 
@@ -27,19 +27,19 @@ import java.util.Locale;
 public final class c
   extends View.AccessibilityDelegate
 {
-  private boolean zfZ;
+  private boolean FTq;
   
   public c()
   {
-    AppMethodBeat.i(106143);
-    this.zfZ = false;
-    a locala = a.a.dDt();
-    AudioManager localAudioManager = (AudioManager)locala.zF.getSystemService("audio");
-    if ((locala.dDs()) && ((Settings.Secure.getInt(locala.zF.getContentResolver(), "speak_password", 0) != 0) || (localAudioManager.isWiredHeadsetOn()))) {}
+    AppMethodBeat.i(141503);
+    this.FTq = false;
+    a locala = a.a.eSf();
+    AudioManager localAudioManager = (AudioManager)locala.FZ.getSystemService("audio");
+    if ((locala.eSe()) && ((Settings.Secure.getInt(locala.FZ.getContentResolver(), "speak_password", 0) != 0) || (localAudioManager.isWiredHeadsetOn()))) {}
     for (boolean bool = true;; bool = false)
     {
-      this.zfZ = bool;
-      AppMethodBeat.o(106143);
+      this.FTq = bool;
+      AppMethodBeat.o(141503);
       return;
     }
   }
@@ -72,10 +72,10 @@ public final class c
   
   public final void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    AppMethodBeat.i(106144);
-    if (!this.zfZ)
+    AppMethodBeat.i(141504);
+    if (!this.FTq)
     {
-      AppMethodBeat.o(106144);
+      AppMethodBeat.o(141504);
       return;
     }
     Object localObject;
@@ -83,19 +83,19 @@ public final class c
       if ((paramView instanceof EditText))
       {
         localObject = (EditText)paramView;
-        if (!bo.aa(((EditText)localObject).getText())) {
+        if (!bt.ai(((EditText)localObject).getText())) {
           localObject = ((EditText)localObject).getText();
         }
       }
     }
     for (;;)
     {
-      ab.d("MicroMsg.MMSecureAccessibilityDelegate", "speak content: %s", new Object[] { localObject });
-      if (bo.aa((CharSequence)localObject))
+      ad.d("MicroMsg.MMSecureAccessibilityDelegate", "speak content: %s", new Object[] { localObject });
+      if (bt.ai((CharSequence)localObject))
       {
-        AppMethodBeat.o(106144);
+        AppMethodBeat.o(141504);
         return;
-        if (!bo.aa(((EditText)localObject).getContentDescription()))
+        if (!bt.ai(((EditText)localObject).getContentDescription()))
         {
           localObject = ((EditText)localObject).getContentDescription();
           continue;
@@ -106,7 +106,7 @@ public final class c
           continue;
           if ((paramView instanceof TextView))
           {
-            if (bo.aa(paramView.getContentDescription()))
+            if (bt.ai(paramView.getContentDescription()))
             {
               localObject = ((TextView)paramView).getText();
               continue;
@@ -119,10 +119,10 @@ public final class c
       }
       else
       {
-        a locala = a.a.dDt();
+        a locala = a.a.eSf();
         String str = ((CharSequence)localObject).toString();
-        if (locala.zfT == null) {
-          locala.zfT = new TextToSpeech(locala.zF, new a.1(locala, str));
+        if (locala.FTk == null) {
+          locala.FTk = new TextToSpeech(locala.FZ, new a.1(locala, str));
         }
         try
         {
@@ -132,20 +132,20 @@ public final class c
           localObject = View.class.getMethod("requestAccessibilityFocus", new Class[0]);
           ((Method)localObject).setAccessible(true);
           ((Method)localObject).invoke(paramView, new Object[0]);
-          if (locala.kqP != null) {
-            locala.kqP = ((Vibrator)ah.getContext().getSystemService("vibrator"));
+          if (locala.mHT != null) {
+            locala.mHT = ((Vibrator)aj.getContext().getSystemService("vibrator"));
           }
-          if (locala.kqP != null) {
-            locala.kqP.vibrate(50L);
+          if (locala.mHT != null) {
+            locala.mHT.vibrate(50L);
           }
-          AppMethodBeat.o(106144);
+          AppMethodBeat.o(141504);
           return;
-          TextToSpeech localTextToSpeech = locala.zfT;
-          if (aa.dsC()) {}
+          TextToSpeech localTextToSpeech = locala.FTk;
+          if (ac.eFq()) {}
           for (localObject = Locale.CHINESE;; localObject = Locale.ENGLISH)
           {
             localTextToSpeech.setLanguage((Locale)localObject);
-            locala.zfT.speak(str, 0, null);
+            locala.FTk.speak(str, 0, null);
             break;
           }
         }
@@ -153,7 +153,7 @@ public final class c
         {
           for (;;)
           {
-            ab.printErrStackTrace("MicroMsg.Accessibility.AccessibilityHelper", paramView, "", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.Accessibility.AccessibilityHelper", paramView, "", new Object[0]);
           }
         }
       }
@@ -165,7 +165,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.a.c
  * JD-Core Version:    0.7.0.1
  */

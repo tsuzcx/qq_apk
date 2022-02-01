@@ -1,148 +1,126 @@
 package com.tencent.mm.ui.conversation;
 
-import android.app.Activity;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.g.c.au;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.t;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.ak;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.HomeUI;
-import com.tencent.mm.ui.LauncherUI;
-import com.tencent.mm.ui.MainTabUI;
-import com.tencent.mm.ui.ag;
-import com.tencent.mm.ui.x;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mm.model.w;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.r;
+import d.l;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/ui/conversation/ConvExposeHelper;", "", "()V", "TAG", "", "sFirstVisibleItem", "", "sLastVisibleItem", "checkOfficialAccountShow", "", "conversationLV", "Landroid/widget/ListView;", "adapter", "Lcom/tencent/mm/ui/conversation/ConversationWithCacheAdapter;", "visible", "", "scroll", "app_release"})
 public final class d
 {
-  ListView AgN;
-  HashMap<String, Integer> Aho;
-  int Ahp;
-  int Ahq;
-  h Ahr;
-  com.tencent.mm.sdk.b.c Ahs;
-  com.tencent.mm.sdk.b.c Aht;
-  com.tencent.mm.sdk.b.c Ahu;
-  Activity activity;
+  private static int HaP;
+  public static final d HaQ;
+  private static int mYc;
   
-  public d()
+  static
   {
-    AppMethodBeat.i(34181);
-    this.Aho = new HashMap();
-    this.Ahp = -1;
-    this.Ahq = -1;
-    this.Ahs = new d.1(this);
-    this.Aht = new d.2(this);
-    this.Ahu = new d.3(this);
-    AppMethodBeat.o(34181);
+    AppMethodBeat.i(191887);
+    HaQ = new d();
+    mYc = -1;
+    HaP = -1;
+    AppMethodBeat.o(191887);
   }
   
-  public final void aF(Activity paramActivity)
+  public static void a(ListView paramListView, i parami, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(34182);
-    this.Ahq = ((LauncherUI)paramActivity).yYT.getMainTabUI().dCJ();
-    AppMethodBeat.o(34182);
-  }
-  
-  final ak auF(String paramString)
-  {
-    AppMethodBeat.i(34184);
-    if (this.Ahr != null)
+    AppMethodBeat.i(191886);
+    Object localObject = r.Fem;
+    if (!r.eJF())
     {
-      paramString = (ak)this.Ahr.cE(paramString);
-      AppMethodBeat.o(34184);
-      return paramString;
-    }
-    AppMethodBeat.o(34184);
-    return null;
-  }
-  
-  public final void dMp()
-  {
-    AppMethodBeat.i(34183);
-    if (this.activity == null)
-    {
-      AppMethodBeat.o(34183);
+      AppMethodBeat.o(191886);
       return;
     }
-    long l = System.currentTimeMillis();
-    Object localObject1 = (LauncherUI)this.activity;
-    ab.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  resetStatus %d", new Object[] { Integer.valueOf(this.Ahp) });
-    switch (this.Ahp)
+    if ((parami == null) || (paramListView == null))
     {
-    default: 
-      this.Ahq = ((LauncherUI)localObject1).yYT.getMainTabUI().dCJ();
-      ab.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount UNREAD_RESET_ALL totalUnReadCount %d, usetime %d,", new Object[] { Integer.valueOf(this.Ahq), Long.valueOf(System.currentTimeMillis() - l) });
-      AppMethodBeat.o(34183);
+      AppMethodBeat.o(191886);
       return;
-    case 2: 
-      Iterator localIterator = this.Aho.entrySet().iterator();
-      int i = 0;
-      while (localIterator.hasNext())
-      {
-        Object localObject2 = (Map.Entry)localIterator.next();
-        String str = (String)((Map.Entry)localObject2).getKey();
-        j = ((Integer)((Map.Entry)localObject2).getValue()).intValue();
-        ab.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  username %s, preunread %d", new Object[] { str, Integer.valueOf(j) });
-        localObject2 = auF(str);
-        if ((localObject2 == null) || (ag.Nn().contains(str)))
-        {
-          j = 0 - j;
-          ab.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  cov == null username %s, change %d", new Object[] { str, Integer.valueOf(j) });
-          label273:
-          if ((j != 0) && (this.Ahr.auG(str)))
-          {
-            ab.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  username %s isWithoutItemCache", new Object[] { str });
-            aw.aaz();
-            localObject2 = com.tencent.mm.model.c.YA().arw(str);
-            if (localObject2 == null) {
-              continue;
-            }
-            if (!t.lA(str)) {
-              break label415;
-            }
-            if (((aq)localObject2).dqK == 0) {
-              continue;
-            }
-          }
-        }
-        for (;;)
-        {
-          i += j;
-          ab.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  real change usename %s, change %d, totalchange %d", new Object[] { str, Integer.valueOf(j), Integer.valueOf(i) });
-          break;
-          j = ((au)localObject2).field_unReadCount - j + 0;
-          ab.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  cov != null username %s, change %d", new Object[] { str, Integer.valueOf(j) });
-          break label273;
-          label415:
-          if (((ad)localObject2).DP()) {
-            break;
-          }
-        }
+    }
+    int i = paramListView.getFirstVisiblePosition();
+    int j = paramListView.getLastVisiblePosition();
+    int k = paramListView.getHeaderViewsCount();
+    if ((paramBoolean2) && (i == mYc) && (HaP == j))
+    {
+      AppMethodBeat.o(191886);
+      return;
+    }
+    ad.v("MicroMsg.ConvExposeHelper", "checkOfficialAccountShow headerCount=" + k + ", firstPos=" + i + ", lastPos=" + j + ", visible=" + paramBoolean1 + ", scroll=" + paramBoolean2);
+    if (!paramBoolean1)
+    {
+      paramListView = r.Fem;
+      r.aHv("");
+      AppMethodBeat.o(191886);
+      return;
+    }
+    mYc = i;
+    HaP = j;
+    if (i > k)
+    {
+      i -= k;
+      if (j < k) {
+        break label362;
       }
-      this.Ahq += i;
-      localObject1 = ((LauncherUI)localObject1).yYT.getMainTabUI();
-      int j = this.Ahq;
-      ((MainTabUI)localObject1).zcx.Oo(j);
-      ab.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount UNREAD_RESET_PART totalUnReadCount %d, change %d, usetime %d,", new Object[] { Integer.valueOf(this.Ahq), Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l) });
-      AppMethodBeat.o(34183);
-      return;
+      j -= k;
     }
-    AppMethodBeat.o(34183);
+    for (;;)
+    {
+      paramListView = "";
+      if (i <= j) {}
+      for (;;)
+      {
+        try
+        {
+          localObject = (am)parami.WQ(i);
+          if ((localObject == null) || (!w.td(((am)localObject).getUsername()))) {
+            break label340;
+          }
+          paramListView = ((am)localObject).getDigest();
+          j = ((am)localObject).SB();
+          int m = 1;
+          k = i;
+          i = m;
+          if (i != 0) {
+            if (!paramBoolean2)
+            {
+              parami = r.Fem;
+              r.aI(paramListView, k, j);
+              AppMethodBeat.o(191886);
+              return;
+            }
+          }
+        }
+        catch (Exception paramListView)
+        {
+          ad.e("MicroMsg.ConvExposeHelper", "checkOfficialAccountShow ex %s", new Object[] { paramListView.getMessage() });
+          AppMethodBeat.o(191886);
+          return;
+        }
+        paramListView = r.Fem;
+        r.aHv("");
+        AppMethodBeat.o(191886);
+        return;
+        label340:
+        while (i == j)
+        {
+          i = 0;
+          j = 0;
+          k = 0;
+          break;
+        }
+        i += 1;
+      }
+      i = 0;
+      break;
+      label362:
+      j = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.d
  * JD-Core Version:    0.7.0.1
  */

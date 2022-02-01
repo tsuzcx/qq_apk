@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bwm;
-import com.tencent.mm.protocal.protobuf.bwn;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.c.p;
+import com.tencent.mm.protocal.protobuf.cmp;
+import com.tencent.mm.protocal.protobuf.cmq;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.wallet_core.c.r;
 
 public final class k
-  extends p
+  extends r
 {
-  public bwn kNt;
+  public cmq nTG;
   
   public k(String paramString, int paramInt)
   {
-    AppMethodBeat.i(40973);
+    AppMethodBeat.i(63825);
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bwm();
-    ((b.a)localObject).fsY = new bwn();
+    ((b.a)localObject).gUU = new cmp();
+    ((b.a)localObject).gUV = new cmq();
     ((b.a)localObject).funcId = 1800;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/scanf2fmaterialcode";
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (bwm)this.rr.fsV.fta;
-    ((bwm)localObject).xJR = paramString;
-    ((bwm)localObject).scene = paramInt;
-    ab.i("MicroMsg.NetSceneF2fMaterial", "req url: %s, %s", new Object[] { paramString, Integer.valueOf(paramInt) });
-    AppMethodBeat.o(40973);
+    this.rr = ((b.a)localObject).atI();
+    localObject = (cmp)this.rr.gUS.gUX;
+    ((cmp)localObject).EhA = paramString;
+    ((cmp)localObject).scene = paramInt;
+    ad.i("MicroMsg.NetSceneF2fMaterial", "req url: %s, %s", new Object[] { paramString, Integer.valueOf(paramInt) });
+    AppMethodBeat.o(63825);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    AppMethodBeat.i(40974);
-    this.kNt = ((bwn)((b)paramq).fsW.fta);
-    ab.i("MicroMsg.NetSceneF2fMaterial", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.kNt.cnK), this.kNt.kNv });
+    AppMethodBeat.i(63826);
+    this.nTG = ((cmq)((b)paramq).gUT.gUX);
+    ad.i("MicroMsg.NetSceneF2fMaterial", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.nTG.dcG), this.nTG.nTK });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
-    AppMethodBeat.o(40974);
+    AppMethodBeat.o(63826);
   }
   
   public final void e(q paramq)
   {
-    paramq = (bwn)((b)paramq).fsW.fta;
-    this.AXb = paramq.cnK;
-    this.AXc = paramq.kNv;
+    paramq = (cmq)((b)paramq).gUT.gUX;
+    this.IdO = paramq.dcG;
+    this.IdP = paramq.nTK;
   }
   
   public final int getType()
@@ -60,7 +60,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.k
  * JD-Core Version:    0.7.0.1
  */

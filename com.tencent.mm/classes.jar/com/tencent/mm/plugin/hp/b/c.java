@@ -1,83 +1,97 @@
 package com.tencent.mm.plugin.hp.b;
 
 import android.util.Base64;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.iq;
-import com.tencent.mm.g.a.iq.a;
-import com.tencent.mm.plugin.hp.d.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.g.a.jo;
+import com.tencent.mm.g.a.jo.a;
+import com.tencent.mm.plugin.hp.c.a;
+import com.tencent.mm.plugin.hp.tinker.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class c
-  extends com.tencent.mm.sdk.b.c<iq>
-  implements com.tencent.mm.sdk.g.a.d
+  extends com.tencent.mm.sdk.b.c<jo>
 {
-  private static final String eQS;
-  private a nKe;
+  private static final String gmy;
+  private a sxK;
   
   static
   {
-    AppMethodBeat.i(90583);
-    eQS = com.tencent.mm.compatible.util.e.eQv + "_temp.hp";
-    AppMethodBeat.o(90583);
+    AppMethodBeat.i(117414);
+    gmy = com.tencent.mm.loader.j.b.ahZ() + "_temp.hp";
+    AppMethodBeat.o(117414);
   }
   
   public c()
   {
-    AppMethodBeat.i(90578);
-    this.nKe = null;
-    this.__eventId = iq.class.getName().hashCode();
-    AppMethodBeat.o(90578);
+    AppMethodBeat.i(161180);
+    this.sxK = null;
+    this.__eventId = jo.class.getName().hashCode();
+    AppMethodBeat.o(161180);
   }
   
-  public static void QO(String paramString)
+  private boolean a(jo paramjo)
   {
-    AppMethodBeat.i(90579);
-    ab.w("Tinker.HotPatchApplyService", "hp_apply from file %s", new Object[] { paramString });
-    com.tencent.mm.plugin.hp.tinker.e.QQ(paramString);
-    AppMethodBeat.o(90579);
-  }
-  
-  private boolean a(iq paramiq)
-  {
-    AppMethodBeat.i(90581);
-    if (this.nKe != null)
+    AppMethodBeat.i(117412);
+    if (this.sxK != null)
     {
-      ab.e("Tinker.HotPatchApplyService", "hp_apply processing busy, ignore new event");
-      AppMethodBeat.o(90581);
+      ad.e("Tinker.HotPatchApplyService", "hp_apply processing busy, ignore new event");
+      AppMethodBeat.o(117412);
       return false;
     }
-    if (1 == paramiq.cxZ.coO)
+    if (1 == paramjo.dnH.dbV)
     {
-      com.tencent.mm.plugin.hp.tinker.e.bIo();
-      AppMethodBeat.o(90581);
+      e.cGh();
+      AppMethodBeat.o(117412);
       return false;
     }
-    if (paramiq.cxZ.cye != null)
+    if (paramjo.dnH.dnM != null)
     {
-      QO(paramiq.cxZ.cye);
-      AppMethodBeat.o(90581);
+      adG(paramjo.dnH.dnM);
+      AppMethodBeat.o(117412);
       return false;
     }
-    b.xu(1);
-    if (paramiq.cxZ.cyc != null) {}
+    b.EW(1);
+    if (paramjo.dnH.dnK != null) {}
     try
     {
-      byte[] arrayOfByte = Base64.decode(paramiq.cxZ.cyc, 0);
-      paramiq.cxZ.cyc = new String(arrayOfByte);
+      byte[] arrayOfByte = Base64.decode(paramjo.dnH.dnK, 0);
+      paramjo.dnH.dnK = new String(arrayOfByte);
       label115:
-      if ((!bo.isNullOrNil(paramiq.cxZ.cyc)) && (!bo.isNullOrNil(paramiq.cxZ.cyd)))
+      if ((!bt.isNullOrNil(paramjo.dnH.dnK)) && (!bt.isNullOrNil(paramjo.dnH.dnL)))
       {
-        ab.i("Tinker.HotPatchApplyService", "hp_apply request url=%s, signature=%s", new Object[] { paramiq.cxZ.cyc, paramiq.cxZ.cyd });
-        this.nKe = new a(paramiq.cxZ.cyc, eQS, paramiq.cxZ.cyd);
+        ad.i("Tinker.HotPatchApplyService", "hp_apply request url=%s, signature=%s", new Object[] { paramjo.dnH.dnK, paramjo.dnH.dnL });
+        this.sxK = new a(paramjo.dnH.dnK, gmy, paramjo.dnH.dnL)
+        {
+          public final void am(Runnable paramAnonymousRunnable)
+          {
+            AppMethodBeat.i(184412);
+            super.am(paramAnonymousRunnable);
+            ad.d("Tinker.HotPatchApplyService", "hp_apply download url=%s, file=%s, failed=%b", new Object[] { c.a(c.this).url, c.a(c.this).syC, Boolean.valueOf(c.a(c.this).aEj) });
+            if (!c.a(c.this).aEj)
+            {
+              b.EX(1);
+              c.adG(c.a(c.this).syC);
+            }
+            for (;;)
+            {
+              c.b(c.this);
+              AppMethodBeat.o(184412);
+              return;
+              b.EY(1);
+            }
+          }
+        };
       }
-      while ((!bo.isNullOrNil(paramiq.cxZ.cya)) && (!bo.isNullOrNil(paramiq.cxZ.cyb)))
+      while ((!bt.isNullOrNil(paramjo.dnH.dnI)) && (!bt.isNullOrNil(paramjo.dnH.dnJ)))
       {
-        com.tencent.mm.sdk.g.d.ysm.a(this.nKe, "hp_apply_download", this);
-        AppMethodBeat.o(90581);
+        h.Iye.f(this.sxK, "hp_apply_download");
+        AppMethodBeat.o(117412);
         return false;
       }
-      AppMethodBeat.o(90581);
+      AppMethodBeat.o(117412);
       return false;
     }
     catch (Error localError)
@@ -86,33 +100,17 @@ public final class c
     }
   }
   
-  public final void a(Runnable paramRunnable, int paramInt) {}
-  
-  public final void b(Runnable paramRunnable, int paramInt)
+  public static void adG(String paramString)
   {
-    AppMethodBeat.i(90580);
-    if (paramRunnable == this.nKe)
-    {
-      ab.d("Tinker.HotPatchApplyService", "hp_apply download url=%s, file=%s, failed=%b", new Object[] { this.nKe.url, this.nKe.gjO, Boolean.valueOf(this.nKe.frX) });
-      if (this.nKe.frX) {
-        break label92;
-      }
-      b.xv(1);
-      QO(this.nKe.gjO);
-    }
-    for (;;)
-    {
-      this.nKe = null;
-      AppMethodBeat.o(90580);
-      return;
-      label92:
-      b.xw(1);
-    }
+    AppMethodBeat.i(117410);
+    ad.w("Tinker.HotPatchApplyService", "hp_apply from file %s", new Object[] { paramString });
+    e.adJ(paramString);
+    AppMethodBeat.o(117410);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.b.c
  * JD-Core Version:    0.7.0.1
  */

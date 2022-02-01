@@ -1,84 +1,130 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.g.c.h;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class c
-  extends j<b>
+  extends h
 {
-  public static final String[] SQL_CREATE;
-  e db;
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(79236);
-    SQL_CREATE = new String[] { j.getCreateSQLs(b.info, "appattach") };
-    AppMethodBeat.o(79236);
+    AppMethodBeat.i(151651);
+    c.a locala = new c.a();
+    locala.EYt = new Field[20];
+    locala.columns = new String[21];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "appId";
+    locala.EYv.put("appId", "TEXT");
+    localStringBuilder.append(" appId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[1] = "sdkVer";
+    locala.EYv.put("sdkVer", "LONG");
+    localStringBuilder.append(" sdkVer LONG");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "mediaSvrId";
+    locala.EYv.put("mediaSvrId", "TEXT");
+    localStringBuilder.append(" mediaSvrId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "mediaId";
+    locala.EYv.put("mediaId", "TEXT");
+    localStringBuilder.append(" mediaId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "clientAppDataId";
+    locala.EYv.put("clientAppDataId", "TEXT");
+    localStringBuilder.append(" clientAppDataId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "type";
+    locala.EYv.put("type", "LONG");
+    localStringBuilder.append(" type LONG");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "totalLen";
+    locala.EYv.put("totalLen", "LONG");
+    localStringBuilder.append(" totalLen LONG");
+    localStringBuilder.append(", ");
+    locala.columns[7] = "offset";
+    locala.EYv.put("offset", "LONG");
+    localStringBuilder.append(" offset LONG");
+    localStringBuilder.append(", ");
+    locala.columns[8] = "status";
+    locala.EYv.put("status", "LONG");
+    localStringBuilder.append(" status LONG");
+    localStringBuilder.append(", ");
+    locala.columns[9] = "isUpload";
+    locala.EYv.put("isUpload", "INTEGER");
+    localStringBuilder.append(" isUpload INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[10] = "createTime";
+    locala.EYv.put("createTime", "LONG");
+    localStringBuilder.append(" createTime LONG");
+    localStringBuilder.append(", ");
+    locala.columns[11] = "lastModifyTime";
+    locala.EYv.put("lastModifyTime", "LONG");
+    localStringBuilder.append(" lastModifyTime LONG");
+    localStringBuilder.append(", ");
+    locala.columns[12] = "fileFullPath";
+    locala.EYv.put("fileFullPath", "TEXT");
+    localStringBuilder.append(" fileFullPath TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[13] = "fullXml";
+    locala.EYv.put("fullXml", "TEXT");
+    localStringBuilder.append(" fullXml TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[14] = "msgInfoId";
+    locala.EYv.put("msgInfoId", "LONG");
+    localStringBuilder.append(" msgInfoId LONG");
+    localStringBuilder.append(", ");
+    locala.columns[15] = "netTimes";
+    locala.EYv.put("netTimes", "LONG");
+    localStringBuilder.append(" netTimes LONG");
+    localStringBuilder.append(", ");
+    locala.columns[16] = "isUseCdn";
+    locala.EYv.put("isUseCdn", "INTEGER");
+    localStringBuilder.append(" isUseCdn INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[17] = "signature";
+    locala.EYv.put("signature", "TEXT");
+    localStringBuilder.append(" signature TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[18] = "fakeAeskey";
+    locala.EYv.put("fakeAeskey", "TEXT");
+    localStringBuilder.append(" fakeAeskey TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[19] = "fakeSignature";
+    locala.EYv.put("fakeSignature", "TEXT");
+    localStringBuilder.append(" fakeSignature TEXT");
+    locala.columns[20] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(151651);
   }
   
-  public c(e parame)
+  public c()
   {
-    super(parame, b.info, "appattach", null);
-    this.db = parame;
+    this.field_netTimes = 0L;
   }
   
-  public final boolean a(b paramb, String... paramVarArgs)
+  public final boolean cAX()
   {
-    AppMethodBeat.i(79233);
-    boolean bool = super.update(paramb, paramVarArgs);
-    ab.d("MicroMsg.AppAttachInfoStorage", "update AppAttachInfo field_mediaId %s field_mediaSvrId %s ret %s %s", new Object[] { paramb.field_mediaId, paramb.field_mediaSvrId, Boolean.valueOf(bool), "" });
-    AppMethodBeat.o(79233);
-    return bool;
-  }
-  
-  public final b alo(String paramString)
-  {
-    AppMethodBeat.i(79232);
-    b localb = new b();
-    localb.field_mediaSvrId = paramString;
-    if (get(localb, new String[] { "mediaSvrId" }))
-    {
-      AppMethodBeat.o(79232);
-      return localb;
+    if (this.field_totalLen <= 0L) {}
+    while (this.field_offset != this.field_totalLen) {
+      return false;
     }
-    if (get(localb, new String[] { "mediaId" }))
-    {
-      AppMethodBeat.o(79232);
-      return localb;
-    }
-    AppMethodBeat.o(79232);
-    return null;
+    return true;
   }
   
-  public final void nv(long paramLong)
+  public final c.a getDBInfo()
   {
-    AppMethodBeat.i(79231);
-    String str = " update appattach set status = 198 , lastModifyTime = " + bo.aox() + " where rowid = " + paramLong;
-    this.db.execSQL("appattach", str);
-    doNotify();
-    AppMethodBeat.o(79231);
-  }
-  
-  public final b nw(long paramLong)
-  {
-    AppMethodBeat.i(79234);
-    b localb = new b();
-    localb.field_msgInfoId = paramLong;
-    if (get(localb, new String[] { "msgInfoId" }))
-    {
-      AppMethodBeat.o(79234);
-      return localb;
-    }
-    AppMethodBeat.o(79234);
-    return null;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.c
  * JD-Core Version:    0.7.0.1
  */

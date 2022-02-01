@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval" android:useLevel="false"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#aae0e0e0" />
-    <corners android:radius="9.5dip" />
-    <padding android:left="2.0dip" android:right="2.0dip" />
-    <size android:height="15.0dip" android:width="15.0dip" />
-</shape>
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/dr" />
+            <corners android:topLeftRadius="6.0dip" android:topRightRadius="6.0dip" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/dr" />
+            <corners android:topLeftRadius="6.0dip" android:topRightRadius="6.0dip" />
+        </shape>
+    </item>
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/dr" />
+            <corners android:topLeftRadius="6.0dip" android:topRightRadius="6.0dip" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/a_r" />
+            <corners android:topLeftRadius="6.0dip" android:topRightRadius="6.0dip" />
+        </shape>
+    </item>
+</selector>

@@ -6,6 +6,8 @@ import android.app.Notification;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
@@ -13,7 +15,9 @@ import android.graphics.Bitmap;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.Message;
 import android.os.PowerManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,424 +27,467 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.b.g;
-import com.tencent.mm.g.a.kf;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.multitalk.model.f.6;
-import com.tencent.mm.plugin.multitalk.model.i;
-import com.tencent.mm.plugin.multitalk.model.j;
-import com.tencent.mm.plugin.multitalk.model.j.a;
+import com.tencent.mm.g.a.lk;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.ball.model.BallInfo;
+import com.tencent.mm.plugin.multitalk.model.MultiTalkingForegroundService;
 import com.tencent.mm.plugin.multitalk.model.n;
 import com.tencent.mm.plugin.multitalk.model.p;
+import com.tencent.mm.plugin.multitalk.ui.widget.MultiTalkControlIconLayout;
 import com.tencent.mm.plugin.multitalk.ui.widget.MultiTalkVideoView;
-import com.tencent.mm.plugin.multitalk.ui.widget.f.a;
-import com.tencent.mm.plugin.multitalk.ui.widget.f.b;
-import com.tencent.mm.plugin.voip.ui.MMCheckBox;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.voip.ui.d.6;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.pb.common.b.a.a.av;
+import com.tencent.mm.ui.am;
+import com.tencent.pb.common.b.a.a.a.ay;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroup;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroupMember;
 import com.tencent.wecall.talkroom.model.TalkRoom;
+import d.g.b.k;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @com.tencent.mm.ui.base.a(3)
 public class MultiTalkMainUI
   extends MMActivity
   implements ServiceConnection, com.tencent.mm.plugin.multitalk.model.b
 {
-  protected ak loX;
-  private com.tencent.mm.plugin.multitalk.ui.widget.c oUS;
-  private com.tencent.mm.plugin.multitalk.ui.widget.f oUT;
-  private boolean oUU;
-  private Notification oUV;
-  private boolean oUW;
-  private boolean oUX;
-  boolean oUY;
-  private MultiTalkMainUI.ScreenActionReceiver oUZ;
-  private Runnable oVa;
-  private boolean oVb;
-  private BroadcastReceiver oVc;
-  ak oVd;
+  private Notification iXX;
+  protected ap oFl;
+  private com.tencent.mm.plugin.voip.a.b sKs;
+  private boolean tQo;
+  private com.tencent.mm.plugin.multitalk.ui.widget.g tQp;
+  private com.tencent.mm.plugin.multitalk.ui.widget.j tQq;
+  private boolean tQr;
+  private boolean tQs;
+  boolean tQt;
+  private MultiTalkMainUI.ScreenActionReceiver tQu;
+  private Runnable tQv;
+  private boolean tQw;
+  private BroadcastReceiver tQx;
+  ap tQy;
   
   public MultiTalkMainUI()
   {
-    AppMethodBeat.i(54129);
-    this.oUW = true;
-    this.oUX = false;
-    this.oUY = false;
-    this.oVa = new MultiTalkMainUI.1(this);
-    this.oVc = new MultiTalkMainUI.5(this);
-    this.oVd = new MultiTalkMainUI.10(this);
-    AppMethodBeat.o(54129);
+    AppMethodBeat.i(114663);
+    this.tQr = true;
+    this.tQs = false;
+    this.tQt = false;
+    this.tQv = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(114652);
+        p.cSO().cSv();
+        AppMethodBeat.o(114652);
+      }
+    };
+    this.tQw = false;
+    this.tQx = new BroadcastReceiver()
+    {
+      public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(114656);
+        if (("android.intent.action.SCREEN_OFF".equals(paramAnonymousIntent.getAction())) && (p.cSO().tOH == com.tencent.mm.plugin.multitalk.ui.widget.i.tSD))
+        {
+          p.cSO().stopRing();
+          MultiTalkMainUI.b(MultiTalkMainUI.this);
+        }
+        AppMethodBeat.o(114656);
+      }
+    };
+    this.tQy = new ap()
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(114661);
+        super.handleMessage(paramAnonymousMessage);
+        switch (paramAnonymousMessage.what)
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(114661);
+          return;
+          if (!MultiTalkMainUI.c(MultiTalkMainUI.this))
+          {
+            paramAnonymousMessage = MultiTalkMainUI.this;
+            ad.i("MicroMsg.MT.MultiTalkMainUI", "bindVoiceServiceIfNeed");
+            try
+            {
+              if (com.tencent.mm.compatible.util.d.lf(26))
+              {
+                paramAnonymousMessage.tQt = true;
+                Intent localIntent = new Intent();
+                localIntent.setClass(aj.getContext(), MultiTalkingForegroundService.class);
+                aj.getContext().bindService(localIntent, paramAnonymousMessage, 1);
+              }
+              AppMethodBeat.o(114661);
+              return;
+            }
+            catch (Exception paramAnonymousMessage)
+            {
+              ad.printErrStackTrace("MicroMsg.MT.MultiTalkMainUI", paramAnonymousMessage, "bindVoiceServiceIfNeed error: %s", new Object[] { paramAnonymousMessage.getMessage() });
+              AppMethodBeat.o(114661);
+              return;
+            }
+            ((com.tencent.mm.plugin.notification.b.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.notification.b.a.class)).getNotification().cancel(43);
+          }
+        }
+      }
+    };
+    AppMethodBeat.o(114663);
   }
   
-  private static int bJG()
+  public final void a(com.tencent.mm.plugin.multitalk.model.j.a parama)
   {
-    AppMethodBeat.i(54136);
-    if (g.KC().KH())
+    AppMethodBeat.i(114687);
+    if (parama == com.tencent.mm.plugin.multitalk.model.j.a.tPA)
     {
-      int i = g.KC().KU();
-      AppMethodBeat.o(54136);
-      return i;
-    }
-    if (!p.bTF().nMJ.Dt())
-    {
-      AppMethodBeat.o(54136);
-      return 3;
-    }
-    AppMethodBeat.o(54136);
-    return 0;
-  }
-  
-  public final int Ut(String paramString)
-  {
-    AppMethodBeat.i(54151);
-    paramString = this.oUT.UD(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(54151);
-      return -1;
-    }
-    int i = ((f.a)paramString.getTag()).oWq.getPosition();
-    AppMethodBeat.o(54151);
-    return i;
-  }
-  
-  public final void a(j.a parama)
-  {
-    AppMethodBeat.i(54153);
-    if (parama == j.a.oUf)
-    {
-      p.bTD().X(this);
-      AppMethodBeat.o(54153);
+      p.cSM().ap(this);
+      AppMethodBeat.o(114687);
       return;
     }
-    if (parama == j.a.oUg)
+    if (parama == com.tencent.mm.plugin.multitalk.model.j.a.tPB)
     {
-      p.bTD().W(this);
-      AppMethodBeat.o(54153);
+      p.cSM().ao(this);
+      AppMethodBeat.o(114687);
       return;
     }
-    if (parama == j.a.oUh) {
-      com.tencent.mm.bg.e.a(this, 2131304713, null);
+    if (parama == com.tencent.mm.plugin.multitalk.model.j.a.tPC) {
+      com.tencent.mm.bi.e.a(this, 2131764895, null);
     }
-    AppMethodBeat.o(54153);
+    AppMethodBeat.o(114687);
   }
   
-  public final void a(com.tencent.mm.plugin.multitalk.ui.widget.e parame)
+  public final void a(com.tencent.mm.plugin.multitalk.ui.widget.i parami)
   {
-    AppMethodBeat.i(54152);
-    if (parame == com.tencent.mm.plugin.multitalk.ui.widget.e.oVS)
+    AppMethodBeat.i(114686);
+    if (parami == com.tencent.mm.plugin.multitalk.ui.widget.i.tSG)
     {
-      parame = this.oUT;
-      if (parame.oWn > 0L) {
-        parame.oWn = System.currentTimeMillis();
+      parami = this.tQq;
+      if (parami.tTj > 0L) {
+        parami.tTj = System.currentTimeMillis();
       }
     }
-    AppMethodBeat.o(54152);
+    AppMethodBeat.o(114686);
   }
   
   public final void a(String paramString, Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(54150);
-    this.oUT.a(paramString, paramBitmap, paramInt1, paramInt2);
-    AppMethodBeat.o(54150);
+    AppMethodBeat.i(114684);
+    this.tQq.a(paramString, paramBitmap, paramInt1, paramInt2);
+    AppMethodBeat.o(114684);
   }
   
   public final void a(String paramString, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(54149);
-    if (p.bTF().bTh()) {
-      this.oUT.a(paramString, paramArrayOfInt, paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.i(114683);
+    if (p.cSO().cSk()) {
+      this.tQq.a(paramString, paramArrayOfInt, paramInt1, paramInt2, paramInt3);
     }
-    AppMethodBeat.o(54149);
+    AppMethodBeat.o(114683);
   }
   
-  public final void bIW()
+  public final int ahA(String paramString)
   {
-    AppMethodBeat.i(54141);
-    kf localkf = new kf();
-    localkf.czQ.action = 0;
-    com.tencent.mm.sdk.b.a.ymk.l(localkf);
-    this.oUT.jK(true);
-    p.bTF().oTC = null;
-    p.bTF().stopRing();
+    AppMethodBeat.i(114685);
+    paramString = this.tQq.ahL(paramString);
+    if ((paramString != null) && (paramString.tQS != null))
+    {
+      int i = paramString.tQS.getPosition();
+      AppMethodBeat.o(114685);
+      return i;
+    }
+    AppMethodBeat.o(114685);
+    return 0;
+  }
+  
+  public final ViewGroup byJ()
+  {
+    AppMethodBeat.i(114691);
+    ViewGroup localViewGroup = (ViewGroup)findViewById(2131304253);
+    AppMethodBeat.o(114691);
+    return localViewGroup;
+  }
+  
+  public final void cGR()
+  {
+    AppMethodBeat.i(114675);
+    lk locallk = new lk();
+    locallk.dpZ.action = 0;
+    com.tencent.mm.sdk.b.a.ESL.l(locallk);
+    this.tQq.nI(true);
+    p.cSO().tOU = null;
+    p.cSO().stopRing();
     finish();
-    AppMethodBeat.o(54141);
+    AppMethodBeat.o(114675);
   }
   
-  public final void bIX()
+  public final void cGS()
   {
-    AppMethodBeat.i(54154);
-    Object localObject3 = this.oUT;
-    Object localObject1 = ((com.tencent.mm.plugin.multitalk.ui.widget.f)localObject3).ekh;
-    long l = p.bTF().oTv;
+    AppMethodBeat.i(114688);
+    com.tencent.mm.plugin.multitalk.ui.widget.j localj = this.tQq;
+    Object localObject1 = localj.fwS;
+    long l = p.cSO().tON;
     ((TextView)localObject1).setText(String.format("%02d:%02d", new Object[] { Long.valueOf(l / 60L), Long.valueOf(l % 60L) }));
-    Object localObject4 = p.bTF();
-    Object localObject2 = ((com.tencent.mm.plugin.multitalk.model.f)localObject4).oTs.Bhl;
+    Object localObject3 = p.cSO();
+    Object localObject2 = ((com.tencent.mm.plugin.multitalk.model.f)localObject3).tOI.Iog;
     localObject1 = localObject2;
-    if (bo.isNullOrNil((String)localObject2)) {
-      localObject1 = ((com.tencent.mm.plugin.multitalk.model.f)localObject4).oTs.Bhm;
+    if (bt.isNullOrNil((String)localObject2)) {
+      localObject1 = ((com.tencent.mm.plugin.multitalk.model.f)localObject3).tOI.Ioh;
     }
-    localObject1 = p.bTE().oTa.awu((String)localObject1);
-    localObject2 = p.bTF().oTq;
-    Object localObject5;
+    localObject1 = p.cSN().tOr.aNy((String)localObject1);
+    localObject2 = p.cSO().tOG;
+    Object localObject4;
     if (localObject1 != null)
     {
-      localObject4 = ((com.tencent.mm.plugin.multitalk.ui.widget.f)localObject3).oWg.iterator();
-      while (((Iterator)localObject4).hasNext())
+      localObject3 = (com.tencent.mm.plugin.multitalk.ui.widget.a)localj.tSI.getAdapter();
+      if (localObject3 != null)
       {
-        localObject5 = (f.a)((RelativeLayout)((Iterator)localObject4).next()).getTag();
-        String str = ((f.a)localObject5).oWq.getUsername();
-        if (((!r.Zn().equals(str)) || (!((com.tencent.mm.plugin.multitalk.ui.widget.f)localObject3).bSH())) && (((List)localObject1).contains(str)) && (!((HashSet)localObject2).contains(str)))
+        localObject3 = ((com.tencent.mm.plugin.multitalk.ui.widget.a)localObject3).tQL.iterator();
+        while (((Iterator)localObject3).hasNext())
         {
-          ((f.a)localObject5).oWr.setVisibility(0);
-          ab.i("MicroMsg.MT.MultiTalkTalkingUILogic", "displayVoiceTalkingIcon, %s show", new Object[] { str });
+          localObject4 = localj.ahL(((com.tencent.mm.plugin.multitalk.data.a)((Iterator)localObject3).next()).tOo.Iol);
+          if ((localObject4 != null) && (((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject4).tQS != null))
+          {
+            String str = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject4).tQS.getUsername();
+            if (((!u.aqG().equals(str)) || (!localj.cRI())) && (((List)localObject1).contains(str)) && (!((HashSet)localObject2).contains(str)))
+            {
+              ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject4).tQT.setVisibility(0);
+              ad.i("MicroMsg.MT.MultiTalkTalkingUILogic", "displayVoiceTalkingIcon, %s show", new Object[] { str });
+            }
+            else
+            {
+              ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject4).tQT.setVisibility(8);
+              ad.i("MicroMsg.MT.MultiTalkTalkingUILogic", "displayVoiceTalkingIcon, %s hide", new Object[] { str });
+            }
+          }
         }
-        else
-        {
-          ((f.a)localObject5).oWr.setVisibility(8);
-          ab.i("MicroMsg.MT.MultiTalkTalkingUILogic", "displayVoiceTalkingIcon, %s hide", new Object[] { str });
-        }
+        com.tencent.mm.plugin.multitalk.model.e.He(((List)localObject1).size());
       }
     }
-    localObject4 = p.bTF();
-    localObject2 = ((com.tencent.mm.plugin.multitalk.model.f)localObject4).oTs.Bhl;
+    localObject3 = p.cSO();
+    localObject2 = ((com.tencent.mm.plugin.multitalk.model.f)localObject3).tOI.Iog;
     localObject1 = localObject2;
-    if (bo.isNullOrNil((String)localObject2)) {
-      localObject1 = ((com.tencent.mm.plugin.multitalk.model.f)localObject4).oTs.Bhm;
+    if (bt.isNullOrNil((String)localObject2)) {
+      localObject1 = ((com.tencent.mm.plugin.multitalk.model.f)localObject3).tOI.Ioh;
     }
-    if (n.oUG == null) {
-      n.oUG = new n();
+    if (n.tQb == null) {
+      n.tQb = new n();
     }
-    localObject4 = n.oUG;
+    localObject3 = n.tQb;
     localObject2 = new ArrayList();
-    ((n)localObject4).oUH = com.tencent.wecall.talkroom.model.c.dXv().axp((String)localObject1);
-    if (((n)localObject4).oUH != null)
+    ((n)localObject3).tQc = com.tencent.wecall.talkroom.model.c.fpJ().aOp((String)localObject1);
+    if (((n)localObject3).tQc != null)
     {
-      localObject1 = ((n)localObject4).oUH.dXp().iterator();
-      label519:
-      label522:
+      localObject1 = ((n)localObject3).tQc.fpD().iterator();
+      label565:
+      label568:
       while (((Iterator)localObject1).hasNext())
       {
-        localObject4 = (a.av)((Iterator)localObject1).next();
-        int i = ((a.av)localObject4).kJx;
+        localObject3 = (a.ay)((Iterator)localObject1).next();
+        int i = ((a.ay)localObject3).nPB;
         if (i >= 0)
         {
-          localObject5 = new byte[4];
-          if (p.bTE().oTa.setAppCmd(10, (byte[])localObject5, i) < 0)
+          localObject4 = new byte[4];
+          if (p.cSN().tOr.setAppCmd(10, (byte[])localObject4, i) < 0)
           {
-            ab.d("MicroMsg.Multitalk.VoipNetStatusChecker", "get netStatus failed memberId :%d", new Object[] { Integer.valueOf(i) });
+            ad.d("MicroMsg.Multitalk.VoipNetStatusChecker", "get netStatus failed memberId :%d", new Object[] { Integer.valueOf(i) });
             i = -1;
-            label458:
+            label504:
             if ((i == -1) || (i > 3)) {
-              break label519;
+              break label565;
             }
           }
           for (i = 1;; i = 0)
           {
             if (i == 0) {
-              break label522;
+              break label568;
             }
-            ((List)localObject2).add(((a.av)localObject4).Bfy);
+            ((List)localObject2).add(((a.ay)localObject3).Imu);
             break;
-            i = bo.bg((byte[])localObject5);
-            ab.d("MicroMsg.Multitalk.VoipNetStatusChecker", "netStatus: %d", new Object[] { Integer.valueOf(i) });
-            break label458;
+            i = bt.bw((byte[])localObject4);
+            ad.d("MicroMsg.Multitalk.VoipNetStatusChecker", "netStatus: %d", new Object[] { Integer.valueOf(i) });
+            break label504;
           }
         }
       }
     }
-    localObject1 = ((com.tencent.mm.plugin.multitalk.ui.widget.f)localObject3).oWg.iterator();
-    while (((Iterator)localObject1).hasNext())
+    localObject1 = (com.tencent.mm.plugin.multitalk.ui.widget.a)localj.tSI.getAdapter();
+    if (localObject1 != null)
     {
-      localObject3 = (f.a)((RelativeLayout)((Iterator)localObject1).next()).getTag();
-      if (((List)localObject2).contains(((f.a)localObject3).oWq.getUsername())) {
-        ((f.a)localObject3).oWs.setVisibility(0);
-      } else {
-        ((f.a)localObject3).oWs.setVisibility(8);
+      localObject1 = ((com.tencent.mm.plugin.multitalk.ui.widget.a)localObject1).tQL.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject3 = localj.ahL(((com.tencent.mm.plugin.multitalk.data.a)((Iterator)localObject1).next()).tOo.Iol);
+        if ((localObject3 != null) && (((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).tQS != null) && (((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).tQU != null))
+        {
+          localObject4 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).tQS.getUsername();
+          if (((List)localObject2).contains(localObject4))
+          {
+            ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).tQU.setVisibility(0);
+            com.tencent.mm.plugin.multitalk.model.e.nx(u.aqG().equals(localObject4));
+            if (u.aqG().equals(localObject4))
+            {
+              localObject3 = com.tencent.mm.plugin.voip.c.dRR();
+              if ((((com.tencent.mm.plugin.voip.ui.d)localObject3).zrN != null) && (!((com.tencent.mm.plugin.voip.ui.d)localObject3).zrQ))
+              {
+                com.tencent.e.h.Iye.aNW("showIcon");
+                com.tencent.e.h.Iye.f(new d.6((com.tencent.mm.plugin.voip.ui.d)localObject3), "showIcon");
+              }
+            }
+          }
+          else
+          {
+            ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).tQU.setVisibility(8);
+          }
+        }
       }
     }
-    AppMethodBeat.o(54154);
+    AppMethodBeat.o(114688);
   }
   
-  public final void bPy()
+  public final void cOp()
   {
-    AppMethodBeat.i(54140);
-    this.oUS.bTM();
-    this.oUT.o(p.bTF().oTs);
-    AppMethodBeat.o(54140);
+    AppMethodBeat.i(114674);
+    this.tQp.cSX();
+    this.tQq.m(p.cSO().tOI);
+    AppMethodBeat.o(114674);
   }
   
-  public final void bSE()
+  public final void cRF()
   {
-    AppMethodBeat.i(54142);
-    g.KC().KF();
-    com.tencent.mm.sdk.g.d.post(new f.6(p.bTF()), "MultiTalkManager_play_end_sound");
-    kf localkf = new kf();
-    localkf.czQ.action = 0;
-    com.tencent.mm.sdk.b.a.ymk.l(localkf);
-    this.loX.post(new MultiTalkMainUI.4(this));
-    p.bTF().oTC = null;
-    p.bTF().stopRing();
+    AppMethodBeat.i(114676);
+    Object localObject = p.cSO();
+    if (((com.tencent.mm.plugin.multitalk.model.f)localObject).tPb != null) {
+      ((com.tencent.mm.plugin.multitalk.model.f)localObject).tPb.I(false, 1);
+    }
+    localObject = new lk();
+    ((lk)localObject).dpZ.action = 0;
+    com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
+    this.oFl.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(114655);
+        MultiTalkMainUI.a(MultiTalkMainUI.this).nI(false);
+        AppMethodBeat.o(114655);
+      }
+    });
+    p.cSO().tOU = null;
+    p.cSO().stopRing();
+    localObject = p.cSO();
+    if (((com.tencent.mm.plugin.multitalk.model.f)localObject).tPb != null) {
+      ((com.tencent.mm.plugin.multitalk.model.f)localObject).tPb.cRA();
+    }
+    if (p.cSO().tPb != null) {
+      com.tencent.mm.plugin.multitalk.a.a.NX();
+    }
     finish();
-    AppMethodBeat.o(54142);
+    AppMethodBeat.o(114676);
   }
   
-  public final void bSF()
+  public final void cRG()
   {
-    AppMethodBeat.i(54139);
-    switch (MultiTalkMainUI.2.oVf[p.bTF().oTr.ordinal()])
+    AppMethodBeat.i(114673);
+    switch (2.tQA[p.cSO().tOH.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(54139);
+      AppMethodBeat.o(114673);
       return;
-      this.oUT.o(p.bTF().oTs);
-      AppMethodBeat.o(54139);
+      this.tQq.m(p.cSO().tOI);
+      AppMethodBeat.o(114673);
       return;
-      this.oUS.n(p.bTF().oTs);
+      this.tQp.l(p.cSO().tOI);
     }
   }
   
-  public final void bSG()
+  public final void cRH()
   {
-    AppMethodBeat.i(54144);
-    ab.i("MicroMsg.MT.MultiTalkMainUI", "onVideoGroupMemberChange, SubCoreMultiTalk.getMultiTalkManager().getCurrentVideoUserSet().size(): " + p.bTF().oTq.size());
-    if (p.bTF().bTh())
+    AppMethodBeat.i(114678);
+    ad.i("MicroMsg.MT.MultiTalkMainUI", "onVideoGroupMemberChange, SubCoreMultiTalk.getMultiTalkManager().getCurrentVideoUserSet().size(): " + p.cSO().tOG.size());
+    if (p.cSO().cSk())
     {
-      if (p.bTF().oTq.size() <= 0) {
-        break label113;
+      if (p.cSO().tOG.size() <= 0) {
+        break label119;
       }
-      j.bTw();
-      p.bTF().bTp();
+      p.cSO().cSv();
     }
     for (;;)
     {
-      com.tencent.mm.plugin.multitalk.ui.widget.f localf = this.oUT;
+      com.tencent.mm.plugin.multitalk.ui.widget.j localj = this.tQq;
       HashSet localHashSet = new HashSet();
-      localHashSet.addAll(p.bTF().oTq);
-      if (p.bTF().bTg()) {
-        localf.d(localHashSet);
+      localHashSet.addAll(p.cSO().tOG);
+      if (com.tencent.mm.plugin.multitalk.model.j.Hk(p.cSO().tOE)) {
+        localj.e(localHashSet);
       }
-      AppMethodBeat.o(54144);
+      com.tencent.mm.plugin.multitalk.model.e.Hf(localHashSet.size());
+      AppMethodBeat.o(114678);
       return;
-      label113:
-      p.bTF().bTq();
+      label119:
+      p.cSO().cSw();
     }
   }
   
-  public final boolean bSH()
+  public final boolean cRI()
   {
-    AppMethodBeat.i(54155);
-    if (this.oUT != null)
+    AppMethodBeat.i(114689);
+    if (this.tQq != null)
     {
-      boolean bool = this.oUT.bSH();
-      AppMethodBeat.o(54155);
+      boolean bool = this.tQq.cRI();
+      AppMethodBeat.o(114689);
       return bool;
     }
-    AppMethodBeat.o(54155);
+    AppMethodBeat.o(114689);
     return false;
   }
   
-  public final void bTK()
+  public final void cST()
   {
-    AppMethodBeat.i(54137);
-    this.oVb = true;
-    Intent localIntent = new Intent(this, MultiTalkAddMembersUI.class);
-    ArrayList localArrayList = new ArrayList();
-    if (p.bTF().oTs != null)
+    AppMethodBeat.i(114671);
+    if (!this.tQw)
     {
-      Iterator localIterator = p.bTF().oTs.Bhp.iterator();
-      while (localIterator.hasNext())
+      this.tQw = true;
+      Intent localIntent = new Intent(this, MultiTalkAddMembersUI.class);
+      ArrayList localArrayList = new ArrayList();
+      if (p.cSO().tOI != null)
       {
-        MultiTalkGroupMember localMultiTalkGroupMember = (MultiTalkGroupMember)localIterator.next();
-        if ((localMultiTalkGroupMember.status == 10) || (localMultiTalkGroupMember.status == 1)) {
-          localArrayList.add(localMultiTalkGroupMember.Bhq);
-        }
-      }
-      localIntent.putExtra("titile", getString(2131301656));
-      localIntent.putExtra("chatroomName", p.bTF().oTs.Bhn);
-      localIntent.putExtra("always_select_contact", bo.d(localArrayList, ","));
-      localIntent.putExtra("key_need_gallery", false);
-      startActivityForResult(localIntent, 1);
-    }
-    AppMethodBeat.o(54137);
-  }
-  
-  public final ViewGroup bTL()
-  {
-    AppMethodBeat.i(54157);
-    ViewGroup localViewGroup = (ViewGroup)findViewById(2131826407);
-    AppMethodBeat.o(54157);
-    return localViewGroup;
-  }
-  
-  public final void eK(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(54147);
-    if (p.bTF().bTh())
-    {
-      com.tencent.mm.plugin.multitalk.ui.widget.f localf = this.oUT;
-      Object localObject = localf.UD(r.Zn());
-      if (localObject != null)
-      {
-        localObject = (f.a)((RelativeLayout)localObject).getTag();
-        if (!j.zG(paramInt2))
+        Iterator localIterator = p.cSO().tOI.Iok.iterator();
+        while (localIterator.hasNext())
         {
-          if (j.zG(paramInt1))
-          {
-            localf.oWb.setChecked(false);
-            ((f.a)localObject).oWq.bTQ();
-            localf.oWa.setVisibility(8);
-            if ((localf.oWl.equals(r.Zn())) && (localf.oVV.getVisibility() == 0))
-            {
-              localf.oWl = "";
-              localf.oVU.setVisibility(0);
-              localf.oVV.setVisibility(8);
-            }
-          }
-          localf.jJ(false);
-        }
-        for (;;)
-        {
-          localObject = new HashSet();
-          ((HashSet)localObject).addAll(p.bTF().oTq);
-          if (j.zH(paramInt2)) {
-            break;
-          }
-          if (!j.zH(paramInt1)) {
-            break label268;
-          }
-          localf.bTN();
-          AppMethodBeat.o(54147);
-          return;
-          if ((j.zG(paramInt2)) && (!j.zG(paramInt1)))
-          {
-            localf.oWb.setChecked(true);
-            ((f.a)localObject).oWq.bTR();
-            ((f.a)localObject).oWt.setVisibility(8);
-            al.p(new f.b(localf, (f.a)localObject), 1500L);
-            localf.oWa.setVisibility(0);
+          MultiTalkGroupMember localMultiTalkGroupMember = (MultiTalkGroupMember)localIterator.next();
+          if ((localMultiTalkGroupMember.status == 10) || (localMultiTalkGroupMember.status == 1)) {
+            localArrayList.add(localMultiTalkGroupMember.Iol);
           }
         }
-        if ((j.zH(paramInt2)) && (!j.zH(paramInt1))) {
-          localf.d((HashSet)localObject);
-        }
+        localIntent.putExtra("titile", getString(2131761389));
+        localIntent.putExtra("chatroomName", p.cSO().tOI.Ioi);
+        localIntent.putExtra("always_select_contact", bt.n(localArrayList, ","));
+        localIntent.putExtra("key_need_gallery", false);
+        startActivityForResult(localIntent, 1);
       }
     }
-    label268:
-    AppMethodBeat.o(54147);
+    AppMethodBeat.o(114671);
+  }
+  
+  public void finish()
+  {
+    AppMethodBeat.i(189962);
+    super.finish();
+    if (this.tQq != null) {
+      this.tQq.ghf = false;
+    }
+    AppMethodBeat.o(189962);
   }
   
   public int getForceOrientation()
@@ -450,168 +497,263 @@ public class MultiTalkMainUI
   
   public int getLayoutId()
   {
-    return 2130970321;
+    return 2131494976;
   }
   
-  public final void jx(boolean paramBoolean)
+  public final void gg(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(54145);
-    if (p.bTF().bTh()) {
-      this.oUT.oWc.setChecked(paramBoolean);
-    }
-    AppMethodBeat.o(54145);
-  }
-  
-  public final void jy(boolean paramBoolean)
-  {
-    AppMethodBeat.i(54146);
-    if (p.bTF().bTh())
+    AppMethodBeat.i(114681);
+    if (p.cSO().cSk())
     {
-      com.tencent.mm.plugin.multitalk.ui.widget.f localf = this.oUT;
-      localf.oWd.setChecked(paramBoolean);
-      localf.bTO();
-    }
-    AppMethodBeat.o(54146);
-  }
-  
-  public final void jz(boolean paramBoolean)
-  {
-    AppMethodBeat.i(54148);
-    if (p.bTF().bTh())
-    {
-      com.tencent.mm.plugin.multitalk.ui.widget.f localf = this.oUT;
-      if (localf.oWd != null) {
-        localf.oWd.setEnabled(paramBoolean);
+      com.tencent.mm.plugin.multitalk.ui.widget.j localj = this.tQq;
+      Object localObject = localj.ahL(u.aqG());
+      if (localObject != null)
+      {
+        if (!com.tencent.mm.plugin.multitalk.model.j.Hj(paramInt2))
+        {
+          if (com.tencent.mm.plugin.multitalk.model.j.Hj(paramInt1))
+          {
+            localj.tSP.setChecked(false);
+            ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).tQS.cTc();
+            localj.tSO.setVisibility(8);
+            if ((localj.tTc.equals(u.aqG())) && (localj.tSJ.getVisibility() == 0))
+            {
+              localj.tTc = "";
+              localj.tSI.setVisibility(0);
+              localj.tSJ.setVisibility(8);
+            }
+          }
+          localj.ahM(u.aqG());
+          localj.nH(false);
+        }
+        for (;;)
+        {
+          localObject = new HashSet();
+          ((HashSet)localObject).addAll(p.cSO().tOG);
+          if (com.tencent.mm.plugin.multitalk.model.j.Hk(paramInt2)) {
+            break;
+          }
+          if (!com.tencent.mm.plugin.multitalk.model.j.Hk(paramInt1)) {
+            break label266;
+          }
+          localj.cSZ();
+          AppMethodBeat.o(114681);
+          return;
+          if ((com.tencent.mm.plugin.multitalk.model.j.Hj(paramInt2)) && (!com.tencent.mm.plugin.multitalk.model.j.Hj(paramInt1)))
+          {
+            localj.tSP.setChecked(true);
+            ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).tQS.cTd();
+            ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).tQV.setVisibility(8);
+            com.tencent.mm.sdk.platformtools.aq.n(new com.tencent.mm.plugin.multitalk.ui.widget.j.a(localj, (com.tencent.mm.plugin.multitalk.ui.widget.b)localObject), 1500L);
+            localj.tSO.setVisibility(0);
+          }
+        }
+        if ((com.tencent.mm.plugin.multitalk.model.j.Hk(paramInt2)) && (!com.tencent.mm.plugin.multitalk.model.j.Hk(paramInt1))) {
+          localj.e((HashSet)localObject);
+        }
       }
     }
-    AppMethodBeat.o(54148);
+    label266:
+    AppMethodBeat.o(114681);
+  }
+  
+  public final void ns(boolean paramBoolean)
+  {
+    AppMethodBeat.i(114679);
+    Object localObject;
+    if (p.cSO().cSk())
+    {
+      localObject = this.tQq;
+      ((com.tencent.mm.plugin.multitalk.ui.widget.j)localObject).tSQ.setChecked(paramBoolean);
+      localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.j)localObject).ahL(u.aqG());
+      if ((localObject != null) && (((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).tQW != null)) {
+        if (!paramBoolean) {
+          break label130;
+        }
+      }
+    }
+    label130:
+    for (int i = 0;; i = 8)
+    {
+      ImageView localImageView = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).tQW;
+      if (localImageView != null)
+      {
+        View localView = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).arI;
+        k.g(localView, "itemView");
+        localImageView.setBackground(am.i(localView.getContext(), 2131690327, -65536));
+      }
+      localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).arI.findViewById(2131302584);
+      k.g(localObject, "itemView.findViewById<Re…d.multitalk_mute_icon_bg)");
+      ((RelativeLayout)localObject).setVisibility(i);
+      AppMethodBeat.o(114679);
+      return;
+    }
+  }
+  
+  public final void nt(boolean paramBoolean)
+  {
+    AppMethodBeat.i(114680);
+    if (p.cSO().cSk())
+    {
+      com.tencent.mm.plugin.multitalk.ui.widget.j localj = this.tQq;
+      ad.i("MicroMsg.MT.MultiTalkTalkingUILogic", "onSpeakerStateChange: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+      localj.tSR.setChecked(paramBoolean);
+      localj.cTa();
+    }
+    AppMethodBeat.o(114680);
+  }
+  
+  public final void nu(boolean paramBoolean)
+  {
+    AppMethodBeat.i(114682);
+    if (p.cSO().cSk())
+    {
+      com.tencent.mm.plugin.multitalk.ui.widget.j localj = this.tQq;
+      if (localj.tSR != null) {
+        localj.tSR.setEnabled(paramBoolean);
+      }
+    }
+    AppMethodBeat.o(114682);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(54138);
-    ab.i("MicroMsg.MT.MultiTalkMainUI", "onActivityResult " + paramInt1 + " resultCode " + paramInt2);
+    AppMethodBeat.i(114672);
+    ad.i("MicroMsg.MT.MultiTalkMainUI", "onActivityResult " + paramInt1 + " resultCode " + paramInt2);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.oVb = false;
+    this.tQw = false;
     if ((paramInt2 == -1) && (paramInt1 == 1))
     {
       paramIntent = paramIntent.getStringExtra("Select_Contact");
-      ab.i("MicroMsg.MT.MultiTalkMainUI", "add member ".concat(String.valueOf(paramIntent)));
-      ArrayList localArrayList = bo.P(paramIntent.split(","));
+      ad.i("MicroMsg.MT.MultiTalkMainUI", "add member ".concat(String.valueOf(paramIntent)));
+      ArrayList localArrayList = bt.S(paramIntent.split(","));
       if (localArrayList == null)
       {
-        AppMethodBeat.o(54138);
+        AppMethodBeat.o(114672);
         return;
       }
-      com.tencent.mm.plugin.multitalk.model.f localf = p.bTF();
-      if (localf.bSD())
+      com.tencent.mm.plugin.multitalk.model.f localf = p.cSO();
+      if (localf.cRE())
       {
-        String str = localf.oTs.Bhl;
+        String str = localf.tOI.Iog;
         paramIntent = str;
-        if (bo.isNullOrNil(str)) {
-          paramIntent = localf.oTs.Bhm;
+        if (bt.isNullOrNil(str)) {
+          paramIntent = localf.tOI.Ioh;
         }
-        p.bTE().oTa.D(paramIntent, localArrayList);
+        p.cSN().tOr.K(paramIntent, localArrayList);
       }
     }
-    AppMethodBeat.o(54138);
+    AppMethodBeat.o(114672);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(54130);
+    AppMethodBeat.i(114664);
     super.onCreate(paramBundle);
-    hideTitleView();
-    g.KC().KE();
+    p.cSO().cSt();
+    com.tencent.mm.util.b.fgU();
+    p.cSO().cSm();
+    getWindow().getDecorView().setSystemUiVisibility(1792);
+    getWindow().addFlags(-2147483648);
+    getWindow().setStatusBarColor(0);
+    getWindow().setNavigationBarColor(0);
     int i = getIntent().getIntExtra("enterMainUiSource", 0);
     if ((i == 1) || (i == 2)) {
-      overridePendingTransition(2131034217, 2131034130);
+      overridePendingTransition(2130772095, 2130771986);
     }
     for (;;)
     {
+      hideTitleView();
       getWindow().addFlags(6815872);
       if (Build.VERSION.SDK_INT >= 21) {
         getWindow().addFlags(67108864);
       }
-      p.bTF().bIQ();
-      if (p.bTF().bSD()) {
+      p.cSO().mm(false);
+      if (p.cSO().cRE()) {
         break;
       }
       finish();
       if (i == 2) {
         getIntent().getStringExtra("enterMainUiWxGroupId");
       }
-      AppMethodBeat.o(54130);
+      AppMethodBeat.o(114664);
       return;
-      overridePendingTransition(2131034268, 2131034269);
+      overridePendingTransition(2130772146, 2130772147);
     }
-    this.oUS = new com.tencent.mm.plugin.multitalk.ui.widget.c(this);
-    this.oUT = new com.tencent.mm.plugin.multitalk.ui.widget.f(this);
-    p.bTF().jF(p.bTF().oTm);
-    p.bTF().oTC = this;
+    p.cSJ();
+    p.cSI();
+    this.tQp = new com.tencent.mm.plugin.multitalk.ui.widget.g(this);
+    this.tQq = new com.tencent.mm.plugin.multitalk.ui.widget.j(this);
+    p.cSO().nD(p.cSO().tOC);
+    p.cSO().tOU = this;
     paramBundle = new IntentFilter();
     paramBundle.addAction("android.intent.action.SCREEN_OFF");
-    registerReceiver(this.oVc, paramBundle);
-    this.oUX = true;
-    this.loX = new ak();
+    registerReceiver(this.tQx, paramBundle);
+    this.tQs = true;
+    this.oFl = new ap();
     if (!com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.RECORD_AUDIO", 82, "", "")) {
-      ab.i("MicroMsg.MT.MultiTalkMainUI", "has not audio record permission!");
+      ad.i("MicroMsg.MT.MultiTalkMainUI", "has not audio record permission!");
     }
-    if (com.tencent.mm.compatible.util.d.fv(26))
+    if (com.tencent.mm.compatible.util.d.lf(26))
     {
-      ab.i("MicroMsg.MT.MultiTalkMainUI", "initScreenObserver");
-      this.oUZ = new MultiTalkMainUI.ScreenActionReceiver(this);
+      ad.i("MicroMsg.MT.MultiTalkMainUI", "initScreenObserver");
+      this.tQu = new MultiTalkMainUI.ScreenActionReceiver(this);
       paramBundle = new IntentFilter();
       paramBundle.addAction("android.intent.action.SCREEN_OFF");
       paramBundle.addAction("android.intent.action.SCREEN_ON");
-      ah.getContext().registerReceiver(this.oUZ, paramBundle);
+      aj.getContext().registerReceiver(this.tQu, paramBundle);
     }
-    this.oUV = ((Notification)getIntent().getParcelableExtra("notification"));
-    AppMethodBeat.o(54130);
+    this.iXX = ((Notification)getIntent().getParcelableExtra("notification"));
+    this.sKs = new com.tencent.mm.plugin.voip.a.b(new com.tencent.mm.plugin.ball.a.e(this));
+    this.sKs.Z(9, "VOIPFloatBall");
+    AppMethodBeat.o(114664);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(54133);
-    if (this.oVb) {
-      p.bTF().jE(false);
+    AppMethodBeat.i(114667);
+    if (this.tQw) {
+      p.cSO().nC(false);
     }
-    if (this.oUX) {
-      unregisterReceiver(this.oVc);
+    if (this.tQs) {
+      unregisterReceiver(this.tQx);
     }
-    this.oVd.removeCallbacksAndMessages(null);
-    this.oVd.sendEmptyMessage(1);
-    ab.i("MicroMsg.MT.MultiTalkMainUI", "unbindVoiceServiceIfNeed");
+    this.tQy.removeCallbacksAndMessages(null);
+    this.tQy.sendEmptyMessage(1);
+    ad.i("MicroMsg.MT.MultiTalkMainUI", "unbindVoiceServiceIfNeed");
     try
     {
-      if ((com.tencent.mm.compatible.util.d.fv(26)) && (this.oUY))
+      if ((com.tencent.mm.compatible.util.d.lf(26)) && (this.tQt))
       {
-        ah.getContext().unbindService(this);
-        this.oUY = false;
+        aj.getContext().unbindService(this);
+        this.tQt = false;
       }
-      if (com.tencent.mm.compatible.util.d.fv(26))
+      if (com.tencent.mm.compatible.util.d.lf(26))
       {
-        ab.i("MicroMsg.MT.MultiTalkMainUI", "unInitScreenObserver");
-        if (this.oUZ == null) {}
+        ad.i("MicroMsg.MT.MultiTalkMainUI", "unInitScreenObserver");
+        if (this.tQu == null) {}
       }
     }
     catch (Exception localException1)
     {
       try
       {
-        ah.getContext().unregisterReceiver(this.oUZ);
-        this.oUZ = null;
+        aj.getContext().unregisterReceiver(this.tQu);
+        this.tQu = null;
         super.onDestroy();
-        AppMethodBeat.o(54133);
+        if (this.sKs != null) {
+          this.sKs.onDestroy();
+        }
+        AppMethodBeat.o(114667);
         return;
         localException1 = localException1;
-        ab.printErrStackTrace("MicroMsg.MT.MultiTalkMainUI", localException1, "unbindVoiceServiceIfNeed error: %s", new Object[] { localException1.getMessage() });
+        ad.printErrStackTrace("MicroMsg.MT.MultiTalkMainUI", localException1, "unbindVoiceServiceIfNeed error: %s", new Object[] { localException1.getMessage() });
       }
       catch (Exception localException2)
       {
         for (;;)
         {
-          ab.i("MicroMsg.MT.MultiTalkMainUI", "unregisterBatteryChange err:%s", new Object[] { localException2.getMessage() });
+          ad.i("MicroMsg.MT.MultiTalkMainUI", "unregisterBatteryChange err:%s", new Object[] { localException2.getMessage() });
         }
       }
     }
@@ -619,34 +761,42 @@ public class MultiTalkMainUI
   
   public final void onError(int paramInt)
   {
-    AppMethodBeat.i(54143);
+    AppMethodBeat.i(114677);
     if (paramInt == -1700)
     {
-      com.tencent.mm.plugin.multitalk.ui.widget.f localf = this.oUT;
-      ab.i("MicroMsg.MT.MultiTalkTalkingUILogic", "onSwitchVideoDisabled");
-      localf.jJ(false);
-      p.bTF().zF(1);
-      localf.oWb.setChecked(false);
+      com.tencent.mm.plugin.multitalk.ui.widget.j localj = this.tQq;
+      ad.i("MicroMsg.MT.MultiTalkTalkingUILogic", "onSwitchVideoDisabled");
+      localj.nH(false);
+      p.cSO().Hi(1);
+      localj.tSP.setChecked(false);
     }
-    AppMethodBeat.o(54143);
+    AppMethodBeat.o(114677);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(54135);
+    AppMethodBeat.i(114669);
     if (paramKeyEvent.getKeyCode() == 4)
     {
-      com.tencent.mm.ui.base.h.a(this, 2131301676, 2131301655, 2131296542, 2131296888, new MultiTalkMainUI.3(this), null);
-      AppMethodBeat.o(54135);
+      com.tencent.mm.ui.base.h.b(this, 2131761410, 2131761388, 2131755277, 2131755691, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(114654);
+          p.cSO().g(false, false, false);
+          AppMethodBeat.o(114654);
+        }
+      }, null);
+      AppMethodBeat.o(114669);
       return true;
     }
-    if (p.bTF().oTr == com.tencent.mm.plugin.multitalk.ui.widget.e.oVP)
+    if (p.cSO().tOH == com.tencent.mm.plugin.multitalk.ui.widget.i.tSD)
     {
       if ((paramInt == 25) || (paramInt == 24))
       {
-        p.bTF().stopRing();
-        this.oUW = false;
-        AppMethodBeat.o(54135);
+        p.cSO().stopRing();
+        this.tQr = false;
+        AppMethodBeat.o(114669);
         return true;
       }
     }
@@ -654,129 +804,157 @@ public class MultiTalkMainUI
     {
       if (paramInt == 25)
       {
-        g.KC().iG(bJG());
-        AppMethodBeat.o(54135);
+        paramKeyEvent = p.cSO();
+        if (paramKeyEvent.tPb != null) {
+          paramKeyEvent.tPb.vP(com.tencent.mm.plugin.multitalk.a.a.cHD());
+        }
+        AppMethodBeat.o(114669);
         return true;
       }
       if (paramInt == 24)
       {
-        g.KC().iF(bJG());
-        AppMethodBeat.o(54135);
+        paramKeyEvent = p.cSO();
+        if (paramKeyEvent.tPb != null) {
+          paramKeyEvent.tPb.vO(com.tencent.mm.plugin.multitalk.a.a.cHD());
+        }
+        AppMethodBeat.o(114669);
         return true;
       }
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(54135);
+    AppMethodBeat.o(114669);
     return bool;
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(54132);
-    KeyguardManager localKeyguardManager = (KeyguardManager)ah.getContext().getSystemService("keyguard");
-    PowerManager localPowerManager = (PowerManager)ah.getContext().getSystemService("power");
+    AppMethodBeat.i(114666);
+    super.onPause();
+    KeyguardManager localKeyguardManager = (KeyguardManager)aj.getContext().getSystemService("keyguard");
+    PowerManager localPowerManager = (PowerManager)aj.getContext().getSystemService("power");
     boolean bool1 = localKeyguardManager.inKeyguardRestrictedInputMode();
     boolean bool2 = hasWindowFocus();
     boolean bool3 = localPowerManager.isScreenOn();
     if (((bool2) || (!bool1)) && (bool3)) {}
     for (bool1 = true;; bool1 = false)
     {
-      this.oUU = bool1;
-      ab.i("MicroMsg.MT.MultiTalkMainUI", "onPause, screenOn: %b", new Object[] { Boolean.valueOf(this.oUU) });
-      if (p.bTF().bTh())
+      this.tQo = bool1;
+      ad.i("MicroMsg.MT.MultiTalkMainUI", "onPause, screenOn: %b", new Object[] { Boolean.valueOf(this.tQo) });
+      if (p.cSO().cSk())
       {
-        p.bTF().bTq();
-        this.oUT.jJ(true);
+        p.cSO().cSw();
+        this.tQq.nH(true);
       }
-      super.onPause();
-      AppMethodBeat.o(54132);
+      if ((!this.tQw) && (this.sKs != null))
+      {
+        this.sKs.aWa();
+        com.tencent.mm.plugin.ball.f.f.d(false, true, true);
+      }
+      AppMethodBeat.o(114666);
       return;
     }
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(54156);
+    AppMethodBeat.i(114690);
     if ((paramArrayOfString == null) || (paramArrayOfString.length == 0) || (paramArrayOfInt == null) || (paramArrayOfInt.length == 0))
     {
-      ab.e("MicroMsg.MT.MultiTalkMainUI", "[multitalk]onRequestPermissionsResult %d data is invalid", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(54156);
+      ad.e("MicroMsg.MT.MultiTalkMainUI", "[multitalk]onRequestPermissionsResult %d data is invalid", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(114690);
       return;
     }
-    ab.d("MicroMsg.MT.MultiTalkMainUI", "[multitalk] onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    ad.d("MicroMsg.MT.MultiTalkMainUI", "[multitalk] onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(54156);
+      AppMethodBeat.o(114690);
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        ab.d("MicroMsg.MT.MultiTalkMainUI", "granted record audio!");
-        AppMethodBeat.o(54156);
+        ad.d("MicroMsg.MT.MultiTalkMainUI", "granted record audio!");
+        AppMethodBeat.o(114690);
         return;
       }
-      com.tencent.mm.ui.base.h.a(this, getString(2131302075), getString(2131302083), getString(2131300996), getString(2131296888), false, new MultiTalkMainUI.6(this), new MultiTalkMainUI.7(this));
-      AppMethodBeat.o(54156);
+      com.tencent.mm.ui.base.h.a(this, getString(2131761871), getString(2131761885), getString(2131760598), getString(2131755691), false, new MultiTalkMainUI.6(this), new MultiTalkMainUI.7(this));
+      AppMethodBeat.o(114690);
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        ab.d("MicroMsg.MT.MultiTalkMainUI", "granted record camera!");
-        AppMethodBeat.o(54156);
+        ad.d("MicroMsg.MT.MultiTalkMainUI", "granted record camera!");
+        AppMethodBeat.o(114690);
         return;
       }
-      com.tencent.mm.ui.base.h.a(this, getString(2131302067), getString(2131302083), getString(2131300996), getString(2131296888), false, new MultiTalkMainUI.8(this), new MultiTalkMainUI.9(this));
+      com.tencent.mm.ui.base.h.a(this, getString(2131761860), getString(2131761885), getString(2131760598), getString(2131755691), false, new MultiTalkMainUI.8(this), new MultiTalkMainUI.9(this));
     }
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(54131);
-    ab.i("MicroMsg.MT.MultiTalkMainUI", "onResume");
+    AppMethodBeat.i(114665);
+    ad.i("MicroMsg.MT.MultiTalkMainUI", "onResume");
     super.onResume();
-    switch (MultiTalkMainUI.2.oVf[p.bTF().oTr.ordinal()])
+    if (this.sKs != null)
+    {
+      this.sKs.bzl();
+      com.tencent.mm.plugin.ball.f.f.d(true, false, true);
+    }
+    Object localObject = (com.tencent.mm.plugin.appbrand.backgroundrunning.h)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.backgroundrunning.h.class);
+    if (localObject != null)
+    {
+      ((com.tencent.mm.plugin.appbrand.backgroundrunning.h)localObject).aSI();
+      ((com.tencent.mm.plugin.appbrand.backgroundrunning.h)localObject).aSJ();
+    }
+    localObject = (com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class);
+    if (localObject != null) {
+      ((com.tencent.mm.plugin.ball.c.c)localObject).k(new BallInfo(6, "MusicFloatBall"));
+    }
+    switch (2.tQA[p.cSO().tOH.ordinal()])
     {
     }
     for (;;)
     {
-      if (p.bTF().bTh())
+      if (p.cSO().cSk())
       {
-        if (p.bTF().bTf()) {
-          this.oUT.jI(true);
+        if (com.tencent.mm.plugin.multitalk.model.j.Hj(p.cSO().tOE)) {
+          this.tQq.nG(true);
         }
-        this.loX.postDelayed(this.oVa, 2000L);
+        this.oFl.postDelayed(this.tQv, 2000L);
       }
-      AppMethodBeat.o(54131);
+      AppMethodBeat.o(114665);
       return;
-      this.oUT.oVX.setVisibility(8);
-      this.oUS.n(p.bTF().oTs);
-      if (at.is4G(this)) {
-        p.bTD().X(this);
+      localObject = this.tQq;
+      ((com.tencent.mm.plugin.multitalk.ui.widget.j)localObject).tSL.setVisibility(8);
+      ((com.tencent.mm.plugin.multitalk.ui.widget.j)localObject).tSN.setVisibility(8);
+      this.tQp.l(p.cSO().tOI);
+      if (ay.is4G(this)) {
+        p.cSM().ap(this);
       }
-      while (this.oUW)
+      while (this.tQr)
       {
-        p.bTF().jG(false);
+        p.cSO().nE(false);
         break;
-        if ((at.is2G(this)) || (at.is3G(this))) {
-          p.bTD().W(this);
+        if ((ay.is2G(this)) || (ay.is3G(this))) {
+          p.cSM().ao(this);
         }
       }
-      this.oUS.bTM();
-      this.oUT.o(p.bTF().oTs);
-      if (at.is4G(this)) {
-        p.bTD().X(this);
+      this.tQp.cSX();
+      this.tQq.m(p.cSO().tOI);
+      if (ay.is4G(this)) {
+        p.cSM().ap(this);
       }
       for (;;)
       {
-        p.bTF().jG(true);
+        p.cSO().nE(true);
         break;
-        if ((at.is2G(this)) || (at.is3G(this))) {
-          p.bTD().W(this);
+        if ((ay.is2G(this)) || (ay.is3G(this))) {
+          p.cSM().ao(this);
         }
       }
-      this.oUS.bTM();
-      this.oUT.o(p.bTF().oTs);
+      this.tQp.cSX();
+      this.tQq.m(p.cSO().tOI);
     }
   }
   
@@ -786,12 +964,12 @@ public class MultiTalkMainUI
   
   public void onStop()
   {
-    AppMethodBeat.i(54134);
-    if ((!this.oVb) && (this.oUU)) {
-      p.bTF().jE(false);
+    AppMethodBeat.i(114668);
+    if ((!this.tQw) && (this.tQo)) {
+      p.cSO().nC(false);
     }
     super.onStop();
-    AppMethodBeat.o(54134);
+    AppMethodBeat.o(114668);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -802,7 +980,7 @@ public class MultiTalkMainUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.MultiTalkMainUI
  * JD-Core Version:    0.7.0.1
  */

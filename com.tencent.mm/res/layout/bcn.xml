@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:background="@color/a_r" android:paddingTop="17.0dip" android:paddingBottom="17.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/bcs" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/km" android:id="@id/b__" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lines="1" android:layout_toRightOf="@id/aq8" android:layout_centerVertical="true" />
+    <FrameLayout android:id="@id/f51" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <ImageView android:layout_width="21.099976dip" android:layout_height="21.099976dip" android:src="@raw/subscribe_msg_info_ic" android:cropToPadding="true" />
+    </FrameLayout>
+</RelativeLayout>

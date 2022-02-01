@@ -19,15 +19,15 @@ public class StrokedImageView
   public StrokedImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(81341);
-    this.color = paramContext.getResources().getColor(2131690415);
-    AppMethodBeat.o(81341);
+    AppMethodBeat.i(51997);
+    this.color = paramContext.getResources().getColor(2131100825);
+    AppMethodBeat.o(51997);
   }
   
   @SuppressLint({"DrawAllocation"})
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(81342);
+    AppMethodBeat.i(51998);
     super.onDraw(paramCanvas);
     Rect localRect = paramCanvas.getClipBounds();
     localRect.left += 1;
@@ -40,7 +40,7 @@ public class StrokedImageView
     localPaint.setAntiAlias(true);
     localPaint.setStrokeWidth(1.5F);
     paramCanvas.drawRect(localRect, localPaint);
-    AppMethodBeat.o(81342);
+    AppMethodBeat.o(51998);
   }
   
   public void setStrokeColor(int paramInt)
@@ -50,7 +50,7 @@ public class StrokedImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.StrokedImageView
  * JD-Core Version:    0.7.0.1
  */

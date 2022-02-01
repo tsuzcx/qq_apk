@@ -1,224 +1,357 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class bmd
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int CreateTime;
-  public String ntp;
-  public String ppY;
-  public String pqa;
-  public String pqb;
-  public int pqc;
-  public String pqd;
-  public int pqe;
-  public int pqf;
-  public String pqh;
-  public String pqi;
-  public String pqj;
-  public String pqk;
-  public int xAm;
-  public String xAy;
-  public String xAz;
+  public int DJA;
+  public String DJB;
+  public String DJC;
+  public boolean DJD;
+  public FinderMediaReportObject DJE;
+  public dxw LzL;
+  public String LzM;
+  public int bitrate;
+  public String coverUrl;
+  public String cover_url_token;
+  public String decodeKey;
+  public int fileSize;
+  public float height;
+  public String md5sum;
+  public String mediaId;
+  public int mediaType;
+  public bmm qDR;
+  public LinkedList<ajt> spec;
+  public String thumbUrl;
+  public String thumb_url_token;
+  public String url;
+  public String url_token;
+  public int videoDuration;
+  public float width;
+  
+  public bmd()
+  {
+    AppMethodBeat.i(190570);
+    this.spec = new LinkedList();
+    AppMethodBeat.o(190570);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(56917);
+    AppMethodBeat.i(169080);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.ppY != null) {
-        paramVarArgs.e(1, this.ppY);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.url != null) {
+        paramVarArgs.d(1, this.url);
       }
-      paramVarArgs.aO(2, this.xAm);
-      if (this.pqa != null) {
-        paramVarArgs.e(3, this.pqa);
+      if (this.thumbUrl != null) {
+        paramVarArgs.d(2, this.thumbUrl);
       }
-      paramVarArgs.aO(4, this.CreateTime);
-      if (this.pqb != null) {
-        paramVarArgs.e(5, this.pqb);
+      paramVarArgs.aR(3, this.mediaType);
+      paramVarArgs.aR(4, this.videoDuration);
+      paramVarArgs.x(5, this.width);
+      paramVarArgs.x(6, this.height);
+      if (this.md5sum != null) {
+        paramVarArgs.d(7, this.md5sum);
       }
-      paramVarArgs.aO(6, this.pqc);
-      if (this.pqd != null) {
-        paramVarArgs.e(7, this.pqd);
+      paramVarArgs.aR(8, this.fileSize);
+      paramVarArgs.aR(9, this.bitrate);
+      if (this.mediaId != null) {
+        paramVarArgs.d(10, this.mediaId);
       }
-      paramVarArgs.aO(8, this.pqe);
-      paramVarArgs.aO(9, this.pqf);
-      if (this.ntp != null) {
-        paramVarArgs.e(11, this.ntp);
+      paramVarArgs.aR(11, this.DJA);
+      if (this.DJB != null) {
+        paramVarArgs.d(12, this.DJB);
       }
-      if (this.pqh != null) {
-        paramVarArgs.e(12, this.pqh);
+      if (this.DJC != null) {
+        paramVarArgs.d(13, this.DJC);
       }
-      if (this.pqi != null) {
-        paramVarArgs.e(13, this.pqi);
+      paramVarArgs.bg(14, this.DJD);
+      if (this.qDR != null)
+      {
+        paramVarArgs.kX(15, this.qDR.computeSize());
+        this.qDR.writeFields(paramVarArgs);
       }
-      if (this.pqj != null) {
-        paramVarArgs.e(14, this.pqj);
+      paramVarArgs.e(16, 8, this.spec);
+      if (this.coverUrl != null) {
+        paramVarArgs.d(17, this.coverUrl);
       }
-      if (this.pqk != null) {
-        paramVarArgs.e(15, this.pqk);
+      if (this.decodeKey != null) {
+        paramVarArgs.d(20, this.decodeKey);
       }
-      if (this.xAy != null) {
-        paramVarArgs.e(18, this.xAy);
+      if (this.url_token != null) {
+        paramVarArgs.d(21, this.url_token);
       }
-      if (this.xAz != null) {
-        paramVarArgs.e(19, this.xAz);
+      if (this.thumb_url_token != null) {
+        paramVarArgs.d(22, this.thumb_url_token);
       }
-      AppMethodBeat.o(56917);
+      if (this.cover_url_token != null) {
+        paramVarArgs.d(23, this.cover_url_token);
+      }
+      if (this.LzL != null)
+      {
+        paramVarArgs.kX(24, this.LzL.computeSize());
+        this.LzL.writeFields(paramVarArgs);
+      }
+      if (this.LzM != null) {
+        paramVarArgs.d(30, this.LzM);
+      }
+      if (this.DJE != null)
+      {
+        paramVarArgs.kX(100, this.DJE.computeSize());
+        this.DJE.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(169080);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ppY == null) {
-        break label1066;
+      if (this.url == null) {
+        break label1952;
       }
     }
-    label1066:
-    for (paramInt = e.a.a.b.b.a.f(1, this.ppY) + 0;; paramInt = 0)
+    label1952:
+    for (paramInt = f.a.a.b.b.a.e(1, this.url) + 0;; paramInt = 0)
     {
-      int i = paramInt + e.a.a.b.b.a.bl(2, this.xAm);
-      paramInt = i;
-      if (this.pqa != null) {
-        paramInt = i + e.a.a.b.b.a.f(3, this.pqa);
+      int i = paramInt;
+      if (this.thumbUrl != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.thumbUrl);
       }
-      i = paramInt + e.a.a.b.b.a.bl(4, this.CreateTime);
+      i = i + f.a.a.b.b.a.bA(3, this.mediaType) + f.a.a.b.b.a.bA(4, this.videoDuration) + (f.a.a.b.b.a.fY(5) + 4) + (f.a.a.b.b.a.fY(6) + 4);
       paramInt = i;
-      if (this.pqb != null) {
-        paramInt = i + e.a.a.b.b.a.f(5, this.pqb);
+      if (this.md5sum != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.md5sum);
       }
-      i = paramInt + e.a.a.b.b.a.bl(6, this.pqc);
+      i = paramInt + f.a.a.b.b.a.bA(8, this.fileSize) + f.a.a.b.b.a.bA(9, this.bitrate);
       paramInt = i;
-      if (this.pqd != null) {
-        paramInt = i + e.a.a.b.b.a.f(7, this.pqd);
+      if (this.mediaId != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.mediaId);
       }
-      i = paramInt + e.a.a.b.b.a.bl(8, this.pqe) + e.a.a.b.b.a.bl(9, this.pqf);
+      i = paramInt + f.a.a.b.b.a.bA(11, this.DJA);
       paramInt = i;
-      if (this.ntp != null) {
-        paramInt = i + e.a.a.b.b.a.f(11, this.ntp);
+      if (this.DJB != null) {
+        paramInt = i + f.a.a.b.b.a.e(12, this.DJB);
       }
       i = paramInt;
-      if (this.pqh != null) {
-        i = paramInt + e.a.a.b.b.a.f(12, this.pqh);
+      if (this.DJC != null) {
+        i = paramInt + f.a.a.b.b.a.e(13, this.DJC);
       }
+      i += f.a.a.b.b.a.fY(14) + 1;
       paramInt = i;
-      if (this.pqi != null) {
-        paramInt = i + e.a.a.b.b.a.f(13, this.pqi);
+      if (this.qDR != null) {
+        paramInt = i + f.a.a.a.kW(15, this.qDR.computeSize());
+      }
+      i = paramInt + f.a.a.a.c(16, 8, this.spec);
+      paramInt = i;
+      if (this.coverUrl != null) {
+        paramInt = i + f.a.a.b.b.a.e(17, this.coverUrl);
       }
       i = paramInt;
-      if (this.pqj != null) {
-        i = paramInt + e.a.a.b.b.a.f(14, this.pqj);
+      if (this.decodeKey != null) {
+        i = paramInt + f.a.a.b.b.a.e(20, this.decodeKey);
       }
       paramInt = i;
-      if (this.pqk != null) {
-        paramInt = i + e.a.a.b.b.a.f(15, this.pqk);
+      if (this.url_token != null) {
+        paramInt = i + f.a.a.b.b.a.e(21, this.url_token);
       }
       i = paramInt;
-      if (this.xAy != null) {
-        i = paramInt + e.a.a.b.b.a.f(18, this.xAy);
+      if (this.thumb_url_token != null) {
+        i = paramInt + f.a.a.b.b.a.e(22, this.thumb_url_token);
       }
       paramInt = i;
-      if (this.xAz != null) {
-        paramInt = i + e.a.a.b.b.a.f(19, this.xAz);
+      if (this.cover_url_token != null) {
+        paramInt = i + f.a.a.b.b.a.e(23, this.cover_url_token);
       }
-      AppMethodBeat.o(56917);
-      return paramInt;
+      i = paramInt;
+      if (this.LzL != null) {
+        i = paramInt + f.a.a.a.kW(24, this.LzL.computeSize());
+      }
+      paramInt = i;
+      if (this.LzM != null) {
+        paramInt = i + f.a.a.b.b.a.e(30, this.LzM);
+      }
+      i = paramInt;
+      if (this.DJE != null) {
+        i = paramInt + f.a.a.a.kW(100, this.DJE.computeSize());
+      }
+      AppMethodBeat.o(169080);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.spec.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(56917);
+        AppMethodBeat.o(169080);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         bmd localbmd = (bmd)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
+        switch (paramInt)
         {
-        case 10: 
-        case 16: 
-        case 17: 
         default: 
-          AppMethodBeat.o(56917);
+          AppMethodBeat.o(169080);
           return -1;
         case 1: 
-          localbmd.ppY = locala.CLY.readString();
-          AppMethodBeat.o(56917);
+          localbmd.url = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(169080);
           return 0;
         case 2: 
-          localbmd.xAm = locala.CLY.sl();
-          AppMethodBeat.o(56917);
+          localbmd.thumbUrl = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(169080);
           return 0;
         case 3: 
-          localbmd.pqa = locala.CLY.readString();
-          AppMethodBeat.o(56917);
+          localbmd.mediaType = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(169080);
           return 0;
         case 4: 
-          localbmd.CreateTime = locala.CLY.sl();
-          AppMethodBeat.o(56917);
+          localbmd.videoDuration = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(169080);
           return 0;
         case 5: 
-          localbmd.pqb = locala.CLY.readString();
-          AppMethodBeat.o(56917);
+          localbmd.width = Float.intBitsToFloat(((f.a.a.a.a)localObject1).KhF.fHx());
+          AppMethodBeat.o(169080);
           return 0;
         case 6: 
-          localbmd.pqc = locala.CLY.sl();
-          AppMethodBeat.o(56917);
+          localbmd.height = Float.intBitsToFloat(((f.a.a.a.a)localObject1).KhF.fHx());
+          AppMethodBeat.o(169080);
           return 0;
         case 7: 
-          localbmd.pqd = locala.CLY.readString();
-          AppMethodBeat.o(56917);
+          localbmd.md5sum = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(169080);
           return 0;
         case 8: 
-          localbmd.pqe = locala.CLY.sl();
-          AppMethodBeat.o(56917);
+          localbmd.fileSize = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(169080);
           return 0;
         case 9: 
-          localbmd.pqf = locala.CLY.sl();
-          AppMethodBeat.o(56917);
+          localbmd.bitrate = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(169080);
+          return 0;
+        case 10: 
+          localbmd.mediaId = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(169080);
           return 0;
         case 11: 
-          localbmd.ntp = locala.CLY.readString();
-          AppMethodBeat.o(56917);
+          localbmd.DJA = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(169080);
           return 0;
         case 12: 
-          localbmd.pqh = locala.CLY.readString();
-          AppMethodBeat.o(56917);
+          localbmd.DJB = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(169080);
           return 0;
         case 13: 
-          localbmd.pqi = locala.CLY.readString();
-          AppMethodBeat.o(56917);
+          localbmd.DJC = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(169080);
           return 0;
         case 14: 
-          localbmd.pqj = locala.CLY.readString();
-          AppMethodBeat.o(56917);
+          localbmd.DJD = ((f.a.a.a.a)localObject1).KhF.fHu();
+          AppMethodBeat.o(169080);
           return 0;
         case 15: 
-          localbmd.pqk = locala.CLY.readString();
-          AppMethodBeat.o(56917);
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new bmm();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((bmm)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbmd.qDR = ((bmm)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(169080);
           return 0;
-        case 18: 
-          localbmd.xAy = locala.CLY.readString();
-          AppMethodBeat.o(56917);
+        case 16: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new ajt();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((ajt)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbmd.spec.add(localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(169080);
+          return 0;
+        case 17: 
+          localbmd.coverUrl = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(169080);
+          return 0;
+        case 20: 
+          localbmd.decodeKey = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(169080);
+          return 0;
+        case 21: 
+          localbmd.url_token = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(169080);
+          return 0;
+        case 22: 
+          localbmd.thumb_url_token = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(169080);
+          return 0;
+        case 23: 
+          localbmd.cover_url_token = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(169080);
+          return 0;
+        case 24: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new dxw();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((dxw)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbmd.LzL = ((dxw)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(169080);
+          return 0;
+        case 30: 
+          localbmd.LzM = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(169080);
           return 0;
         }
-        localbmd.xAz = locala.CLY.readString();
-        AppMethodBeat.o(56917);
+        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new FinderMediaReportObject();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((FinderMediaReportObject)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localbmd.DJE = ((FinderMediaReportObject)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(169080);
         return 0;
       }
-      AppMethodBeat.o(56917);
+      AppMethodBeat.o(169080);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bmd
  * JD-Core Version:    0.7.0.1
  */

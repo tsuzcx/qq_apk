@@ -31,19 +31,19 @@ public class GoogleCertificatesQuery
   
   static
   {
-    AppMethodBeat.i(89389);
+    AppMethodBeat.i(4411);
     CREATOR = new GoogleCertificatesQueryCreator();
-    AppMethodBeat.o(89389);
+    AppMethodBeat.o(4411);
   }
   
   @SafeParcelable.Constructor
   GoogleCertificatesQuery(@SafeParcelable.Param(id=1) String paramString, @SafeParcelable.Param(id=2) @Nullable IBinder paramIBinder, @SafeParcelable.Param(id=3) boolean paramBoolean)
   {
-    AppMethodBeat.i(89385);
+    AppMethodBeat.i(4407);
     this.zzbh = paramString;
     this.zzbi = zza(paramIBinder);
     this.zzbj = paramBoolean;
-    AppMethodBeat.o(89385);
+    AppMethodBeat.o(4407);
   }
   
   GoogleCertificatesQuery(String paramString, @Nullable GoogleCertificates.CertData paramCertData, boolean paramBoolean)
@@ -56,10 +56,10 @@ public class GoogleCertificatesQuery
   @Nullable
   private static GoogleCertificates.CertData zza(@Nullable IBinder paramIBinder)
   {
-    AppMethodBeat.i(89388);
+    AppMethodBeat.i(4410);
     if (paramIBinder == null)
     {
-      AppMethodBeat.o(89388);
+      AppMethodBeat.o(4410);
       return null;
     }
     for (;;)
@@ -71,21 +71,21 @@ public class GoogleCertificatesQuery
         {
           paramIBinder = null;
           if (paramIBinder == null) {
-            break label71;
+            break label75;
           }
           paramIBinder = new zzb(paramIBinder);
-          AppMethodBeat.o(89388);
+          AppMethodBeat.o(4410);
           return paramIBinder;
         }
       }
       catch (RemoteException paramIBinder)
       {
-        AppMethodBeat.o(89388);
+        AppMethodBeat.o(4410);
         return null;
       }
       paramIBinder = (byte[])ObjectWrapper.unwrap(paramIBinder);
       continue;
-      label71:
+      label75:
       paramIBinder = null;
     }
   }
@@ -98,14 +98,14 @@ public class GoogleCertificatesQuery
   @Nullable
   public IBinder getCallingCertificateBinder()
   {
-    AppMethodBeat.i(89386);
+    AppMethodBeat.i(4408);
     if (this.zzbi == null)
     {
-      AppMethodBeat.o(89386);
+      AppMethodBeat.o(4408);
       return null;
     }
     IBinder localIBinder = this.zzbi.asBinder();
-    AppMethodBeat.o(89386);
+    AppMethodBeat.o(4408);
     return localIBinder;
   }
   
@@ -122,13 +122,13 @@ public class GoogleCertificatesQuery
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(89387);
+    AppMethodBeat.i(4409);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeString(paramParcel, 1, getCallingPackage(), false);
     SafeParcelWriter.writeIBinder(paramParcel, 2, getCallingCertificateBinder(), false);
     SafeParcelWriter.writeBoolean(paramParcel, 3, getAllowTestKeys());
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(89387);
+    AppMethodBeat.o(4409);
   }
 }
 

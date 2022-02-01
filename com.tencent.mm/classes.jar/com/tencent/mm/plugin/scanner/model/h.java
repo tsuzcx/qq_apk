@@ -1,105 +1,108 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.m.b;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.lm;
-import com.tencent.mm.protocal.protobuf.ln;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.bte;
+import com.tencent.mm.protocal.protobuf.btf;
+import com.tencent.mm.protocal.protobuf.deu;
+import java.util.List;
 
 public final class h
-  extends m
+  extends n
   implements k
 {
-  private f callback;
-  private int cnU;
-  private int eBd = 1;
-  private int fsd;
-  private int offset;
-  private byte[] qum;
+  public float angle;
+  private g callback;
+  public int dcS;
   public b rr;
+  public List<deu> vOA;
+  public long vOB;
   
-  public h(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public h(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2)
   {
-    this.qum = paramArrayOfByte;
-    this.eBd = 1;
-    this.fsd = paramInt1;
-    this.offset = 0;
-    this.cnU = paramInt2;
+    AppMethodBeat.i(120856);
+    b.a locala = new b.a();
+    bte localbte = new bte();
+    localbte.DQh = paramInt2;
+    localbte.DQi = paramInt3;
+    localbte.DQm = paramString1;
+    localbte.DQn = paramString2;
+    localbte.Scene = paramInt1;
+    locala.gUU = localbte;
+    locala.gUV = new btf();
+    locala.uri = "/cgi-bin/micromsg-bin/newocrtranslation";
+    locala.funcId = getType();
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.atI();
+    this.dcS = paramInt2;
+    AppMethodBeat.o(120856);
   }
   
-  public final int doScene(e parame, f paramf)
+  public h(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(80847);
-    this.callback = paramf;
-    paramf = new b.a();
-    paramf.fsX = new lm();
-    paramf.fsY = new ln();
-    paramf.uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscanimg";
-    paramf.funcId = 1062;
-    paramf.reqCmdId = 0;
-    paramf.respCmdId = 0;
-    this.rr = paramf.ado();
-    paramf = (lm)this.rr.fsV.fta;
-    paramf.wzP = ((int)bo.aoy() & 0x7FFFFFFF);
-    paramf.wzQ = new SKBuiltinBuffer_t().setBuffer(this.qum);
-    paramf.wzR = this.fsd;
-    paramf.wzS = this.offset;
-    if (this.offset + this.qum.length < this.fsd) {}
-    for (paramf.fKi = 0;; paramf.fKi = 1)
-    {
-      paramf.wzT = this.eBd;
-      paramf.wzU = this.cnU;
-      int i = dispatch(parame, this.rr, this);
-      AppMethodBeat.o(80847);
-      return i;
-    }
+    this(0, paramInt1, paramInt2, paramString1, paramString2);
+  }
+  
+  public final float dlr()
+  {
+    return this.angle;
+  }
+  
+  public final List<deu> dls()
+  {
+    return this.vOA;
+  }
+  
+  public final String dlt()
+  {
+    return ((btf)this.rr.gUT.gUX).DQq;
+  }
+  
+  public final long dlu()
+  {
+    return this.vOB;
+  }
+  
+  public final int doScene(e parame, g paramg)
+  {
+    AppMethodBeat.i(120857);
+    this.callback = paramg;
+    this.vOB = System.currentTimeMillis();
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(120857);
+    return i;
+  }
+  
+  public final int getSessionId()
+  {
+    return this.dcS;
   }
   
   public final int getType()
   {
-    return 1062;
+    return 294;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(80849);
-    ab.d("MicroMsg.scanner.NetSceneScanImage", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
+    AppMethodBeat.i(120858);
+    this.angle = ((btf)((b)paramq).gUT.gUX).DQo;
+    this.vOA = ((btf)((b)paramq).gUT.gUX).Duu;
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(80849);
-  }
-  
-  public final m.b securityVerificationChecked(q paramq)
-  {
-    AppMethodBeat.i(80848);
-    paramq = (lm)((b)paramq).fsV.fta;
-    if ((paramq.wzP <= 0) || (paramq.wzT < 0) || (paramq.wzQ == null) || (paramq.wzQ.getILen() <= 0) || (paramq.wzR <= 0) || (paramq.wzS < 0) || (paramq.wzS + paramq.wzQ.getILen() > paramq.wzR))
-    {
-      ab.e("MicroMsg.scanner.NetSceneScanImage", "ERR: Security Check Failed, imageType = %s, totalLen = %s, offset = %s", new Object[] { Integer.valueOf(paramq.wzT), Integer.valueOf(paramq.wzR), Integer.valueOf(paramq.wzS) });
-      if (paramq.wzQ != null) {
-        ab.e("MicroMsg.scanner.NetSceneScanImage", "buffer length = %s", new Object[] { Integer.valueOf(paramq.wzQ.getILen()) });
-      }
-      paramq = m.b.ftv;
-      AppMethodBeat.o(80848);
-      return paramq;
-    }
-    paramq = m.b.ftu;
-    AppMethodBeat.o(80848);
-    return paramq;
+    AppMethodBeat.o(120858);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.h
  * JD-Core Version:    0.7.0.1
  */

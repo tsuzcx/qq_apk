@@ -9,7 +9,7 @@ import com.tencent.mm.plugin.card.model.CardInfo;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.n.a;
 import com.tencent.mm.plugin.card.ui.view.aa;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 
 public final class k
@@ -17,36 +17,36 @@ public final class k
 {
   private final String TAG;
   private int count;
-  private com.tencent.mm.plugin.card.base.c krl;
-  private n.a ksO;
-  private final String kyb;
-  private final String kyc;
-  private ArrayList<CardInfo> kyd;
-  private ArrayList<CardInfo> kye;
-  private ArrayList<CardInfo> kyf;
+  private final String nDu;
+  private final String nDv;
+  private ArrayList<CardInfo> nDw;
+  private ArrayList<CardInfo> nDx;
+  private ArrayList<CardInfo> nDy;
+  private com.tencent.mm.plugin.card.base.c nwE;
+  private n.a nyh;
   
   public k(Context paramContext, n.a parama)
   {
     super(paramContext, parama);
-    AppMethodBeat.i(88654);
+    AppMethodBeat.i(113581);
     this.TAG = "MicroMsg.CardTicketAdapter";
-    this.kyb = "PRIVATE_TICKET_TITLE";
-    this.kyc = "PRIVATE_INVOICE_TITLE";
+    this.nDu = "PRIVATE_TICKET_TITLE";
+    this.nDv = "PRIVATE_INVOICE_TITLE";
     this.count = 0;
-    this.ksO = parama;
-    this.krl = new aa(paramContext, this);
-    this.kyd = new ArrayList();
-    this.kye = new ArrayList();
-    this.kyf = new ArrayList();
-    AppMethodBeat.o(88654);
+    this.nyh = parama;
+    this.nwE = new aa(paramContext, this);
+    this.nDw = new ArrayList();
+    this.nDx = new ArrayList();
+    this.nDy = new ArrayList();
+    AppMethodBeat.o(113581);
   }
   
-  private void bev()
+  private void bLr()
   {
-    AppMethodBeat.i(88655);
-    this.kyd.clear();
-    this.kye.clear();
-    this.kyf.clear();
+    AppMethodBeat.i(113582);
+    this.nDw.clear();
+    this.nDx.clear();
+    this.nDy.clear();
     int i = 0;
     CardInfo localCardInfo;
     if (i < this.count)
@@ -54,108 +54,108 @@ public final class k
       localCardInfo = (CardInfo)super.getItem(i);
       if (localCardInfo != null)
       {
-        if (!localCardInfo.baP()) {
+        if (!localCardInfo.bHG()) {
           break label72;
         }
-        this.kyf.add(localCardInfo);
+        this.nDy.add(localCardInfo);
       }
       for (;;)
       {
         i += 1;
         break;
         label72:
-        this.kye.add(localCardInfo);
+        this.nDx.add(localCardInfo);
       }
     }
-    if (!this.kye.isEmpty())
+    if (!this.nDx.isEmpty())
     {
       localCardInfo = new CardInfo();
       localCardInfo.field_card_id = "PRIVATE_TICKET_TITLE";
-      this.kyd.add(localCardInfo);
-      this.kyd.addAll(this.kye);
+      this.nDw.add(localCardInfo);
+      this.nDw.addAll(this.nDx);
     }
-    if (!this.kyf.isEmpty())
+    if (!this.nDy.isEmpty())
     {
       localCardInfo = new CardInfo();
       localCardInfo.field_card_id = "PRIVATE_INVOICE_TITLE";
-      this.kyd.add(localCardInfo);
-      this.kyd.addAll(this.kyf);
+      this.nDw.add(localCardInfo);
+      this.nDw.addAll(this.nDy);
     }
-    this.count = this.kyd.size();
-    AppMethodBeat.o(88655);
+    this.count = this.nDw.size();
+    AppMethodBeat.o(113582);
   }
   
-  private CardInfo tg(int paramInt)
+  private CardInfo yZ(int paramInt)
   {
-    AppMethodBeat.i(88658);
-    CardInfo localCardInfo = (CardInfo)this.kyd.get(paramInt);
-    AppMethodBeat.o(88658);
+    AppMethodBeat.i(113585);
+    CardInfo localCardInfo = (CardInfo)this.nDw.get(paramInt);
+    AppMethodBeat.o(113585);
     return localCardInfo;
   }
   
-  public final void Ku()
+  public final void Wd()
   {
-    AppMethodBeat.i(88656);
-    ab.v("MicroMsg.CardTicketAdapter", "resetCursor");
-    bKb();
-    Cursor localCursor = am.bcd().a(this.ksO);
+    AppMethodBeat.i(113583);
+    ad.v("MicroMsg.CardTicketAdapter", "resetCursor");
+    cHX();
+    Cursor localCursor = am.bIV().a(this.nyh);
     if (localCursor != null)
     {
       this.count = localCursor.getCount();
-      ab.v("MicroMsg.CardTicketAdapter", "card count:" + this.count);
+      ad.v("MicroMsg.CardTicketAdapter", "card count:" + this.count);
     }
     setCursor(localCursor);
-    bev();
+    bLr();
     notifyDataSetChanged();
-    AppMethodBeat.o(88656);
+    AppMethodBeat.o(113583);
   }
   
-  public final void Kv()
+  public final void We()
   {
-    AppMethodBeat.i(88657);
-    bKb();
-    Ku();
-    AppMethodBeat.o(88657);
+    AppMethodBeat.i(113584);
+    cHX();
+    Wd();
+    AppMethodBeat.o(113584);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(88660);
-    if (this.kyd.isEmpty())
+    AppMethodBeat.i(113587);
+    if (this.nDw.isEmpty())
     {
       i = super.getCount();
-      AppMethodBeat.o(88660);
+      AppMethodBeat.o(113587);
       return i;
     }
-    int i = this.kyd.size();
-    AppMethodBeat.o(88660);
+    int i = this.nDw.size();
+    AppMethodBeat.o(113587);
     return i;
   }
   
   public final int getItemViewType(int paramInt)
   {
-    AppMethodBeat.i(88659);
-    CardInfo localCardInfo = tg(paramInt);
+    AppMethodBeat.i(113586);
+    CardInfo localCardInfo = yZ(paramInt);
     if ((localCardInfo.field_card_id.equals("PRIVATE_TICKET_TITLE")) || (localCardInfo.field_card_id.equals("PRIVATE_INVOICE_TITLE")))
     {
-      AppMethodBeat.o(88659);
+      AppMethodBeat.o(113586);
       return 0;
     }
-    if (localCardInfo.baP())
+    if (localCardInfo.bHG())
     {
-      AppMethodBeat.o(88659);
+      AppMethodBeat.o(113586);
       return 2;
     }
-    AppMethodBeat.o(88659);
+    AppMethodBeat.o(113586);
     return 1;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(88661);
-    paramViewGroup = tg(paramInt);
-    paramView = this.krl.a(paramInt, paramView, paramViewGroup);
-    AppMethodBeat.o(88661);
+    AppMethodBeat.i(113588);
+    paramViewGroup = yZ(paramInt);
+    paramView = this.nwE.a(paramInt, paramView, paramViewGroup);
+    AppMethodBeat.o(113588);
     return paramView;
   }
   
@@ -166,16 +166,16 @@ public final class k
   
   public final void release()
   {
-    AppMethodBeat.i(88662);
-    bKb();
-    this.krl.release();
-    this.krl = null;
-    AppMethodBeat.o(88662);
+    AppMethodBeat.i(113589);
+    cHX();
+    this.nwE.release();
+    this.nwE = null;
+    AppMethodBeat.o(113589);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,158 +1,238 @@
 package com.tencent.mm.plugin.collect.model.voice;
 
 import android.annotation.SuppressLint;
-import android.os.Handler;
+import android.os.Bundle;
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.plugin.expansions.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.i;
 
 public final class b
 {
-  float Dq;
-  c kOs;
-  private b.a kOt;
-  private Thread kOu;
-  SynthesizerNative kOv;
-  boolean kOw;
-  int kOx;
-  byte[] kOy;
+  float Kh;
   @SuppressLint({"HandlerLeak"})
-  Handler mHandler;
+  ap mHandler;
   private boolean mIsInit;
   String mText;
   float mVolume;
+  c nUG;
+  private a nUH;
+  private Thread nUI;
+  SynthesizerNative nUJ;
+  boolean nUK;
+  int nUL;
+  byte[] nUM;
   
   public b()
   {
-    AppMethodBeat.i(41027);
-    this.kOt = new b.a(this, (byte)0);
-    this.kOu = null;
-    this.kOv = new SynthesizerNative();
+    AppMethodBeat.i(63887);
+    this.nUH = new a((byte)0);
+    this.nUI = null;
+    this.nUJ = new SynthesizerNative();
     this.mIsInit = false;
-    this.kOw = false;
-    this.kOx = 256000;
-    this.kOy = new byte[this.kOx];
+    this.nUK = false;
+    this.nUL = 256000;
+    this.nUM = new byte[this.nUL];
     this.mVolume = 1.0F;
-    this.Dq = 1.0F;
-    this.mHandler = new b.1(this);
-    AppMethodBeat.o(41027);
+    this.Kh = 1.0F;
+    this.mHandler = new ap("InnerSynthesizer")
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(63885);
+        if (b.this.nUG != null) {
+          switch (paramAnonymousMessage.what)
+          {
+          }
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(63885);
+          return;
+          paramAnonymousMessage = paramAnonymousMessage.getData().getByteArray("data");
+          b.this.nUG.o(0, paramAnonymousMessage);
+          AppMethodBeat.o(63885);
+          return;
+          b.this.nUG.o(-203, null);
+        }
+      }
+    };
+    AppMethodBeat.o(63887);
   }
   
-  public final int dC(String paramString1, String paramString2)
+  public final void destroy()
   {
-    AppMethodBeat.i(141989);
+    AppMethodBeat.i(63890);
+    this.nUK = true;
+    if (this.nUI != null) {}
+    try
+    {
+      this.nUI.join();
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      try
+      {
+        for (;;)
+        {
+          this.nUJ.release();
+          this.mIsInit = false;
+          AppMethodBeat.o(63890);
+          return;
+          localInterruptedException = localInterruptedException;
+          ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "stop() Exception:%s %s", new Object[] { localInterruptedException.getClass().getSimpleName(), localInterruptedException.getMessage() });
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "destroy() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+        }
+      }
+    }
+  }
+  
+  public final int eM(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(63888);
     if (this.mIsInit)
     {
-      AppMethodBeat.o(141989);
+      AppMethodBeat.o(63888);
       return 0;
     }
-    String str = paramString1 + paramString2 + ".pos";
-    ab.d("MicroMsg.OfflineVoice.InnerSynthesizer", "resFilePath:%s soFilePath:%s", new Object[] { str, null });
-    if (!e.cN(str))
+    paramString1 = paramString1 + paramString2 + ".pos";
+    ad.d("MicroMsg.OfflineVoice.InnerSynthesizer", "resFilePath:%s soFilePath:%s", new Object[] { paramString1, null });
+    if (!i.eK(paramString1))
     {
-      AppMethodBeat.o(141989);
+      ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed:ErrorCode.TTS_RESOURCE_ERROR ");
+      AppMethodBeat.o(63888);
       return -101;
     }
+    a.cbc();
     for (;;)
     {
       try
       {
-        if (!bo.isNullOrNil(null))
+        if (!bt.isNullOrNil(null))
         {
-          boolean bool = e.cN(null);
-          if (!bool)
+          if (!i.eK(null))
           {
-            AppMethodBeat.o(141989);
+            ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed: file not exist - ErrorCode.TTS_SO_ERROR ");
+            AppMethodBeat.o(63888);
             return -103;
           }
           System.load(null);
-          str = paramString2;
         }
       }
       catch (Throwable paramString1)
       {
         int i;
-        ab.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init() Throwable:%s %s", new Object[] { paramString1.getClass().getSimpleName(), paramString1.getMessage() });
-        AppMethodBeat.o(141989);
+        ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init() Throwable:%s %s", new Object[] { paramString1.getClass().getSimpleName(), paramString1.getMessage() });
+        AppMethodBeat.o(63888);
         return -207;
       }
       try
       {
-        if (bo.isNullOrNil(paramString2)) {
-          str = "woman_putonghua";
-        }
-        i = this.kOv.init(paramString1.getBytes(), str.getBytes());
+        bt.isNullOrNil(paramString2);
+        i = this.nUJ.init(paramString1.getBytes());
+        ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init ret：%s", new Object[] { Integer.valueOf(i) });
         if (i >= 0) {
-          break label208;
+          break label231;
         }
-        AppMethodBeat.o(141989);
+        AppMethodBeat.o(63888);
         return i;
       }
       catch (Exception paramString1)
       {
-        AppMethodBeat.o(141989);
+        ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed:ErrorCode.TTS_INIT_ERROR ");
+        AppMethodBeat.o(63888);
         return -201;
       }
-      System.loadLibrary("readMoney");
+      a.Vi("readMoney");
     }
-    label208:
+    label231:
     this.mIsInit = true;
-    AppMethodBeat.o(141989);
+    AppMethodBeat.o(63888);
     return 0;
-  }
-  
-  public final void destroy()
-  {
-    AppMethodBeat.i(41030);
-    this.kOw = true;
-    if (this.kOu != null) {}
-    try
-    {
-      this.kOu.join();
-      this.kOv.release();
-      this.mIsInit = false;
-      AppMethodBeat.o(41030);
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        ab.i("MicroMsg.OfflineVoice.InnerSynthesizer", "stop() Exception:%s %s", new Object[] { localInterruptedException.getClass().getSimpleName(), localInterruptedException.getMessage() });
-      }
-    }
   }
   
   public final int start(String paramString)
   {
-    AppMethodBeat.i(41029);
+    AppMethodBeat.i(63889);
     if (!this.mIsInit)
     {
-      AppMethodBeat.o(41029);
+      ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:ErrorCode.TTS_START_ERROR ");
+      AppMethodBeat.o(63889);
       return -202;
     }
-    if ((this.kOu != null) && (this.kOu.isAlive()))
+    if ((this.nUI != null) && (this.nUI.isAlive()))
     {
-      AppMethodBeat.o(41029);
+      ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:ErrorCode.TTS_START_ERROR ");
+      AppMethodBeat.o(63889);
       return -202;
     }
     if ((paramString == null) || (paramString.length() > 1024))
     {
-      AppMethodBeat.o(41029);
+      ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:TTS_TEXT_ERROR");
+      AppMethodBeat.o(63889);
       return -102;
     }
     this.mText = paramString;
-    this.kOw = false;
-    this.kOu = new Thread(this.kOt);
-    this.kOu.start();
-    AppMethodBeat.o(41029);
+    this.nUK = false;
+    this.nUI = new Thread(this.nUH);
+    this.nUI.start();
+    AppMethodBeat.o(63889);
     return 0;
+  }
+  
+  final class a
+    implements Runnable
+  {
+    private a() {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(63886);
+      try
+      {
+        b.this.mText = b.this.mText.replaceAll("[^0-9a-zA-Z一-龥.?!,;:。？！，、；：@%&/]+", "");
+        ad.d("MicroMsg.OfflineVoice.InnerSynthesizer", "mText = %s  mVolume = %s mSpeed = %s", new Object[] { b.this.mText, Float.valueOf(b.this.mVolume), Float.valueOf(b.this.Kh) });
+        int i = b.this.nUJ.readmoney(b.this.mText.getBytes("UTF-8"), b.this.nUM, b.this.nUL, b.this.mVolume, b.this.Kh);
+        if (i != -1)
+        {
+          byte[] arrayOfByte = new byte[i];
+          System.arraycopy(b.this.nUM, 0, arrayOfByte, 0, i);
+          if (!b.this.nUK)
+          {
+            Message localMessage = b.this.mHandler.obtainMessage(0);
+            Bundle localBundle = new Bundle();
+            localBundle.putByteArray("data", arrayOfByte);
+            localMessage.setData(localBundle);
+            b.this.mHandler.sendMessage(localMessage);
+          }
+          AppMethodBeat.o(63886);
+          return;
+        }
+        b.this.mHandler.sendMessage(b.this.mHandler.obtainMessage(-1));
+        AppMethodBeat.o(63886);
+        return;
+      }
+      catch (Exception localException)
+      {
+        ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "SynthesizerRunnable Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+        b.this.mHandler.sendMessage(b.this.mHandler.obtainMessage(-1));
+        AppMethodBeat.o(63886);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.voice.b
  * JD-Core Version:    0.7.0.1
  */

@@ -46,7 +46,7 @@ public final class dh
   {
     dj localdj = new dj();
     ArrayList localArrayList = new ArrayList();
-    localdj.QO = a(paramn, localArrayList);
+    localdj.SD = a(paramn, localArrayList);
     return new di(localdj, localArrayList);
   }
   
@@ -58,11 +58,11 @@ public final class dh
       localdl1.type = 14;
       return localdl1;
     }
-    localdl1.QS = new dm();
+    localdl1.SH = new dm();
     if ((paramObject instanceof String))
     {
       localdl1.type = 2;
-      localdl1.QS.QU = ((String)paramObject);
+      localdl1.SH.SJ = ((String)paramObject);
     }
     Object localObject1;
     Object localObject2;
@@ -74,59 +74,59 @@ public final class dh
       if ((paramObject instanceof Integer))
       {
         localdl1.type = 6;
-        localdl1.QS.QY = ((Integer)paramObject).intValue();
+        localdl1.SH.SN = ((Integer)paramObject).intValue();
       }
       else if ((paramObject instanceof Long))
       {
         localdl1.type = 5;
-        localdl1.QS.QX = ((Long)paramObject).longValue();
+        localdl1.SH.SM = ((Long)paramObject).longValue();
       }
       else if ((paramObject instanceof Double))
       {
         localdl1.type = 3;
-        localdl1.QS.QV = ((Double)paramObject).doubleValue();
+        localdl1.SH.SK = ((Double)paramObject).doubleValue();
       }
       else if ((paramObject instanceof Float))
       {
         localdl1.type = 4;
-        localdl1.QS.QW = ((Float)paramObject).floatValue();
+        localdl1.SH.SL = ((Float)paramObject).floatValue();
       }
       else if ((paramObject instanceof Boolean))
       {
         localdl1.type = 8;
-        localdl1.QS.Ra = ((Boolean)paramObject).booleanValue();
+        localdl1.SH.SP = ((Boolean)paramObject).booleanValue();
       }
       else if ((paramObject instanceof Byte))
       {
         localdl1.type = 7;
-        localdl1.QS.QZ = ((Byte)paramObject).byteValue();
+        localdl1.SH.SO = ((Byte)paramObject).byteValue();
       }
       else if ((paramObject instanceof byte[]))
       {
         localdl1.type = 1;
-        localdl1.QS.QT = ((byte[])paramObject);
+        localdl1.SH.SI = ((byte[])paramObject);
       }
       else if ((paramObject instanceof String[]))
       {
         localdl1.type = 11;
-        localdl1.QS.Rd = ((String[])paramObject);
+        localdl1.SH.SS = ((String[])paramObject);
       }
       else if ((paramObject instanceof long[]))
       {
         localdl1.type = 12;
-        localdl1.QS.Re = ((long[])paramObject);
+        localdl1.SH.ST = ((long[])paramObject);
       }
       else if ((paramObject instanceof float[]))
       {
         localdl1.type = 15;
-        localdl1.QS.Rf = ((float[])paramObject);
+        localdl1.SH.SU = ((float[])paramObject);
       }
       else if ((paramObject instanceof Asset))
       {
         localdl1.type = 13;
-        localObject1 = localdl1.QS;
+        localObject1 = localdl1.SH;
         paramList.add((Asset)paramObject);
-        ((dm)localObject1).Rg = (paramList.size() - 1);
+        ((dm)localObject1).SV = (paramList.size() - 1);
       }
       else
       {
@@ -144,10 +144,10 @@ public final class dh
           localObject3 = (String)((Iterator)localObject2).next();
           localObject1[i] = new dk();
           localObject1[i].name = ((String)localObject3);
-          localObject1[i].QQ = a(paramList, paramObject.get((String)localObject3));
+          localObject1[i].SF = a(paramList, paramObject.get((String)localObject3));
           i += 1;
         }
-        localdl1.QS.Rb = ((dk[])localObject1);
+        localdl1.SH.SQ = ((dk[])localObject1);
       }
     }
     int j;
@@ -188,7 +188,7 @@ public final class dh
         paramList = String.valueOf(paramObject.getClass());
         paramObject = String.valueOf(localObject1.getClass());
         throw new IllegalArgumentException(String.valueOf(paramList).length() + 80 + String.valueOf(paramObject).length() + "ArrayList elements must all be of the sameclass, but this one contains a " + paramList + " and a " + paramObject);
-        localdl1.QS.Rc = ((dl[])localObject3);
+        localdl1.SH.SR = ((dl[])localObject3);
         break;
         paramList = String.valueOf(paramObject.getClass().getSimpleName());
         if (paramList.length() != 0) {}
@@ -202,13 +202,13 @@ public final class dh
   public static n a(di paramdi)
   {
     n localn = new n();
-    dk[] arrayOfdk = paramdi.QM.QO;
+    dk[] arrayOfdk = paramdi.SB.SD;
     int j = arrayOfdk.length;
     int i = 0;
     while (i < j)
     {
       dk localdk = arrayOfdk[i];
-      a(paramdi.QN, localn, localdk.name, localdk.QQ);
+      a(paramdi.SC, localn, localdk.name, localdk.SF);
       i += 1;
     }
     return localn;
@@ -216,8 +216,8 @@ public final class dh
   
   private static ArrayList a(List<Asset> paramList, dm paramdm, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList(paramdm.Rc.length);
-    paramdm = paramdm.Rc;
+    ArrayList localArrayList = new ArrayList(paramdm.SR.length);
+    paramdm = paramdm.SR;
     int k = paramdm.length;
     int i = 0;
     if (i < k)
@@ -233,27 +233,27 @@ public final class dh
         if (paramInt == 9)
         {
           n localn = new n();
-          arrayOfdk = arrayOfdk.QS.Rb;
+          arrayOfdk = arrayOfdk.SH.SQ;
           int m = arrayOfdk.length;
           int j = 0;
           while (j < m)
           {
             dk localdk = arrayOfdk[j];
-            a(paramList, localn, localdk.name, localdk.QQ);
+            a(paramList, localn, localdk.name, localdk.SF);
             j += 1;
           }
           localArrayList.add(localn);
         }
         else if (paramInt == 2)
         {
-          localArrayList.add(arrayOfdk.QS.QU);
+          localArrayList.add(arrayOfdk.SH.SJ);
         }
         else
         {
           if (paramInt != 6) {
             break label191;
           }
-          localArrayList.add(Integer.valueOf(arrayOfdk.QS.QY));
+          localArrayList.add(Integer.valueOf(arrayOfdk.SH.SN));
         }
       }
       label191:
@@ -270,60 +270,60 @@ public final class dh
       paramn.putString(paramString, null);
       return;
     }
-    Object localObject1 = paramdl.QS;
+    Object localObject1 = paramdl.SH;
     if (i == 1)
     {
-      paramn.putByteArray(paramString, ((dm)localObject1).QT);
+      paramn.putByteArray(paramString, ((dm)localObject1).SI);
       return;
     }
     if (i == 11)
     {
-      paramn.putStringArray(paramString, ((dm)localObject1).Rd);
+      paramn.putStringArray(paramString, ((dm)localObject1).SS);
       return;
     }
     if (i == 12)
     {
-      paramn.putLongArray(paramString, ((dm)localObject1).Re);
+      paramn.putLongArray(paramString, ((dm)localObject1).ST);
       return;
     }
     if (i == 15)
     {
-      paramn.putFloatArray(paramString, ((dm)localObject1).Rf);
+      paramn.putFloatArray(paramString, ((dm)localObject1).SU);
       return;
     }
     if (i == 2)
     {
-      paramn.putString(paramString, ((dm)localObject1).QU);
+      paramn.putString(paramString, ((dm)localObject1).SJ);
       return;
     }
     if (i == 3)
     {
-      paramn.putDouble(paramString, ((dm)localObject1).QV);
+      paramn.putDouble(paramString, ((dm)localObject1).SK);
       return;
     }
     if (i == 4)
     {
-      paramn.putFloat(paramString, ((dm)localObject1).QW);
+      paramn.putFloat(paramString, ((dm)localObject1).SL);
       return;
     }
     if (i == 5)
     {
-      paramn.putLong(paramString, ((dm)localObject1).QX);
+      paramn.putLong(paramString, ((dm)localObject1).SM);
       return;
     }
     if (i == 6)
     {
-      paramn.putInt(paramString, ((dm)localObject1).QY);
+      paramn.putInt(paramString, ((dm)localObject1).SN);
       return;
     }
     if (i == 7)
     {
-      paramn.putByte(paramString, (byte)((dm)localObject1).QZ);
+      paramn.putByte(paramString, (byte)((dm)localObject1).SO);
       return;
     }
     if (i == 8)
     {
-      paramn.putBoolean(paramString, ((dm)localObject1).Ra);
+      paramn.putBoolean(paramString, ((dm)localObject1).SP);
       return;
     }
     if (i == 13)
@@ -336,19 +336,19 @@ public final class dh
           throw new RuntimeException(paramList);
         }
       }
-      paramn.a(paramString, (Asset)paramList.get((int)((dm)localObject1).Rg));
+      paramn.a(paramString, (Asset)paramList.get((int)((dm)localObject1).SV));
       return;
     }
     if (i == 9)
     {
       paramdl = new n();
-      localObject1 = ((dm)localObject1).Rb;
+      localObject1 = ((dm)localObject1).SQ;
       int j = localObject1.length;
       i = 0;
       while (i < j)
       {
         Object localObject2 = localObject1[i];
-        a(paramList, paramdl, localObject2.name, localObject2.QQ);
+        a(paramList, paramdl, localObject2.name, localObject2.SF);
         i += 1;
       }
       paramn.a(paramString, paramdl);
@@ -356,7 +356,7 @@ public final class dh
     }
     if (i == 10)
     {
-      i = a(paramString, ((dm)localObject1).Rc);
+      i = a(paramString, ((dm)localObject1).SR);
       paramList = a(paramList, (dm)localObject1, i);
       if (i == 14)
       {
@@ -395,7 +395,7 @@ public final class dh
       Object localObject2 = paramn.get(str);
       arrayOfdk[i] = new dk();
       arrayOfdk[i].name = str;
-      arrayOfdk[i].QQ = a(paramList, localObject2);
+      arrayOfdk[i].SF = a(paramList, localObject2);
       i += 1;
     }
     return arrayOfdk;

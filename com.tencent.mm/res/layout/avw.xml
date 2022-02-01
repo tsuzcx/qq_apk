@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/v7" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingVideoWrapper android:id="@id/xe" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/a05" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/s_" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerInParent="true" style="@style/a00" />
-    <ImageView android:id="@id/li" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <TextView android:textSize="@dimen/nh" android:textColor="@color/a6q" android:gravity="center" android:id="@id/ejx" android:paddingBottom="20.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:alpha="0.8" />
-    <View android:id="@id/elm" android:background="@color/e8" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:layout_alignParentBottom="true">
-        <ImageView android:layout_gravity="center_horizontal" android:id="@id/eln" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/b9r" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:background="@drawable/afj" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/bzg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:layout_gravity="center_horizontal" layout="@layout/avu" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dol" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:textSize="@dimen/ia" android:textColor="@color/a_j" android:id="@id/dom" android:background="@drawable/bp" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="@dimen/i5" android:text="@string/r5" android:layout_weight="1.0" />
+                <ImageView android:id="@id/doh" android:background="@color/vz" android:layout_width="@dimen/bk" android:layout_height="fill_parent" />
+                <Button android:textSize="@dimen/ia" android:textColor="@color/a_j" android:id="@id/doz" android:background="@drawable/bp" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="@dimen/i5" android:text="@string/gz3" android:layout_weight="1.0" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bd8" />
+</LinearLayout>

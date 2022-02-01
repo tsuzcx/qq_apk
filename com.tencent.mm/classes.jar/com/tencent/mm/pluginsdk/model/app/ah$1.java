@@ -1,12 +1,21 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.yg;
+import com.tencent.mm.g.a.yg.a;
+import com.tencent.mm.g.b.a.f;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.i.d;
 import com.tencent.mm.i.g.a;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.model.az;
+import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
 import java.io.ByteArrayOutputStream;
 
 final class ah$1
@@ -14,137 +23,92 @@ final class ah$1
 {
   ah$1(ah paramah) {}
   
-  public final int a(String paramString, int paramInt, com.tencent.mm.i.c paramc, com.tencent.mm.i.d paramd, boolean paramBoolean)
+  public final int a(String paramString, int paramInt, com.tencent.mm.i.c paramc, final d paramd, boolean paramBoolean)
   {
-    AppMethodBeat.i(27375);
-    paramString = this.vLM.fFo;
-    boolean bool1;
-    if (paramc != null)
+    AppMethodBeat.i(31052);
+    ad.d("MicroMsg.NetSceneSendAppMsg", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { this.BQr.hhN, Integer.valueOf(paramInt), paramc, paramd });
+    if (paramInt == -21005)
     {
-      bool1 = true;
-      if (paramd == null) {
-        break label149;
-      }
-    }
-    label149:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      ab.d("MicroMsg.NetSceneUploadAppAttach", "summerbig cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s], progressing[%b], finish[%b], onlyCheckExist[%b]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd, Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(paramBoolean) });
-      al.aUJ().get(this.vLM.pYi, this.vLM.pYg);
-      if (paramInt != -21005) {
-        break label155;
-      }
-      ab.i("MicroMsg.NetSceneUploadAppAttach", "summerbig cdnCallback ERR_CNDCOM_MEDIA_IS_UPLOADING clientid:%s", new Object[] { this.vLM.fFo });
-      AppMethodBeat.o(27375);
+      ad.d("MicroMsg.NetSceneSendAppMsg", "cdntra  ERR_CNDCOM_MEDIA_IS_UPLOADING clientid:%s", new Object[] { this.BQr.hhN });
+      AppMethodBeat.o(31052);
       return 0;
-      bool1 = false;
-      break;
     }
-    label155:
     if (paramInt != 0)
     {
-      l.kX(this.vLM.pYg.systemRowid);
-      al.aUJ().get(this.vLM.pYi, this.vLM.pYg);
-      this.vLM.pYg.field_signature = "";
-      paramBoolean = al.aUJ().a(this.vLM.pYg, new String[0]);
-      ab.w("MicroMsg.NetSceneUploadAppAttach", "summerbig cdnCallback startRet[%d] rowid[%d], reset signature ret[%b]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(this.vLM.pYi), Boolean.valueOf(paramBoolean) });
-      this.vLM.callback.onSceneEnd(3, paramInt, "", this.vLM);
-      new com.tencent.mm.g.b.a.f(com.tencent.mm.plugin.report.a.s(new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1), Long.valueOf(this.vLM.startTime), Long.valueOf(bo.aoy()), Integer.valueOf(com.tencent.mm.al.c.cb(com.tencent.mm.sdk.platformtools.ah.getContext())), Integer.valueOf(com.tencent.mm.i.a.MediaType_FILE), Integer.valueOf(0), "" })).ake();
-      AppMethodBeat.o(27375);
-      return 0;
-    }
-    if (this.vLM.pYg.field_status == 105L)
-    {
-      ab.i("MicroMsg.NetSceneUploadAppAttach", "attach upload has paused, status:%d, rowid:%d", new Object[] { Long.valueOf(this.vLM.pYg.field_status), Long.valueOf(this.vLM.pYi) });
-      com.tencent.mm.al.f.afO().sI(this.vLM.fFo);
-      this.vLM.callback.onSceneEnd(3, paramInt, "attach  has paused, status" + this.vLM.pYg.field_status, this.vLM);
-      AppMethodBeat.o(27375);
-      return 0;
-    }
-    if (paramc != null)
-    {
-      this.vLM.pYg.field_lastModifyTime = bo.aox();
-      this.vLM.pYg.field_offset = paramc.field_finishedLength;
-      paramBoolean = al.aUJ().a(this.vLM.pYg, new String[0]);
-      if (!paramBoolean)
-      {
-        ab.e("MicroMsg.NetSceneUploadAppAttach", "summerbig cdnCallback onGYNetEnd update info ret:".concat(String.valueOf(paramBoolean)));
-        this.vLM.retCode = (-10000 - g.getLine());
-        this.vLM.callback.onSceneEnd(3, paramInt, "", this.vLM);
-        AppMethodBeat.o(27375);
-        return 0;
-      }
-      AppMethodBeat.o(27375);
+      this.BQr.drF.setStatus(5);
+      e.vIY.idkeyStat(111L, 34L, 1L, true);
+      az.arV();
+      com.tencent.mm.model.c.apO().a(this.BQr.drF.field_msgId, this.BQr.drF);
+      new com.tencent.mm.g.b.a.h(com.tencent.mm.plugin.report.a.s(new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1), Long.valueOf(this.BQr.startTime), Long.valueOf(bt.eGO()), Integer.valueOf(com.tencent.mm.ao.c.cu(aj.getContext())), Integer.valueOf(com.tencent.mm.i.a.MediaType_FILE), Integer.valueOf(0), "" })).aBj();
+      this.BQr.callback.onSceneEnd(3, paramInt, "", this.BQr);
+      AppMethodBeat.o(31052);
       return 0;
     }
     if (paramd != null)
     {
-      if (paramd.field_retCode == 0) {
-        break label1037;
-      }
-      ab.e("MicroMsg.NetSceneUploadAppAttach", "summerbig cdnCallback sceneResult.retCode :%d arg[%s] info[%s]", new Object[] { Integer.valueOf(paramd.field_retCode), paramd.field_arg, paramd.field_transInfo, "", "", "", "", "", "", "", paramd.edb });
-      l.kX(this.vLM.pYg.systemRowid);
-      al.aUJ().get(this.vLM.pYi, this.vLM.pYg);
-      this.vLM.pYg.field_signature = "";
-      paramBoolean = al.aUJ().a(this.vLM.pYg, new String[0]);
-      ab.w("MicroMsg.NetSceneUploadAppAttach", "summerbig cdnCallback startRet[%d] sceneResult.field_retCode[%d], rowid[%d], reset signature ret[%b]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramd.field_retCode), Long.valueOf(this.vLM.pYi), Boolean.valueOf(paramBoolean) });
-      paramString = com.tencent.mm.plugin.report.a.s(new Object[] { Integer.valueOf(paramd.field_retCode), Integer.valueOf(1), Long.valueOf(this.vLM.startTime), Long.valueOf(bo.aoy()), Integer.valueOf(com.tencent.mm.al.c.cb(com.tencent.mm.sdk.platformtools.ah.getContext())), Integer.valueOf(com.tencent.mm.i.a.MediaType_FILE), Integer.valueOf(paramd.field_fileLength), paramd.field_transInfo, "", "", "", "", "", "", "", paramd.edb });
-      new com.tencent.mm.g.b.a.f(paramString).ake();
-      new com.tencent.mm.g.b.a.d(paramString).ake();
-      this.vLM.callback.onSceneEnd(3, paramd.field_retCode, "", this.vLM);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(27375);
-      return 0;
-      label1037:
-      ab.i("MicroMsg.NetSceneUploadAppAttach", "summerbig cdnCallback upload attach by cdn, isHitCacheUpload: %d, onlyCheckExist[%b], exist[%b], signature[%s]", new Object[] { Integer.valueOf(paramd.field_UploadHitCacheType), Boolean.valueOf(paramBoolean), Boolean.valueOf(paramd.field_exist_whencheck), bo.aqg(this.vLM.pYg.field_signature) });
-      if (paramBoolean)
+      if (paramd.field_retCode != 0)
       {
-        if (paramd.field_exist_whencheck)
-        {
-          aw.Rc().a(new z(this.vLM.cmR, this.vLM.pYg.field_fileFullPath, this.vLM.toUser, new ah.1.1(this, paramInt, paramd)), 0);
-        }
-        else
-        {
-          ab.i("MicroMsg.NetSceneUploadAppAttach", "summerbig upload check but not exist");
-          aw.Rc().a(new z(null, this.vLM.pYg.field_fileFullPath, this.vLM.toUser, new ah.1.2(this, paramInt)), 0);
-        }
-      }
-      else {
-        a(paramInt, paramd);
+        ad.e("MicroMsg.NetSceneSendAppMsg", "cdntra sceneResult.retCode :%d arg[%s] info[%s]", new Object[] { Integer.valueOf(paramd.field_retCode), paramd.field_arg, paramd.field_transInfo, "", "", "", "", "", "", "", paramd.fns });
+        this.BQr.drF.setStatus(5);
+        e.vIY.idkeyStat(111L, 34L, 1L, true);
+        az.arV();
+        com.tencent.mm.model.c.apO().a(this.BQr.drF.field_msgId, this.BQr.drF);
+        paramc = com.tencent.mm.plugin.report.a.s(new Object[] { Integer.valueOf(paramd.field_retCode), Integer.valueOf(1), Long.valueOf(this.BQr.startTime), Long.valueOf(bt.eGO()), Integer.valueOf(com.tencent.mm.ao.c.cu(aj.getContext())), Integer.valueOf(com.tencent.mm.i.a.MediaType_FILE), Long.valueOf(paramd.field_fileLength), paramd.field_transInfo, "", "", "", "", "", "", "", paramd.fns });
+        new com.tencent.mm.g.b.a.h(paramc).aBj();
+        new f(paramc).aBj();
+        this.BQr.callback.onSceneEnd(3, paramd.field_retCode, "", this.BQr);
       }
     }
-  }
-  
-  final void a(int paramInt, com.tencent.mm.i.d paramd)
-  {
-    AppMethodBeat.i(27376);
-    this.vLM.pYg.field_status = 199L;
-    boolean bool = al.aUJ().a(this.vLM.pYg, new String[0]);
-    if (!bool)
+    else
     {
-      ab.e("MicroMsg.NetSceneUploadAppAttach", "summerbig cdnCallback onGYNetEnd update info ret:".concat(String.valueOf(bool)));
-      this.vLM.retCode = (-10000 - g.getLine());
-      this.vLM.callback.onSceneEnd(3, paramInt, "", this.vLM);
-      AppMethodBeat.o(27376);
-      return;
+      if ((paramString != null) && (paramString.equals(this.BQr.hhN)) && (this.BQr.wFp != null) && (this.BQr.wFp.dEL.dEM != -1))
+      {
+        com.tencent.mm.sdk.b.a.ESL.l(this.BQr.wFp);
+        this.BQr.wFp = null;
+      }
+      AppMethodBeat.o(31052);
+      return 0;
     }
-    l.a(this.vLM.pYg.field_msgInfoId, this.vLM.pYg.field_mediaSvrId, paramd, true);
-    aw.Rc().a(new af(this.vLM.pYg.field_msgInfoId, true, paramd, new ah.1.3(this, paramd), this.vLM.cpW, this.vLM.pYg), 0);
-    AppMethodBeat.o(27376);
+    if ((this.BQr.BQq > 0L) && (paramd.field_fileLength > 0L) && (this.BQr.drF.getType() != 738197553))
+    {
+      paramc = this.BQr.BQq + "," + paramd.field_fileLength + "," + paramd.field_fileId;
+      if (this.BQr.BQq * 2L <= paramd.field_fileLength) {
+        break label941;
+      }
+    }
+    label941:
+    for (boolean bool = true;; bool = false)
+    {
+      au.D("SendAppMsgThumbTooBig", paramc, bool);
+      ad.i("MicroMsg.NetSceneSendAppMsg", "summersafecdn cdnCallback upload attach by cdn, isHitCacheUpload: %d, onlyCheckExist[%b], exist[%b], aesKey[%s], md5[%s]", new Object[] { Integer.valueOf(paramd.field_UploadHitCacheType), Boolean.valueOf(paramBoolean), Boolean.valueOf(paramd.field_exist_whencheck), bt.aGs(paramd.field_aesKey), paramd.field_filemd5 });
+      if (this.BQr.drF.getType() == 738197553) {
+        m.a(this.BQr.drF.field_msgId, "", paramd, false);
+      }
+      az.aeS().a(new ai(this.BQr.msgId, paramd, new ai.a()
+      {
+        public final void dm(int paramAnonymousInt1, int paramAnonymousInt2)
+        {
+          AppMethodBeat.i(31051);
+          ad.d("MicroMsg.NetSceneSendAppMsg", "summersafecdn cdntra NetSceneSendAppMsgForCdn callback %d,%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+          new com.tencent.mm.g.b.a.h(com.tencent.mm.plugin.report.a.s(new Object[] { Integer.valueOf(paramAnonymousInt2), Integer.valueOf(1), Long.valueOf(ah.1.this.BQr.startTime), Long.valueOf(bt.eGO()), Integer.valueOf(com.tencent.mm.ao.c.cu(aj.getContext())), Integer.valueOf(com.tencent.mm.i.a.MediaType_FILE), Long.valueOf(paramd.field_fileLength), paramd.field_transInfo, "", "", "", "", "", "", "", paramd.fns })).aBj();
+          ah.1.this.BQr.callback.onSceneEnd(paramAnonymousInt1, paramAnonymousInt2, "", ah.1.this.BQr);
+          AppMethodBeat.o(31051);
+        }
+      }, this.BQr.mSessionId, this.BQr.dvY, this.BQr.BQo), 0);
+      break;
+    }
   }
   
   public final void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream) {}
   
-  public final byte[] l(String paramString, byte[] paramArrayOfByte)
+  public final byte[] f(String paramString, byte[] paramArrayOfByte)
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.ah.1
  * JD-Core Version:    0.7.0.1
  */

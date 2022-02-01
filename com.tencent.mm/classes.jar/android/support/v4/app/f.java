@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.e.l;
+import android.support.v4.e.m;
 import android.view.LayoutInflater;
 import android.view.View;
 import java.io.PrintWriter;
@@ -14,18 +14,18 @@ import java.io.PrintWriter;
 public abstract class f<E>
   extends d
 {
+  private final int CG;
   final Activity mActivity;
   final Context mContext;
   final FragmentManagerImpl mFragmentManager = new FragmentManagerImpl();
   final Handler mHandler;
-  private final int wj;
   
   private f(Activity paramActivity, Context paramContext, Handler paramHandler)
   {
     this.mActivity = paramActivity;
-    this.mContext = ((Context)l.checkNotNull(paramContext, "context == null"));
-    this.mHandler = ((Handler)l.checkNotNull(paramHandler, "handler == null"));
-    this.wj = 0;
+    this.mContext = ((Context)m.checkNotNull(paramContext, "context == null"));
+    this.mHandler = ((Handler)m.checkNotNull(paramHandler, "handler == null"));
+    this.CG = 0;
   }
   
   f(FragmentActivity paramFragmentActivity)
@@ -33,17 +33,16 @@ public abstract class f<E>
     this(paramFragmentActivity, paramFragmentActivity, paramFragmentActivity.mHandler);
   }
   
-  public boolean G(String paramString)
-  {
-    return false;
-  }
-  
   public void a(Fragment paramFragment, Intent paramIntent, int paramInt, Bundle paramBundle)
   {
     if (paramInt != -1) {
       throw new IllegalStateException("Starting activity with a requestCode requires a FragmentActivity host");
     }
-    this.mContext.startActivity(paramIntent);
+    paramFragment = this.mContext;
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bd(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramFragment, paramIntent.adn(), "android/support/v4/app/FragmentHostCallback", "onStartActivityFromFragment", "(Landroid/support/v4/app/Fragment;Landroid/content/Intent;ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramFragment.startActivity((Intent)paramIntent.lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramFragment, "android/support/v4/app/FragmentHostCallback", "onStartActivityFromFragment", "(Landroid/support/v4/app/Fragment;Landroid/content/Intent;ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
   
   public void a(Fragment paramFragment, IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4, Bundle paramBundle)
@@ -58,12 +57,12 @@ public abstract class f<E>
   
   public void a(String paramString, PrintWriter paramPrintWriter, String[] paramArrayOfString) {}
   
-  public boolean cB()
+  public boolean dE()
   {
     return true;
   }
   
-  public void cC() {}
+  public void dF() {}
   
   void onAttachFragment(Fragment paramFragment) {}
   
@@ -81,7 +80,7 @@ public abstract class f<E>
   
   public int onGetWindowAnimations()
   {
-    return this.wj;
+    return this.CG;
   }
   
   public boolean onHasView()
@@ -92,6 +91,11 @@ public abstract class f<E>
   public boolean onHasWindowAnimations()
   {
     return true;
+  }
+  
+  public boolean q(String paramString)
+  {
+    return false;
   }
 }
 

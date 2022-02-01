@@ -1,97 +1,117 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Context;
-import android.database.ContentObserver;
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Looper;
-import android.provider.MediaStore.Images.Media;
-import android.view.Display;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.ref.WeakReference;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class bc
 {
-  private static final String ypS;
-  private static final String[] ypT;
-  private static ContentObserver ypU;
-  private static WeakReference<bc.a> ypV;
+  static boolean dCr;
+  private TelephonyManager EWg;
+  private PhoneStateListener EWh;
+  List<a> EWi;
   
-  static
+  public bc()
   {
-    AppMethodBeat.i(52250);
-    ypS = MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString();
-    ypT = new String[] { "_display_name", "_data", "date_added" };
-    AppMethodBeat.o(52250);
+    AppMethodBeat.i(157774);
+    this.EWi = new LinkedList();
+    AppMethodBeat.o(157774);
   }
   
-  public static void a(Context paramContext, bc.a parama)
+  public static boolean NY()
   {
-    AppMethodBeat.i(52249);
-    ab.i("MicroMsg.ScreenShotUtil", "summerscreenshot setScreenShotCallback context[%s] callback[%s], stack[%s]", new Object[] { paramContext, parama, bo.dtY() });
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(52249);
-      return;
-    }
-    if (parama == null)
-    {
-      if (ypU != null)
-      {
-        paramContext.getContentResolver().unregisterContentObserver(ypU);
-        ypU = null;
-      }
-      if (ypV != null)
-      {
-        ypV.clear();
-        ypV = null;
-      }
-      AppMethodBeat.o(52249);
-      return;
-    }
-    ypV = new WeakReference(parama);
-    if (ypU == null)
-    {
-      ypU = new bc.1(new Handler(Looper.myLooper()), paramContext);
-      paramContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, ypU);
-    }
-    AppMethodBeat.o(52249);
+    AppMethodBeat.i(157777);
+    ad.i("MicroMsg.PhoneStatusWatcher", "alvinluo isCalling: %b", new Object[] { Boolean.valueOf(dCr) });
+    boolean bool = dCr;
+    AppMethodBeat.o(157777);
+    return bool;
   }
   
-  public static Bitmap au(Activity paramActivity)
+  public final void a(a parama)
   {
-    AppMethodBeat.i(52248);
-    View localView = paramActivity.getWindow().getDecorView();
-    localView.setDrawingCacheEnabled(true);
-    localView.buildDrawingCache();
-    Bitmap localBitmap = localView.getDrawingCache();
-    Rect localRect = new Rect();
-    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    int i = localRect.top;
-    int j = paramActivity.getWindowManager().getDefaultDisplay().getWidth();
-    int k = paramActivity.getWindowManager().getDefaultDisplay().getHeight();
-    try
+    AppMethodBeat.i(157775);
+    this.EWi.add(parama);
+    AppMethodBeat.o(157775);
+  }
+  
+  public final void b(a parama)
+  {
+    AppMethodBeat.i(194741);
+    this.EWi.remove(parama);
+    AppMethodBeat.o(194741);
+  }
+  
+  public final void eGl()
+  {
+    AppMethodBeat.i(157776);
+    this.EWi.clear();
+    AppMethodBeat.o(157776);
+  }
+  
+  public final void end()
+  {
+    AppMethodBeat.i(157779);
+    ad.i("MicroMsg.PhoneStatusWatcher", "alvinluo PhoneStatusWatcher end");
+    if (this.EWg != null)
     {
-      paramActivity = Bitmap.createBitmap(localBitmap, 0, i, j, k - i);
-      localView.destroyDrawingCache();
-      AppMethodBeat.o(52248);
-      return paramActivity;
+      this.EWg.listen(this.EWh, 0);
+      this.EWh = null;
     }
-    catch (Exception paramActivity)
-    {
-      for (;;)
+    AppMethodBeat.o(157779);
+  }
+  
+  public final void iG(Context paramContext)
+  {
+    AppMethodBeat.i(157778);
+    ad.i("MicroMsg.PhoneStatusWatcher", "alvinluo PhoneStatusWatcher begin");
+    if (this.EWg == null) {
+      this.EWg = ((TelephonyManager)paramContext.getSystemService("phone"));
+    }
+    if (this.EWh == null) {
+      this.EWh = new PhoneStateListener()
       {
-        ab.printErrStackTrace("MicroMsg.ScreenShotUtil", paramActivity, "", new Object[0]);
-        paramActivity = localBitmap;
-      }
+        public final void onCallStateChanged(int paramAnonymousInt, String paramAnonymousString)
+        {
+          AppMethodBeat.i(157773);
+          ad.i("MicroMsg.PhoneStatusWatcher", "alvinluo onCallStateChanged state: %d, incomingNumber: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+          if (bc.this.EWi.size() > 0)
+          {
+            bc.a[] arrayOfa = new bc.a[bc.this.EWi.size()];
+            arrayOfa = (bc.a[])bc.this.EWi.toArray(arrayOfa);
+            int j = arrayOfa.length;
+            int i = 0;
+            while (i < j)
+            {
+              arrayOfa[i].kq(paramAnonymousInt);
+              i += 1;
+            }
+          }
+          super.onCallStateChanged(paramAnonymousInt, paramAnonymousString);
+          switch (paramAnonymousInt)
+          {
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(157773);
+            return;
+            bc.dCr = false;
+            AppMethodBeat.o(157773);
+            return;
+            bc.dCr = true;
+          }
+        }
+      };
     }
+    this.EWg.listen(this.EWh, 32);
+    AppMethodBeat.o(157778);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void kq(int paramInt);
   }
 }
 

@@ -9,20 +9,20 @@ public class WePkgDiffInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<WePkgDiffInfo> CREATOR;
-  public String cqq;
+  public String BIC;
+  public int BID;
   public String downloadUrl;
-  public String ezY;
+  public String fUW;
   public int fileSize;
-  public String vFR;
-  public String vFS;
-  public int vFT;
+  public String md5;
+  public String oldVersion;
   public String version;
   
   static
   {
-    AppMethodBeat.i(63524);
-    CREATOR = new WePkgDiffInfo.1();
-    AppMethodBeat.o(63524);
+    AppMethodBeat.i(110682);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(110682);
   }
   
   public int describeContents()
@@ -32,21 +32,21 @@ public class WePkgDiffInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(63523);
-    paramParcel.writeString(this.ezY);
-    paramParcel.writeString(this.vFR);
-    paramParcel.writeString(this.vFS);
+    AppMethodBeat.i(110681);
+    paramParcel.writeString(this.fUW);
+    paramParcel.writeString(this.oldVersion);
+    paramParcel.writeString(this.BIC);
     paramParcel.writeString(this.version);
     paramParcel.writeString(this.downloadUrl);
-    paramParcel.writeString(this.cqq);
+    paramParcel.writeString(this.md5);
     paramParcel.writeInt(this.fileSize);
-    paramParcel.writeInt(this.vFT);
-    AppMethodBeat.o(63523);
+    paramParcel.writeInt(this.BID);
+    AppMethodBeat.o(110681);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.model.WePkgDiffInfo
  * JD-Core Version:    0.7.0.1
  */

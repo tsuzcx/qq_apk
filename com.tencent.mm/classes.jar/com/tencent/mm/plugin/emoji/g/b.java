@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.emoji.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.zg;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.act;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
@@ -17,13 +17,13 @@ import org.xml.sax.InputSource;
 
 public final class b
 {
-  public static ArrayList<zg> KU(String paramString)
+  public static ArrayList<act> Ub(String paramString)
   {
-    AppMethodBeat.i(53158);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(108731);
+    if (bt.isNullOrNil(paramString))
     {
-      ab.w("MicroMsg.emoji.EmojiBackupXMLParser", "[backup emotion parser] parse xml faild. xml is null.");
-      AppMethodBeat.o(53158);
+      ad.w("MicroMsg.emoji.EmojiBackupXMLParser", "[backup emotion parser] parse xml faild. xml is null.");
+      AppMethodBeat.o(108731);
       return null;
     }
     Object localObject1 = DocumentBuilderFactory.newInstance();
@@ -40,60 +40,60 @@ public final class b
         while (i < j)
         {
           Object localObject2 = paramString.item(i);
-          zg localzg = new zg();
+          act localact = new act();
           String str = ((Node)localObject2).getTextContent().toLowerCase();
           localObject2 = ((Node)localObject2).getAttributes();
           Node localNode = ((NamedNodeMap)localObject2).getNamedItem("thumburl");
           if (localNode != null) {
-            localzg.ThumbUrl = localNode.getNodeValue();
+            localact.ThumbUrl = localNode.getNodeValue();
           }
           localNode = ((NamedNodeMap)localObject2).getNamedItem("cdnurl");
           if (localNode != null) {
-            localzg.Url = localNode.getNodeValue();
+            localact.Url = localNode.getNodeValue();
           }
           localNode = ((NamedNodeMap)localObject2).getNamedItem("productid");
           if (localNode != null) {
-            localzg.ProductID = localNode.getNodeValue();
+            localact.ProductID = localNode.getNodeValue();
           }
           localNode = ((NamedNodeMap)localObject2).getNamedItem("designerid");
           if (localNode != null) {
-            localzg.wQg = localNode.getNodeValue();
+            localact.Ddp = localNode.getNodeValue();
           }
           localNode = ((NamedNodeMap)localObject2).getNamedItem("aeskey");
           if (localNode != null) {
-            localzg.AesKey = localNode.getNodeValue();
+            localact.AesKey = localNode.getNodeValue();
           }
           localNode = ((NamedNodeMap)localObject2).getNamedItem("encrypturl");
           if (localNode != null) {
-            localzg.EncryptUrl = localNode.getNodeValue();
+            localact.EncryptUrl = localNode.getNodeValue();
           }
           localObject2 = ((NamedNodeMap)localObject2).getNamedItem("activityid");
           if (localObject2 != null) {
-            localzg.ActivityID = ((Node)localObject2).getNodeValue();
+            localact.ActivityID = ((Node)localObject2).getNodeValue();
           }
-          localzg.Md5 = str;
-          ((ArrayList)localObject1).add(localzg);
+          localact.Md5 = str;
+          ((ArrayList)localObject1).add(localact);
           i += 1;
         }
-        AppMethodBeat.o(53158);
+        AppMethodBeat.o(108731);
         return localObject1;
       }
     }
     catch (Exception paramString)
     {
-      ab.e("MicroMsg.emoji.EmojiBackupXMLParser", "[parser] parseXML exception:%s", new Object[] { paramString.toString() });
-      AppMethodBeat.o(53158);
+      ad.e("MicroMsg.emoji.EmojiBackupXMLParser", "[parser] parseXML exception:%s", new Object[] { paramString.toString() });
+      AppMethodBeat.o(108731);
     }
     return null;
   }
   
-  public static ArrayList<String> KV(String paramString)
+  public static ArrayList<String> Uc(String paramString)
   {
-    AppMethodBeat.i(53159);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(108732);
+    if (bt.isNullOrNil(paramString))
     {
-      ab.w("MicroMsg.emoji.EmojiBackupXMLParser", "[backup emotion parser] parse xml faild. xml is null.");
-      AppMethodBeat.o(53159);
+      ad.w("MicroMsg.emoji.EmojiBackupXMLParser", "[backup emotion parser] parse xml faild. xml is null.");
+      AppMethodBeat.o(108732);
       return null;
     }
     Object localObject = DocumentBuilderFactory.newInstance();
@@ -112,14 +112,14 @@ public final class b
           ((ArrayList)localObject).add(paramString.item(i).getTextContent());
           i += 1;
         }
-        AppMethodBeat.o(53159);
+        AppMethodBeat.o(108732);
         return localObject;
       }
     }
     catch (Exception paramString)
     {
-      ab.e("MicroMsg.emoji.EmojiBackupXMLParser", "[parser] parseXML exception:%s", new Object[] { paramString.toString() });
-      AppMethodBeat.o(53159);
+      ad.e("MicroMsg.emoji.EmojiBackupXMLParser", "[parser] parseXML exception:%s", new Object[] { paramString.toString() });
+      AppMethodBeat.o(108732);
     }
     return null;
   }

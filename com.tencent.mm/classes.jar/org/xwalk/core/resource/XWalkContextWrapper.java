@@ -11,7 +11,13 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
+import android.os.Build.VERSION;
+import android.util.AttributeSet;
+import android.view.InflateException;
 import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
+import android.view.View;
+import android.view.ViewStub;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.lang.reflect.Field;
@@ -34,6 +40,8 @@ public class XWalkContextWrapper
   static Resources sResources = null;
   public int apkVersion;
   public String extractedCoreDir;
+  public int forceDarkBehavior;
+  public boolean isForceDarkMode;
   private ApplicationInfo mApplicationInfo;
   private ClassLoader mClassLoader;
   private Context mContext;
@@ -46,16 +54,18 @@ public class XWalkContextWrapper
   public XWalkContextWrapper(Context paramContext, int paramInt)
   {
     super(paramContext);
-    AppMethodBeat.i(86212);
+    AppMethodBeat.i(155326);
     this.apkVersion = 0;
     this.mHasAddFilterResources = false;
     this.usingCustomContext = false;
+    this.isForceDarkMode = false;
+    this.forceDarkBehavior = 2;
     this.apkVersion = paramInt;
     String str = XWalkEnvironment.getDownloadApkPath(paramInt);
     this.extractedCoreDir = XWalkEnvironment.getExtractedCoreDir(paramInt);
     this.mContext = paramContext;
     this.mLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).cloneInContext(this);
-    XWalkContextWrapper.XWalkLayoutInflaterFactory localXWalkLayoutInflaterFactory = new XWalkContextWrapper.XWalkLayoutInflaterFactory(null);
+    XWalkLayoutInflaterFactory localXWalkLayoutInflaterFactory = new XWalkLayoutInflaterFactory(null);
     localXWalkLayoutInflaterFactory.layoutInflater = this.mLayoutInflater;
     try
     {
@@ -67,6 +77,12 @@ public class XWalkContextWrapper
       if (this.usingCustomContext)
       {
         this.mResources = new XWalkResource(getResources(paramContext, str), paramContext);
+        if (!XWalkEnvironment.isCurrentVersionSupportForceDarkMode()) {
+          break label361;
+        }
+        this.isForceDarkMode = XWalkEnvironment.getForceDarkMode();
+        this.forceDarkBehavior = XWalkEnvironment.getForceDarkBehavior();
+        Log.i("XWalkLib", "force dark mode suopported isForceDarkMode:" + this.isForceDarkMode + ", forceDarkBehavior:" + this.forceDarkBehavior);
         if ((this.mResources != null) && (this.mApplicationInfo != null))
         {
           this.mTheme = this.mResources.newTheme();
@@ -79,8 +95,7 @@ public class XWalkContextWrapper
             this.mTheme.applyStyle(this.mApplicationInfo.theme, true);
           }
         }
-        AppMethodBeat.o(86212);
-        return;
+        AppMethodBeat.o(155326);
       }
     }
     catch (NoSuchFieldException localNoSuchFieldException)
@@ -97,25 +112,28 @@ public class XWalkContextWrapper
         Log.e("XWalkLib", "XWalkContextWrapper mFactorySet" + localIllegalAccessException.getMessage());
         continue;
         this.mResources = getResources(paramContext, str);
+        continue;
+        label361:
+        Log.i("XWalkLib", "force dark mode not suopported");
       }
     }
   }
   
   private boolean checkResApkExist(String paramString)
   {
-    AppMethodBeat.i(86215);
+    AppMethodBeat.i(155330);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(86215);
+      AppMethodBeat.o(155330);
       return false;
     }
     paramString = new File(paramString);
     if ((paramString.exists()) && (paramString.isFile()))
     {
-      AppMethodBeat.o(86215);
+      AppMethodBeat.o(155330);
       return true;
     }
-    AppMethodBeat.o(86215);
+    AppMethodBeat.o(155330);
     return false;
   }
   
@@ -125,17 +143,17 @@ public class XWalkContextWrapper
     {
       try
       {
-        AppMethodBeat.i(86216);
+        AppMethodBeat.i(155331);
         if (paramString == null)
         {
           paramContext = null;
-          AppMethodBeat.o(86216);
+          AppMethodBeat.o(155331);
           return paramContext;
         }
         if (paramString.equals(sLastInfoStr))
         {
           paramContext = sInfo;
-          AppMethodBeat.o(86216);
+          AppMethodBeat.o(155331);
           continue;
         }
         sLastInfoStr = paramString;
@@ -143,29 +161,29 @@ public class XWalkContextWrapper
       finally {}
       paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramString, 0);
       sInfo = paramContext;
-      AppMethodBeat.o(86216);
+      AppMethodBeat.o(155331);
     }
   }
   
   private Intent getRealIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(86218);
+    AppMethodBeat.i(155333);
     ComponentName localComponentName = paramIntent.getComponent();
     if (localComponentName != null) {
       paramIntent.setComponent(new ComponentName(getBaseContext(), localComponentName.getClassName()));
     }
-    AppMethodBeat.o(86218);
+    AppMethodBeat.o(155333);
     return paramIntent;
   }
   
   private Resources getResources(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(86213);
+    AppMethodBeat.i(155328);
     if (sResources != null)
     {
       initByPath(paramContext, paramString);
       paramContext = sResources;
-      AppMethodBeat.o(86213);
+      AppMethodBeat.o(155328);
       return paramContext;
     }
     if (checkResApkExist(paramString))
@@ -183,7 +201,7 @@ public class XWalkContextWrapper
       if (localResources != null)
       {
         sResources = localResources;
-        AppMethodBeat.o(86213);
+        AppMethodBeat.o(155328);
         return localResources;
       }
     }
@@ -193,7 +211,7 @@ public class XWalkContextWrapper
       sResources = getResourcesWithReflect(paramContext, paramString);
       Log.i("XWalkLib", "XWalkContextWrapper checkResApkExist false");
       paramContext = sResources;
-      AppMethodBeat.o(86213);
+      AppMethodBeat.o(155328);
       return paramContext;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
@@ -205,27 +223,27 @@ public class XWalkContextWrapper
   
   private Resources getResourcesWithReflect(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(86214);
+    AppMethodBeat.i(155329);
     try
     {
       paramContext = (AssetManager)AssetManager.class.newInstance();
       paramContext.getClass().getMethod("addAssetPath", new Class[] { String.class }).invoke(paramContext, new Object[] { paramString });
       paramString = super.getResources();
       paramContext = new Resources(paramContext, paramString.getDisplayMetrics(), paramString.getConfiguration());
-      AppMethodBeat.o(86214);
+      AppMethodBeat.o(155329);
       return paramContext;
     }
     catch (Exception paramContext)
     {
       Log.e("XWalkLib", "XWalkContextWrapper getResourcesWithReflect error:" + paramContext.getMessage());
-      AppMethodBeat.o(86214);
+      AppMethodBeat.o(155329);
     }
     return null;
   }
   
   private ApplicationInfo initByPath(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(154235);
+    AppMethodBeat.i(155327);
     paramContext = getPackageInfo(paramContext, paramString);
     if (paramContext != null)
     {
@@ -238,30 +256,30 @@ public class XWalkContextWrapper
       }
     }
     paramContext = this.mApplicationInfo;
-    AppMethodBeat.o(154235);
+    AppMethodBeat.o(155327);
     return paramContext;
   }
   
   public Context getApplicationContext()
   {
-    AppMethodBeat.i(86219);
+    AppMethodBeat.i(155334);
     Context localContext = this.mContext.getApplicationContext();
-    AppMethodBeat.o(86219);
+    AppMethodBeat.o(155334);
     return localContext;
   }
   
   public AssetManager getAssets()
   {
-    AppMethodBeat.i(86220);
+    AppMethodBeat.i(155335);
     Object localObject = getResources();
     if (localObject != null)
     {
       localObject = ((Resources)localObject).getAssets();
-      AppMethodBeat.o(86220);
+      AppMethodBeat.o(155335);
       return localObject;
     }
     localObject = super.getAssets();
-    AppMethodBeat.o(86220);
+    AppMethodBeat.o(155335);
     return localObject;
   }
   
@@ -272,22 +290,22 @@ public class XWalkContextWrapper
   
   public ClassLoader getClassLoader()
   {
-    AppMethodBeat.i(86228);
+    AppMethodBeat.i(155343);
     if (this.mClassLoader != null)
     {
       localObject = this.mClassLoader;
-      AppMethodBeat.o(86228);
+      AppMethodBeat.o(155343);
       return localObject;
     }
     Object localObject = XWalkCoreWrapper.getInstance();
     if (localObject != null)
     {
       localObject = ((XWalkCoreWrapper)localObject).getBridgeLoader();
-      AppMethodBeat.o(86228);
+      AppMethodBeat.o(155343);
       return localObject;
     }
     localObject = super.getClassLoader();
-    AppMethodBeat.o(86228);
+    AppMethodBeat.o(155343);
     return localObject;
   }
   
@@ -298,9 +316,9 @@ public class XWalkContextWrapper
   
   public String getPackageName()
   {
-    AppMethodBeat.i(86221);
+    AppMethodBeat.i(155336);
     String str = this.mContext.getPackageName();
-    AppMethodBeat.o(86221);
+    AppMethodBeat.o(155336);
     return str;
   }
   
@@ -311,7 +329,7 @@ public class XWalkContextWrapper
   
   public Resources getResources()
   {
-    AppMethodBeat.i(86222);
+    AppMethodBeat.i(155337);
     if (!this.mHasAddFilterResources)
     {
       if (!WebViewExtension.addFilterResources(this.mResources, getResourcesKeyIdMap(this.mResources))) {
@@ -325,13 +343,13 @@ public class XWalkContextWrapper
       if (localResources == null) {
         break;
       }
-      AppMethodBeat.o(86222);
+      AppMethodBeat.o(155337);
       return localResources;
       label53:
       Log.e("XWalkLib", "mHasAddFilterResources = false");
     }
     Resources localResources = super.getResources();
-    AppMethodBeat.o(86222);
+    AppMethodBeat.o(155337);
     return localResources;
   }
   
@@ -339,30 +357,30 @@ public class XWalkContextWrapper
   public HashMap<Long, Integer> getResourcesKeyIdMap(Resources paramResources)
   {
     // Byte code:
-    //   0: ldc_w 400
-    //   3: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: getstatic 402	org/xwalk/core/resource/XWalkContextWrapper:mResourcessKeyIdMap	Ljava/util/HashMap;
+    //   0: ldc_w 429
+    //   3: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: getstatic 431	org/xwalk/core/resource/XWalkContextWrapper:mResourcessKeyIdMap	Ljava/util/HashMap;
     //   9: ifnull +21 -> 30
-    //   12: getstatic 402	org/xwalk/core/resource/XWalkContextWrapper:mResourcessKeyIdMap	Ljava/util/HashMap;
-    //   15: invokevirtual 407	java/util/HashMap:clone	()Ljava/lang/Object;
-    //   18: checkcast 404	java/util/HashMap
+    //   12: getstatic 431	org/xwalk/core/resource/XWalkContextWrapper:mResourcessKeyIdMap	Ljava/util/HashMap;
+    //   15: invokevirtual 436	java/util/HashMap:clone	()Ljava/lang/Object;
+    //   18: checkcast 433	java/util/HashMap
     //   21: astore_1
-    //   22: ldc_w 400
-    //   25: invokestatic 175	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   22: ldc_w 429
+    //   25: invokestatic 222	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   28: aload_1
     //   29: areturn
-    //   30: ldc 13
-    //   32: ldc_w 409
-    //   35: invokestatic 287	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   38: new 404	java/util/HashMap
+    //   30: ldc 16
+    //   32: ldc_w 438
+    //   35: invokestatic 187	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   38: new 433	java/util/HashMap
     //   41: dup
-    //   42: invokespecial 411	java/util/HashMap:<init>	()V
+    //   42: invokespecial 440	java/util/HashMap:<init>	()V
     //   45: astore 10
     //   47: aload_0
-    //   48: invokevirtual 412	org/xwalk/core/resource/XWalkContextWrapper:getClassLoader	()Ljava/lang/ClassLoader;
-    //   51: ldc 10
-    //   53: invokevirtual 418	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
-    //   56: invokevirtual 422	java/lang/Class:getClasses	()[Ljava/lang/Class;
+    //   48: invokevirtual 441	org/xwalk/core/resource/XWalkContextWrapper:getClassLoader	()Ljava/lang/ClassLoader;
+    //   51: ldc 13
+    //   53: invokevirtual 447	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   56: invokevirtual 451	java/lang/Class:getClasses	()[Ljava/lang/Class;
     //   59: astore 11
     //   61: aload 11
     //   63: arraylength
@@ -377,12 +395,12 @@ public class XWalkContextWrapper
     //   77: aaload
     //   78: astore 12
     //   80: aload 12
-    //   82: invokevirtual 425	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   85: ldc_w 427
-    //   88: invokevirtual 225	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   82: invokevirtual 454	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   85: ldc_w 456
+    //   88: invokevirtual 257	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   91: ifeq +388 -> 479
     //   94: aload 12
-    //   96: invokevirtual 431	java/lang/Class:getFields	()[Ljava/lang/reflect/Field;
+    //   96: invokevirtual 460	java/lang/Class:getFields	()[Ljava/lang/reflect/Field;
     //   99: astore 12
     //   101: aload 12
     //   103: arraylength
@@ -397,25 +415,25 @@ public class XWalkContextWrapper
     //   117: aaload
     //   118: astore 13
     //   120: aload 13
-    //   122: invokevirtual 434	java/lang/reflect/Field:getModifiers	()I
-    //   125: invokestatic 440	java/lang/reflect/Modifier:isFinal	(I)Z
+    //   122: invokevirtual 463	java/lang/reflect/Field:getModifiers	()I
+    //   125: invokestatic 469	java/lang/reflect/Modifier:isFinal	(I)Z
     //   128: ifeq +9 -> 137
     //   131: aload 13
     //   133: iconst_1
-    //   134: invokevirtual 117	java/lang/reflect/Field:setAccessible	(Z)V
+    //   134: invokevirtual 126	java/lang/reflect/Field:setAccessible	(Z)V
     //   137: iconst_0
     //   138: istore 5
     //   140: iload 5
     //   142: istore 4
-    //   144: new 442	android/util/TypedValue
+    //   144: new 471	android/util/TypedValue
     //   147: dup
-    //   148: invokespecial 443	android/util/TypedValue:<init>	()V
+    //   148: invokespecial 472	android/util/TypedValue:<init>	()V
     //   151: astore 14
     //   153: iload 5
     //   155: istore 4
     //   157: aload 13
     //   159: aconst_null
-    //   160: invokevirtual 447	java/lang/reflect/Field:getInt	(Ljava/lang/Object;)I
+    //   160: invokevirtual 476	java/lang/reflect/Field:getInt	(Ljava/lang/Object;)I
     //   163: istore 5
     //   165: iload 5
     //   167: istore 4
@@ -423,16 +441,16 @@ public class XWalkContextWrapper
     //   170: iload 5
     //   172: aload 14
     //   174: iconst_1
-    //   175: invokevirtual 451	android/content/res/Resources:getValue	(ILandroid/util/TypedValue;Z)V
+    //   175: invokevirtual 480	android/content/res/Resources:getValue	(ILandroid/util/TypedValue;Z)V
     //   178: iload 5
     //   180: istore 4
     //   182: aload 14
-    //   184: getfield 454	android/util/TypedValue:assetCookie	I
+    //   184: getfield 483	android/util/TypedValue:assetCookie	I
     //   187: i2l
     //   188: bipush 32
     //   190: lshl
     //   191: aload 14
-    //   193: getfield 457	android/util/TypedValue:data	I
+    //   193: getfield 486	android/util/TypedValue:data	I
     //   196: i2l
     //   197: lor
     //   198: lstore 8
@@ -440,111 +458,111 @@ public class XWalkContextWrapper
     //   202: istore 4
     //   204: aload 10
     //   206: lload 8
-    //   208: invokestatic 463	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   208: invokestatic 492	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   211: iload 5
-    //   213: invokestatic 468	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   216: invokevirtual 472	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   213: invokestatic 497	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   216: invokevirtual 501	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   219: pop
     //   220: iload 5
     //   222: istore 4
-    //   224: ldc 13
-    //   226: new 177	java/lang/StringBuilder
+    //   224: ldc 16
+    //   226: new 161	java/lang/StringBuilder
     //   229: dup
-    //   230: ldc_w 474
-    //   233: invokespecial 182	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   230: ldc_w 503
+    //   233: invokespecial 166	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   236: aload 13
-    //   238: invokevirtual 477	java/lang/reflect/Field:getName	()Ljava/lang/String;
-    //   241: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   244: ldc_w 479
-    //   247: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: invokevirtual 506	java/lang/reflect/Field:getName	()Ljava/lang/String;
+    //   241: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   244: ldc_w 508
+    //   247: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   250: iload 5
-    //   252: invokevirtual 482	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   255: ldc_w 484
-    //   258: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   252: invokevirtual 178	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   255: ldc_w 510
+    //   258: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   261: lload 8
-    //   263: invokevirtual 487	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   266: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   269: invokestatic 490	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   263: invokevirtual 513	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   266: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   269: invokestatic 516	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   272: aload 13
-    //   274: invokevirtual 434	java/lang/reflect/Field:getModifiers	()I
-    //   277: invokestatic 440	java/lang/reflect/Modifier:isFinal	(I)Z
+    //   274: invokevirtual 463	java/lang/reflect/Field:getModifiers	()I
+    //   277: invokestatic 469	java/lang/reflect/Modifier:isFinal	(I)Z
     //   280: ifeq +206 -> 486
     //   283: aload 13
     //   285: iconst_0
-    //   286: invokevirtual 117	java/lang/reflect/Field:setAccessible	(Z)V
+    //   286: invokevirtual 126	java/lang/reflect/Field:setAccessible	(Z)V
     //   289: goto +197 -> 486
     //   292: astore 14
-    //   294: ldc 13
-    //   296: new 177	java/lang/StringBuilder
+    //   294: ldc 16
+    //   296: new 161	java/lang/StringBuilder
     //   299: dup
-    //   300: invokespecial 491	java/lang/StringBuilder:<init>	()V
+    //   300: invokespecial 517	java/lang/StringBuilder:<init>	()V
     //   303: aload 13
-    //   305: invokevirtual 477	java/lang/reflect/Field:getName	()Ljava/lang/String;
-    //   308: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   311: ldc_w 493
-    //   314: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   317: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   320: invokestatic 496	org/xwalk/core/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   305: invokevirtual 506	java/lang/reflect/Field:getName	()Ljava/lang/String;
+    //   308: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   311: ldc_w 519
+    //   314: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   317: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   320: invokestatic 522	org/xwalk/core/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   323: goto -51 -> 272
     //   326: astore_1
-    //   327: ldc 13
-    //   329: ldc_w 498
-    //   332: invokestatic 199	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   327: ldc 16
+    //   329: ldc_w 524
+    //   332: invokestatic 230	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   335: aload 10
-    //   337: putstatic 402	org/xwalk/core/resource/XWalkContextWrapper:mResourcessKeyIdMap	Ljava/util/HashMap;
-    //   340: ldc 13
-    //   342: new 177	java/lang/StringBuilder
+    //   337: putstatic 431	org/xwalk/core/resource/XWalkContextWrapper:mResourcessKeyIdMap	Ljava/util/HashMap;
+    //   340: ldc 16
+    //   342: new 161	java/lang/StringBuilder
     //   345: dup
-    //   346: ldc_w 500
-    //   349: invokespecial 182	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   352: getstatic 402	org/xwalk/core/resource/XWalkContextWrapper:mResourcessKeyIdMap	Ljava/util/HashMap;
-    //   355: invokevirtual 504	java/util/HashMap:keySet	()Ljava/util/Set;
-    //   358: invokeinterface 509 1 0
-    //   363: invokevirtual 482	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   366: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   369: invokestatic 287	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   372: getstatic 402	org/xwalk/core/resource/XWalkContextWrapper:mResourcessKeyIdMap	Ljava/util/HashMap;
-    //   375: invokevirtual 407	java/util/HashMap:clone	()Ljava/lang/Object;
-    //   378: checkcast 404	java/util/HashMap
+    //   346: ldc_w 526
+    //   349: invokespecial 166	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   352: getstatic 431	org/xwalk/core/resource/XWalkContextWrapper:mResourcessKeyIdMap	Ljava/util/HashMap;
+    //   355: invokevirtual 530	java/util/HashMap:keySet	()Ljava/util/Set;
+    //   358: invokeinterface 535 1 0
+    //   363: invokevirtual 178	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   366: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   369: invokestatic 187	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   372: getstatic 431	org/xwalk/core/resource/XWalkContextWrapper:mResourcessKeyIdMap	Ljava/util/HashMap;
+    //   375: invokevirtual 436	java/util/HashMap:clone	()Ljava/lang/Object;
+    //   378: checkcast 433	java/util/HashMap
     //   381: astore_1
-    //   382: ldc_w 400
-    //   385: invokestatic 175	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   382: ldc_w 429
+    //   385: invokestatic 222	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   388: aload_1
     //   389: areturn
     //   390: astore 14
-    //   392: ldc 13
-    //   394: new 177	java/lang/StringBuilder
+    //   392: ldc 16
+    //   394: new 161	java/lang/StringBuilder
     //   397: dup
-    //   398: invokespecial 491	java/lang/StringBuilder:<init>	()V
+    //   398: invokespecial 517	java/lang/StringBuilder:<init>	()V
     //   401: aload 13
-    //   403: invokevirtual 477	java/lang/reflect/Field:getName	()Ljava/lang/String;
-    //   406: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   409: ldc_w 511
-    //   412: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   415: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   418: invokestatic 496	org/xwalk/core/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   403: invokevirtual 506	java/lang/reflect/Field:getName	()Ljava/lang/String;
+    //   406: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   409: ldc_w 537
+    //   412: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   415: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   418: invokestatic 522	org/xwalk/core/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   421: goto -149 -> 272
     //   424: astore_1
-    //   425: ldc 13
+    //   425: ldc 16
     //   427: aload_1
-    //   428: invokevirtual 336	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   431: invokestatic 199	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   428: invokevirtual 366	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   431: invokestatic 230	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   434: goto -99 -> 335
     //   437: astore 14
-    //   439: ldc 13
-    //   441: new 177	java/lang/StringBuilder
+    //   439: ldc 16
+    //   441: new 161	java/lang/StringBuilder
     //   444: dup
-    //   445: invokespecial 491	java/lang/StringBuilder:<init>	()V
+    //   445: invokespecial 517	java/lang/StringBuilder:<init>	()V
     //   448: aload 13
-    //   450: invokevirtual 477	java/lang/reflect/Field:getName	()Ljava/lang/String;
-    //   453: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   456: ldc_w 513
-    //   459: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   450: invokevirtual 506	java/lang/reflect/Field:getName	()Ljava/lang/String;
+    //   453: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   456: ldc_w 539
+    //   459: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   462: iload 4
-    //   464: invokestatic 516	java/lang/Integer:toHexString	(I)Ljava/lang/String;
-    //   467: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   470: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   473: invokestatic 496	org/xwalk/core/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   464: invokestatic 542	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   467: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   470: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   473: invokestatic 522	org/xwalk/core/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   476: goto -204 -> 272
     //   479: iload_2
     //   480: iconst_1
@@ -625,38 +643,38 @@ public class XWalkContextWrapper
   
   public Object getSystemService(String paramString)
   {
-    AppMethodBeat.i(86223);
+    AppMethodBeat.i(155338);
     if (paramString.equals("layout_inflater"))
     {
       paramString = getLayoutInflater();
-      AppMethodBeat.o(86223);
+      AppMethodBeat.o(155338);
       return paramString;
     }
     try
     {
       paramString = this.mContext.getSystemService(paramString);
-      AppMethodBeat.o(86223);
+      AppMethodBeat.o(155338);
       return paramString;
     }
     catch (Exception paramString)
     {
       Log.e("XWalkLib", "getSystemService failed " + paramString.getMessage());
-      AppMethodBeat.o(86223);
+      AppMethodBeat.o(155338);
     }
     return null;
   }
   
   public Resources.Theme getTheme()
   {
-    AppMethodBeat.i(86224);
+    AppMethodBeat.i(155339);
     if (this.mTheme != null)
     {
       localTheme = this.mTheme;
-      AppMethodBeat.o(86224);
+      AppMethodBeat.o(155339);
       return localTheme;
     }
     Resources.Theme localTheme = super.getTheme();
-    AppMethodBeat.o(86224);
+    AppMethodBeat.o(155339);
     return localTheme;
   }
   
@@ -667,35 +685,135 @@ public class XWalkContextWrapper
   
   public void setTheme(int paramInt)
   {
-    AppMethodBeat.i(86225);
+    AppMethodBeat.i(155340);
     if (this.mContext.getTheme() != null)
     {
       this.mContext.getTheme().applyStyle(paramInt, true);
-      AppMethodBeat.o(86225);
+      AppMethodBeat.o(155340);
       return;
     }
     super.setTheme(paramInt);
-    AppMethodBeat.o(86225);
+    AppMethodBeat.o(155340);
   }
   
   public void startActivity(Intent paramIntent)
   {
-    AppMethodBeat.i(86226);
+    AppMethodBeat.i(155341);
     super.startActivity(getRealIntent(paramIntent));
-    AppMethodBeat.o(86226);
+    AppMethodBeat.o(155341);
   }
   
   public ComponentName startService(Intent paramIntent)
   {
-    AppMethodBeat.i(86227);
+    AppMethodBeat.i(155342);
     paramIntent = super.startService(getRealIntent(paramIntent));
-    AppMethodBeat.o(86227);
+    AppMethodBeat.o(155342);
     return paramIntent;
+  }
+  
+  static final class XWalkLayoutInflaterFactory
+    implements LayoutInflater.Factory
+  {
+    LayoutInflater layoutInflater;
+    
+    private View createView(String paramString1, String paramString2, AttributeSet paramAttributeSet)
+    {
+      AppMethodBeat.i(155325);
+      Object localObject = null;
+      try
+      {
+        paramString1 = this.layoutInflater.createView(paramString1, paramString2, paramAttributeSet);
+        AppMethodBeat.o(155325);
+        return paramString1;
+      }
+      catch (ClassNotFoundException paramString1)
+      {
+        for (;;)
+        {
+          paramString1 = localObject;
+        }
+      }
+      catch (InflateException paramString1)
+      {
+        for (;;)
+        {
+          paramString1 = localObject;
+        }
+      }
+    }
+    
+    public final View inflateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+    {
+      Object localObject = null;
+      AppMethodBeat.i(155324);
+      if (paramString.indexOf(".") == -1)
+      {
+        if (paramString.equals("WebView")) {
+          localObject = createView(paramString, "android.webkit.", paramAttributeSet);
+        }
+        paramContext = (Context)localObject;
+        if (localObject == null) {
+          paramContext = createView(paramString, "android.widget.", paramAttributeSet);
+        }
+        localObject = paramContext;
+        if (paramContext != null) {}
+      }
+      for (localObject = createView(paramString, "android.view.", paramAttributeSet);; localObject = this.layoutInflater.createView(paramString, null, paramAttributeSet))
+      {
+        AppMethodBeat.o(155324);
+        return localObject;
+      }
+    }
+    
+    public final View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+    {
+      AppMethodBeat.i(155323);
+      localContext2 = null;
+      localContext1 = null;
+      try
+      {
+        paramContext = inflateView(paramString, paramContext, paramAttributeSet);
+        paramAttributeSet = paramContext;
+        localContext1 = paramContext;
+        localContext2 = paramContext;
+        if ((paramContext instanceof ViewStub))
+        {
+          paramAttributeSet = paramContext;
+          localContext1 = paramContext;
+          localContext2 = paramContext;
+          if (Build.VERSION.SDK_INT >= 21)
+          {
+            localContext1 = paramContext;
+            localContext2 = paramContext;
+            ((ViewStub)paramContext).setLayoutInflater(this.layoutInflater);
+            paramAttributeSet = paramContext;
+          }
+        }
+      }
+      catch (ClassNotFoundException paramContext)
+      {
+        for (;;)
+        {
+          Log.w("XWalkLib", String.format("[XWalkContextWrapper] class not found. name:%s. Use default Inflate.", new Object[] { paramString }));
+          paramAttributeSet = localContext1;
+        }
+      }
+      catch (InflateException paramContext)
+      {
+        for (;;)
+        {
+          Log.w("XWalkLib", String.format("[XWalkContextWrapper] Inflate failed. name:%s. Use default Inflate.", new Object[] { paramString }));
+          paramAttributeSet = localContext2;
+        }
+      }
+      AppMethodBeat.o(155323);
+      return paramAttributeSet;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.resource.XWalkContextWrapper
  * JD-Core Version:    0.7.0.1
  */

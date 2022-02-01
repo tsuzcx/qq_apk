@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="2.7"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <FrameLayout android:id="@id/hah" android:background="@drawable/c4v" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/haf" android:padding="@dimen/ci" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/icons_filled_cutie" />
+            <ImageView android:layout_gravity="end|bottom|center" android:id="@id/hag" android:visibility="gone" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" />
+        </FrameLayout>
+        <TextView android:textSize="@dimen/ed" android:textColor="@color/aj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:text="@string/hpx" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <FrameLayout android:id="@id/hr1" android:background="@drawable/c4v" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/hqz" android:padding="@dimen/ci" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/icons_filled_sticker" />
+            <ImageView android:layout_gravity="end|bottom|center" android:id="@id/hr0" android:visibility="gone" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" />
+        </FrameLayout>
+        <TextView android:textSize="@dimen/ed" android:textColor="@color/aj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:text="@string/hqa" />
+    </LinearLayout>
+</LinearLayout>

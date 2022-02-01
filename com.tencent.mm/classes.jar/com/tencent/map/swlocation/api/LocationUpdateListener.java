@@ -1,6 +1,6 @@
 package com.tencent.map.swlocation.api;
 
-import com.b.a.a.t.b;
+import com.c.a.a.t.b;
 
 public abstract interface LocationUpdateListener
   extends t.b
@@ -9,7 +9,7 @@ public abstract interface LocationUpdateListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.swlocation.api.LocationUpdateListener
  * JD-Core Version:    0.7.0.1
  */

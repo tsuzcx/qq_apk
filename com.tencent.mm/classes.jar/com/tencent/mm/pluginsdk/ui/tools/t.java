@@ -1,50 +1,41 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.k;
+import com.tencent.mm.compatible.util.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class t
 {
-  private static List<t.a> wgb;
-  
-  static
+  public static h ho(Context paramContext)
   {
-    AppMethodBeat.i(79959);
-    wgb = new ArrayList();
-    AppMethodBeat.o(79959);
-  }
-  
-  public static void a(t.a parama)
-  {
-    AppMethodBeat.i(79957);
-    if (parama != null)
+    AppMethodBeat.i(116317);
+    if (bt.by(ae.fFH.fCR, "").equals("surface"))
     {
-      ab.d("MicroMsg.WebViewPluginCenter", "add, plugin name = " + parama.getName());
-      if (!wgb.contains(parama)) {
-        wgb.add(parama);
-      }
+      ad.i("MicroMsg.VideoViewFactory", "match full type surface");
+      paramContext = new VideoSurfaceView(paramContext);
+      AppMethodBeat.o(116317);
+      return paramContext;
     }
-    AppMethodBeat.o(79957);
-  }
-  
-  public static void clear()
-  {
-    AppMethodBeat.i(79958);
-    ab.d("MicroMsg.WebViewPluginCenter", "clear");
-    wgb.clear();
-    AppMethodBeat.o(79958);
-  }
-  
-  public static List<t.a> dpK()
-  {
-    return wgb;
+    if (l.XU())
+    {
+      ad.i("MicroMsg.VideoViewFactory", "IS MTK platform");
+      paramContext = new VideoSightView(paramContext);
+      AppMethodBeat.o(116317);
+      return paramContext;
+    }
+    ad.i("MicroMsg.VideoViewFactory", "default settings, use sightview");
+    paramContext = new VideoSightView(paramContext);
+    AppMethodBeat.o(116317);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.t
  * JD-Core Version:    0.7.0.1
  */

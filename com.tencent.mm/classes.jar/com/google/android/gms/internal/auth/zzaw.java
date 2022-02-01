@@ -14,7 +14,7 @@ public final class zzaw
 {
   public static PendingIntent zzd(Context paramContext, Auth.AuthCredentialsOptions paramAuthCredentialsOptions, HintRequest paramHintRequest)
   {
-    AppMethodBeat.i(50485);
+    AppMethodBeat.i(88380);
     Preconditions.checkNotNull(paramContext, "context must not be null");
     Preconditions.checkNotNull(paramHintRequest, "request must not be null");
     if ((paramAuthCredentialsOptions != null) && (paramAuthCredentialsOptions.zzg() != null)) {}
@@ -24,14 +24,14 @@ public final class zzaw
       SafeParcelableSerializer.serializeToIntentExtra(paramAuthCredentialsOptions, localIntent, "com.google.android.gms.credentials.PasswordSpecification");
       SafeParcelableSerializer.serializeToIntentExtra(paramHintRequest, localIntent, "com.google.android.gms.credentials.HintRequest");
       paramContext = PendingIntent.getActivity(paramContext, 2000, localIntent, 134217728);
-      AppMethodBeat.o(50485);
+      AppMethodBeat.o(88380);
       return paramContext;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.internal.auth.zzaw
  * JD-Core Version:    0.7.0.1
  */

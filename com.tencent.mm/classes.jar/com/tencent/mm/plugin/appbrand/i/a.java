@@ -1,137 +1,87 @@
 package com.tencent.mm.plugin.appbrand.i;
 
-import android.util.SparseArray;
-import com.tencent.mm.d.a.c;
-import com.tencent.mm.d.a.l;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
+import org.json.JSONObject;
 
-public abstract class a
-  extends d
-  implements i, k, m, q, r, s
+public final class a
 {
-  private final c cbT = r(paramString, paramArrayOfByte);
-  final l ijd = a(this.cbT, e.aGE());
-  private final e ije = new e(new a.1(this));
-  private ArrayList<m.a> ijf = new ArrayList();
-  
-  public a(String paramString, byte[] paramArrayOfByte)
+  public static void a(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    paramString = this.ije;
-    ab.i("MicroMsg.AppBrandJ2V8ContextMgr", "setMainContext id:%d", new Object[] { Integer.valueOf(1) });
-    paramString.ijl.put(1, this);
+    AppMethodBeat.i(139373);
+    c(paramJSONObject, "useXWebVideo", Boolean.valueOf(paramBoolean));
+    c(paramJSONObject, "XWebVideoMinVersion", Integer.valueOf(300));
+    AppMethodBeat.o(139373);
   }
   
-  protected abstract l a(c paramc, int paramInt);
-  
-  public final void a(m.a parama)
+  public static void b(boolean paramBoolean, JSONObject paramJSONObject)
   {
+    AppMethodBeat.i(139374);
+    c(paramJSONObject, "useXWebMap", Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(139374);
+  }
+  
+  private static void c(JSONObject paramJSONObject, String paramString, Object paramObject)
+  {
+    AppMethodBeat.i(139381);
     try
     {
-      this.ijf.add(parama);
+      paramJSONObject.put(paramString, paramObject);
+      AppMethodBeat.o(139381);
       return;
     }
-    finally
+    catch (Exception paramJSONObject)
     {
-      parama = finally;
-      throw parama;
+      ad.e("MicroMsg.SameLayer.AppBrandExtendPluginUtil", "build json object fail", new Object[] { paramJSONObject });
+      AppMethodBeat.o(139381);
     }
   }
   
-  public final int aGA()
+  public static void c(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    return e.aGE();
+    AppMethodBeat.i(139376);
+    c(paramJSONObject, "useXWebTextarea", Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(139376);
   }
   
-  public final g aGB()
+  public static void d(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    return this.ije.ow(1);
+    AppMethodBeat.i(139377);
+    c(paramJSONObject, "supportXWebTextarea", Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(139377);
   }
   
-  public final g aGC()
+  public static void e(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    return this.ije.aGC();
+    AppMethodBeat.i(139378);
+    c(paramJSONObject, "supportXWebTouch", Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(139378);
   }
   
-  protected final c aGx()
+  public static void f(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    return this.cbT;
+    AppMethodBeat.i(139379);
+    c(paramJSONObject, "useXWebLive", Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(139379);
   }
   
-  protected final l aGy()
+  public static void g(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    return this.ijd;
+    AppMethodBeat.i(139380);
+    c(paramJSONObject, "useXWebCamera", Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(139380);
   }
   
-  public final boolean aGz()
+  public static void h(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    return true;
-  }
-  
-  public void destroy()
-  {
-    this.ijd.cbC.l(new a.2(this));
-    e locale = this.ije;
-    SparseArray localSparseArray = locale.ijl;
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        if (i < locale.ijl.size())
-        {
-          int j = locale.ijl.keyAt(i);
-          if (j == 1) {
-            break label163;
-          }
-          ab.i("MicroMsg.AppBrandJ2V8ContextMgr", "destroyRestButNotMainContext contextId:%d", new Object[] { Integer.valueOf(j) });
-          if (locale.ijl.get(j) == null) {
-            ab.w("MicroMsg.AppBrandJ2V8ContextMgr", "destroyRestButNotMainContext contextId:%d null", new Object[] { Integer.valueOf(j) });
-          } else {
-            ((d)locale.ijl.get(j)).destroy();
-          }
-        }
-      }
-      finally {}
-      localObject.ijl.clear();
-      super.destroy();
-      this.cbT.quit();
-      return;
-      label163:
-      i += 1;
-    }
-  }
-  
-  public final g ow(int paramInt)
-  {
-    return this.ije.ow(paramInt);
-  }
-  
-  public final void ox(int paramInt)
-  {
-    e locale = this.ije;
-    ab.i("MicroMsg.AppBrandJ2V8ContextMgr", "destroyJsContext id:%d", new Object[] { Integer.valueOf(paramInt) });
-    synchronized (locale.ijl)
-    {
-      d locald = (d)locale.ijl.get(paramInt);
-      locale.ijl.delete(paramInt);
-      if (locald != null) {
-        locald.destroy();
-      }
-      return;
-    }
-  }
-  
-  protected abstract c r(String paramString, byte[] paramArrayOfByte);
-  
-  public void setJsExceptionHandler(h paramh)
-  {
-    this.ijd.a(e.aGE(), paramh);
+    AppMethodBeat.i(195033);
+    c(paramJSONObject, "abtestXWebCameraEnable", Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(195033);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.i.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/ell" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:background="@drawable/afj" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/bzg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:layout_gravity="center_horizontal" layout="@layout/avt" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dol" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:textSize="@dimen/ia" android:textColor="@color/a_j" android:id="@id/dom" android:background="@drawable/bp" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="@dimen/i5" android:text="@string/r5" android:layout_weight="1.0" />
+                <ImageView android:id="@id/doh" android:background="@color/vz" android:layout_width="@dimen/bk" android:layout_height="fill_parent" />
+                <Button android:textSize="@dimen/ia" android:textColor="@color/a_j" android:id="@id/doz" android:background="@drawable/bp" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="@dimen/i5" android:text="@string/gz3" android:layout_weight="1.0" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bd8" />
+</LinearLayout>

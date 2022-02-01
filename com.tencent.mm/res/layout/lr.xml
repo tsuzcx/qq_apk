@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="95.0dip" android:layout_height="wrap_content" android:minHeight="120.0dip"
+<LinearLayout android:orientation="vertical" android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:background="#fff8f8f8" android:layout_width="74.0dip" android:layout_height="60.0dip" android:layout_marginLeft="15.0dip" android:layout_marginBottom="14.0dip" android:layout_alignBottom="@id/aoj">
-        <ImageView android:id="@id/ahw" android:layout_width="74.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop" />
-        <ProgressBar android:id="@id/aok" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a00" />
-        <ImageView android:id="@id/aol" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/error_image_sub" android:layout_centerInParent="true" />
+    <ListView android:id="@id/afl" android:background="@color/a25" android:focusable="true" android:visibility="visible" android:layout_height="wrap_content" android:transcriptMode="disabled" style="@style/fy" />
+    <RelativeLayout android:id="@id/b44" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/hv" android:id="@id/e42" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/an9" android:layout_centerInParent="true" />
     </RelativeLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/aoj" android:background="@drawable/iu" android:layout_width="95.0dip" android:layout_height="wrap_content" android:minHeight="120.0dip">
-        <TextView android:textSize="11.0sp" android:textColor="#ff858585" android:orientation="vertical" android:id="@id/aom" android:layout_width="82.0dip" android:layout_height="wrap_content" android:text="@string/o_" />
-        <TextView android:textSize="11.0sp" android:textColor="#ff858585" android:gravity="center_vertical" android:orientation="vertical" android:id="@id/aon" android:layout_width="82.0dip" android:layout_height="wrap_content" android:text="@string/oa" android:drawableLeft="@raw/app_brand_service_bubble_logo" />
-    </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

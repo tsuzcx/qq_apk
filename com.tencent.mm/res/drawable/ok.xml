@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="5.0dip" />
-    <solid android:color="@color/ow" />
-</shape>
+    <item android:state_enabled="false" android:drawable="@drawable/oj" />
+    <item android:state_focused="true" android:drawable="@drawable/ol" />
+    <item android:drawable="@drawable/om" />
+</selector>

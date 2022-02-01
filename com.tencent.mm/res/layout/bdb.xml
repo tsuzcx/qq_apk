@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/c4c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/ha5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/g9a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c8" android:layout_marginTop="@dimen/c5" android:layout_marginRight="@dimen/c8" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c8" android:layout_marginBottom="@dimen/c_">
+        <Button android:textColor="@color/h1" android:id="@id/aay" android:layout_width="@dimen/bw" android:layout_height="@dimen/cb" android:text="@string/ai4" style="@style/of" />
+        <Button android:id="@id/e7h" android:layout_width="@dimen/bw" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/c5" android:text="@string/ai6" style="@style/o8" />
+        <Button android:id="@id/a9i" android:visibility="gone" android:layout_width="@dimen/c2" android:layout_height="@dimen/cb" android:text="@string/ai6" style="@style/o7" />
+    </LinearLayout>
+</LinearLayout>

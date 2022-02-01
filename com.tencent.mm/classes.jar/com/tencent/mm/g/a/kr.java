@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class kr
   extends b
 {
-  public a cAF;
-  public kr.b cAG;
+  public a dpk;
   
   public kr()
   {
@@ -16,24 +15,17 @@ public final class kr
   
   private kr(byte paramByte)
   {
-    AppMethodBeat.i(55347);
-    this.cAF = new a();
-    this.cAG = new kr.b();
-    this.ymq = false;
+    AppMethodBeat.i(116031);
+    this.dpk = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(55347);
+    AppMethodBeat.o(116031);
   }
   
   public static final class a
   {
-    public float cAH = 0.0F;
-    public int cAI = 0;
-    public int cAJ = 0;
-    public String cAK;
-    public String cAL;
-    public boolean cAo = false;
-    public int ctW = 0;
-    public float cyV = 0.0F;
+    public int bvJ = 0;
+    public int status = 0;
   }
 }
 

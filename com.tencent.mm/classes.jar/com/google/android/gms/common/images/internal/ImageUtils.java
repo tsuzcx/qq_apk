@@ -15,10 +15,10 @@ public final class ImageUtils
 {
   public static Bitmap frameBitmapInCircle(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(61280);
+    AppMethodBeat.i(11772);
     if (paramBitmap == null)
     {
-      AppMethodBeat.o(61280);
+      AppMethodBeat.o(11772);
       return null;
     }
     int i = paramBitmap.getWidth();
@@ -38,7 +38,7 @@ public final class ImageUtils
       localCanvas.drawCircle(j / 2, j / 2, j / 2, localPaint);
       localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
       localCanvas.drawBitmap(paramBitmap, i, k, localPaint);
-      AppMethodBeat.o(61280);
+      AppMethodBeat.o(11772);
       return localBitmap;
       k = (i - j) / 2;
       int m = 0;
@@ -49,14 +49,14 @@ public final class ImageUtils
   
   public static Drawable frameDrawableInCircle(Resources paramResources, Drawable paramDrawable)
   {
-    AppMethodBeat.i(61281);
+    AppMethodBeat.i(11773);
     if (paramDrawable == null) {
       paramDrawable = null;
     }
     for (;;)
     {
       paramResources = new BitmapDrawable(paramResources, frameBitmapInCircle(paramDrawable));
-      AppMethodBeat.o(61281);
+      AppMethodBeat.o(11773);
       return paramResources;
       if ((paramDrawable instanceof BitmapDrawable))
       {

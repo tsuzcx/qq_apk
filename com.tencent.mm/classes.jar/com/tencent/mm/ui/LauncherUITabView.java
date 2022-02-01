@@ -1,13 +1,14 @@
 package com.tencent.mm.ui;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.os.Message;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -16,373 +17,448 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.g.a.ky;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class LauncherUITabView
   extends RelativeLayout
   implements c
 {
-  private Matrix asO;
-  protected int eSO;
-  private long nBO;
-  private ak yZA;
-  private int yZB;
-  private int yZC;
-  private int yZD;
-  private boolean yZE;
-  private int yZG;
-  private boolean yZH;
-  private int yZQ;
-  private Bitmap yZR;
-  private ImageView yZS;
-  protected a yZT;
-  protected a yZU;
-  protected a yZV;
-  protected a yZW;
-  private c.a yZh;
-  private int yZx;
-  protected View.OnClickListener yZz;
+  protected View.OnClickListener FMF;
+  private ap FMG;
+  private LinearLayout FMH;
+  private int FMI;
+  private int FMJ;
+  private int FMK;
+  private boolean FML;
+  private int FMN;
+  private boolean FMO;
+  private int FMW;
+  private Bitmap FMX;
+  private ImageView FMY;
+  protected a FMZ;
+  private c.a FMp;
+  protected a FNa;
+  protected a FNb;
+  protected a FNc;
+  private Matrix dY;
+  protected int goS;
+  private long sln;
+  private int vmo;
   
   public LauncherUITabView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(29517);
-    this.eSO = 0;
-    this.asO = new Matrix();
-    this.nBO = 0L;
-    this.yZx = -1;
-    this.yZz = new LauncherUITabView.1(this);
-    this.yZA = new LauncherUITabView.2(this);
-    this.yZB = 0;
-    this.yZC = 0;
-    this.yZD = 0;
-    this.yZG = 0;
-    this.yZE = false;
-    this.yZH = false;
+    AppMethodBeat.i(33371);
+    this.goS = 0;
+    this.dY = new Matrix();
+    this.sln = 0L;
+    this.vmo = -1;
+    this.FMF = new View.OnClickListener()
+    {
+      private final long xFP = 300L;
+      
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(33369);
+        int i = ((Integer)paramAnonymousView.getTag()).intValue();
+        if ((LauncherUITabView.a(LauncherUITabView.this) == i) && (i == 0) && (System.currentTimeMillis() - LauncherUITabView.b(LauncherUITabView.this) <= 300L))
+        {
+          ad.v("MicroMsg.LauncherUITabView", "onMainTabDoubleClick");
+          LauncherUITabView.c(LauncherUITabView.this).removeMessages(0);
+          com.tencent.mm.sdk.b.a.ESL.l(new ky());
+          LauncherUITabView.a(LauncherUITabView.this, System.currentTimeMillis());
+          LauncherUITabView.a(LauncherUITabView.this, i);
+          AppMethodBeat.o(33369);
+          return;
+        }
+        if (LauncherUITabView.d(LauncherUITabView.this) != null)
+        {
+          if ((i != 0) || (LauncherUITabView.a(LauncherUITabView.this) != 0))
+          {
+            LauncherUITabView.a(LauncherUITabView.this, System.currentTimeMillis());
+            LauncherUITabView.a(LauncherUITabView.this, i);
+            LauncherUITabView.d(LauncherUITabView.this).onTabClick(i);
+            AppMethodBeat.o(33369);
+            return;
+          }
+          LauncherUITabView.c(LauncherUITabView.this).sendEmptyMessageDelayed(0, 300L);
+        }
+        LauncherUITabView.a(LauncherUITabView.this, System.currentTimeMillis());
+        LauncherUITabView.a(LauncherUITabView.this, i);
+        ad.w("MicroMsg.LauncherUITabView", "on tab click, index %d, but listener is null", new Object[] { (Integer)paramAnonymousView.getTag() });
+        AppMethodBeat.o(33369);
+      }
+    };
+    this.FMG = new ap()
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(33370);
+        ad.v("MicroMsg.LauncherUITabView", "onMainTabClick");
+        LauncherUITabView.d(LauncherUITabView.this).onTabClick(0);
+        AppMethodBeat.o(33370);
+      }
+    };
+    this.FMI = 0;
+    this.FMJ = 0;
+    this.FMK = 0;
+    this.FMN = 0;
+    this.FML = false;
+    this.FMO = false;
     init();
-    AppMethodBeat.o(29517);
+    AppMethodBeat.o(33371);
   }
   
   public LauncherUITabView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(29518);
-    this.eSO = 0;
-    this.asO = new Matrix();
-    this.nBO = 0L;
-    this.yZx = -1;
-    this.yZz = new LauncherUITabView.1(this);
-    this.yZA = new LauncherUITabView.2(this);
-    this.yZB = 0;
-    this.yZC = 0;
-    this.yZD = 0;
-    this.yZG = 0;
-    this.yZE = false;
-    this.yZH = false;
+    AppMethodBeat.i(33372);
+    this.goS = 0;
+    this.dY = new Matrix();
+    this.sln = 0L;
+    this.vmo = -1;
+    this.FMF = new View.OnClickListener()
+    {
+      private final long xFP = 300L;
+      
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(33369);
+        int i = ((Integer)paramAnonymousView.getTag()).intValue();
+        if ((LauncherUITabView.a(LauncherUITabView.this) == i) && (i == 0) && (System.currentTimeMillis() - LauncherUITabView.b(LauncherUITabView.this) <= 300L))
+        {
+          ad.v("MicroMsg.LauncherUITabView", "onMainTabDoubleClick");
+          LauncherUITabView.c(LauncherUITabView.this).removeMessages(0);
+          com.tencent.mm.sdk.b.a.ESL.l(new ky());
+          LauncherUITabView.a(LauncherUITabView.this, System.currentTimeMillis());
+          LauncherUITabView.a(LauncherUITabView.this, i);
+          AppMethodBeat.o(33369);
+          return;
+        }
+        if (LauncherUITabView.d(LauncherUITabView.this) != null)
+        {
+          if ((i != 0) || (LauncherUITabView.a(LauncherUITabView.this) != 0))
+          {
+            LauncherUITabView.a(LauncherUITabView.this, System.currentTimeMillis());
+            LauncherUITabView.a(LauncherUITabView.this, i);
+            LauncherUITabView.d(LauncherUITabView.this).onTabClick(i);
+            AppMethodBeat.o(33369);
+            return;
+          }
+          LauncherUITabView.c(LauncherUITabView.this).sendEmptyMessageDelayed(0, 300L);
+        }
+        LauncherUITabView.a(LauncherUITabView.this, System.currentTimeMillis());
+        LauncherUITabView.a(LauncherUITabView.this, i);
+        ad.w("MicroMsg.LauncherUITabView", "on tab click, index %d, but listener is null", new Object[] { (Integer)paramAnonymousView.getTag() });
+        AppMethodBeat.o(33369);
+      }
+    };
+    this.FMG = new ap()
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(33370);
+        ad.v("MicroMsg.LauncherUITabView", "onMainTabClick");
+        LauncherUITabView.d(LauncherUITabView.this).onTabClick(0);
+        AppMethodBeat.o(33370);
+      }
+    };
+    this.FMI = 0;
+    this.FMJ = 0;
+    this.FMK = 0;
+    this.FMN = 0;
+    this.FML = false;
+    this.FMO = false;
     init();
-    AppMethodBeat.o(29518);
+    AppMethodBeat.o(33372);
   }
   
-  private a Oe(int paramInt)
+  private a Xj(int paramInt)
   {
-    AppMethodBeat.i(29519);
+    AppMethodBeat.i(33373);
     a locala = new a();
-    locala.yZY = new MMTabView(getContext(), paramInt);
-    locala.yZY.setTag(Integer.valueOf(paramInt));
-    locala.yZY.setOnClickListener(this.yZz);
-    AppMethodBeat.o(29519);
+    locala.FNe = new MMTabView(getContext(), paramInt);
+    locala.FNe.setTag(Integer.valueOf(paramInt));
+    locala.FNe.setOnClickListener(this.FMF);
+    AppMethodBeat.o(33373);
     return locala;
   }
   
-  private void dCn()
+  private void eQQ()
   {
-    AppMethodBeat.i(29524);
-    this.yZS = new ImageView(getContext());
-    this.yZS.setImageMatrix(this.asO);
-    this.yZS.setScaleType(ImageView.ScaleType.MATRIX);
-    this.yZS.setId(2307142);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, a.fromDPToPix(getContext(), 3));
+    AppMethodBeat.i(33378);
+    this.FMY = new ImageView(getContext());
+    this.FMY.setImageMatrix(this.dY);
+    this.FMY.setScaleType(ImageView.ScaleType.MATRIX);
+    this.FMY.setId(2307142);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, com.tencent.mm.cd.a.fromDPToPix(getContext(), 3));
     localLayoutParams.addRule(8, 2307141);
-    addView(this.yZS, localLayoutParams);
-    AppMethodBeat.o(29524);
+    addView(this.FMY, localLayoutParams);
+    AppMethodBeat.o(33378);
   }
   
   private a f(LinearLayout paramLinearLayout)
   {
-    AppMethodBeat.i(29520);
-    a locala = Oe(0);
-    locala.yZY.setText(2131301391);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131428762));
+    AppMethodBeat.i(33374);
+    a locala = Xj(0);
+    locala.FNe.setText(2131761037);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131166928));
     localLayoutParams.weight = 1.0F;
-    paramLinearLayout.addView(locala.yZY, localLayoutParams);
-    AppMethodBeat.o(29520);
+    paramLinearLayout.addView(locala.FNe, localLayoutParams);
+    AppMethodBeat.o(33374);
     return locala;
   }
   
   private a g(LinearLayout paramLinearLayout)
   {
-    AppMethodBeat.i(29521);
-    a locala = Oe(1);
-    locala.yZY.setText(2131301392);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131428762));
+    AppMethodBeat.i(33375);
+    a locala = Xj(1);
+    locala.FNe.setText(2131761038);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131166928));
     localLayoutParams.weight = 1.0F;
-    paramLinearLayout.addView(locala.yZY, localLayoutParams);
-    AppMethodBeat.o(29521);
+    paramLinearLayout.addView(locala.FNe, localLayoutParams);
+    AppMethodBeat.o(33375);
     return locala;
   }
   
   private a h(LinearLayout paramLinearLayout)
   {
-    AppMethodBeat.i(29522);
-    a locala = Oe(2);
-    locala.yZY.setText(2131301390);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131428762));
+    AppMethodBeat.i(33376);
+    a locala = Xj(2);
+    locala.FNe.setText(2131761036);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131166928));
     localLayoutParams.weight = 1.0F;
-    paramLinearLayout.addView(locala.yZY, localLayoutParams);
-    AppMethodBeat.o(29522);
+    paramLinearLayout.addView(locala.FNe, localLayoutParams);
+    AppMethodBeat.o(33376);
     return locala;
   }
   
   private a i(LinearLayout paramLinearLayout)
   {
-    AppMethodBeat.i(29523);
-    a locala = Oe(3);
-    locala.yZY.setText(2131301424);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131428762));
+    AppMethodBeat.i(33377);
+    a locala = Xj(3);
+    locala.FNe.setText(2131761071);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131166928));
     localLayoutParams.weight = 1.0F;
-    paramLinearLayout.addView(locala.yZY, localLayoutParams);
-    AppMethodBeat.o(29523);
+    paramLinearLayout.addView(locala.FNe, localLayoutParams);
+    AppMethodBeat.o(33377);
     return locala;
   }
   
   private void init()
   {
-    AppMethodBeat.i(29525);
-    LinearLayout localLinearLayout = new LinearLayout(getContext());
-    localLinearLayout.setBackgroundResource(2131690709);
-    localLinearLayout.setId(2307141);
-    localLinearLayout.setOrientation(0);
-    addView(localLinearLayout, new RelativeLayout.LayoutParams(-1, -2));
-    dCn();
-    this.yZT = f(localLinearLayout);
-    this.yZU = g(localLinearLayout);
-    this.yZV = h(localLinearLayout);
-    this.yZW = i(localLinearLayout);
-    AppMethodBeat.o(29525);
+    AppMethodBeat.i(33379);
+    this.FMH = new LinearLayout(getContext());
+    this.FMH.setBackgroundResource(ao.aD(getContext(), 2130968578));
+    this.FMH.setId(2307141);
+    this.FMH.setOrientation(0);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+    addView(this.FMH, localLayoutParams);
+    eQQ();
+    this.FMZ = f(this.FMH);
+    this.FNa = g(this.FMH);
+    this.FNb = h(this.FMH);
+    this.FNc = i(this.FMH);
+    AppMethodBeat.o(33379);
   }
   
-  public final void NU(int paramInt)
+  public final void WZ(int paramInt)
   {
-    AppMethodBeat.i(29527);
-    ab.d("MicroMsg.LauncherUITabView", "updateMainTabUnread %d", new Object[] { Integer.valueOf(paramInt) });
-    this.yZB = paramInt;
+    AppMethodBeat.i(33381);
+    ad.d("MicroMsg.LauncherUITabView", "updateMainTabUnread %d", new Object[] { Integer.valueOf(paramInt) });
+    this.FMI = paramInt;
     if (paramInt > 0)
     {
       if (paramInt > 99)
       {
-        this.yZT.yZY.setUnread(getContext().getString(2131304422));
-        AppMethodBeat.o(29527);
+        this.FMZ.FNe.setUnread(getContext().getString(2131764567));
+        AppMethodBeat.o(33381);
         return;
       }
-      this.yZT.yZY.setUnread(String.valueOf(paramInt));
-      AppMethodBeat.o(29527);
+      this.FMZ.FNe.setUnread(String.valueOf(paramInt));
+      AppMethodBeat.o(33381);
       return;
     }
-    this.yZT.yZY.setUnread(null);
-    AppMethodBeat.o(29527);
+    this.FMZ.FNe.setUnread(null);
+    AppMethodBeat.o(33381);
   }
   
-  public final void NV(int paramInt)
+  public final void Xa(int paramInt)
   {
-    AppMethodBeat.i(29529);
-    this.yZC = paramInt;
+    AppMethodBeat.i(33383);
+    this.FMJ = paramInt;
     if (paramInt > 0)
     {
       if (paramInt > 99)
       {
-        this.yZU.yZY.setUnread(getContext().getString(2131304422));
-        AppMethodBeat.o(29529);
+        this.FNa.FNe.setUnread(getContext().getString(2131764567));
+        AppMethodBeat.o(33383);
         return;
       }
-      this.yZU.yZY.setUnread(String.valueOf(paramInt));
-      AppMethodBeat.o(29529);
+      this.FNa.FNe.setUnread(String.valueOf(paramInt));
+      AppMethodBeat.o(33383);
       return;
     }
-    this.yZU.yZY.setUnread(null);
-    AppMethodBeat.o(29529);
+    this.FNa.FNe.setUnread(null);
+    AppMethodBeat.o(33383);
   }
   
-  public final void NW(int paramInt)
+  public final void Xb(int paramInt)
   {
-    AppMethodBeat.i(29530);
-    this.yZD = paramInt;
+    AppMethodBeat.i(33384);
+    this.FMK = paramInt;
     if (paramInt > 0)
     {
       if (paramInt > 99)
       {
-        this.yZV.yZY.setUnread(getContext().getString(2131304422));
-        AppMethodBeat.o(29530);
+        this.FNb.FNe.setUnread(getContext().getString(2131764567));
+        AppMethodBeat.o(33384);
         return;
       }
-      this.yZV.yZY.setUnread(String.valueOf(paramInt));
-      AppMethodBeat.o(29530);
+      this.FNb.FNe.setUnread(String.valueOf(paramInt));
+      AppMethodBeat.o(33384);
       return;
     }
-    this.yZV.yZY.setUnread(null);
-    AppMethodBeat.o(29530);
+    this.FNb.FNe.setUnread(null);
+    AppMethodBeat.o(33384);
   }
   
-  public final void NX(int paramInt)
+  public final void Xc(int paramInt)
   {
-    AppMethodBeat.i(29531);
-    this.yZG = paramInt;
+    AppMethodBeat.i(33385);
+    this.FMN = paramInt;
     if (paramInt > 0)
     {
       if (paramInt > 99)
       {
-        this.yZW.yZY.setUnread(getContext().getString(2131304422));
-        AppMethodBeat.o(29531);
+        this.FNc.FNe.setUnread(getContext().getString(2131764567));
+        AppMethodBeat.o(33385);
         return;
       }
-      this.yZW.yZY.setUnread(String.valueOf(paramInt));
-      AppMethodBeat.o(29531);
+      this.FNc.FNe.setUnread(String.valueOf(paramInt));
+      AppMethodBeat.o(33385);
       return;
     }
-    this.yZW.yZY.setUnread(null);
-    AppMethodBeat.o(29531);
+    this.FNc.FNe.setUnread(null);
+    AppMethodBeat.o(33385);
   }
   
-  public final void dAP()
+  public final void ePn()
   {
-    AppMethodBeat.i(29528);
-    if ((this.yZT == null) || (this.yZU == null) || (this.yZV == null) || (this.yZW == null))
+    AppMethodBeat.i(33382);
+    if ((this.FMZ == null) || (this.FNa == null) || (this.FNb == null) || (this.FNc == null))
     {
-      AppMethodBeat.o(29528);
+      AppMethodBeat.o(33382);
       return;
     }
-    this.yZT.yZY.dCA();
-    this.yZU.yZY.dCA();
-    this.yZV.yZY.dCA();
-    this.yZW.yZY.dCA();
-    AppMethodBeat.o(29528);
+    this.FMZ.FNe.eRf();
+    this.FNa.FNe.eRf();
+    this.FNb.FNe.eRf();
+    this.FNc.FNe.eRf();
+    AppMethodBeat.o(33382);
   }
   
   public int getContactTabUnread()
   {
-    return this.yZC;
+    return this.FMJ;
   }
   
   public int getCurIdx()
   {
-    return this.eSO;
+    return this.goS;
   }
   
   public int getFriendTabUnread()
   {
-    return this.yZD;
+    return this.FMK;
   }
   
   public int getMainTabUnread()
   {
-    return this.yZB;
+    return this.FMI;
   }
   
   public boolean getSettingsPoint()
   {
-    return this.yZH;
+    return this.FMO;
   }
   
   public int getSettingsTabUnread()
   {
-    return this.yZG;
+    return this.FMN;
   }
   
   public boolean getShowFriendPoint()
   {
-    return this.yZE;
+    return this.FML;
   }
   
-  public final void k(int paramInt, float paramFloat)
+  public final void n(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(29534);
-    this.asO.setTranslate(this.yZQ * (paramInt + paramFloat), 0.0F);
-    this.yZS.setImageMatrix(this.asO);
-    AppMethodBeat.o(29534);
+    AppMethodBeat.i(33388);
+    this.dY.setTranslate(this.FMW * (paramInt + paramFloat), 0.0F);
+    this.FMY.setImageMatrix(this.dY);
+    AppMethodBeat.o(33388);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(29526);
+    AppMethodBeat.i(33380);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    ab.d("MicroMsg.LauncherUITabView", "on layout, width %d", new Object[] { Integer.valueOf(paramInt3 - paramInt1) });
-    this.yZQ = ((paramInt3 - paramInt1) / 4);
-    paramInt2 = this.yZQ;
-    if ((this.yZR == null) || (this.yZR.getWidth() != paramInt2)) {
-      if (this.yZR != null) {
-        break label185;
+    ad.d("MicroMsg.LauncherUITabView", "on layout, width %d", new Object[] { Integer.valueOf(paramInt3 - paramInt1) });
+    this.FMW = ((paramInt3 - paramInt1) / 4);
+    paramInt2 = this.FMW;
+    if ((this.FMX == null) || (this.FMX.getWidth() != paramInt2)) {
+      if (this.FMX != null) {
+        break label187;
       }
     }
-    label185:
-    for (paramInt1 = -1;; paramInt1 = this.yZR.getWidth())
+    label187:
+    for (paramInt1 = -1;; paramInt1 = this.FMX.getWidth())
     {
-      ab.w("MicroMsg.LauncherUITabView", "sharp width changed, from %d to %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      this.yZR = Bitmap.createBitmap(paramInt2, a.fromDPToPix(getContext(), 3), Bitmap.Config.ARGB_8888);
-      new Canvas(this.yZR).drawColor(getResources().getColor(2131690701));
-      k(this.eSO, 0.0F);
-      this.yZS.setImageBitmap(this.yZR);
-      setTo(this.eSO);
-      AppMethodBeat.o(29526);
+      ad.w("MicroMsg.LauncherUITabView", "sharp width changed, from %d to %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      this.FMX = Bitmap.createBitmap(paramInt2, com.tencent.mm.cd.a.fromDPToPix(getContext(), 3), Bitmap.Config.ARGB_8888);
+      new Canvas(this.FMX).drawColor(getResources().getColor(2131101171));
+      n(this.goS, 0.0F);
+      this.FMY.setImageBitmap(this.FMX);
+      setTo(this.goS);
+      AppMethodBeat.o(33380);
       return;
     }
   }
   
-  public final void qa(boolean paramBoolean)
-  {
-    AppMethodBeat.i(29532);
-    this.yZE = paramBoolean;
-    this.yZV.yZY.qs(paramBoolean);
-    AppMethodBeat.o(29532);
-  }
-  
-  public final void qb(boolean paramBoolean)
-  {
-    AppMethodBeat.i(29533);
-    this.yZH = paramBoolean;
-    this.yZW.yZY.qs(paramBoolean);
-    AppMethodBeat.o(29533);
-  }
-  
   public void setOnTabClickListener(c.a parama)
   {
-    this.yZh = parama;
+    this.FMp = parama;
   }
   
   public void setTo(int paramInt)
   {
-    AppMethodBeat.i(29535);
-    this.eSO = paramInt;
-    MMTabView localMMTabView = this.yZT.yZY;
+    AppMethodBeat.i(33389);
+    this.goS = paramInt;
+    MMTabView localMMTabView = this.FMZ.FNe;
+    int i;
     if (paramInt == 0)
     {
-      localColorStateList = getResources().getColorStateList(2131690701);
-      localMMTabView.setTextColor(localColorStateList);
-      localMMTabView = this.yZU.yZY;
+      i = getResources().getColor(2131101171);
+      localMMTabView.setTextColor(i);
+      localMMTabView = this.FNa.FNe;
       if (paramInt != 1) {
         break label162;
       }
-      localColorStateList = getResources().getColorStateList(2131690701);
+      i = getResources().getColor(2131101171);
       label63:
-      localMMTabView.setTextColor(localColorStateList);
-      localMMTabView = this.yZV.yZY;
+      localMMTabView.setTextColor(i);
+      localMMTabView = this.FNb.FNe;
       if (paramInt != 2) {
         break label176;
       }
-      localColorStateList = getResources().getColorStateList(2131690701);
+      i = getResources().getColor(2131101171);
       label92:
-      localMMTabView.setTextColor(localColorStateList);
-      localMMTabView = this.yZW.yZY;
+      localMMTabView.setTextColor(i);
+      localMMTabView = this.FNc.FNe;
       if (paramInt != 3) {
         break label190;
       }
@@ -390,32 +466,48 @@ public class LauncherUITabView
     label162:
     label176:
     label190:
-    for (ColorStateList localColorStateList = getResources().getColorStateList(2131690701);; localColorStateList = getResources().getColorStateList(2131690759))
+    for (paramInt = getResources().getColor(2131101171);; paramInt = ao.aD(getContext(), 2130968584))
     {
-      localMMTabView.setTextColor(localColorStateList);
-      this.nBO = System.currentTimeMillis();
-      this.yZx = this.eSO;
-      AppMethodBeat.o(29535);
+      localMMTabView.setTextColor(paramInt);
+      this.sln = System.currentTimeMillis();
+      this.vmo = this.goS;
+      AppMethodBeat.o(33389);
       return;
-      localColorStateList = getResources().getColorStateList(2131690759);
+      i = ao.aD(getContext(), 2130968584);
       break;
-      localColorStateList = getResources().getColorStateList(2131690759);
+      i = ao.aD(getContext(), 2130968584);
       break label63;
-      localColorStateList = getResources().getColorStateList(2131690759);
+      i = ao.aD(getContext(), 2130968584);
       break label92;
     }
   }
   
+  public final void vj(boolean paramBoolean)
+  {
+    AppMethodBeat.i(33386);
+    this.FML = paramBoolean;
+    this.FNb.FNe.vz(paramBoolean);
+    AppMethodBeat.o(33386);
+  }
+  
+  public final void vk(boolean paramBoolean)
+  {
+    AppMethodBeat.i(33387);
+    this.FMO = paramBoolean;
+    this.FNc.FNe.vz(paramBoolean);
+    AppMethodBeat.o(33387);
+  }
+  
   protected final class a
   {
-    MMTabView yZY;
+    MMTabView FNe;
     
     protected a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.LauncherUITabView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,57 +3,57 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cve
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int ID;
+  public int Ema;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28713);
+    AppMethodBeat.i(125796);
     if (paramInt == 0)
     {
-      ((e.a.a.c.a)paramVarArgs[0]).aO(1, this.ID);
-      AppMethodBeat.o(28713);
+      ((f.a.a.c.a)paramVarArgs[0]).aR(1, this.Ema);
+      AppMethodBeat.o(125796);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = e.a.a.b.b.a.bl(1, this.ID);
-      AppMethodBeat.o(28713);
+      paramInt = f.a.a.b.b.a.bA(1, this.Ema);
+      AppMethodBeat.o(125796);
       return paramInt + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      AppMethodBeat.o(28713);
+      AppMethodBeat.o(125796);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       cve localcve = (cve)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(28713);
+        AppMethodBeat.o(125796);
         return -1;
       }
-      localcve.ID = locala.CLY.sl();
-      AppMethodBeat.o(28713);
+      localcve.Ema = locala.KhF.xS();
+      AppMethodBeat.o(125796);
       return 0;
     }
-    AppMethodBeat.o(28713);
+    AppMethodBeat.o(125796);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cve
  * JD-Core Version:    0.7.0.1
  */

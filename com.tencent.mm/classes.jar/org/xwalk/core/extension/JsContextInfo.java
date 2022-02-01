@@ -20,9 +20,9 @@ public class JsContextInfo
   
   public String getConstructorName()
   {
-    AppMethodBeat.i(86109);
+    AppMethodBeat.i(155223);
     String str = this.targetClass.getSimpleName();
-    AppMethodBeat.o(86109);
+    AppMethodBeat.o(155223);
     return str;
   }
   
@@ -38,37 +38,37 @@ public class JsContextInfo
   
   public String getTag()
   {
-    AppMethodBeat.i(86107);
+    AppMethodBeat.i(155221);
     String str = "Extension-" + this.extensionClient.getExtensionName();
-    AppMethodBeat.o(86107);
+    AppMethodBeat.o(155221);
     return str;
   }
   
   public ReflectionHelper getTargetReflect()
   {
-    AppMethodBeat.i(86108);
+    AppMethodBeat.i(155222);
     ReflectionHelper localReflectionHelper = this.extensionClient.getTargetReflect(this.targetClass.getSimpleName());
-    AppMethodBeat.o(86108);
+    AppMethodBeat.o(155222);
     return localReflectionHelper;
   }
   
   public void postMessage(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(86110);
+    AppMethodBeat.i(155224);
     this.extensionClient.postMessage(this.extInstanceId, paramJSONObject.toString());
-    AppMethodBeat.o(86110);
+    AppMethodBeat.o(155224);
   }
   
   public void postMessage(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(86111);
+    AppMethodBeat.i(155225);
     this.extensionClient.postBinaryMessage(this.extInstanceId, paramArrayOfByte);
-    AppMethodBeat.o(86111);
+    AppMethodBeat.o(155225);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.extension.JsContextInfo
  * JD-Core Version:    0.7.0.1
  */

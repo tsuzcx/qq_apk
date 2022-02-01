@@ -1,29 +1,28 @@
 package com.tencent.mm.plugin.card.d;
 
+import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public enum q
+public final class q
 {
-  public int scene;
-  
-  static
+  public static void CP(String paramString)
   {
-    AppMethodBeat.i(88945);
-    kCs = new q("EN_DYNAMIC_CODE_SCENE_ENTER_FOREGROUND", 0, 1);
-    kCt = new q("EN_DYNAMIC_CODE_SCENE_ENTER_WXCARD", 1, 2);
-    kCu = new q("EN_DYNAMIC_CODE_SCENE_ENTER_CARD_DETAIL", 2, 3);
-    kCv = new q[] { kCs, kCt, kCu };
-    AppMethodBeat.o(88945);
-  }
-  
-  private q(int paramInt)
-  {
-    this.scene = paramInt;
+    AppMethodBeat.i(113870);
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      new o();
+      o.CP(paramString);
+      AppMethodBeat.o(113870);
+      return;
+    }
+    new p();
+    p.CP(paramString);
+    AppMethodBeat.o(113870);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.q
  * JD-Core Version:    0.7.0.1
  */

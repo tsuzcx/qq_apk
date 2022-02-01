@@ -1,14 +1,34 @@
 package com.tencent.mm.plugin.appbrand.k;
 
-public abstract interface e
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fts.a.d.a;
+import com.tencent.mm.plugin.fts.a.d.e.b;
+
+public final class e
+  extends a
 {
-  public abstract void a(e.a parama);
+  public final com.tencent.mm.plugin.fts.a.d.e a(Context paramContext, e.b paramb, int paramInt)
+  {
+    AppMethodBeat.i(45029);
+    paramContext = new f(paramContext, paramb, paramInt);
+    AppMethodBeat.o(45029);
+    return paramContext;
+  }
   
-  public abstract void start();
+  public final int getPriority()
+  {
+    return 2147483647;
+  }
+  
+  public final int getType()
+  {
+    return 4224;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.k.e
  * JD-Core Version:    0.7.0.1
  */

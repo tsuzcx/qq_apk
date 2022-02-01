@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/aa2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/cic" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="8.0dip">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="16.0dip" android:textColor="@color/fg" android:id="@id/h9a" android:background="@drawable/c4b" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hg7" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/fg" android:id="@id/h9p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+    <android.support.v4.widget.NestedScrollView android:orientation="vertical" android:id="@id/ha6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/cic">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="14.0dip" android:textColor="@color/fg" android:id="@id/h9y" android:paddingLeft="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
+            <com.tencent.mm.plugin.appbrand.keylogger.stepview.VerticalStepView android:id="@id/ha2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+    <ScrollView android:id="@id/h9_" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/cic" android:layout_centerHorizontal="true">
+        <HorizontalScrollView android:id="@id/h9n" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:id="@id/h99" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </HorizontalScrollView>
+    </ScrollView>
+</RelativeLayout>

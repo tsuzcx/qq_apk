@@ -4,10 +4,10 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageButton;
 
-class VisibilityAwareImageButton
+public class VisibilityAwareImageButton
   extends ImageButton
 {
-  private int ni = getVisibility();
+  private int tI = getVisibility();
   
   public VisibilityAwareImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -19,22 +19,22 @@ class VisibilityAwareImageButton
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  final void f(int paramInt, boolean paramBoolean)
+  public final void e(int paramInt, boolean paramBoolean)
   {
     super.setVisibility(paramInt);
     if (paramBoolean) {
-      this.ni = paramInt;
+      this.tI = paramInt;
     }
   }
   
-  final int getUserSetVisibility()
+  public final int getUserSetVisibility()
   {
-    return this.ni;
+    return this.tI;
   }
   
   public void setVisibility(int paramInt)
   {
-    f(paramInt, true);
+    e(paramInt, true);
   }
 }
 

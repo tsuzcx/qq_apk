@@ -12,14 +12,18 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Map;
+import java.util.Map<Ljava.lang.String;Ljava.lang.Object;>;
 
 public class DexLoader
 {
   private static final String JAVACORE_PACKAGE_PREFIX = "org.chromium";
+  private static final String TAF_PACKAGE_PREFIX = "com.taf";
   private static final String TAG = "DexLoader";
   private static final String TBS_FUSION_DEX = "tbs_jars_fusion_dex";
   private static final String TBS_WEBVIEW_DEX = "webview_dex";
+  private static final String TENCENT_PACKAGE_PREFIX = "com.tencent";
   static boolean mCanUseDexLoaderProviderService = true;
+  private static boolean mMttClassUseCorePrivate = false;
   private static boolean mUseSpeedyClassLoader;
   private static boolean mUseTbsCorePrivateClassLoader = false;
   private DexClassLoader mClassLoader;
@@ -32,8 +36,8 @@ public class DexLoader
   public DexLoader(Context paramContext, String paramString1, String paramString2)
   {
     this(paramContext, new String[] { paramString1 }, paramString2);
-    AppMethodBeat.i(63761);
-    AppMethodBeat.o(63761);
+    AppMethodBeat.i(53141);
+    AppMethodBeat.o(53141);
   }
   
   public DexLoader(Context paramContext, String[] paramArrayOfString, String paramString)
@@ -43,7 +47,7 @@ public class DexLoader
   
   public DexLoader(Context paramContext, String[] paramArrayOfString, String paramString, DexLoader paramDexLoader)
   {
-    AppMethodBeat.i(63760);
+    AppMethodBeat.i(53140);
     paramDexLoader = paramDexLoader.getClassLoader();
     int i = 0;
     while (i < paramArrayOfString.length)
@@ -52,12 +56,12 @@ public class DexLoader
       this.mClassLoader = paramDexLoader;
       i += 1;
     }
-    AppMethodBeat.o(63760);
+    AppMethodBeat.o(53140);
   }
   
   public DexLoader(Context paramContext, String[] paramArrayOfString, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(63759);
+    AppMethodBeat.i(53139);
     ClassLoader localClassLoader = paramContext.getClassLoader();
     String str2 = paramContext.getApplicationInfo().nativeLibraryDir;
     String str1 = str2;
@@ -72,7 +76,7 @@ public class DexLoader
       this.mClassLoader = paramString2;
       i += 1;
     }
-    AppMethodBeat.o(63759);
+    AppMethodBeat.o(53139);
   }
   
   public DexLoader(String paramString1, Context paramContext, String[] paramArrayOfString, String paramString2)
@@ -82,34 +86,43 @@ public class DexLoader
   
   public DexLoader(String paramString1, Context paramContext, String[] paramArrayOfString, String paramString2, Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(63758);
+    AppMethodBeat.i(53138);
     initTbsSettings(paramMap);
-    ClassLoader localClassLoader = VMStack.getCallingClassLoader();
-    paramMap = localClassLoader;
-    if (localClassLoader == null) {
+    Object localObject = VMStack.getCallingClassLoader();
+    paramMap = (Map<String, Object>)localObject;
+    if (localObject == null) {
       paramMap = paramContext.getClassLoader();
     }
     new StringBuilder("Set base classLoader for DexClassLoader: ").append(paramMap);
-    int i = 0;
-    while (i < paramArrayOfString.length)
-    {
-      paramMap = createDexClassLoader(paramArrayOfString[i], paramString2, paramString1, paramMap, paramContext);
-      this.mClassLoader = paramMap;
-      i += 1;
+    localObject = paramString1;
+    if (TextUtils.isEmpty(paramString1)) {
+      localObject = paramContext.getApplicationInfo().nativeLibraryDir;
     }
-    AppMethodBeat.o(63758);
+    if (!TextUtils.isEmpty("")) {}
+    for (paramString1 = (String)localObject + File.pathSeparator + "";; paramString1 = (String)localObject)
+    {
+      int i = 0;
+      while (i < paramArrayOfString.length)
+      {
+        paramMap = createDexClassLoader(paramArrayOfString[i], paramString2, paramString1, paramMap, paramContext);
+        this.mClassLoader = paramMap;
+        i += 1;
+      }
+      AppMethodBeat.o(53138);
+      return;
+    }
   }
   
   private DexClassLoader createDexClassLoader(String paramString1, String paramString2, String paramString3, ClassLoader paramClassLoader, Context paramContext)
   {
-    AppMethodBeat.i(63762);
+    AppMethodBeat.i(53142);
     if (shouldUseTbsCorePrivateClassLoader(paramString1)) {
-      paramString1 = new DexLoader.TbsCorePrivateClassLoader(paramString1, paramString2, paramString3, paramClassLoader);
+      paramString1 = new TbsCorePrivateClassLoader(paramString1, paramString2, paramString3, paramClassLoader);
     }
     for (;;)
     {
       new StringBuilder("createDexClassLoader result: ").append(paramString1);
-      AppMethodBeat.o(63762);
+      AppMethodBeat.o(53142);
       return paramString1;
       if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT <= 25) && (mUseSpeedyClassLoader)) {
         try
@@ -130,7 +143,7 @@ public class DexLoader
   
   public static void initTbsSettings(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(63756);
+    AppMethodBeat.i(53136);
     new StringBuilder("initTbsSettings - ").append(paramMap);
     if (paramMap != null) {
       try
@@ -143,32 +156,36 @@ public class DexLoader
         if ((localObject instanceof Boolean)) {
           mUseSpeedyClassLoader = ((Boolean)localObject).booleanValue();
         }
-        paramMap = paramMap.get("use_dexloader_service");
-        if ((paramMap instanceof Boolean)) {
-          mCanUseDexLoaderProviderService = ((Boolean)paramMap).booleanValue();
+        localObject = paramMap.get("use_dexloader_service");
+        if ((localObject instanceof Boolean)) {
+          mCanUseDexLoaderProviderService = ((Boolean)localObject).booleanValue();
         }
-        AppMethodBeat.o(63756);
+        paramMap = paramMap.get("use_mtt_classes");
+        if ((paramMap instanceof Boolean)) {
+          mMttClassUseCorePrivate = ((Boolean)paramMap).booleanValue();
+        }
+        AppMethodBeat.o(53136);
         return;
       }
       catch (Throwable paramMap) {}
     }
-    AppMethodBeat.o(63756);
+    AppMethodBeat.o(53136);
   }
   
   private boolean shouldUseTbsCorePrivateClassLoader(String paramString)
   {
-    AppMethodBeat.i(63757);
+    AppMethodBeat.i(53137);
     if (!mUseTbsCorePrivateClassLoader)
     {
-      AppMethodBeat.o(63757);
+      AppMethodBeat.o(53137);
       return false;
     }
     if ((paramString.contains("tbs_jars_fusion_dex")) || (paramString.contains("webview_dex")))
     {
-      AppMethodBeat.o(63757);
+      AppMethodBeat.o(53137);
       return true;
     }
-    AppMethodBeat.o(63757);
+    AppMethodBeat.o(53137);
     return false;
   }
   
@@ -179,53 +196,53 @@ public class DexLoader
   
   public Object getStaticField(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(63768);
+    AppMethodBeat.i(53148);
     try
     {
       Object localObject = this.mClassLoader.loadClass(paramString1).getField(paramString2);
       ((Field)localObject).setAccessible(true);
       localObject = ((Field)localObject).get(null);
-      AppMethodBeat.o(63768);
+      AppMethodBeat.o(53148);
       return localObject;
     }
     catch (Throwable localThrowable)
     {
       getClass().getSimpleName();
       new StringBuilder("'").append(paramString1).append("' get field '").append(paramString2).append("' failed");
-      AppMethodBeat.o(63768);
+      AppMethodBeat.o(53148);
     }
     return null;
   }
   
   public Object invokeMethod(Object paramObject, String paramString1, String paramString2, Class<?>[] paramArrayOfClass, Object... paramVarArgs)
   {
-    AppMethodBeat.i(63767);
+    AppMethodBeat.i(53147);
     try
     {
       paramArrayOfClass = this.mClassLoader.loadClass(paramString1).getMethod(paramString2, paramArrayOfClass);
       paramArrayOfClass.setAccessible(true);
       paramObject = paramArrayOfClass.invoke(paramObject, paramVarArgs);
-      AppMethodBeat.o(63767);
+      AppMethodBeat.o(53147);
       return paramObject;
     }
     catch (Throwable paramObject)
     {
       getClass().getSimpleName();
       new StringBuilder("'").append(paramString1).append("' invoke method '").append(paramString2).append("' failed");
-      AppMethodBeat.o(63767);
+      AppMethodBeat.o(53147);
     }
     return null;
   }
   
   public Object invokeStaticMethod(String paramString1, String paramString2, Class<?>[] paramArrayOfClass, Object... paramVarArgs)
   {
-    AppMethodBeat.i(63766);
+    AppMethodBeat.i(53146);
     try
     {
       paramArrayOfClass = this.mClassLoader.loadClass(paramString1).getMethod(paramString2, paramArrayOfClass);
       paramArrayOfClass.setAccessible(true);
       paramArrayOfClass = paramArrayOfClass.invoke(null, paramVarArgs);
-      AppMethodBeat.o(63766);
+      AppMethodBeat.o(53146);
       return paramArrayOfClass;
     }
     catch (Throwable paramArrayOfClass)
@@ -234,99 +251,160 @@ public class DexLoader
       {
         getClass().getSimpleName();
         new StringBuilder("'").append(paramString1).append("' invoke static method '").append(paramString2).append("' failed");
-        AppMethodBeat.o(63766);
+        AppMethodBeat.o(53146);
         return paramArrayOfClass;
       }
       getClass().getSimpleName();
       new StringBuilder("'").append(paramString1).append("' invoke static method '").append(paramString2).append("' failed");
-      AppMethodBeat.o(63766);
+      AppMethodBeat.o(53146);
     }
     return null;
   }
   
   public Class<?> loadClass(String paramString)
   {
-    AppMethodBeat.i(63765);
+    AppMethodBeat.i(53145);
     try
     {
       Class localClass = this.mClassLoader.loadClass(paramString);
-      AppMethodBeat.o(63765);
+      AppMethodBeat.o(53145);
       return localClass;
     }
     catch (Throwable localThrowable)
     {
       getClass().getSimpleName();
       new StringBuilder("loadClass '").append(paramString).append("' failed");
-      AppMethodBeat.o(63765);
+      AppMethodBeat.o(53145);
     }
     return null;
   }
   
   public Object newInstance(String paramString)
   {
-    AppMethodBeat.i(63763);
+    AppMethodBeat.i(53143);
     try
     {
       Object localObject = this.mClassLoader.loadClass(paramString).newInstance();
-      AppMethodBeat.o(63763);
+      AppMethodBeat.o(53143);
       return localObject;
     }
     catch (Throwable localThrowable)
     {
       getClass().getSimpleName();
       new StringBuilder("create ").append(paramString).append(" instance failed");
-      AppMethodBeat.o(63763);
+      AppMethodBeat.o(53143);
     }
     return null;
   }
   
   public Object newInstance(String paramString, Class<?>[] paramArrayOfClass, Object... paramVarArgs)
   {
-    AppMethodBeat.i(63764);
+    AppMethodBeat.i(53144);
     try
     {
       paramArrayOfClass = this.mClassLoader.loadClass(paramString).getConstructor(paramArrayOfClass).newInstance(paramVarArgs);
-      AppMethodBeat.o(63764);
+      AppMethodBeat.o(53144);
       return paramArrayOfClass;
     }
     catch (Throwable paramArrayOfClass)
     {
-      if ("com.tencent.smtt.webkit.adapter.X5WebViewAdapter".equalsIgnoreCase(paramString))
+      if ("com.tencent.tbs.core.webkit.adapter.X5WebViewAdapter".equalsIgnoreCase(paramString))
       {
         getClass().getSimpleName();
         new StringBuilder("'newInstance ").append(paramString).append(" failed");
-        AppMethodBeat.o(63764);
+        AppMethodBeat.o(53144);
         return paramArrayOfClass;
       }
       getClass().getSimpleName();
       new StringBuilder("create '").append(paramString).append("' instance failed");
-      AppMethodBeat.o(63764);
+      AppMethodBeat.o(53144);
     }
     return null;
   }
   
   public void setStaticField(String paramString1, String paramString2, Object paramObject)
   {
-    AppMethodBeat.i(63769);
+    AppMethodBeat.i(53149);
     try
     {
       Field localField = this.mClassLoader.loadClass(paramString1).getField(paramString2);
       localField.setAccessible(true);
       localField.set(null, paramObject);
-      AppMethodBeat.o(63769);
+      AppMethodBeat.o(53149);
       return;
     }
     catch (Throwable paramObject)
     {
       getClass().getSimpleName();
       new StringBuilder("'").append(paramString1).append("' set field '").append(paramString2).append("' failed");
-      AppMethodBeat.o(63769);
+      AppMethodBeat.o(53149);
+    }
+  }
+  
+  static class TbsCorePrivateClassLoader
+    extends DexClassLoader
+  {
+    public TbsCorePrivateClassLoader(String paramString1, String paramString2, String paramString3, ClassLoader paramClassLoader)
+    {
+      super(paramString2, paramString3, paramClassLoader);
+    }
+    
+    protected Class<?> loadClass(String paramString, boolean paramBoolean)
+    {
+      AppMethodBeat.i(53135);
+      label69:
+      Object localObject2;
+      if (paramString != null)
+      {
+        boolean bool2 = paramString.startsWith("org.chromium");
+        boolean bool1 = bool2;
+        if (DexLoader.mMttClassUseCorePrivate) {
+          if ((!bool2) && (!paramString.startsWith("com.tencent")) && (!paramString.startsWith("com.taf"))) {
+            break label69;
+          }
+        }
+        for (bool1 = true; !bool1; bool1 = false)
+        {
+          paramString = super.loadClass(paramString, paramBoolean);
+          AppMethodBeat.o(53135);
+          return paramString;
+        }
+        localObject2 = findLoadedClass(paramString);
+        localObject1 = localObject2;
+        if (localObject2 != null) {}
+      }
+      try
+      {
+        new StringBuilder("WebCoreClassLoader - loadClass(").append(paramString).append(",").append(paramBoolean).append(")...");
+        localObject1 = findClass(paramString);
+        localObject2 = localObject1;
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        label129:
+        ClassLoader localClassLoader;
+        break label129;
+      }
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localClassLoader = getParent();
+        localObject1 = localObject2;
+        if (localClassLoader != null) {
+          localObject1 = localClassLoader.loadClass(paramString);
+        }
+      }
+      AppMethodBeat.o(53135);
+      return localObject1;
+      paramString = super.loadClass(paramString, paramBoolean);
+      AppMethodBeat.o(53135);
+      return paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.export.external.DexLoader
  * JD-Core Version:    0.7.0.1
  */

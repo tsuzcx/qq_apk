@@ -1,86 +1,91 @@
 package com.tencent.mm.plugin.story.ui;
 
-import a.f.b.u.d;
-import a.l;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ba;
+import com.tencent.mm.g.b.a.dl;
+import com.tencent.mm.plugin.ball.f.f;
 import com.tencent.mm.plugin.mmsight.d;
-import com.tencent.mm.plugin.story.api.g;
-import com.tencent.mm.plugin.story.api.m.a;
-import com.tencent.mm.plugin.story.api.o;
-import com.tencent.mm.plugin.story.api.o.a;
-import com.tencent.mm.plugin.story.g.i;
-import com.tencent.mm.plugin.story.model.j.b;
+import com.tencent.mm.plugin.story.api.e;
+import com.tencent.mm.plugin.story.api.n.a;
+import com.tencent.mm.plugin.story.api.p;
+import com.tencent.mm.plugin.story.api.p.a;
+import com.tencent.mm.plugin.story.f.j.b;
+import com.tencent.mm.plugin.story.h.h;
 import com.tencent.mm.plugin.story.ui.view.gallery.StoryGalleryView;
 import com.tencent.mm.plugin.story.ui.view.gallery.StoryGalleryView.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
+import d.g.b.k;
+import d.g.b.v.e;
+import d.l;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/StoryBrowseUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/plugin/story/api/IStoryBrowseUIListener;", "()V", "galleryBg", "Landroid/widget/ImageView;", "galleryView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;", "hPosition", "", "vPosition", "finishWithResult", "", "result", "getForceOrientation", "getLayoutId", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "storyUIBackPressed", "storyUIHasStory", "storyUINoStory", "Companion", "plugin-story_release"})
 @com.tencent.mm.ui.base.a(3)
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/StoryBrowseUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/plugin/story/api/IStoryBrowseUIListener;", "()V", "galleryBg", "Landroid/widget/ImageView;", "galleryView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;", "hPosition", "", "vPosition", "finishWithResult", "", "result", "getForceOrientation", "getLayoutId", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "storyUIBackPressed", "storyUIHasStory", "storyUINoStory", "Companion", "plugin-story_release"})
 public final class StoryBrowseUI
   extends MMActivity
-  implements g
+  implements com.tencent.mm.plugin.story.api.g
 {
   private static final String TAG = "MicroMsg.StoryBrowseUI";
-  public static final StoryBrowseUI.a sHj;
-  private ImageView mBi;
-  private int sHg;
-  private int sHh;
-  private StoryGalleryView sHi;
+  public static final a ypB;
+  private ImageView qdk;
+  private StoryGalleryView ypA;
+  private int ypy;
+  private int ypz;
   
   static
   {
-    AppMethodBeat.i(110000);
-    sHj = new StoryBrowseUI.a((byte)0);
+    AppMethodBeat.i(119625);
+    ypB = new a((byte)0);
     TAG = "MicroMsg.StoryBrowseUI";
-    AppMethodBeat.o(110000);
+    AppMethodBeat.o(119625);
   }
   
-  private final void cFm()
+  private final void dKT()
   {
-    AppMethodBeat.i(109999);
-    Object localObject = i.sFa;
-    i.cDo().cD(at.gV((Context)getContext()));
-    localObject = i.sFa;
-    i.cDo().cH(System.currentTimeMillis());
-    localObject = i.sFa;
-    i.cDp();
-    localObject = com.tencent.mm.plugin.story.g.c.sEl;
-    com.tencent.mm.plugin.story.g.c.onDestroy();
+    AppMethodBeat.i(119624);
+    Object localObject = h.ynv;
+    h.dJj().fY(ay.ix((Context)getContext()));
+    localObject = h.ynv;
+    h.dJj().gc(System.currentTimeMillis());
+    localObject = h.ynv;
+    h.dJk();
+    localObject = com.tencent.mm.plugin.story.h.c.ymT;
+    com.tencent.mm.plugin.story.h.c.onDestroy();
     setResult(-1);
     finish();
-    AppMethodBeat.o(109999);
+    AppMethodBeat.o(119624);
   }
   
-  public final void cbR()
+  public final void dci()
   {
-    AppMethodBeat.i(109997);
-    cFm();
-    AppMethodBeat.o(109997);
+    AppMethodBeat.i(119622);
+    dKT();
+    AppMethodBeat.o(119622);
   }
   
-  public final void cbS() {}
+  public final void dcj() {}
   
-  public final void cbT()
+  public final void dck()
   {
-    AppMethodBeat.i(109998);
-    cFm();
-    AppMethodBeat.o(109998);
+    AppMethodBeat.i(119623);
+    dKT();
+    AppMethodBeat.o(119623);
   }
   
   public final int getForceOrientation()
@@ -95,219 +100,214 @@ public final class StoryBrowseUI
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(109996);
-    StoryGalleryView localStoryGalleryView = this.sHi;
+    AppMethodBeat.i(119621);
+    StoryGalleryView localStoryGalleryView = this.ypA;
     if ((localStoryGalleryView == null) || (localStoryGalleryView.onBackPressed() != true)) {
-      cFm();
+      dKT();
     }
-    AppMethodBeat.o(109996);
+    AppMethodBeat.o(119621);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(109992);
-    ab.i(TAG, "StoryBrowseUI create ".concat(String.valueOf(this)));
+    AppMethodBeat.i(119617);
+    ad.i(TAG, "StoryBrowseUI create ".concat(String.valueOf(this)));
     supportRequestWindowFeature(1);
     customfixStatusbar(true);
     super.onCreate(paramBundle);
-    paramBundle = com.tencent.mm.plugin.story.g.c.sEl;
-    com.tencent.mm.plugin.story.g.c.cCC();
-    paramBundle = com.tencent.mm.plugin.story.g.b.sDR;
-    com.tencent.mm.plugin.story.g.b.cCC();
+    paramBundle = com.tencent.mm.plugin.story.h.c.ymT;
+    com.tencent.mm.plugin.story.h.c.dIP();
+    paramBundle = com.tencent.mm.plugin.story.h.b.ymz;
+    com.tencent.mm.plugin.story.h.b.dIP();
     setSelfNavigationBarVisible(8);
     getWindow().addFlags(2097280);
     getWindow().setFlags(201327616, 201327616);
-    d.jm(true);
+    d.ne(true);
     RelativeLayout localRelativeLayout = new RelativeLayout((Context)getContext());
     localRelativeLayout.setBackgroundColor(0);
     paramBundle = new ImageView((Context)getContext());
     paramBundle.setBackgroundColor(-16777216);
-    this.mBi = paramBundle;
-    this.sHh = getIntent().getIntExtra("h_position", 0);
-    this.sHg = getIntent().getIntExtra("v_position", 0);
-    String str1 = getIntent().getStringExtra("username");
-    u.d locald = new u.d();
-    locald.BNq = getIntent().getStringArrayListExtra("user_list");
+    this.qdk = paramBundle;
+    this.ypz = getIntent().getIntExtra("h_position", 0);
+    this.ypy = getIntent().getIntExtra("v_position", 0);
+    final String str1 = getIntent().getStringExtra("username");
+    final v.e locale = new v.e();
+    locale.Jhw = getIntent().getStringArrayListExtra("user_list");
     paramBundle = getIntent().getStringArrayListExtra("user_date_list");
     boolean bool1 = getIntent().getBooleanExtra("delete_when_first_empty", false);
     String str2 = getIntent().getStringExtra("gallery_chat_room");
     long l = getIntent().getLongExtra("data_seed_key", 0L);
-    Object localObject = i.sFa;
-    String str3 = i.cDo().getSessionId();
-    boolean bool2 = getIntent().getBooleanExtra("gallery_is_for_sns", false);
-    boolean bool3 = getIntent().getBooleanExtra("gallery_story_need_action", false);
-    ab.i(TAG, "vPosition " + this.sHg);
-    localObject = i.sFa;
-    i.cDr();
-    localObject = i.sFa;
-    i.cDo().cD(at.gV((Context)getContext()));
-    localObject = i.sFa;
-    i.cDo().cI(0L);
-    localObject = i.sFa;
-    i.cDo().cK(0L);
-    localObject = new u.d();
-    ((u.d)localObject).BNq = o.a.czC().ms(l);
-    if ((((u.d)localObject).BNq != null) && ((((u.d)localObject).BNq instanceof o)))
+    Object localObject = h.ynv;
+    String str3 = h.dJj().getSessionId();
+    boolean bool2 = getIntent().getBooleanExtra("gallery_story_need_action", false);
+    ad.i(TAG, "vPosition " + this.ypy);
+    localObject = h.ynv;
+    h.dJm();
+    localObject = h.ynv;
+    h.dJj().fY(ay.ix((Context)getContext()));
+    localObject = h.ynv;
+    h.dJj().gd(0L);
+    localObject = h.ynv;
+    h.dJj().gf(0L);
+    localObject = new v.e();
+    ((v.e)localObject).Jhw = p.a.dGt().tC(l);
+    if ((((v.e)localObject).Jhw != null) && ((((v.e)localObject).Jhw instanceof p)))
     {
-      paramBundle = (o)((u.d)localObject).BNq;
-      a.f.b.j.q(paramBundle, "dataSeed");
-      if ((!(paramBundle instanceof com.tencent.mm.plugin.story.model.d.b)) && (!(paramBundle instanceof com.tencent.mm.plugin.story.model.d.a)) && ((paramBundle instanceof com.tencent.mm.plugin.story.model.d.c))) {
-        if (((com.tencent.mm.plugin.story.model.d.c)paramBundle).qLh)
+      paramBundle = (p)((v.e)localObject).Jhw;
+      k.h(paramBundle, "dataSeed");
+      if ((!(paramBundle instanceof com.tencent.mm.plugin.story.f.d.b)) && (!(paramBundle instanceof com.tencent.mm.plugin.story.f.d.a)) && ((paramBundle instanceof com.tencent.mm.plugin.story.f.d.c))) {
+        if (((com.tencent.mm.plugin.story.f.d.c)paramBundle).wkc)
         {
-          paramBundle = m.a.sqY;
-          if (!(((u.d)localObject).BNq instanceof com.tencent.mm.plugin.story.model.d.c)) {
-            break label787;
+          paramBundle = n.a.ydl;
+          if (!(((v.e)localObject).Jhw instanceof com.tencent.mm.plugin.story.f.d.c)) {
+            break label773;
           }
-          this.sHi = new StoryGalleryView((Context)this, paramBundle, this.sHg, bool3, ((com.tencent.mm.plugin.story.model.d.c)((u.d)localObject).BNq).syo);
+          this.ypA = new StoryGalleryView((Context)this, paramBundle, this.ypy, bool2, ((com.tencent.mm.plugin.story.f.d.c)((v.e)localObject).Jhw).yhw);
         }
       }
     }
     for (;;)
     {
-      paramBundle = this.sHi;
+      paramBundle = this.ypA;
+      if (paramBundle != null) {
+        paramBundle.dFU();
+      }
+      paramBundle = this.ypA;
       if (paramBundle != null) {
         paramBundle.setDeleteWhenFirstEmpty(bool1);
       }
-      paramBundle = this.sHi;
+      paramBundle = this.ypA;
       if (paramBundle != null) {
         paramBundle.setChatRoom(str2);
       }
-      paramBundle = this.sHi;
+      paramBundle = this.ypA;
       if (paramBundle != null) {
         paramBundle.setSessionId(str3);
       }
-      paramBundle = this.sHi;
+      paramBundle = this.ypA;
       if (paramBundle != null) {
-        paramBundle.setForSns(bool2);
+        paramBundle.setDataSeed(((v.e)localObject).Jhw);
       }
-      paramBundle = this.sHi;
+      paramBundle = this.ypA;
       if (paramBundle != null) {
-        paramBundle.setDataSeed(((u.d)localObject).BNq);
+        paramBundle.setStoryBrowseUIListener((com.tencent.mm.plugin.story.api.g)this);
       }
-      paramBundle = this.sHi;
+      paramBundle = this.ypA;
       if (paramBundle != null) {
-        paramBundle.setStoryBrowseUIListener((g)this);
+        paramBundle.setCurrentVItem(this.ypy);
       }
-      paramBundle = this.sHi;
-      if (paramBundle != null) {
-        paramBundle.setCurrentVItem(this.sHg);
-      }
-      paramBundle = this.sHi;
+      paramBundle = this.ypA;
       if (paramBundle != null) {
         paramBundle.setCanDragScale(true);
       }
-      paramBundle = this.sHi;
+      paramBundle = this.ypA;
       if (paramBundle != null) {
-        paramBundle.setGalleryScaleListener((StoryGalleryView.b)new StoryBrowseUI.b(this));
+        paramBundle.setGalleryScaleListener((StoryGalleryView.b)new b(this));
       }
-      localRelativeLayout.addView((View)this.mBi, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
-      paramBundle = this.sHi;
+      localRelativeLayout.addView((View)this.qdk, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
+      paramBundle = this.ypA;
       if (paramBundle != null) {
         localRelativeLayout.addView((View)paramBundle, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
       }
       setContentView((View)localRelativeLayout);
-      paramBundle = this.sHi;
+      paramBundle = this.ypA;
       if (paramBundle == null) {
-        break label1031;
+        break label1016;
       }
-      paramBundle.post((Runnable)new StoryBrowseUI.c(this, locald, str1, (u.d)localObject));
-      AppMethodBeat.o(109992);
+      paramBundle.post((Runnable)new c(this, locale, str1, (v.e)localObject));
+      AppMethodBeat.o(119617);
       return;
-      j.b localb = com.tencent.mm.plugin.story.model.j.svi;
-      if (bo.isEqual(j.b.coK(), ((com.tencent.mm.plugin.story.model.d.c)paramBundle).username))
+      j.b localb = com.tencent.mm.plugin.story.f.j.yfh;
+      if (bt.kU(j.b.dta(), ((com.tencent.mm.plugin.story.f.d.c)paramBundle).username))
       {
-        paramBundle = m.a.sqW;
+        paramBundle = n.a.ydj;
         break;
       }
-      paramBundle = m.a.sqX;
+      paramBundle = n.a.ydk;
       break;
-      paramBundle = m.a.sqT;
+      paramBundle = n.a.ydg;
       break;
-      label787:
-      this.sHi = new StoryGalleryView((Context)this, paramBundle, this.sHg, bool3, null, 16);
+      label773:
+      this.ypA = new StoryGalleryView((Context)this, paramBundle, this.ypy, bool2, null, 16);
       continue;
-      if (!bo.isNullOrNil(str1))
+      if (!bt.isNullOrNil(str1))
       {
-        localb = com.tencent.mm.plugin.story.model.j.svi;
-        if (bo.isEqual(str1, j.b.coK()))
+        localb = com.tencent.mm.plugin.story.f.j.yfh;
+        if (bt.kU(str1, j.b.dta()))
         {
           if ((paramBundle != null) && (!paramBundle.isEmpty()))
           {
-            this.sHi = new StoryGalleryView((Context)this, m.a.sqU, 0, false, null, 28);
-            ((u.d)localObject).BNq = paramBundle;
+            this.ypA = new StoryGalleryView((Context)this, n.a.ydh, 0, false, null, 28);
+            ((v.e)localObject).Jhw = paramBundle;
             continue;
           }
-          this.sHi = new StoryGalleryView((Context)this, m.a.sqQ, 0, false, null, 28);
-          ((u.d)localObject).BNq = str1;
+          this.ypA = new StoryGalleryView((Context)this, n.a.ydd, 0, false, null, 28);
+          ((v.e)localObject).Jhw = str1;
           continue;
         }
       }
-      if (!bo.isNullOrNil(str1))
+      if (!bt.isNullOrNil(str1))
       {
-        paramBundle = com.tencent.mm.plugin.story.model.j.svi;
-        if (!bo.isEqual(str1, j.b.coK()))
+        paramBundle = com.tencent.mm.plugin.story.f.j.yfh;
+        if (!bt.kU(str1, j.b.dta()))
         {
-          this.sHi = new StoryGalleryView((Context)this, m.a.sqS, 0, false, null, 28);
-          ((u.d)localObject).BNq = str1;
+          this.ypA = new StoryGalleryView((Context)this, n.a.ydf, 0, false, null, 28);
+          ((v.e)localObject).Jhw = str1;
           continue;
         }
       }
-      if ((ArrayList)locald.BNq != null)
+      if ((ArrayList)locale.Jhw != null)
       {
-        this.sHi = new StoryGalleryView((Context)this, m.a.sqT, 0, false, null, 28);
-        ((u.d)localObject).BNq = new ArrayList((Collection)locald.BNq);
+        this.ypA = new StoryGalleryView((Context)this, n.a.ydg, 0, false, null, 28);
+        ((v.e)localObject).Jhw = new ArrayList((Collection)locale.Jhw);
       }
     }
-    label1031:
-    AppMethodBeat.o(109992);
+    label1016:
+    AppMethodBeat.o(119617);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(109995);
-    ab.i(TAG, "onDestroy ".concat(String.valueOf(this)));
+    AppMethodBeat.i(119620);
+    ad.i(TAG, "onDestroy ".concat(String.valueOf(this)));
     super.onDestroy();
-    Object localObject = this.sHi;
+    Object localObject = this.ypA;
     if (localObject != null) {
       ((StoryGalleryView)localObject).onDestroy();
     }
-    localObject = com.tencent.mm.plugin.story.g.c.sEl;
-    com.tencent.mm.plugin.story.g.c.onDestroy();
-    AppMethodBeat.o(109995);
+    localObject = com.tencent.mm.plugin.story.h.c.ymT;
+    com.tencent.mm.plugin.story.h.c.onDestroy();
+    AppMethodBeat.o(119620);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(109994);
-    ab.i(TAG, "onPause ".concat(String.valueOf(this)));
+    AppMethodBeat.i(119619);
+    ad.i(TAG, "onPause ".concat(String.valueOf(this)));
     super.onPause();
-    StoryGalleryView localStoryGalleryView = this.sHi;
-    if (localStoryGalleryView != null)
-    {
+    StoryGalleryView localStoryGalleryView = this.ypA;
+    if (localStoryGalleryView != null) {
       localStoryGalleryView.onPause();
-      AppMethodBeat.o(109994);
-      return;
     }
-    AppMethodBeat.o(109994);
+    f.bAp();
+    AppMethodBeat.o(119619);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(109993);
-    ab.i(TAG, "onResume ".concat(String.valueOf(this)));
+    AppMethodBeat.i(119618);
+    ad.i(TAG, "onResume ".concat(String.valueOf(this)));
     super.onResume();
-    StoryGalleryView localStoryGalleryView = this.sHi;
+    StoryGalleryView localStoryGalleryView = this.ypA;
     if (localStoryGalleryView != null) {
       localStoryGalleryView.onResume();
     }
-    localStoryGalleryView = this.sHi;
-    if (localStoryGalleryView != null)
-    {
-      localStoryGalleryView.czg();
-      AppMethodBeat.o(109993);
-      return;
+    localStoryGalleryView = this.ypA;
+    if (localStoryGalleryView != null) {
+      localStoryGalleryView.dFR();
     }
-    AppMethodBeat.o(109993);
+    f.bAq();
+    AppMethodBeat.o(119618);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -315,10 +315,160 @@ public final class StoryBrowseUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/StoryBrowseUI$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
+  public static final class a {}
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/story/ui/StoryBrowseUI$onCreate$2", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView$IOnGalleryScale;", "onBgAlpha", "", "alpha", "", "onGalleryExitFromTop", "plugin-story_release"})
+  public static final class b
+    implements StoryGalleryView.b
+  {
+    public final void bx(float paramFloat)
+    {
+      AppMethodBeat.i(119614);
+      ImageView localImageView = StoryBrowseUI.a(this.ypC);
+      if (localImageView != null)
+      {
+        localImageView.setAlpha(paramFloat);
+        AppMethodBeat.o(119614);
+        return;
+      }
+      AppMethodBeat.o(119614);
+    }
+    
+    public final void dKU()
+    {
+      long l1 = 0L;
+      AppMethodBeat.i(119615);
+      StoryGalleryView localStoryGalleryView = StoryBrowseUI.b(this.ypC);
+      long l2;
+      if (localStoryGalleryView != null)
+      {
+        localStoryGalleryView.setEnabled(false);
+        l2 = ((localStoryGalleryView.getHeight() - localStoryGalleryView.getTranslationY()) / localStoryGalleryView.getHeight() * 300.0F);
+        if (l2 >= 0L) {
+          break label161;
+        }
+      }
+      for (;;)
+      {
+        Object localObject = StoryBrowseUI.a(this.ypC);
+        if (localObject != null)
+        {
+          localObject = ((ImageView)localObject).animate();
+          if (localObject != null)
+          {
+            localObject = ((ViewPropertyAnimator)localObject).alpha(0.0F);
+            if (localObject != null)
+            {
+              localObject = ((ViewPropertyAnimator)localObject).setDuration(l1);
+              if (localObject != null) {
+                ((ViewPropertyAnimator)localObject).start();
+              }
+            }
+          }
+        }
+        localStoryGalleryView.animate().translationY(localStoryGalleryView.getHeight()).setDuration(l1).withEndAction((Runnable)new a(this)).start();
+        AppMethodBeat.o(119615);
+        return;
+        AppMethodBeat.o(119615);
+        return;
+        label161:
+        l1 = l2;
+      }
+    }
+    
+    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run", "com/tencent/mm/plugin/story/ui/StoryBrowseUI$onCreate$2$onGalleryExitFromTop$1$1"})
+    static final class a
+      implements Runnable
+    {
+      a(StoryBrowseUI.b paramb) {}
+      
+      public final void run()
+      {
+        AppMethodBeat.i(119613);
+        new ap().post((Runnable)new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(119612);
+            StoryBrowseUI.c(this.ypE.ypD.ypC);
+            this.ypE.ypD.ypC.overridePendingTransition(0, 0);
+            AppMethodBeat.o(119612);
+          }
+        });
+        AppMethodBeat.o(119613);
+      }
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  static final class c
+    implements Runnable
+  {
+    c(StoryBrowseUI paramStoryBrowseUI, v.e parame1, String paramString, v.e parame2) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(119616);
+      Object localObject = StoryBrowseUI.b(this.ypC);
+      if (localObject != null)
+      {
+        ((StoryGalleryView)localObject).getVideoViewMgrFromPreLoad();
+        ((StoryGalleryView)localObject).ad(false, true);
+        ((StoryGalleryView)localObject).setVideoViewMgrFromPreLoad(false);
+        ((StoryGalleryView)localObject).setCurrentHItem(StoryBrowseUI.d(this.ypC));
+      }
+      if ((ArrayList)locale.Jhw == null) {
+        locale.Jhw = new ArrayList();
+      }
+      localObject = h.ynv;
+      List localList;
+      h localh;
+      if (h.dJj().QS() != 4L)
+      {
+        localObject = h.ynv;
+        if (h.dJj().QS() != 6L) {}
+      }
+      else
+      {
+        localObject = (e)com.tencent.mm.kernel.g.ad(e.class);
+        localList = (List)locale.Jhw;
+        localh = h.ynv;
+        ((e)localObject).reportWaitPlayList(localList, h.dJj().QS());
+        AppMethodBeat.o(119616);
+        return;
+      }
+      localObject = h.ynv;
+      if (h.dJj().QS() == 5L)
+      {
+        localObject = (e)com.tencent.mm.kernel.g.ad(e.class);
+        localList = (List)d.a.j.Z(new String[] { str1 });
+        localh = h.ynv;
+        ((e)localObject).reportWaitPlayList(localList, h.dJj().QS());
+        AppMethodBeat.o(119616);
+        return;
+      }
+      localObject = h.ynv;
+      if (h.dJj().QS() != 12L)
+      {
+        localObject = h.ynv;
+        if (h.dJj().QS() != 13L) {}
+      }
+      else if ((this.ypG.Jhw != null) && ((this.ypG.Jhw instanceof com.tencent.mm.plugin.story.f.d.a)))
+      {
+        localObject = (e)com.tencent.mm.kernel.g.ad(e.class);
+        localList = ((com.tencent.mm.plugin.story.f.d.a)this.ypG.Jhw).gYI;
+        localh = h.ynv;
+        ((e)localObject).reportWaitPlayList(localList, h.dJj().QS());
+      }
+      AppMethodBeat.o(119616);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.StoryBrowseUI
  * JD-Core Version:    0.7.0.1
  */

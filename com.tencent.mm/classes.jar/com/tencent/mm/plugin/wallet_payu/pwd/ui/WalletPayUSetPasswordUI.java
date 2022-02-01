@@ -11,10 +11,10 @@ public class WalletPayUSetPasswordUI
 {
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(48524);
+    AppMethodBeat.i(72165);
     super.onCreate(paramBundle);
-    a.a(this.nID, false);
-    AppMethodBeat.o(48524);
+    a.a(this.swk, false);
+    AppMethodBeat.o(72165);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -25,7 +25,7 @@ public class WalletPayUSetPasswordUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUSetPasswordUI
  * JD-Core Version:    0.7.0.1
  */

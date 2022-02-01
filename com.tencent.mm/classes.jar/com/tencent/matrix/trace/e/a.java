@@ -1,8 +1,10 @@
 package com.tencent.matrix.trace.e;
 
+import android.app.Activity;
+
 public abstract interface a
 {
-  public abstract void cB(String paramString);
+  public abstract void n(Activity paramActivity);
 }
 
 

@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:id="@id/b55" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="140.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/b56" android:layout_width="68.0dip" android:layout_height="68.0dip" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="@dimen/a8_" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintTop_toTopOf="dn" />
-    <TextView android:textSize="@dimen/nk" android:textStyle="bold" android:textColor="@color/h9" android:id="@id/b57" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/la" android:layout_marginTop="10.0dip" android:layout_marginRight="@dimen/l2" android:maxLines="2" android:drawablePadding="@dimen/dl" android:lineSpacingExtra="1.0dip" app:layout_constraintLeft_toRightOf="@id/b56" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toTopOf="dn" />
-    <com.tencent.mm.ui.widget.MMCollapsibleTextView android:textSize="@dimen/na" android:textColor="@color/o" android:textColorLink="#ff4f729c" android:id="@id/b52" android:paddingRight="@dimen/l2" android:paddingBottom="@dimen/n_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:maxLines="2" android:lineSpacingExtra="2.0dip" app:layout_constraintLeft_toLeftOf="@id/b57" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toBottomOf="@id/b57" app:collapseButtonPosition="h0" app:collapseButtonStyle="h1" />
-    <com.google.android.flexbox.FlexboxLayout android:id="@id/b51" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l2" app:layout_constraintLeft_toLeftOf="@id/b57" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toBottomOf="@id/b52" app:layout_goneMarginTop="@dimen/n_" app:flexDirection="g_" app:flexWrap="dq" app:justifyContent="ge" app:alignItems="ge" />
-</android.support.constraint.ConstraintLayout>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/cu6" android:paddingLeft="@dimen/o" android:paddingRight="@dimen/o" style="@style/n5">
+        <com.tencent.mm.ui.base.MaskLayout android:id="@id/f_j" android:layout_width="@dimen/i4" android:layout_height="wrap_content">
+            <ImageView android:id="@id/b3b" android:layout_width="@dimen/i2" android:layout_height="@dimen/i2" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/f3_" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="wrap_content" android:src="@drawable/b0k" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        </com.tencent.mm.ui.base.MaskLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:ellipsize="end" android:gravity="center|left" android:id="@id/f_l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d" android:text="{nick}" android:singleLine="true" style="@style/m3" />
+            <TextView android:textSize="@dimen/gx" android:textColor="@color/a0t" android:ellipsize="end" android:gravity="center|left" android:id="@id/f_k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d" android:singleLine="true" style="@style/m3" />
+        </LinearLayout>
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="3.0" />
+        <ImageButton android:layout_gravity="center_vertical" android:id="@id/a9d" android:background="@null" android:focusableInTouchMode="false" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/nb" />
+    </LinearLayout>
+</merge>

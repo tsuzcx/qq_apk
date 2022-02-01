@@ -17,31 +17,31 @@ public class BreakEvent
   
   public int getSourceColumn()
   {
-    AppMethodBeat.i(74823);
+    AppMethodBeat.i(61446);
     int i = this.v8Object.executeIntegerFunction("sourceColumn", null);
-    AppMethodBeat.o(74823);
+    AppMethodBeat.o(61446);
     return i;
   }
   
   public int getSourceLine()
   {
-    AppMethodBeat.i(74822);
+    AppMethodBeat.i(61445);
     int i = this.v8Object.executeIntegerFunction("sourceLine", null);
-    AppMethodBeat.o(74822);
+    AppMethodBeat.o(61445);
     return i;
   }
   
   public String getSourceLineText()
   {
-    AppMethodBeat.i(74824);
+    AppMethodBeat.i(61447);
     String str = this.v8Object.executeStringFunction("sourceLineText", null);
-    AppMethodBeat.o(74824);
+    AppMethodBeat.o(61447);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.debug.BreakEvent
  * JD-Core Version:    0.7.0.1
  */

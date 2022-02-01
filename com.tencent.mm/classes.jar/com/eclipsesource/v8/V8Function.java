@@ -17,7 +17,7 @@ public class V8Function
   
   public Object call(V8Object paramV8Object, V8Array paramV8Array)
   {
-    AppMethodBeat.i(75495);
+    AppMethodBeat.i(62120);
     this.v8.checkThread();
     checkReleased();
     this.v8.checkRuntime(paramV8Object);
@@ -39,7 +39,7 @@ public class V8Function
     for (long l2 = this.v8.getHandle();; l2 = paramV8Object.getHandle())
     {
       paramV8Object = this.v8.executeFunction(this.v8.getV8RuntimePtr(), l2, this.objectHandle, l1);
-      AppMethodBeat.o(75495);
+      AppMethodBeat.o(62120);
       return paramV8Object;
       paramV8Object = this.v8;
       break;
@@ -50,19 +50,19 @@ public class V8Function
   
   protected V8Value createTwin()
   {
-    AppMethodBeat.i(75491);
+    AppMethodBeat.i(62116);
     V8Function localV8Function = new V8Function(this.v8);
-    AppMethodBeat.o(75491);
+    AppMethodBeat.o(62116);
     return localV8Function;
   }
   
   protected void initialize(long paramLong, Object paramObject)
   {
-    AppMethodBeat.i(75493);
+    AppMethodBeat.i(62118);
     if (paramObject == null)
     {
       super.initialize(paramLong, null);
-      AppMethodBeat.o(75493);
+      AppMethodBeat.o(62118);
       return;
     }
     paramObject = (JavaCallback)paramObject;
@@ -70,33 +70,33 @@ public class V8Function
     this.v8.createAndRegisterMethodDescriptor(paramObject, arrayOfLong[1]);
     this.released = false;
     addObjectReference(arrayOfLong[0]);
-    AppMethodBeat.o(75493);
+    AppMethodBeat.o(62118);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(75492);
+    AppMethodBeat.i(62117);
     if ((this.released) || (this.v8.isReleased()))
     {
-      AppMethodBeat.o(75492);
+      AppMethodBeat.o(62117);
       return "[Function released]";
     }
     String str = super.toString();
-    AppMethodBeat.o(75492);
+    AppMethodBeat.o(62117);
     return str;
   }
   
   public V8Function twin()
   {
-    AppMethodBeat.i(75494);
+    AppMethodBeat.i(62119);
     V8Function localV8Function = (V8Function)super.twin();
-    AppMethodBeat.o(75494);
+    AppMethodBeat.o(62119);
     return localV8Function;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.V8Function
  * JD-Core Version:    0.7.0.1
  */

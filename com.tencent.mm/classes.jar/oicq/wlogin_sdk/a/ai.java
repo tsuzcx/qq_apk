@@ -6,50 +6,50 @@ import oicq.wlogin_sdk.tools.util;
 public final class ai
   extends a
 {
-  public int CNU = 0;
-  public int CNV = 0;
-  public int CNW = 0;
+  public int KjC = 0;
+  public int KjD = 0;
+  public int KjE = 0;
   
   public ai()
   {
-    this.CMD = 326;
+    this.Kik = 326;
   }
   
-  public final Boolean erf()
+  public final Boolean fMI()
   {
-    AppMethodBeat.i(96472);
-    if (this.CNn < 12)
+    AppMethodBeat.i(88111);
+    if (this.KiU < 12)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96472);
+      AppMethodBeat.o(88111);
       return localBoolean;
     }
-    int i = util.ae(this.CMx, this.CNm + 4);
-    if (this.CNn < i + 12)
+    int i = util.ai(this.Kie, this.KiT + 4);
+    if (this.KiU < i + 12)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96472);
+      AppMethodBeat.o(88111);
       return localBoolean;
     }
-    this.CNU = i;
-    i = util.ae(this.CMx, this.CNm + 6 + this.CNU);
-    if (this.CNn < this.CNU + 12 + i)
+    this.KjC = i;
+    i = util.ai(this.Kie, this.KiT + 6 + this.KjC);
+    if (this.KiU < this.KjC + 12 + i)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96472);
+      AppMethodBeat.o(88111);
       return localBoolean;
     }
-    this.CNV = i;
-    i = util.ae(this.CMx, this.CNm + 10 + this.CNU + this.CNV);
-    if (this.CNn < this.CNU + 12 + this.CNV + i)
+    this.KjD = i;
+    i = util.ai(this.Kie, this.KiT + 10 + this.KjC + this.KjD);
+    if (this.KiU < this.KjC + 12 + this.KjD + i)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96472);
+      AppMethodBeat.o(88111);
       return localBoolean;
     }
-    this.CNW = i;
+    this.KjE = i;
     Boolean localBoolean = Boolean.TRUE;
-    AppMethodBeat.o(96472);
+    AppMethodBeat.o(88111);
     return localBoolean;
   }
 }

@@ -3,44 +3,71 @@ package com.tencent.mm.plugin.fingerprint.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
+import com.tencent.soter.a.b.c;
 
 public class SoterPayTestUI
   extends MMActivity
-  implements f
+  implements com.tencent.mm.al.g
 {
   public int getLayoutId()
   {
-    return 2130969597;
+    return 2131494138;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(41664);
+    AppMethodBeat.i(64560);
     super.onCreate(paramBundle);
-    findViewById(2131824166).setOnClickListener(new SoterPayTestUI.1(this));
-    findViewById(2131824167).setOnClickListener(new SoterPayTestUI.2(this));
-    findViewById(2131824168).setOnClickListener(new SoterPayTestUI.3(this));
-    AppMethodBeat.o(41664);
+    findViewById(2131305117).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(64557);
+        ad.i("MicroMsg.SoterPayTestUI", "hy: start get challenge");
+        com.tencent.mm.kernel.g.afC();
+        com.tencent.mm.kernel.g.afA().gcy.a(1586, SoterPayTestUI.this);
+        com.tencent.mm.kernel.g.afC();
+        com.tencent.mm.kernel.g.afA().gcy.a(new com.tencent.mm.plugin.fingerprint.c.a(0), 0);
+        AppMethodBeat.o(64557);
+      }
+    });
+    findViewById(2131303959).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(64558);
+        ad.i("MicroMsg.SoterPayTestUI", "hy: regen and upload ask");
+        com.tencent.soter.a.a.a(new com.tencent.soter.a.b.b() {}, false, null);
+        AppMethodBeat.o(64558);
+      }
+    });
+    findViewById(2131303960).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(64559);
+        AppMethodBeat.o(64559);
+      }
+    });
+    AppMethodBeat.o(64560);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(41665);
-    ab.i("MicroMsg.SoterPayTestUI", "hy: on scene end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.i(64561);
+    ad.i("MicroMsg.SoterPayTestUI", "hy: on scene end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     t.makeText(this, String.format("on scene end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString }), 1).show();
-    g.RM();
-    g.RK().eHt.b(paramm.getType(), this);
-    AppMethodBeat.o(41665);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.b(paramn.getType(), this);
+    AppMethodBeat.o(64561);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -51,7 +78,7 @@ public class SoterPayTestUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.ui.SoterPayTestUI
  * JD-Core Version:    0.7.0.1
  */

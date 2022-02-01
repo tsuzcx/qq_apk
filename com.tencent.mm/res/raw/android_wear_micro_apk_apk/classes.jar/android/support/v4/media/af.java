@@ -11,20 +11,20 @@ import java.util.List;
 final class af
   implements ae
 {
-  final Messenger hw;
+  final Messenger jv;
   
   af(Messenger paramMessenger)
   {
-    this.hw = paramMessenger;
+    this.jv = paramMessenger;
   }
   
   private void a(int paramInt, Bundle paramBundle)
   {
     Message localMessage = Message.obtain();
     localMessage.what = paramInt;
-    localMessage.arg1 = 1;
+    localMessage.arg1 = 2;
     localMessage.setData(paramBundle);
-    this.hw.send(localMessage);
+    this.jv.send(localMessage);
   }
   
   public final void a(String paramString, MediaSessionCompat.Token paramToken, Bundle paramBundle)
@@ -33,7 +33,7 @@ final class af
     if (paramBundle == null) {
       localBundle = new Bundle();
     }
-    localBundle.putInt("extra_service_version", 1);
+    localBundle.putInt("extra_service_version", 2);
     paramBundle = new Bundle();
     paramBundle.putString("data_media_item_id", paramString);
     paramBundle.putParcelable("data_media_session_token", paramToken);
@@ -60,14 +60,14 @@ final class af
     }
   }
   
-  public final void aN()
-  {
-    a(2, null);
-  }
-  
   public final IBinder asBinder()
   {
-    return this.hw.getBinder();
+    return this.jv.getBinder();
+  }
+  
+  public final void bd()
+  {
+    a(2, null);
   }
 }
 

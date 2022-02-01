@@ -9,6 +9,7 @@ final class FragmentState
   implements Parcelable
 {
   public static final Parcelable.Creator<FragmentState> CREATOR = new Parcelable.Creator() {};
+  Fragment Dh;
   final Bundle mArguments;
   final String mClassName;
   final int mContainerId;
@@ -20,7 +21,6 @@ final class FragmentState
   final boolean mRetainInstance;
   Bundle mSavedFragmentState;
   final String mTag;
-  Fragment wJ;
   
   FragmentState(Parcel paramParcel)
   {

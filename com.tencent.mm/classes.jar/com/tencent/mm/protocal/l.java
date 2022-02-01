@@ -1,51 +1,51 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.b;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.protocal.protobuf.hq;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.cmf;
+import com.tencent.mm.protocal.protobuf.ip;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class l
 {
-  public static hq a(d paramd)
+  public static ip a(d paramd)
   {
-    AppMethodBeat.i(58841);
-    hq localhq = new hq();
-    localhq.wur = paramd.getClientVersion();
-    localhq.Scene = paramd.getSceneStatus();
-    localhq.lGw = paramd.getUin();
-    localhq.wuq = b.bL(paramd.getDeviceID().getBytes());
-    if (localhq.wuq.pW.length >= 16) {
-      localhq.wuq = localhq.wuq.Mz(16);
+    AppMethodBeat.i(133100);
+    ip localip = new ip();
+    localip.CEj = paramd.getClientVersion();
+    localip.Scene = paramd.getSceneStatus();
+    localip.oXh = paramd.getUin();
+    localip.CEi = b.cd(paramd.getDeviceID().getBytes());
+    if (localip.CEi.wA.length >= 16) {
+      localip.CEi = localip.CEi.Vu(16);
     }
-    localhq.wus = b.bL(paramd.getDeviceType().getBytes());
-    if (localhq.wus.pW.length >= 132) {
-      localhq.wus = localhq.wus.Mz(132);
+    localip.CEk = b.cd(paramd.getDeviceType().getBytes());
+    if (localip.CEk.wA.length >= 132) {
+      localip.CEk = localip.CEk.Vu(132);
     }
-    localhq.wup = b.bL(paramd.getSessionKey());
-    if (localhq.wup.pW.length >= 36) {
-      localhq.wup = localhq.wup.Mz(36);
+    localip.CEh = b.cd(paramd.getSessionKey());
+    if (localip.CEh.wA.length >= 36) {
+      localip.CEh = localip.CEh.Vu(36);
     }
-    AppMethodBeat.o(58841);
-    return localhq;
+    AppMethodBeat.o(133100);
+    return localip;
   }
   
   public static void a(e parame, BaseResponse paramBaseResponse)
   {
-    AppMethodBeat.i(58842);
+    AppMethodBeat.i(133101);
     if (paramBaseResponse.ErrMsg != null)
     {
-      parame.setErrMsg(paramBaseResponse.ErrMsg.xJE);
-      AppMethodBeat.o(58842);
+      parame.setErrMsg(paramBaseResponse.ErrMsg.Ehn);
+      AppMethodBeat.o(133101);
       return;
     }
     parame.setErrMsg("");
-    ab.e("MicroMsg.MMBase", "ErrMsg is Null!!!!!!");
-    AppMethodBeat.o(58842);
+    ad.e("MicroMsg.MMBase", "ErrMsg is Null!!!!!!");
+    AppMethodBeat.o(133101);
   }
   
   public static abstract interface a
@@ -87,17 +87,19 @@ public final class l
     private l.a mReqPackControl;
     private byte[] passKey;
     private int routeInfo;
-    private aa rsaInfo;
+    private ac rsaInfo;
     private String sDeviceID;
     private String sDeviceType;
     private byte[] sessionKey;
+    private boolean useAxSession;
     private boolean useECDH;
     
     public d()
     {
-      AppMethodBeat.i(58839);
+      AppMethodBeat.i(133097);
       this.bShortSupport = true;
       this.useECDH = false;
+      this.useAxSession = false;
       this.bufferSize = 0L;
       this.iUin = 0;
       this.iClientVersion = 0;
@@ -105,10 +107,10 @@ public final class l
       this.sDeviceType = "";
       this.sDeviceID = "";
       this.iSceneStatus = 0;
-      this.rsaInfo = new aa("", "", 0);
+      this.rsaInfo = new ac("", "", 0);
       this.routeInfo = 0;
       this.ecdhEngine = 0L;
-      AppMethodBeat.o(58839);
+      AppMethodBeat.o(133097);
     }
     
     public long getBufferSize()
@@ -156,7 +158,7 @@ public final class l
       return this.routeInfo;
     }
     
-    public aa getRsaInfo()
+    public ac getRsaInfo()
     {
       return this.rsaInfo;
     }
@@ -236,15 +238,15 @@ public final class l
       this.routeInfo = paramInt;
     }
     
-    public void setRsaInfo(aa paramaa)
+    public void setRsaInfo(ac paramac)
     {
-      AppMethodBeat.i(58840);
-      this.rsaInfo = paramaa;
-      ab.i("MicroMsg.MMBase.Req", "summerauths setRsaInfo cgi[%s], USE_ECDH[%b], stack[%s]", new Object[] { Integer.valueOf(getCmdId()), Boolean.valueOf(f.whQ), bo.dtY() });
-      if (f.whQ) {
+      AppMethodBeat.i(133098);
+      this.rsaInfo = paramac;
+      ad.i("MicroMsg.MMBase.Req", "summerauths setRsaInfo cgi[%s], USE_ECDH[%b], stack[%s]", new Object[] { Integer.valueOf(getCmdId()), Boolean.valueOf(f.CpT), bt.eGN() });
+      if (f.CpT) {
         setUseECDH(true);
       }
-      AppMethodBeat.o(58840);
+      AppMethodBeat.o(133098);
     }
     
     public void setSceneStatus(int paramInt)
@@ -273,12 +275,22 @@ public final class l
       this.iUin = paramInt;
     }
     
+    public void setUseAxsession(boolean paramBoolean)
+    {
+      this.useAxSession = paramBoolean;
+    }
+    
     public void setUseECDH(boolean paramBoolean)
     {
-      AppMethodBeat.i(154768);
+      AppMethodBeat.i(133099);
       this.useECDH = paramBoolean;
-      ab.i("MicroMsg.MMBase.Req", "summerauths setUseECDH[%s]  cgi[%s], stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(getCmdId()), bo.dtY() });
-      AppMethodBeat.o(154768);
+      ad.i("MicroMsg.MMBase.Req", "summerauths setUseECDH[%s]  cgi[%s], stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(getCmdId()), bt.eGN() });
+      AppMethodBeat.o(133099);
+    }
+    
+    public boolean useAxSession()
+    {
+      return this.useAxSession;
     }
     
     public boolean useECDH()
@@ -293,6 +305,11 @@ public final class l
     private int iHeadExtFlags = 255;
     private int iRetCode = -99;
     private String sErrMsg = "";
+    
+    public byte[] getAuthResponse()
+    {
+      return null;
+    }
     
     public long getBufferSize()
     {

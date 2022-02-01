@@ -2,53 +2,49 @@ package com.tencent.mm.plugin.fts;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.plugin.fts.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class e
-  implements com.tencent.mm.plugin.fts.a.j
+  implements j
 {
-  public e()
+  public final af aaR(String paramString)
   {
-    AppMethodBeat.i(141121);
-    AppMethodBeat.o(141121);
-  }
-  
-  public final ad OT(String paramString)
-  {
-    AppMethodBeat.i(136566);
-    ad localad2 = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arq(paramString);
-    ad localad1 = localad2;
-    if (localad2 == null)
+    AppMethodBeat.i(52550);
+    af localaf2 = ((k)g.ab(k.class)).apM().aHS(paramString);
+    af localaf1 = localaf2;
+    if (localaf2 == null)
     {
-      localad1 = new ad();
+      localaf1 = new af();
       paramString = i("SELECT ROWID, username, alias, conRemark, nickname, verifyFlag, type, lvbuff, contactLabelIds FROM rcontact WHERE username = ? AND deleteFlag=0;", new String[] { paramString });
       if (paramString.moveToNext())
       {
-        localad1.euF = paramString.getLong(0);
-        localad1.setUsername(paramString.getString(1));
-        localad1.jm(paramString.getString(2));
-        localad1.jn(paramString.getString(3));
-        localad1.jp(paramString.getString(4));
-        localad1.hu(paramString.getInt(5));
-        localad1.setType(paramString.getInt(6));
-        localad1.G(paramString.getBlob(7));
-        localad1.jw(paramString.getString(8));
-        localad1.hw(0);
+        localaf1.fId = paramString.getLong(0);
+        localaf1.setUsername(paramString.getString(1));
+        localaf1.na(paramString.getString(2));
+        localaf1.nb(paramString.getString(3));
+        localaf1.nd(paramString.getString(4));
+        localaf1.jF(paramString.getInt(5));
+        localaf1.setType(paramString.getInt(6));
+        localaf1.O(paramString.getBlob(7));
+        localaf1.nk(paramString.getString(8));
+        localaf1.jH(0);
       }
       paramString.close();
     }
-    AppMethodBeat.o(136566);
-    return localad1;
+    AppMethodBeat.o(52550);
+    return localaf1;
   }
   
-  public final boolean OU(String paramString)
+  public final boolean aaS(String paramString)
   {
-    AppMethodBeat.i(136567);
+    AppMethodBeat.i(52551);
     paramString = i(String.format("SELECT 1 FROM rconversation WHERE username = ?", new Object[0]), new String[] { paramString });
     try
     {
@@ -60,13 +56,13 @@ public final class e
       if (paramString != null) {
         paramString.close();
       }
-      AppMethodBeat.o(136567);
+      AppMethodBeat.o(52551);
     }
   }
   
-  public final long OV(String paramString)
+  public final long aaT(String paramString)
   {
-    AppMethodBeat.i(136568);
+    AppMethodBeat.i(52552);
     paramString = i("SELECT conversationTime FROM rconversation WHERE username=?;", new String[] { paramString });
     long l2 = 0L;
     long l1 = l2;
@@ -80,13 +76,13 @@ public final class e
     if (paramString != null) {
       paramString.close();
     }
-    AppMethodBeat.o(136568);
+    AppMethodBeat.o(52552);
     return l1;
   }
   
-  public final List<String> OW(String paramString)
+  public final List<String> aaU(String paramString)
   {
-    AppMethodBeat.i(136569);
+    AppMethodBeat.i(52553);
     ArrayList localArrayList = new ArrayList();
     String str = paramString;
     if (paramString.endsWith("")) {
@@ -94,7 +90,7 @@ public final class e
     }
     if (str.length() == 0)
     {
-      AppMethodBeat.o(136569);
+      AppMethodBeat.o(52553);
       return localArrayList;
     }
     paramString = i(String.format("SELECT labelName FROM ContactLabel WHERE labelID IN (%s);", new Object[] { str }), null);
@@ -102,31 +98,31 @@ public final class e
       localArrayList.add(paramString.getString(0));
     }
     paramString.close();
-    AppMethodBeat.o(136569);
+    AppMethodBeat.o(52553);
     return localArrayList;
   }
   
   public final Cursor i(String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(136564);
-    g.RM();
-    paramString = g.RL().eHT.a(paramString, paramArrayOfString, 2);
-    AppMethodBeat.o(136564);
+    AppMethodBeat.i(52548);
+    g.afC();
+    paramString = g.afB().gdb.a(paramString, paramArrayOfString, 2);
+    AppMethodBeat.o(52548);
     return paramString;
   }
   
   public final Cursor rawQuery(String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(136565);
-    g.RM();
-    paramString = g.RL().eHT.a(paramString, paramArrayOfString, 0);
-    AppMethodBeat.o(136565);
+    AppMethodBeat.i(52549);
+    g.afC();
+    paramString = g.afB().gdb.a(paramString, paramArrayOfString, 0);
+    AppMethodBeat.o(52549);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.e
  * JD-Core Version:    0.7.0.1
  */

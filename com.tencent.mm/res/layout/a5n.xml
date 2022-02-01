@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.plugin.gallery.picker.view.WxMediaCropLayout android:orientation="vertical" android:id="@id/b6o" android:background="@color/BW_10" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameBannerView android:id="@id/c_p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="120.0dip" />
-</LinearLayout>
+    <FrameLayout android:gravity="center_vertical" android:layout_gravity="top" android:id="@id/bq" android:layout_width="fill_parent" android:layout_height="@dimen/b3">
+        <ImageView android:layout_gravity="start|center" android:id="@id/dn" android:background="@null" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/b96" android:contentDescription="@string/ca" />
+        <TextView android:textSize="@dimen/q" android:textColor="@color/aj" android:gravity="center" android:layout_gravity="end|center" android:id="@id/cj" android:background="@drawable/io" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="wrap_content" android:layout_height="34.0dip" android:text="完成" android:layout_marginEnd="@dimen/c5" />
+    </FrameLayout>
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/c5p" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView android:layout_gravity="center_vertical" android:id="@id/c5z" android:layout_width="fill_parent" android:layout_height="@dimen/ch" />
+        <FrameLayout android:id="@id/c5q" android:layout_width="fill_parent" android:layout_height="@dimen/ce">
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/a_x" android:gravity="center" android:layout_gravity="start" android:id="@id/bg7" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/ry" />
+            <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/hsa" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                <CheckBox android:id="@id/hs_" android:background="@drawable/yp" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" />
+                <TextView android:textSize="@dimen/ia" android:textColor="@color/a_x" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ci" android:text="@string/hki" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/a_u" android:gravity="center" android:layout_gravity="end|center" android:id="@id/eh9" android:background="@drawable/a5y" android:layout_width="@dimen/c9" android:layout_height="@dimen/c9" android:layout_marginEnd="@dimen/c5" />
+        </FrameLayout>
+    </LinearLayout>
+</com.tencent.mm.plugin.gallery.picker.view.WxMediaCropLayout>

@@ -1,64 +1,40 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.a;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.protocal.protobuf.cnp;
-import com.tencent.mm.protocal.protobuf.cnq;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.c;
+import com.tencent.mm.protocal.protobuf.beb;
+import com.tencent.mm.protocal.protobuf.bec;
 
-final class aa
-  extends a<cnq>
+class aa
+  extends c<bec>
 {
-  private final String bCU;
-  private final cnp hcE;
-  private final b hcF;
-  
-  aa(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, String paramString1, int paramInt4, String paramString2)
+  aa(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(129707);
-    this.bCU = paramString2;
-    b.a locala = new b.a();
-    cnp localcnp = new cnp();
-    int i = paramInt1;
-    if (paramInt1 == 0) {
-      i = 1000;
-    }
-    localcnp.scene = i;
-    if (paramBoolean) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      localcnp.xWA = paramInt1;
-      localcnp.wAx = paramInt2;
-      localcnp.xWB = 2;
-      localcnp.xWC = paramInt3;
-      localcnp.username = paramString1;
-      localcnp.aXG = paramInt4;
-      localcnp.session_id = paramString2;
-      this.hcE = localcnp;
-      locala.fsX = localcnp;
-      locala.fsY = new cnq();
-      locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/updatewxausagerecord";
-      locala.funcId = 1149;
-      paramString1 = locala.ado();
-      this.hcF = paramString1;
-      this.rr = paramString1;
-      AppMethodBeat.o(129707);
-      return;
-    }
+    this(4, 0, paramInt1, paramInt2, paramInt3);
   }
   
-  static aa aO(String paramString, int paramInt)
+  aa(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(129708);
-    paramString = new aa(1001, false, paramInt, 2, paramString, 1, null);
-    AppMethodBeat.o(129708);
-    return paramString;
+    AppMethodBeat.i(44639);
+    b.a locala = new b.a();
+    beb localbeb = new beb();
+    localbeb.bvJ = paramInt1;
+    localbeb.DBI = paramInt2;
+    localbeb.condition = paramInt3;
+    localbeb.DBG = paramInt4;
+    localbeb.DBH = paramInt5;
+    locala.gUU = localbeb;
+    locala.gUV = new bec();
+    locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/getwxausagerecord";
+    locala.funcId = 1148;
+    this.rr = locala.atI();
+    AppMethodBeat.o(44639);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.aa
  * JD-Core Version:    0.7.0.1
  */

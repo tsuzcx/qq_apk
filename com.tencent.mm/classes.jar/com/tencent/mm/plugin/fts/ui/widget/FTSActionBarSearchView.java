@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.fts.ui.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.tools.ActionBarSearchView;
 import com.tencent.mm.ui.tools.ActionBarSearchView.ActionBarEditText;
 
@@ -22,22 +22,22 @@ public class FTSActionBarSearchView
   
   public int getLayoutId()
   {
-    AppMethodBeat.i(62103);
-    ab.i("FTSActionBarSearchView", "getLayoutId");
-    AppMethodBeat.o(62103);
-    return 2130969665;
+    AppMethodBeat.i(112231);
+    ad.i("FTSActionBarSearchView", "getLayoutId");
+    AppMethodBeat.o(112231);
+    return 2131494208;
   }
   
   public void setCursorVisible(boolean paramBoolean)
   {
-    AppMethodBeat.i(62104);
-    this.ApS.setCursorVisible(paramBoolean);
-    AppMethodBeat.o(62104);
+    AppMethodBeat.i(112232);
+    this.HlK.setCursorVisible(paramBoolean);
+    AppMethodBeat.o(112232);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.FTSActionBarSearchView
  * JD-Core Version:    0.7.0.1
  */

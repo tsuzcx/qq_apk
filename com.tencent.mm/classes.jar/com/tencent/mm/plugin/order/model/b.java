@@ -3,64 +3,64 @@ package com.tencent.mm.plugin.order.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
 public final class b
 {
-  public HashSet<String> poZ;
+  public HashSet<String> unZ;
   
   public b()
   {
-    AppMethodBeat.i(43750);
-    this.poZ = new HashSet();
-    Kg();
-    AppMethodBeat.o(43750);
+    AppMethodBeat.i(66658);
+    this.unZ = new HashSet();
+    VP();
+    AppMethodBeat.o(66658);
   }
   
-  private void Kg()
+  private void VP()
   {
-    AppMethodBeat.i(43751);
-    this.poZ.clear();
-    g.RM();
-    Iterator localIterator = bo.P(((String)g.RL().Ru().get(204803, "")).split(";")).iterator();
+    AppMethodBeat.i(66659);
+    this.unZ.clear();
+    g.afC();
+    Iterator localIterator = bt.S(((String)g.afB().afk().get(204803, "")).split(";")).iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if ((!bo.isNullOrNil(str)) && (!this.poZ.contains(str))) {
-        this.poZ.add(str);
+      if ((!bt.isNullOrNil(str)) && (!this.unZ.contains(str))) {
+        this.unZ.add(str);
       }
     }
-    g.RM();
-    g.RL().Ru().set(204817, Integer.valueOf(this.poZ.size()));
-    ab.d("MicroMsg.WalletOrdersManager", "notifyTrans.size() : " + this.poZ.size());
-    AppMethodBeat.o(43751);
+    g.afC();
+    g.afB().afk().set(204817, Integer.valueOf(this.unZ.size()));
+    ad.d("MicroMsg.WalletOrdersManager", "notifyTrans.size() : " + this.unZ.size());
+    AppMethodBeat.o(66659);
   }
   
-  public final void cao()
+  public final void dac()
   {
-    AppMethodBeat.i(43752);
+    AppMethodBeat.i(66660);
     StringBuffer localStringBuffer = new StringBuffer();
-    Iterator localIterator = this.poZ.iterator();
+    Iterator localIterator = this.unZ.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (!bo.isNullOrNil(str)) {
+      if (!bt.isNullOrNil(str)) {
         localStringBuffer.append(str + ";");
       }
     }
-    g.RM();
-    g.RL().Ru().set(204803, localStringBuffer.toString());
-    AppMethodBeat.o(43752);
+    g.afC();
+    g.afB().afk().set(204803, localStringBuffer.toString());
+    AppMethodBeat.o(66660);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.b
  * JD-Core Version:    0.7.0.1
  */

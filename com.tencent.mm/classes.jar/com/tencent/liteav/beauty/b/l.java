@@ -23,14 +23,14 @@ public class l
   
   public void a(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(146380);
+    AppMethodBeat.i(15091);
     if (paramArrayOfFloat != null) {
       b(this.s, 1);
     }
     for (;;)
     {
       super.a(paramArrayOfFloat);
-      AppMethodBeat.o(146380);
+      AppMethodBeat.o(15091);
       return;
       b(this.s, 0);
     }
@@ -38,28 +38,28 @@ public class l
   
   public boolean b()
   {
-    AppMethodBeat.i(66940);
+    AppMethodBeat.i(15090);
     boolean bool = super.b();
     this.s = GLES20.glGetUniformLocation(this.a, "bTransform");
     b(this.s, 0);
-    AppMethodBeat.o(66940);
+    AppMethodBeat.o(15090);
     return bool;
   }
   
   public void c(boolean paramBoolean)
   {
-    AppMethodBeat.i(146381);
+    AppMethodBeat.i(15092);
     if (paramBoolean != this.t)
     {
       this.t = paramBoolean;
       h();
     }
-    AppMethodBeat.o(146381);
+    AppMethodBeat.o(15092);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.l
  * JD-Core Version:    0.7.0.1
  */

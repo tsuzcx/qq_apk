@@ -5,9 +5,9 @@ public abstract interface f
 {
   public abstract void close();
   
-  public abstract long kr(long paramLong);
+  public abstract int mX(long paramLong);
   
-  public abstract int nY(long paramLong);
+  public abstract long rb(long paramLong);
 }
 
 

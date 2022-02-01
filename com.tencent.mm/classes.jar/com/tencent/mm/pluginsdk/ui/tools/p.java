@@ -1,26 +1,82 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
-import android.view.View;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.xweb.WebView;
 
 public final class p
 {
-  private static int wfL = -1;
+  private static String Cnw = null;
+  private static final String[] Cnx = { "", "dynamic_config_recv", "trigger_download", "start_download", "stop_download", "download_finish", "install_finish", "use" };
   
-  public static void a(View paramView, VideoSightView paramVideoSightView)
+  public static void fL(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(70414);
-    if ((paramView == null) || (paramVideoSightView == null))
+    AppMethodBeat.i(133688);
+    if ((paramInt1 <= 0) || (paramInt1 > 7))
     {
-      ab.e("VideoSightHelper", "null view object " + paramView + "," + paramVideoSightView);
-      AppMethodBeat.o(70414);
+      ad.e("MicroMsg.TBSReporter", "report invalid scene = %d", new Object[] { Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(133688);
       return;
     }
-    if (paramView.getVisibility() == 0) {
-      paramVideoSightView.addOnLayoutChangeListener(new p.1(paramView));
+    iQ(paramInt1, paramInt2);
+    Object localObject = aj.getContext();
+    int i = WebView.getInstalledTbsCoreVersion((Context)localObject);
+    int j = WebView.getTbsSDKVersion((Context)localObject);
+    localObject = hn((Context)localObject);
+    h.vKh.a(11633, false, true, new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(i), Integer.valueOf(j), localObject, Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(133688);
+  }
+  
+  private static String hn(Context paramContext)
+  {
+    AppMethodBeat.i(133689);
+    if (Cnw != null)
+    {
+      paramContext = Cnw;
+      AppMethodBeat.o(133689);
+      return paramContext;
     }
-    AppMethodBeat.o(70414);
+    try
+    {
+      paramContext = paramContext.getPackageManager().getApplicationInfo(aj.getPackageName(), 128);
+      if ((paramContext != null) && (paramContext.metaData != null))
+      {
+        paramContext = paramContext.metaData.getString("com.tencent.mtt.TBS_CODE");
+        if (!bt.isNullOrNil(paramContext))
+        {
+          Cnw = paramContext;
+          AppMethodBeat.o(133689);
+          return paramContext;
+        }
+      }
+    }
+    catch (Exception paramContext)
+    {
+      ad.e("MicroMsg.TBSReporter", "getMetaTbsCode, ex = %s", new Object[] { paramContext.getMessage() });
+      AppMethodBeat.o(133689);
+    }
+    return null;
+  }
+  
+  private static void iQ(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(133690);
+    ad.i("MicroMsg.TBSReporter", "logSceneDetail, scene = %d_%s, errcode = %d", new Object[] { Integer.valueOf(paramInt1), Cnx[paramInt1], Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(133690);
+  }
+  
+  public static void lI(int paramInt)
+  {
+    AppMethodBeat.i(133687);
+    fL(paramInt, 0);
+    AppMethodBeat.o(133687);
   }
 }
 

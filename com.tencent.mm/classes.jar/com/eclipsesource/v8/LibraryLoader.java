@@ -14,54 +14,54 @@ class LibraryLoader
   
   static
   {
-    AppMethodBeat.i(74962);
+    AppMethodBeat.i(61585);
     DELIMITER = System.getProperty("line.separator");
     SEPARATOR = System.getProperty("file.separator");
-    AppMethodBeat.o(74962);
+    AppMethodBeat.o(61585);
   }
   
   static void chmod(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(74952);
+    AppMethodBeat.i(61575);
     if (isWindows())
     {
-      AppMethodBeat.o(74952);
+      AppMethodBeat.o(61575);
       return;
     }
     try
     {
       Runtime.getRuntime().exec(new String[] { "chmod", paramString1, paramString2 }).waitFor();
-      AppMethodBeat.o(74952);
+      AppMethodBeat.o(61575);
       return;
     }
     catch (Throwable paramString1)
     {
-      AppMethodBeat.o(74952);
+      AppMethodBeat.o(61575);
     }
   }
   
   private static String computeLibraryFullName()
   {
-    AppMethodBeat.i(74948);
+    AppMethodBeat.i(61571);
     String str = "lib" + computeLibraryShortName() + "." + getOSFileExtension();
-    AppMethodBeat.o(74948);
+    AppMethodBeat.o(61571);
     return str;
   }
   
   private static String computeLibraryShortName()
   {
-    AppMethodBeat.i(74947);
+    AppMethodBeat.i(61570);
     String str1 = getOS();
     String str2 = getArchSuffix();
     str1 = "j2v8" + "_" + str1 + "_" + str2;
-    AppMethodBeat.o(74947);
+    AppMethodBeat.o(61570);
     return str1;
   }
   
   static boolean extract(String paramString1, String paramString2, StringBuffer paramStringBuffer)
   {
     i = 1;
-    AppMethodBeat.i(74951);
+    AppMethodBeat.i(61574);
     File localFile = new File(paramString1);
     for (;;)
     {
@@ -120,7 +120,7 @@ class LibraryLoader
           if ((i != 0) && (localFile.exists())) {
             localFile.delete();
           }
-          AppMethodBeat.o(74951);
+          AppMethodBeat.o(61574);
           return false;
           localFileOutputStream.close();
           paramString2.close();
@@ -129,7 +129,7 @@ class LibraryLoader
           if (!bool) {
             continue;
           }
-          AppMethodBeat.o(74951);
+          AppMethodBeat.o(61574);
           return true;
           paramString1 = paramString1;
         }
@@ -140,139 +140,139 @@ class LibraryLoader
   
   static String getArchSuffix()
   {
-    AppMethodBeat.i(74959);
+    AppMethodBeat.i(61582);
     String str = System.getProperty("os.arch");
     if (str.equals("i686"))
     {
-      AppMethodBeat.o(74959);
+      AppMethodBeat.o(61582);
       return "x86";
     }
     if (str.equals("amd64"))
     {
-      AppMethodBeat.o(74959);
+      AppMethodBeat.o(61582);
       return "x86_64";
     }
     if (str.equals("nacl"))
     {
-      AppMethodBeat.o(74959);
+      AppMethodBeat.o(61582);
       return "armv7l";
     }
     if (str.equals("aarch64"))
     {
-      AppMethodBeat.o(74959);
+      AppMethodBeat.o(61582);
       return "armv7l";
     }
-    AppMethodBeat.o(74959);
+    AppMethodBeat.o(61582);
     return str;
   }
   
   static String getOS()
   {
-    AppMethodBeat.i(74961);
+    AppMethodBeat.i(61584);
     if (isWindows())
     {
-      AppMethodBeat.o(74961);
+      AppMethodBeat.o(61584);
       return "win32";
     }
     if (isMac())
     {
-      AppMethodBeat.o(74961);
+      AppMethodBeat.o(61584);
       return "macosx";
     }
     if ((isLinux()) && (!isAndroid()))
     {
-      AppMethodBeat.o(74961);
+      AppMethodBeat.o(61584);
       return "linux";
     }
     if (isAndroid())
     {
-      AppMethodBeat.o(74961);
+      AppMethodBeat.o(61584);
       return "android";
     }
     UnsatisfiedLinkError localUnsatisfiedLinkError = new UnsatisfiedLinkError("Unsupported platform: " + getOsName());
-    AppMethodBeat.o(74961);
+    AppMethodBeat.o(61584);
     throw localUnsatisfiedLinkError;
   }
   
   static String getOSFileExtension()
   {
-    AppMethodBeat.i(74960);
+    AppMethodBeat.i(61583);
     if (isWindows())
     {
-      AppMethodBeat.o(74960);
+      AppMethodBeat.o(61583);
       return "dll";
     }
     if (isMac())
     {
-      AppMethodBeat.o(74960);
+      AppMethodBeat.o(61583);
       return "dylib";
     }
     if (isLinux())
     {
-      AppMethodBeat.o(74960);
+      AppMethodBeat.o(61583);
       return "so";
     }
     if (isNativeClient())
     {
-      AppMethodBeat.o(74960);
+      AppMethodBeat.o(61583);
       return "so";
     }
     UnsatisfiedLinkError localUnsatisfiedLinkError = new UnsatisfiedLinkError("Unsupported platform: " + getOsName());
-    AppMethodBeat.o(74960);
+    AppMethodBeat.o(61583);
     throw localUnsatisfiedLinkError;
   }
   
   static String getOsName()
   {
-    AppMethodBeat.i(74953);
+    AppMethodBeat.i(61576);
     String str = System.getProperty("os.name") + System.getProperty("java.specification.vendor");
-    AppMethodBeat.o(74953);
+    AppMethodBeat.o(61576);
     return str;
   }
   
   static boolean isAndroid()
   {
-    AppMethodBeat.i(74958);
+    AppMethodBeat.i(61581);
     boolean bool = getOsName().contains("Android");
-    AppMethodBeat.o(74958);
+    AppMethodBeat.o(61581);
     return bool;
   }
   
   static boolean isLinux()
   {
-    AppMethodBeat.i(74956);
+    AppMethodBeat.i(61579);
     boolean bool = getOsName().startsWith("Linux");
-    AppMethodBeat.o(74956);
+    AppMethodBeat.o(61579);
     return bool;
   }
   
   static boolean isMac()
   {
-    AppMethodBeat.i(74955);
+    AppMethodBeat.i(61578);
     boolean bool = getOsName().startsWith("Mac");
-    AppMethodBeat.o(74955);
+    AppMethodBeat.o(61578);
     return bool;
   }
   
   static boolean isNativeClient()
   {
-    AppMethodBeat.i(74957);
+    AppMethodBeat.i(61580);
     boolean bool = getOsName().startsWith("nacl");
-    AppMethodBeat.o(74957);
+    AppMethodBeat.o(61580);
     return bool;
   }
   
   static boolean isWindows()
   {
-    AppMethodBeat.i(74954);
+    AppMethodBeat.i(61577);
     boolean bool = getOsName().startsWith("Windows");
-    AppMethodBeat.o(74954);
+    AppMethodBeat.o(61577);
     return bool;
   }
   
   static boolean load(String paramString, StringBuffer paramStringBuffer)
   {
-    AppMethodBeat.i(74950);
+    AppMethodBeat.i(61573);
     try
     {
       if (paramString.indexOf(SEPARATOR) != -1) {
@@ -280,7 +280,7 @@ class LibraryLoader
       }
       for (;;)
       {
-        AppMethodBeat.o(74950);
+        AppMethodBeat.o(61573);
         return true;
         System.loadLibrary(paramString);
       }
@@ -294,17 +294,17 @@ class LibraryLoader
       paramStringBuffer.append('\t');
       paramStringBuffer.append(paramString.getMessage());
       paramStringBuffer.append(DELIMITER);
-      AppMethodBeat.o(74950);
+      AppMethodBeat.o(61573);
     }
   }
   
   static void loadLibrary(String paramString)
   {
-    AppMethodBeat.i(74949);
+    AppMethodBeat.i(61572);
     if (isAndroid())
     {
-      System.loadLibrary("j2v8");
-      AppMethodBeat.o(74949);
+      System.loadLibrary("mmj2v8");
+      AppMethodBeat.o(61572);
       return;
     }
     StringBuffer localStringBuffer = new StringBuffer();
@@ -313,17 +313,17 @@ class LibraryLoader
     String str3 = System.getProperty("user.dir") + SEPARATOR + "jni" + SEPARATOR + computeLibraryFullName();
     if (load(str2, localStringBuffer))
     {
-      AppMethodBeat.o(74949);
+      AppMethodBeat.o(61572);
       return;
     }
     if (load(str1, localStringBuffer))
     {
-      AppMethodBeat.o(74949);
+      AppMethodBeat.o(61572);
       return;
     }
     if ((new File(str3).exists()) && (load(str3, localStringBuffer)))
     {
-      AppMethodBeat.o(74949);
+      AppMethodBeat.o(61572);
       return;
     }
     str1 = paramString;
@@ -332,17 +332,17 @@ class LibraryLoader
     }
     if (extract(str1 + SEPARATOR + str2, str2, localStringBuffer))
     {
-      AppMethodBeat.o(74949);
+      AppMethodBeat.o(61572);
       return;
     }
     paramString = new UnsatisfiedLinkError("Could not load J2V8 library. Reasons: " + localStringBuffer.toString());
-    AppMethodBeat.o(74949);
+    AppMethodBeat.o(61572);
     throw paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.eclipsesource.v8.LibraryLoader
  * JD-Core Version:    0.7.0.1
  */

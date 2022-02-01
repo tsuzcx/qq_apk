@@ -22,7 +22,7 @@ public final class SignIn
   
   static
   {
-    AppMethodBeat.i(61644);
+    AppMethodBeat.i(12136);
     CLIENT_KEY = new Api.ClientKey();
     INTERNAL_CLIENT_KEY = new Api.ClientKey();
     CLIENT_BUILDER = new zza();
@@ -31,7 +31,7 @@ public final class SignIn
     SCOPE_EMAIL = new Scope("email");
     API = new Api("SignIn.API", CLIENT_BUILDER, CLIENT_KEY);
     INTERNAL_API = new Api("SignIn.INTERNAL_API", zzacz, INTERNAL_CLIENT_KEY);
-    AppMethodBeat.o(61644);
+    AppMethodBeat.o(12136);
   }
   
   public static class SignInOptionsInternal
@@ -41,12 +41,12 @@ public final class SignIn
     
     private SignInOptionsInternal(Bundle paramBundle)
     {
-      AppMethodBeat.i(61643);
+      AppMethodBeat.i(12135);
       if (paramBundle != null) {}
       for (;;)
       {
         this.zzada = paramBundle;
-        AppMethodBeat.o(61643);
+        AppMethodBeat.o(12135);
         return;
         paramBundle = new Bundle();
       }
@@ -54,9 +54,9 @@ public final class SignIn
     
     public static SignInOptionsInternal create(Bundle paramBundle)
     {
-      AppMethodBeat.i(61642);
+      AppMethodBeat.i(12134);
       paramBundle = new SignInOptionsInternal(paramBundle);
-      AppMethodBeat.o(61642);
+      AppMethodBeat.o(12134);
       return paramBundle;
     }
     

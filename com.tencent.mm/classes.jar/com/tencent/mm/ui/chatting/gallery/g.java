@@ -2,43 +2,45 @@ package com.tencent.mm.ui.chatting.gallery;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.f;
+import com.tencent.mm.b.f;
+import com.tencent.mm.b.f.a;
+import com.tencent.mm.b.f.b;
 import com.tencent.mm.memory.a.b;
-import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.be;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public final class g
 {
-  private az fwL;
+  protected HashMap<String, Long> GBV;
+  private be gXM;
   private int mScrollState;
-  protected f<String, Bitmap> nfR;
-  public LinkedList<String> nfT;
-  private boolean nfV;
-  protected HashMap<String, Long> zLC;
+  protected f<String, Bitmap> rJL;
+  public LinkedList<String> rJN;
+  private boolean rJP;
   
   public g()
   {
-    AppMethodBeat.i(32163);
-    this.nfR = new b(4, new g.1(this), getClass());
-    this.zLC = new HashMap();
-    this.nfT = new LinkedList();
-    this.fwL = new az(1, "chatting-image-gallery-preload-loader");
-    this.nfV = false;
+    AppMethodBeat.i(36076);
+    this.rJL = new b(4, new f.b() {}, getClass());
+    this.GBV = new HashMap();
+    this.rJN = new LinkedList();
+    this.gXM = new be(1, "chatting-image-gallery-preload-loader");
+    this.rJP = false;
     this.mScrollState = 0;
-    AppMethodBeat.o(32163);
+    AppMethodBeat.o(36076);
   }
   
-  public final void bEy()
+  public final void cAE()
   {
-    AppMethodBeat.i(32164);
-    this.nfR.a(new g.2(this));
-    AppMethodBeat.o(32164);
+    AppMethodBeat.i(36077);
+    this.rJL.a(new f.a() {});
+    AppMethodBeat.o(36077);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.g
  * JD-Core Version:    0.7.0.1
  */

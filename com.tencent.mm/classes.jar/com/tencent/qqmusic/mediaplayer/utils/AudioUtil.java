@@ -20,7 +20,7 @@ public class AudioUtil
   
   public static int getDecodeBufferSize(NativeDecoder paramNativeDecoder)
   {
-    AppMethodBeat.i(104695);
+    AppMethodBeat.i(76599);
     AudioInformation localAudioInformation = paramNativeDecoder.getAudioInformation();
     int j = 0;
     int i = j;
@@ -35,7 +35,7 @@ public class AudioUtil
     if (i <= 0) {
       j = 8192;
     }
-    AppMethodBeat.o(104695);
+    AppMethodBeat.o(76599);
     return j;
   }
   
@@ -43,14 +43,14 @@ public class AudioUtil
   {
     int m = 12;
     int j = 2;
-    AppMethodBeat.i(104696);
+    AppMethodBeat.i(76600);
     int k = getDecodeBufferSize(paramNativeDecoder);
     paramNativeDecoder = paramNativeDecoder.getAudioInformation();
     int i;
     if ((paramNativeDecoder == null) || (paramNativeDecoder.getAudioType() == AudioFormat.AudioType.FLAC))
     {
       i = k;
-      AppMethodBeat.o(104696);
+      AppMethodBeat.o(76600);
       return i;
     }
     int n = paramNativeDecoder.getChannels();
@@ -59,7 +59,7 @@ public class AudioUtil
     }
     for (;;)
     {
-      if (paramNativeDecoder.getBitDept() == 1) {
+      if (paramNativeDecoder.getBitDepth() == 1) {
         j = 3;
       }
       i = Math.max(AudioTrack.getMinBufferSize((int)paramNativeDecoder.getSampleRate(), i, j), k);
@@ -83,29 +83,29 @@ public class AudioUtil
   
   public static NativeDecoder getDecoder(String paramString, boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(104698);
+    AppMethodBeat.i(76602);
     if (paramBoolean)
     {
-      paramString = AudioRecognition.getDecoderFormFile(paramString);
-      AppMethodBeat.o(104698);
+      paramString = getDecoderFromTrack(paramString, paramLong1, paramLong2);
+      AppMethodBeat.o(76602);
       return paramString;
     }
-    paramString = getDecoderFromTrack(paramString, paramLong1, paramLong2);
-    AppMethodBeat.o(104698);
+    paramString = AudioRecognition.getDecoderFormFile(paramString);
+    AppMethodBeat.o(76602);
     return paramString;
   }
   
   public static NativeDecoder getDecoderFromTrack(String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(104697);
+    AppMethodBeat.i(76601);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(104697);
+      AppMethodBeat.o(76601);
       return null;
     }
     if (paramLong1 >= paramLong2)
     {
-      AppMethodBeat.o(104697);
+      AppMethodBeat.o(76601);
       return null;
     }
     NativeDecoder localNativeDecoder = new NativeDecoder();
@@ -119,39 +119,39 @@ public class AudioUtil
       if (localNativeDecoder.init(paramString) != 0)
       {
         Logger.e("AudioUtil", "init decoder from track failed!");
-        AppMethodBeat.o(104697);
+        AppMethodBeat.o(76601);
         return null;
       }
       paramLong2 = new NativeSeekTable(localNativeDecoder).seek(paramLong2);
       if (paramLong2 <= 0L)
       {
         Logger.e("AudioUtil", "endPos from track <= 0");
-        AppMethodBeat.o(104697);
+        AppMethodBeat.o(76601);
         return null;
       }
       paramString.setEndBytePosition(paramLong2);
       localNativeDecoder.seekTo((int)paramLong1);
-      AppMethodBeat.o(104697);
+      AppMethodBeat.o(76601);
       return localNativeDecoder;
     }
     catch (Exception paramString)
     {
       Logger.e("AudioUtil", paramString);
-      AppMethodBeat.o(104697);
+      AppMethodBeat.o(76601);
     }
     return null;
   }
   
   public static int getPlaybackHeadPositionSafely(AudioTrack paramAudioTrack)
   {
-    AppMethodBeat.i(104699);
+    AppMethodBeat.i(76603);
     int j = 0;
     int i = j;
     if (paramAudioTrack != null) {}
     try
     {
       i = paramAudioTrack.getPlaybackHeadPosition();
-      AppMethodBeat.o(104699);
+      AppMethodBeat.o(76603);
       return i;
     }
     catch (Exception paramAudioTrack)
@@ -166,7 +166,7 @@ public class AudioUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.utils.AudioUtil
  * JD-Core Version:    0.7.0.1
  */

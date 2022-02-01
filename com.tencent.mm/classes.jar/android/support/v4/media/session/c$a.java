@@ -6,19 +6,19 @@ public abstract interface c$a
 {
   public abstract void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
   
-  public abstract void dr();
+  public abstract void eA();
   
-  public abstract void ds();
+  public abstract void eB();
   
-  public abstract void dt();
+  public abstract void ez();
   
   public abstract void onQueueChanged(List<?> paramList);
   
   public abstract void onSessionDestroyed();
   
-  public abstract void v(Object paramObject);
+  public abstract void u(Object paramObject);
   
-  public abstract void w(Object paramObject);
+  public abstract void v(Object paramObject);
 }
 
 

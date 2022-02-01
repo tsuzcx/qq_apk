@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:background="@drawable/e0" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:paddingLeft="@dimen/ha" android:paddingTop="@dimen/he" android:paddingRight="@dimen/ha" style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/t" android:layout_gravity="bottom" android:id="@id/nj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:text="{user}" style="@style/li" />
+    <FrameLayout android:id="@id/evt" android:background="@drawable/r2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.base.MMAutoCompleteTextView android:id="@id/evs" android:background="@null" android:paddingLeft="85.0dip" android:hint="@string/egw" android:dropDownSelector="#00000000" android:popupBackground="@null" android:inputType="textEmailAddress" style="@style/n1" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/y4" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:background="@drawable/a3a" android:paddingLeft="@dimen/i_" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:text="@string/egv" android:singleLine="false" style="@style/n1" />
+    </FrameLayout>
+    <FrameLayout android:background="@drawable/r2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hd">
+        <com.tencent.mm.ui.base.MMClearEditText android:id="@id/evz" android:background="@null" android:paddingLeft="85.0dip" android:hint="@string/eh8" style="@style/n0" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/y4" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:background="@drawable/a3a" android:paddingLeft="10.0dip" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:text="@string/eh7" android:singleLine="false" android:imeOptions="actionNext" style="@style/n1" />
+    </FrameLayout>
+    <LinearLayout android:gravity="left" android:orientation="horizontal" android:layout_marginTop="@dimen/hd" style="@style/mz">
+        <CheckBox android:textSize="13.0dip" android:textColor="@color/y4" android:id="@id/g_" android:paddingLeft="25.0dip" android:checked="true" android:text="@string/db1" style="@style/rz" />
+        <Button android:textSize="13.0dip" android:id="@id/g9" android:paddingLeft="5.0dip" android:paddingRight="0.0dip" android:paddingBottom="5.0dip" android:text="@string/db3" style="@style/s0" />
+    </LinearLayout>
 </LinearLayout>

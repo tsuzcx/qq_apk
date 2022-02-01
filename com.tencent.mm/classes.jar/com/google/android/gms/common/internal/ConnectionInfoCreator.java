@@ -14,7 +14,7 @@ public class ConnectionInfoCreator
   
   public ConnectionInfo createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(89587);
+    AppMethodBeat.i(4609);
     int i = SafeParcelReader.validateObjectHeader(paramParcel);
     Feature[] arrayOfFeature = null;
     Bundle localBundle = null;
@@ -35,7 +35,7 @@ public class ConnectionInfoCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, i);
     paramParcel = new ConnectionInfo(localBundle, arrayOfFeature);
-    AppMethodBeat.o(89587);
+    AppMethodBeat.o(4609);
     return paramParcel;
   }
   

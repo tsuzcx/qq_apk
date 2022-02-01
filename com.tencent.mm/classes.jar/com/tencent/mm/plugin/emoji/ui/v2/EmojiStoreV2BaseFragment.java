@@ -2,6 +2,8 @@ package com.tencent.mm.plugin.emoji.ui.v2;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -23,100 +25,166 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.db;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.dh;
+import com.tencent.mm.g.b.a.u;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.emoji.a.a.f.a;
-import com.tencent.mm.plugin.emoji.model.h.b;
-import com.tencent.mm.plugin.emoji.model.i;
+import com.tencent.mm.plugin.emoji.a.h.a;
+import com.tencent.mm.plugin.emoji.model.d;
+import com.tencent.mm.plugin.emoji.model.j;
+import com.tencent.mm.plugin.emoji.model.j.b;
 import com.tencent.mm.plugin.emoji.ui.EmojiStoreVpHeader;
+import com.tencent.mm.pluginsdk.model.p;
 import com.tencent.mm.protocal.protobuf.EmotionBanner;
 import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
 import com.tencent.mm.protocal.protobuf.GetEmotionListResponse;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.ccf;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.aw;
+import com.tencent.mm.storage.emotion.r;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.base.MMPullDownView;
 import com.tencent.mm.ui.base.MMPullDownView.c;
 import com.tencent.mm.ui.base.MMPullDownView.d;
 import com.tencent.mm.ui.base.MMPullDownView.e;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.ui.y;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public abstract class EmojiStoreV2BaseFragment
   extends MMFragment
-  implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener, com.tencent.mm.ai.f, com.tencent.mm.plugin.emoji.a.h.a, com.tencent.mm.plugin.emoji.model.h.a, h.b, com.tencent.mm.pluginsdk.model.h.a, k.a, MMPullDownView.c, MMPullDownView.d, MMPullDownView.e
+  implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener, com.tencent.mm.al.g, h.a, com.tencent.mm.plugin.emoji.model.j.a, j.b, com.tencent.mm.pluginsdk.model.j.a, k.a, MMPullDownView.c, MMPullDownView.d, MMPullDownView.e
 {
-  private ProgressDialog gsr;
-  private boolean icT;
-  com.tencent.mm.plugin.emoji.a.a.a lhv;
-  EmojiStoreVpHeader ljQ;
-  private MMPullDownView ljT;
-  private TextView ljU;
-  private int ljW = -1;
-  private View ljX;
-  private byte[] ljY;
-  private final int lkc = 131074;
-  private final int lkd = 131075;
-  private final int lke = 131076;
-  private final String lkf = "product_id";
-  private final String lkg = "progress";
-  private final String lkh = "status";
-  private com.tencent.mm.plugin.emoji.f.n lki;
-  private int lkj;
-  private com.tencent.mm.plugin.emoji.model.e lkk;
-  private com.tencent.mm.plugin.emoji.model.h lkl;
-  private com.tencent.mm.sdk.b.c lkn = new com.tencent.mm.sdk.b.c() {};
-  private com.tencent.mm.plugin.emoji.f.g lko;
-  private boolean lkp = false;
-  private LinkedList<EmotionBanner> lkq = new LinkedList();
-  private LinkedList<EmotionBannerSet> lkr = new LinkedList();
-  private final int loS = 131077;
-  public EmojiStoreV2HotBarView loT;
-  private boolean loU = false;
-  private boolean loV = false;
-  private boolean loW = false;
-  private ak loX = new EmojiStoreV2BaseFragment.1(this);
-  private MenuItem.OnMenuItemClickListener loY = new EmojiStoreV2BaseFragment.3(this);
+  private View DR;
+  private ProgressDialog ift;
+  private boolean knt;
   private ActionBar mActionBar;
   private com.tencent.mm.ui.a mActionBarHelper;
-  ListView mListView;
-  private View xy;
-  
-  private void A(boolean paramBoolean1, boolean paramBoolean2)
+  protected long mDF;
+  protected ListView mListView;
+  private MMPullDownView oAb;
+  private TextView oAc;
+  private int oAe = -1;
+  private View oAf;
+  private byte[] oAg;
+  private final int oAk = 131074;
+  private final int oAl = 131075;
+  private final int oAm = 131076;
+  private final String oAn = "product_id";
+  private final String oAo = "progress";
+  private final String oAp = "status";
+  private com.tencent.mm.plugin.emoji.f.n oAq;
+  private int oAr;
+  private com.tencent.mm.plugin.emoji.model.f oAs;
+  private j oAt;
+  private com.tencent.mm.sdk.b.c oAv = new com.tencent.mm.sdk.b.c() {};
+  private com.tencent.mm.plugin.emoji.f.g oAw;
+  private boolean oAx = false;
+  private LinkedList<EmotionBanner> oAy = new LinkedList();
+  private LinkedList<EmotionBannerSet> oAz = new LinkedList();
+  private final int oFg = 131077;
+  public EmojiStoreV2HotBarView oFh;
+  private boolean oFi = false;
+  private boolean oFj = false;
+  private boolean oFk = false;
+  private ap oFl = new ap()
   {
-    if ((this.lkk != null) && (paramBoolean1))
+    public final void handleMessage(Message paramAnonymousMessage)
+    {
+      AppMethodBeat.i(109135);
+      EmojiStoreV2BaseFragment localEmojiStoreV2BaseFragment = EmojiStoreV2BaseFragment.this;
+      switch (paramAnonymousMessage.what)
+      {
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(109135);
+        return;
+        if (localEmojiStoreV2BaseFragment.oxx != null)
+        {
+          localEmojiStoreV2BaseFragment.oxx.notifyDataSetChanged();
+          AppMethodBeat.o(109135);
+          return;
+          if ((localEmojiStoreV2BaseFragment.oxx == null) || (paramAnonymousMessage.getData() == null))
+          {
+            AppMethodBeat.o(109135);
+            return;
+          }
+          String str = paramAnonymousMessage.getData().getString("product_id");
+          if (str != null)
+          {
+            int i = paramAnonymousMessage.getData().getInt("progress");
+            localEmojiStoreV2BaseFragment.oxx.cL(str, i);
+            AppMethodBeat.o(109135);
+            return;
+            if ((localEmojiStoreV2BaseFragment.oxx == null) || (paramAnonymousMessage.getData() == null))
+            {
+              AppMethodBeat.o(109135);
+              return;
+            }
+            str = paramAnonymousMessage.getData().getString("product_id");
+            if (str != null)
+            {
+              i = paramAnonymousMessage.getData().getInt("status");
+              localEmojiStoreV2BaseFragment.oxx.cK(str, i);
+              AppMethodBeat.o(109135);
+              return;
+              if (localEmojiStoreV2BaseFragment.ozY != null) {
+                localEmojiStoreV2BaseFragment.ozY.bWG();
+              }
+            }
+          }
+        }
+      }
+    }
+  };
+  private MenuItem.OnMenuItemClickListener oFm = new EmojiStoreV2BaseFragment.4(this);
+  protected u oxH = new u();
+  com.tencent.mm.plugin.emoji.a.a.a oxx;
+  EmojiStoreVpHeader ozY;
+  
+  private void J(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((this.oAs != null) && (paramBoolean1))
     {
       if (paramBoolean2) {
-        bng();
+        bWR();
       }
-      if (this.lhv != null) {
-        this.lhv.b(this.lkk);
+      if (this.oxx != null) {
+        this.oxx.b(this.oAs);
       }
     }
   }
   
-  private void Lc(String paramString)
+  private void Ui(String paramString)
   {
     if (isFinishing())
     {
-      ab.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "[showLoadingDialog] acitivity is finished.");
+      ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "[showLoadingDialog] acitivity is finished.");
       return;
     }
     FragmentActivity localFragmentActivity = thisActivity();
-    getString(2131297087);
-    this.gsr = com.tencent.mm.ui.base.h.b(localFragmentActivity, paramString, true, new EmojiStoreV2BaseFragment.9(this));
+    getString(2131755906);
+    this.ift = com.tencent.mm.ui.base.h.b(localFragmentActivity, paramString, true, new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
+    });
   }
   
-  private void a(int paramInt, com.tencent.mm.plugin.emoji.model.e parame)
+  private void a(int paramInt, com.tencent.mm.plugin.emoji.model.f paramf)
   {
-    ab.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "");
+    ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "");
     boolean bool1;
     boolean bool2;
     switch (paramInt)
@@ -127,28 +195,28 @@ public abstract class EmojiStoreV2BaseFragment
     }
     for (;;)
     {
-      if (this.lkk != null) {
-        this.lkk.bll();
+      if (this.oAs != null) {
+        this.oAs.bUT();
       }
-      A(bool2, bool1);
+      J(bool2, bool1);
       return;
-      this.lkk = parame;
+      this.oAs = paramf;
       bool1 = true;
       bool2 = true;
       continue;
-      this.lkk = parame;
+      this.oAs = paramf;
       bool1 = false;
       bool2 = true;
       continue;
-      this.lkk = parame;
+      this.oAs = paramf;
       bool1 = false;
       bool2 = false;
       continue;
-      if (this.lkk == null) {
-        this.lkk = new com.tencent.mm.plugin.emoji.model.e();
+      if (this.oAs == null) {
+        this.oAs = new com.tencent.mm.plugin.emoji.model.f();
       }
-      this.lkk.uq(parame.lhk);
-      this.lkk.bo(parame.lhl);
+      this.oAs.AA(paramf.owY);
+      this.oAs.cL(paramf.owZ);
       bool1 = false;
       bool2 = true;
     }
@@ -156,108 +224,170 @@ public abstract class EmojiStoreV2BaseFragment
   
   private void a(com.tencent.mm.plugin.emoji.a.a.f paramf, int paramInt)
   {
+    int j = 1;
+    int k = 0;
     if (paramf == null)
     {
-      ab.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "item is null.");
+      ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "item is null.");
       return;
     }
-    if (paramf.leZ == f.a.lfi)
+    if (paramf.ouK == f.a.ouT)
     {
-      paramf = paramf.lfb;
+      paramf = paramf.ouM;
       if (paramf == null)
       {
-        ab.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "banner set is null. do nothing");
+        ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "banner set is null. do nothing");
         return;
       }
-      com.tencent.mm.plugin.emoji.e.m.a(getContext(), paramf, false);
+      com.tencent.mm.plugin.emoji.e.k.a(getContext(), paramf, false);
       return;
     }
-    EmotionSummary localEmotionSummary = paramf.lfa;
+    EmotionSummary localEmotionSummary = paramf.ouL;
     if (localEmotionSummary == null)
     {
-      ab.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "summary is null. do nothing");
+      ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "summary is null. do nothing");
       return;
     }
-    if (bnh()) {
-      if ((paramInt >= 0) && (paramInt < this.lhv.bkC())) {
-        paramInt = 3;
+    int i = k;
+    if (bWS())
+    {
+      i = k;
+      if (d.bUR().owT) {
+        i = 1;
       }
+    }
+    this.oxH.gd(String.valueOf(paramInt + 1));
+    this.oxH.gb(localEmotionSummary.ProductID);
+    u localu = this.oxH;
+    String str;
+    if (i != 0)
+    {
+      str = localEmotionSummary.ExptDesc;
+      localu.gc(str);
+      this.oxH.dJy = 3;
+      this.oxH.aBj();
+      if (!bWS()) {
+        break label285;
+      }
+      if ((paramInt < 0) || (paramInt >= this.oxx.bUr())) {
+        break label243;
+      }
+      i = 3;
     }
     for (;;)
     {
-      String str = thisActivity().getIntent().getStringExtra("to_talker_name");
-      com.tencent.mm.plugin.emoji.e.m.a(getContext(), localEmotionSummary, paramInt, paramf.mStatus, paramf.ym, str, 5);
+      str = thisActivity().getIntent().getStringExtra("to_talker_name");
+      com.tencent.mm.plugin.emoji.e.k.a(getContext(), localEmotionSummary, i, paramf.mStatus, paramf.EI, str, 5, this.oxH);
       return;
-      if ((paramInt >= this.lhv.bkC()) && (paramInt < this.lhv.bkD() + this.lhv.bkC()))
+      str = localEmotionSummary.Introduce;
+      break;
+      label243:
+      i = j;
+      if (paramInt >= this.oxx.bUr())
       {
-        paramInt = 19;
-      }
-      else
-      {
-        paramInt = 1;
-        continue;
-        paramInt = 2;
+        i = j;
+        if (paramInt < this.oxx.bUs() + this.oxx.bUr())
+        {
+          i = 19;
+          continue;
+          label285:
+          i = 2;
+        }
       }
     }
   }
   
-  private void aJ(byte[] paramArrayOfByte)
+  private void aZ(byte[] paramArrayOfByte)
   {
-    int i = bmb();
-    int j = this.lkj;
+    int i = bVM();
+    int j = this.oAr;
     if (paramArrayOfByte != null)
     {
-      ab.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "[refreshNetSceneGetEmotionList] request buffer %s", new Object[] { paramArrayOfByte.toString() });
-      this.lki = new com.tencent.mm.plugin.emoji.f.n(i, paramArrayOfByte, j);
+      ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "[refreshNetSceneGetEmotionList] request buffer %s", new Object[] { paramArrayOfByte.toString() });
+      this.oAq = new com.tencent.mm.plugin.emoji.f.n(i, paramArrayOfByte, j);
       return;
     }
-    ab.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "[refreshNetSceneGetEmotionList] request buffer is null.");
-    this.lki = new com.tencent.mm.plugin.emoji.f.n(i, j);
+    ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "[refreshNetSceneGetEmotionList] request buffer is null.");
+    this.oAq = new com.tencent.mm.plugin.emoji.f.n(i, j);
   }
   
-  private void bma()
+  private void bVL()
   {
-    com.tencent.mm.plugin.emoji.a.a.b.a(this.lhv.leO, this);
+    com.tencent.mm.plugin.emoji.a.a.b.a(this.oxx.ouz, this);
   }
   
-  private void bmd()
+  private void bVO()
   {
-    com.tencent.mm.kernel.g.RK().eHt.a(this.lki, 0);
+    com.tencent.mm.kernel.g.afA().gcy.a(this.oAq, 0);
   }
   
-  private void bnc()
+  private void bWM()
   {
-    this.loV = true;
-    bnd();
-    this.lkj = thisActivity().getIntent().getIntExtra("preceding_scence", 5);
-    if ((bne()) && (this.loX != null))
+    this.oFj = true;
+    this.mDF = System.currentTimeMillis();
+    ccf localccf = new ccf();
+    localccf.DYC = this.mDF;
+    this.oxH.dJw = this.mDF;
+    ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "initeData: %s", new Object[] { Long.valueOf(localccf.DYC) });
+    try
     {
-      this.loX.postDelayed(new EmojiStoreV2BaseFragment.7(this), 3000L);
-      return;
+      this.oAg = localccf.toByteArray();
+      bWO();
+      this.oAr = thisActivity().getIntent().getIntExtra("preceding_scence", 5);
+      if ((bWP()) && (this.oFl != null))
+      {
+        this.oFl.postDelayed(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(109140);
+            EmojiStoreV2BaseFragment.this.jH(false);
+            AppMethodBeat.o(109140);
+          }
+        }, 3000L);
+        aq.n(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(109141);
+            EmojiStoreV2BaseFragment.this.bWN();
+            AppMethodBeat.o(109141);
+          }
+        }, 500L);
+        return;
+      }
     }
-    gK(true);
-  }
-  
-  private void bnd()
-  {
-    this.lkl = new com.tencent.mm.plugin.emoji.model.h();
-    this.lkl.jpJ = thisActivity();
-    this.lkl.lhx = this;
-    this.lkl.lhv = this.lhv;
-    if (bnh()) {}
-    for (this.lkl.lhy = 1;; this.lkl.lhy = 2)
+    catch (IOException localIOException)
     {
-      this.lkl.lhB = this;
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.emoji.EmojiStoreV2BaseFragment", localIOException, "", new Object[0]);
+        continue;
+        jH(true);
+      }
+    }
+  }
+  
+  private void bWO()
+  {
+    this.oAt = new j();
+    this.oAt.mfC = thisActivity();
+    this.oAt.oxz = this;
+    this.oAt.oxx = this.oxx;
+    if (bWS()) {}
+    for (this.oAt.oxA = 1;; this.oAt.oxA = 2)
+    {
+      this.oAt.oxD = this;
       return;
     }
   }
   
-  private boolean bne()
+  private boolean bWP()
   {
     boolean bool2 = false;
-    GetEmotionListResponse localGetEmotionListResponse = i.getEmojiStorageMgr().yNq.NK(bmb());
-    com.tencent.mm.plugin.emoji.model.e locale = com.tencent.mm.plugin.emoji.f.n.a(localGetEmotionListResponse);
-    int j = bmb();
+    GetEmotionListResponse localGetEmotionListResponse = com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().Fzb.WO(bVM());
+    com.tencent.mm.plugin.emoji.model.f localf = com.tencent.mm.plugin.emoji.f.n.b(localGetEmotionListResponse);
+    int j = bVM();
     int i;
     boolean bool1;
     label136:
@@ -265,17 +395,17 @@ public abstract class EmojiStoreV2BaseFragment
     if (localGetEmotionListResponse == null)
     {
       i = 0;
-      ab.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "load cache type: %d, size: %d ", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+      ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "load cache type: %d, size: %d ", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
       bool1 = bool2;
-      if (locale != null)
+      if (localf != null)
       {
         bool1 = bool2;
-        if (locale.lhl.size() > 0)
+        if (localf.owZ.size() > 0)
         {
-          this.lkp = true;
-          this.xy.setVisibility(8);
-          this.ljT.setVisibility(0);
-          a(this.ljW, locale);
+          this.oAx = true;
+          this.DR.setVisibility(8);
+          this.oAb.setVisibility(0);
+          a(this.oAe, localf);
           if (localGetEmotionListResponse == null) {
             break label240;
           }
@@ -290,13 +420,13 @@ public abstract class EmojiStoreV2BaseFragment
     }
     for (;;)
     {
-      ab.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "load cache hotcount:%d type:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(bmb()) });
-      if ((this.lhv != null) && (bnh()))
+      ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "load cache hotcount:%d type:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(bVM()) });
+      if ((this.oxx != null) && (bWS()))
       {
-        this.lhv.ug(i + k);
-        this.lhv.uh(j);
+        this.oxx.Ap(i + k);
+        this.oxx.Aq(j);
       }
-      bma();
+      bVL();
       bool1 = true;
       return bool1;
       i = localGetEmotionListResponse.EmotionCount;
@@ -311,143 +441,252 @@ public abstract class EmojiStoreV2BaseFragment
     }
   }
   
-  private static boolean bnf()
+  private static boolean bWQ()
   {
-    ((Long)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yxR, Long.valueOf(0L))).longValue();
+    ((Long)com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fgl, Long.valueOf(0L))).longValue();
     return true;
   }
   
-  private void bng()
+  private void bWR()
   {
-    if (this.lkk == null) {
-      ab.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "update store ui header failed. ");
+    if (this.oAs == null) {
+      ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "update store ui header failed. ");
     }
     do
     {
       return;
-      this.lkq = ((LinkedList)this.lkk.lhn);
-      this.lkr = ((LinkedList)this.lkk.lho);
-      if (this.lkq != null)
+      this.oAy = ((LinkedList)this.oAs.oxb);
+      this.oAz = ((LinkedList)this.oAs.oxc);
+      if (this.oAy != null)
       {
-        this.ljQ.d(this.lkq, this.lkr);
+        this.ozY.d(this.oAy, this.oAz);
         return;
       }
-    } while (this.lkk.lhm == null);
-    this.lkq = new LinkedList();
-    this.lkq.add(this.lkk.lhm);
-    this.ljQ.d(this.lkq, this.lkr);
+    } while (this.oAs.oxa == null);
+    this.oAy = new LinkedList();
+    this.oAy.add(this.oAs.oxa);
+    this.ozY.d(this.oAy, this.oAz);
   }
   
-  private void d(GetEmotionListResponse paramGetEmotionListResponse)
+  private void e(final GetEmotionListResponse paramGetEmotionListResponse)
   {
-    if (this.ljW == -1) {
-      com.tencent.mm.kernel.g.RO().ac(new EmojiStoreV2BaseFragment.8(this, paramGetEmotionListResponse));
+    if (this.oAe == -1) {
+      com.tencent.mm.kernel.g.afE().ax(new Runnable()
+      {
+        public final void run()
+        {
+          int j = 0;
+          AppMethodBeat.i(109142);
+          int i;
+          if (paramGetEmotionListResponse != null)
+          {
+            if (paramGetEmotionListResponse != null) {
+              break label95;
+            }
+            i = 0;
+            if (paramGetEmotionListResponse != null) {
+              break label106;
+            }
+          }
+          for (;;)
+          {
+            ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "jacks save EmoijStoreUI Cache: list:%d, size: %d, type: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(EmojiStoreV2BaseFragment.this.bVM()) });
+            com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().Fzb.a(EmojiStoreV2BaseFragment.this.bVM(), paramGetEmotionListResponse);
+            AppMethodBeat.o(109142);
+            return;
+            label95:
+            i = paramGetEmotionListResponse.EmotionCount;
+            break;
+            label106:
+            if (paramGetEmotionListResponse.ReqBuf != null) {
+              j = paramGetEmotionListResponse.ReqBuf.computeSize();
+            }
+          }
+        }
+      });
     }
   }
   
-  private void gL(boolean paramBoolean)
+  private void jI(boolean paramBoolean)
   {
-    if (this.icT) {
-      ab.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "isLoading");
+    if (this.knt) {
+      ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "isLoading");
     }
     do
     {
       return;
-      this.icT = true;
+      this.knt = true;
       if (paramBoolean) {
-        this.ljX.setVisibility(0);
+        this.oAf.setVisibility(0);
       }
-      aJ(this.ljY);
-      bmd();
-      ab.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "[startLoadRemoteEmoji] doScene GetEmotionListNetScene");
+      aZ(this.oAg);
+      bVO();
+      ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "[startLoadRemoteEmoji] doScene GetEmotionListNetScene");
     } while (paramBoolean);
-    Lc(getString(2131297112));
+    Ui(getString(2131755936));
   }
   
-  public final void A(ArrayList<com.tencent.mm.pluginsdk.model.n> paramArrayList)
+  public final void Au(int paramInt)
   {
-    ab.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "google [onQueryFinish]");
-    if (this.lhv == null) {
+    if ((paramInt < 0) || (paramInt >= ((com.tencent.mm.plugin.emoji.a.h)this.oxx).bUv())) {
       return;
     }
-    if (this.loX != null) {
-      this.loX.sendEmptyMessageDelayed(131074, 50L);
+    a(this.oxx.As(paramInt), paramInt);
+  }
+  
+  public final void M(ArrayList<p> paramArrayList)
+  {
+    ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "google [onQueryFinish]");
+    if (this.oxx == null) {
+      return;
     }
-    com.tencent.mm.plugin.emoji.a.a.b.a(paramArrayList, this.lhv.leO);
+    if (this.oFl != null) {
+      this.oFl.sendEmptyMessageDelayed(131074, 50L);
+    }
+    com.tencent.mm.plugin.emoji.a.a.b.a(paramArrayList, this.oxx.ouz);
   }
   
   public final void a(com.tencent.mm.plugin.emoji.a.a parama)
   {
-    if (parama.bkt() == 9) {
-      Lc(getString(2131297094));
+    if (parama.bUi() == 9) {
+      Ui(getString(2131755913));
     }
-    if (bnh()) {
-      if ((parama.mPosition >= 0) && (parama.mPosition < this.lhv.bkC())) {
-        this.lkl.lhy = 3;
+    this.oAt.oxH = this.oxH;
+    j localj = this.oAt;
+    boolean bool;
+    if ((bWS()) && (d.bUR().owT))
+    {
+      bool = true;
+      localj.oxI = bool;
+      if (!bWS()) {
+        break label168;
       }
+      if ((parama.mPosition < 0) || (parama.mPosition >= this.oxx.bUr())) {
+        break label109;
+      }
+      this.oAt.oxA = 3;
     }
+    label168:
     for (;;)
     {
-      this.lkl.a(parama);
+      this.oAt.a(parama);
       return;
-      if ((parama.mPosition >= this.lhv.bkC()) && (parama.mPosition < this.lhv.bkD() + this.lhv.bkC()))
+      bool = false;
+      break;
+      label109:
+      if ((parama.mPosition >= this.oxx.bUr()) && (parama.mPosition < this.oxx.bUs() + this.oxx.bUr()))
       {
-        this.lkl.lhy = 19;
+        this.oAt.oxA = 19;
       }
       else
       {
-        this.lkl.lhy = 1;
+        this.oAt.oxA = 1;
         continue;
-        this.lkl.lhy = 2;
+        this.oAt.oxA = 2;
       }
     }
   }
   
-  public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
+  public final void a(String paramString, m paramm)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals("delete_group")) && (this.loX != null)) {
-      this.loX.sendEmptyMessageDelayed(131074, 50L);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals("delete_group")) && (this.oFl != null)) {
+      this.oFl.sendEmptyMessageDelayed(131074, 50L);
     }
   }
   
-  public final boolean bik()
+  protected void b(int paramInt1, int paramInt2, com.tencent.mm.al.n paramn)
   {
-    ab.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "[onBottomLoadData] startLoadRemoteEmoji.");
-    gL(true);
+    this.knt = false;
+    this.oAf.setVisibility(8);
+    if ((paramInt1 == 0) || (paramInt1 == 4))
+    {
+      paramInt1 = 1;
+      if (paramInt1 == 0) {
+        break label192;
+      }
+      this.DR.setVisibility(8);
+      this.oAb.setVisibility(0);
+      localObject = (com.tencent.mm.plugin.emoji.f.n)paramn;
+      paramn = com.tencent.mm.plugin.emoji.f.n.b(((com.tencent.mm.plugin.emoji.f.n)localObject).bVs());
+      this.oAg = ((com.tencent.mm.plugin.emoji.f.n)localObject).oyQ;
+      if (paramInt2 != 0) {
+        break label107;
+      }
+      localObject = ((com.tencent.mm.plugin.emoji.f.n)localObject).bVs();
+      a(this.oAe, paramn);
+      e((GetEmotionListResponse)localObject);
+      this.oAe = 0;
+    }
+    label107:
+    while (this.oAx)
+    {
+      Object localObject;
+      return;
+      paramInt1 = 0;
+      break;
+      if (paramInt2 == 2)
+      {
+        localObject = ((com.tencent.mm.plugin.emoji.f.n)localObject).bVs();
+        a(this.oAe, paramn);
+        bVL();
+        e((GetEmotionListResponse)localObject);
+        this.oAe = 2;
+        return;
+      }
+      if (paramInt2 == 3)
+      {
+        a(this.oAe, paramn);
+        this.oAe = 1;
+        return;
+      }
+      this.DR.setVisibility(0);
+      this.oAb.setVisibility(8);
+      this.oAc.setText(2131758330);
+      return;
+    }
+    label192:
+    this.DR.setVisibility(0);
+    this.oAb.setVisibility(8);
+    this.oAc.setText(2131758331);
+  }
+  
+  public final boolean bPh()
+  {
+    ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "[onBottomLoadData] startLoadRemoteEmoji.");
+    jI(true);
     return true;
   }
   
-  public final boolean bil()
+  public final boolean bPi()
   {
     return false;
   }
   
-  public final boolean bim()
+  public final boolean bPj()
   {
     return false;
   }
   
-  public abstract com.tencent.mm.plugin.emoji.a.a.a blU();
-  
-  public final void blm()
+  public final void bUV()
   {
-    this.ljY = null;
-    this.ljW = -1;
-    gL(false);
+    this.oAg = null;
+    this.oAe = -1;
+    jI(false);
   }
   
-  public abstract int bmb();
+  public abstract com.tencent.mm.plugin.emoji.a.a.a bVF();
   
-  public abstract boolean bnh();
+  public abstract int bVM();
   
-  public final void gK(boolean paramBoolean)
+  protected void bWN() {}
+  
+  public abstract boolean bWS();
+  
+  public final void bWT()
   {
-    ab.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "loadNetWork force:%b isNeedToRefresh:%b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bnf()) });
-    if (!paramBoolean) {
-      bnf();
+    if ((this.mListView != null) && (this.oxx != null) && (bWS())) {
+      this.oxx.refreshView();
     }
-    aJ(this.ljY);
-    bmd();
   }
   
   public int getForceOrientation()
@@ -455,93 +694,103 @@ public abstract class EmojiStoreV2BaseFragment
     return 1;
   }
   
-  public final void i(String paramString1, String paramString2, String paramString3, String paramString4)
+  public final void j(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.lko = new com.tencent.mm.plugin.emoji.f.g(paramString1, paramString2, paramString3);
-    com.tencent.mm.kernel.g.RK().eHt.a(this.lko, 0);
+    this.oAw = new com.tencent.mm.plugin.emoji.f.g(paramString1, paramString2, paramString3);
+    com.tencent.mm.kernel.g.afA().gcy.a(this.oAw, 0);
   }
   
-  public final void o(Message paramMessage)
+  public final void jH(boolean paramBoolean)
   {
-    if (this.loX != null) {
-      this.loX.sendMessage(paramMessage);
+    ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "loadNetWork force:%b isNeedToRefresh:%b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bWQ()) });
+    if (!paramBoolean) {
+      bWQ();
+    }
+    aZ(this.oAg);
+    bVO();
+  }
+  
+  public final void n(Message paramMessage)
+  {
+    if (this.oFl != null) {
+      this.oFl.sendMessage(paramMessage);
     }
   }
   
   public void onActivityCreated(Bundle paramBundle)
   {
-    ab.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onActivityCreated");
+    ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onActivityCreated");
     super.onActivityCreated(paramBundle);
-    this.loW = true;
-    this.lhv = blU();
-    this.lhv.leP = this;
-    this.xy = findViewById(2131821788);
-    this.ljU = ((TextView)this.xy.findViewById(2131823644));
-    this.ljX = getActivityLayoutInflater().inflate(2130969387, null);
-    this.ljX.setVisibility(8);
-    this.ljQ = new EmojiStoreVpHeader(getContext());
+    this.oFk = true;
+    this.oxx = bVF();
+    this.oxx.ouA = this;
+    this.DR = findViewById(2131299457);
+    this.oAc = ((TextView)this.DR.findViewById(2131299461));
+    this.oAf = getActivityLayoutInflater().inflate(2131493799, null);
+    this.oAf.setVisibility(8);
+    this.ozY = new EmojiStoreVpHeader(getContext());
     this.mListView = ((ListView)findViewById(16908298));
-    this.mListView.addHeaderView(this.ljQ);
-    if (!bnh())
+    this.mListView.addHeaderView(this.ozY);
+    if (!bWS())
     {
-      this.loT = new EmojiStoreV2HotBarView(getContext());
-      this.loT.setDesignerEmojiViewVisibility(8);
-      this.loT.setDesignerCatalogViewPadding(false);
-      this.mListView.addHeaderView(this.loT);
+      this.oFh = new EmojiStoreV2HotBarView(getContext());
+      this.oFh.setDesignerEmojiViewVisibility(8);
+      this.oFh.setDesignerCatalogViewPadding(false);
+      this.mListView.addHeaderView(this.oFh);
     }
-    this.mListView.addFooterView(this.ljX);
-    this.mListView.setAdapter(this.lhv);
-    if (bnh()) {
+    this.mListView.addFooterView(this.oAf);
+    this.mListView.setAdapter(this.oxx);
+    if (bWS()) {
       this.mListView.setOnItemClickListener(this);
     }
     for (;;)
     {
       this.mListView.setOnScrollListener(this);
       this.mListView.setLongClickable(false);
-      this.mListView.setOnTouchListener(new EmojiStoreV2BaseFragment.6(this));
-      this.lhv.leN = this.mListView;
-      this.ljT = ((MMPullDownView)findViewById(2131823652));
-      if (this.ljT != null)
+      this.mListView.setOnTouchListener(new EmojiStoreV2BaseFragment.7(this));
+      this.oxx.ouy = this.mListView;
+      this.oAb = ((MMPullDownView)findViewById(2131301487));
+      if (this.oAb != null)
       {
-        this.ljT.setTopViewVisible(false);
-        this.ljT.setAtTopCallBack(this);
-        this.ljT.setOnBottomLoadDataListener(this);
-        this.ljT.setAtBottomCallBack(this);
-        this.ljT.setBottomViewVisible(false);
-        this.ljT.setIsBottomShowAll(false);
-        this.ljT.setIsReturnSuperDispatchWhenCancel(true);
+        this.oAb.setTopViewVisible(false);
+        this.oAb.setAtTopCallBack(this);
+        this.oAb.setOnBottomLoadDataListener(this);
+        this.oAb.setAtBottomCallBack(this);
+        this.oAb.setBottomViewVisible(false);
+        this.oAb.setIsBottomShowAll(false);
+        this.oAb.setIsReturnSuperDispatchWhenCancel(true);
       }
-      if (this.loU) {
-        bnc();
+      if (this.oFi) {
+        bWM();
       }
       return;
-      ((com.tencent.mm.plugin.emoji.a.h)this.lhv).lex = this;
+      ((com.tencent.mm.plugin.emoji.a.h)this.oxx).ouh = this;
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    ab.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onActivityResult . requestCode:" + paramInt1 + "  resultCode:" + paramInt2);
+    ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onActivityResult . requestCode:" + paramInt1 + "  resultCode:" + paramInt2);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (this.lkl != null)
+    if (this.oAt != null)
     {
-      this.lkl.onActivityResult(paramInt1, paramInt2, paramIntent);
+      this.oAt.onActivityResult(paramInt1, paramInt2, paramIntent);
       return;
     }
-    ab.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "mPayOrDownloadComponent have no init.");
+    ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "mPayOrDownloadComponent have no init.");
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    ab.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onAttach");
+    ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onAttach");
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if (this.ljQ != null) {
-      this.ljQ.requestLayout();
+    if (this.ozY != null) {
+      this.ozY.requestLayout();
     }
     setRequestedOrientation(1);
   }
@@ -551,137 +800,138 @@ public abstract class EmojiStoreV2BaseFragment
     super.onCreate(paramBundle);
     setRequestedOrientation(1);
     this.mActionBar = ((AppCompatActivity)thisActivity()).getSupportActionBar();
-    paramBundle = w.hM(getContext()).inflate(2130968613, null);
+    paramBundle = y.js(getContext()).inflate(2131492921, null);
     this.mActionBarHelper = new com.tencent.mm.ui.a(paramBundle);
     this.mActionBar.setLogo(new ColorDrawable(getResources().getColor(17170445)));
-    this.mActionBar.eu();
+    this.mActionBar.fM();
     this.mActionBar.setDisplayHomeAsUpEnabled(false);
-    this.mActionBar.et();
-    this.mActionBar.ev();
+    this.mActionBar.fL();
+    this.mActionBar.fN();
     this.mActionBar.setCustomView(paramBundle);
     this.mActionBar.show();
     paramBundle = this.mActionBarHelper;
-    paramBundle.gpL.setText(2131299181);
-    if (com.tencent.mm.cb.a.gt(paramBundle.gpL.getContext()))
+    paramBundle.ica.setText(2131758307);
+    if (com.tencent.mm.cd.a.hS(paramBundle.ica.getContext()))
     {
-      TextView localTextView = paramBundle.gpL;
-      float f = com.tencent.mm.cb.a.ap(paramBundle.gpL.getContext(), 2131427493);
-      localTextView.setTextSize(0, com.tencent.mm.cb.a.gr(paramBundle.gpL.getContext()) * f);
+      TextView localTextView = paramBundle.ica;
+      float f = com.tencent.mm.cd.a.ap(paramBundle.ica.getContext(), 2131165184);
+      localTextView.setTextSize(0, com.tencent.mm.cd.a.hQ(paramBundle.ica.getContext()) * f);
     }
-    this.mActionBarHelper.b(new EmojiStoreV2BaseFragment.4(this));
+    this.mActionBarHelper.e(new EmojiStoreV2BaseFragment.5(this));
     showOptionMenu(true);
-    addIconOptionMenu(0, 2131230758, new EmojiStoreV2BaseFragment.5(this));
-    com.tencent.mm.sdk.b.a.ymk.c(this.lkn);
-    i.getEmojiStorageMgr().yNo.add(this);
+    addIconOptionMenu(0, 2131689511, new EmojiStoreV2BaseFragment.6(this));
+    com.tencent.mm.sdk.b.a.ESL.c(this.oAv);
+    com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().FyZ.add(this);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    ab.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onCreateView");
+    ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onCreateView");
     return paramLayoutInflater.inflate(getLayoutId(), paramViewGroup, false);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    ab.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onDestroy");
-    if (this.lhv != null)
+    ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onDestroy");
+    if (this.oxx != null)
     {
-      this.lhv.clear();
-      this.lhv = null;
+      this.oxx.clear();
+      this.oxx = null;
     }
-    if (this.ljQ != null)
+    if (this.ozY != null)
     {
-      this.ljQ.bmX();
-      this.ljQ.clear();
+      this.ozY.bWH();
+      this.ozY.clear();
     }
-    com.tencent.mm.sdk.b.a.ymk.d(this.lkn);
-    i.getEmojiStorageMgr().yNo.remove(this);
+    com.tencent.mm.sdk.b.a.ESL.d(this.oAv);
+    com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().FyZ.remove(this);
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    ab.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onResume");
+    ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onResume");
   }
   
   public void onDetach()
   {
     super.onDetach();
-    ab.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onDetach");
+    ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onDetach");
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     paramInt -= this.mListView.getHeaderViewsCount();
-    if ((paramInt < 0) || (paramInt >= this.lhv.getCount())) {}
+    if ((paramInt < 0) || (paramInt >= this.oxx.getCount())) {}
     do
     {
       return;
-      paramAdapterView = this.lhv.uj(paramInt);
+      paramAdapterView = this.oxx.As(paramInt);
       a(paramAdapterView, paramInt);
-    } while ((!bnh()) || (this.lhv.bkD() <= 0) || (paramInt < this.lhv.bkC()) || (paramInt >= this.lhv.bkC() + this.lhv.bkD()) || (paramAdapterView.lfa == null));
-    com.tencent.mm.plugin.report.service.h.qsU.e(13223, new Object[] { Integer.valueOf(1), paramAdapterView.lfa.ProductID, paramAdapterView.lfa.PackName, Integer.valueOf(1), Integer.valueOf(0) });
+    } while ((!bWS()) || (this.oxx.bUs() <= 0) || (paramInt < this.oxx.bUr()) || (paramInt >= this.oxx.bUr() + this.oxx.bUs()) || (paramAdapterView.ouL == null));
+    com.tencent.mm.plugin.report.service.h.vKh.f(13223, new Object[] { Integer.valueOf(1), paramAdapterView.ouL.ProductID, paramAdapterView.ouL.PackName, Integer.valueOf(1), Integer.valueOf(0) });
   }
   
   public void onPause()
   {
     super.onPause();
-    com.tencent.mm.kernel.g.RK().eHt.b(411, this);
-    com.tencent.mm.kernel.g.RK().eHt.b(423, this);
-    ab.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onPause");
-    if (this.ljQ != null) {
-      this.ljQ.bmX();
+    com.tencent.mm.kernel.g.afA().gcy.b(411, this);
+    com.tencent.mm.kernel.g.afA().gcy.b(423, this);
+    ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onPause");
+    if (this.ozY != null) {
+      this.ozY.bWH();
     }
-    if (this.loX != null) {
-      this.loX.removeMessages(131077);
+    if (this.oFl != null) {
+      this.oFl.removeMessages(131077);
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    ab.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onResume");
-    com.tencent.mm.kernel.g.RK().eHt.a(411, this);
-    com.tencent.mm.kernel.g.RK().eHt.a(423, this);
-    if (this.loU)
+    ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onResume");
+    com.tencent.mm.kernel.g.afA().gcy.a(411, this);
+    com.tencent.mm.kernel.g.afA().gcy.a(423, this);
+    if (this.oFi)
     {
-      if (this.loX != null) {
-        this.loX.sendEmptyMessageDelayed(131077, 4000L);
+      if (this.oFl != null) {
+        this.oFl.sendEmptyMessageDelayed(131077, 4000L);
       }
-      if ((this.lhv != null) && (this.lhv.leO != null))
+      if ((this.oxx != null) && (this.oxx.ouz != null))
       {
-        this.lhv.leO.bkJ();
-        this.lhv.refreshView();
+        this.oxx.ouz.bUx();
+        this.oxx.refreshView();
       }
-      if (((Boolean)com.tencent.mm.kernel.g.RL().Ru().get(208900, Boolean.FALSE)).booleanValue())
+      if (((Boolean)com.tencent.mm.kernel.g.afB().afk().get(208900, Boolean.FALSE)).booleanValue())
       {
-        blm();
-        com.tencent.mm.kernel.g.RL().Ru().set(208900, Boolean.FALSE);
+        bUV();
+        com.tencent.mm.kernel.g.afB().afk().set(208900, Boolean.FALSE);
       }
     }
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
   {
-    ab.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onSceneEnd errType:%d,errCode:%d,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if ((this.gsr != null) && (this.gsr.isShowing())) {
-      this.gsr.dismiss();
+    ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onSceneEnd errType:%d,errCode:%d,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if ((this.ift != null) && (this.ift.isShowing())) {
+      this.ift.dismiss();
     }
-    int i3 = paramm.getType();
+    int i3 = paramn.getType();
     switch (i3)
     {
     default: 
-      ab.w("MicroMsg.emoji.EmojiStoreV2BaseFragment", "unknow scene type.");
+      ad.w("MicroMsg.emoji.EmojiStoreV2BaseFragment", "unknow scene type.");
+      break;
       break;
     }
     for (;;)
     {
       return;
-      if ((paramm instanceof com.tencent.mm.plugin.emoji.f.n))
+      if ((paramn instanceof com.tencent.mm.plugin.emoji.f.n))
       {
-        paramString = (com.tencent.mm.plugin.emoji.f.n)paramm;
-        if ((paramString == null) || (paramString.mType != bmb())) {
+        paramString = (com.tencent.mm.plugin.emoji.f.n)paramn;
+        if ((paramString == null) || (paramString.mType != bVM())) {
           break;
         }
         int i2 = 0;
@@ -696,113 +946,55 @@ public abstract class EmojiStoreV2BaseFragment
           i = i2;
           k = i1;
           j = n;
-          if (paramString.blH() != null)
+          if (paramString.bVs() != null)
           {
             i = m;
-            if (this.lhv.bkE() <= 0)
+            if (this.oxx.bUt() <= 0)
             {
               i = m;
-              if (bnh())
-              {
-                if (paramString.blH().CellSetList != null) {
-                  break label570;
+              if (bWS()) {
+                if (paramString.bVs().CellSetList != null) {
+                  break label474;
                 }
-                i = 0;
-                this.lhv.ui(i);
               }
             }
-            j = paramString.blH().TopHotNum;
-            k = paramString.blH().RecentHotNum;
           }
         }
-        ab.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onSceneEnd setSize:%d hotcount:%d recentHotCount:%d type:%d getSceneType:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i3), Integer.valueOf(paramString.mType) });
-        Object localObject;
-        if ((this.lhv != null) && (this.lhv.bkD() <= 0) && (bnh()))
+        label474:
+        for (i = 0;; i = paramString.bVs().CellSetList.size())
         {
-          localObject = this.lhv;
-          ((com.tencent.mm.plugin.emoji.a.a.a)localObject).ug(j + ((com.tencent.mm.plugin.emoji.a.a.a)localObject).bkE());
-          this.lhv.uh(k);
-        }
-        this.icT = false;
-        this.ljX.setVisibility(8);
-        if ((paramInt1 == 0) || (paramInt1 == 4))
-        {
-          paramInt1 = 1;
-          label361:
-          if (paramInt1 == 0) {
-            break label683;
+          this.oxx.Ar(i);
+          j = paramString.bVs().TopHotNum;
+          k = paramString.bVs().RecentHotNum;
+          ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onSceneEnd setSize:%d hotcount:%d recentHotCount:%d type:%d getSceneType:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i3), Integer.valueOf(paramString.mType) });
+          if ((this.oxx != null) && (this.oxx.bUs() <= 0) && (bWS()))
+          {
+            com.tencent.mm.plugin.emoji.a.a.a locala = this.oxx;
+            locala.Ap(j + locala.bUt());
+            this.oxx.Aq(k);
           }
-          this.xy.setVisibility(8);
-          this.ljT.setVisibility(0);
-          localObject = (com.tencent.mm.plugin.emoji.f.n)paramm;
-          paramm = com.tencent.mm.plugin.emoji.f.n.a(((com.tencent.mm.plugin.emoji.f.n)localObject).blH());
-          this.ljY = ((com.tencent.mm.plugin.emoji.f.n)localObject).liN;
-          if (paramInt2 != 0) {
-            break label590;
+          b(paramInt1, paramInt2, paramn);
+          if (!bWS()) {
+            break;
           }
-          localObject = ((com.tencent.mm.plugin.emoji.f.n)localObject).blH();
-          a(this.ljW, paramm);
-          d((GetEmotionListResponse)localObject);
-          this.ljW = 0;
-        }
-        label683:
-        for (;;)
-        {
-          if (!bnh()) {
-            break label718;
-          }
-          if ((paramString.blH() == null) || (paramString.blH().CellSetList == null) || (paramString.blH().CellSetList.size() <= 0)) {
-            break label720;
+          if ((paramString.bVs() == null) || (paramString.bVs().CellSetList == null) || (paramString.bVs().CellSetList.size() <= 0)) {
+            break label489;
           }
           paramInt1 = 0;
-          while (paramInt1 < paramString.blH().CellSetList.size())
+          while (paramInt1 < paramString.bVs().CellSetList.size())
           {
-            com.tencent.mm.plugin.report.service.h.qsU.e(13223, new Object[] { Integer.valueOf(0), Integer.valueOf(((EmotionBannerSet)paramString.blH().CellSetList.get(paramInt1)).ID), ((EmotionBannerSet)paramString.blH().CellSetList.get(paramInt1)).Title, Integer.valueOf(0) });
+            com.tencent.mm.plugin.report.service.h.vKh.f(13223, new Object[] { Integer.valueOf(0), Integer.valueOf(((EmotionBannerSet)paramString.bVs().CellSetList.get(paramInt1)).ID), ((EmotionBannerSet)paramString.bVs().CellSetList.get(paramInt1)).Title, Integer.valueOf(0) });
             paramInt1 += 1;
           }
-          label570:
-          i = paramString.blH().CellSetList.size();
-          break;
-          paramInt1 = 0;
-          break label361;
-          label590:
-          if (paramInt2 == 2)
-          {
-            localObject = ((com.tencent.mm.plugin.emoji.f.n)localObject).blH();
-            a(this.ljW, paramm);
-            bma();
-            d((GetEmotionListResponse)localObject);
-            this.ljW = 2;
-          }
-          else if (paramInt2 == 3)
-          {
-            a(this.ljW, paramm);
-            this.ljW = 1;
-          }
-          else
-          {
-            this.xy.setVisibility(0);
-            this.ljT.setVisibility(8);
-            this.ljU.setText(2131299204);
-            continue;
-            if (!this.lkp)
-            {
-              this.xy.setVisibility(0);
-              this.ljT.setVisibility(8);
-              this.ljU.setText(2131299205);
-            }
-          }
         }
-        label718:
-        continue;
-        label720:
-        if ((paramString.blH().RecentHotNum <= 0) || (paramString.blH().EmotionList == null) || (paramString.blH().EmotionList.size() <= paramString.blH().TopHotNum + paramString.blH().RecentHotNum)) {
+        label489:
+        if ((paramString.bVs().RecentHotNum <= 0) || (paramString.bVs().EmotionList == null) || (paramString.bVs().EmotionList.size() <= paramString.bVs().TopHotNum + paramString.bVs().RecentHotNum)) {
           break;
         }
         paramInt1 = 0;
-        while (paramInt1 < paramString.blH().RecentHotNum)
+        while (paramInt1 < paramString.bVs().RecentHotNum)
         {
-          com.tencent.mm.plugin.report.service.h.qsU.e(13223, new Object[] { Integer.valueOf(0), ((EmotionSummary)paramString.blH().EmotionList.get(paramString.blH().TopHotNum + paramInt1)).ProductID, ((EmotionSummary)paramString.blH().EmotionList.get(paramString.blH().TopHotNum + paramInt1)).PackName, Integer.valueOf(1) });
+          com.tencent.mm.plugin.report.service.h.vKh.f(13223, new Object[] { Integer.valueOf(0), ((EmotionSummary)paramString.bVs().EmotionList.get(paramString.bVs().TopHotNum + paramInt1)).ProductID, ((EmotionSummary)paramString.bVs().EmotionList.get(paramString.bVs().TopHotNum + paramInt1)).PackName, Integer.valueOf(1) });
           paramInt1 += 1;
         }
       }
@@ -813,52 +1005,49 @@ public abstract class EmojiStoreV2BaseFragment
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1))
-    {
-      if ((this.ljW == 0) || (this.icT)) {
-        ab.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "No More List.");
+    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1)) {
+      if ((this.oAe == 0) || (this.knt)) {
+        ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "No More List.");
       }
     }
-    else {
+    while (paramInt != 0)
+    {
       return;
+      jI(true);
+      ad.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "[onScrollStateChanged] startLoadRemoteEmoji.");
     }
-    gL(true);
-    ab.i("MicroMsg.emoji.EmojiStoreV2BaseFragment", "[onScrollStateChanged] startLoadRemoteEmoji.");
+    bWN();
   }
   
   public void onStart()
   {
     super.onStart();
-    ab.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onStart");
+    ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onStart");
   }
   
   public void onStop()
   {
     super.onStop();
-    ab.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onStop");
+    ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "onStop");
   }
   
   public void setUserVisibleHint(boolean paramBoolean)
   {
-    ab.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "setUserVisibleHint :%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.d("MicroMsg.emoji.EmojiStoreV2BaseFragment", "setUserVisibleHint :%b", new Object[] { Boolean.valueOf(paramBoolean) });
     super.setUserVisibleHint(paramBoolean);
-    this.loU = paramBoolean;
-    if ((!this.loV) && (this.loW)) {
-      bnc();
+    this.oFi = paramBoolean;
+    if ((!this.oFj) && (this.oFk)) {
+      bWM();
     }
-  }
-  
-  public final void uk(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= ((com.tencent.mm.plugin.emoji.a.h)this.lhv).bkH())) {
+    while (!paramBoolean) {
       return;
     }
-    a(this.lhv.uj(paramInt), paramInt);
+    bWN();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2BaseFragment
  * JD-Core Version:    0.7.0.1
  */

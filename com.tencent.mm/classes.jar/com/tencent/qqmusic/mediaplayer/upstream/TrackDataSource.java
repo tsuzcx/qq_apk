@@ -21,49 +21,49 @@ public class TrackDataSource
   private long mStartBytePosition;
   private long mStartTimePosition;
   private TrackInfo mTrackInfo;
-  private TrackDataSource.TrackStateCallback mTrackStateCallback;
+  private TrackStateCallback mTrackStateCallback;
   
   public TrackDataSource(TrackInfo paramTrackInfo)
   {
-    AppMethodBeat.i(104554);
+    AppMethodBeat.i(76505);
     String str = paramTrackInfo.getUri();
     if (TextUtils.isEmpty(paramTrackInfo.getUri()))
     {
       paramTrackInfo = new DataSourceException(-1, "track info has no media file path!", null);
-      AppMethodBeat.o(104554);
+      AppMethodBeat.o(76505);
       throw paramTrackInfo;
     }
     if (!new File(str).exists())
     {
       paramTrackInfo = new DataSourceException(-1, "track info's media file not exists!", null);
-      AppMethodBeat.o(104554);
+      AppMethodBeat.o(76505);
       throw paramTrackInfo;
     }
     this.mDataSource = new FileDataSource(paramTrackInfo.getUri());
     this.mTrackInfo = paramTrackInfo;
-    AppMethodBeat.o(104554);
+    AppMethodBeat.o(76505);
   }
   
   public void close()
   {
-    AppMethodBeat.i(104558);
+    AppMethodBeat.i(76509);
     this.mDataSource.close();
-    AppMethodBeat.o(104558);
+    AppMethodBeat.o(76509);
   }
   
   public AudioFormat.AudioType getAudioType()
   {
-    AppMethodBeat.i(104559);
+    AppMethodBeat.i(76510);
     AudioFormat.AudioType localAudioType = this.mDataSource.getAudioType();
-    AppMethodBeat.o(104559);
+    AppMethodBeat.o(76510);
     return localAudioType;
   }
   
   public long getSize()
   {
-    AppMethodBeat.i(104557);
+    AppMethodBeat.i(76508);
     long l = this.mDataSource.getSize();
-    AppMethodBeat.o(104557);
+    AppMethodBeat.o(76508);
     return l;
   }
   
@@ -75,7 +75,7 @@ public class TrackDataSource
   
   public void onPrepared(BaseMediaPlayer paramBaseMediaPlayer)
   {
-    AppMethodBeat.i(104560);
+    AppMethodBeat.i(76511);
     long l2;
     Pair localPair;
     try
@@ -88,14 +88,14 @@ public class TrackDataSource
       if (((Long)localPair.first).longValue() > ((Long)localPair.second).longValue())
       {
         Logger.e("TrackDataSource", "start range larger, return");
-        AppMethodBeat.o(104560);
+        AppMethodBeat.o(76511);
         return;
       }
     }
     catch (IOException paramBaseMediaPlayer)
     {
       Logger.e("TrackDataSource", "dataSource open failed!", paramBaseMediaPlayer);
-      AppMethodBeat.o(104560);
+      AppMethodBeat.o(76511);
       return;
     }
     this.mStartTimePosition = ((Long)localPair.first).longValue();
@@ -104,7 +104,7 @@ public class TrackDataSource
     if ((l2 > 0L) && (l4 > l2))
     {
       Logger.e("TrackDataSource", "startBytePosition larger than size!");
-      AppMethodBeat.o(104560);
+      AppMethodBeat.o(76511);
       return;
     }
     long l1 = l3;
@@ -121,37 +121,37 @@ public class TrackDataSource
     if (this.mTrackStateCallback != null) {
       this.mTrackStateCallback.onTrackPrepared(this.mTrackInfo);
     }
-    AppMethodBeat.o(104560);
+    AppMethodBeat.o(76511);
   }
   
   public void onSeekComplete(BaseMediaPlayer paramBaseMediaPlayer, int paramInt) {}
   
   public void onStarted(BaseMediaPlayer paramBaseMediaPlayer)
   {
-    AppMethodBeat.i(104561);
+    AppMethodBeat.i(76512);
     paramBaseMediaPlayer.seekTo(0);
-    AppMethodBeat.o(104561);
+    AppMethodBeat.o(76512);
   }
   
   public void onStateChanged(BaseMediaPlayer paramBaseMediaPlayer, int paramInt) {}
   
   public void open()
   {
-    AppMethodBeat.i(104555);
+    AppMethodBeat.i(76506);
     this.mDataSource.open();
-    AppMethodBeat.o(104555);
+    AppMethodBeat.o(76506);
   }
   
   public int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(104556);
+    AppMethodBeat.i(76507);
     if ((this.mEndBytePosition > 0L) && (paramLong > this.mEndBytePosition))
     {
-      AppMethodBeat.o(104556);
+      AppMethodBeat.o(76507);
       return -1;
     }
     paramInt1 = this.mDataSource.readAt(paramLong, paramArrayOfByte, paramInt1, paramInt2);
-    AppMethodBeat.o(104556);
+    AppMethodBeat.o(76507);
     return paramInt1;
   }
   
@@ -160,14 +160,19 @@ public class TrackDataSource
     this.mEndBytePosition = paramLong;
   }
   
-  public void setTrackStateCallback(TrackDataSource.TrackStateCallback paramTrackStateCallback)
+  public void setTrackStateCallback(TrackStateCallback paramTrackStateCallback)
   {
     this.mTrackStateCallback = paramTrackStateCallback;
+  }
+  
+  public static abstract interface TrackStateCallback
+  {
+    public abstract void onTrackPrepared(TrackInfo paramTrackInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.upstream.TrackDataSource
  * JD-Core Version:    0.7.0.1
  */

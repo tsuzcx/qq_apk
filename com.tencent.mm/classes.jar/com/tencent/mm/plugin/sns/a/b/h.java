@@ -1,224 +1,115 @@
 package com.tencent.mm.plugin.sns.a.b;
 
-import android.os.SystemClock;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.a.b.a.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.storage.e;
+import com.tencent.mm.plugin.sns.storage.q;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.cxi;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.io.IOException;
 
 public final class h
 {
-  public String TAG;
-  public long fQx;
-  public long fQy;
-  public int qZB;
-  public int qZC;
-  public long qZD;
-  public int qZE;
-  public int qZF;
-  public int qZG;
-  public int qZH;
-  public boolean qZI;
-  public a qZJ;
-  public LinkedList<a> qZK;
-  public long qZL;
-  
-  public h()
+  public static String a(long paramLong, Object... paramVarArgs)
   {
-    AppMethodBeat.i(35744);
-    this.TAG = "MicroMsg.SnsAdVideoStatistic";
-    this.qZB = 0;
-    this.qZC = 0;
-    this.qZD = 0L;
-    this.qZE = 0;
-    this.fQy = 0L;
-    this.qZF = 0;
-    this.qZG = 0;
-    this.qZH = 0;
-    this.qZI = false;
-    this.qZJ = new a();
-    this.qZK = new LinkedList();
-    this.qZL = 0L;
-    this.fQx = 0L;
-    AppMethodBeat.o(35744);
+    AppMethodBeat.i(94986);
+    af.dto();
+    paramVarArgs = new StringBuilder(k.t(paramVarArgs));
+    a(paramLong, paramVarArgs);
+    paramVarArgs = paramVarArgs.toString();
+    AppMethodBeat.o(94986);
+    return paramVarArgs;
   }
   
-  public h(String paramString)
+  public static void a(long paramLong, StringBuilder paramStringBuilder)
   {
-    AppMethodBeat.i(35745);
-    this.TAG = "MicroMsg.SnsAdVideoStatistic";
-    this.qZB = 0;
-    this.qZC = 0;
-    this.qZD = 0L;
-    this.qZE = 0;
-    this.fQy = 0L;
-    this.qZF = 0;
-    this.qZG = 0;
-    this.qZH = 0;
-    this.qZI = false;
-    this.qZJ = new a();
-    this.qZK = new LinkedList();
-    this.qZL = 0L;
-    this.fQx = 0L;
-    this.TAG = "MicroMsg.SnsAdVideoStatistic:".concat(String.valueOf(paramString));
-    AppMethodBeat.o(35745);
-  }
-  
-  public final void Dx(int paramInt)
-  {
-    AppMethodBeat.i(35746);
-    a locala;
-    if (this.qZJ.raJ <= 0)
+    AppMethodBeat.i(94987);
+    Object localObject = af.dtx().sY(paramLong);
+    if (localObject != null)
     {
-      locala = this.qZJ;
-      if (this.qZJ.raN != 0L) {
-        break label130;
-      }
-    }
-    label130:
-    for (int i = 0;; i = (int)bo.av(this.qZJ.raN))
-    {
-      locala.raJ = i;
-      if (paramInt != 0)
+      localObject = ((e)localObject).dxy();
+      if (localObject != null)
       {
-        this.qZJ.raK = paramInt;
-        this.qZL = paramInt;
+        com.tencent.mm.modelstat.p.a(((TimeLineObject)localObject).xns, paramStringBuilder);
+        AppMethodBeat.o(94987);
+        return;
       }
-      ab.i(this.TAG, "pushplayitem duration " + this.qZJ.raJ + " " + this.qZJ.raM);
-      this.qZK.add(this.qZJ);
-      this.qZJ = new a();
-      AppMethodBeat.o(35746);
+      ad.v("SnsAdExtUtil", "l timeLineObject null, snsId %d", new Object[] { Long.valueOf(paramLong) });
+      paramStringBuilder.append(",,");
+      AppMethodBeat.o(94987);
       return;
     }
+    ad.v("SnsAdExtUtil", "l snsInfo null, snsId %d", new Object[] { Long.valueOf(paramLong) });
+    paramStringBuilder.append(",,");
+    AppMethodBeat.o(94987);
   }
   
-  public final String cnF()
+  public static void a(String paramString, com.tencent.mm.modelsns.f paramf)
   {
-    AppMethodBeat.i(35747);
-    if (this.qZD == 0L) {}
-    StringBuffer localStringBuffer;
-    a locala;
-    for (int i = 0;; i = (int)bo.av(this.qZD))
+    AppMethodBeat.i(94985);
+    Object localObject = af.dtu().apJ(paramString);
+    if (localObject != null)
     {
-      this.qZC = i;
-      ab.d(this.TAG, "__staytotaltime " + this.qZD + " " + this.qZC + " clock: " + SystemClock.elapsedRealtime());
-      localStringBuffer = new StringBuffer();
-      localStringBuffer.append("<viewinfo>");
-      localStringBuffer.append("<downloadstatus>");
-      localStringBuffer.append(this.qZB);
-      localStringBuffer.append("</downloadstatus>");
-      localStringBuffer.append("<staytotaltime>");
-      localStringBuffer.append(this.qZC);
-      localStringBuffer.append("</staytotaltime>");
-      if (this.qZE > 0)
+      localObject = ((com.tencent.mm.plugin.sns.storage.p)localObject).dxy();
+      if (localObject != null)
       {
-        localStringBuffer.append("<masktotaltime>");
-        localStringBuffer.append(this.qZE);
-        localStringBuffer.append("</masktotaltime>");
+        com.tencent.mm.modelstat.p.a(((TimeLineObject)localObject).xns, paramf);
+        AppMethodBeat.o(94985);
+        return;
       }
-      localObject = this.qZK;
-      if ((!this.qZI) || (this.qZK.size() <= 1)) {
-        break label573;
-      }
-      locala = new a();
-      i = 0;
-      while (i < this.qZK.size())
-      {
-        localObject = (a)this.qZK.get(i);
-        if (i == 0)
-        {
-          locala.raK = ((a)localObject).raK;
-          locala.raL = ((a)localObject).raL;
-          locala.raM = ((a)localObject).raM;
-        }
-        locala.raI += ((a)localObject).raI;
-        int j = locala.raJ;
-        locala.raJ = (((a)localObject).raJ + j);
-        i += 1;
-      }
-    }
-    Object localObject = new LinkedList();
-    ((LinkedList)localObject).add(locala);
-    label573:
-    for (;;)
-    {
-      localStringBuffer.append(String.format("<playitemlist count=\"%d\">", new Object[] { Integer.valueOf(((LinkedList)localObject).size()) }));
-      i = 0;
-      while (i < ((LinkedList)localObject).size())
-      {
-        locala = (a)((LinkedList)localObject).get(i);
-        localStringBuffer.append("<playitem>");
-        localStringBuffer.append(String.format("<playcount>%d</playcount>", new Object[] { Integer.valueOf(locala.raI) }));
-        localStringBuffer.append(String.format("<playtotaltime>%d</playtotaltime>", new Object[] { Integer.valueOf(locala.raJ) }));
-        localStringBuffer.append(String.format("<videototaltime>%d</videototaltime>", new Object[] { Integer.valueOf(locala.raK * 1000) }));
-        localStringBuffer.append(String.format("<playmode>%d</playmode>", new Object[] { Integer.valueOf(locala.raL) }));
-        localStringBuffer.append(String.format("<playorientation>%d</playorientation>", new Object[] { Integer.valueOf(locala.raM) }));
-        localStringBuffer.append("</playitem>");
-        i += 1;
-      }
-      localStringBuffer.append("</playitemlist>");
-      localStringBuffer.append("</viewinfo>");
-      localObject = localStringBuffer.toString();
-      ab.i(this.TAG, "xml ".concat(String.valueOf(localObject)));
-      AppMethodBeat.o(35747);
-      return localObject;
-    }
-  }
-  
-  public final void cnG()
-  {
-    AppMethodBeat.i(35748);
-    this.qZF = 0;
-    this.qZG = 0;
-    this.qZH = 0;
-    Iterator localIterator = this.qZK.iterator();
-    while (localIterator.hasNext())
-    {
-      a locala = (a)localIterator.next();
-      this.qZF += locala.raH;
-      this.qZG += locala.raI;
-      int i = this.qZH;
-      this.qZH = (locala.raJ + i);
-    }
-    if ((this.qZJ != null) && (!this.qZK.contains(this.qZJ)))
-    {
-      this.qZF += this.qZJ.raH;
-      this.qZG += this.qZJ.raI;
-      this.qZH += this.qZJ.raJ;
-    }
-    AppMethodBeat.o(35748);
-  }
-  
-  public final void onResume()
-  {
-    AppMethodBeat.i(35749);
-    if (this.fQx == 0L)
-    {
-      AppMethodBeat.o(35749);
+      ad.v("SnsAdExtUtil", "timeLineObject null, snsId %s", new Object[] { paramString });
+      AppMethodBeat.o(94985);
       return;
     }
-    long l = bo.av(this.fQx);
-    this.fQy += l;
-    this.fQx = 0L;
-    if (this.qZJ != null)
-    {
-      a locala = this.qZJ;
-      locala.raO = (l + locala.raO);
-    }
-    AppMethodBeat.o(35749);
+    ad.v("SnsAdExtUtil", "snsInfo null, snsId %s", new Object[] { paramString });
+    AppMethodBeat.o(94985);
   }
   
-  public final void setDuration(int paramInt)
+  private static String ant(String paramString)
   {
-    this.qZL = paramInt;
-    this.qZJ.raK = paramInt;
+    AppMethodBeat.i(94989);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(94989);
+      return "";
+    }
+    paramString = Base64.decode(paramString, 0);
+    cxi localcxi = new cxi();
+    try
+    {
+      localcxi.parseFrom(paramString);
+      paramString = com.tencent.mm.modelstat.p.a(localcxi.Ept);
+      AppMethodBeat.o(94989);
+      return paramString;
+    }
+    catch (IOException paramString)
+    {
+      ad.e("SnsAdExtUtil", "", new Object[] { paramString });
+      AppMethodBeat.o(94989);
+    }
+    return "";
+  }
+  
+  public static String b(TimeLineObject paramTimeLineObject)
+  {
+    AppMethodBeat.i(94988);
+    if (paramTimeLineObject != null)
+    {
+      paramTimeLineObject = ant(paramTimeLineObject.xns);
+      AppMethodBeat.o(94988);
+      return paramTimeLineObject;
+    }
+    ad.v("SnsAdExtUtil", "getSnsStatExt timeLineObject null");
+    AppMethodBeat.o(94988);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.a.b.h
  * JD-Core Version:    0.7.0.1
  */

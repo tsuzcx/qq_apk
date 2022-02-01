@@ -7,7 +7,7 @@ public final class a
 {
   private Handler handler;
   
-  public final void e(Runnable paramRunnable)
+  public final void o(Runnable paramRunnable)
   {
     if (this.handler != null) {
       this.handler.postDelayed(paramRunnable, 0L);

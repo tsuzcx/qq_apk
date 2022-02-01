@@ -1,92 +1,97 @@
 package com.tencent.mm.plugin.fingerprint.b;
 
-import com.tencent.mm.compatible.e.ac;
-import com.tencent.mm.compatible.e.t;
-import com.tencent.mm.g.a.ma;
-import com.tencent.mm.g.a.ma.a;
-import com.tencent.mm.g.a.ma.b;
+import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.t;
+import com.tencent.mm.g.a.nm;
+import com.tencent.mm.g.a.nm.a;
+import com.tencent.mm.g.a.nm.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.fingerprint.b.a.i;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract class a
-  implements l
+  implements com.tencent.mm.plugin.fingerprint.d.a
 {
-  public final void a(ma paramma, int paramInt, String paramString)
+  protected i rbB;
+  
+  public final void a(nm paramnm, int paramInt, String paramString)
   {
-    ab.i("MicroMsg.BaseFingerprintImp", "hy: onOpenFingerprintAuthFailed");
-    if ((paramma != null) && (paramma.cCa.cCe != null))
+    ad.i("MicroMsg.BaseFingerprintImp", "hy: onOpenFingerprintAuthFailed");
+    if ((paramnm != null) && (paramnm.dsz.dsD != null))
     {
-      paramma.cCb = new ma.b();
-      paramma.cCb.errCode = paramInt;
-      paramma.cCb.cwl = "";
-      paramma.cCb.cwm = "";
-      paramma.cCb.errMsg = paramString;
-      paramma.cCb.cCg = type();
-      paramma.cCa.cCe.run();
+      paramnm.dsA = new nm.b();
+      paramnm.dsA.errCode = paramInt;
+      paramnm.dsA.dlK = "";
+      paramnm.dsA.dlL = "";
+      paramnm.dsA.errMsg = paramString;
+      paramnm.dsA.dsF = type();
+      paramnm.dsz.dsD.run();
     }
   }
   
-  public final void byR()
+  public final void a(i parami)
   {
-    ab.i("MicroMsg.BaseFingerprintImp", "showFingerPrintEntrance");
-    if ((e.bzt()) && (!bzb())) {
-      ab.e("MicroMsg.BaseFingerprintImp", "the fingerprint is open ready, but system has none Finger print ids!");
+    this.rbB = parami;
+  }
+  
+  public final void ctM()
+  {
+    ad.i("MicroMsg.BaseFingerprintImp", "showFingerPrintEntrance");
+    if ((ctN()) && (!ctT())) {
+      ad.e("MicroMsg.BaseFingerprintImp", "the fingerprint is open ready, but system has none Finger print ids!");
     }
     do
     {
       return;
-      if ((byV()) && (!bzo()))
+      if ((ctQ()) && (!cub()))
       {
-        ab.e("MicroMsg.BaseFingerprintImp", "the faceid is open ready, but system has none face ids!");
+        ad.e("MicroMsg.BaseFingerprintImp", "the faceid is open ready, but system has none face ids!");
         return;
       }
-    } while (ac.ery.eqB == 1);
-    ab.e("MicroMsg.BaseFingerprintImp", "hy: device info not support");
+    } while (ae.fFA.fDR == 1);
+    ad.e("MicroMsg.BaseFingerprintImp", "hy: device info not support");
   }
   
-  public final boolean byS()
+  public final boolean ctN()
   {
-    return e.bzt();
+    return ((i)g.ab(i.class)).cum();
   }
   
-  public boolean byT()
-  {
-    return false;
-  }
-  
-  public boolean byU()
+  public boolean ctO()
   {
     return false;
   }
   
-  public final boolean byV()
+  public boolean ctP()
   {
-    return ((Boolean)g.RL().Ru().get(ac.a.yKx, Boolean.FALSE)).booleanValue();
+    return false;
   }
   
-  public String byW()
+  public final boolean ctQ()
+  {
+    return ((i)g.ab(i.class)).cun();
+  }
+  
+  public String ctR()
   {
     return "";
   }
   
-  public final void hH(boolean paramBoolean)
+  public final void lp(boolean paramBoolean)
   {
-    ab.i("MicroMsg.BaseFingerprintImp", "hy: set isOpenFp: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    e.hJ(paramBoolean);
+    ad.i("MicroMsg.BaseFingerprintImp", "hy: set isOpenFp: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    ((i)g.ab(i.class)).lv(paramBoolean);
   }
   
-  public final void hI(boolean paramBoolean)
+  public final void lq(boolean paramBoolean)
   {
-    ab.i("MicroMsg.BaseFingerprintImp", "set is open faceid: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    g.RL().Ru().set(ac.a.yKx, Boolean.valueOf(paramBoolean));
+    ad.i("MicroMsg.BaseFingerprintImp", "set is open faceid: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ((i)g.ab(i.class)).lw(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -13,28 +13,28 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.model.aa;
 import com.tencent.mm.plugin.game.model.aa.a;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
 import java.util.List;
 
 public final class i
   extends BaseAdapter
 {
-  int Ld;
+  int Sg;
   private Context mContext;
-  int nok;
-  private aa nwP;
+  int rXI;
+  private aa sgq;
   
   public i(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  private void o(ViewGroup paramViewGroup)
+  private void r(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(111816);
+    AppMethodBeat.i(41985);
     paramViewGroup.setClipChildren(false);
     int i = 0;
     while (i < paramViewGroup.getChildCount())
@@ -43,39 +43,47 @@ public final class i
       if ((localView instanceof ViewGroup))
       {
         ((ViewGroup)localView).setClipChildren(false);
-        o((ViewGroup)localView);
+        r((ViewGroup)localView);
       }
       i += 1;
     }
-    AppMethodBeat.o(111816);
+    AppMethodBeat.o(41985);
   }
   
   public final void a(aa paramaa)
   {
-    AppMethodBeat.i(111812);
-    this.nwP = paramaa;
-    al.d(new i.1(this));
-    AppMethodBeat.o(111812);
+    AppMethodBeat.i(41981);
+    this.sgq = paramaa;
+    aq.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(41980);
+        i.this.notifyDataSetChanged();
+        AppMethodBeat.o(41980);
+      }
+    });
+    AppMethodBeat.o(41981);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(111813);
-    if (this.nwP == null)
+    AppMethodBeat.i(41982);
+    if (this.sgq == null)
     {
-      AppMethodBeat.o(111813);
+      AppMethodBeat.o(41982);
       return 0;
     }
-    int i = this.nwP.now.size();
-    AppMethodBeat.o(111813);
+    int i = this.sgq.rXR.size();
+    AppMethodBeat.o(41982);
     return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    AppMethodBeat.i(111814);
-    Object localObject = this.nwP.now.get(paramInt);
-    AppMethodBeat.o(111814);
+    AppMethodBeat.i(41983);
+    Object localObject = this.sgq.rXR.get(paramInt);
+    AppMethodBeat.o(41983);
     return localObject;
   }
   
@@ -86,71 +94,83 @@ public final class i
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(111815);
+    AppMethodBeat.i(41984);
     Object localObject1;
     Object localObject2;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(this.Ld, paramViewGroup, false);
-      paramViewGroup = new i.a(this, (byte)0);
-      paramViewGroup.nwR = ((TextView)paramView.findViewById(2131824581));
-      paramViewGroup.gxs = ((ImageView)paramView.findViewById(2131824582));
-      paramViewGroup.nwS = ((TextView)paramView.findViewById(2131824583));
-      paramViewGroup.nwT = ((TextView)paramView.findViewById(2131824584));
-      paramViewGroup.nwU = ((TextView)paramView.findViewById(2131824585));
-      paramViewGroup.nwV = ((GameDetailRankLikeView)paramView.findViewById(2131824586));
-      paramViewGroup.nwV.setSourceScene(this.nok);
-      o((ViewGroup)paramView);
+      paramView = LayoutInflater.from(this.mContext).inflate(this.Sg, paramViewGroup, false);
+      paramViewGroup = new a((byte)0);
+      paramViewGroup.sgs = ((TextView)paramView.findViewById(2131300413));
+      paramViewGroup.ikp = ((ImageView)paramView.findViewById(2131300410));
+      paramViewGroup.sgt = ((TextView)paramView.findViewById(2131300412));
+      paramViewGroup.sgu = ((TextView)paramView.findViewById(2131300415));
+      paramViewGroup.sgv = ((TextView)paramView.findViewById(2131300414));
+      paramViewGroup.sgw = ((GameDetailRankLikeView)paramView.findViewById(2131300411));
+      paramViewGroup.sgw.setSourceScene(this.rXI);
+      r((ViewGroup)paramView);
       paramView.setTag(paramViewGroup);
       localObject1 = (aa.a)getItem(paramInt);
-      paramViewGroup.nwR.setText(((aa.a)localObject1).nox);
-      a.b.a(paramViewGroup.gxs, ((aa.a)localObject1).cDt, 0.5F, false);
-      localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(((aa.a)localObject1).cDt);
+      paramViewGroup.sgs.setText(((aa.a)localObject1).rXS);
+      a.b.a(paramViewGroup.ikp, ((aa.a)localObject1).dtV, 0.5F, false);
+      localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(((aa.a)localObject1).dtV);
       if (localObject2 == null) {
         break label325;
       }
-      localObject2 = new SpannableString(com.tencent.mm.pluginsdk.ui.d.j.b(this.mContext, ((ad)localObject2).Of(), paramViewGroup.nwS.getTextSize()));
-      paramViewGroup.nwS.setText((CharSequence)localObject2);
+      localObject2 = new SpannableString(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, ((af)localObject2).ZX(), paramViewGroup.sgt.getTextSize()));
+      paramViewGroup.sgt.setText((CharSequence)localObject2);
       label255:
-      if (!bo.isNullOrNil(((aa.a)localObject1).tag)) {
+      if (!bt.isNullOrNil(((aa.a)localObject1).tag)) {
         break label337;
       }
-      paramViewGroup.nwT.setVisibility(8);
+      paramViewGroup.sgu.setVisibility(8);
       label275:
-      if (bo.isNullOrNil(((aa.a)localObject1).noA)) {
+      if (bt.isNullOrNil(((aa.a)localObject1).rXV)) {
         break label360;
       }
-      paramViewGroup.nwU.setText(((aa.a)localObject1).noA);
-      paramViewGroup.nwV.setVisibility(8);
+      paramViewGroup.sgv.setText(((aa.a)localObject1).rXV);
+      paramViewGroup.sgw.setVisibility(8);
     }
     for (;;)
     {
-      AppMethodBeat.o(111815);
+      AppMethodBeat.o(41984);
       return paramView;
-      paramViewGroup = (i.a)paramView.getTag();
+      paramViewGroup = (a)paramView.getTag();
       break;
       label325:
-      paramViewGroup.nwS.setText("");
+      paramViewGroup.sgt.setText("");
       break label255;
       label337:
-      paramViewGroup.nwT.setVisibility(0);
-      paramViewGroup.nwT.setText(((aa.a)localObject1).tag);
+      paramViewGroup.sgu.setVisibility(0);
+      paramViewGroup.sgu.setText(((aa.a)localObject1).tag);
       break label275;
       label360:
-      paramViewGroup.nwU.setText(((aa.a)localObject1).mSY);
-      localObject1 = paramViewGroup.nwV;
-      localObject2 = this.nwP;
-      ((GameDetailRankLikeView)localObject1).nwW = ((aa)localObject2);
+      paramViewGroup.sgv.setText(((aa.a)localObject1).rpS);
+      localObject1 = paramViewGroup.sgw;
+      localObject2 = this.sgq;
+      ((GameDetailRankLikeView)localObject1).sgx = ((aa)localObject2);
       ((GameDetailRankLikeView)localObject1).mAppId = ((aa)localObject2).mAppId;
-      ((GameDetailRankLikeView)localObject1).nwX = ((aa.a)((aa)localObject2).now.get(paramInt));
-      ((GameDetailRankLikeView)localObject1).resetState();
-      paramViewGroup.nwV.setVisibility(0);
+      ((GameDetailRankLikeView)localObject1).sgy = ((aa.a)((aa)localObject2).rXR.get(paramInt));
+      ((GameDetailRankLikeView)localObject1).cEf();
+      paramViewGroup.sgw.setVisibility(0);
     }
+  }
+  
+  final class a
+  {
+    public ImageView ikp;
+    public TextView sgs;
+    public TextView sgt;
+    public TextView sgu;
+    public TextView sgv;
+    GameDetailRankLikeView sgw;
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.i
  * JD-Core Version:    0.7.0.1
  */

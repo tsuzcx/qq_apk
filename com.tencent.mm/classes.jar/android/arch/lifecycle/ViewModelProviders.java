@@ -7,15 +7,6 @@ import android.support.v4.app.FragmentActivity;
 
 public class ViewModelProviders
 {
-  private static Activity a(Fragment paramFragment)
-  {
-    paramFragment = paramFragment.getActivity();
-    if (paramFragment == null) {
-      throw new IllegalStateException("Can't create ViewModelProvider for detached fragment");
-    }
-    return paramFragment;
-  }
-  
   private static Application c(Activity paramActivity)
   {
     paramActivity = paramActivity.getApplication();
@@ -27,26 +18,36 @@ public class ViewModelProviders
   
   public static ViewModelProvider of(Fragment paramFragment)
   {
-    ViewModelProvider.AndroidViewModelFactory localAndroidViewModelFactory = ViewModelProvider.AndroidViewModelFactory.getInstance(c(a(paramFragment)));
-    return new ViewModelProvider(ViewModelStores.of(paramFragment), localAndroidViewModelFactory);
+    return of(paramFragment, null);
   }
   
   public static ViewModelProvider of(Fragment paramFragment, ViewModelProvider.Factory paramFactory)
   {
-    c(a(paramFragment));
-    return new ViewModelProvider(ViewModelStores.of(paramFragment), paramFactory);
+    Object localObject = paramFragment.getActivity();
+    if (localObject == null) {
+      throw new IllegalStateException("Can't create ViewModelProvider for detached fragment");
+    }
+    Application localApplication = c((Activity)localObject);
+    localObject = paramFactory;
+    if (paramFactory == null) {
+      localObject = ViewModelProvider.AndroidViewModelFactory.getInstance(localApplication);
+    }
+    return new ViewModelProvider(ViewModelStores.of(paramFragment), (ViewModelProvider.Factory)localObject);
   }
   
   public static ViewModelProvider of(FragmentActivity paramFragmentActivity)
   {
-    ViewModelProvider.AndroidViewModelFactory localAndroidViewModelFactory = ViewModelProvider.AndroidViewModelFactory.getInstance(c(paramFragmentActivity));
-    return new ViewModelProvider(ViewModelStores.of(paramFragmentActivity), localAndroidViewModelFactory);
+    return of(paramFragmentActivity, null);
   }
   
   public static ViewModelProvider of(FragmentActivity paramFragmentActivity, ViewModelProvider.Factory paramFactory)
   {
-    c(paramFragmentActivity);
-    return new ViewModelProvider(ViewModelStores.of(paramFragmentActivity), paramFactory);
+    Application localApplication = c(paramFragmentActivity);
+    Object localObject = paramFactory;
+    if (paramFactory == null) {
+      localObject = ViewModelProvider.AndroidViewModelFactory.getInstance(localApplication);
+    }
+    return new ViewModelProvider(ViewModelStores.of(paramFragmentActivity), (ViewModelProvider.Factory)localObject);
   }
   
   @Deprecated

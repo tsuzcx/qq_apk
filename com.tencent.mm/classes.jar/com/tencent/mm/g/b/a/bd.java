@@ -6,96 +6,60 @@ import com.tencent.mm.plugin.report.a;
 public final class bd
   extends a
 {
-  private long cVa = 0L;
-  private long cVj = 0L;
-  private String cWO = "";
-  private String cWP = "";
-  private long cWp = 0L;
+  private String dFJ;
+  public long dFf;
+  public long dOw;
+  public long dOx;
   
-  public final long FH()
+  public final String PV()
   {
-    return this.cVj;
-  }
-  
-  public final String Ff()
-  {
-    AppMethodBeat.i(108875);
+    AppMethodBeat.i(190176);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cVa);
+    ((StringBuffer)localObject).append(this.dFJ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cWp);
+    ((StringBuffer)localObject).append(this.dFf);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVj);
+    ((StringBuffer)localObject).append(this.dOw);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cWO);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cWP);
+    ((StringBuffer)localObject).append(this.dOx);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(108875);
+    ams((String)localObject);
+    AppMethodBeat.o(190176);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(108876);
+    AppMethodBeat.i(190177);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("PreviewEnterScene:").append(this.cVa);
+    ((StringBuffer)localObject).append("sessionid:").append(this.dFJ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ProfileSource:").append(this.cWp);
+    ((StringBuffer)localObject).append("action:").append(this.dFf);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EnterTime:").append(this.cVj);
+    ((StringBuffer)localObject).append("errortype:").append(this.dOw);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StoryOwnerUserName:").append(this.cWO);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StoryTid:").append(this.cWP);
+    ((StringBuffer)localObject).append("pageid:").append(this.dOx);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(108876);
+    AppMethodBeat.o(190177);
     return localObject;
-  }
-  
-  public final bd df(long paramLong)
-  {
-    this.cVa = paramLong;
-    return this;
-  }
-  
-  public final bd dg(long paramLong)
-  {
-    this.cWp = paramLong;
-    return this;
-  }
-  
-  public final bd dh(long paramLong)
-  {
-    this.cVj = paramLong;
-    return this;
   }
   
   public final int getId()
   {
-    return 16763;
+    return 19818;
   }
   
-  public final bd gs(String paramString)
+  public final bd hY(String paramString)
   {
-    AppMethodBeat.i(108873);
-    this.cWO = t("StoryOwnerUserName", paramString, true);
-    AppMethodBeat.o(108873);
-    return this;
-  }
-  
-  public final bd gt(String paramString)
-  {
-    AppMethodBeat.i(108874);
-    this.cWP = t("StoryTid", paramString, true);
-    AppMethodBeat.o(108874);
+    AppMethodBeat.i(190175);
+    this.dFJ = t("sessionid", paramString, true);
+    AppMethodBeat.o(190175);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.bd
  * JD-Core Version:    0.7.0.1
  */

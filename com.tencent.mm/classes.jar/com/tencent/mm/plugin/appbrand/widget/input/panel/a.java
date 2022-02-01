@@ -5,15 +5,15 @@ import android.view.View;
 
 public abstract class a
 {
-  Context jpJ;
-  protected c jpK;
-  int jpL = 0;
+  Context mfC;
+  protected c mfD;
+  int mfE = 0;
   
-  public abstract int aRF();
+  public abstract int btW();
   
-  public abstract int aRG();
+  public abstract int btX();
   
-  public abstract int aRH();
+  public abstract int btY();
   
   public abstract int getPageCount();
   
@@ -21,16 +21,16 @@ public abstract class a
   
   public abstract int getRowSpacing();
   
-  public abstract View qE(int paramInt);
-  
   public final void setPanelManager(c paramc)
   {
-    this.jpK = paramc;
+    this.mfD = paramc;
   }
+  
+  public abstract View vg(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.panel.a
  * JD-Core Version:    0.7.0.1
  */

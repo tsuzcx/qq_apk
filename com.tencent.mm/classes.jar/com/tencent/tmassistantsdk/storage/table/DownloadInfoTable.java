@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.tmassistantsdk.downloadservice.DownloadInfo;
 import com.tencent.tmassistantsdk.downloadservice.taskmanager.ServiceDownloadTask;
 import com.tencent.tmassistantsdk.storage.helper.AstSDKDBHelper_V2;
@@ -25,7 +25,7 @@ public class DownloadInfoTable
   
   public static void add(DownloadInfo paramDownloadInfo)
   {
-    AppMethodBeat.i(76197);
+    AppMethodBeat.i(102443);
     if (paramDownloadInfo != null) {
       try
       {
@@ -36,40 +36,40 @@ public class DownloadInfoTable
           DownloadInfo.writeToContentValues(localContentValues, paramDownloadInfo);
           localSQLiteDatabase.insert("downloadInfo", null, localContentValues);
         }
-        AppMethodBeat.o(76197);
+        AppMethodBeat.o(102443);
         return;
       }
       catch (Exception paramDownloadInfo)
       {
-        ab.printErrStackTrace("DownloadInfoTable", paramDownloadInfo, "", new Object[0]);
+        ad.printErrStackTrace("DownloadInfoTable", paramDownloadInfo, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(76197);
+    AppMethodBeat.o(102443);
   }
   
   public static void del(String paramString)
   {
-    AppMethodBeat.i(76198);
+    AppMethodBeat.i(102444);
     if ((paramString != null) && (paramString.length() > 0)) {
       try
       {
         AstSDKDBHelper_V2.getInstance().getWritableDatabase().delete("downloadInfo", "taskUrl = ?", new String[] { paramString });
-        AppMethodBeat.o(76198);
+        AppMethodBeat.o(102444);
         return;
       }
       catch (Exception paramString)
       {
-        ab.printErrStackTrace("DownloadInfoTable", paramString, "", new Object[0]);
+        ad.printErrStackTrace("DownloadInfoTable", paramString, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(76198);
+    AppMethodBeat.o(102444);
   }
   
   public static ArrayList<DownloadInfo> load()
   {
     Object localObject3 = null;
     Object localObject1 = null;
-    AppMethodBeat.i(76195);
+    AppMethodBeat.i(102441);
     ArrayList localArrayList = new ArrayList();
     Object localObject4 = AstSDKDBHelper_V2.getInstance().getReadableDatabase();
     try
@@ -96,13 +96,13 @@ public class DownloadInfoTable
       if (localObject4 != null) {
         ((Cursor)localObject4).close();
       }
-      AppMethodBeat.o(76195);
+      AppMethodBeat.o(102441);
       return localArrayList;
     }
     catch (Exception localException)
     {
       localObject3 = localObject1;
-      ab.printErrStackTrace("DownloadInfoTable", localException, "", new Object[0]);
+      ad.printErrStackTrace("DownloadInfoTable", localException, "", new Object[0]);
       return localArrayList;
     }
     finally
@@ -110,7 +110,7 @@ public class DownloadInfoTable
       if (localObject3 != null) {
         localObject3.close();
       }
-      AppMethodBeat.o(76195);
+      AppMethodBeat.o(102441);
     }
   }
   
@@ -174,7 +174,7 @@ public class DownloadInfoTable
     //   100: ldc 77
     //   102: iconst_0
     //   103: anewarray 4	java/lang/Object
-    //   106: invokestatic 83	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   106: invokestatic 83	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   109: aload_1
     //   110: ifnull -25 -> 85
     //   113: aload_1
@@ -219,7 +219,7 @@ public class DownloadInfoTable
   {
     Object localObject3 = null;
     Object localObject1 = null;
-    AppMethodBeat.i(76201);
+    AppMethodBeat.i(102447);
     ArrayList localArrayList = new ArrayList();
     Object localObject4 = AstSDKDBHelper_V2.getInstance().getReadableDatabase();
     try
@@ -261,13 +261,13 @@ public class DownloadInfoTable
       if (localObject4 != null) {
         ((Cursor)localObject4).close();
       }
-      AppMethodBeat.o(76201);
+      AppMethodBeat.o(102447);
       return localArrayList;
     }
     catch (Exception localException)
     {
       localObject3 = localObject1;
-      ab.printErrStackTrace("DownloadInfoTable", localException, "", new Object[0]);
+      ad.printErrStackTrace("DownloadInfoTable", localException, "", new Object[0]);
       return localArrayList;
     }
     finally
@@ -275,13 +275,13 @@ public class DownloadInfoTable
       if (localObject3 != null) {
         localObject3.close();
       }
-      AppMethodBeat.o(76201);
+      AppMethodBeat.o(102447);
     }
   }
   
   public static void save(ArrayList<DownloadInfo> paramArrayList)
   {
-    AppMethodBeat.i(76196);
+    AppMethodBeat.i(102442);
     if (paramArrayList != null)
     {
       SQLiteDatabase localSQLiteDatabase = AstSDKDBHelper_V2.getInstance().getWritableDatabase();
@@ -299,11 +299,11 @@ public class DownloadInfoTable
             localSQLiteDatabase.insert("downloadInfo", null, localContentValues);
           }
         }
-        AppMethodBeat.o(76196);
+        AppMethodBeat.o(102442);
       }
       catch (Exception paramArrayList)
       {
-        ab.printErrStackTrace("DownloadInfoTable", paramArrayList, "", new Object[0]);
+        ad.printErrStackTrace("DownloadInfoTable", paramArrayList, "", new Object[0]);
         return;
         localSQLiteDatabase.setTransactionSuccessful();
         return;
@@ -311,17 +311,17 @@ public class DownloadInfoTable
       finally
       {
         localSQLiteDatabase.endTransaction();
-        AppMethodBeat.o(76196);
+        AppMethodBeat.o(102442);
       }
     }
   }
   
   private static int update(DownloadInfo paramDownloadInfo, SQLiteDatabase paramSQLiteDatabase)
   {
-    AppMethodBeat.i(76199);
+    AppMethodBeat.i(102445);
     if (paramDownloadInfo == null)
     {
-      AppMethodBeat.o(76199);
+      AppMethodBeat.o(102445);
       return -1;
     }
     try
@@ -331,16 +331,16 @@ public class DownloadInfoTable
       int i = paramSQLiteDatabase.update("downloadInfo", localContentValues, "taskUrl = ?", new String[] { paramDownloadInfo.mURL });
       if (i > 0)
       {
-        AppMethodBeat.o(76199);
+        AppMethodBeat.o(102445);
         return i;
       }
-      AppMethodBeat.o(76199);
+      AppMethodBeat.o(102445);
       return 0;
     }
     catch (Exception paramDownloadInfo)
     {
-      ab.printErrStackTrace("DownloadInfoTable", paramDownloadInfo, "", new Object[0]);
-      AppMethodBeat.o(76199);
+      ad.printErrStackTrace("DownloadInfoTable", paramDownloadInfo, "", new Object[0]);
+      AppMethodBeat.o(102445);
     }
     return -2;
   }
@@ -354,7 +354,7 @@ public class DownloadInfoTable
   {
     localObject = null;
     localSQLiteDatabase = null;
-    AppMethodBeat.i(76202);
+    AppMethodBeat.i(102448);
     if ((paramSQLiteDatabase2 != null) && (paramSQLiteDatabase1 != null)) {
       paramSQLiteDatabase2.beginTransaction();
     }
@@ -397,7 +397,7 @@ public class DownloadInfoTable
       for (;;)
       {
         localObject = localSQLiteDatabase;
-        ab.printErrStackTrace("DownloadInfoTable", paramSQLiteDatabase1, "", new Object[0]);
+        ad.printErrStackTrace("DownloadInfoTable", paramSQLiteDatabase1, "", new Object[0]);
         localObject = localSQLiteDatabase;
         TMLog.i("downloadInfo", "move data exception!");
         if (localSQLiteDatabase != null) {
@@ -411,11 +411,11 @@ public class DownloadInfoTable
         break label206;
       }
       ((Cursor)localObject).close();
-      AppMethodBeat.o(76202);
+      AppMethodBeat.o(102448);
     }
     paramSQLiteDatabase2.setTransactionSuccessful();
     paramSQLiteDatabase2.endTransaction();
-    AppMethodBeat.o(76202);
+    AppMethodBeat.o(102448);
   }
   
   public String[] getAlterSQL(int paramInt1, int paramInt2)
@@ -428,9 +428,9 @@ public class DownloadInfoTable
   
   public SqliteHelper getHelper()
   {
-    AppMethodBeat.i(76194);
+    AppMethodBeat.i(102440);
     SqliteHelper localSqliteHelper = AstSDKDBHelper_V2.getInstance();
-    AppMethodBeat.o(76194);
+    AppMethodBeat.o(102440);
     return localSqliteHelper;
   }
   
@@ -441,7 +441,7 @@ public class DownloadInfoTable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.table.DownloadInfoTable
  * JD-Core Version:    0.7.0.1
  */

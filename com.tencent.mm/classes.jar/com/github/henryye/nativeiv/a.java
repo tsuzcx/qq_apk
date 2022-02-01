@@ -1,5 +1,6 @@
 package com.github.henryye.nativeiv;
 
+import android.graphics.Bitmap;
 import android.util.SparseArray;
 import com.github.henryye.nativeiv.bitmap.BitmapType;
 import com.github.henryye.nativeiv.bitmap.IBitmap;
@@ -13,17 +14,32 @@ import java.util.Map;
 
 public final class a
 {
-  public Map<BitmapType, b> auu;
-  public SparseArray<Map<BitmapType, b>> auv;
+  Map<BitmapType, b> aPk;
+  SparseArray<Map<BitmapType, b>> aPl;
   
   public a()
   {
-    AppMethodBeat.i(115742);
-    this.auu = new HashMap(2);
-    this.auv = new SparseArray();
-    this.auu.put(BitmapType.Native, new a.1(this));
-    this.auu.put(BitmapType.Legacy, new a.2(this));
-    this.auu.put(BitmapType.Undefined, new b()
+    AppMethodBeat.i(127329);
+    this.aPk = new HashMap(3);
+    this.aPl = new SparseArray();
+    this.aPk.put(BitmapType.Native, new b()
+    {
+      public final boolean a(c paramAnonymousc)
+      {
+        return false;
+      }
+      
+      public final void destroy() {}
+      
+      public final IBitmap re()
+      {
+        AppMethodBeat.i(127326);
+        b.b localb = new b.b();
+        AppMethodBeat.o(127326);
+        return localb;
+      }
+    });
+    this.aPk.put(BitmapType.Legacy, new b()
     {
       public final boolean a(c paramAnonymousc)
       {
@@ -32,50 +48,67 @@ public final class a
       
       public final void destroy() {}
       
-      public final IBitmap mt()
+      public final IBitmap<Bitmap> re()
       {
-        AppMethodBeat.i(115741);
+        AppMethodBeat.i(127327);
+        LegacyBitmap localLegacyBitmap = new LegacyBitmap();
+        AppMethodBeat.o(127327);
+        return localLegacyBitmap;
+      }
+    });
+    this.aPk.put(BitmapType.Undefined, new b()
+    {
+      public final boolean a(c paramAnonymousc)
+      {
+        return true;
+      }
+      
+      public final void destroy() {}
+      
+      public final IBitmap re()
+      {
+        AppMethodBeat.i(127328);
         b.a locala = new b.a();
-        AppMethodBeat.o(115741);
+        AppMethodBeat.o(127328);
         return locala;
       }
     });
-    AppMethodBeat.o(115742);
+    AppMethodBeat.o(127329);
   }
   
-  public static IBitmap a(c paramc, Map<BitmapType, b> paramMap)
+  static IBitmap a(c paramc, Map<BitmapType, b> paramMap)
   {
-    AppMethodBeat.i(115744);
+    AppMethodBeat.i(127331);
     if (((b)paramMap.get(BitmapType.Native)).a(paramc))
     {
-      paramc = ((b)paramMap.get(BitmapType.Native)).mt();
-      AppMethodBeat.o(115744);
+      paramc = ((b)paramMap.get(BitmapType.Native)).re();
+      AppMethodBeat.o(127331);
       return paramc;
     }
     if (((b)paramMap.get(BitmapType.Legacy)).a(paramc))
     {
-      paramc = ((b)paramMap.get(BitmapType.Legacy)).mt();
-      AppMethodBeat.o(115744);
+      paramc = ((b)paramMap.get(BitmapType.Legacy)).re();
+      AppMethodBeat.o(127331);
       return paramc;
     }
-    paramc = ((b)paramMap.get(BitmapType.Undefined)).mt();
-    AppMethodBeat.o(115744);
+    paramc = ((b)paramMap.get(BitmapType.Undefined)).re();
+    AppMethodBeat.o(127331);
     return paramc;
   }
   
-  public static void b(Map<BitmapType, b> paramMap)
+  static void b(Map<BitmapType, b> paramMap)
   {
-    AppMethodBeat.i(115743);
+    AppMethodBeat.i(127330);
     if (paramMap == null)
     {
-      AppMethodBeat.o(115743);
+      AppMethodBeat.o(127330);
       return;
     }
     paramMap = paramMap.values().iterator();
     while (paramMap.hasNext()) {
       ((b)paramMap.next()).destroy();
     }
-    AppMethodBeat.o(115743);
+    AppMethodBeat.o(127330);
   }
 }
 

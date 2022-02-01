@@ -2,100 +2,121 @@ package com.tencent.mm.plugin.extaccessories;
 
 import com.samsung.android.sdk.look.writingbuddy.SlookWritingBuddy;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.g.a.og;
-import com.tencent.mm.g.a.og.a;
-import com.tencent.mm.model.at;
+import com.tencent.mm.g.a.pv;
+import com.tencent.mm.g.a.pv.a;
 import com.tencent.mm.model.aw;
+import com.tencent.mm.model.az;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import java.io.File;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storagebase.h.b;
+import com.tencent.mm.vfs.e;
 import java.util.HashMap;
 
 public final class b
-  implements at
+  implements aw
 {
-  String eHR;
-  private a mfQ;
+  String gcW;
+  private a pMC;
   
   public final void clearPluginData(int paramInt) {}
   
-  public final HashMap<Integer, h.d> getBaseDBFactories()
+  public final HashMap<Integer, h.b> getBaseDBFactories()
   {
     return null;
   }
   
   public final void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(20469);
-    ab.d("MicroMsg.extaccessories.SubCoreExtAccessories", "SubCoreExtAccessories reset");
-    if (this.mfQ == null) {
-      this.mfQ = new a();
+    AppMethodBeat.i(24545);
+    ad.d("MicroMsg.extaccessories.SubCoreExtAccessories", "SubCoreExtAccessories reset");
+    if (this.pMC == null) {
+      this.pMC = new a();
     }
-    a.ymk.c(this.mfQ);
-    aw.RO().o(new b.1(this), 5000L);
-    AppMethodBeat.o(20469);
+    a.ESL.c(this.pMC);
+    az.afE().m(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(24540);
+        if (!az.afw())
+        {
+          AppMethodBeat.o(24540);
+          return;
+        }
+        if (bt.isNullOrNil(b.this.gcW))
+        {
+          AppMethodBeat.o(24540);
+          return;
+        }
+        long l = System.currentTimeMillis();
+        bt.z(b.this.gcW + "image/spen/", "spen_", 259200000L);
+        ad.d("MicroMsg.extaccessories.SubCoreExtAccessories", "deleteOutOfDateFile cost %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+        AppMethodBeat.o(24540);
+      }
+    }, 5000L);
+    AppMethodBeat.o(24545);
   }
   
   public final void onAccountRelease()
   {
-    AppMethodBeat.i(20470);
-    ab.d("MicroMsg.extaccessories.SubCoreExtAccessories", "SubCoreExtAccessories release");
-    if (this.mfQ != null) {
-      a.ymk.d(this.mfQ);
+    AppMethodBeat.i(24546);
+    ad.d("MicroMsg.extaccessories.SubCoreExtAccessories", "SubCoreExtAccessories release");
+    if (this.pMC != null) {
+      a.ESL.d(this.pMC);
     }
-    AppMethodBeat.o(20470);
+    AppMethodBeat.o(24546);
   }
   
   public final void onSdcardMount(boolean paramBoolean)
   {
-    AppMethodBeat.i(20468);
-    aw.aaz();
-    this.eHR = com.tencent.mm.model.c.getAccPath();
-    File localFile = new File(this.eHR);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    AppMethodBeat.i(24544);
+    az.arV();
+    this.gcW = com.tencent.mm.model.c.getAccPath();
+    e locale = new e(this.gcW);
+    if (!locale.exists()) {
+      locale.mkdirs();
     }
-    localFile = new File(this.eHR + "image/spen/");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    locale = new e(this.gcW + "image/spen/");
+    if (!locale.exists()) {
+      locale.mkdirs();
     }
-    AppMethodBeat.o(20468);
+    AppMethodBeat.o(24544);
   }
   
   public static final class a
-    extends com.tencent.mm.sdk.b.c<og>
+    extends com.tencent.mm.sdk.b.c<pv>
   {
     public a()
     {
-      AppMethodBeat.i(20465);
-      this.__eventId = og.class.getName().hashCode();
-      AppMethodBeat.o(20465);
+      AppMethodBeat.i(161363);
+      this.__eventId = pv.class.getName().hashCode();
+      AppMethodBeat.o(161363);
     }
     
-    private boolean a(og paramog)
+    private boolean a(pv parampv)
     {
-      AppMethodBeat.i(20466);
-      if (!(paramog instanceof og))
+      AppMethodBeat.i(24542);
+      if (!(parampv instanceof pv))
       {
-        ab.f("MicroMsg.extaccessories.SubCoreExtAccessories", "mismatched event");
-        AppMethodBeat.o(20466);
+        ad.f("MicroMsg.extaccessories.SubCoreExtAccessories", "mismatched event");
+        AppMethodBeat.o(24542);
         return false;
       }
-      ab.d("MicroMsg.extaccessories.SubCoreExtAccessories", "RegistSpenBuddyEvent");
-      if ((paramog.cEQ != null) && (paramog.cEQ.cES != null) && (paramog.cEQ.cER != null)) {}
+      ad.d("MicroMsg.extaccessories.SubCoreExtAccessories", "RegistSpenBuddyEvent");
+      if ((parampv.dvv != null) && (parampv.dvv.dvx != null) && (parampv.dvv.dvw != null)) {}
       try
       {
-        new SlookWritingBuddy(paramog.cEQ.cES).setImageWritingListener(new SubCoreExtAccessories.RegistSpenBuddyEventListener.1(this, paramog));
-        AppMethodBeat.o(20466);
+        new SlookWritingBuddy(parampv.dvv.dvx).setImageWritingListener(new SubCoreExtAccessories.RegistSpenBuddyEventListener.1(this, parampv));
+        AppMethodBeat.o(24542);
         return true;
       }
-      catch (Exception paramog)
+      catch (Exception parampv)
       {
         for (;;)
         {
-          ab.e("MicroMsg.extaccessories.SubCoreExtAccessories", "exception in writingBuddy %s", new Object[] { paramog.getMessage() });
+          ad.e("MicroMsg.extaccessories.SubCoreExtAccessories", "exception in writingBuddy %s", new Object[] { parampv.getMessage() });
         }
       }
     }
@@ -103,7 +124,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.extaccessories.b
  * JD-Core Version:    0.7.0.1
  */

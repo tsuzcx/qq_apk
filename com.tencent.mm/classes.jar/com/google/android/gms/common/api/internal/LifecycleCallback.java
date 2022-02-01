@@ -24,39 +24,39 @@ public class LifecycleCallback
   @Keep
   private static LifecycleFragment getChimeraLifecycleFragmentImpl(LifecycleActivity paramLifecycleActivity)
   {
-    AppMethodBeat.i(89482);
+    AppMethodBeat.i(4504);
     paramLifecycleActivity = new IllegalStateException("Method not available in SDK.");
-    AppMethodBeat.o(89482);
+    AppMethodBeat.o(4504);
     throw paramLifecycleActivity;
   }
   
   @KeepForSdk
   public static LifecycleFragment getFragment(Activity paramActivity)
   {
-    AppMethodBeat.i(89483);
+    AppMethodBeat.i(4505);
     paramActivity = getFragment(new LifecycleActivity(paramActivity));
-    AppMethodBeat.o(89483);
+    AppMethodBeat.o(4505);
     return paramActivity;
   }
   
   @KeepForSdk
   protected static LifecycleFragment getFragment(LifecycleActivity paramLifecycleActivity)
   {
-    AppMethodBeat.i(89481);
+    AppMethodBeat.i(4503);
     if (paramLifecycleActivity.zzbv())
     {
       paramLifecycleActivity = zzcc.zza(paramLifecycleActivity.zzby());
-      AppMethodBeat.o(89481);
+      AppMethodBeat.o(4503);
       return paramLifecycleActivity;
     }
     if (paramLifecycleActivity.zzbw())
     {
       paramLifecycleActivity = zzbr.zzc(paramLifecycleActivity.zzbx());
-      AppMethodBeat.o(89481);
+      AppMethodBeat.o(4503);
       return paramLifecycleActivity;
     }
     paramLifecycleActivity = new IllegalArgumentException("Can't get fragment for unexpected activity.");
-    AppMethodBeat.o(89481);
+    AppMethodBeat.o(4503);
     throw paramLifecycleActivity;
   }
   
@@ -64,9 +64,9 @@ public class LifecycleCallback
   
   public final Activity getActivity()
   {
-    AppMethodBeat.i(89484);
+    AppMethodBeat.i(4506);
     Activity localActivity = this.mLifecycleFragment.getLifecycleActivity();
-    AppMethodBeat.o(89484);
+    AppMethodBeat.o(4506);
     return localActivity;
   }
   

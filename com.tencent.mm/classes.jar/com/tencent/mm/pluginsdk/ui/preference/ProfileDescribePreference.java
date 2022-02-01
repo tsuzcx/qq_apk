@@ -7,17 +7,17 @@ import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.ProfileDescribeView;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bw;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ProfileDescribePreference
   extends Preference
 {
-  public ad lpe;
-  private View ozm;
-  public bv pRo;
-  private ProfileDescribeView wbE;
+  private ProfileDescribeView Cjk;
+  public af oFt;
+  private View ttN;
+  public bw uTk;
   
   public ProfileDescribePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,39 +31,39 @@ public class ProfileDescribePreference
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(28116);
+    AppMethodBeat.i(31905);
     super.onBindView(paramView);
-    if (this.lpe == null)
+    if (this.oFt == null)
     {
-      AppMethodBeat.o(28116);
+      AppMethodBeat.o(31905);
       return;
     }
-    this.wbE.ccG();
-    AppMethodBeat.o(28116);
+    this.Cjk.dcY();
+    AppMethodBeat.o(31905);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(28115);
-    if (this.ozm == null)
+    AppMethodBeat.i(31904);
+    if (this.ttN == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
       localViewGroup.removeAllViews();
       ProfileDescribeView localProfileDescribeView = new ProfileDescribeView(paramViewGroup.getContext());
-      this.wbE = localProfileDescribeView;
+      this.Cjk = localProfileDescribeView;
       localViewGroup.addView(localProfileDescribeView, new AbsListView.LayoutParams(-1, -2));
-      this.wbE.S(this.lpe);
-      this.ozm = paramViewGroup;
+      this.Cjk.Z(this.oFt);
+      this.ttN = paramViewGroup;
     }
-    paramViewGroup = this.ozm;
-    AppMethodBeat.o(28115);
+    paramViewGroup = this.ttN;
+    AppMethodBeat.o(31904);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.ProfileDescribePreference
  * JD-Core Version:    0.7.0.1
  */

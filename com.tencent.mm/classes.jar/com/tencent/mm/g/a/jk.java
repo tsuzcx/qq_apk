@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class jk
   extends b
 {
-  public jk.a cyS;
-  public jk.b cyT;
+  public a dnA;
   
   public jk()
   {
@@ -16,17 +15,22 @@ public final class jk
   
   private jk(byte paramByte)
   {
-    AppMethodBeat.i(51339);
-    this.cyS = new jk.a();
-    this.cyT = new jk.b();
-    this.ymq = false;
+    AppMethodBeat.i(121032);
+    this.dnA = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(51339);
+    AppMethodBeat.o(121032);
+  }
+  
+  public static final class a
+  {
+    public String dnB;
+    public String dnC;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.jk
  * JD-Core Version:    0.7.0.1
  */

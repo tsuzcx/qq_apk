@@ -7,48 +7,77 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.cd.e;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.cg.e;
+import com.tencent.mm.ui.y;
 
 public class WebViewSmileyGrid
   extends GridView
 {
-  AdapterView.OnItemClickListener amh;
-  int jpP;
-  int jpQ;
-  int jpR;
-  int jpS;
-  int jpT;
-  int jpU;
-  private c vtC;
-  a vtD;
+  private c BwH;
+  a BwI;
+  AdapterView.OnItemClickListener atG;
+  int mfI;
+  int mfJ;
+  int mfK;
+  int mfL;
+  int mfM;
+  int mfN;
   
   public WebViewSmileyGrid(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(10108);
-    this.jpQ = 0;
-    this.jpS = 0;
-    this.jpT = 0;
-    this.jpU = 0;
-    this.amh = new WebViewSmileyGrid.1(this);
-    AppMethodBeat.o(10108);
+    AppMethodBeat.i(82342);
+    this.mfJ = 0;
+    this.mfL = 0;
+    this.mfM = 0;
+    this.mfN = 0;
+    this.atG = new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(82338);
+        if (paramAnonymousInt == WebViewSmileyGrid.a(WebViewSmileyGrid.this).getCount() - 1)
+        {
+          if (WebViewSmileyGrid.b(WebViewSmileyGrid.this).BwO != null) {
+            WebViewSmileyGrid.b(WebViewSmileyGrid.this).BwO.btF();
+          }
+          AppMethodBeat.o(82338);
+          return;
+        }
+        if (WebViewSmileyGrid.c(WebViewSmileyGrid.this) * (WebViewSmileyGrid.d(WebViewSmileyGrid.this) - 1) + paramAnonymousInt >= WebViewSmileyGrid.e(WebViewSmileyGrid.this))
+        {
+          AppMethodBeat.o(82338);
+          return;
+        }
+        int i = WebViewSmileyGrid.c(WebViewSmileyGrid.this);
+        int j = WebViewSmileyGrid.d(WebViewSmileyGrid.this);
+        if (WebViewSmileyGrid.b(WebViewSmileyGrid.this).BwO != null)
+        {
+          paramAnonymousAdapterView = WebViewSmileyGrid.b(WebViewSmileyGrid.this).BwO;
+          WebViewSmileyGrid.b(WebViewSmileyGrid.this);
+          paramAnonymousAdapterView.append(e.eHT().ve(i * (j - 1) + paramAnonymousInt));
+        }
+        AppMethodBeat.o(82338);
+      }
+    };
+    AppMethodBeat.o(82342);
   }
   
   int getRowSpacing()
   {
-    return this.jpS;
+    return this.mfL;
   }
   
   public void setPanelManager(c paramc)
   {
-    this.vtC = paramc;
+    this.BwH = paramc;
   }
   
   final class a
@@ -58,9 +87,9 @@ public class WebViewSmileyGrid
     
     public final int getCount()
     {
-      AppMethodBeat.i(10105);
+      AppMethodBeat.i(82339);
       int i = WebViewSmileyGrid.d(WebViewSmileyGrid.this);
-      AppMethodBeat.o(10105);
+      AppMethodBeat.o(82339);
       return i;
     }
     
@@ -76,36 +105,36 @@ public class WebViewSmileyGrid
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(10106);
+      AppMethodBeat.i(82340);
       if ((paramView == null) || (paramView.getTag() == null))
       {
-        paramView = w.hM(WebViewSmileyGrid.this.getContext()).inflate(2130971307, null);
-        paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (WebViewSmileyGrid.b(WebViewSmileyGrid.this).jqe - a.ao(WebViewSmileyGrid.this.getContext(), 2131427782) - a.ao(WebViewSmileyGrid.this.getContext(), 2131428385)) / WebViewSmileyGrid.f(WebViewSmileyGrid.this)));
+        paramView = y.js(WebViewSmileyGrid.this.getContext()).inflate(2131496089, null);
+        paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (WebViewSmileyGrid.b(WebViewSmileyGrid.this).mfW - a.ao(WebViewSmileyGrid.this.getContext(), 2131165490) - a.ao(WebViewSmileyGrid.this.getContext(), 2131166250)) / WebViewSmileyGrid.f(WebViewSmileyGrid.this)));
         paramViewGroup = new WebViewSmileyGrid.b(paramView);
         paramView.setTag(paramViewGroup);
         if (paramInt != getCount() - 1) {
-          break label161;
+          break label159;
         }
-        paramViewGroup.ivs.setImageResource(2130838499);
-        paramViewGroup.ivs.setContentDescription(WebViewSmileyGrid.this.getContext().getString(2131298947));
+        paramViewGroup.kXS.setImageResource(2131231885);
+        paramViewGroup.kXS.setContentDescription(WebViewSmileyGrid.this.getContext().getString(2131758032));
       }
       for (;;)
       {
-        AppMethodBeat.o(10106);
+        AppMethodBeat.o(82340);
         return paramView;
         paramViewGroup = (WebViewSmileyGrid.b)paramView.getTag();
         break;
-        label161:
+        label159:
         paramInt = (WebViewSmileyGrid.d(WebViewSmileyGrid.this) - 1) * WebViewSmileyGrid.c(WebViewSmileyGrid.this) + paramInt;
         if (paramInt > WebViewSmileyGrid.e(WebViewSmileyGrid.this) - 1)
         {
-          paramViewGroup.ivs.setImageDrawable(null);
+          paramViewGroup.kXS.setImageDrawable(null);
         }
         else
         {
           WebViewSmileyGrid.b(WebViewSmileyGrid.this);
-          Drawable localDrawable = e.dve().qA(paramInt);
-          paramViewGroup.ivs.setImageDrawable(localDrawable);
+          Drawable localDrawable = e.eHT().vc(paramInt);
+          paramViewGroup.kXS.setImageDrawable(localDrawable);
         }
       }
     }
@@ -113,7 +142,7 @@ public class WebViewSmileyGrid
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewSmileyGrid
  * JD-Core Version:    0.7.0.1
  */

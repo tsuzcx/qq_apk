@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 
 import android.content.Context;
 import android.os.Build.VERSION;
+import android.support.v4.view.ViewPager.f;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -12,12 +13,12 @@ public class DummyViewPager
   extends AdLandingViewPager
   implements Serializable
 {
-  protected int ryX;
+  protected int xeF;
   
   public DummyViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(37594);
+    AppMethodBeat.i(97057);
     paramContext = new a();
     if (Build.VERSION.SDK_INT >= 11) {
       if (this.mPageTransformer == null) {
@@ -36,15 +37,26 @@ public class DummyViewPager
       if (j != 0) {
         populate();
       }
-      setOnPageChangeListener(new DummyViewPager.1(this));
-      AppMethodBeat.o(37594);
+      setOnPageChangeListener(new ViewPager.f()
+      {
+        public final void onPageScrollStateChanged(int paramAnonymousInt)
+        {
+          AppMethodBeat.i(97056);
+          super.onPageScrollStateChanged(paramAnonymousInt);
+          if (paramAnonymousInt == 0) {
+            DummyViewPager.this.xeF = DummyViewPager.this.getScrollX();
+          }
+          AppMethodBeat.o(97056);
+        }
+      });
+      AppMethodBeat.o(97057);
       return;
     }
   }
   
   public int getBaseScrollX()
   {
-    return this.ryX;
+    return this.xeF;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -54,7 +66,7 @@ public class DummyViewPager
   
   public void setBaseScrollX(int paramInt)
   {
-    this.ryX = paramInt;
+    this.xeF = paramInt;
   }
 }
 

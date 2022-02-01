@@ -10,12 +10,12 @@ final class d
   
   public final void send(int paramInt, Bundle paramBundle)
   {
-    if (this.iM.mHandler != null)
+    if (this.kK.dG != null)
     {
-      this.iM.mHandler.post(new e(this.iM, paramInt, paramBundle));
+      this.kK.dG.post(new e(this.kK, paramInt, paramBundle));
       return;
     }
-    this.iM.onReceiveResult(paramInt, paramBundle);
+    this.kK.onReceiveResult(paramInt, paramBundle);
   }
 }
 

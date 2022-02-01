@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.voip.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -9,138 +9,138 @@ import java.io.OutputStream;
 
 public final class g
 {
-  public int tuv = 0;
+  public int zgM = 0;
   
-  public static byte[] B(InputStream paramInputStream)
+  public static byte[] K(InputStream paramInputStream)
   {
     int j = 0;
-    AppMethodBeat.i(4355);
+    AppMethodBeat.i(114847);
     Object localObject = new ByteArrayOutputStream();
     paramInputStream = new j(paramInputStream, (OutputStream)localObject);
-    paramInputStream.Hb(8);
-    paramInputStream.Hb(8);
-    paramInputStream.Hb(8);
-    paramInputStream.Hb(8);
-    paramInputStream.Hb(8);
-    int i = (int)paramInputStream.cLO();
-    paramInputStream.Hb(8);
-    paramInputStream.cLO();
-    paramInputStream.cLS();
+    paramInputStream.PU(8);
+    paramInputStream.PU(8);
+    paramInputStream.PU(8);
+    paramInputStream.PU(8);
+    paramInputStream.PU(8);
+    int i = (int)paramInputStream.dSM();
+    paramInputStream.PU(8);
+    paramInputStream.dSM();
+    paramInputStream.dSQ();
     if ((i == 100) || (i == 110) || (i == 122) || (i == 144))
     {
-      if (paramInputStream.cLR() == 3) {
-        paramInputStream.Hb(1);
+      if (paramInputStream.dSP() == 3) {
+        paramInputStream.PU(1);
       }
-      paramInputStream.cLS();
-      paramInputStream.cLS();
-      paramInputStream.Hb(1);
-      if (paramInputStream.mL(true))
+      paramInputStream.dSQ();
+      paramInputStream.dSQ();
+      paramInputStream.PU(1);
+      if (paramInputStream.rw(true))
       {
         i = 0;
         if (i < 8)
         {
-          if (paramInputStream.mL(true))
+          if (paramInputStream.rw(true))
           {
             if (i >= 6) {
-              break label173;
+              break label172;
             }
-            paramInputStream.Hc(16);
+            paramInputStream.PV(16);
           }
           for (;;)
           {
             i += 1;
             break;
-            label173:
-            paramInputStream.Hc(64);
+            label172:
+            paramInputStream.PV(64);
           }
         }
       }
     }
-    paramInputStream.cLS();
-    i = paramInputStream.cLR();
+    paramInputStream.dSQ();
+    i = paramInputStream.dSP();
     if (i == 0)
     {
-      paramInputStream.cLS();
-      paramInputStream.cLS();
-      paramInputStream.Hb(1);
-      paramInputStream.cLS();
-      paramInputStream.cLS();
-      if (!paramInputStream.mL(true)) {
-        paramInputStream.Hb(1);
+      paramInputStream.dSQ();
+      paramInputStream.dSQ();
+      paramInputStream.PU(1);
+      paramInputStream.dSQ();
+      paramInputStream.dSQ();
+      if (!paramInputStream.rw(true)) {
+        paramInputStream.PU(1);
       }
-      paramInputStream.Hb(1);
-      if (paramInputStream.mL(true))
+      paramInputStream.PU(1);
+      if (paramInputStream.rw(true))
       {
-        paramInputStream.cLS();
-        paramInputStream.cLS();
-        paramInputStream.cLS();
-        paramInputStream.cLS();
+        paramInputStream.dSQ();
+        paramInputStream.dSQ();
+        paramInputStream.dSQ();
+        paramInputStream.dSQ();
       }
-      if (!paramInputStream.mL(false)) {
-        break label732;
+      if (!paramInputStream.rw(false)) {
+        break label731;
       }
-      ab.d("[H264SPSModifier]", "vui_parameters_present_flag exist!! modify max_dec_frame_buffering");
-      paramInputStream.mN(true);
-      if ((paramInputStream.mL(true)) && ((int)paramInputStream.cLO() == 255))
+      ad.d("[H264SPSModifier]", "vui_parameters_present_flag exist!! modify max_dec_frame_buffering");
+      paramInputStream.ry(true);
+      if ((paramInputStream.rw(true)) && ((int)paramInputStream.dSM() == 255))
       {
-        paramInputStream.Hb(16);
-        paramInputStream.Hb(16);
+        paramInputStream.PU(16);
+        paramInputStream.PU(16);
       }
-      if (paramInputStream.mL(true)) {
-        paramInputStream.Hb(1);
+      if (paramInputStream.rw(true)) {
+        paramInputStream.PU(1);
       }
-      if (paramInputStream.mL(true))
+      if (paramInputStream.rw(true))
       {
-        paramInputStream.Hb(3);
-        paramInputStream.Hb(1);
-        if (paramInputStream.mL(true))
+        paramInputStream.PU(3);
+        paramInputStream.PU(1);
+        if (paramInputStream.rw(true))
         {
-          paramInputStream.Hb(8);
-          paramInputStream.Hb(8);
-          paramInputStream.Hb(8);
+          paramInputStream.PU(8);
+          paramInputStream.PU(8);
+          paramInputStream.PU(8);
         }
       }
-      if (paramInputStream.mL(true))
+      if (paramInputStream.rw(true))
       {
-        paramInputStream.cLS();
-        paramInputStream.cLS();
+        paramInputStream.dSQ();
+        paramInputStream.dSQ();
       }
-      if (paramInputStream.mL(true))
+      if (paramInputStream.rw(true))
       {
-        paramInputStream.Hb(32);
-        paramInputStream.Hb(32);
-        paramInputStream.Hb(1);
+        paramInputStream.PU(32);
+        paramInputStream.PU(32);
+        paramInputStream.PU(1);
       }
-      boolean bool1 = paramInputStream.mL(true);
+      boolean bool1 = paramInputStream.rw(true);
       if (bool1) {
         a(paramInputStream);
       }
-      boolean bool2 = paramInputStream.mL(true);
+      boolean bool2 = paramInputStream.rw(true);
       if (bool2) {
         a(paramInputStream);
       }
       if ((bool1) || (bool2)) {
-        paramInputStream.Hb(1);
+        paramInputStream.PU(1);
       }
-      paramInputStream.Hb(1);
-      if (!paramInputStream.mL(false)) {
-        break label680;
+      paramInputStream.PU(1);
+      if (!paramInputStream.rw(false)) {
+        break label679;
       }
-      ab.d("TAG", "steve:VUI has bs restriction!!");
-      paramInputStream.mN(true);
-      paramInputStream.mL(true);
-      paramInputStream.cLS();
-      paramInputStream.cLS();
-      paramInputStream.cLS();
-      paramInputStream.cLS();
-      paramInputStream.cLS();
-      paramInputStream.Hf(1);
+      ad.d("TAG", "steve:VUI has bs restriction!!");
+      paramInputStream.ry(true);
+      paramInputStream.rw(true);
+      paramInputStream.dSQ();
+      paramInputStream.dSQ();
+      paramInputStream.dSQ();
+      paramInputStream.dSQ();
+      paramInputStream.dSQ();
+      paramInputStream.PY(1);
     }
     byte[] arrayOfByte;
     for (;;)
     {
-      paramInputStream.Hd(1);
-      paramInputStream.I(0L, 8 - paramInputStream.tuE);
+      paramInputStream.PW(1);
+      paramInputStream.X(0L, 8 - paramInputStream.zit);
       paramInputStream.flush();
       arrayOfByte = ((ByteArrayOutputStream)localObject).toByteArray();
       paramInputStream = "";
@@ -158,271 +158,271 @@ public final class g
       if (i != 1) {
         break;
       }
-      paramInputStream.Hb(1);
-      paramInputStream.cLS();
-      paramInputStream.cLS();
-      int k = paramInputStream.cLR();
+      paramInputStream.PU(1);
+      paramInputStream.dSQ();
+      paramInputStream.dSQ();
+      int k = paramInputStream.dSP();
       i = 0;
       while (i < k)
       {
         new StringBuilder("SPS: offsetForRefFrame [").append(i).append("]");
-        paramInputStream.cLS();
+        paramInputStream.dSQ();
         i += 1;
       }
       break;
-      label680:
-      ab.d("TAG", "steve:VUI has NO bs restriction!!");
-      paramInputStream.mN(true);
-      paramInputStream.mN(true);
-      paramInputStream.Hf(0);
-      paramInputStream.Hf(0);
-      paramInputStream.Hf(10);
-      paramInputStream.Hf(10);
-      paramInputStream.Hf(0);
-      paramInputStream.Hf(1);
+      label679:
+      ad.d("TAG", "steve:VUI has NO bs restriction!!");
+      paramInputStream.ry(true);
+      paramInputStream.ry(true);
+      paramInputStream.PY(0);
+      paramInputStream.PY(0);
+      paramInputStream.PY(10);
+      paramInputStream.PY(10);
+      paramInputStream.PY(0);
+      paramInputStream.PY(1);
       continue;
-      label732:
-      ab.d("[H264SPSModifier]", "vui_parameters_present_flag NOT exist!! add max_dec_frame_buffering");
-      paramInputStream.mN(true);
-      paramInputStream.mN(false);
-      paramInputStream.mN(false);
-      paramInputStream.mN(false);
-      paramInputStream.mN(false);
-      paramInputStream.mN(false);
-      paramInputStream.mN(false);
-      paramInputStream.mN(false);
-      paramInputStream.mN(false);
-      paramInputStream.mN(true);
-      paramInputStream.mN(true);
-      paramInputStream.Hf(0);
-      paramInputStream.Hf(0);
-      paramInputStream.Hf(10);
-      paramInputStream.Hf(10);
-      paramInputStream.Hf(0);
-      paramInputStream.Hf(1);
+      label731:
+      ad.d("[H264SPSModifier]", "vui_parameters_present_flag NOT exist!! add max_dec_frame_buffering");
+      paramInputStream.ry(true);
+      paramInputStream.ry(false);
+      paramInputStream.ry(false);
+      paramInputStream.ry(false);
+      paramInputStream.ry(false);
+      paramInputStream.ry(false);
+      paramInputStream.ry(false);
+      paramInputStream.ry(false);
+      paramInputStream.ry(false);
+      paramInputStream.ry(true);
+      paramInputStream.ry(true);
+      paramInputStream.PY(0);
+      paramInputStream.PY(0);
+      paramInputStream.PY(10);
+      paramInputStream.PY(10);
+      paramInputStream.PY(0);
+      paramInputStream.PY(1);
     }
-    ab.d("TAG", "new SPS:".concat(String.valueOf(paramInputStream)));
-    AppMethodBeat.o(4355);
+    ad.d("TAG", "new SPS:".concat(String.valueOf(paramInputStream)));
+    AppMethodBeat.o(114847);
     return arrayOfByte;
   }
   
-  private boolean C(InputStream paramInputStream)
+  private boolean L(InputStream paramInputStream)
   {
-    AppMethodBeat.i(4356);
+    AppMethodBeat.i(114849);
     paramInputStream = new j(paramInputStream);
-    paramInputStream.Ha(8);
-    paramInputStream.Ha(8);
-    paramInputStream.Ha(8);
-    paramInputStream.Ha(8);
-    paramInputStream.Ha(8);
-    int i = (int)paramInputStream.cLO();
+    paramInputStream.PT(8);
+    paramInputStream.PT(8);
+    paramInputStream.PT(8);
+    paramInputStream.PT(8);
+    paramInputStream.PT(8);
+    int i = (int)paramInputStream.dSM();
     if (i == 66)
     {
-      this.tuv |= 0x1;
-      AppMethodBeat.o(4356);
+      this.zgM |= 0x1;
+      AppMethodBeat.o(114849);
       return false;
     }
-    paramInputStream.Ha(8);
-    paramInputStream.cLO();
-    paramInputStream.cLQ();
+    paramInputStream.PT(8);
+    paramInputStream.dSM();
+    paramInputStream.dSO();
     if ((i == 100) || (i == 110) || (i == 122) || (i == 144))
     {
-      if (paramInputStream.cLR() == 3) {
-        paramInputStream.Ha(1);
+      if (paramInputStream.dSP() == 3) {
+        paramInputStream.PT(1);
       }
-      paramInputStream.cLQ();
-      paramInputStream.cLQ();
-      paramInputStream.Ha(1);
-      if (paramInputStream.mL(true))
+      paramInputStream.dSO();
+      paramInputStream.dSO();
+      paramInputStream.PT(1);
+      if (paramInputStream.rw(true))
       {
         i = 0;
         if (i < 8)
         {
-          if (paramInputStream.mL(true))
+          if (paramInputStream.rw(true))
           {
             if (i >= 6) {
-              break label184;
+              break label182;
             }
-            paramInputStream.Hc(16);
+            paramInputStream.PV(16);
           }
           for (;;)
           {
             i += 1;
             break;
-            label184:
-            paramInputStream.Hc(64);
+            label182:
+            paramInputStream.PV(64);
           }
         }
       }
     }
-    paramInputStream.cLQ();
-    i = paramInputStream.cLR();
+    paramInputStream.dSO();
+    i = paramInputStream.dSP();
     if (i == 0) {
-      paramInputStream.cLQ();
+      paramInputStream.dSO();
     }
     for (;;)
     {
-      if (paramInputStream.cLR() >= 2) {
-        this.tuv |= 0x2;
+      if (paramInputStream.dSP() >= 2) {
+        this.zgM |= 0x2;
       }
-      paramInputStream.Hb(1);
-      paramInputStream.cLS();
-      paramInputStream.cLS();
-      if (!paramInputStream.mL(true)) {
-        paramInputStream.Hb(1);
+      paramInputStream.PU(1);
+      paramInputStream.dSQ();
+      paramInputStream.dSQ();
+      if (!paramInputStream.rw(true)) {
+        paramInputStream.PU(1);
       }
-      paramInputStream.Hb(1);
-      if (paramInputStream.mL(true))
+      paramInputStream.PU(1);
+      if (paramInputStream.rw(true))
       {
-        paramInputStream.cLS();
-        paramInputStream.cLS();
-        paramInputStream.cLS();
-        paramInputStream.cLS();
+        paramInputStream.dSQ();
+        paramInputStream.dSQ();
+        paramInputStream.dSQ();
+        paramInputStream.dSQ();
       }
-      if (!paramInputStream.mL(true)) {
+      if (!paramInputStream.rw(true)) {
         break;
       }
-      ab.d("[H264SPSModifier]", "vui_parameters_present_flag exist!! read num_reorder_frames");
-      if ((paramInputStream.mL(true)) && ((int)paramInputStream.cLO() == 255))
+      ad.d("[H264SPSModifier]", "vui_parameters_present_flag exist!! read num_reorder_frames");
+      if ((paramInputStream.rw(true)) && ((int)paramInputStream.dSM() == 255))
       {
-        paramInputStream.Hb(16);
-        paramInputStream.Hb(16);
+        paramInputStream.PU(16);
+        paramInputStream.PU(16);
       }
-      if (paramInputStream.mL(true)) {
-        paramInputStream.Hb(1);
+      if (paramInputStream.rw(true)) {
+        paramInputStream.PU(1);
       }
-      if (paramInputStream.mL(true))
+      if (paramInputStream.rw(true))
       {
-        paramInputStream.Hb(3);
-        paramInputStream.Hb(1);
-        if (paramInputStream.mL(true))
+        paramInputStream.PU(3);
+        paramInputStream.PU(1);
+        if (paramInputStream.rw(true))
         {
-          paramInputStream.Hb(8);
-          paramInputStream.Hb(8);
-          paramInputStream.Hb(8);
+          paramInputStream.PU(8);
+          paramInputStream.PU(8);
+          paramInputStream.PU(8);
         }
       }
-      if (paramInputStream.mL(true))
+      if (paramInputStream.rw(true))
       {
-        paramInputStream.cLS();
-        paramInputStream.cLS();
+        paramInputStream.dSQ();
+        paramInputStream.dSQ();
       }
-      if (paramInputStream.mL(true))
+      if (paramInputStream.rw(true))
       {
-        paramInputStream.Hb(32);
-        paramInputStream.Hb(32);
-        paramInputStream.Hb(1);
+        paramInputStream.PU(32);
+        paramInputStream.PU(32);
+        paramInputStream.PU(1);
       }
-      boolean bool1 = paramInputStream.mL(true);
+      boolean bool1 = paramInputStream.rw(true);
       if (bool1) {
         a(paramInputStream);
       }
-      boolean bool2 = paramInputStream.mL(true);
+      boolean bool2 = paramInputStream.rw(true);
       if (bool2) {
         a(paramInputStream);
       }
       if ((bool1) || (bool2)) {
-        paramInputStream.Hb(1);
+        paramInputStream.PU(1);
       }
-      paramInputStream.Hb(1);
-      if (!paramInputStream.mL(true)) {
+      paramInputStream.PU(1);
+      if (!paramInputStream.rw(true)) {
         break;
       }
-      paramInputStream.mL(true);
-      paramInputStream.cLS();
-      paramInputStream.cLS();
-      paramInputStream.cLS();
-      paramInputStream.cLS();
-      i = paramInputStream.cLR();
-      int j = paramInputStream.cLR();
+      paramInputStream.rw(true);
+      paramInputStream.dSQ();
+      paramInputStream.dSQ();
+      paramInputStream.dSQ();
+      paramInputStream.dSQ();
+      i = paramInputStream.dSP();
+      int j = paramInputStream.dSP();
       if (i == 0) {
         break;
       }
-      ab.d("[H264SPSModifier]", "steve: reorder_frame =" + i + ", mac_dec_buffering=" + j);
-      this.tuv |= 0x4;
-      AppMethodBeat.o(4356);
+      ad.d("[H264SPSModifier]", "steve: reorder_frame =" + i + ", mac_dec_buffering=" + j);
+      this.zgM |= 0x4;
+      AppMethodBeat.o(114849);
       return true;
       if (i == 1)
       {
-        paramInputStream.Ha(1);
-        paramInputStream.cLQ();
-        paramInputStream.cLQ();
-        j = paramInputStream.cLR();
+        paramInputStream.PT(1);
+        paramInputStream.dSO();
+        paramInputStream.dSO();
+        j = paramInputStream.dSP();
         i = 0;
         while (i < j)
         {
           new StringBuilder("SPS: offsetForRefFrame [").append(i).append("]");
-          paramInputStream.cLS();
+          paramInputStream.dSQ();
           i += 1;
         }
       }
     }
-    AppMethodBeat.o(4356);
+    AppMethodBeat.o(114849);
     return false;
   }
   
-  private boolean D(InputStream paramInputStream)
+  private boolean M(InputStream paramInputStream)
   {
-    AppMethodBeat.i(140142);
+    AppMethodBeat.i(114851);
     paramInputStream = new j(paramInputStream);
-    paramInputStream.Ha(8);
-    paramInputStream.Ha(8);
-    paramInputStream.Ha(8);
-    paramInputStream.Ha(8);
-    paramInputStream.Ha(8);
-    paramInputStream.cLQ();
-    int i = paramInputStream.cLR();
-    ab.d("TAG", "steve:slice_type:".concat(String.valueOf(i)));
+    paramInputStream.PT(8);
+    paramInputStream.PT(8);
+    paramInputStream.PT(8);
+    paramInputStream.PT(8);
+    paramInputStream.PT(8);
+    paramInputStream.dSO();
+    int i = paramInputStream.dSP();
+    ad.d("TAG", "steve:slice_type:".concat(String.valueOf(i)));
     if ((i == 1) || (i == 6))
     {
-      this.tuv |= 0x8;
-      AppMethodBeat.o(140142);
+      this.zgM |= 0x8;
+      AppMethodBeat.o(114851);
       return true;
     }
-    AppMethodBeat.o(140142);
+    AppMethodBeat.o(114851);
     return false;
   }
   
   private static void a(j paramj)
   {
-    AppMethodBeat.i(4357);
-    int j = paramj.cLR();
-    paramj.Ha(4);
-    paramj.Ha(4);
+    AppMethodBeat.i(114852);
+    int j = paramj.dSP();
+    paramj.PT(4);
+    paramj.PT(4);
     int i = 0;
     while (i <= j)
     {
-      paramj.cLQ();
-      paramj.cLQ();
-      paramj.Ha(1);
+      paramj.dSO();
+      paramj.dSO();
+      paramj.PT(1);
       i += 1;
     }
-    paramj.Ha(5);
-    paramj.Ha(5);
-    paramj.Ha(5);
-    paramj.Ha(5);
-    AppMethodBeat.o(4357);
+    paramj.PT(5);
+    paramj.PT(5);
+    paramj.PT(5);
+    paramj.PT(5);
+    AppMethodBeat.o(114852);
   }
   
-  public final boolean bp(byte[] paramArrayOfByte)
+  public final boolean bH(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(140140);
-    boolean bool = C(new ByteArrayInputStream(paramArrayOfByte));
-    AppMethodBeat.o(140140);
+    AppMethodBeat.i(114848);
+    boolean bool = L(new ByteArrayInputStream(paramArrayOfByte));
+    AppMethodBeat.o(114848);
     return bool;
   }
   
-  public final boolean bq(byte[] paramArrayOfByte)
+  public final boolean bI(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(140141);
-    boolean bool = D(new ByteArrayInputStream(paramArrayOfByte));
-    AppMethodBeat.o(140141);
+    AppMethodBeat.i(114850);
+    boolean bool = M(new ByteArrayInputStream(paramArrayOfByte));
+    AppMethodBeat.o(114850);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.g
  * JD-Core Version:    0.7.0.1
  */

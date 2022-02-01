@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/am2" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/awl" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/b1z" android:key="contact_info_shake_go_shake" android:layout="@layout/afi" />
+    <Preference android:key="contact_info_readerappnews_view" android:layout="@layout/aop" android:title="@string/czx" />
+    <CheckBoxPreference android:key="contact_info_readerappnews_recv_remind" android:layout="@layout/aop" android:persistent="false" android:title="@string/b95" />
+    <Preference android:key="contact_info_readerappnews_clear_data" android:layout="@layout/aop" android:title="@string/b55" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/eda" android:key="contact_info_shake_install" android:layout="@layout/a95" />
-    <Preference android:title="@string/edg" android:key="contact_info_shake_uninstall" android:layout="@layout/aap" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/f9r" android:key="contact_info_readerappnews_install" android:layout="@layout/awu" android:title_color="@color/a_j" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/f9x" android:key="contact_info_readerappnews_uninstall" android:layout="@layout/awu" android:title_color="@color/Red" />
     <PreferenceCategory />
 </PreferenceScreen>

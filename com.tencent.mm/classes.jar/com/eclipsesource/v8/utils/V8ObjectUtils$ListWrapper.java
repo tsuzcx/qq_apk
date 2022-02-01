@@ -28,15 +28,15 @@ class V8ObjectUtils$ListWrapper
   
   public int hashCode()
   {
-    AppMethodBeat.i(75105);
+    AppMethodBeat.i(61729);
     int i = System.identityHashCode(this.list);
-    AppMethodBeat.o(75105);
+    AppMethodBeat.o(61729);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.eclipsesource.v8.utils.V8ObjectUtils.ListWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,98 +1,94 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.os.Bundle;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelstat.a.a;
-import com.tencent.mm.plugin.fav.PluginFav;
-import com.tencent.mm.plugin.fav.a.ae;
-import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.f.a;
+import com.tencent.mm.al.f.b;
+import com.tencent.mm.al.f.c;
+import com.tencent.mm.g.a.kk;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.bi.b;
+import com.tencent.mm.model.c;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.bj;
 
-public class d
-  implements a
+public final class d
+  implements f
 {
-  public final void callback(Bundle paramBundle)
+  public final f.b b(f.a parama)
   {
-    AppMethodBeat.i(27236);
-    int k = paramBundle.getInt("mm_rpt_fav_id", 0);
-    int m = paramBundle.getInt("key_detail_fav_scene", 0);
-    int n = paramBundle.getInt("key_detail_fav_sub_scene", 0);
-    int i1 = paramBundle.getInt("key_detail_fav_index", 0);
-    long l2 = paramBundle.getLong("key_activity_browse_time", -1L);
-    int i;
-    int i2;
-    int i3;
-    if (paramBundle.getBoolean("mm_scroll_bottom"))
+    AppMethodBeat.i(30937);
+    cs localcs = parama.fTo;
+    if ((localcs == null) || (localcs.saz != 47))
     {
-      i = 1;
-      i2 = paramBundle.getInt("mm_send_friend_count", 0);
-      i3 = paramBundle.getInt("mm_share_sns_count", 0);
-      if (!paramBundle.getBoolean("mm_del_fav", false)) {
-        break label258;
+      ad.f("MicroMsg.EmojiExtension", "parseEmojiMsg failed, invalid cmdAM");
+      AppMethodBeat.o(30937);
+      return null;
+    }
+    Object localObject1 = z.a(localcs.Cxx);
+    Object localObject2 = z.a(localcs.Cxy);
+    az.arV();
+    if (((String)c.afk().get(2, null)).equals(localObject1))
+    {
+      localObject1 = localObject2;
+      localObject2 = z.a(localcs.Cxz);
+      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a((String)localObject1, (String)localObject2, localcs.uKZ, localcs.CxC, parama);
+      localObject1 = com.tencent.mm.model.bi.ul(localcs.CxC);
+      if (localObject1 != null)
+      {
+        ad.i("MicroMsg.EmojiExtension", "bizClientMsgId = %s", new Object[] { ((bi.b)localObject1).gNX });
+        if ((((bi.b)localObject1).gOc != null) && (((bi.b)localObject1).scene == 1))
+        {
+          parama = z.a(localcs.Cxx);
+          az.arV();
+          c.afk().set(73729, Integer.valueOf(1));
+          localObject2 = new com.tencent.mm.storage.bi();
+          ((com.tencent.mm.storage.bi)localObject2).field_content = aj.getContext().getString(2131761527);
+          ((com.tencent.mm.storage.bi)localObject2).field_createtime = bt.aGK();
+          ((com.tencent.mm.storage.bi)localObject2).field_imgpath = "";
+          ((com.tencent.mm.storage.bi)localObject2).field_sayhicontent = ((com.tencent.mm.storage.bi)localObject2).field_content;
+          ((com.tencent.mm.storage.bi)localObject2).field_sayhiuser = parama;
+          ((com.tencent.mm.storage.bi)localObject2).field_scene = 18;
+          if (localcs.mBi <= 3) {
+            break label372;
+          }
+        }
       }
     }
-    int i4;
-    String str1;
-    String str2;
-    com.tencent.mm.plugin.fav.a.g localg;
-    label258:
-    for (int j = 1;; j = 0)
+    label372:
+    for (int i = localcs.mBi;; i = 3)
     {
-      i4 = paramBundle.getInt("mm_edit_fav_count", 0);
-      str1 = paramBundle.getString("key_detail_fav_query", "");
-      str2 = paramBundle.getString("key_detail_fav_sessionid", "");
-      paramBundle = paramBundle.getString("key_detail_fav_tags", "");
-      ab.d("MicroMsg.FavWebRptCallback", "FavWebRptCallback uiBrowseTime[%d] isScrollBottom[%b] sendToFriendCount[%d] shareSnsCount[%d]  isDelFav[%b] clickEditFavTagCount[%d] favId[%s]", new Object[] { Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(j), Integer.valueOf(i4), Integer.valueOf(k) });
-      localg = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().kc(k);
-      if (localg != null) {
-        break label263;
-      }
-      ab.w("MicroMsg.FavWebRptCallback", "fav web rpt but favitem info is null favid[%d]", new Object[] { Integer.valueOf(k) });
-      AppMethodBeat.o(27236);
-      return;
-      i = 0;
+      ((com.tencent.mm.storage.bi)localObject2).field_status = i;
+      ((com.tencent.mm.storage.bi)localObject2).field_svrid = localcs.uKZ;
+      ((com.tencent.mm.storage.bi)localObject2).field_talker = parama;
+      ((com.tencent.mm.storage.bi)localObject2).field_type = localcs.saz;
+      ((com.tencent.mm.storage.bi)localObject2).field_isSend = 0;
+      ((com.tencent.mm.storage.bi)localObject2).field_sayhiencryptuser = parama;
+      ((com.tencent.mm.storage.bi)localObject2).field_ticket = ((bi.b)localObject1).gOc;
+      com.tencent.mm.bk.d.aCp().a((com.tencent.mm.storage.bi)localObject2);
+      localObject1 = new kk();
+      ((kk)localObject1).doP.doQ = parama;
+      a.ESL.l((b)localObject1);
+      AppMethodBeat.o(30937);
+      return null;
       break;
     }
-    label263:
-    if (localg.field_sourceCreateTime != 0L) {}
-    for (long l1 = localg.field_sourceCreateTime / 1000L;; l1 = localg.field_updateTime / 1000L)
-    {
-      StringBuffer localStringBuffer = new StringBuffer();
-      localStringBuffer.append(m).append(",");
-      localStringBuffer.append(i1).append(",");
-      localStringBuffer.append(k).append(",");
-      localStringBuffer.append(localg.field_type).append(",");
-      localStringBuffer.append("0,");
-      localStringBuffer.append(localg.field_sourceType).append(",");
-      localStringBuffer.append(l1).append(",");
-      localStringBuffer.append(l2).append(",");
-      localStringBuffer.append("0,");
-      localStringBuffer.append("0,");
-      localStringBuffer.append("0,");
-      localStringBuffer.append(i2).append(",");
-      localStringBuffer.append(i3).append(",");
-      localStringBuffer.append("0,");
-      localStringBuffer.append(i4).append(",");
-      localStringBuffer.append(j).append(",");
-      localStringBuffer.append(i).append(",");
-      localStringBuffer.append(n).append(",");
-      localStringBuffer.append(str2).append(",");
-      i = ((PluginFav)com.tencent.mm.kernel.g.G(PluginFav.class)).getFavItemInfoStorage().vU(k) + 1;
-      localStringBuffer.append(i).append(",");
-      localStringBuffer.append(str1).append(",");
-      localStringBuffer.append(paramBundle);
-      ab.d("MicroMsg.FavWebRptCallback", String.format("lxl, 15098, sid:%s, sourcepos:%s, query:%s, tag:%s", new Object[] { str2, Integer.valueOf(i), str1, paramBundle }));
-      ab.v("MicroMsg.FavWebRptCallback", "FavWebRptCallback rpt id[%d] [%s]", new Object[] { Integer.valueOf(15098), localStringBuffer.toString() });
-      e.qrI.kvStat(15098, localStringBuffer.toString());
-      AppMethodBeat.o(27236);
-      return;
-    }
   }
+  
+  public final void b(f.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.d
  * JD-Core Version:    0.7.0.1
  */

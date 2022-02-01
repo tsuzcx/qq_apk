@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v4.view.ViewPager android:id="@id/em5" android:layout_width="fill_parent" android:layout_height="wrap_content"
-      xmlns:android="http://schemas.android.com/apk/res/android" />
-    <com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingControlView android:gravity="center" android:id="@id/em6" android:paddingBottom="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<com.tencent.mm.wallet_core.ui.CustomerScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:form="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:background="@color/xo" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.wallet_payu.create.ui.WalletPayUOpenIntroView android:id="@id/crn" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.tencent.mm.ui.base.MMFormMobileInputView android:orientation="horizontal" android:id="@id/fsd" android:layout_width="fill_parent" android:layout_height="@dimen/jm" android:layout_marginTop="@dimen/hd" />
+        <Button android:id="@id/fs_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" android:text="@string/gyo" style="@style/pn" />
+        <TextView android:textColor="@color/s5" android:gravity="center" android:id="@id/fsc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" android:text="@string/gyn" />
+        <TextView android:layout_gravity="bottom" android:id="@id/fsf" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/jn" style="@style/zs" />
+    </LinearLayout>
+</com.tencent.mm.wallet_core.ui.CustomerScrollView>

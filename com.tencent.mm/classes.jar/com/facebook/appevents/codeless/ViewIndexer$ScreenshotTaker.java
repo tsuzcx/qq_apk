@@ -19,18 +19,18 @@ class ViewIndexer$ScreenshotTaker
   
   public ViewIndexer$ScreenshotTaker(View paramView)
   {
-    AppMethodBeat.i(72079);
+    AppMethodBeat.i(17515);
     this.rootView = new WeakReference(paramView);
-    AppMethodBeat.o(72079);
+    AppMethodBeat.o(17515);
   }
   
   public String call()
   {
-    AppMethodBeat.i(72080);
+    AppMethodBeat.i(17516);
     Object localObject2 = (View)this.rootView.get();
     if ((localObject2 == null) || (((View)localObject2).getWidth() == 0) || (((View)localObject2).getHeight() == 0))
     {
-      AppMethodBeat.o(72080);
+      AppMethodBeat.o(17516);
       return "";
     }
     Object localObject1 = Bitmap.createBitmap(((View)localObject2).getWidth(), ((View)localObject2).getHeight(), Bitmap.Config.RGB_565);
@@ -38,13 +38,13 @@ class ViewIndexer$ScreenshotTaker
     localObject2 = new ByteArrayOutputStream();
     ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, 10, (OutputStream)localObject2);
     localObject1 = Base64.encodeToString(((ByteArrayOutputStream)localObject2).toByteArray(), 2);
-    AppMethodBeat.o(72080);
+    AppMethodBeat.o(17516);
     return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.facebook.appevents.codeless.ViewIndexer.ScreenshotTaker
  * JD-Core Version:    0.7.0.1
  */

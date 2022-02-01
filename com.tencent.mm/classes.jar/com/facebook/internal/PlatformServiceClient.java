@@ -10,6 +10,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class PlatformServiceClient
   implements ServiceConnection
@@ -17,7 +18,7 @@ public abstract class PlatformServiceClient
   private final String applicationId;
   private final Context context;
   private final Handler handler;
-  private PlatformServiceClient.CompletedListener listener;
+  private CompletedListener listener;
   private final int protocolVersion;
   private int replyMessage;
   private int requestMessage;
@@ -35,13 +36,21 @@ public abstract class PlatformServiceClient
     this.replyMessage = paramInt2;
     this.applicationId = paramString;
     this.protocolVersion = paramInt3;
-    this.handler = new PlatformServiceClient.1(this);
+    this.handler = new Handler()
+    {
+      public void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(7678);
+        PlatformServiceClient.this.handleMessage(paramAnonymousMessage);
+        AppMethodBeat.o(7678);
+      }
+    };
   }
   
   private void callback(Bundle paramBundle)
   {
     if (!this.running) {}
-    PlatformServiceClient.CompletedListener localCompletedListener;
+    CompletedListener localCompletedListener;
     do
     {
       return;
@@ -128,7 +137,7 @@ public abstract class PlatformServiceClient
   
   protected abstract void populateRequestBundle(Bundle paramBundle);
   
-  public void setCompletedListener(PlatformServiceClient.CompletedListener paramCompletedListener)
+  public void setCompletedListener(CompletedListener paramCompletedListener)
   {
     this.listener = paramCompletedListener;
   }
@@ -149,10 +158,15 @@ public abstract class PlatformServiceClient
     this.context.bindService(localIntent, this, 1);
     return true;
   }
+  
+  public static abstract interface CompletedListener
+  {
+    public abstract void completed(Bundle paramBundle);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.internal.PlatformServiceClient
  * JD-Core Version:    0.7.0.1
  */

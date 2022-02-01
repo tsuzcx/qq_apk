@@ -6,16 +6,15 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.network.q;
-import com.tencent.mm.platformtools.ae;
+import com.tencent.mm.platformtools.ab;
 import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.c.u;
+import com.tencent.mm.plugin.wallet_core.model.s;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.wallet_core.c.j;
+import com.tencent.mm.wallet_core.c.w;
 import com.tencent.mm.wallet_core.tenpay.model.ITenpaySave;
 import com.tencent.mm.wallet_core.tenpay.model.ITenpaySave.RetryPayInfo;
-import com.tencent.mm.wallet_core.tenpay.model.n;
+import com.tencent.mm.wallet_core.tenpay.model.m;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,415 +23,545 @@ import java.util.Iterator;
 import java.util.Set;
 
 public final class i
-  implements com.tencent.mm.ai.f, e
+  implements com.tencent.mm.al.g, e
 {
-  private a AXD;
-  private b AXE;
-  public HashMap<Integer, c> AXF;
-  public HashSet<com.tencent.mm.ai.m> gKK;
-  public HashSet<com.tencent.mm.ai.m> gKL;
-  public Dialog gKM;
-  private Set<Integer> gLa;
+  private a Ieq;
+  private b Ier;
+  public HashMap<Integer, c> Ies;
+  private Set<Integer> iyK;
+  public HashSet<com.tencent.mm.al.n> iyu;
+  public HashSet<com.tencent.mm.al.n> iyv;
   public Bundle mBundle;
   public Context mContext;
   public String mProcessName;
-  private f oou;
+  private f tey;
+  public Dialog tipDialog;
   
   public i(Context paramContext, f paramf)
   {
-    AppMethodBeat.i(49147);
-    this.oou = null;
-    this.gKK = new HashSet();
-    this.gKL = new HashSet();
-    this.gKM = null;
-    this.gLa = new HashSet();
+    AppMethodBeat.i(72863);
+    this.tey = null;
+    this.iyu = new HashSet();
+    this.iyv = new HashSet();
+    this.tipDialog = null;
+    this.iyK = new HashSet();
     this.mContext = paramContext;
-    this.oou = paramf;
-    this.AXD = new a(this);
-    this.AXE = new b(this);
-    this.AXF = new HashMap();
-    AppMethodBeat.o(49147);
+    this.tey = paramf;
+    this.Ieq = new a(this);
+    this.Ier = new b(this);
+    this.Ies = new HashMap();
+    AppMethodBeat.o(72863);
   }
   
-  private boolean i(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  private boolean k(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
   {
-    AppMethodBeat.i(49155);
-    ab.i("MicroMsg.WalletNetSceneMgr", "onSceneEnd scene is %s %s", new Object[] { this, paramm.toString() });
-    ab.d("MicroMsg.WalletNetSceneMgr", "tofutest: %s errType: %d, errCode: %d, errMsg: %s, %s", new Object[] { this, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(ae.glF) });
-    if ((ae.glF) && ((paramm instanceof n)) && (!((n)paramm).getHasRetried()) && (!((n)paramm).cRN()))
+    AppMethodBeat.i(72871);
+    ad.i("MicroMsg.WalletNetSceneMgr", "onSceneEnd scene is %s %s", new Object[] { this, paramn.toString() });
+    ad.d("MicroMsg.WalletNetSceneMgr", "tofutest: %s errType: %d, errCode: %d, errMsg: %s, %s", new Object[] { this, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(ab.hWC) });
+    if ((ab.hWC) && ((paramn instanceof com.tencent.mm.wallet_core.tenpay.model.n)) && (!((com.tencent.mm.wallet_core.tenpay.model.n)paramn).getHasRetried()) && (!((com.tencent.mm.wallet_core.tenpay.model.n)paramn).eaa()))
     {
-      paramString = (n)paramm;
-      ab.i("MicroMsg.WalletNetSceneMgr", "test do delay query order");
-      this.AXD.a(paramString);
-      AppMethodBeat.o(49155);
+      paramString = (com.tencent.mm.wallet_core.tenpay.model.n)paramn;
+      ad.i("MicroMsg.WalletNetSceneMgr", "test do delay query order");
+      this.Ieq.a(paramString);
+      AppMethodBeat.o(72871);
       return true;
     }
-    if ((paramm instanceof ITenpaySave))
+    if ((paramn instanceof ITenpaySave))
     {
-      paramString = (ITenpaySave)paramm;
+      paramString = (ITenpaySave)paramn;
       if ((paramString instanceof ITenpaySave))
       {
         paramString = paramString.getRetryPayInfo();
-        if ((paramString != null) && (paramString.bWX())) {
+        if ((paramString != null) && (paramString.cWD())) {
           b.retryPayInfo = paramString;
         }
       }
     }
     boolean bool1;
-    if ((paramm instanceof n))
+    if ((paramn instanceof com.tencent.mm.wallet_core.tenpay.model.n))
     {
-      if (((n)paramm).getHasRetried())
+      if (((com.tencent.mm.wallet_core.tenpay.model.n)paramn).getHasRetried())
       {
-        ab.i("MicroMsg.WalletNetSceneMgr", "getHasRetried pass %s", new Object[] { paramm });
-        AppMethodBeat.o(49155);
+        ad.i("MicroMsg.WalletNetSceneMgr", "getHasRetried pass %s", new Object[] { paramn });
+        AppMethodBeat.o(72871);
         return false;
       }
-      if ((((n)paramm).cRN()) && ((paramm instanceof com.tencent.mm.wallet_core.tenpay.model.a)))
+      if ((((com.tencent.mm.wallet_core.tenpay.model.n)paramn).eaa()) && ((paramn instanceof com.tencent.mm.wallet_core.tenpay.model.a)))
       {
-        bool2 = ((n)paramm).canPayRetry();
-        if (!((n)paramm).checkRecSrvResp()) {}
+        bool2 = ((com.tencent.mm.wallet_core.tenpay.model.n)paramn).canPayRetry();
+        if (!((com.tencent.mm.wallet_core.tenpay.model.n)paramn).checkRecSrvResp()) {}
         for (bool1 = true;; bool1 = false)
         {
-          ab.i("MicroMsg.WalletNetSceneMgr", "%s save or fetch shouldRetry, network: %B, server: %B", new Object[] { this, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+          ad.i("MicroMsg.WalletNetSceneMgr", "%s save or fetch shouldRetry, network: %B, server: %B", new Object[] { this, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
           if ((!bool2) && (!bool1)) {
-            break label338;
+            break label373;
           }
-          if (!this.AXE.c((n)paramm)) {
+          paramString = (com.tencent.mm.wallet_core.tenpay.model.a)paramn;
+          if ((paramString instanceof com.tencent.mm.wallet_core.tenpay.model.a))
+          {
+            paramString = paramString.getRetryPayInfo();
+            if ((paramString != null) && (paramString.cWD())) {
+              b.retryPayInfo = paramString;
+            }
+          }
+          if (!this.Ier.c((com.tencent.mm.wallet_core.tenpay.model.n)paramn)) {
             break;
           }
-          AppMethodBeat.o(49155);
+          AppMethodBeat.o(72871);
           return true;
         }
-        AppMethodBeat.o(49155);
+        AppMethodBeat.o(72871);
         return false;
-        label338:
-        AppMethodBeat.o(49155);
+        label373:
+        AppMethodBeat.o(72871);
         return false;
       }
     }
-    int i = paramm.getType();
-    if (this.AXF != null)
+    int i = paramn.getType();
+    if (this.Ies != null)
     {
-      paramString = (c)this.AXF.get(Integer.valueOf(i));
-      if ((paramm instanceof d))
+      paramString = (c)this.Ies.get(Integer.valueOf(i));
+      if ((paramn instanceof d))
       {
-        if (((d)paramm).getHasRetried())
+        if (((d)paramn).getHasRetried())
         {
-          AppMethodBeat.o(49155);
+          AppMethodBeat.o(72871);
           return false;
         }
-        d locald = (d)paramm;
-        ab.i("MicroMsg.IDelayQueryOrder", "startQueryOrder %s ", new Object[] { locald });
-        paramString.AXA = locald;
+        d locald = (d)paramn;
+        ad.i("MicroMsg.IDelayQueryOrder", "startQueryOrder %s ", new Object[] { locald });
+        paramString.Ien = locald;
         if (paramString.a(paramInt1, paramInt2, locald))
         {
-          AppMethodBeat.o(49155);
+          AppMethodBeat.o(72871);
           return true;
         }
       }
     }
-    if (!(paramm instanceof n))
+    if (!(paramn instanceof com.tencent.mm.wallet_core.tenpay.model.n))
     {
-      AppMethodBeat.o(49155);
+      AppMethodBeat.o(72871);
       return false;
     }
-    if (((n)paramm).cRN())
+    if (((com.tencent.mm.wallet_core.tenpay.model.n)paramn).eaa())
     {
-      AppMethodBeat.o(49155);
+      AppMethodBeat.o(72871);
       return false;
     }
-    if (((n)paramm).getHasRetried())
+    if (((com.tencent.mm.wallet_core.tenpay.model.n)paramn).getHasRetried())
     {
-      ab.i("MicroMsg.WalletNetSceneMgr", "getHasRetried pass");
-      AppMethodBeat.o(49155);
+      ad.i("MicroMsg.WalletNetSceneMgr", "getHasRetried pass");
+      AppMethodBeat.o(72871);
       return false;
     }
-    paramString = (n)paramm;
-    paramm = this.AXD;
-    paramInt1 = t.cTN().mRetryCount;
-    ab.i("MicroMsg.DelayQueryOrderHelper", " isServerDelayQuery %s mDelayQueryTime %s ", new Object[] { Boolean.valueOf(paramString.dSM()), Integer.valueOf(paramm.AXy) });
-    if ((paramString.dSM()) && (paramm.AXy < paramInt1))
+    paramString = (com.tencent.mm.wallet_core.tenpay.model.n)paramn;
+    paramn = this.Ieq;
+    paramInt1 = s.ecc().mRetryCount;
+    ad.i("MicroMsg.DelayQueryOrderHelper", " isServerDelayQuery %s mDelayQueryTime %s ", new Object[] { Boolean.valueOf(paramString.fkt()), Integer.valueOf(paramn.Iel) });
+    if ((paramString.fkt()) && (paramn.Iel < paramInt1))
     {
       bool1 = true;
       if (paramString.checkRecSrvResp()) {
-        break label696;
+        break label731;
       }
     }
-    label696:
+    label731:
     for (boolean bool2 = true;; bool2 = false)
     {
-      ab.d("MicroMsg.WalletNetSceneMgr", "%s shouldRetry, network: %B, server: %B", new Object[] { this, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-      com.tencent.mm.plugin.report.service.h.qsU.j(965L, 13L, 1L);
+      ad.d("MicroMsg.WalletNetSceneMgr", "%s shouldRetry, network: %B, server: %B", new Object[] { this, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+      com.tencent.mm.plugin.report.service.h.vKh.m(965L, 13L, 1L);
       if (bool2) {
-        com.tencent.mm.plugin.report.service.h.qsU.j(965L, 14L, 1L);
+        com.tencent.mm.plugin.report.service.h.vKh.m(965L, 14L, 1L);
       }
       if ((!bool1) && (!bool2)) {
-        break label702;
+        break label737;
       }
-      ab.i("MicroMsg.WalletNetSceneMgr", "%s doing delay order query retry", new Object[] { this });
-      this.AXD.a(paramString);
-      AppMethodBeat.o(49155);
+      ad.i("MicroMsg.WalletNetSceneMgr", "%s doing delay order query retry", new Object[] { this });
+      this.Ieq.a(paramString);
+      AppMethodBeat.o(72871);
       return true;
       bool1 = false;
       break;
     }
-    label702:
-    AppMethodBeat.o(49155);
+    label737:
+    AppMethodBeat.o(72871);
     return false;
   }
   
   private void onDestroy()
   {
-    AppMethodBeat.i(49159);
+    AppMethodBeat.i(72875);
     forceCancel();
-    this.oou = null;
+    this.tey = null;
     this.mContext = null;
-    this.AXD.destory();
-    this.AXE.destory();
-    Iterator localIterator = this.AXF.values().iterator();
+    this.Ieq.destory();
+    this.Ier.destory();
+    Iterator localIterator = this.Ies.values().iterator();
     while (localIterator.hasNext()) {
-      ((c)localIterator.next()).bOo();
+      ((c)localIterator.next()).dBh();
     }
-    this.AXF.clear();
-    AppMethodBeat.o(49159);
+    this.Ies.clear();
+    AppMethodBeat.o(72875);
   }
   
-  private void q(com.tencent.mm.ai.m paramm)
+  private void r(com.tencent.mm.al.n paramn)
   {
-    AppMethodBeat.i(142660);
-    if ((paramm != null) && ((paramm instanceof u)))
+    AppMethodBeat.i(72876);
+    if ((paramn != null) && ((paramn instanceof w)))
     {
-      ((u)paramm).setProcessName(this.mProcessName);
+      ((w)paramn).setProcessName(this.mProcessName);
       if (this.mBundle != null)
       {
-        ((u)paramm).setProcessBundle(this.mBundle);
-        AppMethodBeat.o(142660);
+        ((w)paramn).setProcessBundle(this.mBundle);
+        AppMethodBeat.o(72876);
         return;
       }
       if ((this.mContext instanceof WalletBaseUI)) {
-        ((u)paramm).setProcessBundle(((WalletBaseUI)this.mContext).getInput());
+        ((w)paramn).setProcessBundle(((WalletBaseUI)this.mContext).getInput());
       }
     }
-    AppMethodBeat.o(142660);
+    AppMethodBeat.o(72876);
   }
   
-  public final void a(com.tencent.mm.ai.m paramm, boolean paramBoolean)
+  public final void a(com.tencent.mm.al.n paramn, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(49148);
-    q(paramm);
-    this.gKK.add(paramm);
-    if ((paramBoolean) && ((this.gKM == null) || ((this.gKM != null) && (!this.gKM.isShowing()))))
-    {
-      if (this.gKM != null) {
-        this.gKM.dismiss();
-      }
-      if (this.mContext == null)
-      {
-        ab.w("MicroMsg.WalletNetSceneMgr", "%s activity has destroyed!!!", new Object[] { this });
-        AppMethodBeat.o(49148);
-        return;
-      }
-      this.gKM = com.tencent.mm.wallet_core.ui.g.a(this.mContext, false, new i.1(this));
-    }
-    if ((ae.glF) && ((paramm instanceof com.tencent.mm.wallet_core.tenpay.model.m)) && ((((com.tencent.mm.wallet_core.tenpay.model.m)paramm).getUri().contains("authen")) || (((com.tencent.mm.wallet_core.tenpay.model.m)paramm).getUri().contains("verify")))) {
-      ((com.tencent.mm.wallet_core.tenpay.model.m)paramm).setFake();
-    }
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RK().eHt.a(paramm, 0);
-    AppMethodBeat.o(49148);
+    AppMethodBeat.i(72865);
+    a(paramn, paramBoolean, paramInt, 0);
+    AppMethodBeat.o(72865);
   }
   
-  public final void a(com.tencent.mm.ai.m paramm, boolean paramBoolean, int paramInt)
+  public final void a(com.tencent.mm.al.n paramn, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(49149);
-    a(paramm, paramBoolean, paramInt, 0);
-    AppMethodBeat.o(49149);
-  }
-  
-  public final void a(com.tencent.mm.ai.m paramm, boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(49150);
-    int i = paramm.getType();
-    boolean bool2 = paramm instanceof com.tencent.mm.wallet_core.c.i;
-    if ((this.gKM == null) || ((this.gKM != null) && (!this.gKM.isShowing()))) {}
+    AppMethodBeat.i(72866);
+    int i = paramn.getType();
+    boolean bool2 = paramn instanceof j;
+    if ((this.tipDialog == null) || ((this.tipDialog != null) && (!this.tipDialog.isShowing()))) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      ab.i("MicroMsg.WalletNetSceneMgr", "this %s isShowProgress %s scene: %s dialogType %s type %s IWxSafePay %s tipDialog showing? %s", new Object[] { this, Boolean.valueOf(paramBoolean), paramm, Integer.valueOf(paramInt1), Integer.valueOf(i), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-      q(paramm);
-      this.gKL.add(paramm);
-      if ((!paramBoolean) || ((this.gKM != null) && ((this.gKM == null) || (this.gKM.isShowing())))) {
+      ad.i("MicroMsg.WalletNetSceneMgr", "this %s isShowProgress %s scene: %s dialogType %s type %s IWxSafePay %s tipDialog showing? %s", new Object[] { this, Boolean.valueOf(paramBoolean), paramn, Integer.valueOf(paramInt1), Integer.valueOf(i), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+      r(paramn);
+      this.iyv.add(paramn);
+      if ((!paramBoolean) || ((this.tipDialog != null) && ((this.tipDialog == null) || (this.tipDialog.isShowing())))) {
         break label221;
       }
-      if (this.gKM != null) {
-        this.gKM.dismiss();
+      if (this.tipDialog != null) {
+        this.tipDialog.dismiss();
       }
       if (this.mContext != null) {
         break;
       }
-      ab.w("MicroMsg.WalletNetSceneMgr", "activity has destroyed!!!");
-      AppMethodBeat.o(49150);
+      ad.w("MicroMsg.WalletNetSceneMgr", "activity has destroyed!!!");
+      AppMethodBeat.o(72866);
       return;
     }
     if (paramInt1 == 1) {
-      if ((paramm instanceof com.tencent.mm.wallet_core.c.i))
+      if ((paramn instanceof j))
       {
-        this.gKM = com.tencent.mm.wallet_core.ui.g.a(this.mContext, false, new i.2(this));
+        this.tipDialog = com.tencent.mm.wallet_core.ui.g.a(this.mContext, false, new DialogInterface.OnCancelListener()
+        {
+          public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+          {
+            AppMethodBeat.i(72856);
+            if ((i.this.tipDialog != null) && (i.this.iyu.isEmpty()))
+            {
+              i.this.tipDialog.dismiss();
+              paramAnonymousDialogInterface = i.this.iyv.iterator();
+              while (paramAnonymousDialogInterface.hasNext())
+              {
+                com.tencent.mm.al.n localn = (com.tencent.mm.al.n)paramAnonymousDialogInterface.next();
+                com.tencent.mm.kernel.g.afC();
+                com.tencent.mm.kernel.g.afA().gcy.a(localn);
+              }
+              i.this.iyv.clear();
+            }
+            AppMethodBeat.o(72856);
+          }
+        });
         label221:
-        if ((ae.glF) && ((paramm instanceof com.tencent.mm.wallet_core.tenpay.model.m)) && ((((com.tencent.mm.wallet_core.tenpay.model.m)paramm).getUri().contains("authen")) || (((com.tencent.mm.wallet_core.tenpay.model.m)paramm).getUri().contains("verify")))) {
-          ((com.tencent.mm.wallet_core.tenpay.model.m)paramm).setFake();
+        if ((ab.hWC) && ((paramn instanceof m)) && ((((m)paramn).getUri().contains("authen")) || (((m)paramn).getUri().contains("verify")))) {
+          ((m)paramn).setFake();
         }
-        com.tencent.mm.kernel.g.RM();
-        com.tencent.mm.kernel.g.RK().eHt.a(paramm, paramInt2);
-        if (paramm.getReqResp() != null) {
+        com.tencent.mm.kernel.g.afC();
+        com.tencent.mm.kernel.g.afA().gcy.a(paramn, paramInt2);
+        if (paramn.getReqResp() != null) {
           break label560;
         }
       }
     }
     label560:
-    for (Object localObject = "";; localObject = paramm.getReqResp().getUri())
+    for (Object localObject = "";; localObject = paramn.getReqResp().getUri())
     {
-      ab.i("MicroMsg.WalletNetSceneMgr", "this %s scene url %s %s", new Object[] { this, paramm, localObject });
-      AppMethodBeat.o(49150);
+      ad.i("MicroMsg.WalletNetSceneMgr", "this %s scene url %s %s", new Object[] { this, paramn, localObject });
+      AppMethodBeat.o(72866);
       return;
       localObject = this.mContext;
-      this.mContext.getString(2131296919);
-      this.gKM = com.tencent.mm.ui.base.h.b((Context)localObject, this.mContext.getString(2131305479), false, new i.3(this));
+      this.mContext.getString(2131755726);
+      this.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject, this.mContext.getString(2131765693), false, new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(72857);
+          if ((i.this.tipDialog != null) && (i.this.iyu.isEmpty()))
+          {
+            i.this.tipDialog.dismiss();
+            paramAnonymousDialogInterface = i.this.iyv.iterator();
+            while (paramAnonymousDialogInterface.hasNext())
+            {
+              com.tencent.mm.al.n localn = (com.tencent.mm.al.n)paramAnonymousDialogInterface.next();
+              com.tencent.mm.kernel.g.afC();
+              com.tencent.mm.kernel.g.afA().gcy.a(localn);
+            }
+            i.this.iyv.clear();
+          }
+          AppMethodBeat.o(72857);
+        }
+      });
       break;
       if (paramInt1 == 2)
       {
         localObject = this.mContext;
-        this.mContext.getString(2131296919);
-        this.gKM = com.tencent.mm.ui.base.h.b((Context)localObject, this.mContext.getString(2131305479), false, new i.4(this));
+        this.mContext.getString(2131755726);
+        this.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject, this.mContext.getString(2131765693), false, new DialogInterface.OnCancelListener()
+        {
+          public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+          {
+            AppMethodBeat.i(72858);
+            if ((i.this.tipDialog != null) && (i.this.iyu.isEmpty()))
+            {
+              i.this.tipDialog.dismiss();
+              paramAnonymousDialogInterface = i.this.iyv.iterator();
+              while (paramAnonymousDialogInterface.hasNext())
+              {
+                com.tencent.mm.al.n localn = (com.tencent.mm.al.n)paramAnonymousDialogInterface.next();
+                com.tencent.mm.kernel.g.afC();
+                com.tencent.mm.kernel.g.afA().gcy.a(localn);
+              }
+              i.this.iyv.clear();
+            }
+            AppMethodBeat.o(72858);
+          }
+        });
         break;
       }
       if (paramInt1 == 3)
       {
-        this.gKM = com.tencent.mm.wallet_core.ui.g.d(this.mContext, "验证中", new i.5(this));
+        this.tipDialog = com.tencent.mm.wallet_core.ui.g.c(this.mContext, "验证中", new DialogInterface.OnCancelListener()
+        {
+          public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+          {
+            AppMethodBeat.i(72859);
+            if ((i.this.tipDialog != null) && (i.this.iyu.isEmpty()))
+            {
+              i.this.tipDialog.dismiss();
+              paramAnonymousDialogInterface = i.this.iyv.iterator();
+              while (paramAnonymousDialogInterface.hasNext())
+              {
+                com.tencent.mm.al.n localn = (com.tencent.mm.al.n)paramAnonymousDialogInterface.next();
+                com.tencent.mm.kernel.g.afC();
+                com.tencent.mm.kernel.g.afA().gcy.a(localn);
+              }
+              i.this.iyv.clear();
+            }
+            AppMethodBeat.o(72859);
+          }
+        });
         break;
       }
       if (paramInt1 == 4)
       {
-        this.gKM = com.tencent.mm.wallet_core.ui.g.a(this.mContext, false, new i.6(this));
+        this.tipDialog = com.tencent.mm.wallet_core.ui.g.a(this.mContext, false, new DialogInterface.OnCancelListener()
+        {
+          public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+          {
+            AppMethodBeat.i(72860);
+            if ((i.this.tipDialog != null) && (i.this.iyu.isEmpty()))
+            {
+              i.this.tipDialog.dismiss();
+              paramAnonymousDialogInterface = i.this.iyv.iterator();
+              while (paramAnonymousDialogInterface.hasNext())
+              {
+                com.tencent.mm.al.n localn = (com.tencent.mm.al.n)paramAnonymousDialogInterface.next();
+                com.tencent.mm.kernel.g.afC();
+                com.tencent.mm.kernel.g.afA().gcy.a(localn);
+              }
+              i.this.iyv.clear();
+            }
+            AppMethodBeat.o(72860);
+          }
+        });
         break;
       }
-      ab.i("MicroMsg.WalletNetSceneMgr", "unknown dialog type: %d", new Object[] { Integer.valueOf(paramInt1) });
+      ad.i("MicroMsg.WalletNetSceneMgr", "unknown dialog type: %d", new Object[] { Integer.valueOf(paramInt1) });
       localObject = this.mContext;
-      this.mContext.getString(2131296919);
-      this.gKM = com.tencent.mm.ui.base.h.b((Context)localObject, this.mContext.getString(2131305479), false, new i.7(this));
+      this.mContext.getString(2131755726);
+      this.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject, this.mContext.getString(2131765693), false, new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(72861);
+          if ((i.this.tipDialog != null) && (i.this.iyu.isEmpty()))
+          {
+            i.this.tipDialog.dismiss();
+            paramAnonymousDialogInterface = i.this.iyv.iterator();
+            while (paramAnonymousDialogInterface.hasNext())
+            {
+              com.tencent.mm.al.n localn = (com.tencent.mm.al.n)paramAnonymousDialogInterface.next();
+              com.tencent.mm.kernel.g.afC();
+              com.tencent.mm.kernel.g.afA().gcy.a(localn);
+            }
+            i.this.iyv.clear();
+          }
+          AppMethodBeat.o(72861);
+        }
+      });
       break;
     }
   }
   
   public final void addSceneEndListener(int paramInt)
   {
-    AppMethodBeat.i(49152);
-    this.gLa.add(Integer.valueOf(paramInt));
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RK().eHt.a(paramInt, this);
-    AppMethodBeat.o(49152);
+    AppMethodBeat.i(72868);
+    this.iyK.add(Integer.valueOf(paramInt));
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.a(paramInt, this);
+    AppMethodBeat.o(72868);
   }
   
-  public final void bNp()
+  public final void b(com.tencent.mm.al.n paramn, boolean paramBoolean)
   {
-    AppMethodBeat.i(156743);
-    cRP();
-    AppMethodBeat.o(156743);
-  }
-  
-  public final void cRP()
-  {
-    AppMethodBeat.i(49157);
-    if (this.gKM != null)
+    AppMethodBeat.i(72864);
+    r(paramn);
+    this.iyu.add(paramn);
+    if ((paramBoolean) && ((this.tipDialog == null) || ((this.tipDialog != null) && (!this.tipDialog.isShowing()))))
     {
-      this.gKM.dismiss();
-      this.gKM = null;
+      if (this.tipDialog != null) {
+        this.tipDialog.dismiss();
+      }
+      if (this.mContext == null)
+      {
+        ad.w("MicroMsg.WalletNetSceneMgr", "%s activity has destroyed!!!", new Object[] { this });
+        AppMethodBeat.o(72864);
+        return;
+      }
+      this.tipDialog = com.tencent.mm.wallet_core.ui.g.a(this.mContext, false, new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(72855);
+          i.this.forceCancel();
+          AppMethodBeat.o(72855);
+        }
+      });
     }
-    AppMethodBeat.o(49157);
+    if ((ab.hWC) && ((paramn instanceof m)) && ((((m)paramn).getUri().contains("authen")) || (((m)paramn).getUri().contains("verify")))) {
+      ((m)paramn).setFake();
+    }
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.a(paramn, 0);
+    AppMethodBeat.o(72864);
+  }
+  
+  public final void cLx()
+  {
+    AppMethodBeat.i(201273);
+    closeTipDialog();
+    AppMethodBeat.o(201273);
+  }
+  
+  public final void closeTipDialog()
+  {
+    AppMethodBeat.i(72873);
+    if (this.tipDialog != null)
+    {
+      this.tipDialog.dismiss();
+      this.tipDialog = null;
+    }
+    AppMethodBeat.o(72873);
   }
   
   public final void forceCancel()
   {
-    AppMethodBeat.i(49151);
-    if (this.gKM != null)
+    AppMethodBeat.i(72867);
+    if (this.tipDialog != null)
     {
-      this.gKM.dismiss();
-      this.gKM = null;
+      this.tipDialog.dismiss();
+      this.tipDialog = null;
     }
-    Iterator localIterator = this.gKK.iterator();
-    com.tencent.mm.ai.m localm;
+    Iterator localIterator = this.iyu.iterator();
+    com.tencent.mm.al.n localn;
     while (localIterator.hasNext())
     {
-      localm = (com.tencent.mm.ai.m)localIterator.next();
-      com.tencent.mm.kernel.g.RM();
-      com.tencent.mm.kernel.g.RK().eHt.a(localm);
+      localn = (com.tencent.mm.al.n)localIterator.next();
+      com.tencent.mm.kernel.g.afC();
+      com.tencent.mm.kernel.g.afA().gcy.a(localn);
     }
-    localIterator = this.gKL.iterator();
+    localIterator = this.iyv.iterator();
     while (localIterator.hasNext())
     {
-      localm = (com.tencent.mm.ai.m)localIterator.next();
-      com.tencent.mm.kernel.g.RM();
-      com.tencent.mm.kernel.g.RK().eHt.a(localm);
+      localn = (com.tencent.mm.al.n)localIterator.next();
+      com.tencent.mm.kernel.g.afC();
+      com.tencent.mm.kernel.g.afA().gcy.a(localn);
     }
-    this.gKK.clear();
-    this.gKL.clear();
-    AppMethodBeat.o(49151);
+    this.iyu.clear();
+    this.iyv.clear();
+    AppMethodBeat.o(72867);
   }
   
   public final boolean isProcessing()
   {
-    AppMethodBeat.i(49158);
-    if ((this.gKL.isEmpty()) && (this.gKK.isEmpty()))
+    AppMethodBeat.i(72874);
+    if ((this.iyv.isEmpty()) && (this.iyu.isEmpty()))
     {
-      AppMethodBeat.o(49158);
+      AppMethodBeat.o(72874);
       return false;
     }
-    AppMethodBeat.o(49158);
+    AppMethodBeat.o(72874);
     return true;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
   {
-    AppMethodBeat.i(49156);
+    AppMethodBeat.i(72872);
     int i;
-    if (this.gKL.contains(paramm))
+    if (this.iyv.contains(paramn))
     {
-      ab.d("MicroMsg.WalletNetSceneMgr", "%s has find scene ", new Object[] { this });
-      if (!i(paramInt1, paramInt2, paramString, paramm))
+      ad.d("MicroMsg.WalletNetSceneMgr", "%s has find scene ", new Object[] { this });
+      if (!k(paramInt1, paramInt2, paramString, paramn))
       {
-        ab.i("MicroMsg.WalletNetSceneMgr", "%s Not need delay query order,remove scene", new Object[] { this });
-        this.gKL.remove(paramm);
+        ad.i("MicroMsg.WalletNetSceneMgr", "%s Not need delay query order,remove scene", new Object[] { this });
+        this.iyv.remove(paramn);
         i = 1;
       }
     }
     for (;;)
     {
-      ab.i("MicroMsg.WalletNetSceneMgr", "%s onSceneEnd scenes %s forcescenes %s", new Object[] { this, Integer.valueOf(this.gKL.size()), Integer.valueOf(this.gKK.size()) });
-      if ((this.gKL.isEmpty()) && (this.gKK.isEmpty())) {
-        cRP();
+      ad.i("MicroMsg.WalletNetSceneMgr", "%s onSceneEnd scenes %s forcescenes %s", new Object[] { this, Integer.valueOf(this.iyv.size()), Integer.valueOf(this.iyu.size()) });
+      if ((this.iyv.isEmpty()) && (this.iyu.isEmpty())) {
+        closeTipDialog();
       }
       for (boolean bool = true;; bool = false)
       {
-        if ((i != 0) && (this.oou != null)) {
-          this.oou.onSceneEnd(paramInt1, paramInt2, paramString, paramm, bool);
+        if ((i != 0) && (this.tey != null)) {
+          this.tey.onSceneEnd(paramInt1, paramInt2, paramString, paramn, bool);
         }
-        AppMethodBeat.o(49156);
+        AppMethodBeat.o(72872);
         return;
-        ab.i("MicroMsg.WalletNetSceneMgr", "%s do delay order query.break off!", new Object[] { this });
-        AppMethodBeat.o(49156);
+        ad.i("MicroMsg.WalletNetSceneMgr", "%s do delay order query.break off!", new Object[] { this });
+        AppMethodBeat.o(72872);
         return;
-        if (!this.gKK.contains(paramm)) {
+        if (!this.iyu.contains(paramn)) {
           break label303;
         }
-        ab.d("MicroMsg.WalletNetSceneMgr", "%s has find forcescenes ", new Object[] { this });
-        if (!i(paramInt1, paramInt2, paramString, paramm))
+        ad.d("MicroMsg.WalletNetSceneMgr", "%s has find forcescenes ", new Object[] { this });
+        if (!k(paramInt1, paramInt2, paramString, paramn))
         {
-          this.gKK.remove(paramm);
-          ab.i("MicroMsg.WalletNetSceneMgr", "%s Not need delay query order,remove scene", new Object[] { this });
+          this.iyu.remove(paramn);
+          ad.i("MicroMsg.WalletNetSceneMgr", "%s Not need delay query order,remove scene", new Object[] { this });
           i = 1;
           break;
         }
-        ab.i("MicroMsg.WalletNetSceneMgr", "%s do delay order query.break off!", new Object[] { this });
-        AppMethodBeat.o(49156);
+        ad.i("MicroMsg.WalletNetSceneMgr", "%s do delay order query.break off!", new Object[] { this });
+        AppMethodBeat.o(72872);
         return;
       }
       label303:
@@ -442,19 +571,19 @@ public final class i
   
   public final void removeSceneEndListener(int paramInt)
   {
-    AppMethodBeat.i(49153);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RK().eHt.b(paramInt, this);
-    this.gLa.remove(Integer.valueOf(paramInt));
-    if (this.gLa.isEmpty()) {
+    AppMethodBeat.i(72869);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.b(paramInt, this);
+    this.iyK.remove(Integer.valueOf(paramInt));
+    if (this.iyK.isEmpty()) {
       onDestroy();
     }
-    AppMethodBeat.o(49153);
+    AppMethodBeat.o(72869);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.wallet_core.d.i
  * JD-Core Version:    0.7.0.1
  */

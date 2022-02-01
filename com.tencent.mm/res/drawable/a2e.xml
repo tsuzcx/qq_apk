@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@color/a3x" />
-    <item android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/e3" />
-            <corners android:topLeftRadius="0.0dip" android:topRightRadius="@dimen/f8" android:bottomLeftRadius="0.0dip" android:bottomRightRadius="@dimen/f8" />
-        </shape>
-    </item>
-    <item android:drawable="@color/a3x" />
+    <item android:state_enabled="false" android:drawable="@drawable/bvo" />
+    <item android:state_checked="true" android:drawable="@drawable/bvq" />
+    <item android:state_pressed="true" android:drawable="@drawable/bvq" />
+    <item android:drawable="@drawable/bvp" />
 </selector>

@@ -17,7 +17,7 @@ public final class b
 {
   private static String a(DataInputStream paramDataInputStream, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(67646);
+    AppMethodBeat.i(15441);
     int i = paramDataInputStream.readUnsignedByte();
     if ((i & 0xC0) == 192)
     {
@@ -25,12 +25,12 @@ public final class b
       paramDataInputStream = new HashSet();
       paramDataInputStream.add(Integer.valueOf(i));
       paramDataInputStream = a(paramArrayOfByte, i, paramDataInputStream);
-      AppMethodBeat.o(67646);
+      AppMethodBeat.o(15441);
       return paramDataInputStream;
     }
     if (i == 0)
     {
-      AppMethodBeat.o(67646);
+      AppMethodBeat.o(15441);
       return "";
     }
     Object localObject = new byte[i];
@@ -41,13 +41,13 @@ public final class b
     if (paramArrayOfByte.length() > 0) {
       paramDataInputStream = (String)localObject + "." + paramArrayOfByte;
     }
-    AppMethodBeat.o(67646);
+    AppMethodBeat.o(15441);
     return paramDataInputStream;
   }
   
   private static String a(byte[] paramArrayOfByte, int paramInt, HashSet<Integer> paramHashSet)
   {
-    AppMethodBeat.i(67647);
+    AppMethodBeat.i(15442);
     int i;
     for (;;)
     {
@@ -59,14 +59,14 @@ public final class b
       if (paramHashSet.contains(Integer.valueOf(paramInt)))
       {
         paramArrayOfByte = new com.tencent.liteav.network.a.a("", "Cyclic offsets detected.");
-        AppMethodBeat.o(67647);
+        AppMethodBeat.o(15442);
         throw paramArrayOfByte;
       }
       paramHashSet.add(Integer.valueOf(paramInt));
     }
     if (i == 0)
     {
-      AppMethodBeat.o(67647);
+      AppMethodBeat.o(15442);
       return "";
     }
     String str = new String(paramArrayOfByte, paramInt + 1, i);
@@ -75,13 +75,13 @@ public final class b
     if (paramHashSet.length() > 0) {
       paramArrayOfByte = str + "." + paramHashSet;
     }
-    AppMethodBeat.o(67647);
+    AppMethodBeat.o(15442);
     return paramArrayOfByte;
   }
   
   private static void a(DataInputStream paramDataInputStream, byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(67648);
+    AppMethodBeat.i(15443);
     while (paramInt > 0)
     {
       a(paramDataInputStream, paramArrayOfByte);
@@ -89,12 +89,12 @@ public final class b
       paramDataInputStream.readUnsignedShort();
       paramInt -= 1;
     }
-    AppMethodBeat.o(67648);
+    AppMethodBeat.o(15443);
   }
   
   private static void a(OutputStream paramOutputStream, String paramString)
   {
-    AppMethodBeat.i(67643);
+    AppMethodBeat.i(15438);
     paramString = paramString.split("[.。．｡]");
     int j = paramString.length;
     int i = 0;
@@ -106,12 +106,12 @@ public final class b
       i += 1;
     }
     paramOutputStream.write(0);
-    AppMethodBeat.o(67643);
+    AppMethodBeat.o(15438);
   }
   
   public static byte[] a(String paramString, int paramInt)
   {
-    AppMethodBeat.i(67642);
+    AppMethodBeat.i(15437);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(512);
     DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
     com.tencent.liteav.network.a.b.a locala = new com.tencent.liteav.network.a.b.a();
@@ -128,13 +128,13 @@ public final class b
       localDataOutputStream.flush();
       b(localByteArrayOutputStream, paramString);
       paramString = localByteArrayOutputStream.toByteArray();
-      AppMethodBeat.o(67642);
+      AppMethodBeat.o(15437);
       return paramString;
     }
     catch (IOException paramString)
     {
       paramString = new AssertionError(paramString);
-      AppMethodBeat.o(67642);
+      AppMethodBeat.o(15437);
       throw paramString;
     }
   }
@@ -142,13 +142,13 @@ public final class b
   public static e[] a(byte[] paramArrayOfByte, int paramInt, String paramString)
   {
     int i = 1;
-    AppMethodBeat.i(67645);
+    AppMethodBeat.i(15440);
     DataInputStream localDataInputStream = new DataInputStream(new ByteArrayInputStream(paramArrayOfByte));
     int j = localDataInputStream.readUnsignedShort();
     if (j != paramInt)
     {
       paramArrayOfByte = new com.tencent.liteav.network.a.a(paramString, "the answer id " + j + " is not match " + paramInt);
-      AppMethodBeat.o(67645);
+      AppMethodBeat.o(15440);
       throw paramArrayOfByte;
     }
     j = localDataInputStream.readUnsignedShort();
@@ -156,36 +156,36 @@ public final class b
     {
       paramInt = 1;
       if ((j >> 7 & 0x1) != 1) {
-        break label141;
+        break label144;
       }
     }
     for (;;)
     {
       if ((i != 0) && (paramInt != 0)) {
-        break label146;
+        break label149;
       }
       paramArrayOfByte = new com.tencent.liteav.network.a.a(paramString, "the dns server cant support recursion ");
-      AppMethodBeat.o(67645);
+      AppMethodBeat.o(15440);
       throw paramArrayOfByte;
       paramInt = 0;
       break;
-      label141:
+      label144:
       i = 0;
     }
-    label146:
+    label149:
     paramInt = localDataInputStream.readUnsignedShort();
     i = localDataInputStream.readUnsignedShort();
     localDataInputStream.readUnsignedShort();
     localDataInputStream.readUnsignedShort();
     a(localDataInputStream, paramArrayOfByte, paramInt);
     paramArrayOfByte = b(localDataInputStream, paramArrayOfByte, i);
-    AppMethodBeat.o(67645);
+    AppMethodBeat.o(15440);
     return paramArrayOfByte;
   }
   
   private static e b(DataInputStream paramDataInputStream, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(67650);
+    AppMethodBeat.i(15445);
     a(paramDataInputStream, paramArrayOfByte);
     int j = paramDataInputStream.readUnsignedShort();
     paramDataInputStream.readUnsignedShort();
@@ -213,27 +213,27 @@ public final class b
     for (paramArrayOfByte = InetAddress.getByAddress(paramArrayOfByte).getHostAddress(); paramArrayOfByte == null; paramArrayOfByte = a(paramDataInputStream, paramArrayOfByte))
     {
       paramDataInputStream = new UnknownHostException("no record");
-      AppMethodBeat.o(67650);
+      AppMethodBeat.o(15445);
       throw paramDataInputStream;
     }
     paramDataInputStream = new e(paramArrayOfByte, j, (int)(l2 + (l1 << 16)), System.currentTimeMillis() / 1000L);
-    AppMethodBeat.o(67650);
+    AppMethodBeat.o(15445);
     return paramDataInputStream;
   }
   
   private static void b(OutputStream paramOutputStream, String paramString)
   {
-    AppMethodBeat.i(67644);
+    AppMethodBeat.i(15439);
     DataOutputStream localDataOutputStream = new DataOutputStream(paramOutputStream);
     a(paramOutputStream, paramString);
     localDataOutputStream.writeShort(1);
     localDataOutputStream.writeShort(1);
-    AppMethodBeat.o(67644);
+    AppMethodBeat.o(15439);
   }
   
   private static e[] b(DataInputStream paramDataInputStream, byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(67649);
+    AppMethodBeat.i(15444);
     int i = 0;
     e[] arrayOfe = new e[paramInt];
     while (paramInt > 0)
@@ -242,13 +242,13 @@ public final class b
       i += 1;
       paramInt -= 1;
     }
-    AppMethodBeat.o(67649);
+    AppMethodBeat.o(15444);
     return arrayOfe;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.a.a.b
  * JD-Core Version:    0.7.0.1
  */

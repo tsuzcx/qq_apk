@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class VideoActivity$ScreenActionReceiver
   extends BroadcastReceiver
@@ -13,19 +13,19 @@ public class VideoActivity$ScreenActionReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(4802);
+    AppMethodBeat.i(115322);
     paramContext = paramIntent.getAction();
     if ((paramContext != null) && (paramContext.equals("android.intent.action.SCREEN_OFF")))
     {
-      ab.i("MicroMsg.Voip.VideoActivity", "receive action screen off, mActivityStatus:%s", new Object[] { Integer.valueOf(VideoActivity.g(this.tCq)) });
-      VideoActivity.g(this.tCq);
+      ad.i("MicroMsg.Voip.VideoActivity", "receive action screen off, mActivityStatus:%s", new Object[] { Integer.valueOf(VideoActivity.g(this.zro)) });
+      VideoActivity.g(this.zro);
     }
-    AppMethodBeat.o(4802);
+    AppMethodBeat.o(115322);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.VideoActivity.ScreenActionReceiver
  * JD-Core Version:    0.7.0.1
  */

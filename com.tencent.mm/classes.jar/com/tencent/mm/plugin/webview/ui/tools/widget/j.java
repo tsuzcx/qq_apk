@@ -7,32 +7,32 @@ import com.tencent.xweb.WebView;
 public final class j
   extends i
 {
-  private final b vso;
+  private final b Bui;
   
   public j(MMWebView paramMMWebView, b paramb)
   {
     super((MMWebViewWithJsApi)paramMMWebView);
-    AppMethodBeat.i(9919);
-    this.vso = paramb;
-    AppMethodBeat.o(9919);
+    AppMethodBeat.i(82128);
+    this.Bui = paramb;
+    AppMethodBeat.o(82128);
   }
   
   public final void d(WebView paramWebView, String paramString)
   {
-    AppMethodBeat.i(9920);
-    if (this.vso != null)
+    AppMethodBeat.i(82129);
+    if (this.Bui != null)
     {
-      this.vso.pW(paramString);
-      AppMethodBeat.o(9920);
+      this.Bui.uK(paramString);
+      AppMethodBeat.o(82129);
       return;
     }
     super.d(paramWebView, paramString);
-    AppMethodBeat.o(9920);
+    AppMethodBeat.o(82129);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.j
  * JD-Core Version:    0.7.0.1
  */

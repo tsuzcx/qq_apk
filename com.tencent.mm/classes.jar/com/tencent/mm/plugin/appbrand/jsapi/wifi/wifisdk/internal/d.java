@@ -1,85 +1,103 @@
 package com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal;
 
+import android.content.Context;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.BitSet;
 
 public final class d
 {
-  public static int ihY = -1;
+  public static int kys = -1;
   
-  public static String Dh(String paramString)
+  public static String JP(String paramString)
   {
-    AppMethodBeat.i(94413);
+    AppMethodBeat.i(144728);
     if (paramString == null)
     {
-      AppMethodBeat.o(94413);
+      AppMethodBeat.o(144728);
       return "";
     }
     int i = paramString.length();
     if ((i > 1) && (paramString.charAt(0) == '"') && (paramString.charAt(i - 1) == '"'))
     {
       paramString = paramString.substring(1, i - 1);
-      AppMethodBeat.o(94413);
+      AppMethodBeat.o(144728);
       return paramString;
     }
-    AppMethodBeat.o(94413);
+    AppMethodBeat.o(144728);
     return paramString;
+  }
+  
+  public static int JQ(String paramString)
+  {
+    AppMethodBeat.i(193714);
+    WifiInfo localWifiInfo = ((WifiManager)aj.getContext().getSystemService("wifi")).getConnectionInfo();
+    if ((localWifiInfo != null) && (localWifiInfo.getBSSID() != null) && (localWifiInfo.getBSSID().equals(paramString)))
+    {
+      int i = c.su(localWifiInfo.getRssi());
+      AppMethodBeat.o(193714);
+      return i;
+    }
+    AppMethodBeat.o(193714);
+    return 0;
   }
   
   public static int a(ScanResult paramScanResult)
   {
-    AppMethodBeat.i(94415);
+    AppMethodBeat.i(144730);
     if ((paramScanResult == null) || (paramScanResult.capabilities == null))
     {
-      AppMethodBeat.o(94415);
+      AppMethodBeat.o(144730);
       return -1;
     }
     if (paramScanResult.capabilities.contains("WEP"))
     {
-      AppMethodBeat.o(94415);
+      AppMethodBeat.o(144730);
       return 1;
     }
     if (paramScanResult.capabilities.contains("PSK"))
     {
-      AppMethodBeat.o(94415);
+      AppMethodBeat.o(144730);
       return 2;
     }
     if (paramScanResult.capabilities.contains("EAP"))
     {
-      AppMethodBeat.o(94415);
+      AppMethodBeat.o(144730);
       return 3;
     }
-    AppMethodBeat.o(94415);
+    AppMethodBeat.o(144730);
     return 0;
   }
   
   public static int c(WifiConfiguration paramWifiConfiguration)
   {
-    AppMethodBeat.i(94414);
+    AppMethodBeat.i(144729);
     if (paramWifiConfiguration.allowedKeyManagement.get(1))
     {
-      AppMethodBeat.o(94414);
+      AppMethodBeat.o(144729);
       return 2;
     }
     if ((paramWifiConfiguration.allowedKeyManagement.get(2)) || (paramWifiConfiguration.allowedKeyManagement.get(3)))
     {
-      AppMethodBeat.o(94414);
+      AppMethodBeat.o(144729);
       return 3;
     }
     if (paramWifiConfiguration.wepKeys[0] != null)
     {
-      AppMethodBeat.o(94414);
+      AppMethodBeat.o(144729);
       return 1;
     }
-    AppMethodBeat.o(94414);
+    AppMethodBeat.o(144729);
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.d
  * JD-Core Version:    0.7.0.1
  */

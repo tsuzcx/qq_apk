@@ -1,153 +1,53 @@
 package com.tencent.luggage.sdk.b.a.c;
 
 import android.text.TextUtils;
-import com.tencent.luggage.g.d;
-import com.tencent.luggage.sdk.b.a.a.a;
-import com.tencent.luggage.sdk.b.a.b.a;
-import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
-import com.tencent.luggage.sdk.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.a;
-import com.tencent.mm.plugin.appbrand.debugger.l;
-import com.tencent.mm.plugin.appbrand.debugger.n;
-import com.tencent.mm.plugin.appbrand.debugger.p;
-import com.tencent.mm.plugin.appbrand.debugger.t;
-import com.tencent.mm.plugin.appbrand.debugger.u;
-import com.tencent.mm.plugin.appbrand.jsapi.bs;
-import com.tencent.mm.protocal.protobuf.cty;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.appcache.ao;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.jsruntime.t;
 
 public class g<SERVICE extends c>
-  extends e<SERVICE>
-  implements com.tencent.mm.plugin.appbrand.debugger.i
+  extends a<SERVICE>
 {
-  public static final b.a bEQ;
-  private n bBg;
-  private l bER;
-  
-  static
+  protected g(SERVICE paramSERVICE, t paramt)
   {
-    AppMethodBeat.i(140792);
-    bEQ = new g.a((byte)0);
-    AppMethodBeat.o(140792);
+    super(paramSERVICE, paramt);
   }
   
-  public g(SERVICE paramSERVICE)
+  protected final String Ci()
   {
-    super(paramSERVICE);
-    AppMethodBeat.i(140785);
-    super.b(com.tencent.mm.plugin.appbrand.debugger.i.class, this);
-    AppMethodBeat.o(140785);
+    return "WASubContext.js";
   }
   
-  protected final void a(com.tencent.mm.plugin.appbrand.i parami)
+  protected String c(SERVICE paramSERVICE)
   {
-    AppMethodBeat.i(140787);
-    ((c)this.bDN).aBr();
-    if (t.hmt != null)
+    AppMethodBeat.i(146851);
+    boolean bool;
+    if (paramSERVICE.getRuntime() == null)
     {
-      this.bER = t.hmt;
-      t.hmt = null;
+      bool = false;
+      if (!bool) {
+        break label62;
+      }
     }
-    for (;;)
+    label62:
+    for (paramSERVICE = com.tencent.mm.plugin.appbrand.aa.d.Ne("wxa_library/native/WASubContext.js");; paramSERVICE = paramSERVICE.aLC().DH("WASubContext.js"))
     {
-      this.bER.a((c)this.bDN, ((c)this.bDN).wj().wS().extInfo);
-      this.bBg.a(this.bER);
-      AppMethodBeat.o(140787);
-      return;
-      this.bER = new l();
+      if (!TextUtils.isEmpty(paramSERVICE)) {
+        break label77;
+      }
+      paramSERVICE = new ao("WASubContext.js");
+      AppMethodBeat.o(146851);
+      throw paramSERVICE;
+      bool = paramSERVICE.getRuntime().Eg().jdi;
+      break;
     }
+    label77:
+    AppMethodBeat.o(146851);
+    return paramSERVICE;
   }
-  
-  public final void bS(String paramString)
-  {
-    AppMethodBeat.i(140783);
-    d.d("Luggage.MPRemoteDebugServiceLogic", "RemoteDebugInfo %s", new Object[] { paramString });
-    cty localcty = new cty();
-    localcty.ycT = ((c)this.bDN).wD().hashCode();
-    localcty.ycS = paramString;
-    paramString = t.a(localcty, this.bER, "domEvent");
-    this.bBg.a(paramString);
-    AppMethodBeat.o(140783);
-  }
-  
-  protected final void bT(String paramString) {}
-  
-  public final boolean d(String paramString1, String paramString2, int paramInt)
-  {
-    AppMethodBeat.i(140791);
-    String str = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      str = "{}";
-    }
-    d.d("Luggage.MPRemoteDebugServiceLogic", "dispatch, event: %s, data size: %s, srcId: %d", new Object[] { paramString1, Integer.valueOf(str.length()), Integer.valueOf(paramInt) });
-    this.bBg.hlN = paramString1;
-    n localn = this.bBg;
-    paramString2 = str;
-    if (TextUtils.isEmpty(str)) {
-      paramString2 = "{}";
-    }
-    if (paramInt == 0) {}
-    for (str = "undefined";; str = String.valueOf(paramInt))
-    {
-      localn.evaluateJavascript(String.format("typeof %s !== 'undefined' && %s.subscribeHandler(\"%s\", %s, %s, %s)", new Object[] { "WeixinJSBridge", "WeixinJSBridge", paramString1, paramString2, str, bs.Qy() }), null);
-      AppMethodBeat.o(140791);
-      return true;
-    }
-  }
-  
-  public final boolean i(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(140790);
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = "{}";
-    }
-    this.bBg.hlP.O(paramInt, str);
-    AppMethodBeat.o(140790);
-    return true;
-  }
-  
-  protected final void tW()
-  {
-    AppMethodBeat.i(140789);
-    ((c)this.bDN).auf();
-    AppMethodBeat.o(140789);
-  }
-  
-  public final String uO()
-  {
-    AppMethodBeat.i(140784);
-    Object localObject = ((c)this.bDN).wE();
-    String str = ((c)this.bDN).wj().getAppConfig().hgZ;
-    localObject = String.format("var __wxConfig = %s;\nvar __wxIndexPage = \"%s\"", new Object[] { ((JSONObject)localObject).toString(), str });
-    AppMethodBeat.o(140784);
-    return localObject;
-  }
-  
-  public final boolean uQ()
-  {
-    return false;
-  }
-  
-  protected final com.tencent.mm.plugin.appbrand.i.i uR()
-  {
-    AppMethodBeat.i(140786);
-    this.bBg = new n();
-    n localn = this.bBg;
-    AppMethodBeat.o(140786);
-    return localn;
-  }
-  
-  public final void vb()
-  {
-    AppMethodBeat.i(140788);
-    super.vb();
-    this.bBg.hlR.bringToFront();
-    AppMethodBeat.o(140788);
-  }
-  
-  protected final void vj() {}
 }
 
 

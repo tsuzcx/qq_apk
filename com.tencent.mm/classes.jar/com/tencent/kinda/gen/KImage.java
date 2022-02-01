@@ -8,7 +8,9 @@ public abstract interface KImage
   
   public abstract float getWidth();
   
-  public abstract void setSvgUrl(String paramString1, String paramString2);
+  public abstract void setDarkModeUrl(String paramString);
+  
+  public abstract void setSvgUrl(String paramString, DynamicColor paramDynamicColor);
   
   public abstract void setUrl(String paramString);
   

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.fts.a;
 
 import com.tencent.mm.plugin.fts.a.a.a;
-import com.tencent.mm.plugin.fts.a.a.i;
-import com.tencent.mm.plugin.fts.a.a.l;
+import com.tencent.mm.plugin.fts.a.a.j;
+import com.tencent.mm.plugin.fts.a.a.m;
 import java.util.HashMap;
 
 public abstract interface k
 {
-  public abstract a a(i parami);
+  public abstract a a(j paramj);
   
-  public abstract void a(String paramString, l paraml, int paramInt, HashMap<String, String> paramHashMap);
+  public abstract void a(String paramString, m paramm, int paramInt, HashMap<String, String> paramHashMap);
   
-  public abstract void addSOSHistory(String paramString);
+  public abstract void addSOSHistory(String paramString1, String paramString2);
   
   public abstract void create();
   
@@ -27,7 +27,7 @@ public abstract interface k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.k
  * JD-Core Version:    0.7.0.1
  */

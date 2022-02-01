@@ -1,137 +1,495 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.plugin.wallet_core.c.af;
-import com.tencent.mm.plugin.wallet_core.c.v;
-import com.tencent.mm.plugin.wallet_core.model.u;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.wallet_core.c;
-import com.tencent.mm.wallet_core.d.g;
-import com.tencent.mm.wallet_core.d.i;
+import com.tencent.mm.plugin.wallet.a.f;
+import com.tencent.mm.plugin.wallet.a.j;
+import com.tencent.mm.plugin.wallet.a.t;
+import com.tencent.mm.plugin.wallet_core.model.FavorPayInfo;
+import com.tencent.mm.plugin.wallet_core.model.Orders;
+import com.tencent.mm.plugin.wallet_core.model.p;
+import com.tencent.mm.plugin.wallet_core.model.p.a;
+import com.tencent.mm.plugin.wallet_core.model.p.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.base.MaxListView;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Vector;
 
-public class n
-  extends c
+public final class n
+  extends com.tencent.mm.ui.base.i
 {
-  private String gGl;
-  private int scene;
-  private String token;
-  private String ubR;
+  private MaxListView Ank;
+  private TextView Anl;
+  private a Anm;
+  private b Ann;
+  private View hIZ;
+  private LayoutInflater mInflater;
+  private d zQQ;
   
-  public final c a(Activity paramActivity, Bundle paramBundle)
+  private n(Context paramContext)
   {
-    AppMethodBeat.i(47406);
-    ab.i("MicroMsg.WalletJSApiVerifyCodeProcess", "start WalletJSApiVerifyCodeProcess");
-    this.ubR = paramBundle.getString("key_relation_key");
-    this.gGl = paramBundle.getString("key_pwd1");
-    this.token = paramBundle.getString("key_jsapi_token");
-    this.scene = paramBundle.getInt("key_verify_scene");
-    b(paramActivity, WalletVerifyCodeUI.class, paramBundle);
-    AppMethodBeat.o(47406);
-    return this;
+    super(paramContext, 2131821723);
+    AppMethodBeat.i(70947);
+    this.mInflater = LayoutInflater.from(paramContext);
+    this.hIZ = LayoutInflater.from(paramContext).inflate(2131495948, null);
+    this.Ank = ((MaxListView)this.hIZ.findViewById(2131306744));
+    this.Anl = ((TextView)this.hIZ.findViewById(2131306741));
+    this.Anm = new a();
+    this.Ank.setAdapter(this.Anm);
+    this.hIZ.findViewById(2131306742).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(70940);
+        n.a(n.this);
+        n.this.dismiss();
+        AppMethodBeat.o(70940);
+      }
+    });
+    AppMethodBeat.o(70947);
   }
   
-  public final g a(final MMActivity paramMMActivity, final i parami)
+  public static n a(Context paramContext, Orders paramOrders, String paramString, b paramb, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(47408);
-    paramMMActivity = new g(paramMMActivity, parami)
+    AppMethodBeat.i(70950);
+    n localn = new n(paramContext);
+    localn.setOnCancelListener(paramOnCancelListener);
+    localn.setCancelable(true);
+    localn.setCanceledOnTouchOutside(false);
+    localn.zQQ = e.Ajp.a(paramOrders);
+    if (localn.zQQ == null)
     {
-      public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, m paramAnonymousm)
+      ad.w("MicroMsg.WalletFavorDialog", "mFavorLogicHelper null & dismiss");
+      localn.dismiss();
+    }
+    Object localObject2;
+    int i;
+    for (;;)
+    {
+      localn.Ann = paramb;
+      localn.show();
+      com.tencent.mm.ui.base.h.a(paramContext, localn);
+      AppMethodBeat.o(70950);
+      return localn;
+      paramOrders = localn.Anm;
+      localObject2 = paramOrders.Ano.zQQ.Ajk;
+      paramOnCancelListener = paramOrders.Ano.zQQ.auq(paramString);
+      paramOrders.Anq = paramOrders.Ano.zQQ.edL();
+      paramOrders.Ans = paramOrders.Ano.zQQ.aum(paramOnCancelListener);
+      paramOrders.Anp = -1;
+      i = 0;
+      for (;;)
       {
-        AppMethodBeat.i(47405);
-        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
-        {
-          if ((paramAnonymousm instanceof af))
-          {
-            ab.i("MicroMsg.WalletJSApiVerifyCodeProcess", "send sms succ");
-            paramAnonymousString = (af)paramAnonymousm;
-            paramAnonymousm = n.this.mEJ;
-            paramAnonymousm.putString("key_jsapi_token", paramAnonymousString.ubZ);
-            n.this.b(paramMMActivity, paramAnonymousm);
-            AppMethodBeat.o(47405);
-            return true;
+        if (i < paramOrders.Anq.size()) {
+          if (((t)paramOrders.Anq.get(i)).zPo == 0) {
+            break label273;
           }
-          if ((paramAnonymousm instanceof v))
-          {
-            AppMethodBeat.o(47405);
-            return true;
-          }
-          AppMethodBeat.o(47405);
-          return false;
         }
-        if ((paramAnonymousm instanceof af)) {
-          ab.e("MicroMsg.WalletJSApiVerifyCodeProcess", "send sms fail,errType=" + paramAnonymousInt1 + ",errCode=" + paramAnonymousInt2 + ",errMsg=" + paramAnonymousString);
-        }
-        AppMethodBeat.o(47405);
-        return false;
-      }
-      
-      public final boolean p(Object... paramAnonymousVarArgs)
-      {
-        AppMethodBeat.i(47403);
-        if (paramAnonymousVarArgs.length == 2)
+        label273:
+        for (j = 1; j != 0; j = 0)
         {
-          paramAnonymousVarArgs = (u)paramAnonymousVarArgs[1];
-          paramAnonymousVarArgs.token = n.a(n.this);
-          ab.i("MicroMsg.WalletJSApiVerifyCodeProcess", "do NetSceneTenpayVerifySmsByPasswd");
-          paramAnonymousVarArgs = new af(paramAnonymousVarArgs, n.b(n.this));
-          parami.a(paramAnonymousVarArgs, true, 1);
-          AppMethodBeat.o(47403);
-          return true;
+          paramOrders.Anp = i;
+          paramString = new LinkedList();
+          if (paramOrders.Anq == null) {
+            break label288;
+          }
+          i = 0;
+          while (i < paramOrders.Anq.size())
+          {
+            paramString.add(((t)paramOrders.Anq.get(i)).zOl);
+            i += 1;
+          }
         }
-        ab.e("MicroMsg.WalletJSApiVerifyCodeProcess", "arguments is error");
-        AppMethodBeat.o(47403);
-        return false;
+        i += 1;
       }
-      
-      public final boolean y(Object... paramAnonymousVarArgs)
+      label288:
+      ad.w("MicroMsg.WalletFavorDialog", "func[setCouponInfo] mFavorList null");
+      i = 0;
+      label298:
+      if (i != 0) {
+        break label670;
+      }
+      ad.w("MicroMsg.WalletFavorDialog", "initFavorInfo failed & dismiss");
+      localn.dismiss();
+    }
+    LinkedList localLinkedList = new LinkedList();
+    if ((localObject2 != null) && (((com.tencent.mm.plugin.wallet.a.h)localObject2).zOs != null))
+    {
+      i = 0;
+      while (i < ((com.tencent.mm.plugin.wallet.a.h)localObject2).zOs.size())
       {
-        AppMethodBeat.i(47404);
-        ab.i("MicroMsg.WalletJSApiVerifyCodeProcess", "resend sms");
-        paramAnonymousVarArgs = new v(n.c(n.this), n.a(n.this), '\000');
-        parami.a(paramAnonymousVarArgs, true, 1);
-        AppMethodBeat.o(47404);
-        return true;
+        localObject1 = ((t)((com.tencent.mm.plugin.wallet.a.h)localObject2).zOs.get(i)).zOl;
+        if (!paramString.contains(localObject1)) {
+          localLinkedList.add(localObject1);
+        }
+        i += 1;
       }
-    };
-    AppMethodBeat.o(47408);
-    return paramMMActivity;
+    }
+    Object localObject1 = new LinkedList();
+    label450:
+    String str;
+    if ((localObject2 != null) && (((com.tencent.mm.plugin.wallet.a.h)localObject2).zOt != null) && (((com.tencent.mm.plugin.wallet.a.h)localObject2).zOt.zOF != null))
+    {
+      localObject2 = ((com.tencent.mm.plugin.wallet.a.h)localObject2).zOt.zOF;
+      i = 0;
+      if (i >= ((List)localObject2).size()) {
+        break label563;
+      }
+      str = ((j)((List)localObject2).get(i)).zOH;
+      j = 0;
+      label482:
+      if (j >= localLinkedList.size()) {
+        break label701;
+      }
+      if (!str.contains((CharSequence)localLinkedList.get(j))) {}
+    }
+    label563:
+    label701:
+    for (int j = 1;; j = 0)
+    {
+      if (j == 0) {
+        ((List)localObject1).add(str);
+      }
+      i += 1;
+      break label450;
+      j += 1;
+      break label482;
+      ad.w("MicroMsg.WalletFavorDialog", "func[setCouponInfo] favorInfo.favorComposeList or favorInfo.favorComposeList.favorComposeInfo null");
+      i = 0;
+      break label298;
+      localLinkedList = new LinkedList();
+      if ((!bt.isNullOrNil(paramOnCancelListener)) && (!paramOnCancelListener.equals("0")))
+      {
+        paramOnCancelListener = paramOnCancelListener.split("-");
+        if (paramOnCancelListener != null)
+        {
+          i = 0;
+          while (i < paramOnCancelListener.length)
+          {
+            localLinkedList.add(paramOnCancelListener[i]);
+            i += 1;
+          }
+        }
+        ad.w("MicroMsg.WalletFavorDialog", "func[setCouponInfo] preKeyArr null");
+        i = 0;
+        break label298;
+      }
+      paramOrders.Ant.d(paramString, localLinkedList, (List)localObject1);
+      i = 1;
+      break label298;
+      localn.Anl.setText(2131765257);
+      localn.Ank.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      {
+        public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+        {
+          AppMethodBeat.i(70941);
+          paramAnonymousAdapterView = n.b(n.this);
+          paramAnonymousView = paramAnonymousAdapterView.Ant;
+          if (paramAnonymousInt < paramAnonymousView.AeD.size())
+          {
+            p.a locala1 = ((p.b)paramAnonymousView.AeD.get(paramAnonymousInt)).AeL;
+            p.a locala2 = p.a.AeH;
+            int i = 0;
+            while (i < paramAnonymousView.AeD.size())
+            {
+              paramAnonymousView.a(i, p.a.AeI);
+              i += 1;
+            }
+            switch (com.tencent.mm.plugin.wallet_core.model.p.1.AeF[locala1.ordinal()])
+            {
+            }
+          }
+          for (;;)
+          {
+            paramAnonymousAdapterView.notifyDataSetChanged();
+            AppMethodBeat.o(70941);
+            return;
+            paramAnonymousView.a(paramAnonymousInt, p.a.AeH);
+            continue;
+            paramAnonymousView.a(paramAnonymousInt, p.a.AeI);
+          }
+        }
+      });
+      break;
+    }
   }
   
-  public final void a(Activity paramActivity, int paramInt, Bundle paramBundle) {}
-  
-  public final void b(Activity paramActivity, Bundle paramBundle)
+  private void eed()
   {
-    AppMethodBeat.i(47407);
-    ab.i("MicroMsg.WalletJSApiVerifyCodeProcess", "end WalletJSApiVerifyCodeProcess");
-    if (this.scene == 8)
+    AppMethodBeat.i(70952);
+    ad.d("MicroMsg.WalletFavorDialog", "On selection done");
+    if (this.Anm != null)
     {
-      a(paramActivity, "wallet", ".pay.ui.WalletLoanRepaymentUI", -1, null, false);
-      AppMethodBeat.o(47407);
+      Object localObject = this.Anm.Ant;
+      localObject = ((p)localObject).a(((p)localObject).AeD, -1);
+      localObject = this.zQQ.aup((String)localObject);
+      this.Ann.a((FavorPayInfo)localObject);
+    }
+    AppMethodBeat.o(70952);
+  }
+  
+  public final void dismiss()
+  {
+    AppMethodBeat.i(70949);
+    try
+    {
+      super.dismiss();
+      AppMethodBeat.o(70949);
       return;
     }
-    a(paramActivity, WalletCheckPwdUI.class, -1, null, false);
-    AppMethodBeat.o(47407);
+    catch (Exception localException)
+    {
+      ad.e("MicroMsg.WalletFavorDialog", "dismiss exception, e = " + localException.getMessage());
+      AppMethodBeat.o(70949);
+    }
   }
   
-  public final String bzC()
+  protected final void onCreate(Bundle paramBundle)
   {
-    return null;
+    AppMethodBeat.i(70948);
+    super.onCreate(paramBundle);
+    setContentView(this.hIZ);
+    AppMethodBeat.o(70948);
   }
   
-  public final boolean c(Activity paramActivity, Bundle paramBundle)
+  public final boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    return false;
+    AppMethodBeat.i(70953);
+    if (paramInt == 4) {
+      eed();
+    }
+    boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
+    AppMethodBeat.o(70953);
+    return bool;
   }
   
-  public final void e(Activity paramActivity, int paramInt) {}
+  public final void setCancelable(boolean paramBoolean)
+  {
+    AppMethodBeat.i(70951);
+    super.setCancelable(paramBoolean);
+    setCanceledOnTouchOutside(paramBoolean);
+    AppMethodBeat.o(70951);
+  }
+  
+  final class a
+    extends BaseAdapter
+  {
+    int Anp;
+    List<t> Anq;
+    j Ans;
+    p<String> Ant;
+    
+    public a()
+    {
+      AppMethodBeat.i(70943);
+      this.Anp = -1;
+      this.Anq = new LinkedList();
+      this.Ans = null;
+      this.Ant = new p()
+      {
+        public final String a(Vector<p<String>.b> paramAnonymousVector, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(70942);
+          if (paramAnonymousVector == null)
+          {
+            ad.w("MicroMsg.WalletFavorDialog", "func[getComposedKey] keyList null");
+            AppMethodBeat.o(70942);
+            return "";
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          int i = 0;
+          while (i < paramAnonymousVector.size())
+          {
+            p.a locala = ((p.b)paramAnonymousVector.get(i)).AeL;
+            if ((i == paramAnonymousInt) || (locala == p.a.AeH)) {
+              localStringBuilder.append((String)((p.b)paramAnonymousVector.get(i)).AeK + "-");
+            }
+            i += 1;
+          }
+          if (localStringBuilder.length() == 0)
+          {
+            AppMethodBeat.o(70942);
+            return "0";
+          }
+          if (localStringBuilder.length() > 1) {
+            localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+          }
+          paramAnonymousVector = localStringBuilder.toString();
+          AppMethodBeat.o(70942);
+          return paramAnonymousVector;
+        }
+      };
+      AppMethodBeat.o(70943);
+    }
+    
+    public final int getCount()
+    {
+      AppMethodBeat.i(70944);
+      int i = this.Anq.size();
+      AppMethodBeat.o(70944);
+      return i;
+    }
+    
+    public final Object getItem(int paramInt)
+    {
+      AppMethodBeat.i(70945);
+      Object localObject = this.Anq.get(paramInt);
+      AppMethodBeat.o(70945);
+      return localObject;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return 0L;
+    }
+    
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(70946);
+      Object localObject3;
+      label154:
+      label185:
+      Object localObject1;
+      Object localObject2;
+      int i;
+      if (paramView == null)
+      {
+        paramView = n.c(n.this).inflate(2131495939, paramViewGroup, false);
+        paramViewGroup = new n.c();
+        paramViewGroup.Anv = paramView.findViewById(2131306726);
+        paramViewGroup.kEu = ((TextView)paramView.findViewById(2131306725));
+        paramViewGroup.nym = ((TextView)paramView.findViewById(2131306724));
+        paramViewGroup.kFd = ((TextView)paramView.findViewById(2131306723));
+        paramViewGroup.Anx = ((CheckBox)paramView.findViewById(2131306722));
+        paramViewGroup.Anw = ((ImageView)paramView.findViewById(2131306721));
+        paramView.setTag(paramViewGroup);
+        localObject3 = (t)getItem(paramInt);
+        if ((paramInt != this.Anp) || (this.Anp <= 0)) {
+          break label418;
+        }
+        paramViewGroup.Anv.setVisibility(0);
+        paramViewGroup.Anw.setVisibility(8);
+        if (bt.isNullOrNil(((t)localObject3).zPk)) {
+          break label438;
+        }
+        paramViewGroup.kEu.setText(((t)localObject3).zPk);
+        paramViewGroup.kEu.setVisibility(0);
+        localObject1 = ((t)localObject3).zOl;
+        if ((this.Ans == null) || (this.Ans.zOJ == null)) {
+          break label459;
+        }
+        localObject2 = this.Ans.zOJ;
+        i = 0;
+        label221:
+        if (i >= ((List)localObject2).size()) {
+          break label459;
+        }
+        if (!((String)localObject1).equals(((f)((List)localObject2).get(i)).zOl)) {
+          break label450;
+        }
+        localObject1 = (f)((List)localObject2).get(i);
+        label270:
+        localObject2 = ((t)localObject3).zOm;
+        localObject3 = ((t)localObject3).zOn;
+        if (localObject1 == null) {
+          break label527;
+        }
+        localObject3 = ((f)localObject1).zOm;
+        localObject2 = ((f)localObject1).zOn;
+        localObject1 = localObject3;
+      }
+      for (;;)
+      {
+        if (!bt.isNullOrNil((String)localObject1))
+        {
+          paramViewGroup.nym.setText((CharSequence)localObject1);
+          paramViewGroup.nym.setVisibility(0);
+          label332:
+          if (bt.isNullOrNil((String)localObject2)) {
+            break label477;
+          }
+          paramViewGroup.kFd.setText((CharSequence)localObject2);
+          paramViewGroup.kFd.setVisibility(0);
+          label357:
+          localObject1 = ((p.b)this.Ant.AeD.get(paramInt)).AeL;
+          if (localObject1 != p.a.AeG) {
+            break label489;
+          }
+          paramViewGroup.Anx.setChecked(false);
+          paramViewGroup.Anx.setEnabled(false);
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(70946);
+          return paramView;
+          paramViewGroup = (n.c)paramView.getTag();
+          break;
+          label418:
+          paramViewGroup.Anv.setVisibility(8);
+          paramViewGroup.Anw.setVisibility(0);
+          break label154;
+          label438:
+          paramViewGroup.kEu.setVisibility(8);
+          break label185;
+          label450:
+          i += 1;
+          break label221;
+          label459:
+          localObject1 = null;
+          break label270;
+          paramViewGroup.nym.setVisibility(8);
+          break label332;
+          label477:
+          paramViewGroup.kFd.setVisibility(8);
+          break label357;
+          label489:
+          paramViewGroup.Anx.setEnabled(true);
+          if (localObject1 == p.a.AeH) {
+            paramViewGroup.Anx.setChecked(true);
+          } else {
+            paramViewGroup.Anx.setChecked(false);
+          }
+        }
+        label527:
+        localObject1 = localObject2;
+        localObject2 = localObject3;
+      }
+    }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void a(FavorPayInfo paramFavorPayInfo);
+  }
+  
+  static final class c
+  {
+    View Anv;
+    ImageView Anw;
+    CheckBox Anx;
+    TextView kEu;
+    TextView kFd;
+    TextView nym;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.n
  * JD-Core Version:    0.7.0.1
  */

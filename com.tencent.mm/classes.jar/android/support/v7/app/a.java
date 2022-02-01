@@ -6,36 +6,36 @@ import android.support.v7.d.a.d;
 public final class a
   implements DrawerLayout.c
 {
-  private final a MT;
-  private d MU;
-  private boolean MV;
-  boolean MW;
-  private final int MX;
-  private final int MY;
+  private final a.a TU;
+  private d TV;
+  private boolean TW;
+  boolean TX;
+  private final int TY;
+  private final int TZ;
   
   private void L(float paramFloat)
   {
     if (paramFloat == 1.0F) {
-      this.MU.U(true);
+      this.TV.aa(true);
     }
     for (;;)
     {
-      this.MU.setProgress(paramFloat);
+      this.TV.setProgress(paramFloat);
       return;
       if (paramFloat == 0.0F) {
-        this.MU.U(false);
+        this.TV.aa(false);
       }
     }
   }
   
-  private void aN(int paramInt)
+  private void bg(int paramInt)
   {
-    this.MT.aN(paramInt);
+    this.TU.bg(paramInt);
   }
   
   public final void D(float paramFloat)
   {
-    if (this.MV)
+    if (this.TW)
     {
       L(Math.min(1.0F, Math.max(0.0F, paramFloat)));
       return;
@@ -43,30 +43,25 @@ public final class a
     L(0.0F);
   }
   
-  public final void dY()
+  public final void fq()
   {
     L(1.0F);
-    if (this.MW) {
-      aN(this.MY);
+    if (this.TX) {
+      bg(this.TZ);
     }
   }
   
-  public final void dZ()
+  public final void fr()
   {
     L(0.0F);
-    if (this.MW) {
-      aN(this.MX);
+    if (this.TX) {
+      bg(this.TY);
     }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void aN(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v7.app.a
  * JD-Core Version:    0.7.0.1
  */

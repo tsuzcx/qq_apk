@@ -22,17 +22,17 @@ public class HeartBeatEmojiUI
   extends MMActivity
   implements SensorEventListener
 {
-  private com.tencent.mm.wear.app.ui.widget.d aeC;
-  private SensorManager aeh;
-  private Sensor afO;
-  private MMGIFImageView afP;
-  private LinkedList<String> afQ;
-  private TextView afy;
+  private SensorManager ahJ;
+  private com.tencent.mm.wear.app.ui.widget.d aie;
+  private TextView aja;
+  private Sensor ajq;
+  private MMGIFImageView ajr;
+  private LinkedList<String> ajs;
   
-  public final void nl()
+  public final void nY()
   {
     Object localObject = new f();
-    ((f)localObject).Vt = "com.tencent.xin.emoticon.heartbeatg";
+    ((f)localObject).Xo = "com.tencent.xin.emoticon.heartbeatg";
     try
     {
       localObject = new com.tencent.mm.wear.app.f.b(11004, ((f)localObject).toByteArray());
@@ -48,7 +48,7 @@ public class HeartBeatEmojiUI
           {
             localg.h(paramAnonymousArrayOfByte);
             label20:
-            HeartBeatEmojiUI.a(HeartBeatEmojiUI.this).addAll(localg.Vu);
+            HeartBeatEmojiUI.a(HeartBeatEmojiUI.this).addAll(localg.Xp);
             HeartBeatEmojiUI.b(HeartBeatEmojiUI.this);
             return;
           }
@@ -58,18 +58,18 @@ public class HeartBeatEmojiUI
           }
         }
       });
-      h.mc().a((com.tencent.mm.wear.app.g.a)localObject);
+      h.mP().a((com.tencent.mm.wear.app.g.a)localObject);
       return;
     }
     catch (IOException localIOException) {}
   }
   
-  public final void no()
+  public final void ob()
   {
-    this.aeh = ((SensorManager)getSystemService("sensor"));
-    this.afO = this.aeh.getDefaultSensor(21);
-    if (this.afO != null) {
-      this.aeh.registerListener(this, this.afO, 3);
+    this.ahJ = ((SensorManager)getSystemService("sensor"));
+    this.ajq = this.ahJ.getDefaultSensor(21);
+    if (this.ajq != null) {
+      this.ahJ.registerListener(this, this.ajq, 3);
     }
   }
   
@@ -83,22 +83,22 @@ public class HeartBeatEmojiUI
     super.onCreate(paramBundle);
     getWindow().addFlags(2097280);
     setContentView(2130903054);
-    this.afQ = new LinkedList();
-    this.aeC = new com.tencent.mm.wear.app.ui.widget.d(this);
-    this.afy = ((TextView)findViewById(2131558447));
-    this.aeC.a(new e()
+    this.ajs = new LinkedList();
+    this.aie = new com.tencent.mm.wear.app.ui.widget.d(this);
+    this.aja = ((TextView)findViewById(2131558448));
+    this.aie.a(new e()
     {
       public final void onStart()
       {
-        HeartBeatEmojiUI.this.nl();
+        HeartBeatEmojiUI.this.nY();
       }
     });
-    this.aeC.startLoading();
-    this.afP = ((MMGIFImageView)findViewById(2131558456));
+    this.aie.startLoading();
+    this.ajr = ((MMGIFImageView)findViewById(2131558457));
     try
     {
-      this.afP.a(getAssets().open("heartbeat_bg.gif"), "");
-      nl();
+      this.ajr.a(getAssets().open("heartbeat_bg.gif"), "");
+      nY();
       return;
     }
     catch (IOException paramBundle)
@@ -112,8 +112,8 @@ public class HeartBeatEmojiUI
   
   protected void onDestroy()
   {
-    if (this.afO != null) {
-      this.aeh.unregisterListener(this, this.afO);
+    if (this.ajq != null) {
+      this.ahJ.unregisterListener(this, this.ajq);
     }
     super.onDestroy();
   }
@@ -121,13 +121,13 @@ public class HeartBeatEmojiUI
   protected void onPause()
   {
     super.onPause();
-    h.mf().stop();
+    h.mS().stop();
   }
   
   protected void onResume()
   {
     super.onResume();
-    h.mf().start();
+    h.mS().start();
   }
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
@@ -136,34 +136,34 @@ public class HeartBeatEmojiUI
     int j = (int)paramSensorEvent.values[0];
     if (paramSensorEvent.accuracy > 0)
     {
-      this.aeh.unregisterListener(this, this.afO);
+      this.ahJ.unregisterListener(this, this.ajq);
       if (j > 70) {
         break label155;
       }
-      paramSensorEvent = (String)this.afQ.get(2);
-      if (nd() <= 0) {
+      paramSensorEvent = (String)this.ajs.get(2);
+      if (nQ() <= 0) {
         break label191;
       }
     }
     for (;;)
     {
       ag localag = new ag();
-      localag.VN = getUsername();
-      localag.Vr = paramSensorEvent;
-      localag.Wt = getString(2131165210, new Object[] { Integer.valueOf(j) });
-      localag.Ws = i;
-      localag.Vt = "com.tencent.xin.emoticon.heartbeatg";
+      localag.XI = getUsername();
+      localag.Xm = paramSensorEvent;
+      localag.Yo = getString(2131165210, new Object[] { Integer.valueOf(j) });
+      localag.Yn = i;
+      localag.Xo = "com.tencent.xin.emoticon.heartbeatg";
       label155:
       try
       {
         paramSensorEvent = new com.tencent.mm.wear.app.f.b(11025, localag.toByteArray());
-        paramSensorEvent.F(true);
+        paramSensorEvent.I(true);
         paramSensorEvent.a(new com.tencent.mm.wear.app.f.d()
         {
           public final void b(int paramAnonymousInt1, int paramAnonymousInt2, byte[] paramAnonymousArrayOfByte)
           {
-            com.tencent.mm.wear.app.g.a.nG();
-            com.tencent.mm.wear.a.b.a.aiT.postDelayed(new Runnable()
+            com.tencent.mm.wear.app.g.a.ou();
+            com.tencent.mm.wear.a.b.a.amv.postDelayed(new Runnable()
             {
               public final void run()
               {
@@ -173,16 +173,16 @@ public class HeartBeatEmojiUI
             }, 1000L);
           }
         });
-        h.mc().a(paramSensorEvent);
+        h.mP().a(paramSensorEvent);
         return;
       }
       catch (IOException paramSensorEvent) {}
       if (j <= 90)
       {
-        paramSensorEvent = (String)this.afQ.get(1);
+        paramSensorEvent = (String)this.ajs.get(1);
         break;
       }
-      paramSensorEvent = (String)this.afQ.get(0);
+      paramSensorEvent = (String)this.ajs.get(0);
       break;
       label191:
       i = 1;

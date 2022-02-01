@@ -23,7 +23,7 @@ public @interface JgClassChecked
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.jg.JgClassChecked
  * JD-Core Version:    0.7.0.1
  */

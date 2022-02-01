@@ -2134,7 +2134,8 @@
     _context_val = '',
     _SHA_KEY = '__sha_key',
     _xxyy = __dgtRdm || __wx._getDgtVerifyRandomStr && __wx._getDgtVerifyRandomStr(),
-    isDgtVerifyEnabled = __dgtOn || __wx._isDgtVerifyEnabled && __wx._isDgtVerifyEnabled();
+    isDgtVerifyEnabled = __dgtOn || __wx._isDgtVerifyEnabled && __wx._isDgtVerifyEnabled(),
+    authState = 'unauthorized';
 
   var _handleMessageIdentifier = _handleMessageFromWeixin;
   var _logIdentifier = _log;
@@ -2142,6 +2143,10 @@
   var _onfor3rdIdentifier = _onfor3rd;
   var _callIdentifier = _call;
   __initLog(__DL, "__wx define:" + _xxyy + "," + isDgtVerifyEnabled);
+
+  function _state() {
+    return authState;
+  }
 
   function _sendMessage(msg) {
     var msgArray = []; msgArray.push(msg);
@@ -2409,10 +2414,22 @@
           s = '100%';
           break;
         case '3':
-          s = '120%';
+          s = '110%';
           break;
         case '4':
+          s = '112.5%';
+          break;
+        case '5':
+          s = '120%';
+          break;
+        case '6':
           s = '140%';
+          break;
+        case '7':
+          s = '155%';
+          break;
+        case '8':
+          s = '165%';
           break;
         default:
           return;
@@ -2654,6 +2671,7 @@
         }));
         _call('shareQQ', data);
       } else {
+        _log('share QQ onMenuShareQQ not found');
         data = {
           "link": document.documentURI || _session_data.init_url,
           "desc": document.documentURI || _session_data.init_url,
@@ -2842,6 +2860,21 @@
       document.dispatchEvent(readyEvent);
     });
 
+    // the first event
+    _on('sys:auth', function (ses) {
+      // bridge ready
+      var readyEvent;
+      try {
+        readyEvent = new Event('WeixinJSBridgeAuthChanged');
+      } catch (e) {
+        readyEvent = document.createEvent('Event');
+        readyEvent.initEvent('WeixinJSBridgeAuthChanged');
+      }
+      authState = ses.state;
+      readyEvent.state = authState;
+      document.dispatchEvent(readyEvent);
+    });
+
     _on('sys:bridged', function (ses) {
       // 避免由于Java层多次发起init请求，造成网页端多次收到WeixinJSBridgeReady事件
       if (window.WeixinJSBridge._hasInit) {
@@ -2980,6 +3013,7 @@
     on: _onfor3rd,
     env: _env,
     log: _log,
+    state: _state,
     // private
     _hasInit: false,
     _createdByScriptTag: (document.currentScript !== 'undefined')

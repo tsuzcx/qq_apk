@@ -6,34 +6,34 @@ import com.tencent.mm.plugin.report.service.h;
 public final class e
   implements a
 {
-  public final int cfL()
+  public final int dgb()
   {
     return 13235;
   }
   
-  public final void e(int paramInt, Object... paramVarArgs)
+  public final void f(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(35699);
+    AppMethodBeat.i(94973);
     switch (paramInt)
     {
     default: 
-      h.qsU.e(13235, paramVarArgs);
-      AppMethodBeat.o(35699);
+      h.vKh.f(13235, paramVarArgs);
+      AppMethodBeat.o(94973);
       return;
     }
-    AppMethodBeat.o(35699);
+    AppMethodBeat.o(94973);
   }
   
   public final void u(Object... paramVarArgs)
   {
-    AppMethodBeat.i(35698);
-    e(0, paramVarArgs);
-    AppMethodBeat.o(35698);
+    AppMethodBeat.i(94972);
+    f(0, paramVarArgs);
+    AppMethodBeat.o(94972);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.a.a.e
  * JD-Core Version:    0.7.0.1
  */

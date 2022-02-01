@@ -1,17 +1,22 @@
 package com.tencent.mm.plugin.appbrand.jsapi.l;
 
-import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.jsapi.u;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.q;
 
 public final class z
-  extends u<d>
+  extends a<q>
 {
-  public static final int CTRL_INDEX = 9;
-  public static final String NAME = "showNavigationBarLoading";
+  public static final int CTRL_INDEX = 418;
+  public static final String NAME = "setTabBarItem";
+  
+  public final boolean aXA()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.l.z
  * JD-Core Version:    0.7.0.1
  */

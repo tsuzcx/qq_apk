@@ -8,25 +8,25 @@ public abstract class a
 {
   public boolean mCancelled = false;
   public int mPriority = 2147483647;
-  public long mRN = 0L;
-  public long mRO = 0L;
-  public List<a.a> mRP;
-  public Object mRQ;
+  public long roF = 0L;
+  public long roG = 0L;
+  public List<a> roH;
+  public Object roI;
   
-  protected final void Pg(String paramString)
-  {
-    if (this.mRP == null) {
-      this.mRP = new ArrayList();
-    }
-    a.a locala = new a.a(this);
-    locala.mRR = paramString;
-    locala.timestamp = System.currentTimeMillis();
-    this.mRP.add(locala);
-  }
-  
-  public String aAn()
+  public String aWs()
   {
     return "";
+  }
+  
+  protected final void abf(String paramString)
+  {
+    if (this.roH == null) {
+      this.roH = new ArrayList();
+    }
+    a locala = new a();
+    locala.roJ = paramString;
+    locala.timestamp = System.currentTimeMillis();
+    this.roH.add(locala);
   }
   
   public abstract boolean execute();
@@ -49,6 +49,14 @@ public abstract class a
   public boolean isCancelled()
   {
     return this.mCancelled;
+  }
+  
+  public final class a
+  {
+    public String roJ;
+    public long timestamp;
+    
+    public a() {}
   }
 }
 

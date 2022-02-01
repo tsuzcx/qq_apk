@@ -3,53 +3,53 @@ package com.tencent.mm.plugin.shake.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.shake.c.c.a;
 import com.tencent.mm.plugin.shake.d.a.k;
-import com.tencent.mm.pluginsdk.p.b;
+import com.tencent.mm.pluginsdk.n.b;
 
 public final class h
-  implements p.b
+  implements n.b
 {
-  public final int clg()
+  public final int doU()
   {
-    AppMethodBeat.i(24461);
-    int i = m.clo().bbZ();
-    AppMethodBeat.o(24461);
+    AppMethodBeat.i(28136);
+    int i = m.dpc().bIR();
+    AppMethodBeat.o(28136);
     return i;
   }
   
-  public final void clh()
+  public final void doV()
   {
-    AppMethodBeat.i(24462);
-    a.clh();
-    AppMethodBeat.o(24462);
+    AppMethodBeat.i(28137);
+    a.doV();
+    AppMethodBeat.o(28137);
   }
   
-  public final boolean cli()
+  public final boolean doW()
   {
-    AppMethodBeat.i(24463);
-    boolean bool = a.cli();
-    AppMethodBeat.o(24463);
+    AppMethodBeat.i(28138);
+    boolean bool = a.doW();
+    AppMethodBeat.o(28138);
     return bool;
   }
   
-  public final void clj()
+  public final void doX()
   {
-    AppMethodBeat.i(24464);
-    a.clj();
-    AppMethodBeat.o(24464);
+    AppMethodBeat.i(28139);
+    a.doX();
+    AppMethodBeat.o(28139);
   }
   
-  public final void clk()
+  public final void doY()
   {
-    AppMethodBeat.i(24465);
-    a.clk();
-    AppMethodBeat.o(24465);
+    AppMethodBeat.i(28140);
+    a.doY();
+    AppMethodBeat.o(28140);
   }
   
-  public final boolean cll()
+  public final boolean doZ()
   {
-    AppMethodBeat.i(24466);
-    boolean bool = k.cll();
-    AppMethodBeat.o(24466);
+    AppMethodBeat.i(28141);
+    boolean bool = k.doZ();
+    AppMethodBeat.o(28141);
     return bool;
   }
 }

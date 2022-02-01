@@ -2,51 +2,65 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.plugin.sns.b.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.g.c.fj;
+import com.tencent.mm.plugin.sns.c.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storagebase.h;
 
 public final class k
   extends com.tencent.mm.sdk.e.j<j>
-  implements d
+  implements e
 {
   public static final String[] SQL_CREATE;
-  public h fnw;
+  public h gPa;
   
   static
   {
-    AppMethodBeat.i(37854);
+    AppMethodBeat.i(97465);
     SQL_CREATE = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(j.info, "SnsComment") };
-    AppMethodBeat.o(37854);
+    AppMethodBeat.o(97465);
   }
   
   public k(h paramh)
   {
-    super(paramh, j.info, "SnsComment", eo.INDEX_CREATE);
-    this.fnw = paramh;
+    super(paramh, j.info, "SnsComment", fj.INDEX_CREATE);
+    this.gPa = paramh;
   }
   
-  public static String csr()
+  public static String dxI()
   {
     return "select *, rowid from SnsComment";
   }
   
-  public final Cursor Ew(int paramInt)
+  public final boolean E(long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(37844);
+    AppMethodBeat.i(97463);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      String str = " update SnsComment set isSilence = " + i + " where isSilence != " + i + " and  snsID = " + paramLong;
+      ad.i("MicroMsg.SnsCommentStorage", "updateIsSilence ".concat(String.valueOf(str)));
+      paramBoolean = this.gPa.execSQL("SnsComment", str);
+      AppMethodBeat.o(97463);
+      return paramBoolean;
+    }
+  }
+  
+  public final Cursor Na(int paramInt)
+  {
+    AppMethodBeat.i(97455);
     Object localObject = "select *, rowid from SnsComment where isSend = 0 order by createTime desc LIMIT ".concat(String.valueOf(paramInt));
-    ab.v("MicroMsg.SnsCommentStorage", "getCursor sql:".concat(String.valueOf(localObject)));
-    localObject = this.fnw.a((String)localObject, null, 0);
-    AppMethodBeat.o(37844);
+    ad.v("MicroMsg.SnsCommentStorage", "getCursor sql:".concat(String.valueOf(localObject)));
+    localObject = this.gPa.a((String)localObject, null, 0);
+    AppMethodBeat.o(97455);
     return localObject;
   }
   
   public final boolean a(long paramLong, String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(37846);
-    if (bo.isNullOrNil(paramString2)) {}
+    AppMethodBeat.i(97457);
+    if (bt.isNullOrNil(paramString2)) {}
     for (paramString1 = "select count(*) from SnsComment where snsID = " + paramLong + " and createTime = " + paramInt + " and talker = '" + paramString1 + "'";; paramString1 = "select count(*) from SnsComment where snsID = " + paramLong + " and clientId = '" + paramString2 + "'")
     {
       paramString1 = rawQuery(paramString1, new String[0]);
@@ -59,76 +73,76 @@ public final class k
       if (paramInt <= 0) {
         break;
       }
-      AppMethodBeat.o(37846);
+      AppMethodBeat.o(97457);
       return true;
     }
-    AppMethodBeat.o(37846);
+    AppMethodBeat.o(97457);
     return false;
     label144:
-    AppMethodBeat.o(37846);
+    AppMethodBeat.o(97457);
     return false;
   }
   
-  public final int bbZ()
+  public final int bIR()
   {
     int i = 0;
-    AppMethodBeat.i(37843);
-    Cursor localCursor = this.fnw.a(" select count(*) from SnsComment where isRead = ? and isSilence != ? ", new String[] { "0", "1" }, 2);
+    AppMethodBeat.i(97454);
+    Cursor localCursor = this.gPa.a(" select count(*) from SnsComment where isRead = ? and isSilence != ? ", new String[] { "0", "1" }, 2);
     if (localCursor == null)
     {
-      AppMethodBeat.o(37843);
+      AppMethodBeat.o(97454);
       return 0;
     }
     if (localCursor.moveToFirst()) {
       i = localCursor.getInt(0);
     }
     localCursor.close();
-    AppMethodBeat.o(37843);
+    AppMethodBeat.o(97454);
     return i;
   }
   
-  public final boolean bca()
+  public final boolean bIS()
   {
-    AppMethodBeat.i(37851);
-    boolean bool = this.fnw.execSQL("SnsComment", " update SnsComment set isRead = 1 where isRead = 0");
-    AppMethodBeat.o(37851);
+    AppMethodBeat.i(97462);
+    boolean bool = this.gPa.execSQL("SnsComment", " update SnsComment set isRead = 1 where isRead = 0");
+    AppMethodBeat.o(97462);
     return bool;
   }
   
-  public final Cursor css()
+  public final void dgI()
   {
-    AppMethodBeat.i(37845);
-    Cursor localCursor = this.fnw.a("select *, rowid from SnsComment where isRead = ?  and isSilence != ?  order by createTime desc", new String[] { "0", "1" }, 0);
-    AppMethodBeat.o(37845);
+    AppMethodBeat.i(97464);
+    this.gPa.aJM("SnsComment");
+    AppMethodBeat.o(97464);
+  }
+  
+  public final Cursor dxJ()
+  {
+    AppMethodBeat.i(97456);
+    Cursor localCursor = this.gPa.a("select *, rowid from SnsComment where isRead = ?  and isSilence != ?  order by createTime desc", new String[] { "0", "1" }, 0);
+    AppMethodBeat.o(97456);
     return localCursor;
   }
   
-  public final int cst()
+  public final int dxK()
   {
-    AppMethodBeat.i(37847);
+    AppMethodBeat.i(97458);
     Cursor localCursor = rawQuery("select count(*) from SnsComment where isSend = 0", new String[0]);
     if (localCursor != null)
     {
       localCursor.moveToFirst();
       int i = localCursor.getInt(0);
       localCursor.close();
-      AppMethodBeat.o(37847);
+      AppMethodBeat.o(97458);
       return i;
     }
-    AppMethodBeat.o(37847);
+    AppMethodBeat.o(97458);
     return 0;
   }
   
-  public final void csu()
+  public final j h(long paramLong1, long paramLong2, int paramInt)
   {
-    AppMethodBeat.i(37853);
-    this.fnw.ate("SnsComment");
-    AppMethodBeat.o(37853);
-  }
-  
-  public final j f(long paramLong1, long paramLong2, int paramInt)
-  {
-    AppMethodBeat.i(37848);
+    AppMethodBeat.i(97459);
     Object localObject1 = "";
     if (paramInt == 9) {
       localObject1 = "" + "(2)";
@@ -148,7 +162,7 @@ public final class k
     }
     for (;;)
     {
-      AppMethodBeat.o(37848);
+      AppMethodBeat.o(97459);
       return localObject1;
       localObject1 = null;
       break;
@@ -156,9 +170,9 @@ public final class k
     }
   }
   
-  public final boolean g(long paramLong1, long paramLong2, int paramInt)
+  public final boolean i(long paramLong1, long paramLong2, int paramInt)
   {
-    AppMethodBeat.i(37850);
+    AppMethodBeat.i(97461);
     String str1 = "";
     if (paramInt == 9) {
       str1 = "" + "(2)";
@@ -168,32 +182,18 @@ public final class k
       str2 = str1 + "(8,16)";
     }
     str1 = "delete from SnsComment where snsID = " + paramLong1 + " and commentSvrID = " + paramLong2 + " and type in " + str2;
-    boolean bool = this.fnw.execSQL("SnsComment", str1);
-    AppMethodBeat.o(37850);
+    boolean bool = this.gPa.execSQL("SnsComment", str1);
+    AppMethodBeat.o(97461);
     return bool;
   }
   
-  public final boolean lU(long paramLong)
+  public final boolean tc(long paramLong)
   {
-    AppMethodBeat.i(37849);
+    AppMethodBeat.i(97460);
     String str = "delete from SnsComment where snsID = ".concat(String.valueOf(paramLong));
-    boolean bool = this.fnw.execSQL("SnsComment", str);
-    AppMethodBeat.o(37849);
+    boolean bool = this.gPa.execSQL("SnsComment", str);
+    AppMethodBeat.o(97460);
     return bool;
-  }
-  
-  public final boolean z(long paramLong, boolean paramBoolean)
-  {
-    AppMethodBeat.i(37852);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      String str = " update SnsComment set isSilence = " + i + " where isSilence != " + i + " and  snsID = " + paramLong;
-      ab.i("MicroMsg.SnsCommentStorage", "updateIsSilence ".concat(String.valueOf(str)));
-      paramBoolean = this.fnw.execSQL("SnsComment", str);
-      AppMethodBeat.o(37852);
-      return paramBoolean;
-    }
   }
 }
 

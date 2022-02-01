@@ -11,7 +11,7 @@ public class SourceApplicationInfo$Factory
   public static SourceApplicationInfo create(Activity paramActivity)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(72224);
+    AppMethodBeat.i(17660);
     Object localObject1 = "";
     Object localObject2 = paramActivity.getCallingActivity();
     if (localObject2 != null)
@@ -20,7 +20,7 @@ public class SourceApplicationInfo$Factory
       localObject1 = localObject2;
       if (((String)localObject2).equals(paramActivity.getPackageName()))
       {
-        AppMethodBeat.o(72224);
+        AppMethodBeat.o(17660);
         return null;
       }
     }
@@ -41,7 +41,7 @@ public class SourceApplicationInfo$Factory
         {
           paramActivity = localBundle.getBundle("referer_app_link");
           if (paramActivity == null) {
-            break label155;
+            break label158;
           }
           paramActivity = paramActivity.getString("package");
           bool1 = true;
@@ -52,9 +52,9 @@ public class SourceApplicationInfo$Factory
     {
       ((Intent)localObject2).putExtra("_fbSourceApplicationHasBeenSet", true);
       paramActivity = new SourceApplicationInfo(paramActivity, bool1, null);
-      AppMethodBeat.o(72224);
+      AppMethodBeat.o(17660);
       return paramActivity;
-      label155:
+      label158:
       bool1 = true;
       paramActivity = (Activity)localObject1;
     }
@@ -62,7 +62,7 @@ public class SourceApplicationInfo$Factory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.facebook.appevents.internal.SourceApplicationInfo.Factory
  * JD-Core Version:    0.7.0.1
  */

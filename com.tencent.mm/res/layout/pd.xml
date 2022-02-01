@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/kk" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:layout_below="@id/ao5" style="@style/go"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="120.0dip">
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/h6" android:id="@id/azs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:text="" />
-        <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="20.0dip">
-            <TextView android:textSize="@dimen/du" android:textColor="@color/h6" android:layout_gravity="top" android:id="@id/azt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-5.5dip" android:text="¥" android:includeFontPadding="false" />
-            <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="@dimen/l7" android:textColor="@color/h6" android:id="@id/azu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:background="@drawable/kj" android:paddingLeft="25.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip">
-        <TextView android:textSize="@dimen/nh" android:textColor="@color/w6" android:id="@id/azv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+    <include layout="@layout/o5" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gp">
+        <TextView android:id="@id/aob" android:visibility="gone" style="@style/gu" />
+        <com.tencent.mm.ui.widget.MMTextView android:id="@id/ala" android:background="@drawable/l8" android:maxWidth="@dimen/w9" android:minHeight="@dimen/aa" style="@style/h0" />
     </LinearLayout>
 </LinearLayout>

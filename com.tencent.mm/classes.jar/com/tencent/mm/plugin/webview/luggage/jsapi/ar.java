@@ -1,37 +1,47 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
+import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.service.i;
+import com.tencent.mm.plugin.webview.luggage.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import org.json.JSONObject;
 
 public class ar
-  extends bi<e>
+  extends bo<f>
 {
-  public final void a(Context paramContext, String paramString, bh.a parama) {}
+  public final void a(Context paramContext, String paramString, bn.a parama) {}
   
-  public final void b(a<e>.a parama)
+  public final void b(a<f>.a parama)
   {
-    AppMethodBeat.i(6359);
-    ab.i("MicroMsg.JsApiRecordVideo", "invoke");
-    i.a(parama, 1);
-    AppMethodBeat.o(6359);
+    AppMethodBeat.i(78599);
+    ad.i("MicroMsg.JsApiPrivateOpenWeappFunctionalPage", "invokeInOwn");
+    Object localObject = parama.bZV.bZb;
+    String str = ((JSONObject)localObject).optString("uuid");
+    localObject = ((JSONObject)localObject).optString("req_data");
+    ((i)g.ab(i.class)).bS(str, (String)localObject);
+    parama.a("", null);
+    ((f)parama.bZU).ATw = true;
+    AppMethodBeat.o(78599);
   }
   
-  public final int bjL()
+  public final int bQV()
   {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "recordVideo";
+    return "privateOpenWeappFunctionalPage";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.ar
  * JD-Core Version:    0.7.0.1
  */

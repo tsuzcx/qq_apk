@@ -3,44 +3,45 @@ package com.tencent.mm.plugin.qqmail.stub;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.plugin.qqmail.ui.c;
 import com.tencent.mm.plugin.qqmail.ui.c.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.a;
 
 @a(7)
 public class QQMailStubProxyUI
-  extends Activity
+  extends HellActivity
 {
-  protected void onCreate(final Bundle paramBundle)
+  public void onCreate(final Bundle paramBundle)
   {
-    AppMethodBeat.i(68078);
+    AppMethodBeat.i(122804);
     super.onCreate(paramBundle);
-    ab.d("MicroMsg.QQMail.QQMailStubProxyUI", "onCreate");
+    ad.d("MicroMsg.QQMail.QQMailStubProxyUI", "onCreate");
     paramBundle = new c(this);
     paramBundle.a(new c.a()
     {
-      public final void cdT()
+      public final void deh()
       {
-        AppMethodBeat.i(68076);
-        ab.d("MicroMsg.QQMail.QQMailStubProxyUI", "onAfterVerify");
+        AppMethodBeat.i(122802);
+        ad.d("MicroMsg.QQMail.QQMailStubProxyUI", "onAfterVerify");
         paramBundle.release();
         QQMailStubProxyUI.this.setResult(-1);
         QQMailStubProxyUI.this.finish();
-        AppMethodBeat.o(68076);
+        AppMethodBeat.o(122802);
       }
       
-      public final void cdU()
+      public final void dei()
       {
-        AppMethodBeat.i(68077);
-        ab.e("MicroMsg.QQMail.QQMailStubProxyUI", "onVerifyFail, finish self");
+        AppMethodBeat.i(122803);
+        ad.e("MicroMsg.QQMail.QQMailStubProxyUI", "onVerifyFail, finish self");
         paramBundle.release();
         QQMailStubProxyUI.this.setResult(0);
         QQMailStubProxyUI.this.finish();
-        AppMethodBeat.o(68077);
+        AppMethodBeat.o(122803);
       }
     });
-    AppMethodBeat.o(68078);
+    AppMethodBeat.o(122804);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

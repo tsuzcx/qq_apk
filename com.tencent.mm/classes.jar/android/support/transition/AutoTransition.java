@@ -19,13 +19,13 @@ public class AutoTransition
   
   private void init()
   {
-    U(1);
-    d(new Fade(2)).d(new ChangeBounds()).d(new Fade(1));
+    ao(1);
+    c(new Fade(2)).c(new ChangeBounds()).c(new Fade(1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.AutoTransition
  * JD-Core Version:    0.7.0.1
  */

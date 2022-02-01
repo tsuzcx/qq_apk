@@ -2,9 +2,9 @@ package com.github.henryye.nativeiv.bitmap;
 
 public final class d
 {
-  public c auQ = c.auO;
-  public long auR = -1L;
-  public long auS = -1L;
+  public c aQg = c.aQe;
+  public long aQh = -1L;
+  public long aQi = -1L;
 }
 
 

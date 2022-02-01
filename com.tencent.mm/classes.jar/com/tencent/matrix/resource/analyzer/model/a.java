@@ -1,26 +1,74 @@
 package com.tencent.matrix.resource.analyzer.model;
 
-import com.tencent.matrix.resource.a.a.b;
-import java.io.File;
-import java.io.Serializable;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public final class a
-  implements Serializable
+  extends b
 {
-  public final File bOU;
-  public final String bOV;
-  public final String mActivityName;
+  public final boolean cxI;
+  public final boolean cxJ;
+  public final h cxK;
+  public final Throwable cxL;
+  public final long cxM;
+  public final String mClassName;
   
-  public a(File paramFile, String paramString1, String paramString2)
+  private a(boolean paramBoolean, String paramString, h paramh, Throwable paramThrowable, long paramLong)
   {
-    this.bOU = ((File)b.d(paramFile, "hprofFile"));
-    this.bOV = ((String)b.d(paramString1, "refKey"));
-    this.mActivityName = ((String)b.d(paramString2, "activityName"));
+    this.cxI = paramBoolean;
+    this.cxJ = false;
+    this.mClassName = paramString;
+    this.cxK = paramh;
+    this.cxL = paramThrowable;
+    this.cxM = paramLong;
+  }
+  
+  public static a a(String paramString, h paramh, long paramLong)
+  {
+    return new a(true, paramString, paramh, null, paramLong);
+  }
+  
+  public static a a(Throwable paramThrowable, long paramLong)
+  {
+    return new a(false, null, null, paramThrowable, paramLong);
+  }
+  
+  public static a aU(long paramLong)
+  {
+    return new a(false, null, null, null, paramLong);
+  }
+  
+  public final void m(JSONObject paramJSONObject)
+  {
+    JSONArray localJSONArray = new JSONArray();
+    if (this.cxK != null)
+    {
+      Iterator localIterator = this.cxK.elements.iterator();
+      while (localIterator.hasNext()) {
+        localJSONArray.put(((j)localIterator.next()).toString());
+      }
+    }
+    paramJSONObject.put("leakFound", this.cxI).put("excludedLeak", this.cxJ).put("className", this.mClassName).put("failure", String.valueOf(this.cxL)).put("analysisDurationMs", this.cxM).put("referenceChain", localJSONArray);
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("Leak Reference:");
+    if (this.cxK != null)
+    {
+      Iterator localIterator = this.cxK.elements.iterator();
+      while (localIterator.hasNext()) {
+        localStringBuilder.append(((j)localIterator.next()).toString()).append(";");
+      }
+    }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.matrix.resource.analyzer.model.a
  * JD-Core Version:    0.7.0.1
  */

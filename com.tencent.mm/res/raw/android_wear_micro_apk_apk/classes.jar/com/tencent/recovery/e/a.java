@@ -17,7 +17,7 @@ public final class a
 {
   private static String processName = "";
   
-  public static final int C(Context paramContext)
+  public static final int D(Context paramContext)
   {
     SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("recovery-info", 0);
     int j = localSharedPreferences.getInt("KeySafeModeUUID", -1);
@@ -141,7 +141,7 @@ public final class a
     }
   }
   
-  public static String k(long paramLong)
+  public static String n(long paramLong)
   {
     return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(new Date(paramLong));
   }

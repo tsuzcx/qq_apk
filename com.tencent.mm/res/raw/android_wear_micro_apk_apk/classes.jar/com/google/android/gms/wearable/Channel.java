@@ -15,7 +15,7 @@ public abstract interface Channel
   
   public abstract String getPath();
   
-  public abstract String kq();
+  public abstract String kz();
 }
 
 

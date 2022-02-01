@@ -1,84 +1,117 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.freewifi.d.a;
-import com.tencent.mm.plugin.freewifi.d.c;
-import com.tencent.mm.plugin.freewifi.k;
-import com.tencent.mm.plugin.freewifi.k.a;
-import com.tencent.mm.plugin.freewifi.k.b;
-import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.modelgeo.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class b
 {
-  Activity activity;
-  int cCy;
-  String coX;
-  Intent intent;
+  private static String TAG = "MicroMsg.FreeWifi.FreeWifiGetLocation";
+  private boolean isRunning = false;
+  private com.tencent.mm.modelgeo.b rkE = null;
+  private com.tencent.mm.modelgeo.b.a rkF = null;
+  private ap rkG = null;
   
-  public b(Activity paramActivity, String paramString, int paramInt)
+  public static b cwM()
   {
-    AppMethodBeat.i(20933);
-    if (bo.isNullOrNil(paramString))
-    {
-      paramActivity = new IllegalArgumentException("acitvity or apKey cannot be null.");
-      AppMethodBeat.o(20933);
-      throw paramActivity;
-    }
-    this.activity = paramActivity;
-    this.intent = paramActivity.getIntent();
-    this.coX = paramString;
-    this.cCy = paramInt;
-    AppMethodBeat.o(20933);
+    AppMethodBeat.i(25055);
+    b localb = b.cwN();
+    AppMethodBeat.o(25055);
+    return localb;
   }
   
-  final void OM(String paramString)
+  public final void a(final a parama)
   {
-    AppMethodBeat.i(20935);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("free_wifi_error_ui_error_msg", paramString);
-    localIntent.setClass(this.activity, FreeWifiErrorUI.class);
-    this.activity.finish();
-    this.activity.startActivity(localIntent);
-    AppMethodBeat.o(20935);
-  }
-  
-  public final void connect()
-  {
-    AppMethodBeat.i(20934);
-    if (bo.isNullOrNil(this.coX))
+    AppMethodBeat.i(25056);
+    if (this.isRunning)
     {
-      ab.e("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "get key failed");
-      this.activity.finish();
-    }
-    this.activity.getIntent().putExtra("free_wifi_url", this.coX);
-    this.activity.getIntent().putExtra("free_wifi_ap_key", this.coX);
-    if (bo.isNullOrNil(this.coX))
-    {
-      ab.e("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "ap key is null");
-      this.activity.finish();
-      AppMethodBeat.o(20934);
+      AppMethodBeat.o(25056);
       return;
     }
-    ab.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo, desc=it starts net request [getApInfo] for retrieving protocol type and frontpage info. apKey=%s, channel=%d", new Object[] { m.U(this.intent), Integer.valueOf(m.V(this.intent)), this.coX, Integer.valueOf(this.cCy) });
-    k.a locala = k.bAc();
-    locala.coX = this.coX;
-    locala.kMp = m.U(this.intent);
-    locala.mIF = k.b.mIN.mJq;
-    locala.mIG = k.b.mIN.name;
-    locala.cCy = this.cCy;
-    locala.mIE = m.W(this.intent);
-    locala.bAe().c(this.intent, false).bAd();
-    new a(this.coX, this.cCy, m.U(this.intent)).U(this.activity).c(new b.1(this));
-    AppMethodBeat.o(20934);
+    this.isRunning = true;
+    this.rkE = d.axT();
+    if (this.rkE == null)
+    {
+      ad.e(TAG, "doGeoLocation fail, iGetLocation is null");
+      AppMethodBeat.o(25056);
+      return;
+    }
+    if (this.rkF == null) {
+      this.rkF = new com.tencent.mm.modelgeo.b.a()
+      {
+        public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
+        {
+          AppMethodBeat.i(25052);
+          if (!paramAnonymousBoolean)
+          {
+            AppMethodBeat.o(25052);
+            return true;
+          }
+          ad.v(b.TAG, "doGeoLocation.onGetLocation, fLongitude:%f, fLatitude:%f, locType:%d, speed:%f, accuracy:%f", new Object[] { Float.valueOf(paramAnonymousFloat1), Float.valueOf(paramAnonymousFloat2), Integer.valueOf(paramAnonymousInt), Double.valueOf(paramAnonymousDouble1), Double.valueOf(paramAnonymousDouble2) });
+          if (b.a(b.this) != null) {
+            b.a(b.this).c(b.b(b.this));
+          }
+          if (b.b(b.this) == null)
+          {
+            ad.w(b.TAG, "already callback");
+            AppMethodBeat.o(25052);
+            return false;
+          }
+          b.c(b.this);
+          parama.L(paramAnonymousFloat1, paramAnonymousFloat2);
+          AppMethodBeat.o(25052);
+          return false;
+        }
+      };
+    }
+    if (this.rkG == null) {
+      this.rkG = new ap(Looper.myLooper());
+    }
+    this.rkG.postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(25053);
+        b.d(b.this);
+        if (b.a(b.this) != null) {
+          b.a(b.this).c(b.b(b.this));
+        }
+        if (b.b(b.this) == null)
+        {
+          ad.w(b.TAG, "already callback");
+          AppMethodBeat.o(25053);
+          return;
+        }
+        b.c(b.this);
+        AppMethodBeat.o(25053);
+      }
+    }, 20000L);
+    this.rkE.a(this.rkF);
+    AppMethodBeat.o(25056);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void L(float paramFloat1, float paramFloat2);
+  }
+  
+  static final class b
+  {
+    private static b rkJ;
+    
+    static
+    {
+      AppMethodBeat.i(25054);
+      rkJ = new b((byte)0);
+      AppMethodBeat.o(25054);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.b
  * JD-Core Version:    0.7.0.1
  */

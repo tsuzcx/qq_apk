@@ -17,23 +17,23 @@ public class PreferenceHeaderCategory
   public PreferenceHeaderCategory(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(107279);
-    setLayoutResource(2130970230);
-    AppMethodBeat.o(107279);
+    AppMethodBeat.i(142659);
+    setLayoutResource(2131494857);
+    AppMethodBeat.o(142659);
   }
   
   protected final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107280);
+    AppMethodBeat.i(142660);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    paramViewGroup.findViewById(16908310).setBackgroundResource(2130839285);
-    AppMethodBeat.o(107280);
+    paramViewGroup.findViewById(16908310).setBackgroundResource(2131232878);
+    AppMethodBeat.o(142660);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.PreferenceHeaderCategory
  * JD-Core Version:    0.7.0.1
  */

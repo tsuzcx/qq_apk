@@ -3,62 +3,62 @@ package com.tencent.mm.plugin.webview.ui.tools.bag;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.am;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ui.ap;
 
 public final class b
 {
-  public static int vhn;
-  public static final int vho;
-  public static final int vhp;
-  public static final int vhq;
-  public static final int vhr;
-  public static final int vhs;
-  public static final int vht;
-  public static final float vhu;
-  public static final int vhv;
-  public static final int vhw;
-  public static final float vhx;
+  public static final int Bjf;
+  public static final int Bjg;
+  public static final int Bjh;
+  public static final int Bji;
+  public static final int Bjj;
+  public static final float Bjk;
+  public static final int Bjl;
+  public static final int Bjm;
+  public static final float Bjn;
+  public static final int mFJ;
+  public static int mFV;
   
   static
   {
-    AppMethodBeat.i(8149);
-    vhn = fx(ah.getContext());
-    vho = am.getStatusBarHeight(ah.getContext());
-    vhp = ah.getContext().getResources().getDimensionPixelSize(2131427559);
-    vhq = ah.getContext().getResources().getDimensionPixelSize(2131428837);
-    vhr = ah.getContext().getResources().getDimensionPixelSize(2131428836);
-    vhs = ah.getContext().getResources().getDimensionPixelSize(2131428834);
-    int i = ah.getContext().getResources().getDimensionPixelSize(2131428833);
-    vht = i;
-    vhu = i / vhs;
-    vhv = ah.getContext().getResources().getDimensionPixelSize(2131428830);
-    i = ah.getContext().getResources().getDimensionPixelSize(2131428829);
-    vhw = i;
-    vhx = i / vhv;
-    AppMethodBeat.o(8149);
+    AppMethodBeat.i(80415);
+    mFV = eb(aj.getContext());
+    mFJ = ap.iX(aj.getContext());
+    Bjf = aj.getContext().getResources().getDimensionPixelSize(2131165252);
+    Bjg = aj.getContext().getResources().getDimensionPixelSize(2131167017);
+    Bjh = aj.getContext().getResources().getDimensionPixelSize(2131167016);
+    Bji = aj.getContext().getResources().getDimensionPixelSize(2131167014);
+    int i = aj.getContext().getResources().getDimensionPixelSize(2131167013);
+    Bjj = i;
+    Bjk = i / Bji;
+    Bjl = aj.getContext().getResources().getDimensionPixelSize(2131167010);
+    i = aj.getContext().getResources().getDimensionPixelSize(2131167009);
+    Bjm = i;
+    Bjn = i / Bjl;
+    AppMethodBeat.o(80415);
   }
   
-  private static int fx(Context paramContext)
+  private static int eb(Context paramContext)
   {
-    AppMethodBeat.i(8147);
-    int i = am.fx(paramContext);
-    ab.i("MicroMsg.BagIndicatorController", "getNavigationBarHeight height:%d", new Object[] { Integer.valueOf(i) });
-    AppMethodBeat.o(8147);
+    AppMethodBeat.i(80413);
+    int i = ap.eb(paramContext);
+    ad.i("MicroMsg.BagIndicatorController", "getNavigationBarHeight height:%d", new Object[] { Integer.valueOf(i) });
+    AppMethodBeat.o(80413);
     return i;
   }
   
-  public static void fy(Context paramContext)
+  public static void ec(Context paramContext)
   {
-    AppMethodBeat.i(8148);
-    vhn = fx(paramContext);
-    AppMethodBeat.o(8148);
+    AppMethodBeat.i(80414);
+    mFV = eb(paramContext);
+    AppMethodBeat.o(80414);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.bag.b
  * JD-Core Version:    0.7.0.1
  */

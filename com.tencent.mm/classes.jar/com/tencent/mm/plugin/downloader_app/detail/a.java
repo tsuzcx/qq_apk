@@ -10,15 +10,15 @@ public final class a
   public a(Activity paramActivity)
   {
     super(paramActivity);
-    AppMethodBeat.i(136030);
-    this.byN = b.class;
-    this.byQ.z(com.tencent.mm.plugin.downloader_app.detail.a.d.bjM());
-    AppMethodBeat.o(136030);
+    AppMethodBeat.i(8785);
+    this.cad = b.class;
+    this.cag.J(com.tencent.mm.plugin.downloader_app.detail.a.d.bQW());
+    AppMethodBeat.o(8785);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.detail.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,15 @@ public abstract interface f
 {
   public abstract void a(e parame);
   
-  public abstract boolean aHQ();
+  public abstract boolean bhQ();
   
-  public abstract void aHR();
+  public abstract void bhR();
   
-  public abstract void aHS();
+  public abstract void bhS();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.f
  * JD-Core Version:    0.7.0.1
  */

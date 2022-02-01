@@ -1,77 +1,73 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.pr;
-import com.tencent.mm.protocal.protobuf.ps;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.c.p;
-import java.net.URLDecoder;
+import com.tencent.mm.protocal.protobuf.sc;
+import com.tencent.mm.protocal.protobuf.sd;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class m
-  extends p
+  extends n
+  implements k
 {
-  private final String TAG;
-  public ps qjp;
+  private g callback;
+  private final b rr;
+  public sd vAo;
+  private sc vAp;
   
-  public m(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
+  public m(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(44750);
-    this.TAG = "MicroMsg.NetSceneF2fDynamicCode";
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new pr();
-    ((b.a)localObject).fsY = new ps();
-    ((b.a)localObject).funcId = 2736;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/f2fdynamiccode";
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (pr)this.rr.fsV.fta;
-    ((pr)localObject).okH = paramInt;
-    ((pr)localObject).kqi = paramString1;
-    ((pr)localObject).qkn = paramString2;
-    ((pr)localObject).wHX = URLDecoder.decode(paramString3);
-    ((pr)localObject).qjV = paramString4;
-    ((pr)localObject).qjW = paramString5;
-    ((pr)localObject).qkq = paramString6;
-    ((pr)localObject).nickname = paramString7;
-    ((pr)localObject).qjK = paramString8;
-    ab.i("MicroMsg.NetSceneF2fDynamicCode", "amount: %s, username: %s, transfer_code_id: %s", new Object[] { Integer.valueOf(paramInt), paramString1, URLDecoder.decode(paramString3) });
-    AppMethodBeat.o(44750);
+    AppMethodBeat.i(187053);
+    b.a locala = new b.a();
+    locala.gUU = new sc();
+    locala.gUV = new sd();
+    locala.funcId = 2850;
+    locala.uri = "/cgi-bin/mmpay-bin/f2fminiprogramconfirmrcvr";
+    this.rr = locala.atI();
+    this.vAp = ((sc)this.rr.gUS.gUX);
+    this.vAp.vBW = paramString1;
+    this.vAp.dlB = paramString2;
+    AppMethodBeat.o(187053);
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(44751);
-    ab.i("MicroMsg.NetSceneF2fDynamicCode", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.qjp = ((ps)((b)paramq).fsW.fta);
-    ab.i("MicroMsg.NetSceneF2fDynamicCode", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.qjp.cnK), this.qjp.kNv });
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
-    }
-    AppMethodBeat.o(44751);
-  }
-  
-  public final void e(q paramq)
-  {
-    paramq = (ps)((b)paramq).fsW.fta;
-    this.AXb = paramq.cnK;
-    this.AXc = paramq.kNv;
+    AppMethodBeat.i(187054);
+    this.callback = paramg;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(187054);
+    return i;
   }
   
   public final int getType()
   {
-    return 2736;
+    return 2850;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(187055);
+    ad.i("MicroMsg.NetSceneF2FMinniProgramConfirm", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      this.vAo = ((sd)((b)paramq).gUT.gUX);
+    }
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(187055);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.m
  * JD-Core Version:    0.7.0.1
  */

@@ -12,20 +12,20 @@ final class FTSEmojiDetailPageUI$12
   
   public final void onCreateMMMenu(l paraml)
   {
-    AppMethodBeat.i(53550);
+    AppMethodBeat.i(109113);
     paraml.setHeaderTitle("");
     int i = 0;
-    while (i < this.loL.size())
+    while (i < this.oEZ.size())
     {
-      paraml.e(((Integer)this.loL.get(i)).intValue(), (CharSequence)this.loM.get(i));
+      paraml.c(((Integer)this.oEZ.get(i)).intValue(), (CharSequence)this.oFa.get(i));
       i += 1;
     }
-    AppMethodBeat.o(53550);
+    AppMethodBeat.o(109113);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.fts.FTSEmojiDetailPageUI.12
  * JD-Core Version:    0.7.0.1
  */

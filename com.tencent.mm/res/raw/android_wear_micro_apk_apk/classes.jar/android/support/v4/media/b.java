@@ -4,17 +4,17 @@ import android.os.Build.VERSION;
 
 public class b
 {
-  final Object gq;
-  c gr;
+  final Object in;
+  c io;
   
   public b()
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.gq = new t(new d(this));
+      this.in = new t(new d(this));
       return;
     }
-    this.gq = null;
+    this.in = null;
   }
   
   public void onConnected() {}

@@ -1,28 +1,26 @@
 package com.tencent.mm.plugin.game.api;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.game.media.c;
-import com.tencent.mm.plugin.game.media.f;
-import com.tencent.mm.plugin.game.model.a.g;
-import com.tencent.mm.plugin.game.model.r;
+import com.tencent.mm.plugin.game.media.d;
+import com.tencent.mm.plugin.game.model.s;
 import com.tencent.mm.plugin.game.model.w;
 
 public abstract interface e
   extends a
 {
-  public abstract r bES();
+  public abstract s cBd();
   
-  public abstract w bET();
+  public abstract w cBe();
   
-  public abstract g bEU();
+  public abstract com.tencent.mm.plugin.game.model.a.g cBf();
   
-  public abstract f bEV();
+  public abstract com.tencent.mm.plugin.game.media.g cBg();
   
-  public abstract c bEW();
+  public abstract d cBh();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.api.e
  * JD-Core Version:    0.7.0.1
  */

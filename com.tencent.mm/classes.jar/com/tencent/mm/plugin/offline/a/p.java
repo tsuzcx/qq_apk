@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.offline.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.q;
+import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,12 +12,12 @@ public final class p
 {
   public p(String paramString)
   {
-    AppMethodBeat.i(43415);
+    AppMethodBeat.i(66314);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("device_id", q.LK());
+    localHashMap.put("device_id", q.Xa());
     localHashMap.put("passwd", paramString);
     setRequestData(localHashMap);
-    AppMethodBeat.o(43415);
+    AppMethodBeat.o(66314);
   }
   
   public final int getTenpayCgicmd()
@@ -29,7 +29,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a.p
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mm.audio.mix.c;
 
-import com.tencent.mm.audio.mix.a.d;
+import com.tencent.mm.audio.mix.a.e;
 
 public abstract interface g
 {
-  public abstract void C(int paramInt1, int paramInt2, int paramInt3);
+  public abstract void F(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract void Dk();
+  public abstract byte[] L(byte[] paramArrayOfByte);
   
-  public abstract d Dl();
+  public abstract void MT();
   
-  public abstract byte[] E(byte[] paramArrayOfByte);
+  public abstract e MU();
   
   public abstract void flushCache();
   
@@ -18,7 +18,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.c.g
  * JD-Core Version:    0.7.0.1
  */

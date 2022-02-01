@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/dn_" android:background="@drawable/a9y" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="100.0dip" android:layout_marginRight="20.0dip">
-        <EditText android:id="@id/d5l" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="60.0dip" android:hint="url" />
-        <Button android:id="@id/d5m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:minHeight="60.0dip" android:text="跳转" />
-        <Button android:id="@id/d5n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:minHeight="60.0dip" android:text="跳转游戏中心首页" />
-    </LinearLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/cn1" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginTop="10.0dip" android:scaleType="fitCenter" />
+    <TextView android:textSize="11.0sp" android:textColor="#ff5b5b5b" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/gam" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="5.0dip" android:maxLines="2" />
 </LinearLayout>

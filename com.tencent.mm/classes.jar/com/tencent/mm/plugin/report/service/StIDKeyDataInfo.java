@@ -10,30 +10,30 @@ class StIDKeyDataInfo
 {
   public static final Parcelable.Creator<StIDKeyDataInfo> CREATOR;
   public long key;
-  public long ltw;
-  public boolean qsi;
+  public long oJZ;
+  public boolean vJx;
   public long value;
   
   static
   {
-    AppMethodBeat.i(72803);
+    AppMethodBeat.i(143930);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(72803);
+    AppMethodBeat.o(143930);
   }
   
   public StIDKeyDataInfo() {}
   
   protected StIDKeyDataInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(72802);
-    this.ltw = paramParcel.readLong();
+    AppMethodBeat.i(143929);
+    this.oJZ = paramParcel.readLong();
     this.key = paramParcel.readLong();
     this.value = paramParcel.readLong();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.qsi = bool;
-      AppMethodBeat.o(72802);
+      this.vJx = bool;
+      AppMethodBeat.o(143929);
       return;
       bool = false;
     }
@@ -46,15 +46,15 @@ class StIDKeyDataInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(72801);
-    paramParcel.writeLong(this.ltw);
+    AppMethodBeat.i(143928);
+    paramParcel.writeLong(this.oJZ);
     paramParcel.writeLong(this.key);
     paramParcel.writeLong(this.value);
-    if (this.qsi) {}
+    if (this.vJx) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      AppMethodBeat.o(72801);
+      AppMethodBeat.o(143928);
       return;
     }
   }

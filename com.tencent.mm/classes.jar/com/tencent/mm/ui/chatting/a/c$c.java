@@ -8,7 +8,7 @@ public final class c$c
     this.timestamp = paramLong;
   }
   
-  public final boolean atP(String paramString)
+  public final boolean aKD(String paramString)
   {
     return false;
   }
@@ -20,7 +20,7 @@ public final class c$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.a.c.c
  * JD-Core Version:    0.7.0.1
  */

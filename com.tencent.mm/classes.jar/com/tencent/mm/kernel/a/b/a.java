@@ -9,102 +9,102 @@ import junit.framework.Assert;
 
 public final class a
 {
-  private static ThreadLocal<Stack<b>> eJK;
+  private static ThreadLocal<Stack<b>> geT;
   
   static
   {
-    AppMethodBeat.i(123305);
-    eJK = new ThreadLocal();
-    AppMethodBeat.o(123305);
-  }
-  
-  static b Sl()
-  {
-    AppMethodBeat.i(123304);
-    b localb = (b)((Stack)eJK.get()).pop();
-    AppMethodBeat.o(123304);
-    return localb;
+    AppMethodBeat.i(158358);
+    geT = new ThreadLocal();
+    AppMethodBeat.o(158358);
   }
   
   public static a a(Object paramObject, Class paramClass)
   {
-    AppMethodBeat.i(123302);
-    b localb = (b)((Stack)eJK.get()).peek();
+    AppMethodBeat.i(158355);
+    b localb = (b)((Stack)geT.get()).peek();
     Assert.assertNotNull(localb);
-    if (localb.dw == null) {
-      localb.dw = new HashMap();
+    if (localb.dz == null) {
+      localb.dz = new HashMap();
     }
-    a locala2 = (a)localb.dw.get(paramClass);
+    a locala2 = (a)localb.dz.get(paramClass);
     a locala1 = locala2;
     if (locala2 == null)
     {
       locala1 = new a(paramObject, paramClass);
-      localb.dw.put(locala1.eJL, locala1);
+      localb.dz.put(locala1.geU, locala1);
     }
-    AppMethodBeat.o(123302);
+    AppMethodBeat.o(158355);
     return locala1;
+  }
+  
+  static b agc()
+  {
+    AppMethodBeat.i(158357);
+    b localb = (b)((Stack)geT.get()).pop();
+    AppMethodBeat.o(158357);
+    return localb;
   }
   
   static void start()
   {
-    AppMethodBeat.i(123303);
+    AppMethodBeat.i(158356);
     b localb = new b();
-    Stack localStack2 = (Stack)eJK.get();
+    Stack localStack2 = (Stack)geT.get();
     Stack localStack1 = localStack2;
     if (localStack2 == null)
     {
       localStack1 = new Stack();
-      eJK.set(localStack1);
+      geT.set(localStack1);
     }
     localStack1.push(localb);
-    AppMethodBeat.o(123303);
+    AppMethodBeat.o(158356);
   }
   
   public static final class a
   {
-    Object eJH;
-    Class eJL;
-    Set eJM;
+    Object geQ;
+    Class geU;
+    Set geV;
     
     a(Object paramObject, Class paramClass)
     {
-      AppMethodBeat.i(123299);
-      this.eJM = new HashSet();
-      this.eJH = paramObject;
+      AppMethodBeat.i(158352);
+      this.geV = new HashSet();
+      this.geQ = paramObject;
       if (paramClass != null) {
-        this.eJL = paramClass;
+        this.geU = paramClass;
       }
-      ay(this.eJH);
-      AppMethodBeat.o(123299);
+      bA(this.geQ);
+      AppMethodBeat.o(158352);
     }
     
-    private void ay(Object paramObject)
+    private void bA(Object paramObject)
     {
-      AppMethodBeat.i(123300);
+      AppMethodBeat.i(158353);
       Assert.assertNotNull(paramObject);
-      Assert.assertNotNull(this.eJL);
-      if (!this.eJL.isInstance(paramObject))
+      Assert.assertNotNull(this.geU);
+      if (!this.geU.isInstance(paramObject))
       {
-        paramObject = new IllegalArgumentException("Your depend object " + paramObject + " must implement your type " + this.eJL);
-        AppMethodBeat.o(123300);
+        paramObject = new IllegalArgumentException("Your depend object " + paramObject + " must implement your type " + this.geU);
+        AppMethodBeat.o(158353);
         throw paramObject;
       }
-      AppMethodBeat.o(123300);
+      AppMethodBeat.o(158353);
     }
     
-    public final a az(Object paramObject)
+    public final a bB(Object paramObject)
     {
-      AppMethodBeat.i(123301);
-      this.eJM.add(paramObject);
-      ay(paramObject);
-      AppMethodBeat.o(123301);
+      AppMethodBeat.i(158354);
+      this.geV.add(paramObject);
+      bA(paramObject);
+      AppMethodBeat.o(158354);
       return this;
     }
   }
   
   static final class b
   {
-    public HashMap<Class, a.a> dw = null;
+    public HashMap<Class, a.a> dz = null;
   }
 }
 

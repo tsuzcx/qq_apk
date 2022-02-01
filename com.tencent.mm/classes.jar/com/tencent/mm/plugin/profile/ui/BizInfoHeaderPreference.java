@@ -1,234 +1,251 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.d.a;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.aj.f;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.profile.ui.b.b;
-import com.tencent.mm.pluginsdk.ui.d.j;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.p;
+import com.tencent.mm.am.f;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.w;
+import com.tencent.mm.pluginsdk.ui.ProfileHdHeadImg;
+import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 import junit.framework.Assert;
 
 public class BizInfoHeaderPreference
   extends Preference
-  implements d.a, n.b
+  implements e.a, n.b
 {
-  private MMActivity cmc;
-  private ad contact;
-  private boolean lJS;
-  private TextView nIh;
-  private TextView nzx;
-  private ImageView pxZ;
-  private ImageView pya;
-  private View pyb;
-  private String pyc;
-  private com.tencent.mm.aj.d pyd;
-  private com.tencent.mm.plugin.profile.ui.b.a pye;
-  private b pyf;
+  private af contact;
+  private MMActivity imP;
+  private boolean paC;
+  private TextView siX;
+  private TextView svO;
+  private ImageView uzJ;
+  private ImageView uzK;
+  private View uzL;
+  private String uzM;
+  private com.tencent.mm.api.c uzN;
+  private com.tencent.mm.plugin.profile.ui.b.a uzO;
+  private com.tencent.mm.plugin.profile.ui.b.b uzP;
   
   public BizInfoHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(23307);
-    this.lJS = false;
-    this.pye = new com.tencent.mm.plugin.profile.ui.b.a(this);
-    this.pyf = new b(this);
-    this.cmc = ((MMActivity)paramContext);
-    this.lJS = false;
-    AppMethodBeat.o(23307);
+    AppMethodBeat.i(26927);
+    this.paC = false;
+    this.uzO = new com.tencent.mm.plugin.profile.ui.b.a(this);
+    this.uzP = new com.tencent.mm.plugin.profile.ui.b.b(this);
+    this.imP = ((MMActivity)paramContext);
+    this.paC = false;
+    AppMethodBeat.o(26927);
   }
   
   public BizInfoHeaderPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(23308);
-    this.lJS = false;
-    this.pye = new com.tencent.mm.plugin.profile.ui.b.a(this);
-    this.pyf = new b(this);
-    this.cmc = ((MMActivity)paramContext);
-    this.lJS = false;
-    AppMethodBeat.o(23308);
+    AppMethodBeat.i(26928);
+    this.paC = false;
+    this.uzO = new com.tencent.mm.plugin.profile.ui.b.a(this);
+    this.uzP = new com.tencent.mm.plugin.profile.ui.b.b(this);
+    this.imP = ((MMActivity)paramContext);
+    this.paC = false;
+    AppMethodBeat.o(26928);
   }
   
-  private boolean aem()
+  private boolean Jk()
   {
-    AppMethodBeat.i(23315);
-    if (this.pyd == null)
+    AppMethodBeat.i(26935);
+    if (this.uzN == null)
     {
-      AppMethodBeat.o(23315);
+      AppMethodBeat.o(26935);
       return true;
     }
-    boolean bool = this.pyd.aem();
-    AppMethodBeat.o(23315);
+    boolean bool = this.uzN.Jk();
+    AppMethodBeat.o(26935);
     return bool;
   }
   
-  private boolean cbQ()
+  private boolean dch()
   {
-    return (this.lJS) && (this.contact != null);
+    return (this.paC) && (this.contact != null);
   }
   
   private void initView()
   {
-    AppMethodBeat.i(23310);
-    if (!cbQ())
+    AppMethodBeat.i(26930);
+    if (!dch())
     {
-      ab.w("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.lJS + "contact = " + this.contact);
-      AppMethodBeat.o(23310);
+      ad.w("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.paC + "contact = " + this.contact);
+      AppMethodBeat.o(26930);
       return;
     }
-    this.nzx.setText(j.b(this.cmc, bo.nullAsNil(this.contact.Oe()) + " ", this.nzx.getTextSize()));
-    if (this.pyd == null) {
-      this.pyd = f.rS(this.contact.field_username);
+    this.siX.setText(k.b(this.imP, bt.nullAsNil(this.contact.ZW()) + " ", this.siX.getTextSize()));
+    if (this.uzN == null) {
+      this.uzN = f.ei(this.contact.field_username);
     }
-    if (this.pyd != null) {
-      this.pyc = this.pyd.field_brandIconURL;
+    if (this.uzN != null) {
+      this.uzM = this.uzN.field_brandIconURL;
     }
-    com.tencent.mm.plugin.brandservice.b.a.a(this.pxZ, this.contact, this.pyc, false);
-    this.pxZ.setTag(this.contact.field_username);
-    this.pyb.setOnClickListener(new BizInfoHeaderPreference.1(this));
-    if ((com.tencent.mm.n.a.je(this.contact.field_type)) && (aem())) {
-      if (!bo.isNullOrNil(this.contact.Hq()))
+    com.tencent.mm.plugin.brandservice.b.e.a(this.uzJ, this.contact, this.uzM, false);
+    this.uzJ.setTag(this.contact.field_username);
+    this.uzL.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
       {
-        this.nIh.setVisibility(0);
-        this.nIh.setText(this.mContext.getString(2131296950) + this.contact.Hq());
+        AppMethodBeat.i(26926);
+        Object localObject = BizInfoHeaderPreference.a(BizInfoHeaderPreference.this).field_username;
+        paramAnonymousView = new Intent(BizInfoHeaderPreference.b(BizInfoHeaderPreference.this), ProfileHdHeadImg.class);
+        paramAnonymousView.putExtra("username", (String)localObject);
+        paramAnonymousView.putExtra("brand_icon_url", BizInfoHeaderPreference.c(BizInfoHeaderPreference.this));
+        localObject = BizInfoHeaderPreference.b(BizInfoHeaderPreference.this);
+        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.adn(), "com/tencent/mm/plugin/profile/ui/BizInfoHeaderPreference$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        ((MMActivity)localObject).startActivity((Intent)paramAnonymousView.lS(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/profile/ui/BizInfoHeaderPreference$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(26926);
+      }
+    });
+    if ((com.tencent.mm.n.b.ls(this.contact.field_type)) && (Jk())) {
+      if (!bt.isNullOrNil(this.contact.Ss()))
+      {
+        this.svO.setVisibility(0);
+        this.svO.setText(this.mContext.getString(2131755760) + this.contact.Ss());
       }
     }
-    while (this.contact.NY())
+    while (this.contact.ZO())
     {
-      this.pya.setVisibility(0);
-      AppMethodBeat.o(23310);
+      this.uzK.setVisibility(0);
+      AppMethodBeat.o(26930);
       return;
-      if ((!ad.ari(this.contact.field_username)) && (!t.nS(this.contact.field_username)))
+      if ((!af.aHK(this.contact.field_username)) && (!w.sC(this.contact.field_username)))
       {
-        String str = bo.nullAsNil(this.contact.Og());
-        this.nIh.setText(this.mContext.getString(2131296950) + str);
-        this.nIh.setVisibility(0);
+        String str = bt.nullAsNil(this.contact.ZY());
+        this.svO.setText(this.mContext.getString(2131755760) + str);
+        this.svO.setVisibility(0);
       }
       else
       {
-        this.nIh.setVisibility(8);
+        this.svO.setVisibility(8);
         continue;
-        this.nIh.setVisibility(8);
+        this.svO.setVisibility(8);
       }
     }
-    this.pya.setVisibility(8);
-    AppMethodBeat.o(23310);
+    this.uzK.setVisibility(8);
+    AppMethodBeat.o(26930);
   }
   
   public final void a(int paramInt, n paramn, Object paramObject)
   {
-    AppMethodBeat.i(23314);
+    AppMethodBeat.i(26934);
     if ((paramObject == null) || (!(paramObject instanceof String)))
     {
-      ab.d("MicroMsg.BizInfoHeaderPreference", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
-      AppMethodBeat.o(23314);
+      ad.d("MicroMsg.BizInfoHeaderPreference", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+      AppMethodBeat.o(26934);
       return;
     }
-    if (!cbQ())
+    if (!dch())
     {
-      ab.e("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.lJS + "contact = " + this.contact);
-      AppMethodBeat.o(23314);
+      ad.e("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.paC + "contact = " + this.contact);
+      AppMethodBeat.o(26934);
       return;
     }
     paramn = (String)paramObject;
-    if (bo.nullAsNil(paramn).length() <= 0)
+    if (bt.nullAsNil(paramn).length() <= 0)
     {
-      AppMethodBeat.o(23314);
+      AppMethodBeat.o(26934);
       return;
     }
     if ((this.contact != null) && (this.contact.field_username.equals(paramn)))
     {
-      aw.aaz();
-      this.contact = c.YA().arw(paramn);
+      az.arV();
+      this.contact = com.tencent.mm.model.c.apM().aHY(paramn);
     }
-    AppMethodBeat.o(23314);
+    AppMethodBeat.o(26934);
   }
   
-  public final void a(ad paramad, String paramString, com.tencent.mm.aj.d paramd)
+  public final void a(af paramaf, String paramString, com.tencent.mm.api.c paramc)
   {
-    AppMethodBeat.i(23311);
-    this.pyc = paramString;
-    this.pyd = paramd;
+    AppMethodBeat.i(26931);
+    this.uzM = paramString;
+    this.uzN = paramc;
     onDetach();
-    aw.aaz();
-    c.YA().a(this.pyf);
-    o.acQ().d(this.pye);
-    this.contact = paramad;
-    if (bo.nullAsNil(paramad.field_username).length() > 0) {}
+    az.arV();
+    com.tencent.mm.model.c.apM().a(this.uzP);
+    p.auq().d(this.uzO);
+    this.contact = paramaf;
+    if (bt.nullAsNil(paramaf.field_username).length() > 0) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("initView: contact username is null", bool);
       initView();
-      AppMethodBeat.o(23311);
+      AppMethodBeat.o(26931);
       return;
     }
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(23309);
-    ab.d("MicroMsg.BizInfoHeaderPreference", "onBindView");
-    this.nzx = ((TextView)paramView.findViewById(2131821498));
-    this.nIh = ((TextView)paramView.findViewById(2131823100));
-    this.pya = ((ImageView)paramView.findViewById(2131823101));
-    this.pxZ = ((ImageView)paramView.findViewById(2131821497));
-    this.pyb = paramView.findViewById(2131823099);
-    this.lJS = true;
+    AppMethodBeat.i(26929);
+    ad.d("MicroMsg.BizInfoHeaderPreference", "onBindView");
+    this.siX = ((TextView)paramView.findViewById(2131298631));
+    this.svO = ((TextView)paramView.findViewById(2131298662));
+    this.uzK = ((ImageView)paramView.findViewById(2131297286));
+    this.uzJ = ((ImageView)paramView.findViewById(2131298597));
+    this.uzL = paramView.findViewById(2131298598);
+    this.paC = true;
     initView();
     super.onBindView(paramView);
-    AppMethodBeat.o(23309);
+    AppMethodBeat.o(26929);
   }
   
   public final void onDetach()
   {
-    AppMethodBeat.i(23312);
-    aw.aaz();
-    c.YA().b(this.pyf);
-    o.acQ().e(this.pye);
-    AppMethodBeat.o(23312);
+    AppMethodBeat.i(26932);
+    az.arV();
+    com.tencent.mm.model.c.apM().b(this.uzP);
+    p.auq().e(this.uzO);
+    AppMethodBeat.o(26932);
   }
   
-  public final void re(String paramString)
+  public final void vZ(String paramString)
   {
-    AppMethodBeat.i(23313);
-    if (!cbQ())
+    AppMethodBeat.i(26933);
+    if (!dch())
     {
-      ab.e("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.lJS + "contact = " + this.contact);
-      AppMethodBeat.o(23313);
+      ad.e("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.paC + "contact = " + this.contact);
+      AppMethodBeat.o(26933);
       return;
     }
-    if (bo.nullAsNil(paramString).length() <= 0)
+    if (bt.nullAsNil(paramString).length() <= 0)
     {
-      ab.e("MicroMsg.BizInfoHeaderPreference", "notifyChanged: user = ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(23313);
+      ad.e("MicroMsg.BizInfoHeaderPreference", "notifyChanged: user = ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(26933);
       return;
     }
     if (paramString.equals(this.contact.field_username)) {
       initView();
     }
-    AppMethodBeat.o(23313);
+    AppMethodBeat.o(26933);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.BizInfoHeaderPreference
  * JD-Core Version:    0.7.0.1
  */

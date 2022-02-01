@@ -1,9 +1,12 @@
 package com.facebook;
 
 import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v4.content.d;
 import com.facebook.internal.Validate;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class ProfileTracker
 {
@@ -14,8 +17,8 @@ public abstract class ProfileTracker
   public ProfileTracker()
   {
     Validate.sdkInitialized();
-    this.receiver = new ProfileTracker.ProfileBroadcastReceiver(this, null);
-    this.broadcastManager = d.R(FacebookSdk.getApplicationContext());
+    this.receiver = new ProfileBroadcastReceiver(null);
+    this.broadcastManager = d.T(FacebookSdk.getApplicationContext());
     startTracking();
   }
   
@@ -50,10 +53,28 @@ public abstract class ProfileTracker
     this.broadcastManager.unregisterReceiver(this.receiver);
     this.isTracking = false;
   }
+  
+  class ProfileBroadcastReceiver
+    extends BroadcastReceiver
+  {
+    private ProfileBroadcastReceiver() {}
+    
+    public void onReceive(Context paramContext, Intent paramIntent)
+    {
+      AppMethodBeat.i(17267);
+      if ("com.facebook.sdk.ACTION_CURRENT_PROFILE_CHANGED".equals(paramIntent.getAction()))
+      {
+        paramContext = (Profile)paramIntent.getParcelableExtra("com.facebook.sdk.EXTRA_OLD_PROFILE");
+        paramIntent = (Profile)paramIntent.getParcelableExtra("com.facebook.sdk.EXTRA_NEW_PROFILE");
+        ProfileTracker.this.onCurrentProfileChanged(paramContext, paramIntent);
+      }
+      AppMethodBeat.o(17267);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.ProfileTracker
  * JD-Core Version:    0.7.0.1
  */

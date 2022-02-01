@@ -2,91 +2,125 @@ package com.tencent.mm.plugin.downloader_app.ui;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView.a;
+import android.support.v7.widget.RecyclerView.b;
+import android.support.v7.widget.RecyclerView.v;
+import android.view.View;
+import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.l;
-import com.tencent.mm.plugin.downloader_app.b.h;
-import com.tencent.mm.plugin.downloader_app.b.i;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ipcinvoker.p;
+import com.tencent.mm.plugin.downloader_app.a.i;
+import com.tencent.mm.plugin.game.commlib.c.c;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 
 public final class b
-  extends RecyclerView.a<b.a>
+  extends RecyclerView.a<a>
 {
-  h<i> lcP;
-  private boolean lcQ;
-  private boolean lcR;
-  private boolean lcS;
-  private boolean lcT;
-  boolean lcU;
-  boolean lcV;
   private Context mContext;
+  c<i> ojS;
+  private boolean ojT;
+  private boolean ojU;
+  private boolean ojV;
+  private boolean ojW;
+  boolean ojX;
+  boolean ojY;
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(136285);
-    this.lcP = new h();
-    this.lcQ = true;
-    this.lcR = false;
-    this.lcS = false;
-    this.lcT = false;
-    this.lcU = false;
-    this.lcV = true;
+    AppMethodBeat.i(9055);
+    this.ojS = new c();
+    this.ojT = true;
+    this.ojU = false;
+    this.ojV = false;
+    this.ojW = false;
+    this.ojX = false;
+    this.ojY = true;
     this.mContext = paramContext;
-    AppMethodBeat.o(136285);
+    AppMethodBeat.o(9055);
   }
   
-  public final void P(LinkedList<i> paramLinkedList)
+  public final void V(LinkedList<i> paramLinkedList)
   {
-    AppMethodBeat.i(136288);
-    if (bo.es(paramLinkedList))
+    AppMethodBeat.i(9058);
+    if (bt.gL(paramLinkedList))
     {
-      AppMethodBeat.o(136288);
+      AppMethodBeat.o(9058);
       return;
     }
     if (paramLinkedList.size() == 1)
     {
-      int i = this.lcP.indexOf(paramLinkedList.get(0));
-      this.lcP.remove(i);
-      l.q(new b.2(this, i));
-      AppMethodBeat.o(136288);
+      final int i = this.ojS.indexOf(paramLinkedList.get(0));
+      this.ojS.remove(i);
+      p.y(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(9052);
+          b.this.cm(i);
+          AppMethodBeat.o(9052);
+        }
+      });
+      AppMethodBeat.o(9058);
       return;
     }
-    this.lcP.removeAll(paramLinkedList);
-    l.q(new b.3(this));
-    AppMethodBeat.o(136288);
+    this.ojS.removeAll(paramLinkedList);
+    p.y(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(9053);
+        b.this.aql.notifyChanged();
+        AppMethodBeat.o(9053);
+      }
+    });
+    AppMethodBeat.o(9058);
   }
   
-  public final boolean bjQ()
+  public final boolean bRd()
   {
-    AppMethodBeat.i(136289);
-    if (this.lcP.size() <= 5)
+    AppMethodBeat.i(9059);
+    if (this.ojS.size() <= 5)
     {
-      AppMethodBeat.o(136289);
+      AppMethodBeat.o(9059);
       return true;
     }
-    AppMethodBeat.o(136289);
+    AppMethodBeat.o(9059);
     return false;
   }
   
   public final int getItemCount()
   {
-    AppMethodBeat.i(136287);
-    int i = this.lcP.size();
-    AppMethodBeat.o(136287);
+    AppMethodBeat.i(9057);
+    int i = this.ojS.size();
+    AppMethodBeat.o(9057);
     return i;
   }
   
   public final int getItemViewType(int paramInt)
   {
-    AppMethodBeat.i(136286);
-    paramInt = ((i)this.lcP.get(paramInt)).type;
-    AppMethodBeat.o(136286);
+    AppMethodBeat.i(9056);
+    paramInt = ((i)this.ojS.get(paramInt)).type;
+    AppMethodBeat.o(9056);
     return paramInt;
+  }
+  
+  public static final class a
+    extends RecyclerView.v
+  {
+    public View contentView;
+    
+    public a(View paramView)
+    {
+      super();
+      AppMethodBeat.i(9054);
+      this.contentView = ((ViewGroup)paramView).getChildAt(0);
+      AppMethodBeat.o(9054);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.ui.b
  * JD-Core Version:    0.7.0.1
  */

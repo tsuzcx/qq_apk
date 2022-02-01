@@ -7,7 +7,7 @@ public final class d
 {
   public static byte[] a(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(96557);
+    AppMethodBeat.i(88196);
     byte[] arrayOfByte = new byte[paramInt];
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 0, paramInt);
     paramArrayOfByte1 = new a();
@@ -51,7 +51,7 @@ public final class d
           break label387;
         }
         paramArrayOfByte1 = paramArrayOfByte1.out;
-        AppMethodBeat.o(96557);
+        AppMethodBeat.o(88196);
         return paramArrayOfByte1;
         paramArrayOfByte1.plain[paramInt] = ((byte)(paramArrayOfByte1.random.nextInt() & 0xFF));
         paramInt += 1;
@@ -109,7 +109,7 @@ public final class d
   
   public static byte[] decrypt(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(96558);
+    AppMethodBeat.i(88197);
     byte[] arrayOfByte = new byte[paramInt2];
     System.arraycopy(paramArrayOfByte1, paramInt1, arrayOfByte, 0, paramInt2);
     a locala = new a();
@@ -120,15 +120,15 @@ public final class d
     paramArrayOfByte1 = new byte[8];
     if ((i % 8 != 0) || (i < 16))
     {
-      AppMethodBeat.o(96558);
+      AppMethodBeat.o(88197);
       return null;
     }
-    locala.prePlain = locala.al(arrayOfByte);
+    locala.prePlain = locala.aA(arrayOfByte);
     locala.pos = (locala.prePlain[0] & 0x7);
     paramInt2 = i - locala.pos - 10;
     if (paramInt2 < 0)
     {
-      AppMethodBeat.o(96558);
+      AppMethodBeat.o(88197);
       return null;
     }
     paramInt1 = 0;
@@ -155,7 +155,7 @@ public final class d
           break label407;
         }
         paramArrayOfByte1 = locala.out;
-        AppMethodBeat.o(96558);
+        AppMethodBeat.o(88197);
         return paramArrayOfByte1;
         paramArrayOfByte1[paramInt1] = 0;
         paramInt1 += 1;
@@ -168,9 +168,9 @@ public final class d
       }
       if (locala.pos == 8)
       {
-        if (!locala.E(arrayOfByte, i))
+        if (!locala.I(arrayOfByte, i))
         {
-          AppMethodBeat.o(96558);
+          AppMethodBeat.o(88197);
           return null;
           label300:
           if (locala.pos < 8)
@@ -185,16 +185,16 @@ public final class d
             if (locala.pos == 8)
             {
               locala.preCrypt = (locala.crypt - 8);
-              if (!locala.E(arrayOfByte, i))
+              if (!locala.I(arrayOfByte, i))
               {
-                AppMethodBeat.o(96558);
+                AppMethodBeat.o(88197);
                 return null;
                 label407:
                 if (locala.pos < 8)
                 {
                   if ((paramArrayOfByte1[(locala.preCrypt + 0 + locala.pos)] ^ locala.prePlain[locala.pos]) != 0)
                   {
-                    AppMethodBeat.o(96558);
+                    AppMethodBeat.o(88197);
                     return null;
                   }
                   locala.pos += 1;
@@ -202,9 +202,9 @@ public final class d
                 if (locala.pos == 8)
                 {
                   locala.preCrypt = locala.crypt;
-                  if (!locala.E(arrayOfByte, i))
+                  if (!locala.I(arrayOfByte, i))
                   {
-                    AppMethodBeat.o(96558);
+                    AppMethodBeat.o(88197);
                     return null;
                   }
                   paramArrayOfByte1 = arrayOfByte;

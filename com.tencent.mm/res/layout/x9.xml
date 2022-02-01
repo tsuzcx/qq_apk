@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bmw" android:layout_width="fill_parent" android:layout_height="@dimen/gw"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="60.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bmx" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:orientation="horizontal" android:baselineAligned="false" android:weightSum="1.0" style="@style/ht">
-        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <ImageView android:id="@id/bmy" android:layout_marginLeft="@dimen/h0" style="@style/hz" />
-        </RelativeLayout>
-        <RelativeLayout android:layout_width="wrap_content" android:layout_marginRight="@dimen/h1" style="@style/i0">
-            <RelativeLayout android:paddingLeft="@dimen/h0" android:layout_width="wrap_content" android:layout_height="55.0dip" android:layout_toLeftOf="@id/bmz" android:layout_centerVertical="true">
-                <View android:id="@id/bn0" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentBottom="true" />
-                <com.tencent.mm.ui.base.NoMeasuredTextView android:id="@id/bn1" android:singleLine="true" android:layout_toLeftOf="@id/bn2" android:layout_alignLeft="@id/bn0" android:layout_centerInParent="true" style="@style/i1" />
-                <TextView android:id="@id/bn2" android:layout_marginLeft="50.0dip" android:minWidth="100.0dip" android:layout_alignRight="@id/bn0" android:layout_centerInParent="true" android:layout_centerVertical="true" style="@style/i5" />
-            </RelativeLayout>
-            <ImageView android:id="@id/bmz" android:layout_marginLeft="0.0dip" android:src="@raw/device_profile_ui_jiantou" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/hs" />
-        </RelativeLayout>
-    </LinearLayout>
-    <View android:id="@id/bn3" android:background="@color/ng" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <include android:layout_width="fill_parent" android:layout_height="56.0dip" layout="@layout/a3u" />
+    <View android:id="@id/gs2" android:background="#1a000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="56.0dip" />
+</FrameLayout>

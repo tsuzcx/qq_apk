@@ -8,23 +8,23 @@ import java.io.Serializable;
 public abstract interface b
   extends Serializable
 {
-  public abstract int RZ(int paramInt);
-  
   public abstract void a(Canvas paramCanvas, TextPaint paramTextPaint, float paramFloat);
   
-  public abstract float[] dTq();
+  public abstract int abD(int paramInt);
   
-  public abstract RectF dTr();
+  public abstract float[] fkX();
   
-  public abstract RectF dTs();
+  public abstract RectF fkY();
   
-  public abstract float dTt();
+  public abstract RectF fkZ();
   
-  public abstract boolean dTu();
+  public abstract float fla();
   
-  public abstract float dTv();
+  public abstract boolean flb();
   
-  public abstract float dTw();
+  public abstract float flc();
+  
+  public abstract float fld();
   
   public abstract int getEnd();
   

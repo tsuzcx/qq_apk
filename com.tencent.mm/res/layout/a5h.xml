@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.game.ui.GameLibraryCategoriesView android:orientation="vertical" android:id="@id/c_i" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.widget.BouncyHScrollView android:background="@color/a6q" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp" android:fillViewport="false" android:overScrollMode="never">
-        <LinearLayout android:orientation="horizontal" android:id="@id/c_j" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </com.tencent.mm.plugin.game.widget.BouncyHScrollView>
-</com.tencent.mm.plugin.game.ui.GameLibraryCategoriesView>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.constraint.ConstraintLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="@dimen/cd">
+        <TextView android:id="@id/dmi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/ci" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8" style="@style/ya" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/c5" android:layout_height="@dimen/c_" android:src="@raw/icons_outlined_arrow" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toRightOf="@id/dmi" app:layout_constraintTop_toTopOf="ea8" />
+        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/dvr" android:layout_width="@dimen/k2" android:layout_height="@dimen/jz" android:layout_marginRight="@dimen/c5" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ci" android:text="@string/ca4" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintRight_toLeftOf="@id/dvr" app:layout_constraintTop_toTopOf="ea8" style="@style/fl" />
+    </android.support.constraint.ConstraintLayout>
+    <GridView android:id="@id/dm4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+</LinearLayout>

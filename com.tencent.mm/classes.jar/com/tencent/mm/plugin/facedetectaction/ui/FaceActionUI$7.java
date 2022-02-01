@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.facedetectaction.ui;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class FaceActionUI$7
   implements Animation.AnimationListener
@@ -12,19 +12,19 @@ final class FaceActionUI$7
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    AppMethodBeat.i(724);
-    ab.d("MicroMsg.FaceActionUI", "checkingAnimation, AnimationEnd");
-    ab.d("MicroMsg.FaceActionUI", "checkingAnimation, AnimationEnd");
-    AppMethodBeat.o(724);
+    AppMethodBeat.i(104246);
+    ad.d("MicroMsg.FaceActionUI", "checkingAnimation, AnimationEnd");
+    ad.d("MicroMsg.FaceActionUI", "checkingAnimation, AnimationEnd");
+    AppMethodBeat.o(104246);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}
   
   public final void onAnimationStart(Animation paramAnimation)
   {
-    AppMethodBeat.i(725);
-    ab.d("MicroMsg.FaceActionUI", "checkingAnimation, AnimationStart");
-    AppMethodBeat.o(725);
+    AppMethodBeat.i(104247);
+    ad.d("MicroMsg.FaceActionUI", "checkingAnimation, AnimationStart");
+    AppMethodBeat.o(104247);
   }
 }
 

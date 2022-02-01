@@ -1,32 +1,42 @@
 package com.tencent.mm.plugin.wenote.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.d;
-import java.util.Map;
+import com.tencent.mm.plugin.ball.a.e;
+import com.tencent.mm.plugin.wenote.ui.nativenote.NoteEditorUI;
 
 public final class a
+  extends e
 {
-  public static boolean djK()
+  private NoteEditorUI BCq;
+  
+  public a(NoteEditorUI paramNoteEditorUI)
   {
-    AppMethodBeat.i(26976);
-    String str = (String)com.tencent.mm.model.c.c.abU().me("100352").dvN().get("Close");
-    if (!bo.isNullOrNil(str)) {}
-    for (int i = bo.getInt(str, 0);; i = 0)
+    super(paramNoteEditorUI);
+    this.BCq = paramNoteEditorUI;
+  }
+  
+  public final boolean aVX()
+  {
+    AppMethodBeat.i(30264);
+    boolean bool = super.aVX();
+    AppMethodBeat.o(30264);
+    return bool;
+  }
+  
+  public final void fF(boolean paramBoolean)
+  {
+    AppMethodBeat.i(30265);
+    if (this.BCq != null)
     {
-      if (i == 0)
-      {
-        AppMethodBeat.o(26976);
-        return true;
-      }
-      AppMethodBeat.o(26976);
-      return false;
+      this.BCq.goBack();
+      super.fF(paramBoolean);
     }
+    AppMethodBeat.o(30265);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.b.a
  * JD-Core Version:    0.7.0.1
  */

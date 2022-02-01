@@ -1,17 +1,31 @@
 package android.support.v7.widget;
 
+import android.view.View;
+
 final class l
 {
-  int sd;
-  int se;
-  int sf;
-  int sg;
-  int sh = 0;
-  int si = 0;
+  int tT;
+  int tU;
+  int tV;
+  int tW;
+  int tX = 0;
+  int tY = 0;
+  
+  final View a(af paramaf)
+  {
+    paramaf = paramaf.aF(this.tU);
+    this.tU += this.tV;
+    return paramaf;
+  }
+  
+  final boolean a(ak paramak)
+  {
+    return (this.tU >= 0) && (this.tU < paramak.getItemCount());
+  }
   
   public final String toString()
   {
-    return "LayoutState{mAvailable=" + this.sd + ", mCurrentPosition=" + this.se + ", mItemDirection=" + this.sf + ", mLayoutDirection=" + this.sg + ", mStartLine=" + this.sh + ", mEndLine=" + this.si + '}';
+    return "LayoutState{mAvailable=" + this.tT + ", mCurrentPosition=" + this.tU + ", mItemDirection=" + this.tV + ", mLayoutDirection=" + this.tW + ", mStartLine=" + this.tX + ", mEndLine=" + this.tY + '}';
   }
 }
 

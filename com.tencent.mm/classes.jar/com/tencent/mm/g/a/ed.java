@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ed
   extends b
 {
-  public ed.a crU;
+  public a dgH;
   
   public ed()
   {
@@ -15,11 +15,18 @@ public final class ed
   
   private ed(byte paramByte)
   {
-    AppMethodBeat.i(70165);
-    this.crU = new ed.a();
-    this.ymq = false;
+    AppMethodBeat.i(115995);
+    this.dgH = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70165);
+    AppMethodBeat.o(115995);
+  }
+  
+  public static final class a
+  {
+    public boolean bhb;
+    public String cLR;
+    public byte[] dgI;
   }
 }
 

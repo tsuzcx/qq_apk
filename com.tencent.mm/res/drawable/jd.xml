@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/icons_outlined_keyboard" />
-    <item android:drawable="@raw/icons_outlined_keyboard" />
-</selector>
+    <solid android:color="@color/h5" />
+    <corners android:radius="4.0dip" />
+</shape>

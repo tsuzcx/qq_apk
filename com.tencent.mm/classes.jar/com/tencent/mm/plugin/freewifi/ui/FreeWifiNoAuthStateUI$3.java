@@ -11,14 +11,14 @@ final class FreeWifiNoAuthStateUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(21056);
-    this.mOp.finish();
-    AppMethodBeat.o(21056);
+    AppMethodBeat.i(25115);
+    this.rlh.finish();
+    AppMethodBeat.o(25115);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiNoAuthStateUI.3
  * JD-Core Version:    0.7.0.1
  */

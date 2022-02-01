@@ -8,126 +8,126 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.a.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.af.a.a;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class MMDotView
   extends LinearLayout
 {
-  private int eeH;
-  private int zjc;
-  private int zjd;
+  private int FWG;
+  private int FWH;
+  private int maxCount;
   
   public MMDotView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(106528);
-    this.eeH = 9;
-    this.zjc = 2130839883;
-    this.zjd = 2130839878;
+    AppMethodBeat.i(141880);
+    this.maxCount = 9;
+    this.FWG = 2131233546;
+    this.FWH = 2131233541;
     init(paramContext, paramAttributeSet);
-    AppMethodBeat.o(106528);
+    AppMethodBeat.o(141880);
   }
   
   @TargetApi(11)
   public MMDotView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(106527);
-    this.eeH = 9;
-    this.zjc = 2130839883;
-    this.zjd = 2130839878;
+    AppMethodBeat.i(141879);
+    this.maxCount = 9;
+    this.FWG = 2131233546;
+    this.FWH = 2131233541;
     init(paramContext, paramAttributeSet);
-    AppMethodBeat.o(106527);
+    AppMethodBeat.o(141879);
   }
   
   private void init(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(106529);
+    AppMethodBeat.i(141881);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MMDotView);
     int i = paramContext.getResourceId(0, 0);
     paramContext.recycle();
     setDotCount(i);
-    AppMethodBeat.o(106529);
+    AppMethodBeat.o(141881);
   }
   
   public void setDarkStyle(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.zjc = 2130839884;
-      this.zjd = 2130839879;
+      this.FWG = 2131233547;
+      this.FWH = 2131233542;
       return;
     }
-    this.zjc = 2130839883;
-    this.zjd = 2130839878;
+    this.FWG = 2131233546;
+    this.FWH = 2131233541;
   }
   
   public void setDotCount(int paramInt)
   {
-    AppMethodBeat.i(106531);
-    ab.v("MicroMsg.MMDotView", "setDotCount:%d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(141883);
+    ad.v("MicroMsg.MMDotView", "setDotCount:%d", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt < 0)
     {
-      AppMethodBeat.o(106531);
+      AppMethodBeat.o(141883);
       return;
     }
     int i = paramInt;
-    if (paramInt > this.eeH)
+    if (paramInt > this.maxCount)
     {
-      ab.i("MicroMsg.MMDotView", "large than max count");
-      i = this.eeH;
+      ad.i("MicroMsg.MMDotView", "large than max count");
+      i = this.maxCount;
     }
     removeAllViews();
     while (i != 0)
     {
-      localImageView = (ImageView)View.inflate(getContext(), 2130970284, null);
-      localImageView.setImageResource(this.zjc);
+      localImageView = (ImageView)View.inflate(getContext(), 2131494916, null);
+      localImageView.setImageResource(this.FWG);
       addView(localImageView);
       i -= 1;
     }
     ImageView localImageView = (ImageView)getChildAt(0);
     if (localImageView != null) {
-      localImageView.setImageResource(this.zjd);
+      localImageView.setImageResource(this.FWH);
     }
-    AppMethodBeat.o(106531);
+    AppMethodBeat.o(141883);
   }
   
   public void setInvertedStyle(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.zjc = 2130839878;
-      this.zjd = 2130839883;
+      this.FWG = 2131233541;
+      this.FWH = 2131233546;
       return;
     }
-    this.zjc = 2130839883;
-    this.zjd = 2130839878;
+    this.FWG = 2131233546;
+    this.FWH = 2131233541;
   }
   
   public void setMaxCount(int paramInt)
   {
-    AppMethodBeat.i(106530);
-    ab.d("MicroMsg.MMDotView", "setMaxCount:%d", new Object[] { Integer.valueOf(paramInt) });
-    this.eeH = paramInt;
-    AppMethodBeat.o(106530);
+    AppMethodBeat.i(141882);
+    ad.d("MicroMsg.MMDotView", "setMaxCount:%d", new Object[] { Integer.valueOf(paramInt) });
+    this.maxCount = paramInt;
+    AppMethodBeat.o(141882);
   }
   
   public void setSelectedDot(int paramInt)
   {
-    AppMethodBeat.i(106532);
-    ab.v("MicroMsg.MMDotView", "setSelectedDot:target index is %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(141884);
+    ad.v("MicroMsg.MMDotView", "setSelectedDot:target index is %d", new Object[] { Integer.valueOf(paramInt) });
     int i;
     if (paramInt >= getChildCount()) {
       i = getChildCount() - 1;
     }
     for (;;)
     {
-      ab.v("MicroMsg.MMDotView", "setSelectedDot:after adjust index is %d", new Object[] { Integer.valueOf(i) });
+      ad.v("MicroMsg.MMDotView", "setSelectedDot:after adjust index is %d", new Object[] { Integer.valueOf(i) });
       paramInt = 0;
       while (paramInt < getChildCount())
       {
-        ((ImageView)getChildAt(paramInt)).setImageResource(this.zjc);
+        ((ImageView)getChildAt(paramInt)).setImageResource(this.FWG);
         paramInt += 1;
       }
       i = paramInt;
@@ -137,14 +137,14 @@ public class MMDotView
     }
     ImageView localImageView = (ImageView)getChildAt(i);
     if (localImageView != null) {
-      localImageView.setImageResource(this.zjd);
+      localImageView.setImageResource(this.FWH);
     }
-    AppMethodBeat.o(106532);
+    AppMethodBeat.o(141884);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMDotView
  * JD-Core Version:    0.7.0.1
  */

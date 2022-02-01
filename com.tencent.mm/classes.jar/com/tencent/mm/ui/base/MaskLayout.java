@@ -10,15 +10,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.a.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.af.a.a;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class MaskLayout
   extends RelativeLayout
 {
-  private ImageView mDg;
+  private Drawable Gbr;
+  private ImageView qkS;
   private View view;
-  private Drawable znS;
   
   public MaskLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,28 +28,28 @@ public class MaskLayout
   public MaskLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(106966);
+    AppMethodBeat.i(142330);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MaskLayout, paramInt, 0);
-    this.znS = paramContext.getDrawable(0);
+    this.Gbr = paramContext.getDrawable(5);
     paramContext.recycle();
-    AppMethodBeat.o(106966);
+    AppMethodBeat.o(142330);
   }
   
-  private void a(MaskLayout.a parama)
+  private void a(a parama)
   {
-    AppMethodBeat.i(106971);
-    removeView(this.mDg);
+    AppMethodBeat.i(142335);
+    removeView(this.qkS);
     RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-2, -2);
     RelativeLayout.LayoutParams localLayoutParams1 = localLayoutParams2;
-    switch (MaskLayout.1.znT[parama.ordinal()])
+    switch (1.Gbs[parama.ordinal()])
     {
     default: 
       localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
     }
     for (;;)
     {
-      addView(this.mDg, localLayoutParams1);
-      AppMethodBeat.o(106971);
+      addView(this.qkS, localLayoutParams1);
+      AppMethodBeat.o(142335);
       return;
       localLayoutParams2.addRule(12);
       localLayoutParams2.addRule(11);
@@ -64,12 +64,12 @@ public class MaskLayout
     }
   }
   
-  public final void a(Bitmap paramBitmap, MaskLayout.a parama)
+  public final void a(Bitmap paramBitmap, a parama)
   {
-    AppMethodBeat.i(106970);
+    AppMethodBeat.i(142334);
     a(parama);
-    this.mDg.setImageBitmap(paramBitmap);
-    AppMethodBeat.o(106970);
+    this.qkS.setImageBitmap(paramBitmap);
+    AppMethodBeat.o(142334);
   }
   
   public View getContentView()
@@ -79,44 +79,61 @@ public class MaskLayout
   
   public void onFinishInflate()
   {
-    AppMethodBeat.i(106967);
+    AppMethodBeat.i(142331);
     super.onFinishInflate();
-    this.view = findViewById(2131820946);
+    this.view = findViewById(2131298739);
     if (this.view == null)
     {
-      ab.d("MicroMsg.MaskLayout", "%s", new Object[] { "not found view by id, new one" });
+      ad.d("MicroMsg.MaskLayout", "%s", new Object[] { "not found view by id, new one" });
       this.view = new View(getContext());
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
       localLayoutParams.addRule(13);
       this.view.setLayoutParams(localLayoutParams);
       addView(this.view);
     }
-    this.mDg = new ImageView(getContext());
-    this.mDg.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    this.mDg.setImageDrawable(this.znS);
-    addView(this.mDg);
-    AppMethodBeat.o(106967);
+    this.qkS = new ImageView(getContext());
+    this.qkS.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    this.qkS.setImageDrawable(this.Gbr);
+    addView(this.qkS);
+    AppMethodBeat.o(142331);
   }
   
   public void setMaskBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(106968);
-    a(MaskLayout.a.znY);
-    this.mDg.setImageBitmap(paramBitmap);
-    AppMethodBeat.o(106968);
+    AppMethodBeat.i(142332);
+    a(a.Gbx);
+    this.qkS.setImageBitmap(paramBitmap);
+    AppMethodBeat.o(142332);
   }
   
   public void setMaskDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(106969);
-    a(MaskLayout.a.znY);
-    this.mDg.setImageDrawable(paramDrawable);
-    AppMethodBeat.o(106969);
+    AppMethodBeat.i(142333);
+    a(a.Gbx);
+    this.qkS.setImageDrawable(paramDrawable);
+    AppMethodBeat.o(142333);
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(142329);
+      Gbt = new a("SUBSCRIPT_DRAWABLE_DIRECTION_TOP_RIGHT", 0);
+      Gbu = new a("SUBSCRIPT_DRAWABLE_DIRECTION_TOP_LEFT", 1);
+      Gbv = new a("SUBSCRIPT_DRAWABLE_DIRECTION_BOTTOM_RIGHT", 2);
+      Gbw = new a("SUBSCRIPT_DRAWABLE_DIRECTION_BOTTOM_LEFT", 3);
+      Gbx = new a("SUBSCRIPT_DRAWABLE_DIRECTION_ALL", 4);
+      Gby = new a[] { Gbt, Gbu, Gbv, Gbw, Gbx };
+      AppMethodBeat.o(142329);
+    }
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.MaskLayout
  * JD-Core Version:    0.7.0.1
  */

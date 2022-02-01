@@ -3,38 +3,27 @@ package com.tencent.xweb.xwalk;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import org.xwalk.core.XWalkEnvironment;
 
 final class c$11
   implements View.OnClickListener
 {
-  c$11(c paramc, Button paramButton) {}
+  c$11(c paramc, LinearLayout paramLinearLayout) {}
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(85132);
-    paramView = XWalkEnvironment.getPluginTestConfigUrl();
-    if ((paramView != null) && (!paramView.isEmpty()))
+    AppMethodBeat.i(154162);
+    if (this.ISY.getVisibility() == 8)
     {
-      if (XWalkEnvironment.setPluginTestConfigUrl(""))
-      {
-        this.BIT.setText("切换插件配置，当前使用正式版");
-        AppMethodBeat.o(85132);
-        return;
-      }
-      this.BIO.cz("切换失败", true);
-      AppMethodBeat.o(85132);
+      this.ISY.setVisibility(0);
+      ((Button)paramView).setText("隐藏插件设置");
+      AppMethodBeat.o(154162);
       return;
     }
-    if (XWalkEnvironment.setPluginTestConfigUrl("https://dldir1.qq.com/weixin/android/wxweb/plugin/pluginUpdateConfig_test.xml"))
-    {
-      this.BIT.setText("切换插件配置，当前使用默认测试版");
-      AppMethodBeat.o(85132);
-      return;
-    }
-    this.BIO.cz("切换失败", true);
-    AppMethodBeat.o(85132);
+    this.ISY.setVisibility(8);
+    ((Button)paramView).setText("插件设置");
+    AppMethodBeat.o(154162);
   }
 }
 

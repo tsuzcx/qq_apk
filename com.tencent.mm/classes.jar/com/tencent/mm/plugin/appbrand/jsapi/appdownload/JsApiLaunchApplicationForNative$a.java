@@ -1,47 +1,52 @@
 package com.tencent.mm.plugin.appbrand.jsapi.appdownload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.model.app.ai;
+import com.tencent.mm.pluginsdk.model.app.am;
 
 final class JsApiLaunchApplicationForNative$a
-  implements ai
+  implements am
 {
-  volatile boolean cyH;
-  volatile boolean ftW;
-  JsApiLaunchApplicationForNative.a.a hBp;
-  volatile boolean hyp;
-  volatile boolean hyq;
+  volatile boolean doI;
+  volatile boolean gWb;
+  a jAT;
+  volatile boolean jxM;
+  volatile boolean jxN;
   
-  JsApiLaunchApplicationForNative$a(JsApiLaunchApplicationForNative.a.a parama)
+  JsApiLaunchApplicationForNative$a(a parama)
   {
-    this.hBp = parama;
+    this.jAT = parama;
   }
   
-  public final void dZ(boolean paramBoolean)
+  final void fN(boolean paramBoolean)
   {
-    AppMethodBeat.i(143345);
-    this.ftW = true;
-    this.hyp = paramBoolean;
-    if ((this.hyq) && (this.hBp != null)) {
-      this.hBp.r(this.cyH, paramBoolean);
+    AppMethodBeat.i(45848);
+    this.doI = paramBoolean;
+    this.jxN = true;
+    if ((this.gWb) && (this.jAT != null)) {
+      this.jAT.t(paramBoolean, this.jxM);
     }
-    AppMethodBeat.o(143345);
+    AppMethodBeat.o(45848);
   }
   
-  final void ea(boolean paramBoolean)
+  public final void u(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(143346);
-    this.cyH = paramBoolean;
-    this.hyq = true;
-    if ((this.ftW) && (this.hBp != null)) {
-      this.hBp.r(paramBoolean, this.hyp);
+    AppMethodBeat.i(195809);
+    this.gWb = true;
+    this.jxM = paramBoolean1;
+    if ((this.jxN) && (this.jAT != null)) {
+      this.jAT.t(this.doI, paramBoolean1);
     }
-    AppMethodBeat.o(143346);
+    AppMethodBeat.o(195809);
+  }
+  
+  static abstract interface a
+  {
+    public abstract void t(boolean paramBoolean1, boolean paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.appdownload.JsApiLaunchApplicationForNative.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,35 +2,35 @@ package com.tencent.xweb.xwalk;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.c.b.b;
+import com.tencent.xweb.internal.CookieInternal.ICookieSyncManagerInternal;
 import org.xwalk.core.XWalkCookieManager;
 
 public final class e
-  implements b.b
+  implements CookieInternal.ICookieSyncManagerInternal
 {
-  XWalkCookieManager BJw;
+  XWalkCookieManager ITD;
   
   public e()
   {
-    AppMethodBeat.i(85214);
-    this.BJw = new XWalkCookieManager();
-    AppMethodBeat.o(85214);
+    AppMethodBeat.i(154262);
+    this.ITD = new XWalkCookieManager();
+    AppMethodBeat.o(154262);
   }
   
   public final void init(Context paramContext) {}
   
   public final void sync()
   {
-    AppMethodBeat.i(85215);
-    if (this.BJw != null) {
-      this.BJw.flushCookieStore();
+    AppMethodBeat.i(154263);
+    if (this.ITD != null) {
+      this.ITD.flushCookieStore();
     }
-    AppMethodBeat.o(85215);
+    AppMethodBeat.o(154263);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.xwalk.e
  * JD-Core Version:    0.7.0.1
  */

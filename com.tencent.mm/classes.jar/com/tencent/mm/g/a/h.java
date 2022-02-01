@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class h
   extends b
 {
-  public h.a cmk;
+  public a daW;
   
   public h()
   {
@@ -15,16 +15,23 @@ public final class h
   
   private h(byte paramByte)
   {
-    AppMethodBeat.i(77528);
-    this.cmk = new h.a();
-    this.ymq = false;
+    AppMethodBeat.i(149846);
+    this.daW = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77528);
+    AppMethodBeat.o(149846);
+  }
+  
+  public static final class a
+  {
+    public boolean daX = false;
+    public long daY;
+    public int scene;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.h
  * JD-Core Version:    0.7.0.1
  */

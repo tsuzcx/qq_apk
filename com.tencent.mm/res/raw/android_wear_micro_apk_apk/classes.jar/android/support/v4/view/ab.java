@@ -3,92 +3,59 @@ package android.support.v4.view;
 import android.animation.ValueAnimator;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewParent;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.WeakHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class ab
 {
-  private static Field kK;
-  private static boolean kL;
-  private static Field kM;
-  private static boolean kN;
-  private static WeakHashMap<View, String> kO;
-  private static Method kQ;
-  static Field kR;
-  static boolean kS = false;
-  WeakHashMap<View, as> kP = null;
+  private static Field mG;
+  private static boolean mH;
+  private static Field mI;
+  private static boolean mJ;
+  private static WeakHashMap<View, String> mK;
+  private static final AtomicInteger mL = new AtomicInteger(1);
+  static Field mN;
+  static boolean mO = false;
+  WeakHashMap<View, as> mM = null;
+  
+  private static void B(View paramView)
+  {
+    float f = paramView.getTranslationY();
+    paramView.setTranslationY(1.0F + f);
+    paramView.setTranslationY(f);
+  }
   
   public static void a(View paramView, a parama)
   {
     if (parama == null) {}
-    for (parama = null;; parama = parama.jI)
+    for (parama = null;; parama = parama.lF)
     {
       paramView.setAccessibilityDelegate(parama);
       return;
     }
   }
   
-  public static void a(ViewGroup paramViewGroup, boolean paramBoolean)
+  public static boolean e(View paramView)
   {
-    if (kQ == null) {}
-    try
-    {
-      kQ = ViewGroup.class.getDeclaredMethod("setChildrenDrawingOrderEnabled", new Class[] { Boolean.TYPE });
-      kQ.setAccessible(true);
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      for (;;)
-      {
-        try
-        {
-          kQ.invoke(paramViewGroup, new Object[] { Boolean.valueOf(true) });
-          return;
-        }
-        catch (IllegalAccessException paramViewGroup)
-        {
-          Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
-          return;
-        }
-        catch (IllegalArgumentException paramViewGroup)
-        {
-          Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
-          return;
-        }
-        catch (InvocationTargetException paramViewGroup)
-        {
-          Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
-        }
-        localNoSuchMethodException = localNoSuchMethodException;
-        Log.e("ViewCompat", "Unable to find childrenDrawingOrderEnabled", localNoSuchMethodException);
-      }
-    }
-  }
-  
-  public static boolean d(View paramView)
-  {
-    if (kS) {}
+    if (mO) {}
     for (;;)
     {
       return false;
-      if (kR == null) {}
+      if (mN == null) {}
       try
       {
         Field localField = View.class.getDeclaredField("mAccessibilityDelegate");
-        kR = localField;
+        mN = localField;
         localField.setAccessible(true);
       }
       catch (Throwable paramView)
       {
         try
         {
-          paramView = kR.get(paramView);
+          paramView = mN.get(paramView);
           if (paramView == null) {
             continue;
           }
@@ -96,21 +63,19 @@ class ab
         }
         catch (Throwable paramView)
         {
-          kS = true;
+          mO = true;
         }
         paramView = paramView;
-        kS = true;
+        mO = true;
         return false;
       }
     }
     return false;
   }
   
-  private static void w(View paramView)
+  public float A(View paramView)
   {
-    float f = paramView.getTranslationY();
-    paramView.setTranslationY(1.0F + f);
-    paramView.setTranslationY(f);
+    return 0.0F;
   }
   
   public av a(View paramView, av paramav)
@@ -141,6 +106,14 @@ class ab
     paramView.postDelayed(paramRunnable, ValueAnimator.getFrameDelay() + paramLong);
   }
   
+  public void a(View paramView, String paramString)
+  {
+    if (mK == null) {
+      mK = new WeakHashMap();
+    }
+    mK.put(paramView, paramString);
+  }
+  
   public av b(View paramView, av paramav)
   {
     return paramav;
@@ -151,75 +124,75 @@ class ab
     paramView.postDelayed(paramRunnable, ValueAnimator.getFrameDelay());
   }
   
-  public void c(View paramView, int paramInt) {}
-  
   public void d(View paramView, float paramFloat) {}
   
-  public void d(View paramView, int paramInt)
-  {
-    paramView.offsetTopAndBottom(paramInt);
-    if (paramView.getVisibility() == 0)
-    {
-      w(paramView);
-      paramView = paramView.getParent();
-      if ((paramView instanceof View)) {
-        w((View)paramView);
-      }
-    }
-  }
+  public void f(View paramView, int paramInt) {}
   
-  public void e(View paramView, int paramInt)
-  {
-    paramView.offsetLeftAndRight(paramInt);
-    if (paramView.getVisibility() == 0)
-    {
-      w(paramView);
-      paramView = paramView.getParent();
-      if ((paramView instanceof View)) {
-        w((View)paramView);
-      }
-    }
-  }
-  
-  public boolean e(View paramView)
+  public boolean f(View paramView)
   {
     return false;
   }
   
-  public void f(View paramView)
+  public void g(View paramView)
   {
     paramView.postInvalidate();
   }
   
-  public int g(View paramView)
+  public void g(View paramView, int paramInt)
+  {
+    paramView.offsetTopAndBottom(paramInt);
+    if (paramView.getVisibility() == 0)
+    {
+      B(paramView);
+      paramView = paramView.getParent();
+      if ((paramView instanceof View)) {
+        B((View)paramView);
+      }
+    }
+  }
+  
+  public int h(View paramView)
   {
     return 0;
   }
   
-  public int i(View paramView)
+  public void h(View paramView, int paramInt)
+  {
+    paramView.offsetLeftAndRight(paramInt);
+    if (paramView.getVisibility() == 0)
+    {
+      B(paramView);
+      paramView = paramView.getParent();
+      if ((paramView instanceof View)) {
+        B((View)paramView);
+      }
+    }
+  }
+  
+  public int j(View paramView)
   {
     return 0;
   }
   
-  public ViewParent j(View paramView)
+  public ViewParent k(View paramView)
   {
     return paramView.getParent();
   }
   
-  public int m(View paramView)
+  public int n(View paramView)
   {
-    if (!kL) {}
+    if (!mH) {}
     try
     {
       Field localField = View.class.getDeclaredField("mMinWidth");
-      kK = localField;
+      mG = localField;
       localField.setAccessible(true);
       label23:
-      kL = true;
-      if (kK != null) {
+      mH = true;
+      if (mG != null) {
         try
         {
-          int i = ((Integer)kK.get(paramView)).intValue();
+          int i = ((Integer)mG.get(paramView)).intValue();
           return i;
         }
         catch (Exception paramView) {}
@@ -232,20 +205,20 @@ class ab
     }
   }
   
-  public int n(View paramView)
+  public int o(View paramView)
   {
-    if (!kN) {}
+    if (!mJ) {}
     try
     {
       Field localField = View.class.getDeclaredField("mMinHeight");
-      kM = localField;
+      mI = localField;
       localField.setAccessible(true);
       label23:
-      kN = true;
-      if (kM != null) {
+      mJ = true;
+      if (mI != null) {
         try
         {
-          int i = ((Integer)kM.get(paramView)).intValue();
+          int i = ((Integer)mI.get(paramView)).intValue();
           return i;
         }
         catch (Exception paramView) {}
@@ -258,30 +231,32 @@ class ab
     }
   }
   
-  public float p(View paramView)
+  public float q(View paramView)
   {
     return 0.0F;
   }
   
-  public String q(View paramView)
+  public String r(View paramView)
   {
-    if (kO == null) {
+    if (mK == null) {
       return null;
     }
-    return (String)kO.get(paramView);
+    return (String)mK.get(paramView);
   }
   
-  public boolean r(View paramView)
+  public void s(View paramView) {}
+  
+  public boolean t(View paramView)
   {
     return false;
   }
   
-  public boolean s(View paramView)
+  public boolean u(View paramView)
   {
     return true;
   }
   
-  public boolean t(View paramView)
+  public boolean v(View paramView)
   {
     if ((paramView instanceof h)) {
       return ((h)paramView).isNestedScrollingEnabled();
@@ -289,14 +264,24 @@ class ab
     return false;
   }
   
-  public void u(View paramView)
+  public void w(View paramView)
   {
     if ((paramView instanceof h)) {
       ((h)paramView).stopNestedScroll();
     }
   }
   
-  public boolean v(View paramView)
+  public boolean x(View paramView)
+  {
+    return (paramView.getWidth() > 0) && (paramView.getHeight() > 0);
+  }
+  
+  public float y(View paramView)
+  {
+    return A(paramView) + q(paramView);
+  }
+  
+  public boolean z(View paramView)
   {
     return paramView.getWindowToken() != null;
   }

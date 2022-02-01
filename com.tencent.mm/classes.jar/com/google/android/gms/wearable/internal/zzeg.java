@@ -24,9 +24,9 @@ public final class zzeg
   
   static
   {
-    AppMethodBeat.i(71246);
+    AppMethodBeat.i(101229);
     CREATOR = new zzeh();
-    AppMethodBeat.o(71246);
+    AppMethodBeat.o(101229);
   }
   
   @SafeParcelable.Constructor
@@ -38,17 +38,17 @@ public final class zzeg
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(71245);
+    AppMethodBeat.i(101228);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 2, this.statusCode);
     SafeParcelWriter.writeParcelable(paramParcel, 3, this.zzea, paramInt, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(71245);
+    AppMethodBeat.o(101228);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzeg
  * JD-Core Version:    0.7.0.1
  */

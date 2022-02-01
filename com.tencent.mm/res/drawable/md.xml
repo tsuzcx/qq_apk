@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@color/lz" />
-    <item android:state_focused="true" android:drawable="@color/lz" />
-    <item android:drawable="@color/a3x" />
-/</selector>
+    <item>
+        <shape>
+            <solid android:color="@color/FG_3" />
+        </shape>
+    </item>
+</layer-list>

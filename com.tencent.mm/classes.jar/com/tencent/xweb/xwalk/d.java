@@ -2,62 +2,62 @@ package com.tencent.xweb.xwalk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.c.b.a;
+import com.tencent.xweb.internal.CookieInternal.ICookieManagerInternal;
 import org.xwalk.core.XWalkCookieManager;
 
 public final class d
-  implements b.a
+  implements CookieInternal.ICookieManagerInternal
 {
-  XWalkCookieManager BJw;
+  XWalkCookieManager ITD;
   
   public d()
   {
-    AppMethodBeat.i(85208);
-    this.BJw = new XWalkCookieManager();
-    AppMethodBeat.o(85208);
+    AppMethodBeat.i(154256);
+    this.ITD = new XWalkCookieManager();
+    AppMethodBeat.o(154256);
   }
   
-  public final void dYh()
+  public final void e(WebView paramWebView) {}
+  
+  public final void fqD()
   {
-    AppMethodBeat.i(85209);
-    this.BJw.setAcceptCookie(true);
-    AppMethodBeat.o(85209);
+    AppMethodBeat.i(154257);
+    this.ITD.setAcceptCookie(true);
+    AppMethodBeat.o(154257);
   }
-  
-  public final void f(WebView paramWebView) {}
   
   public final String getCookie(String paramString)
   {
-    AppMethodBeat.i(85211);
-    paramString = this.BJw.getCookie(paramString);
-    AppMethodBeat.o(85211);
+    AppMethodBeat.i(154259);
+    paramString = this.ITD.getCookie(paramString);
+    AppMethodBeat.o(154259);
     return paramString;
   }
   
   public final void removeAllCookie()
   {
-    AppMethodBeat.i(85210);
-    this.BJw.removeAllCookie();
-    AppMethodBeat.o(85210);
+    AppMethodBeat.i(154258);
+    this.ITD.removeAllCookie();
+    AppMethodBeat.o(154258);
   }
   
   public final void removeSessionCookie()
   {
-    AppMethodBeat.i(85213);
-    this.BJw.removeSessionCookie();
-    AppMethodBeat.o(85213);
+    AppMethodBeat.i(154261);
+    this.ITD.removeSessionCookie();
+    AppMethodBeat.o(154261);
   }
   
   public final void setCookie(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(85212);
-    this.BJw.setCookie(paramString1, paramString2);
-    AppMethodBeat.o(85212);
+    AppMethodBeat.i(154260);
+    this.ITD.setCookie(paramString1, paramString2);
+    AppMethodBeat.o(154260);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.xwalk.d
  * JD-Core Version:    0.7.0.1
  */

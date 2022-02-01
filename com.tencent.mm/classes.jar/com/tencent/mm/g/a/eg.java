@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class eg
   extends b
 {
-  public eg.a crX;
-  public eg.b crY;
+  public a dgM;
   
   public eg()
   {
@@ -16,17 +15,21 @@ public final class eg
   
   private eg(byte paramByte)
   {
-    AppMethodBeat.i(70168);
-    this.crX = new eg.a();
-    this.crY = new eg.b();
-    this.ymq = false;
+    AppMethodBeat.i(115998);
+    this.dgM = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70168);
+    AppMethodBeat.o(115998);
+  }
+  
+  public static final class a
+  {
+    public int dgN = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.eg
  * JD-Core Version:    0.7.0.1
  */

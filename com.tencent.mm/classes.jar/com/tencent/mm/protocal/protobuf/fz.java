@@ -3,77 +3,79 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class fz
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String fnF;
-  public String key;
+  public int CAG;
+  public int CAH;
+  public int CAI;
+  public int CAJ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(96197);
+    AppMethodBeat.i(32126);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.key != null) {
-        paramVarArgs.e(1, this.key);
-      }
-      if (this.fnF != null) {
-        paramVarArgs.e(2, this.fnF);
-      }
-      AppMethodBeat.o(96197);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.CAG);
+      paramVarArgs.aR(2, this.CAH);
+      paramVarArgs.aR(3, this.CAI);
+      paramVarArgs.aR(4, this.CAJ);
+      AppMethodBeat.o(32126);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.key == null) {
-        break label274;
-      }
-    }
-    label274:
-    for (paramInt = e.a.a.b.b.a.f(1, this.key) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.fnF != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.fnF);
-      }
-      AppMethodBeat.o(96197);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
-          }
-        }
-        AppMethodBeat.o(96197);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-        fz localfz = (fz)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(96197);
-          return -1;
-        case 1: 
-          localfz.key = locala.CLY.readString();
-          AppMethodBeat.o(96197);
-          return 0;
-        }
-        localfz.fnF = locala.CLY.readString();
-        AppMethodBeat.o(96197);
-        return 0;
-      }
-      AppMethodBeat.o(96197);
-      return -1;
+      paramInt = f.a.a.b.b.a.bA(1, this.CAG);
+      int i = f.a.a.b.b.a.bA(2, this.CAH);
+      int j = f.a.a.b.b.a.bA(3, this.CAI);
+      int k = f.a.a.b.b.a.bA(4, this.CAJ);
+      AppMethodBeat.o(32126);
+      return paramInt + 0 + i + j + k;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.fMq();
+        }
+      }
+      AppMethodBeat.o(32126);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      fz localfz = (fz)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(32126);
+        return -1;
+      case 1: 
+        localfz.CAG = locala.KhF.xS();
+        AppMethodBeat.o(32126);
+        return 0;
+      case 2: 
+        localfz.CAH = locala.KhF.xS();
+        AppMethodBeat.o(32126);
+        return 0;
+      case 3: 
+        localfz.CAI = locala.KhF.xS();
+        AppMethodBeat.o(32126);
+        return 0;
+      }
+      localfz.CAJ = locala.KhF.xS();
+      AppMethodBeat.o(32126);
+      return 0;
+    }
+    AppMethodBeat.o(32126);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.fz
  * JD-Core Version:    0.7.0.1
  */

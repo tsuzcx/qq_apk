@@ -1,28 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.luggage.h.e.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.czk;
-import com.tencent.mm.protocal.protobuf.czl;
+import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class aq
-  extends a
+  extends a<c>
 {
-  public static final int CTRL_INDEX = 236;
-  public static final String NAME = "getSetting";
-  
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
-  {
-    AppMethodBeat.i(101946);
-    paramJSONObject = new czk();
-    paramJSONObject.appId = paramc.getAppId();
-    ((com.tencent.mm.plugin.appbrand.networking.a)paramc.q(com.tencent.mm.plugin.appbrand.networking.a.class)).a("/cgi-bin/mmbiz-bin/wxaapp_getauthinfo", paramJSONObject, czl.class).c(new aq.1(this, paramc, paramInt));
-    AppMethodBeat.o(101946);
-  }
+  public static final int CTRL_INDEX = 627;
+  public static final String NAME = "chooseShareGroup";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.aq
  * JD-Core Version:    0.7.0.1
  */

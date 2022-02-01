@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/loading_view" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="135.0dip" android:layout_marginTop="42.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0dip" android:textColor="@color/black" android:gravity="center" android:id="@id/bar_code_tv" android:layout_width="fill_parent" android:layout_height="24.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:text="@string/wear_default_bar_code" />
+    <ImageView android:id="@id/content_iv" android:layout_width="fill_parent" android:layout_height="80.0dip" android:src="@drawable/default_barcode" android:scaleType="fitXY" />
+    <TextView android:textColor="@color/black" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/pay_way_tv" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginBottom="3.0dip" android:text="@string/wear_load_pay" android:layout_weight="1.0" />
+</LinearLayout>

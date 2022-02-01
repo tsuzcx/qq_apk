@@ -6,19 +6,19 @@ public abstract interface c
   
   public abstract void b(long paramLong, byte[] paramArrayOfByte);
   
-  public abstract void f(long paramLong1, long paramLong2, long paramLong3);
+  public abstract void h(long paramLong1, long paramLong2, long paramLong3);
   
-  public abstract void hN(long paramLong);
+  public abstract void k(long paramLong, boolean paramBoolean);
   
   public abstract void l(long paramLong, boolean paramBoolean);
   
-  public abstract void m(long paramLong, boolean paramBoolean);
+  public abstract void nx(long paramLong);
   
-  public abstract void rN(int paramInt);
+  public abstract void xt(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.d.c
  * JD-Core Version:    0.7.0.1
  */

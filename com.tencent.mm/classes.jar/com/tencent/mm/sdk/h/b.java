@@ -3,369 +3,371 @@ package com.tencent.mm.sdk.h;
 import android.os.Build;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.ad;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.compatible.deviceinfo.af;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class b
 {
-  private static Boolean etg = null;
-  private static Boolean eth = null;
-  private static Boolean ytA = null;
-  private static Boolean yty = null;
-  private static Boolean ytz = null;
+  private static Boolean EYS = null;
+  private static Boolean EYT = null;
+  private static Boolean EYU = null;
+  private static Boolean fGq = null;
+  private static Boolean fGr = null;
   
   /* Error */
-  public static boolean Mn()
+  public static boolean XL()
   {
     // Byte code:
     //   0: ldc 28
     //   2: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 14	com/tencent/mm/sdk/h/b:etg	Ljava/lang/Boolean;
-    //   8: ifnonnull +58 -> 66
-    //   11: new 36	java/io/FileInputStream
-    //   14: dup
-    //   15: new 38	java/io/File
+    //   5: getstatic 14	com/tencent/mm/sdk/h/b:fGq	Ljava/lang/Boolean;
+    //   8: ifnonnull +71 -> 79
+    //   11: aconst_null
+    //   12: astore_2
+    //   13: aconst_null
+    //   14: astore_1
+    //   15: new 36	com/tencent/mm/vfs/e
     //   18: dup
-    //   19: invokestatic 44	android/os/Environment:getRootDirectory	()Ljava/io/File;
-    //   22: ldc 46
-    //   24: invokespecial 50	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   27: invokespecial 53	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   30: astore_2
-    //   31: aload_2
+    //   19: invokestatic 42	android/os/Environment:getRootDirectory	()Ljava/io/File;
+    //   22: ldc 44
+    //   24: invokespecial 48	com/tencent/mm/vfs/e:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   27: invokestatic 54	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   30: astore_3
+    //   31: aload_3
     //   32: astore_1
-    //   33: new 55	java/util/Properties
-    //   36: dup
-    //   37: invokespecial 57	java/util/Properties:<init>	()V
-    //   40: astore_3
-    //   41: aload_2
-    //   42: astore_1
-    //   43: aload_3
-    //   44: aload_2
-    //   45: invokevirtual 61	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   48: aload_2
-    //   49: astore_1
+    //   33: aload_3
+    //   34: astore_2
+    //   35: new 56	java/util/Properties
+    //   38: dup
+    //   39: invokespecial 58	java/util/Properties:<init>	()V
+    //   42: astore 4
+    //   44: aload_3
+    //   45: astore_1
+    //   46: aload_3
+    //   47: astore_2
+    //   48: aload 4
     //   50: aload_3
-    //   51: ldc 63
-    //   53: invokevirtual 67	java/util/Properties:containsKey	(Ljava/lang/Object;)Z
-    //   56: invokestatic 73	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   59: putstatic 14	com/tencent/mm/sdk/h/b:etg	Ljava/lang/Boolean;
-    //   62: aload_2
-    //   63: invokevirtual 76	java/io/FileInputStream:close	()V
-    //   66: getstatic 14	com/tencent/mm/sdk/h/b:etg	Ljava/lang/Boolean;
-    //   69: invokevirtual 79	java/lang/Boolean:booleanValue	()Z
-    //   72: istore_0
-    //   73: ldc 28
-    //   75: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   78: iload_0
-    //   79: ireturn
-    //   80: astore_3
-    //   81: aconst_null
-    //   82: astore_2
-    //   83: aload_2
-    //   84: astore_1
-    //   85: ldc 84
-    //   87: ldc 86
-    //   89: iconst_1
-    //   90: anewarray 4	java/lang/Object
-    //   93: dup
-    //   94: iconst_0
-    //   95: aload_3
-    //   96: aastore
-    //   97: invokestatic 92	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   100: aload_2
-    //   101: astore_1
-    //   102: getstatic 95	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   105: putstatic 14	com/tencent/mm/sdk/h/b:etg	Ljava/lang/Boolean;
-    //   108: aload_2
-    //   109: ifnull -43 -> 66
-    //   112: aload_2
-    //   113: invokevirtual 76	java/io/FileInputStream:close	()V
-    //   116: goto -50 -> 66
-    //   119: astore_1
-    //   120: goto -54 -> 66
-    //   123: astore_2
-    //   124: aconst_null
-    //   125: astore_1
-    //   126: aload_1
-    //   127: ifnull +7 -> 134
-    //   130: aload_1
-    //   131: invokevirtual 76	java/io/FileInputStream:close	()V
-    //   134: ldc 28
-    //   136: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   51: invokevirtual 62	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   54: aload_3
+    //   55: astore_1
+    //   56: aload_3
+    //   57: astore_2
+    //   58: aload 4
+    //   60: ldc 64
+    //   62: invokevirtual 68	java/util/Properties:containsKey	(Ljava/lang/Object;)Z
+    //   65: invokestatic 74	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   68: putstatic 14	com/tencent/mm/sdk/h/b:fGq	Ljava/lang/Boolean;
+    //   71: aload_3
+    //   72: ifnull +7 -> 79
+    //   75: aload_3
+    //   76: invokevirtual 79	java/io/InputStream:close	()V
+    //   79: getstatic 14	com/tencent/mm/sdk/h/b:fGq	Ljava/lang/Boolean;
+    //   82: invokevirtual 82	java/lang/Boolean:booleanValue	()Z
+    //   85: istore_0
+    //   86: ldc 28
+    //   88: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   91: iload_0
+    //   92: ireturn
+    //   93: astore_3
+    //   94: aload_1
+    //   95: astore_2
+    //   96: ldc 87
+    //   98: ldc 89
+    //   100: iconst_1
+    //   101: anewarray 4	java/lang/Object
+    //   104: dup
+    //   105: iconst_0
+    //   106: aload_3
+    //   107: aastore
+    //   108: invokestatic 95	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   111: aload_1
+    //   112: astore_2
+    //   113: getstatic 98	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   116: putstatic 14	com/tencent/mm/sdk/h/b:fGq	Ljava/lang/Boolean;
+    //   119: aload_1
+    //   120: ifnull -41 -> 79
+    //   123: aload_1
+    //   124: invokevirtual 79	java/io/InputStream:close	()V
+    //   127: goto -48 -> 79
+    //   130: astore_1
+    //   131: goto -52 -> 79
+    //   134: astore_1
+    //   135: aload_2
+    //   136: ifnull +7 -> 143
     //   139: aload_2
-    //   140: athrow
-    //   141: astore_1
-    //   142: goto -76 -> 66
-    //   145: astore_1
-    //   146: goto -12 -> 134
-    //   149: astore_2
-    //   150: goto -24 -> 126
-    //   153: astore_3
-    //   154: goto -71 -> 83
+    //   140: invokevirtual 79	java/io/InputStream:close	()V
+    //   143: ldc 28
+    //   145: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   148: aload_1
+    //   149: athrow
+    //   150: astore_1
+    //   151: goto -72 -> 79
+    //   154: astore_2
+    //   155: goto -12 -> 143
     // Local variable table:
     //   start	length	slot	name	signature
-    //   72	7	0	bool	boolean
-    //   32	70	1	localFileInputStream1	java.io.FileInputStream
-    //   119	1	1	localException1	java.lang.Exception
-    //   125	6	1	localObject1	Object
-    //   141	1	1	localException2	java.lang.Exception
-    //   145	1	1	localException3	java.lang.Exception
-    //   30	83	2	localFileInputStream2	java.io.FileInputStream
-    //   123	17	2	localObject2	Object
-    //   149	1	2	localObject3	Object
-    //   40	11	3	localProperties	java.util.Properties
-    //   80	16	3	localException4	java.lang.Exception
-    //   153	1	3	localException5	java.lang.Exception
+    //   85	7	0	bool	boolean
+    //   14	110	1	localObject1	Object
+    //   130	1	1	localException1	java.lang.Exception
+    //   134	15	1	localObject2	Object
+    //   150	1	1	localException2	java.lang.Exception
+    //   12	128	2	localObject3	Object
+    //   154	1	2	localException3	java.lang.Exception
+    //   30	46	3	localInputStream	java.io.InputStream
+    //   93	14	3	localException4	java.lang.Exception
+    //   42	17	4	localProperties	java.util.Properties
     // Exception table:
     //   from	to	target	type
-    //   11	31	80	java/lang/Exception
-    //   112	116	119	java/lang/Exception
-    //   11	31	123	finally
-    //   62	66	141	java/lang/Exception
-    //   130	134	145	java/lang/Exception
-    //   33	41	149	finally
-    //   43	48	149	finally
-    //   50	62	149	finally
-    //   85	100	149	finally
-    //   102	108	149	finally
-    //   33	41	153	java/lang/Exception
-    //   43	48	153	java/lang/Exception
-    //   50	62	153	java/lang/Exception
+    //   15	31	93	java/lang/Exception
+    //   35	44	93	java/lang/Exception
+    //   48	54	93	java/lang/Exception
+    //   58	71	93	java/lang/Exception
+    //   123	127	130	java/lang/Exception
+    //   15	31	134	finally
+    //   35	44	134	finally
+    //   48	54	134	finally
+    //   58	71	134	finally
+    //   96	111	134	finally
+    //   113	119	134	finally
+    //   75	79	150	java/lang/Exception
+    //   139	143	154	java/lang/Exception
   }
   
   /* Error */
-  public static boolean Mo()
+  public static boolean XM()
   {
     // Byte code:
-    //   0: ldc 97
+    //   0: ldc 100
     //   2: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 16	com/tencent/mm/sdk/h/b:eth	Ljava/lang/Boolean;
-    //   8: ifnonnull +89 -> 97
-    //   11: new 36	java/io/FileInputStream
-    //   14: dup
-    //   15: new 38	java/io/File
+    //   5: getstatic 16	com/tencent/mm/sdk/h/b:fGr	Ljava/lang/Boolean;
+    //   8: ifnonnull +105 -> 113
+    //   11: aconst_null
+    //   12: astore_2
+    //   13: aconst_null
+    //   14: astore_1
+    //   15: new 36	com/tencent/mm/vfs/e
     //   18: dup
-    //   19: invokestatic 44	android/os/Environment:getRootDirectory	()Ljava/io/File;
-    //   22: ldc 46
-    //   24: invokespecial 50	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   27: invokespecial 53	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   30: astore_2
-    //   31: aload_2
+    //   19: invokestatic 42	android/os/Environment:getRootDirectory	()Ljava/io/File;
+    //   22: ldc 44
+    //   24: invokespecial 48	com/tencent/mm/vfs/e:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   27: invokestatic 54	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   30: astore_3
+    //   31: aload_3
     //   32: astore_1
-    //   33: new 55	java/util/Properties
-    //   36: dup
-    //   37: invokespecial 57	java/util/Properties:<init>	()V
-    //   40: astore_3
-    //   41: aload_2
-    //   42: astore_1
-    //   43: aload_3
-    //   44: aload_2
-    //   45: invokevirtual 61	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   48: aload_2
-    //   49: astore_1
-    //   50: ldc 84
-    //   52: ldc 99
-    //   54: iconst_1
-    //   55: anewarray 4	java/lang/Object
-    //   58: dup
-    //   59: iconst_0
-    //   60: aload_3
-    //   61: ldc 63
-    //   63: ldc 101
-    //   65: invokevirtual 105	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   68: aastore
-    //   69: invokestatic 92	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   72: aload_2
-    //   73: astore_1
-    //   74: aload_3
-    //   75: ldc 63
-    //   77: ldc 101
-    //   79: invokevirtual 105	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   82: ldc 107
-    //   84: invokevirtual 113	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   87: invokestatic 73	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   90: putstatic 16	com/tencent/mm/sdk/h/b:eth	Ljava/lang/Boolean;
-    //   93: aload_2
-    //   94: invokevirtual 76	java/io/FileInputStream:close	()V
-    //   97: getstatic 16	com/tencent/mm/sdk/h/b:eth	Ljava/lang/Boolean;
-    //   100: invokevirtual 79	java/lang/Boolean:booleanValue	()Z
-    //   103: istore_0
-    //   104: ldc 97
-    //   106: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   109: iload_0
-    //   110: ireturn
-    //   111: astore_3
-    //   112: aconst_null
-    //   113: astore_2
-    //   114: aload_2
-    //   115: astore_1
-    //   116: ldc 84
-    //   118: ldc 86
-    //   120: iconst_1
-    //   121: anewarray 4	java/lang/Object
-    //   124: dup
-    //   125: iconst_0
-    //   126: aload_3
-    //   127: aastore
-    //   128: invokestatic 92	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   131: aload_2
-    //   132: astore_1
-    //   133: getstatic 95	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   136: putstatic 16	com/tencent/mm/sdk/h/b:eth	Ljava/lang/Boolean;
-    //   139: aload_2
-    //   140: ifnull -43 -> 97
-    //   143: aload_2
-    //   144: invokevirtual 76	java/io/FileInputStream:close	()V
-    //   147: goto -50 -> 97
-    //   150: astore_1
-    //   151: goto -54 -> 97
-    //   154: astore_2
-    //   155: aconst_null
-    //   156: astore_1
+    //   33: aload_3
+    //   34: astore_2
+    //   35: new 56	java/util/Properties
+    //   38: dup
+    //   39: invokespecial 58	java/util/Properties:<init>	()V
+    //   42: astore 4
+    //   44: aload_3
+    //   45: astore_1
+    //   46: aload_3
+    //   47: astore_2
+    //   48: aload 4
+    //   50: aload_3
+    //   51: invokevirtual 62	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   54: aload_3
+    //   55: astore_1
+    //   56: aload_3
+    //   57: astore_2
+    //   58: ldc 87
+    //   60: ldc 102
+    //   62: iconst_1
+    //   63: anewarray 4	java/lang/Object
+    //   66: dup
+    //   67: iconst_0
+    //   68: aload 4
+    //   70: ldc 64
+    //   72: ldc 104
+    //   74: invokevirtual 108	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   77: aastore
+    //   78: invokestatic 95	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   81: aload_3
+    //   82: astore_1
+    //   83: aload_3
+    //   84: astore_2
+    //   85: aload 4
+    //   87: ldc 64
+    //   89: ldc 104
+    //   91: invokevirtual 108	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   94: ldc 110
+    //   96: invokevirtual 116	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   99: invokestatic 74	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   102: putstatic 16	com/tencent/mm/sdk/h/b:fGr	Ljava/lang/Boolean;
+    //   105: aload_3
+    //   106: ifnull +7 -> 113
+    //   109: aload_3
+    //   110: invokevirtual 79	java/io/InputStream:close	()V
+    //   113: getstatic 16	com/tencent/mm/sdk/h/b:fGr	Ljava/lang/Boolean;
+    //   116: invokevirtual 82	java/lang/Boolean:booleanValue	()Z
+    //   119: istore_0
+    //   120: ldc 100
+    //   122: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   125: iload_0
+    //   126: ireturn
+    //   127: astore_3
+    //   128: aload_1
+    //   129: astore_2
+    //   130: ldc 87
+    //   132: ldc 89
+    //   134: iconst_1
+    //   135: anewarray 4	java/lang/Object
+    //   138: dup
+    //   139: iconst_0
+    //   140: aload_3
+    //   141: aastore
+    //   142: invokestatic 95	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   145: aload_1
+    //   146: astore_2
+    //   147: getstatic 98	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   150: putstatic 16	com/tencent/mm/sdk/h/b:fGr	Ljava/lang/Boolean;
+    //   153: aload_1
+    //   154: ifnull -41 -> 113
     //   157: aload_1
-    //   158: ifnull +7 -> 165
-    //   161: aload_1
-    //   162: invokevirtual 76	java/io/FileInputStream:close	()V
-    //   165: ldc 97
-    //   167: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   170: aload_2
-    //   171: athrow
-    //   172: astore_1
-    //   173: goto -76 -> 97
-    //   176: astore_1
-    //   177: goto -12 -> 165
-    //   180: astore_2
-    //   181: goto -24 -> 157
-    //   184: astore_3
-    //   185: goto -71 -> 114
+    //   158: invokevirtual 79	java/io/InputStream:close	()V
+    //   161: goto -48 -> 113
+    //   164: astore_1
+    //   165: goto -52 -> 113
+    //   168: astore_1
+    //   169: aload_2
+    //   170: ifnull +7 -> 177
+    //   173: aload_2
+    //   174: invokevirtual 79	java/io/InputStream:close	()V
+    //   177: ldc 100
+    //   179: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   182: aload_1
+    //   183: athrow
+    //   184: astore_1
+    //   185: goto -72 -> 113
+    //   188: astore_2
+    //   189: goto -12 -> 177
     // Local variable table:
     //   start	length	slot	name	signature
-    //   103	7	0	bool	boolean
-    //   32	101	1	localFileInputStream1	java.io.FileInputStream
-    //   150	1	1	localException1	java.lang.Exception
-    //   156	6	1	localObject1	Object
-    //   172	1	1	localException2	java.lang.Exception
-    //   176	1	1	localException3	java.lang.Exception
-    //   30	114	2	localFileInputStream2	java.io.FileInputStream
-    //   154	17	2	localObject2	Object
-    //   180	1	2	localObject3	Object
-    //   40	35	3	localProperties	java.util.Properties
-    //   111	16	3	localException4	java.lang.Exception
-    //   184	1	3	localException5	java.lang.Exception
+    //   119	7	0	bool	boolean
+    //   14	144	1	localObject1	Object
+    //   164	1	1	localException1	java.lang.Exception
+    //   168	15	1	localObject2	Object
+    //   184	1	1	localException2	java.lang.Exception
+    //   12	162	2	localObject3	Object
+    //   188	1	2	localException3	java.lang.Exception
+    //   30	80	3	localInputStream	java.io.InputStream
+    //   127	14	3	localException4	java.lang.Exception
+    //   42	44	4	localProperties	java.util.Properties
     // Exception table:
     //   from	to	target	type
-    //   11	31	111	java/lang/Exception
-    //   143	147	150	java/lang/Exception
-    //   11	31	154	finally
-    //   93	97	172	java/lang/Exception
-    //   161	165	176	java/lang/Exception
-    //   33	41	180	finally
-    //   43	48	180	finally
-    //   50	72	180	finally
-    //   74	93	180	finally
-    //   116	131	180	finally
-    //   133	139	180	finally
-    //   33	41	184	java/lang/Exception
-    //   43	48	184	java/lang/Exception
-    //   50	72	184	java/lang/Exception
-    //   74	93	184	java/lang/Exception
+    //   15	31	127	java/lang/Exception
+    //   35	44	127	java/lang/Exception
+    //   48	54	127	java/lang/Exception
+    //   58	81	127	java/lang/Exception
+    //   85	105	127	java/lang/Exception
+    //   157	161	164	java/lang/Exception
+    //   15	31	168	finally
+    //   35	44	168	finally
+    //   48	54	168	finally
+    //   58	81	168	finally
+    //   85	105	168	finally
+    //   130	145	168	finally
+    //   147	153	168	finally
+    //   109	113	184	java/lang/Exception
+    //   173	177	188	java/lang/Exception
   }
   
-  public static boolean duN()
+  public static boolean eHo()
   {
-    AppMethodBeat.i(65370);
-    if (yty == null)
+    AppMethodBeat.i(153476);
+    if (EYS == null)
     {
       String str = Build.MANUFACTURER;
-      ab.i("Vendor.MIUI", "Build.MANUFACTURER = %s", new Object[] { str });
+      ad.i("Vendor.MIUI", "Build.MANUFACTURER = %s", new Object[] { str });
       if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase("Xiaomi"))) {
         break label88;
       }
-      if (!bo.isEqual(ad.get("ro.miui.ui.version.code"), "8")) {
+      if (!bt.kU(af.get("ro.miui.ui.version.code"), "8")) {
         break label79;
       }
-      yty = Boolean.TRUE;
+      EYS = Boolean.TRUE;
     }
     for (;;)
     {
-      boolean bool = yty.booleanValue();
-      AppMethodBeat.o(65370);
+      boolean bool = EYS.booleanValue();
+      AppMethodBeat.o(153476);
       return bool;
       label79:
-      yty = Boolean.FALSE;
+      EYS = Boolean.FALSE;
       continue;
       label88:
-      yty = Boolean.FALSE;
+      EYS = Boolean.FALSE;
     }
   }
   
-  public static boolean duO()
+  public static boolean eHp()
   {
-    AppMethodBeat.i(65371);
-    if (ytz == null)
+    AppMethodBeat.i(153477);
+    if (EYT == null)
     {
       String str = Build.MANUFACTURER;
-      ab.i("Vendor.MIUI", "Build.MANUFACTURER = %s", new Object[] { str });
+      ad.i("Vendor.MIUI", "Build.MANUFACTURER = %s", new Object[] { str });
       if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase("Xiaomi"))) {
         break label66;
       }
     }
     label66:
-    for (ytz = Boolean.TRUE;; ytz = Boolean.FALSE)
+    for (EYT = Boolean.TRUE;; EYT = Boolean.FALSE)
     {
-      boolean bool = ytz.booleanValue();
-      AppMethodBeat.o(65371);
+      boolean bool = EYT.booleanValue();
+      AppMethodBeat.o(153477);
       return bool;
     }
   }
   
-  public static boolean duP()
+  public static boolean eHq()
   {
-    AppMethodBeat.i(65372);
-    if (ytA == null)
+    AppMethodBeat.i(153478);
+    if (EYU == null)
     {
       String str = Build.MANUFACTURER;
-      ab.i("Vendor.MIUI", "Build.MANUFACTURER = %s, Build.MODEL = %s", new Object[] { str, Build.MODEL });
+      ad.i("Vendor.MIUI", "Build.MANUFACTURER = %s, Build.MODEL = %s", new Object[] { str, Build.MODEL });
       if ((TextUtils.isEmpty(str)) || (!str.equals("Xiaomi"))) {
         break label144;
       }
       str = getSystemProperty("ro.miui.version.code_time");
-      ab.w("Vendor.MIUI", "ifNotificationChannelSupportNativeActionJump() versionCode:%s", new Object[] { str });
+      ad.w("Vendor.MIUI", "ifNotificationChannelSupportNativeActionJump() versionCode:%s", new Object[] { str });
       if (Long.valueOf(str).longValue() <= Long.valueOf("1536681600").longValue()) {
         break label135;
       }
-      ytA = Boolean.TRUE;
+      EYU = Boolean.TRUE;
     }
     for (;;)
     {
-      ab.i("Vendor.MIUI", "ifNotificationChannelSupportNativeActionJump() ifNotificationChannelSupportNativeActionJump:%s", new Object[] { Boolean.valueOf(ytA.booleanValue()) });
-      boolean bool = ytA.booleanValue();
-      AppMethodBeat.o(65372);
+      ad.i("Vendor.MIUI", "ifNotificationChannelSupportNativeActionJump() ifNotificationChannelSupportNativeActionJump:%s", new Object[] { Boolean.valueOf(EYU.booleanValue()) });
+      boolean bool = EYU.booleanValue();
+      AppMethodBeat.o(153478);
       return bool;
       label135:
-      ytA = Boolean.FALSE;
+      EYU = Boolean.FALSE;
       continue;
       label144:
-      ytA = Boolean.FALSE;
+      EYU = Boolean.FALSE;
     }
   }
   
   public static boolean g(int paramInt, String paramString1, String paramString2, String paramString3)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(65373);
+    AppMethodBeat.i(153479);
     boolean bool1;
     if (paramInt >= Integer.parseInt(paramString1))
     {
-      if (!bo.isEqual(paramString2, "")) {
+      if (!bt.kU(paramString2, "")) {
         break label97;
       }
       bool1 = bool2;
-      if (duO())
+      if (eHp())
       {
         paramString1 = getSystemProperty("ro.miui.version.code_time");
-        if (!bo.isNullOrNil(paramString3)) {
+        if (!bt.isNullOrNil(paramString3)) {
           break label69;
         }
         paramInt = 1;
@@ -379,7 +381,7 @@ public final class b
     }
     for (;;)
     {
-      AppMethodBeat.o(65373);
+      AppMethodBeat.o(153479);
       return bool1;
       label69:
       if (Long.valueOf(paramString1).longValue() < Long.valueOf(paramString3).longValue())
@@ -401,68 +403,68 @@ public final class b
   private static String getSystemProperty(String paramString)
   {
     // Byte code:
-    //   0: ldc 207
+    //   0: ldc 210
     //   2: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 213	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
-    //   8: ldc 215
+    //   5: invokestatic 216	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   8: ldc 218
     //   10: aload_0
-    //   11: invokestatic 218	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   14: invokevirtual 221	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   17: invokevirtual 225	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
+    //   11: invokestatic 221	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   14: invokevirtual 224	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   17: invokevirtual 228	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
     //   20: astore_1
     //   21: aload_1
     //   22: ifnonnull +17 -> 39
-    //   25: ldc 84
-    //   27: ldc 227
-    //   29: invokestatic 230	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   32: ldc 207
-    //   34: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   25: ldc 87
+    //   27: ldc 230
+    //   29: invokestatic 233	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   32: ldc 210
+    //   34: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   37: aconst_null
     //   38: areturn
-    //   39: new 232	java/io/BufferedReader
+    //   39: new 235	java/io/BufferedReader
     //   42: dup
-    //   43: new 234	java/io/InputStreamReader
+    //   43: new 237	java/io/InputStreamReader
     //   46: dup
     //   47: aload_1
-    //   48: invokevirtual 240	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   51: invokespecial 242	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   48: invokevirtual 243	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   51: invokespecial 245	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   54: sipush 1024
-    //   57: invokespecial 245	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   57: invokespecial 248	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   60: astore_2
     //   61: aload_2
     //   62: astore_1
     //   63: aload_2
-    //   64: invokevirtual 249	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   64: invokevirtual 252	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   67: astore_3
     //   68: aload_2
     //   69: astore_1
     //   70: aload_2
-    //   71: invokevirtual 250	java/io/BufferedReader:close	()V
+    //   71: invokevirtual 253	java/io/BufferedReader:close	()V
     //   74: aload_2
-    //   75: invokevirtual 250	java/io/BufferedReader:close	()V
-    //   78: ldc 207
-    //   80: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   75: invokevirtual 253	java/io/BufferedReader:close	()V
+    //   78: ldc 210
+    //   80: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   83: aload_3
     //   84: areturn
     //   85: astore_0
-    //   86: ldc 84
-    //   88: ldc 252
+    //   86: ldc 87
+    //   88: ldc 255
     //   90: iconst_1
     //   91: anewarray 4	java/lang/Object
     //   94: dup
     //   95: iconst_0
     //   96: aload_0
-    //   97: invokevirtual 255	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   97: invokevirtual 258	java/io/IOException:getMessage	()Ljava/lang/String;
     //   100: aastore
-    //   101: invokestatic 125	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   101: invokestatic 128	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   104: goto -26 -> 78
     //   107: astore_3
     //   108: aconst_null
     //   109: astore_2
     //   110: aload_2
     //   111: astore_1
-    //   112: ldc 84
-    //   114: ldc_w 257
+    //   112: ldc 87
+    //   114: ldc_w 260
     //   117: iconst_2
     //   118: anewarray 4	java/lang/Object
     //   121: dup
@@ -472,28 +474,28 @@ public final class b
     //   125: dup
     //   126: iconst_1
     //   127: aload_3
-    //   128: invokevirtual 258	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   128: invokevirtual 261	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   131: aastore
-    //   132: invokestatic 125	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   132: invokestatic 128	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   135: aload_2
     //   136: ifnull +7 -> 143
     //   139: aload_2
-    //   140: invokevirtual 250	java/io/BufferedReader:close	()V
-    //   143: ldc 207
-    //   145: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   140: invokevirtual 253	java/io/BufferedReader:close	()V
+    //   143: ldc 210
+    //   145: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   148: aconst_null
     //   149: areturn
     //   150: astore_0
-    //   151: ldc 84
-    //   153: ldc 252
+    //   151: ldc 87
+    //   153: ldc 255
     //   155: iconst_1
     //   156: anewarray 4	java/lang/Object
     //   159: dup
     //   160: iconst_0
     //   161: aload_0
-    //   162: invokevirtual 255	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   162: invokevirtual 258	java/io/IOException:getMessage	()Ljava/lang/String;
     //   165: aastore
-    //   166: invokestatic 125	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   166: invokestatic 128	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   169: goto -26 -> 143
     //   172: astore_0
     //   173: aconst_null
@@ -501,22 +503,22 @@ public final class b
     //   175: aload_1
     //   176: ifnull +7 -> 183
     //   179: aload_1
-    //   180: invokevirtual 250	java/io/BufferedReader:close	()V
-    //   183: ldc 207
-    //   185: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   180: invokevirtual 253	java/io/BufferedReader:close	()V
+    //   183: ldc 210
+    //   185: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   188: aload_0
     //   189: athrow
     //   190: astore_1
-    //   191: ldc 84
-    //   193: ldc 252
+    //   191: ldc 87
+    //   193: ldc 255
     //   195: iconst_1
     //   196: anewarray 4	java/lang/Object
     //   199: dup
     //   200: iconst_0
     //   201: aload_1
-    //   202: invokevirtual 255	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   202: invokevirtual 258	java/io/IOException:getMessage	()Ljava/lang/String;
     //   205: aastore
-    //   206: invokestatic 125	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   206: invokestatic 128	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   209: goto -26 -> 183
     //   212: astore_0
     //   213: goto -38 -> 175

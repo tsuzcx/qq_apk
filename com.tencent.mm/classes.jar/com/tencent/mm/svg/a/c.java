@@ -11,13 +11,12 @@ import android.graphics.drawable.Drawable.ConstantState;
 import android.os.Build.VERSION;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.svg.b.d;
 
 public final class c
   extends b
 {
-  private a ySd;
+  private a FDN;
   
   public c(Picture paramPicture, int paramInt) {}
   
@@ -25,8 +24,8 @@ public final class c
   {
     int i = 1;
     int j = 0;
-    AppMethodBeat.i(70093);
-    long l1 = com.tencent.mm.svg.b.b.dAm();
+    AppMethodBeat.i(148721);
+    long l1 = com.tencent.mm.svg.b.b.eOy();
     label388:
     label522:
     label524:
@@ -39,24 +38,24 @@ public final class c
         if (!paramCanvas.isHardwareAccelerated()) {
           break label388;
         }
-        if (this.ySd.ySe == null)
+        if (this.FDN.FDO == null)
         {
-          com.tencent.mm.svg.b.c.e("MicroMsg.SVGPictureDrawable", "Must not go here! %s", new Object[] { Integer.valueOf(this.yRU) });
-          if (this.ySd.ySf == null) {
+          com.tencent.mm.svg.b.c.e("MicroMsg.SVGPictureDrawable", "Must not go here! %s", new Object[] { Integer.valueOf(this.FDE) });
+          if (this.FDN.FDP == null) {
             break label522;
           }
-          if (!this.ySd.ySf.isRecycled()) {
+          if (!this.FDN.FDP.isRecycled()) {
             break label361;
           }
           break label522;
-          localObject4 = dAf();
+          localObject4 = eOr();
           Object localObject1 = localObject4;
           if (localObject4 == null)
           {
-            localObject1 = a.v(this);
-            eJ((View)localObject1);
+            localObject1 = a.C(this);
+            fA((View)localObject1);
           }
-          a.b((View)localObject1, this.yRW);
+          a.b((View)localObject1, this.FDG);
           if (i != 0) {
             break label499;
           }
@@ -67,12 +66,12 @@ public final class c
           return;
         }
         l2 = System.nanoTime();
-        if ((this.ySd.ySf != null) && (!this.ySd.ySf.isRecycled())) {
+        if ((this.FDN.FDP != null) && (!this.FDN.FDP.isRecycled())) {
           continue;
         }
         if ((getIntrinsicWidth() > 2048) || (getIntrinsicHeight() > 2048))
         {
-          com.tencent.mm.svg.b.c.e("MicroMsg.SVGPictureDrawable", "This drawable is too big. %s", new Object[] { Integer.valueOf(this.yRU) });
+          com.tencent.mm.svg.b.c.e("MicroMsg.SVGPictureDrawable", "This drawable is too big. %s", new Object[] { Integer.valueOf(this.FDE) });
           continue;
         }
         if (getIntrinsicWidth() <= 0) {
@@ -81,10 +80,10 @@ public final class c
       }
       finally
       {
-        this.mDuration = com.tencent.mm.svg.b.b.ot(l1);
-        d.dAo();
-        m(paramCanvas);
-        AppMethodBeat.o(70093);
+        this.mDuration = com.tencent.mm.svg.b.b.wr(l1);
+        d.eOA();
+        p(paramCanvas);
+        AppMethodBeat.o(148721);
       }
       if (getIntrinsicHeight() <= 0)
       {
@@ -95,41 +94,41 @@ public final class c
       {
         Object localObject3 = Bitmap.createBitmap(getIntrinsicWidth(), getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         localObject4 = new Canvas((Bitmap)localObject3);
-        this.ySd.ySe.draw((Canvas)localObject4);
-        this.ySd.ySf = ((Bitmap)localObject3);
-        com.tencent.mm.svg.b.b.ot(l2);
-        d.dAn();
-        m((Canvas)localObject4);
+        this.FDN.FDO.draw((Canvas)localObject4);
+        this.FDN.FDP = ((Bitmap)localObject3);
+        com.tencent.mm.svg.b.b.wr(l2);
+        d.eOz();
+        p((Canvas)localObject4);
         continue;
         label361:
-        dAd();
-        paramCanvas.drawBitmap(this.ySd.ySf, null, this.Bc, this.yRW);
+        eOp();
+        paramCanvas.drawBitmap(this.FDN.FDP, null, this.Hy, this.FDG);
         break label524;
         i = j;
-        if (this.ySd.ySf != null)
+        if (this.FDN.FDP != null)
         {
           i = j;
-          if (!this.ySd.ySf.isRecycled())
+          if (!this.FDN.FDP.isRecycled())
           {
-            com.tencent.mm.svg.b.c.i("MicroMsg.SVGPictureDrawable", "recycle bitmap:%s", new Object[] { this.ySd.ySf.toString() });
-            this.ySd.ySf.recycle();
-            this.ySd.ySf = null;
+            com.tencent.mm.svg.b.c.i("MicroMsg.SVGPictureDrawable", "recycle bitmap:%s", new Object[] { this.FDN.FDP.toString() });
+            this.FDN.FDP.recycle();
+            this.FDN.FDP = null;
             i = j;
             continue;
             label462:
-            localObject3 = this.ySd.ySe;
+            localObject3 = this.FDN.FDO;
             if (localObject3 != null)
             {
-              dAd();
+              eOp();
               paramCanvas.save();
-              paramCanvas.drawPicture((Picture)localObject3, this.Bc);
+              paramCanvas.drawPicture((Picture)localObject3, this.Hy);
               paramCanvas.restore();
             }
             label499:
-            this.mDuration = com.tencent.mm.svg.b.b.ot(l1);
-            d.dAo();
-            m(paramCanvas);
-            AppMethodBeat.o(70093);
+            this.mDuration = com.tencent.mm.svg.b.b.wr(l1);
+            d.eOA();
+            p(paramCanvas);
+            AppMethodBeat.o(148721);
             return;
             i = 0;
           }
@@ -140,20 +139,20 @@ public final class c
   
   public final Drawable.ConstantState getConstantState()
   {
-    return this.ySd;
+    return this.FDN;
   }
   
   public static final class a
     extends Drawable.ConstantState
   {
-    protected int trq;
-    protected Picture ySe;
-    protected Bitmap ySf;
+    protected Picture FDO;
+    protected Bitmap FDP;
+    protected int zdA;
     
     public a(Picture paramPicture, int paramInt)
     {
-      this.ySe = paramPicture;
-      this.trq = paramInt;
+      this.FDO = paramPicture;
+      this.zdA = paramInt;
     }
     
     public final int getChangingConfigurations()
@@ -163,26 +162,25 @@ public final class c
     
     public final Drawable newDrawable()
     {
-      AppMethodBeat.i(70089);
-      ab.i("MicroMsg.SVGPictureDrawable", "SVGPictureConstantState newDrawable %s", new Object[] { Integer.valueOf(this.trq) });
-      c localc = new c(this.ySe, this.trq);
-      AppMethodBeat.o(70089);
+      AppMethodBeat.i(148717);
+      c localc = new c(this.FDO, this.zdA);
+      AppMethodBeat.o(148717);
       return localc;
     }
     
     public final Drawable newDrawable(Resources paramResources)
     {
-      AppMethodBeat.i(70090);
+      AppMethodBeat.i(148718);
       paramResources = newDrawable();
-      AppMethodBeat.o(70090);
+      AppMethodBeat.o(148718);
       return paramResources;
     }
     
     public final Drawable newDrawable(Resources paramResources, Resources.Theme paramTheme)
     {
-      AppMethodBeat.i(70091);
+      AppMethodBeat.i(148719);
       paramResources = newDrawable(paramResources);
-      AppMethodBeat.o(70091);
+      AppMethodBeat.o(148719);
       return paramResources;
     }
   }

@@ -1,102 +1,74 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ard;
-import com.tencent.mm.protocal.protobuf.are;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import java.util.LinkedList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.bbs;
+import com.tencent.mm.protocal.protobuf.bbt;
+import com.tencent.mm.protocal.protobuf.dim;
 
 public final class g
-  extends m
+  extends n
   implements k
 {
-  private f callback;
-  private b rr;
+  private com.tencent.mm.al.g callback;
+  public bbt wcW;
+  public byte[] wcX;
   
-  public g()
+  public g(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(126851);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new ard();
-    ((b.a)localObject).fsY = new are();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/autofill/getinfo";
-    ((b.a)localObject).funcId = 1191;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (ard)this.rr.fsV.fta;
-    ((ard)localObject).cpt = 2;
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add("invoice_info.title");
-    localLinkedList.add("invoice_info.tax_number");
-    localLinkedList.add("invoice_info.bank_number");
-    localLinkedList.add("invoice_info.bank_name");
-    localLinkedList.add("invoice_info.type");
-    localLinkedList.add("invoice_info.email");
-    localLinkedList.add("invoice_info.company_address");
-    localLinkedList.add("invoice_info.company_address_detail");
-    localLinkedList.add("invoice_info.company_address_postcode");
-    localLinkedList.add("invoice_info.phone");
-    ((ard)localObject).xgt = localLinkedList;
-    ((ard)localObject).xgs = false;
-    AppMethodBeat.o(126851);
+    this.wcX = paramArrayOfByte;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(126853);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(126853);
+    AppMethodBeat.i(73771);
+    this.callback = paramg;
+    paramg = new b.a();
+    bbs localbbs = new bbs();
+    if (this.wcX != null) {
+      localbbs.Dzo = z.am(this.wcX).getBuffer();
+    }
+    paramg.gUU = localbbs;
+    this.wcW = new bbt();
+    paramg.gUV = this.wcW;
+    paramg.uri = "/cgi-bin/mmbiz-bin/getuserauthlist";
+    paramg.funcId = getType();
+    paramg.reqCmdId = 0;
+    paramg.respCmdId = 0;
+    int i = dispatch(parame, paramg.atI(), this);
+    AppMethodBeat.o(73771);
     return i;
   }
   
   public final int getType()
   {
-    return 1191;
+    return 1146;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(126852);
-    ab.d("MicroMsg.NetSceneGetUserAutoFillInfo", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
+    AppMethodBeat.i(73772);
+    this.wcW = ((bbt)((b)paramq).gUT.gUX);
+    if (this.wcW.DbG != null)
     {
-      ab.i("MicroMsg.NetSceneGetUserAutoFillInfo", "return is 0.now we parse the json and resetList..");
-      paramq = (are)((b)paramq).fsW.fta;
-      if (paramq.xgu == null) {}
+      paramInt3 = this.wcW.DbG.dhR;
+      paramString = this.wcW.DbG.dhS;
     }
-    try
-    {
-      boolean bool = new JSONObject(paramq.xgu).getBoolean("has_invoice_info");
-      ab.i("MicroMsg.NetSceneGetUserAutoFillInfo", "has_invoice_info is ..".concat(String.valueOf(bool)));
-      com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yFF, Boolean.valueOf(bool));
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(126852);
-      return;
-    }
-    catch (JSONException paramq)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.NetSceneGetUserAutoFillInfo", "error parse this json");
-      }
-    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(73772);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,76 +1,47 @@
 package com.tencent.mm.cf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashSet;
-import java.util.Iterator;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.vending.h.d;
 
-public final class a<T>
-  implements b.a<T>
+public final class a
+  extends d
 {
-  private final String mName;
-  private T mValue;
-  private HashSet<Object<T>> ywo;
-  private final Object ywp;
+  private String EPB;
+  private ap handler;
   
-  private a(String paramString)
+  public a(String paramString)
   {
-    AppMethodBeat.i(58946);
-    this.ywp = new Object();
-    this.mName = paramString;
-    this.ywo = new HashSet();
-    AppMethodBeat.o(58946);
+    AppMethodBeat.i(179439);
+    this.handler = new ap(paramString);
+    this.EPB = this.handler.getSerialTag();
+    AppMethodBeat.o(179439);
   }
   
-  a(String paramString, T paramT)
+  public final void cancel()
   {
-    this(paramString);
-    this.mValue = paramT;
+    AppMethodBeat.i(179442);
+    this.handler.removeCallbacksAndMessages(null);
+    AppMethodBeat.o(179442);
   }
   
-  public final T get()
+  public final void f(Runnable paramRunnable, long paramLong)
   {
-    return this.mValue;
+    AppMethodBeat.i(179441);
+    this.handler.postDelayed(paramRunnable, paramLong);
+    AppMethodBeat.o(179441);
   }
   
-  public final String name()
+  public final String getType()
   {
-    return this.mName;
+    return this.EPB;
   }
   
-  final void set(T arg1)
+  public final void v(Runnable paramRunnable)
   {
-    AppMethodBeat.i(58947);
-    Object localObject1 = this.mValue;
-    int i;
-    if ((??? == localObject1) || ((??? != null) && (???.equals(localObject1)))) {
-      i = 1;
-    }
-    while (i == 0)
-    {
-      this.mValue = ???;
-      synchronized (this.ywp)
-      {
-        localObject1 = this.ywo.iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break label87;
-        }
-        ((Iterator)localObject1).next();
-      }
-      i = 0;
-      continue;
-      label87:
-      AppMethodBeat.o(58947);
-      return;
-    }
-    AppMethodBeat.o(58947);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(58948);
-    String str = "Status: " + this.mName;
-    AppMethodBeat.o(58948);
-    return str;
+    AppMethodBeat.i(179440);
+    this.handler.post(paramRunnable);
+    AppMethodBeat.o(179440);
   }
 }
 

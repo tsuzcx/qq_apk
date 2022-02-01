@@ -2,91 +2,91 @@ package com.tencent.mm.memory.a.a.a;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.f;
-import com.tencent.mm.a.f.b;
-import com.tencent.mm.a.f.c;
-import com.tencent.mm.a.h;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.b.f;
+import com.tencent.mm.b.f.b;
+import com.tencent.mm.b.f.c;
+import com.tencent.mm.b.h;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class b<T, V>
 {
-  private ConcurrentLinkedQueue<Pair<T, f<T, V>>> feB;
-  private a feC;
-  a<T, V> feD;
-  b<T, V> feE;
+  private ConcurrentLinkedQueue<Pair<T, f<T, V>>> gEL;
+  private a gEM;
+  a<T, V> gEN;
+  b<T, V> gEO;
   
   public b(a parama, a<T, V> parama1, b<T, V> paramb)
   {
-    AppMethodBeat.i(115464);
-    this.feB = new ConcurrentLinkedQueue();
-    this.feC = null;
-    this.feC = parama;
-    this.feD = parama1;
-    this.feE = paramb;
-    AppMethodBeat.o(115464);
+    AppMethodBeat.i(156510);
+    this.gEL = new ConcurrentLinkedQueue();
+    this.gEM = null;
+    this.gEM = parama;
+    this.gEN = parama1;
+    this.gEO = paramb;
+    AppMethodBeat.o(156510);
   }
   
-  final f<T, V> aN(final T paramT)
+  final f<T, V> bS(final T paramT)
   {
-    AppMethodBeat.i(115466);
-    Object localObject = this.feB.iterator();
+    AppMethodBeat.i(156512);
+    Object localObject = this.gEL.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
       if ((localPair != null) && (localPair.first != null) && (localPair.first.equals(paramT)))
       {
         paramT = (f)localPair.second;
-        AppMethodBeat.o(115466);
+        AppMethodBeat.o(156512);
         return paramT;
       }
     }
-    if (this.feB.size() >= this.feC.fez)
+    if (this.gEL.size() >= this.gEM.gEK)
     {
-      localObject = (Pair)this.feB.poll();
+      localObject = (Pair)this.gEL.poll();
       if ((localObject != null) && (((Pair)localObject).second != null)) {
         ((f)((Pair)localObject).second).trimToSize(-1);
       }
     }
-    localObject = this.feC;
-    int i = (int)(((a)localObject).fey * ((a)localObject).fev * 1.0D / ((a)localObject).fez);
-    ab.i("MicroMsg.ExtraLruMap", "handlerMap %s %s", new Object[] { paramT, Integer.valueOf(i) });
+    localObject = this.gEM;
+    int i = (int)(((a)localObject).gEJ * ((a)localObject).gEG * 1.0D / ((a)localObject).gEK);
+    ad.i("MicroMsg.ExtraLruMap", "handlerMap %s %s", new Object[] { paramT, Integer.valueOf(i) });
     paramT = new Pair(paramT, new h(i, new f.b()new f.c
     {
       public final void c(T paramAnonymousT, V paramAnonymousV1, V paramAnonymousV2)
       {
-        AppMethodBeat.i(115462);
-        if (b.this.feD != null) {
-          b.this.feD.m(paramT, paramAnonymousT);
+        AppMethodBeat.i(156508);
+        if (b.this.gEN != null) {
+          b.this.gEN.u(paramT, paramAnonymousT);
         }
-        AppMethodBeat.o(115462);
+        AppMethodBeat.o(156508);
       }
     }, new f.c()
     {
-      public final int g(T paramAnonymousT, V paramAnonymousV)
+      public final int p(T paramAnonymousT, V paramAnonymousV)
       {
-        AppMethodBeat.i(115463);
-        if (b.this.feE != null)
+        AppMethodBeat.i(156509);
+        if (b.this.gEO != null)
         {
-          int i = b.this.feE.e(paramT, paramAnonymousT, paramAnonymousV);
-          AppMethodBeat.o(115463);
+          int i = b.this.gEO.e(paramT, paramAnonymousT, paramAnonymousV);
+          AppMethodBeat.o(156509);
           return i;
         }
-        AppMethodBeat.o(115463);
+        AppMethodBeat.o(156509);
         return 0;
       }
     }));
-    this.feB.add(paramT);
+    this.gEL.add(paramT);
     paramT = (f)paramT.second;
-    AppMethodBeat.o(115466);
+    AppMethodBeat.o(156512);
     return paramT;
   }
   
-  public final boolean l(T paramT1, T paramT2)
+  public final boolean t(T paramT1, T paramT2)
   {
-    AppMethodBeat.i(115465);
-    Iterator localIterator = this.feB.iterator();
+    AppMethodBeat.i(156511);
+    Iterator localIterator = this.gEL.iterator();
     Pair localPair;
     do
     {
@@ -97,17 +97,17 @@ public final class b<T, V>
     } while ((localPair == null) || (localPair.first == null) || (!localPair.first.equals(paramT1)));
     for (paramT1 = (f)localPair.second; paramT1 != null; paramT1 = null)
     {
-      boolean bool = paramT1.Z(paramT2);
-      AppMethodBeat.o(115465);
+      boolean bool = paramT1.aN(paramT2);
+      AppMethodBeat.o(156511);
       return bool;
     }
-    AppMethodBeat.o(115465);
+    AppMethodBeat.o(156511);
     return false;
   }
   
   public static abstract interface a<K, O>
   {
-    public abstract void m(K paramK1, K paramK2);
+    public abstract void u(K paramK1, K paramK2);
   }
   
   public static abstract interface b<K, O>
@@ -117,7 +117,7 @@ public final class b<T, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.memory.a.a.a.b
  * JD-Core Version:    0.7.0.1
  */

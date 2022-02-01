@@ -7,17 +7,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d
 {
-  Bitmap bJJ;
-  private c bJK;
-  Rect bJL;
-  int[] bJM;
+  Bitmap cqt;
+  private c cqu;
+  Rect cqv;
+  int[] cqw;
   
   d(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(115911);
-    this.bJK = new k();
-    this.bJL = new Rect();
-    this.bJM = new int[4];
+    AppMethodBeat.i(140012);
+    this.cqu = new k();
+    this.cqv = new Rect();
+    this.cqw = new int[4];
     int i = paramInt1;
     if (paramInt1 <= 0) {
       i = 512;
@@ -26,77 +26,77 @@ final class d
     if (paramInt2 <= 0) {
       paramInt1 = 512;
     }
-    this.bJJ = Bitmap.createBitmap(i, paramInt1, Bitmap.Config.ARGB_8888);
-    this.bJK.init(i, paramInt1);
-    this.bJL.setEmpty();
-    AppMethodBeat.o(115911);
+    this.cqt = Bitmap.createBitmap(i, paramInt1, Bitmap.Config.ARGB_8888);
+    this.cqu.init(i, paramInt1);
+    this.cqv.setEmpty();
+    AppMethodBeat.o(140012);
   }
   
   final boolean b(int paramInt1, int paramInt2, Rect paramRect)
   {
-    AppMethodBeat.i(115912);
+    AppMethodBeat.i(140013);
     if (paramRect == null)
     {
-      AppMethodBeat.o(115912);
+      AppMethodBeat.o(140013);
       return false;
     }
     if ((paramInt1 <= 0) || (paramInt2 <= 0))
     {
       paramRect.setEmpty();
-      AppMethodBeat.o(115912);
+      AppMethodBeat.o(140013);
       return false;
     }
-    this.bJK.a(paramInt1, paramInt2, paramRect);
+    this.cqu.a(paramInt1, paramInt2, paramRect);
     if ((paramRect.left < 0) || (paramRect.right < 0) || (paramRect.width() <= 0) || (paramRect.height() <= 0))
     {
-      AppMethodBeat.o(115912);
+      AppMethodBeat.o(140013);
       return false;
     }
-    this.bJL.union(paramRect);
-    AppMethodBeat.o(115912);
+    this.cqv.union(paramRect);
+    AppMethodBeat.o(140013);
     return true;
   }
   
   final void clear()
   {
-    AppMethodBeat.i(115913);
-    this.bJL.setEmpty();
-    this.bJK.reset();
-    if (this.bJJ != null) {
-      this.bJJ.eraseColor(0);
+    AppMethodBeat.i(140014);
+    this.cqv.setEmpty();
+    this.cqu.reset();
+    if (this.cqt != null) {
+      this.cqt.eraseColor(0);
     }
-    AppMethodBeat.o(115913);
+    AppMethodBeat.o(140014);
   }
   
   final int height()
   {
-    AppMethodBeat.i(115915);
-    if (this.bJJ != null)
+    AppMethodBeat.i(140016);
+    if (this.cqt != null)
     {
-      int i = this.bJJ.getHeight();
-      AppMethodBeat.o(115915);
+      int i = this.cqt.getHeight();
+      AppMethodBeat.o(140016);
       return i;
     }
-    AppMethodBeat.o(115915);
+    AppMethodBeat.o(140016);
     return 0;
   }
   
   final int width()
   {
-    AppMethodBeat.i(115914);
-    if (this.bJJ != null)
+    AppMethodBeat.i(140015);
+    if (this.cqt != null)
     {
-      int i = this.bJJ.getWidth();
-      AppMethodBeat.o(115914);
+      int i = this.cqt.getWidth();
+      AppMethodBeat.o(140015);
       return i;
     }
-    AppMethodBeat.o(115914);
+    AppMethodBeat.o(140015);
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.magicbrush.handler.glfont.d
  * JD-Core Version:    0.7.0.1
  */

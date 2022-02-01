@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ld">24.0dip</dimen>
+    <dimen name="le">80.0dip</dimen>
+    <dimen name="lf">64.0dip</dimen>
+    <dimen name="lg">8.0dip</dimen>
+    <dimen name="lh">8.0dip</dimen>
+    <dimen name="m0">580.0dip</dimen>
+    <dimen name="nb">16.0dip</dimen>
+    <dimen name="nd">20.0dip</dimen>
+    <dimen name="ye">320.0dip</dimen>
+    <dimen name="yh">0.0dip</dimen>
+    <dimen name="yi">2.0dip</dimen>
+    <dimen name="yk">24.0dip</dimen>
+    <dimen name="yl">576.0dip</dimen>
+    <dimen name="ym">320.0dip</dimen>
+    <item type="dimen" name="yp">@dimen/yo</item>
+    <dimen name="ys">160.0dip</dimen>
+</resources>

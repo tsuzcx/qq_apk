@@ -13,113 +13,113 @@ class XWalkCoreExtensionBridge
   public XWalkCoreExtensionBridge(XWalkExternalExtension paramXWalkExternalExtension)
   {
     super(paramXWalkExternalExtension.getExtensionName(), paramXWalkExternalExtension.getJsApi(), paramXWalkExternalExtension.getEntryPoints());
-    AppMethodBeat.i(86161);
+    AppMethodBeat.i(155275);
     this.mExtension = paramXWalkExternalExtension;
-    AppMethodBeat.o(86161);
+    AppMethodBeat.o(155275);
   }
   
   public void broadcastMessage(String paramString)
   {
-    AppMethodBeat.i(86175);
+    AppMethodBeat.i(155289);
     super.broadcastMessage(paramString);
-    AppMethodBeat.o(86175);
+    AppMethodBeat.o(155289);
   }
   
   public void onBinaryMessage(int paramInt, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(86163);
+    AppMethodBeat.i(155277);
     this.mExtension.onBinaryMessage(paramInt, paramArrayOfByte);
-    AppMethodBeat.o(86163);
+    AppMethodBeat.o(155277);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(86167);
+    AppMethodBeat.i(155281);
     this.mExtension.onDestroy();
-    AppMethodBeat.o(86167);
+    AppMethodBeat.o(155281);
   }
   
   public void onInstanceCreated(int paramInt)
   {
-    AppMethodBeat.i(86165);
+    AppMethodBeat.i(155279);
     this.mExtension.onInstanceCreated(paramInt);
-    AppMethodBeat.o(86165);
+    AppMethodBeat.o(155279);
   }
   
   public void onInstanceDestroyed(int paramInt)
   {
-    AppMethodBeat.i(86166);
+    AppMethodBeat.i(155280);
     this.mExtension.onInstanceDestroyed(paramInt);
-    AppMethodBeat.o(86166);
+    AppMethodBeat.o(155280);
   }
   
   public void onMessage(int paramInt, String paramString)
   {
-    AppMethodBeat.i(86162);
+    AppMethodBeat.i(155276);
     this.mExtension.onMessage(paramInt, paramString);
-    AppMethodBeat.o(86162);
+    AppMethodBeat.o(155276);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(86172);
+    AppMethodBeat.i(155286);
     this.mExtension.onNewIntent(paramIntent);
-    AppMethodBeat.o(86172);
+    AppMethodBeat.o(155286);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(86169);
+    AppMethodBeat.i(155283);
     this.mExtension.onPause();
-    AppMethodBeat.o(86169);
+    AppMethodBeat.o(155283);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(86168);
+    AppMethodBeat.i(155282);
     this.mExtension.onResume();
-    AppMethodBeat.o(86168);
+    AppMethodBeat.o(155282);
   }
   
   public void onStart()
   {
-    AppMethodBeat.i(86170);
+    AppMethodBeat.i(155284);
     this.mExtension.onStart();
-    AppMethodBeat.o(86170);
+    AppMethodBeat.o(155284);
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(86171);
+    AppMethodBeat.i(155285);
     this.mExtension.onStop();
-    AppMethodBeat.o(86171);
+    AppMethodBeat.o(155285);
   }
   
   public String onSyncMessage(int paramInt, String paramString)
   {
-    AppMethodBeat.i(86164);
+    AppMethodBeat.i(155278);
     paramString = this.mExtension.onSyncMessage(paramInt, paramString);
-    AppMethodBeat.o(86164);
+    AppMethodBeat.o(155278);
     return paramString;
   }
   
   public void postBinaryMessage(int paramInt, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(86174);
+    AppMethodBeat.i(155288);
     super.postBinaryMessage(paramInt, paramArrayOfByte);
-    AppMethodBeat.o(86174);
+    AppMethodBeat.o(155288);
   }
   
   public void postMessage(int paramInt, String paramString)
   {
-    AppMethodBeat.i(86173);
+    AppMethodBeat.i(155287);
     super.postMessage(paramInt, paramString);
-    AppMethodBeat.o(86173);
+    AppMethodBeat.o(155287);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.extension.XWalkCoreExtensionBridge
  * JD-Core Version:    0.7.0.1
  */

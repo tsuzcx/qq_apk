@@ -1,70 +1,39 @@
 package com.tencent.mm.plugin.appbrand.jsapi.e;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONObject;
 
 public class d<CONTEXT extends c>
   extends a<CONTEXT>
 {
-  private static final int CTRL_INDEX = 340;
-  private static final String NAME = "enableLocationUpdate";
-  protected volatile l hMZ;
+  private static final int CTRL_INDEX = 587;
+  private static final String NAME = "disableLocationUpdate";
+  protected q jSl;
   
-  public void c(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt)
+  public void a(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(93822);
-    com.tencent.luggage.g.d.i("MicroMsg.AppBrand.JsApiEnableLocationUpdate", "enableLocationUpdate:%s", new Object[] { paramJSONObject });
-    boolean bool;
-    try
+    AppMethodBeat.i(143627);
+    ad.i("MicroMsg.AppBrand.JsApiDisableLocationUpdate", "disableLocationUpdate invoke");
+    this.jSl = ((q)paramCONTEXT.as(q.class));
+    if (this.jSl == null)
     {
-      if (this.hMZ == null)
-      {
-        this.hMZ = new l(paramCONTEXT);
-        this.hMZ.start();
-      }
-      bool = paramJSONObject.optBoolean("enable");
-      if ((!bool) && (!q(paramCONTEXT)))
-      {
-        paramCONTEXT.h(paramInt, j("ok", null));
-        AppMethodBeat.o(93822);
-        return;
-      }
-    }
-    finally
-    {
-      AppMethodBeat.o(93822);
-    }
-    this.hMZ.fPG = e(paramCONTEXT, paramJSONObject);
-    if (bool)
-    {
-      if (!q(paramCONTEXT))
-      {
-        paramCONTEXT.h(paramInt, j("fail:system permission denied", null));
-        AppMethodBeat.o(93822);
-        return;
-      }
-      this.hMZ.sendMessage(1);
-    }
-    for (;;)
-    {
-      paramCONTEXT.h(paramInt, j("ok", null));
-      AppMethodBeat.o(93822);
+      ad.i("MicroMsg.AppBrand.JsApiDisableLocationUpdate", "fail:location update not enabled");
+      paramCONTEXT.h(paramInt, e("fail:location update not enabled", null));
+      AppMethodBeat.o(143627);
       return;
-      this.hMZ.sendMessage(2);
     }
-  }
-  
-  protected Bundle e(CONTEXT paramCONTEXT, JSONObject paramJSONObject)
-  {
-    return null;
+    this.jSl.bag();
+    paramCONTEXT.h(paramInt, e("ok", null));
+    AppMethodBeat.o(143627);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.e.d
  * JD-Core Version:    0.7.0.1
  */

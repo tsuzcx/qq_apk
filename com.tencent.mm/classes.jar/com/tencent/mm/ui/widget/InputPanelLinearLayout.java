@@ -9,7 +9,8 @@ public class InputPanelLinearLayout
   extends LinearLayout
   implements b.a
 {
-  private b ACb;
+  private b HyE;
+  private b.a HyF;
   
   public InputPanelLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -19,29 +20,41 @@ public class InputPanelLinearLayout
   public InputPanelLinearLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(107859);
-    this.ACb = new b(this, this);
-    AppMethodBeat.o(107859);
+    AppMethodBeat.i(143334);
+    this.HyE = new b(this, this);
+    AppMethodBeat.o(143334);
+  }
+  
+  public void g(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(182572);
+    if (this.HyF != null) {
+      this.HyF.g(paramBoolean, paramInt);
+    }
+    AppMethodBeat.o(182572);
   }
   
   public b getInputPanelHelper()
   {
-    return this.ACb;
+    return this.HyE;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(107860);
-    this.ACb.QX(paramInt2);
+    AppMethodBeat.i(143335);
+    this.HyE.aao(paramInt2);
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(107860);
+    AppMethodBeat.o(143335);
   }
   
-  public void p(boolean paramBoolean, int paramInt) {}
+  public void setExternalListener(b.a parama)
+  {
+    this.HyF = parama;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.InputPanelLinearLayout
  * JD-Core Version:    0.7.0.1
  */

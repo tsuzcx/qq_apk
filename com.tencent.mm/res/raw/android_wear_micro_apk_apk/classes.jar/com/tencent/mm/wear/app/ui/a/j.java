@@ -5,7 +5,7 @@ import android.widget.ImageView;
 public final class j
   extends b
 {
-  public ImageView ahj;
+  public ImageView akL;
   
   public j(i parami)
   {

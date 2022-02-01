@@ -8,15 +8,15 @@ public abstract interface g
 {
   public static final String[] SQL_CREATE = { com.tencent.mm.sdk.e.j.getCreateSQLs(j.info, "RecordMessageInfo") };
   
-  public abstract void Cl(int paramInt);
+  public abstract void Kb(int paramInt);
   
-  public abstract j Cm(int paramInt);
+  public abstract j Kc(int paramInt);
   
-  public abstract List<j> cfN();
+  public abstract List<j> dgd();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.record.a.g
  * JD-Core Version:    0.7.0.1
  */

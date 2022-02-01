@@ -11,15 +11,15 @@ final class FreeWifiFrontPageUI$4
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(20962);
-    FreeWifiFrontPageUI.a(this.mND);
-    AppMethodBeat.o(20962);
+    AppMethodBeat.i(25021);
+    FreeWifiFrontPageUI.a(this.rkv);
+    AppMethodBeat.o(25021);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.4
  * JD-Core Version:    0.7.0.1
  */

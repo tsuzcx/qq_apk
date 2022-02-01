@@ -1,73 +1,67 @@
 package com.tencent.mm.plugin.account.friend.a;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.platformtools.ab;
-import junit.framework.Assert;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.cri;
+import com.tencent.mm.protocal.protobuf.crj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class an
-  extends k
+  extends n
+  implements k
 {
-  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS qqgroup ( grouopid int PRIMARY KEY,membernum int,weixinnum int,insert_time int,lastupdate_time int,needupdate int,updatekey text,groupname text,reserved1 text ,reserved2 text ,reserved3 int ,reserved4 int )" };
-  public final h fnw;
+  private g callback;
+  private final b rr;
   
-  public an(h paramh)
+  public an(String paramString)
   {
-    this.fnw = paramh;
+    AppMethodBeat.i(131145);
+    b.a locala = new b.a();
+    locala.gUU = new cri();
+    locala.gUV = new crj();
+    locala.uri = "/cgi-bin/micromsg-bin/newsetemailpwd";
+    locala.funcId = 382;
+    locala.reqCmdId = 181;
+    locala.respCmdId = 1000000181;
+    this.rr = locala.atI();
+    ((cri)this.rr.gUS.gUX).CGf = bt.aGb(paramString);
+    ad.d("MicroMsg.NetSceneSetEmailPwd", "md5 ".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(131145);
   }
   
-  public final boolean a(am paramam)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(108497);
-    if (paramam != null) {}
-    ContentValues localContentValues;
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      localContentValues = paramam.aqI();
-      if (localContentValues.size() > 0) {
-        break;
-      }
-      ab.e("MicroMsg.QQGroupStorage", "update failed, no values set");
-      AppMethodBeat.o(108497);
-      return false;
-    }
-    if (this.fnw.update("qqgroup", localContentValues, "grouopid= ?", new String[] { paramam.gyw }) <= 0)
-    {
-      AppMethodBeat.o(108497);
-      return false;
-    }
-    doNotify();
-    AppMethodBeat.o(108497);
-    return true;
+    AppMethodBeat.i(131146);
+    this.callback = paramg;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(131146);
+    return i;
   }
   
-  public final am mU(int paramInt)
+  public final int getType()
   {
-    am localam = null;
-    AppMethodBeat.i(108496);
-    Cursor localCursor = this.fnw.a("select qqgroup.grouopid,qqgroup.membernum,qqgroup.weixinnum,qqgroup.insert_time,qqgroup.lastupdate_time,qqgroup.needupdate,qqgroup.updatekey,qqgroup.groupname from qqgroup  where grouopid = ".concat(String.valueOf(paramInt)), null, 2);
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(108496);
-      return null;
-    }
-    if (localCursor.moveToFirst())
-    {
-      localam = new am();
-      localam.convertFrom(localCursor);
-    }
-    localCursor.close();
-    AppMethodBeat.o(108496);
-    return localam;
+    return 382;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(131147);
+    ad.d("MicroMsg.NetSceneSetEmailPwd", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(131147);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.an
  * JD-Core Version:    0.7.0.1
  */

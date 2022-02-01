@@ -7,65 +7,76 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.a.b;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.ui.y;
 
 public class LaunchAAByPersonNameAmountRow
   extends LinearLayout
 {
-  TextView gpq;
-  TextView gqe;
-  private View gqg;
+  private TextView ibG;
+  private View icB;
+  private TextView icz;
   
   public LaunchAAByPersonNameAmountRow(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(40814);
+    AppMethodBeat.i(63615);
     init(paramContext);
-    AppMethodBeat.o(40814);
+    AppMethodBeat.o(63615);
   }
   
   public LaunchAAByPersonNameAmountRow(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(40815);
+    AppMethodBeat.i(63616);
     init(paramContext);
-    AppMethodBeat.o(40815);
+    AppMethodBeat.o(63616);
   }
   
   public LaunchAAByPersonNameAmountRow(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(40816);
+    AppMethodBeat.i(63617);
     init(paramContext);
-    AppMethodBeat.o(40816);
+    AppMethodBeat.o(63617);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(40817);
-    w.hM(paramContext).inflate(2130969966, this, true);
-    this.gqe = ((TextView)findViewById(2131821594));
-    this.gpq = ((TextView)findViewById(2131825373));
-    this.gqg = findViewById(2131821148);
-    AppMethodBeat.o(40817);
+    AppMethodBeat.i(63618);
+    y.js(paramContext).inflate(2131494548, this, true);
+    this.icz = ((TextView)findViewById(2131306252));
+    this.ibG = ((TextView)findViewById(2131296655));
+    this.icB = findViewById(2131299154);
+    AppMethodBeat.o(63618);
+  }
+  
+  public final void a(String paramString1, String paramString2, double paramDouble)
+  {
+    AppMethodBeat.i(63619);
+    this.icz.setText(k.b(getContext(), ((b)g.ab(b.class)).getDisplayName(paramString1, paramString2), this.icz.getTextSize()));
+    this.ibG.setText(getContext().getString(2131755021, new Object[] { Double.valueOf(paramDouble) }));
+    AppMethodBeat.o(63619);
   }
   
   public void setDividerVisible(boolean paramBoolean)
   {
-    AppMethodBeat.i(40818);
-    View localView = this.gqg;
+    AppMethodBeat.i(63620);
+    View localView = this.icB;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
       localView.setVisibility(i);
-      AppMethodBeat.o(40818);
+      AppMethodBeat.o(63620);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAByPersonNameAmountRow
  * JD-Core Version:    0.7.0.1
  */

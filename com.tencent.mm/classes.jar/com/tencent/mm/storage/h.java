@@ -12,32 +12,32 @@ public final class h
   public h(com.tencent.mm.plugin.messenger.foundation.a.a.h paramh)
   {
     super(paramh);
-    AppMethodBeat.i(29000);
-    a(bPX(), "appbrandmessage");
+    AppMethodBeat.i(32815);
+    c(getDB(), "appbrandmessage");
     a(new h.b(256, "appbrandmessage", h.b.a(3000001L, 3500000L, 102000001L, 105000000L)));
-    AppMethodBeat.o(29000);
+    AppMethodBeat.o(32815);
   }
   
-  public final String aqO(String paramString)
+  public final String aHk(String paramString)
   {
-    AppMethodBeat.i(29001);
+    AppMethodBeat.i(32816);
     if ((paramString != null) && (paramString.length() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if (!ad.na(paramString)) {
+      if (!af.rz(paramString)) {
         break;
       }
-      AppMethodBeat.o(29001);
+      AppMethodBeat.o(32816);
       return "appbrandmessage";
     }
-    AppMethodBeat.o(29001);
+    AppMethodBeat.o(32816);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.h
  * JD-Core Version:    0.7.0.1
  */

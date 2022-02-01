@@ -1,38 +1,49 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.plugin.messenger.a.j;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.vfs.q;
 
-final class l$6
+public final class l$6
   implements Runnable
 {
-  l$6(String paramString, int paramInt1, int paramInt2, com.tencent.mm.plugin.fav.a.g paramg, aca paramaca, boolean paramBoolean, ImageView paramImageView) {}
+  public l$6(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, Runnable paramRunnable) {}
   
   public final void run()
   {
-    AppMethodBeat.i(74198);
-    Bitmap localBitmap = l.b(this.val$path, this.myC, this.myD, false);
-    if (localBitmap == null)
+    AppMethodBeat.i(106893);
+    Context localContext = this.val$context;
+    String str1 = this.cND;
+    Object localObject = this.qfu;
+    String str2 = this.hhp;
+    int i = this.khF;
+    String str3 = this.qfv;
+    String str4 = this.qep;
+    localObject = new com.tencent.mm.vfs.e((String)localObject);
+    if (((com.tencent.mm.vfs.e)localObject).exists())
     {
-      l.c(this.msL, this.mxT, this.myB);
-      AppMethodBeat.o(74198);
-      return;
+      com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(str2);
+      ad.i("MicroMsg.FavSendLogic", "sendVideo::data path[%s] thumb path[%s]", new Object[] { q.B(((com.tencent.mm.vfs.e)localObject).fhU()), q.B(locale.fhU()) });
+      j.cOB().a(localContext, str1, q.B(((com.tencent.mm.vfs.e)localObject).fhU()), str2, 1, i, str3, str4);
     }
-    String str = (String)this.lHj.getTag();
-    if ((str != null) && (str.equals(this.val$path)))
-    {
-      com.tencent.mm.kernel.g.RO();
-      al.d(new l.6.1(this, localBitmap));
-    }
-    AppMethodBeat.o(74198);
+    aq.f(this.val$callback);
+    AppMethodBeat.o(106893);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(106894);
+    String str = super.toString() + "|sendFavVideo";
+    AppMethodBeat.o(106894);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.l.6
  * JD-Core Version:    0.7.0.1
  */

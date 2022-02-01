@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/l2" android:layout_weight="1.0">
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/b25" style="@style/h6" />
-            <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <TextView android:textSize="@dimen/m2" android:ellipsize="end" android:id="@id/b26" android:layout_marginTop="0.0dip" android:text="message" android:maxLines="3" style="@style/h4" />
-            </ScrollView>
+<RelativeLayout android:orientation="vertical" style="@style/ge"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:id="@id/akx" android:layout_alignParentTop="true" android:layout_alignParentRight="true" layout="@layout/o7" style="@style/gl" />
+    <TextView android:id="@id/aob" android:visibility="gone" android:text="{user}" android:layout_toLeftOf="@id/akx" style="@style/gu" />
+    <LinearLayout android:id="@id/al9" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/akx" style="@style/gq">
+        <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/ao1" android:layout_marginRight="6.0dip" style="@style/gy" />
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/gj8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/c0" style="@style/a5o" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.widget.MMNeat7extView android:textColor="@color/iz" android:layout_gravity="right" android:id="@id/ala" android:background="@drawable/mz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/w9" android:minHeight="@dimen/aa" style="@style/h0" />
+                <RelativeLayout android:layout_width="wrap_content" android:layout_height="@dimen/c8" android:layout_marginTop="@dimen/bq" android:layout_marginRight="5.0dip" android:maxWidth="275.0dip">
+                    <RelativeLayout android:id="@id/eoq" android:background="@drawable/a3y" android:layout_width="wrap_content" android:layout_height="@dimen/c8" android:maxWidth="275.0dip">
+                        <TextView android:textSize="@dimen/b_" android:textColor="@color/kl" android:ellipsize="end" android:gravity="center|left" android:id="@id/aki" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ci" android:maxWidth="259.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_centerVertical="true" />
+                        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dv1" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/c5" android:layout_marginRight="@dimen/ci" android:src="@raw/icons_filled_arrow" android:scaleType="fitCenter" android:layout_toRightOf="@id/aki" android:layout_centerVertical="true" app:iconColor="@color/BW_70" />
+                    </RelativeLayout>
+                    <ImageView android:id="@id/eop" android:background="@drawable/a42" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </RelativeLayout>
+                <ViewStub android:layout_gravity="right" android:id="@id/gfa" android:layout="@layout/qp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="@dimen/hk" />
+            </LinearLayout>
         </LinearLayout>
-        <TextView android:id="@id/b27" android:layout_marginLeft="0.0dip" android:text="source" style="@style/h5" />
-        <com.tencent.mm.ui.widget.edittext.PasterEditText android:id="@id/b24" style="@style/h2" />
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

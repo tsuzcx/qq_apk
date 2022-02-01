@@ -10,9 +10,9 @@ public final class e
   static void a(BitmapTeleporter paramBitmapTeleporter, Parcel paramParcel, int paramInt)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramBitmapTeleporter.Hc);
-    c.a(paramParcel, 2, paramBitmapTeleporter.Ib, paramInt);
-    c.c(paramParcel, 3, paramBitmapTeleporter.GT);
+    c.c(paramParcel, 1, paramBitmapTeleporter.IR);
+    c.a(paramParcel, 2, paramBitmapTeleporter.JQ, paramInt);
+    c.c(paramParcel, 3, paramBitmapTeleporter.II);
     c.v(paramParcel, i);
   }
 }

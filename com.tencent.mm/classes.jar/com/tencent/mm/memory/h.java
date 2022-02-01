@@ -1,19 +1,34 @@
 package com.tencent.mm.memory;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.c;
+import com.tencent.mm.sdk.g.b;
 import java.nio.ByteBuffer;
 
 public final class h
-  extends com.tencent.mm.sdk.d<ByteBuffer>
+  extends c<ByteBuffer>
 {
-  public static h fdJ;
+  public static h gDU;
   
   static
   {
-    AppMethodBeat.i(115379);
-    fdJ = new h();
-    com.tencent.mm.sdk.g.d.post(new h.1(), "DecodeTempStorage_preload");
-    AppMethodBeat.o(115379);
+    AppMethodBeat.i(156425);
+    gDU = new h();
+    b.c(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(156424);
+        int i = 0;
+        while (i < 10)
+        {
+          h.a(h.gDU, ByteBuffer.allocate(16384));
+          i += 1;
+        }
+        AppMethodBeat.o(156424);
+      }
+    }, "DecodeTempStorage_preload");
+    AppMethodBeat.o(156425);
   }
   
   private h()
@@ -23,7 +38,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.h
  * JD-Core Version:    0.7.0.1
  */

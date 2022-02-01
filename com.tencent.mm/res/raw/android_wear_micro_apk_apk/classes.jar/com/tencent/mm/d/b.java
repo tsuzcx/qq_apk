@@ -2,7 +2,7 @@ package com.tencent.mm.d;
 
 public final class b
 {
-  private byte[] Vk;
+  private byte[] Xf;
   
   private b() {}
   
@@ -13,25 +13,25 @@ public final class b
   
   public b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    this.Vk = new byte[paramInt2];
-    System.arraycopy(paramArrayOfByte, paramInt1, this.Vk, 0, paramInt2);
+    this.Xf = new byte[paramInt2];
+    System.arraycopy(paramArrayOfByte, paramInt1, this.Xf, 0, paramInt2);
   }
   
   public final byte[] getBytes()
   {
-    return this.Vk;
+    return this.Xf;
   }
   
   public final int size()
   {
-    return this.Vk.length;
+    return this.Xf.length;
   }
   
   public final byte[] toByteArray()
   {
-    int i = this.Vk.length;
+    int i = this.Xf.length;
     byte[] arrayOfByte = new byte[i];
-    System.arraycopy(this.Vk, 0, arrayOfByte, 0, i);
+    System.arraycopy(this.Xf, 0, arrayOfByte, 0, i);
     return arrayOfByte;
   }
 }

@@ -5,10 +5,10 @@ public final class s
 {
   public s()
   {
-    this.CMD = 281;
+    this.Kik = 281;
   }
   
-  public final Boolean erf()
+  public final Boolean fMI()
   {
     return Boolean.TRUE;
   }

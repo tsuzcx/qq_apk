@@ -20,7 +20,7 @@ public abstract class DeferredLifecycleHelper<T extends LifecycleDelegate>
 {
   private T zzabc;
   private Bundle zzabd;
-  private LinkedList<DeferredLifecycleHelper.zza> zzabe;
+  private LinkedList<zza> zzabe;
   private final OnDelegateCreatedListener<T> zzabf = new zza(this);
   
   public static void showGooglePlayUnavailableMessage(FrameLayout paramFrameLayout)
@@ -50,7 +50,7 @@ public abstract class DeferredLifecycleHelper<T extends LifecycleDelegate>
     }
   }
   
-  private final void zza(Bundle paramBundle, DeferredLifecycleHelper.zza paramzza)
+  private final void zza(Bundle paramBundle, zza paramzza)
   {
     if (this.zzabc != null)
     {
@@ -79,7 +79,7 @@ public abstract class DeferredLifecycleHelper<T extends LifecycleDelegate>
   
   private final void zzm(int paramInt)
   {
-    while ((!this.zzabe.isEmpty()) && (((DeferredLifecycleHelper.zza)this.zzabe.getLast()).getState() >= paramInt)) {
+    while ((!this.zzabe.isEmpty()) && (((zza)this.zzabe.getLast()).getState() >= paramInt)) {
       this.zzabe.removeLast();
     }
   }
@@ -183,10 +183,17 @@ public abstract class DeferredLifecycleHelper<T extends LifecycleDelegate>
     }
     zzm(4);
   }
+  
+  static abstract interface zza
+  {
+    public abstract int getState();
+    
+    public abstract void zza(LifecycleDelegate paramLifecycleDelegate);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.dynamic.DeferredLifecycleHelper
  * JD-Core Version:    0.7.0.1
  */

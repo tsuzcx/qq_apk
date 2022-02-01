@@ -13,28 +13,28 @@ import java.util.HashMap;
 
 public class TinkerResourceLoader
 {
-  private static i akI = new i();
+  private static i aoi = new i();
   
   public static boolean a(Context paramContext, String paramString, j paramj, Intent paramIntent)
   {
-    Object localObject = (String)paramj.ol().get("assets/res_meta.txt");
+    Object localObject = (String)paramj.oY().get("assets/res_meta.txt");
     if (localObject == null) {
       return true;
     }
-    paramj = akI;
+    paramj = aoi;
     if ((localObject == null) || (((String)localObject).length() == 0)) {}
-    while (akI.amm == null)
+    while (aoi.apO == null)
     {
       return true;
       String str = localObject.split("\n")[0];
       if ((str == null) || (str.length() <= 0)) {
-        throw new TinkerRuntimeException("res meta Corrupted:" + (String)localObject);
+        throw new TinkerRuntimeException("res meta Corrupted:".concat(String.valueOf(localObject)));
       }
       localObject = str.split(",", 3);
-      paramj.aml = localObject[1];
-      paramj.amm = localObject[2];
+      paramj.apN = localObject[1];
+      paramj.apO = localObject[2];
     }
-    paramj = akI;
+    paramj = aoi;
     int i;
     if (paramj == null) {
       i = 0;
@@ -44,7 +44,7 @@ public class TinkerResourceLoader
       paramIntent.putExtra("intent_patch_package_patch_check", -8);
       e.a(paramIntent, -8);
       return false;
-      paramj = paramj.amm;
+      paramj = paramj.apO;
       if ((paramj == null) || (paramj.length() != 32)) {
         i = 0;
       } else {
@@ -65,7 +65,7 @@ public class TinkerResourceLoader
     }
     try
     {
-      TinkerResourcePatcher.I(paramContext);
+      TinkerResourcePatcher.J(paramContext);
       return true;
     }
     catch (Throwable paramContext)
@@ -79,7 +79,7 @@ public class TinkerResourceLoader
   
   public static boolean a(TinkerApplication paramTinkerApplication, String paramString, Intent paramIntent)
   {
-    if ((akI == null) || (akI.amm == null)) {
+    if ((aoi == null) || (aoi.apO == null)) {
       return true;
     }
     paramString = paramString + "/res/resources.apk";
@@ -87,9 +87,9 @@ public class TinkerResourceLoader
     long l = System.currentTimeMillis();
     if (paramTinkerApplication.isTinkerLoadVerifyFlag())
     {
-      if (!f.b(localFile, akI.amm))
+      if (!f.b(localFile, aoi.apO))
       {
-        Log.e("Tinker.ResourceLoader", "Failed to load resource file, path: " + localFile.getPath() + ", expect md5: " + akI.amm);
+        Log.e("Tinker.ResourceLoader", "Failed to load resource file, path: " + localFile.getPath() + ", expect md5: " + aoi.apO);
         e.a(paramIntent, -24);
         return false;
       }
@@ -97,7 +97,7 @@ public class TinkerResourceLoader
     }
     try
     {
-      TinkerResourcePatcher.j(paramTinkerApplication, paramString);
+      TinkerResourcePatcher.k(paramTinkerApplication, paramString);
       Log.i("Tinker.ResourceLoader", "monkeyPatchExistingResources resource file:" + paramString + ", use time: " + (System.currentTimeMillis() - l));
       return true;
     }

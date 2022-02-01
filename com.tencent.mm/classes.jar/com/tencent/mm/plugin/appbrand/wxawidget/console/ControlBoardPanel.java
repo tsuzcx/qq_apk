@@ -11,138 +11,214 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelappbrand.e;
-import com.tencent.mm.modelappbrand.l;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.modelappbrand.n;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class ControlBoardPanel
   extends FrameLayout
 {
-  ConsolePanel hqR;
-  ControlBoardPanel.a jxG;
-  View jxH;
-  SettingsPanel jxI;
-  View jxJ;
-  View jxK;
-  View jxL;
-  View jxM;
-  WindowManager jxN;
-  WindowManager.LayoutParams jxO;
-  boolean jxP;
+  ConsolePanel joa;
+  a mnW;
+  View mnX;
+  SettingsPanel mnY;
+  View mnZ;
+  View moa;
+  View mob;
+  View moc;
+  WindowManager mod;
+  WindowManager.LayoutParams moe;
+  boolean mof;
   
   public ControlBoardPanel(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(11164);
+    AppMethodBeat.i(121649);
     init();
-    AppMethodBeat.o(11164);
+    AppMethodBeat.o(121649);
   }
   
   public ControlBoardPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(11165);
+    AppMethodBeat.i(121650);
     init();
-    AppMethodBeat.o(11165);
+    AppMethodBeat.o(121650);
   }
   
   public ControlBoardPanel(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(11166);
+    AppMethodBeat.i(121651);
     init();
-    AppMethodBeat.o(11166);
+    AppMethodBeat.o(121651);
   }
   
   private void init()
   {
-    AppMethodBeat.i(11167);
+    AppMethodBeat.i(121652);
     Context localContext = getContext();
-    this.jxN = ((WindowManager)localContext.getSystemService("window"));
-    LayoutInflater.from(localContext).inflate(2130969273, this, true);
-    this.jxH = findViewById(2131823248);
-    this.hqR = ((ConsolePanel)findViewById(2131823249));
-    this.jxI = ((SettingsPanel)findViewById(2131823250));
-    this.jxJ = findViewById(2131823251);
-    this.jxK = findViewById(2131823245);
-    this.jxL = findViewById(2131823246);
-    this.jxM = findViewById(2131823247);
-    if (!((e)g.E(e.class)).acl().acr()) {
-      this.jxM.setVisibility(8);
+    this.mod = ((WindowManager)localContext.getSystemService("window"));
+    LayoutInflater.from(localContext).inflate(2131493661, this, true);
+    this.mnX = findViewById(2131298780);
+    this.joa = ((ConsolePanel)findViewById(2131298581));
+    this.mnY = ((SettingsPanel)findViewById(2131304667));
+    this.mnZ = findViewById(2131303205);
+    this.moa = findViewById(2131298579);
+    this.mob = findViewById(2131304640);
+    this.moc = findViewById(2131303204);
+    if (!((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atL().atS()) {
+      this.moc.setVisibility(8);
     }
-    this.jxK.setOnClickListener(new View.OnClickListener()
+    this.moa.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(11158);
-        if (ControlBoardPanel.this.hqR.getVisibility() == 0)
+        AppMethodBeat.i(121643);
+        if (ControlBoardPanel.this.joa.getVisibility() == 0)
         {
-          ControlBoardPanel.this.jxH.setVisibility(8);
-          ControlBoardPanel.this.hqR.setVisibility(8);
-          ControlBoardPanel.this.jxK.setSelected(false);
+          ControlBoardPanel.this.mnX.setVisibility(8);
+          ControlBoardPanel.this.joa.setVisibility(8);
+          ControlBoardPanel.this.moa.setSelected(false);
           ControlBoardPanel.a(ControlBoardPanel.this);
-          AppMethodBeat.o(11158);
+          AppMethodBeat.o(121643);
           return;
         }
-        ControlBoardPanel.this.jxH.setVisibility(0);
-        ControlBoardPanel.this.hqR.setVisibility(0);
-        ControlBoardPanel.this.jxI.setVisibility(8);
-        ControlBoardPanel.this.jxJ.setVisibility(8);
-        ControlBoardPanel.this.jxK.setSelected(true);
-        ControlBoardPanel.this.jxL.setSelected(false);
-        ControlBoardPanel.this.jxM.setSelected(false);
+        ControlBoardPanel.this.mnX.setVisibility(0);
+        ControlBoardPanel.this.joa.setVisibility(0);
+        ControlBoardPanel.this.mnY.setVisibility(8);
+        ControlBoardPanel.this.mnZ.setVisibility(8);
+        ControlBoardPanel.this.moa.setSelected(true);
+        ControlBoardPanel.this.mob.setSelected(false);
+        ControlBoardPanel.this.moc.setSelected(false);
         ControlBoardPanel.b(ControlBoardPanel.this);
-        AppMethodBeat.o(11158);
+        AppMethodBeat.o(121643);
       }
     });
-    this.jxL.setOnClickListener(new ControlBoardPanel.2(this));
-    this.jxM.setOnClickListener(new ControlBoardPanel.3(this));
+    this.mob.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(121644);
+        if (ControlBoardPanel.this.mnY.getVisibility() == 0)
+        {
+          ControlBoardPanel.this.mnX.setVisibility(8);
+          ControlBoardPanel.this.mnY.setVisibility(8);
+          ControlBoardPanel.this.mob.setSelected(false);
+          ControlBoardPanel.a(ControlBoardPanel.this);
+          AppMethodBeat.o(121644);
+          return;
+        }
+        ControlBoardPanel.this.mnX.setVisibility(0);
+        ControlBoardPanel.this.joa.setVisibility(8);
+        ControlBoardPanel.this.mnY.setVisibility(0);
+        ControlBoardPanel.this.mnZ.setVisibility(8);
+        ControlBoardPanel.this.moa.setSelected(false);
+        ControlBoardPanel.this.mob.setSelected(true);
+        ControlBoardPanel.this.moc.setSelected(false);
+        ControlBoardPanel.b(ControlBoardPanel.this);
+        AppMethodBeat.o(121644);
+      }
+    });
+    this.moc.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(121645);
+        if (ControlBoardPanel.this.mnZ.getVisibility() == 0)
+        {
+          ControlBoardPanel.this.mnX.setVisibility(8);
+          ControlBoardPanel.this.mnZ.setVisibility(8);
+          ControlBoardPanel.this.moc.setSelected(false);
+          ControlBoardPanel.a(ControlBoardPanel.this);
+          AppMethodBeat.o(121645);
+          return;
+        }
+        ControlBoardPanel.this.mnX.setVisibility(0);
+        ControlBoardPanel.this.joa.setVisibility(8);
+        ControlBoardPanel.this.mnY.setVisibility(8);
+        ControlBoardPanel.this.mnZ.setVisibility(0);
+        ControlBoardPanel.this.moa.setSelected(false);
+        ControlBoardPanel.this.mob.setSelected(false);
+        ControlBoardPanel.this.moc.setSelected(true);
+        ControlBoardPanel.b(ControlBoardPanel.this);
+        AppMethodBeat.o(121645);
+      }
+    });
     setOnKeyListener(new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
-        AppMethodBeat.i(11161);
-        ab.i("MicroMsg.ControlBoardPanel", "onKey(%s, %s)", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousKeyEvent });
+        AppMethodBeat.i(121646);
+        ad.i("MicroMsg.ControlBoardPanel", "onKey(%s, %s)", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousKeyEvent });
         if (paramAnonymousInt == 4)
         {
-          ControlBoardPanel.this.jxH.setVisibility(8);
-          ControlBoardPanel.this.jxJ.setVisibility(8);
-          ControlBoardPanel.this.jxJ.setVisibility(8);
-          ControlBoardPanel.this.jxM.setSelected(false);
-          ControlBoardPanel.this.jxK.setSelected(false);
-          ControlBoardPanel.this.jxL.setSelected(false);
+          ControlBoardPanel.this.mnX.setVisibility(8);
+          ControlBoardPanel.this.mnZ.setVisibility(8);
+          ControlBoardPanel.this.mnZ.setVisibility(8);
+          ControlBoardPanel.this.moc.setSelected(false);
+          ControlBoardPanel.this.moa.setSelected(false);
+          ControlBoardPanel.this.mob.setSelected(false);
           ControlBoardPanel.a(ControlBoardPanel.this);
         }
-        AppMethodBeat.o(11161);
+        AppMethodBeat.o(121646);
         return false;
       }
     });
-    this.jxI.setOnCloseDebuggerClickListener(new ControlBoardPanel.5(this));
-    this.jxI.setOnResetDebuggerRunnable(new ControlBoardPanel.6(this));
-    AppMethodBeat.o(11167);
+    this.mnY.setOnCloseDebuggerClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(121647);
+        paramAnonymousView = ControlBoardPanel.this;
+        if (paramAnonymousView.mof)
+        {
+          paramAnonymousView.mof = false;
+          paramAnonymousView.mod.removeViewImmediate(paramAnonymousView);
+          d.b(paramAnonymousView.joa);
+          if (paramAnonymousView.mnW != null) {
+            paramAnonymousView.mnW.a(paramAnonymousView, false);
+          }
+        }
+        AppMethodBeat.o(121647);
+      }
+    });
+    this.mnY.setOnResetDebuggerRunnable(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(121648);
+        ControlBoardPanel.this.reset();
+        AppMethodBeat.o(121648);
+      }
+    });
+    AppMethodBeat.o(121652);
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(11168);
-    ab.i("MicroMsg.ControlBoardPanel", "onKeyUp(%s, %s)", new Object[] { Integer.valueOf(paramInt), paramKeyEvent });
+    AppMethodBeat.i(121653);
+    ad.i("MicroMsg.ControlBoardPanel", "onKeyUp(%s, %s)", new Object[] { Integer.valueOf(paramInt), paramKeyEvent });
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
-    AppMethodBeat.o(11168);
+    AppMethodBeat.o(121653);
     return bool;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(11169);
-    d.b(this.hqR);
-    d.a(this.hqR);
-    AppMethodBeat.o(11169);
+    AppMethodBeat.i(121654);
+    d.b(this.joa);
+    d.a(this.joa);
+    AppMethodBeat.o(121654);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(ControlBoardPanel paramControlBoardPanel, boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.wxawidget.console.ControlBoardPanel
  * JD-Core Version:    0.7.0.1
  */

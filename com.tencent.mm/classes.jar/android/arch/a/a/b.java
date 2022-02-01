@@ -8,16 +8,16 @@ import java.util.concurrent.Executors;
 public final class b
   extends c
 {
-  private ExecutorService bL = Executors.newFixedThreadPool(2);
+  private ExecutorService bO = Executors.newFixedThreadPool(2);
   private final Object mLock = new Object();
   private volatile Handler mMainHandler;
   
-  public final void c(Runnable paramRunnable)
+  public final void e(Runnable paramRunnable)
   {
-    this.bL.execute(paramRunnable);
+    this.bO.execute(paramRunnable);
   }
   
-  public final void d(Runnable paramRunnable)
+  public final void f(Runnable paramRunnable)
   {
     if (this.mMainHandler == null) {}
     synchronized (this.mLock)
@@ -37,7 +37,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.arch.a.a.b
  * JD-Core Version:    0.7.0.1
  */

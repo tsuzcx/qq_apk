@@ -1,113 +1,131 @@
 package com.tencent.mm.plugin.recordvideo.plugin;
 
-import a.f.b.j;
-import a.l;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Point;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.plugin.story.h.a;
-import com.tencent.mm.plugin.story.ui.view.editor.EditorInputView;
-import com.tencent.mm.plugin.story.ui.view.editor.EditorInputView.a;
-import com.tencent.mm.plugin.story.ui.view.editor.EditorInputView.b;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
+import com.tencent.mm.protocal.protobuf.chx;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.am;
+import com.tencent.mm.ui.ap;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddTextPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "addTextBtn", "Landroid/widget/ImageView;", "changeText", "", "inputPanel", "Lcom/tencent/mm/plugin/story/ui/view/editor/EditorInputView;", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "editText", "", "text", "", "color", "", "bgColor", "initSafeArea", "name", "", "onBackPress", "onClick", "v", "Landroid/view/View;", "resetConfirmStyle", "bgStyleResId", "textColor", "(Ljava/lang/Integer;Ljava/lang/Integer;)V", "setVisibility", "visibility", "plugin-recordvideo_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddPoiPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "addPoiBtn", "Landroid/widget/ImageView;", "addPoiGroup", "Landroid/widget/RelativeLayout;", "addPoiTip", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "storyLocation", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "checkLocation", "", "getLocationResult", "data", "Landroid/content/Intent;", "initSafeArea", "name", "", "onActivityResult", "requestCode", "", "resultCode", "onBackPress", "", "onClick", "v", "Landroid/view/View;", "reset", "setVisibility", "visibility", "plugin-recordvideo_release"})
 public final class b
-  implements View.OnClickListener, q
+  implements View.OnClickListener, t
 {
-  private ViewGroup eyt;
-  d qbI;
-  private final ImageView qbK;
-  public final EditorInputView qbL;
-  private boolean qbM;
+  private ViewGroup fSZ;
+  private com.tencent.mm.plugin.recordvideo.plugin.parent.d vjo;
+  private final RelativeLayout vjq;
+  private final ImageView vjr;
+  private final ImageView vjs;
+  private chx vjt;
   
-  public b(ViewGroup paramViewGroup, d paramd)
+  public b(ViewGroup paramViewGroup, com.tencent.mm.plugin.recordvideo.plugin.parent.d paramd)
   {
-    AppMethodBeat.i(150598);
-    this.eyt = paramViewGroup;
-    this.qbI = paramd;
-    paramViewGroup = this.eyt.findViewById(2131828701);
-    j.p(paramViewGroup, "parent.findViewById(R.id.editor_add_text)");
-    this.qbK = ((ImageView)paramViewGroup);
-    paramViewGroup = this.eyt.findViewById(2131823514);
-    j.p(paramViewGroup, "parent.findViewById(R.id.change_text_root)");
-    this.qbL = ((EditorInputView)paramViewGroup);
-    this.qbK.setImageDrawable(aj.g(this.eyt.getContext(), 2131231477, -1));
-    this.qbK.setOnClickListener((View.OnClickListener)this);
-    this.qbL.setConfirmBtnColor(this.eyt.getResources().getColor(2131690701));
-    this.qbL.setOnVisibleChangeCallback((a.f.a.b)new b.1(this));
-    this.qbL.setCallback((EditorInputView.a)new b.2(this));
-    paramViewGroup = am.hQ(this.eyt.getContext());
+    AppMethodBeat.i(75464);
+    this.fSZ = paramViewGroup;
+    this.vjo = paramd;
+    paramViewGroup = this.fSZ.findViewById(2131299279);
+    k.g(paramViewGroup, "parent.findViewById(R.id…ditor_add_location_group)");
+    this.vjq = ((RelativeLayout)paramViewGroup);
+    paramViewGroup = this.fSZ.findViewById(2131299277);
+    k.g(paramViewGroup, "parent.findViewById(R.id.editor_add_location)");
+    this.vjr = ((ImageView)paramViewGroup);
+    paramViewGroup = this.fSZ.findViewById(2131299278);
+    k.g(paramViewGroup, "parent.findViewById(R.id…ditor_add_location_check)");
+    this.vjs = ((ImageView)paramViewGroup);
+    this.vjt = new chx();
+    this.vjr.setImageDrawable(am.i(this.fSZ.getContext(), 2131690422, -1));
+    paramViewGroup = this.vjs;
+    paramd = this.fSZ.getContext();
+    k.g(paramd, "parent.context");
+    paramViewGroup.setImageDrawable(paramd.getResources().getDrawable(2131691035));
+    this.vjq.setOnClickListener((View.OnClickListener)this);
+    paramViewGroup = ap.cf(this.fSZ.getContext());
     int i = paramViewGroup.y;
-    int j = paramViewGroup.x;
-    float f1 = i / j;
-    float f2 = i;
-    paramViewGroup = a.sFV;
-    f2 /= a.cEs();
-    f2 = (j - f2) / 2.0F;
-    paramViewGroup = a.sFV;
-    if (f1 > a.cEr())
-    {
-      paramViewGroup = a.sFV;
-      if (f1 >= a.cEs()) {}
-    }
-    else
-    {
-      this.qbL.bi(f2);
-    }
-    AppMethodBeat.o(150598);
+    i = paramViewGroup.x;
+    AppMethodBeat.o(75464);
   }
   
-  public final boolean cgq()
+  public final void apt() {}
+  
+  public final boolean dia()
   {
-    AppMethodBeat.i(150597);
-    if (this.qbL.getVisibility() == 0) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      this.qbL.setShow(false);
-      AppMethodBeat.o(150597);
-      return true;
-    }
-    AppMethodBeat.o(150597);
     return false;
   }
   
-  public final void e(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public final void dib()
   {
-    AppMethodBeat.i(150594);
-    this.qbM = true;
-    this.qbL.setShow(true);
-    this.qbL.f(paramCharSequence, paramInt1, paramInt2);
-    AppMethodBeat.o(150594);
+    AppMethodBeat.i(75459);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("get_poi_classify_id", this.vjt.DlE);
+    localIntent.putExtra("get_poi_from_scene", "story");
+    localIntent.putExtra("get_city", this.vjt.ijO);
+    localIntent.putExtra("poi_show_none", true);
+    localIntent.putExtra("select_radio_icon_color", "#0E9CE6");
+    com.tencent.mm.bs.d.b(this.fSZ.getContext(), "nearlife", "com.tencent.mm.plugin.nearlife.ui.CheckInLifeUI", localIntent, 2);
+    AppMethodBeat.o(75459);
   }
   
   public final String name()
   {
-    return "plugin_text";
+    return "plugin_tip";
+  }
+  
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(75462);
+    if ((2 == paramInt1) && (paramInt2 == -1) && (paramIntent != null))
+    {
+      this.vjt.goQ = bt.by(paramIntent.getStringExtra("get_poi_name"), "");
+      this.vjt.ijO = bt.by(paramIntent.getStringExtra("get_city"), "");
+      this.vjt.COJ = paramIntent.getFloatExtra("get_lat", -1000.0F);
+      this.vjt.COI = paramIntent.getFloatExtra("get_lng", -1000.0F);
+      this.vjt.DlE = paramIntent.getStringExtra("get_poi_classify_id");
+      if ((!bt.isNullOrNil(this.vjt.goQ)) || (!bt.isNullOrNil(this.vjt.ijO)))
+      {
+        paramInt1 = 1;
+        if (paramInt1 == 0) {
+          break label184;
+        }
+        this.vjs.setVisibility(0);
+      }
+      for (;;)
+      {
+        paramIntent = new Bundle();
+        paramIntent.putByteArray("PARAM_EDIT_POI_INFO", this.vjt.toByteArray());
+        this.vjo.a(d.c.vnO, paramIntent);
+        AppMethodBeat.o(75462);
+        return;
+        paramInt1 = 0;
+        break;
+        label184:
+        this.vjs.setVisibility(8);
+      }
+    }
+    AppMethodBeat.o(75462);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(150595);
-    this.qbL.setShow(true);
-    paramView = this.qbL;
-    CharSequence localCharSequence = (CharSequence)"";
-    EditorInputView.b localb = EditorInputView.sPo;
-    int i = EditorInputView.cFH();
-    localb = EditorInputView.sPo;
-    paramView.f(localCharSequence, i, EditorInputView.cFI());
-    paramView = com.tencent.mm.plugin.recordvideo.c.b.qfu;
-    com.tencent.mm.plugin.recordvideo.c.b.Ya("KEY_CLICK_TEXT_COUNT_INT");
-    paramView = com.tencent.mm.plugin.recordvideo.c.b.qfu;
-    com.tencent.mm.plugin.recordvideo.c.b.Cs(5);
-    AppMethodBeat.o(150595);
+    AppMethodBeat.i(75460);
+    dib();
+    paramView = com.tencent.mm.plugin.recordvideo.d.b.vpp;
+    com.tencent.mm.plugin.recordvideo.d.b.Kp(10);
+    AppMethodBeat.o(75460);
   }
+  
+  public final void onDetach() {}
   
   public final void onPause() {}
   
@@ -115,18 +133,24 @@ public final class b
   
   public final void release() {}
   
-  public final void reset() {}
+  public final void reset()
+  {
+    AppMethodBeat.i(75463);
+    this.vjt = new chx();
+    this.vjs.setVisibility(8);
+    AppMethodBeat.o(75463);
+  }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(150596);
-    this.qbK.setVisibility(paramInt);
-    AppMethodBeat.o(150596);
+    AppMethodBeat.i(75461);
+    this.vjq.setVisibility(paramInt);
+    AppMethodBeat.o(75461);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<vector android:tint="?fj" android:height="24.0dip" android:width="24.0dip" android:autoMirrored="true" android:viewportWidth="24.0" android:viewportHeight="24.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:state_enabled="false" android:state_pressed="true" android:drawable="@drawable/aad" />
-    <item android:state_focused="true" android:state_enabled="false" android:drawable="@drawable/aad" />
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/a2" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/a2" />
-    <item android:state_focused="true" android:drawable="@drawable/aa_" />
-    <item android:drawable="@android:color/transparent" />
-</selector>
+    <group android:name="arrow" android:pivotX="12.0" android:pivotY="12.0" android:rotation="90.0">
+        <path android:fillColor="@android:color/black" android:pathData="M7,14 L12,9 L17,14 L7,14 Z" />
+        <path android:pathData="M0,0 L24,0 L24,24 L0,24 L0,0 Z" />
+    </group>
+</vector>

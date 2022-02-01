@@ -1,11 +1,17 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
-import com.tencent.luggage.a.b;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
+import java.util.HashMap;
 
-public abstract interface f
-  extends b
+public class f
+  implements j
 {
-  public abstract void Ez(String paramString);
+  HashMap<String, AppRuntimeApiPermissionBundle> ljc;
+  
+  public f(HashMap<String, AppRuntimeApiPermissionBundle> paramHashMap)
+  {
+    this.ljc = paramHashMap;
+  }
 }
 
 

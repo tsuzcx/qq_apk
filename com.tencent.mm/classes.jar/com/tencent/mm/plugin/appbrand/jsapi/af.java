@@ -1,16 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.r;
-
-public final class af
-  extends a<r>
+abstract class af
+  implements c.a
 {
-  public static final int CTRL_INDEX = 501;
-  public static final String NAME = "chooseInvoice";
+  String jwk;
+  
+  public void HF(String paramString) {}
+  
+  public void proceed() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.af
  * JD-Core Version:    0.7.0.1
  */

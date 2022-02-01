@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.wallet_core.ui.e;
-import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
 final class WalletLqtSaveFetchUI$21
-  implements a.a
+  implements Runnable
 {
-  WalletLqtSaveFetchUI$21(WalletLqtSaveFetchUI paramWalletLqtSaveFetchUI) {}
-  
-  public final void aoW()
+  WalletLqtSaveFetchUI$21(WalletLqtSaveFetchUI paramWalletLqtSaveFetchUI)
   {
-    AppMethodBeat.i(45669);
-    WalletLqtSaveFetchUI.h(this.tRZ).setText(e.E(WalletLqtSaveFetchUI.g(this.tRZ).ufM));
-    this.tRZ.showWcKb();
-    AppMethodBeat.o(45669);
+    AppMethodBeat.i(160856);
+    AppMethodBeat.o(160856);
+  }
+  
+  public final void run()
+  {
+    AppMethodBeat.i(187120);
+    this.zMe.showNormalStWcKb();
+    AppMethodBeat.o(187120);
   }
 }
 

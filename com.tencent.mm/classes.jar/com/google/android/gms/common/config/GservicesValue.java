@@ -1,6 +1,7 @@
 package com.google.android.gms.common.config;
 
 import android.annotation.TargetApi;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
@@ -13,6 +14,8 @@ import android.os.UserManager;
 import android.util.Log;
 import com.google.android.gms.common.util.PlatformVersion;
 import com.google.android.gms.common.util.VisibleForTesting;
+import com.google.android.gms.internal.stable.zzi;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -23,7 +26,7 @@ import javax.annotation.concurrent.GuardedBy;
 public abstract class GservicesValue<T>
 {
   private static final Object sLock = new Object();
-  private static GservicesValue.zza zzmu = null;
+  private static zza zzmu = null;
   private static int zzmv = 0;
   private static Context zzmw;
   private static String zzmx = "com.google.android.providers.gsf.permission.READ_GSERVICES";
@@ -49,7 +52,7 @@ public abstract class GservicesValue<T>
   @VisibleForTesting
   public static void forceInit(Context paramContext, HashSet<String> paramHashSet)
   {
-    zza(paramContext, new GservicesValue.zzd(paramContext.getContentResolver()), paramHashSet);
+    zza(paramContext, new zzd(paramContext.getContentResolver()), paramHashSet);
   }
   
   @TargetApi(24)
@@ -79,7 +82,7 @@ public abstract class GservicesValue<T>
     synchronized (sLock)
     {
       if (zzmu == null) {
-        zza(paramContext, new GservicesValue.zzd(paramContext.getContentResolver()), paramHashSet);
+        zza(paramContext, new zzd(paramContext.getContentResolver()), paramHashSet);
       }
       int i = zzmv;
       if (i != 0) {}
@@ -102,13 +105,13 @@ public abstract class GservicesValue<T>
   @VisibleForTesting
   public static void initForTests()
   {
-    zza(null, new GservicesValue.zzb(null), new HashSet());
+    zza(null, new zzb(null), new HashSet());
   }
   
   @VisibleForTesting
   public static void initForTests(Context paramContext, HashSet<String> paramHashSet)
   {
-    zza(paramContext, new GservicesValue.zzb(null), paramHashSet);
+    zza(paramContext, new zzb(null), paramHashSet);
   }
   
   @Deprecated
@@ -126,7 +129,7 @@ public abstract class GservicesValue<T>
   {
     synchronized (sLock)
     {
-      zzmu = new GservicesValue.zzc(paramMap);
+      zzmu = new zzc(paramMap);
       return;
     }
   }
@@ -160,12 +163,12 @@ public abstract class GservicesValue<T>
       if (!zzcg()) {
         break label58;
       }
-      Iterator localIterator = GservicesValue.zzb.zzci().iterator();
+      Iterator localIterator = zzb.zzci().iterator();
       if (localIterator.hasNext()) {
         ((GservicesValue)localIterator.next()).resetOverride();
       }
     }
-    GservicesValue.zzb.zzci().clear();
+    zzb.zzci().clear();
     label58:
   }
   
@@ -200,7 +203,7 @@ public abstract class GservicesValue<T>
   }
   
   @TargetApi(24)
-  private static void zza(Context paramContext, GservicesValue.zza paramzza, HashSet<String> paramHashSet)
+  private static void zza(Context paramContext, zza paramzza, HashSet<String> paramHashSet)
   {
     synchronized (sLock)
     {
@@ -222,9 +225,9 @@ public abstract class GservicesValue<T>
     {
       synchronized (sLock)
       {
-        if (!(zzmu instanceof GservicesValue.zzb))
+        if (!(zzmu instanceof zzb))
         {
-          if (!(zzmu instanceof GservicesValue.zzc)) {
+          if (!(zzmu instanceof zzc)) {
             break label41;
           }
           break label36;
@@ -329,7 +332,7 @@ public abstract class GservicesValue<T>
     synchronized (sLock)
     {
       if (zzcg()) {
-        GservicesValue.zzb.zzci().add(this);
+        zzb.zzci().add(this);
       }
       return;
     }
@@ -348,10 +351,241 @@ public abstract class GservicesValue<T>
   {
     throw new UnsupportedOperationException("The Gservices classes used does not support direct-boot");
   }
+  
+  static abstract interface zza
+  {
+    public abstract Long getLong(String paramString, Long paramLong);
+    
+    public abstract String getString(String paramString1, String paramString2);
+    
+    public abstract Boolean zza(String paramString, Boolean paramBoolean);
+    
+    public abstract Double zza(String paramString, Double paramDouble);
+    
+    public abstract Float zza(String paramString, Float paramFloat);
+    
+    public abstract Integer zza(String paramString, Integer paramInteger);
+    
+    public abstract String zzb(String paramString1, String paramString2);
+  }
+  
+  static final class zzb
+    implements GservicesValue.zza
+  {
+    private static final Collection<GservicesValue<?>> zzna;
+    
+    static
+    {
+      AppMethodBeat.i(4542);
+      zzna = new HashSet();
+      AppMethodBeat.o(4542);
+    }
+    
+    public final Long getLong(String paramString, Long paramLong)
+    {
+      return paramLong;
+    }
+    
+    public final String getString(String paramString1, String paramString2)
+    {
+      return paramString2;
+    }
+    
+    public final Boolean zza(String paramString, Boolean paramBoolean)
+    {
+      return paramBoolean;
+    }
+    
+    public final Double zza(String paramString, Double paramDouble)
+    {
+      return paramDouble;
+    }
+    
+    public final Float zza(String paramString, Float paramFloat)
+    {
+      return paramFloat;
+    }
+    
+    public final Integer zza(String paramString, Integer paramInteger)
+    {
+      return paramInteger;
+    }
+    
+    public final String zzb(String paramString1, String paramString2)
+    {
+      return paramString2;
+    }
+  }
+  
+  @Deprecated
+  static final class zzc
+    implements GservicesValue.zza
+  {
+    private final Map<String, ?> values;
+    
+    public zzc(Map<String, ?> paramMap)
+    {
+      this.values = paramMap;
+    }
+    
+    private final <T> T zza(String paramString, T paramT)
+    {
+      AppMethodBeat.i(4550);
+      if (this.values.containsKey(paramString))
+      {
+        paramString = this.values.get(paramString);
+        AppMethodBeat.o(4550);
+        return paramString;
+      }
+      AppMethodBeat.o(4550);
+      return paramT;
+    }
+    
+    public final Long getLong(String paramString, Long paramLong)
+    {
+      AppMethodBeat.i(4547);
+      paramString = (Long)zza(paramString, paramLong);
+      AppMethodBeat.o(4547);
+      return paramString;
+    }
+    
+    public final String getString(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(4548);
+      paramString1 = (String)zza(paramString1, paramString2);
+      AppMethodBeat.o(4548);
+      return paramString1;
+    }
+    
+    public final Boolean zza(String paramString, Boolean paramBoolean)
+    {
+      AppMethodBeat.i(4543);
+      paramString = (Boolean)zza(paramString, paramBoolean);
+      AppMethodBeat.o(4543);
+      return paramString;
+    }
+    
+    public final Double zza(String paramString, Double paramDouble)
+    {
+      AppMethodBeat.i(4545);
+      paramString = (Double)zza(paramString, paramDouble);
+      AppMethodBeat.o(4545);
+      return paramString;
+    }
+    
+    public final Float zza(String paramString, Float paramFloat)
+    {
+      AppMethodBeat.i(4546);
+      paramString = (Float)zza(paramString, paramFloat);
+      AppMethodBeat.o(4546);
+      return paramString;
+    }
+    
+    public final Integer zza(String paramString, Integer paramInteger)
+    {
+      AppMethodBeat.i(4544);
+      paramString = (Integer)zza(paramString, paramInteger);
+      AppMethodBeat.o(4544);
+      return paramString;
+    }
+    
+    public final String zzb(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(4549);
+      paramString1 = (String)zza(paramString1, paramString2);
+      AppMethodBeat.o(4549);
+      return paramString1;
+    }
+  }
+  
+  static final class zzd
+    implements GservicesValue.zza
+  {
+    private final ContentResolver mContentResolver;
+    
+    public zzd(ContentResolver paramContentResolver)
+    {
+      this.mContentResolver = paramContentResolver;
+    }
+    
+    public final Long getLong(String paramString, Long paramLong)
+    {
+      AppMethodBeat.i(4555);
+      long l = zzi.getLong(this.mContentResolver, paramString, paramLong.longValue());
+      AppMethodBeat.o(4555);
+      return Long.valueOf(l);
+    }
+    
+    public final String getString(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(4556);
+      paramString1 = zzi.zza(this.mContentResolver, paramString1, paramString2);
+      AppMethodBeat.o(4556);
+      return paramString1;
+    }
+    
+    public final Boolean zza(String paramString, Boolean paramBoolean)
+    {
+      AppMethodBeat.i(4551);
+      boolean bool = zzi.zza(this.mContentResolver, paramString, paramBoolean.booleanValue());
+      AppMethodBeat.o(4551);
+      return Boolean.valueOf(bool);
+    }
+    
+    public final Double zza(String paramString, Double paramDouble)
+    {
+      AppMethodBeat.i(4553);
+      paramString = zzi.zza(this.mContentResolver, paramString, null);
+      if (paramString != null) {
+        try
+        {
+          double d = Double.parseDouble(paramString);
+          AppMethodBeat.o(4553);
+          return Double.valueOf(d);
+        }
+        catch (NumberFormatException paramString) {}
+      }
+      AppMethodBeat.o(4553);
+      return paramDouble;
+    }
+    
+    public final Float zza(String paramString, Float paramFloat)
+    {
+      AppMethodBeat.i(4554);
+      paramString = zzi.zza(this.mContentResolver, paramString, null);
+      if (paramString != null) {
+        try
+        {
+          float f = Float.parseFloat(paramString);
+          AppMethodBeat.o(4554);
+          return Float.valueOf(f);
+        }
+        catch (NumberFormatException paramString) {}
+      }
+      AppMethodBeat.o(4554);
+      return paramFloat;
+    }
+    
+    public final Integer zza(String paramString, Integer paramInteger)
+    {
+      AppMethodBeat.i(4552);
+      int i = zzi.getInt(this.mContentResolver, paramString, paramInteger.intValue());
+      AppMethodBeat.o(4552);
+      return Integer.valueOf(i);
+    }
+    
+    public final String zzb(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(4557);
+      paramString1 = com.google.android.gms.internal.stable.zzg.zza(this.mContentResolver, paramString1, paramString2);
+      AppMethodBeat.o(4557);
+      return paramString1;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.config.GservicesValue
  * JD-Core Version:    0.7.0.1
  */

@@ -3,21 +3,21 @@ package com.tencent.mm.wear.app.a;
 public final class j
   implements Runnable
 {
-  int aaO;
-  byte[] aaR;
-  int aaw;
+  int adX;
+  int aep;
+  byte[] aes;
   
   j(i parami, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    this.aaw = paramInt1;
-    this.aaO = paramInt2;
-    this.aaR = paramArrayOfByte;
+    this.adX = paramInt1;
+    this.aep = paramInt2;
+    this.aes = paramArrayOfByte;
   }
   
   public final void run()
   {
-    if (i.b(this.aaQ) != null) {
-      i.b(this.aaQ).a(this.aaw, this.aaO, this.aaR);
+    if (i.b(this.aer) != null) {
+      i.b(this.aer).a(this.adX, this.aep, this.aes);
     }
   }
 }

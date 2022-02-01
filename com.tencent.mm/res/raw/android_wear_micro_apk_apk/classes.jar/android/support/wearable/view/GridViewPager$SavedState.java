@@ -9,14 +9,14 @@ class GridViewPager$SavedState
   extends View.BaseSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator() {};
-  int Do;
-  int Dp;
+  int Fd;
+  int Fe;
   
   private GridViewPager$SavedState(Parcel paramParcel)
   {
     super(paramParcel);
-    this.Do = paramParcel.readInt();
-    this.Dp = paramParcel.readInt();
+    this.Fd = paramParcel.readInt();
+    this.Fe = paramParcel.readInt();
   }
   
   public GridViewPager$SavedState(Parcelable paramParcelable)
@@ -27,8 +27,8 @@ class GridViewPager$SavedState
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeInt(this.Do);
-    paramParcel.writeInt(this.Dp);
+    paramParcel.writeInt(this.Fd);
+    paramParcel.writeInt(this.Fe);
   }
 }
 

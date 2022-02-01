@@ -2,62 +2,60 @@ package com.tencent.mm.plugin.wallet_core.c.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.c;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.blf;
-import com.tencent.mm.protocal.protobuf.blg;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.wallet_core.c.u;
+import com.tencent.mm.protocal.protobuf.bzf;
+import com.tencent.mm.protocal.protobuf.bzg;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.wallet_core.c.w;
 
 public final class b
-  extends u
+  extends w
 {
-  private f callback;
+  private com.tencent.mm.al.g callback;
   public String jumpUrl;
-  private com.tencent.mm.ai.b rr;
-  public int ucm;
+  private com.tencent.mm.al.b rr;
+  public int zXb;
   
   public b()
   {
-    AppMethodBeat.i(46563);
-    this.ucm = 0;
+    AppMethodBeat.i(69970);
+    this.zXb = 0;
     b.a locala = new b.a();
-    blf localblf = new blf();
-    g.RM();
-    Object localObject = g.RL().Ru().get(ac.a.yBz, Boolean.FALSE);
+    bzf localbzf = new bzf();
+    com.tencent.mm.kernel.g.afC();
+    Object localObject = com.tencent.mm.kernel.g.afB().afk().get(ae.a.FjV, Boolean.FALSE);
     if (localObject != null) {}
     for (boolean bool = ((Boolean)localObject).booleanValue();; bool = false)
     {
       if (bool) {}
       for (int i = 1;; i = 0)
       {
-        localblf.xzK = i;
-        locala.fsX = localblf;
-        locala.fsY = new blg();
+        localbzf.DVR = i;
+        locala.gUU = localbzf;
+        locala.gUV = new bzg();
         locala.uri = "/cgi-bin/mmpay-bin/payibggetjumpurl";
         locala.funcId = 1564;
         locala.reqCmdId = 0;
         locala.respCmdId = 0;
-        this.rr = locala.ado();
-        AppMethodBeat.o(46563);
+        this.rr = locala.atI();
+        AppMethodBeat.o(69970);
         return;
       }
     }
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(46565);
-    this.callback = paramf;
+    AppMethodBeat.i(69972);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(46565);
+    AppMethodBeat.o(69972);
     return i;
   }
   
@@ -68,34 +66,34 @@ public final class b
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(142395);
-    ab.i("MicroMsg.NetSceneIbgPayGetJumpUrl", "hy: get ibg jump url raw net errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = (blg)((com.tencent.mm.ai.b)paramq).fsW.fta;
+    AppMethodBeat.i(69971);
+    ad.i("MicroMsg.NetSceneIbgPayGetJumpUrl", "hy: get ibg jump url raw net errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramq = (bzg)((com.tencent.mm.al.b)paramq).gUT.gUX;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      ab.i("MicroMsg.NetSceneIbgPayGetJumpUrl", "hy: get ibg pay jump url. biz_errcode: %d, biz_errmsg: %s", new Object[] { Integer.valueOf(paramq.lGK), paramq.lGL });
-      paramString = paramq.lGL;
-      paramInt3 = paramq.lGK;
-      this.jumpUrl = paramq.npR;
-      this.ucm = paramq.xzL;
+      ad.i("MicroMsg.NetSceneIbgPayGetJumpUrl", "hy: get ibg pay jump url. biz_errcode: %d, biz_errmsg: %s", new Object[] { Integer.valueOf(paramq.oXv), paramq.oXw });
+      paramString = paramq.oXw;
+      paramInt3 = paramq.oXv;
+      this.jumpUrl = paramq.rZo;
+      this.zXb = paramq.DVS;
     }
     for (;;)
     {
       paramq = paramString;
-      if (bo.isNullOrNil(paramString)) {
-        paramq = ah.getContext().getString(2131305032);
+      if (bt.isNullOrNil(paramString)) {
+        paramq = aj.getContext().getString(2131765224);
       }
       this.callback.onSceneEnd(paramInt2, paramInt3, paramq, this);
-      AppMethodBeat.o(142395);
+      AppMethodBeat.o(69971);
       return;
-      ab.e("MicroMsg.NetSceneIbgPayGetJumpUrl", "hy: get ibg pay jump url failed");
+      ad.e("MicroMsg.NetSceneIbgPayGetJumpUrl", "hy: get ibg pay jump url failed");
       this.jumpUrl = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.a.b
  * JD-Core Version:    0.7.0.1
  */

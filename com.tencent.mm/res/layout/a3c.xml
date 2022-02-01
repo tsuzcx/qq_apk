@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/oq" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameBestSellingMore android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/jx" android:textColor="@color/qi" android:layout_gravity="center_vertical" android:id="@id/c3v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/jy" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/c3w" android:visibility="gone" android:layout_width="6.0dip" android:layout_height="12.0dip" android:src="@drawable/aht" android:scaleType="fitXY" />
-    </com.tencent.mm.plugin.game.ui.GameBestSellingMore>
-</FrameLayout>
+    <ListView android:id="@id/g4n" android:background="@color/oq" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/n3" />
+    <ListView android:id="@id/f9k" android:background="@color/oq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@color/oe" android:dividerHeight="@dimen/e2" style="@style/n3" />
+    <include android:id="@id/bvc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/a36" />
+    <TextView android:textColor="@color/km" android:gravity="center_horizontal" android:id="@id/f8t" android:background="@color/a_r" android:paddingTop="@dimen/he" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/c2z" />
+    <include layout="@layout/a2j" />
+</RelativeLayout>

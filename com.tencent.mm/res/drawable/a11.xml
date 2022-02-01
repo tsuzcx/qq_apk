@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector android:enterFadeDuration="100" android:exitFadeDuration="100"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <stroke android:width="2.0px" android:color="#1a000000" android:dashGap="0.0dip" />
-    <solid android:color="@color/a3x" />
-    <corners android:radius="3.0dip" />
-</shape>
+    <item android:state_selected="true" android:drawable="@drawable/bqu" />
+    <item>
+        <shape>
+            <corners android:radius="8.0dip" />
+            <solid android:color="@color/a_r" />
+        </shape>
+    </item>
+</selector>

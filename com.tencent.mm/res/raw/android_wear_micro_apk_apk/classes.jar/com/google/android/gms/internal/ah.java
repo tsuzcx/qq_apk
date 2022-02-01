@@ -14,16 +14,16 @@ import java.util.Queue;
 public final class ah
   implements al
 {
-  private final am Ns;
+  private final am Ph;
   
   public ah(am paramam)
   {
-    this.Ns = paramam;
+    this.Ph = paramam;
   }
   
   public final <A extends com.google.android.gms.common.api.g, R extends w, T extends g<R, A>> T a(T paramT)
   {
-    this.Ns.MJ.Nf.add(paramT);
+    this.Ph.Oy.OU.add(paramT);
     return paramT;
   }
   
@@ -34,20 +34,20 @@ public final class ah
     throw new IllegalStateException("GoogleApiClient is not connected yet.");
   }
   
-  public final void bd(int paramInt) {}
-  
   public final void begin()
   {
-    Iterator localIterator = this.Ns.NX.values().iterator();
+    Iterator localIterator = this.Ph.PM.values().iterator();
     while (localIterator.hasNext()) {
       ((j)localIterator.next()).disconnect();
     }
-    this.Ns.MJ.NY = Collections.emptySet();
+    this.Ph.Oy.PN = Collections.emptySet();
   }
+  
+  public final void bx(int paramInt) {}
   
   public final void connect()
   {
-    this.Ns.iE();
+    this.Ph.iM();
   }
   
   public final boolean disconnect()

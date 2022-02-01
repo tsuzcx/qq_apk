@@ -6,13 +6,13 @@ import java.util.Arrays;
 public final class du
 {
   protected static final Charset ISO_8859_1 = Charset.forName("ISO-8859-1");
-  public static final Object RA = new Object();
+  public static final Object Tp = new Object();
   protected static final Charset UTF_8 = Charset.forName("UTF-8");
   
   public static void a(dq paramdq1, dq paramdq2)
   {
-    if (paramdq1.Rr != null) {
-      paramdq2.Rr = ((ds)paramdq1.Rr.clone());
+    if (paramdq1.Tg != null) {
+      paramdq2.Tg = ((ds)paramdq1.Tg.clone());
     }
   }
   

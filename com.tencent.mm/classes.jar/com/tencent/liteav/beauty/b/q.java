@@ -27,37 +27,37 @@ public class q
   
   public void a(float paramFloat)
   {
-    AppMethodBeat.i(146360);
+    AppMethodBeat.i(15065);
     this.s = paramFloat;
     TXCLog.i(v, "set Sharpness ".concat(String.valueOf(paramFloat)));
     a(this.r, this.s);
-    AppMethodBeat.o(146360);
+    AppMethodBeat.o(15065);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(66999);
+    AppMethodBeat.i(15064);
     super.a(paramInt1, paramInt2);
     a(this.t, 1.0F / paramInt1);
     a(this.u, 1.0F / paramInt2);
-    AppMethodBeat.o(66999);
+    AppMethodBeat.o(15064);
   }
   
   public boolean b()
   {
-    AppMethodBeat.i(66996);
+    AppMethodBeat.i(15063);
     boolean bool = super.b();
     this.r = GLES20.glGetUniformLocation(p(), "sharpness");
     this.t = GLES20.glGetUniformLocation(p(), "imageWidthFactor");
     this.u = GLES20.glGetUniformLocation(p(), "imageHeightFactor");
     a(this.s);
-    AppMethodBeat.o(66996);
+    AppMethodBeat.o(15063);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.q
  * JD-Core Version:    0.7.0.1
  */

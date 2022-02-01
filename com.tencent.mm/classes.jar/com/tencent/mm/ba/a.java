@@ -1,113 +1,109 @@
 package com.tencent.mm.ba;
 
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.view.View;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import junit.framework.Assert;
 
-public final class a
+public abstract class a
 {
-  int bsY;
-  public int fMk;
-  private String fsf;
-  private String fsg;
-  private int fsh;
-  private int fsi;
-  private String path;
-  public String username;
+  public static String hnV = "";
+  public static String hnW = "";
+  public String TEXT;
+  public String TYPE;
+  public bl drF;
+  public String hnX = "";
+  public String hnY;
+  public LinkedList<String> hnZ = new LinkedList();
+  public LinkedList<Integer> hoa = new LinkedList();
+  public LinkedList<Integer> hob = new LinkedList();
+  public Map<String, String> values;
   
-  public a()
+  public a(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(78430);
-    this.bsY = -1;
-    this.username = "";
-    this.fMk = 0;
-    this.path = "";
-    this.fsf = "";
-    this.fsg = "";
-    this.fsh = 0;
-    this.fsi = 0;
-    AppMethodBeat.o(78430);
+    this.values = paramMap;
   }
   
-  public final void convertFrom(Cursor paramCursor)
+  public a(Map<String, String> paramMap, bl parambl)
   {
-    AppMethodBeat.i(78431);
-    this.username = paramCursor.getString(0);
-    this.fMk = paramCursor.getInt(1);
-    this.path = paramCursor.getString(2);
-    this.fsf = paramCursor.getString(3);
-    this.fsg = paramCursor.getString(4);
-    this.fsh = paramCursor.getInt(5);
-    this.fsi = paramCursor.getInt(6);
-    AppMethodBeat.o(78431);
+    this.values = paramMap;
+    this.drF = parambl;
   }
   
-  public final ContentValues convertTo()
+  protected abstract boolean aqx();
+  
+  public final boolean azQ()
   {
-    AppMethodBeat.i(78432);
-    ContentValues localContentValues = new ContentValues();
-    if ((this.bsY & 0x1) != 0) {
-      localContentValues.put("username", getUsername());
-    }
-    if ((this.bsY & 0x2) != 0) {
-      localContentValues.put("bgflag", Integer.valueOf(this.fMk));
-    }
-    if ((this.bsY & 0x4) != 0)
+    if ((this.values != null) && (this.values.size() > 0))
     {
-      if (this.path == null)
+      if (this.values.containsKey(".sysmsg.$type")) {
+        this.TYPE = ((String)this.values.get(".sysmsg.$type"));
+      }
+      hnV = ".sysmsg." + this.TYPE + ".text";
+      if (this.values.containsKey(hnV)) {
+        this.TEXT = ((String)this.values.get(hnV));
+      }
+      hnW = ".sysmsg." + this.TYPE + ".link.scene";
+      if (this.values.containsKey(hnW)) {
+        this.hnY = ((String)this.values.get(hnW));
+      }
+      return aqx();
+    }
+    ad.e("MicroMsg.BaseNewXmlMsg", "values == null || values.size() == 0 ");
+    return false;
+  }
+  
+  public static abstract class a
+  {
+    private static HashMap<String, a> hoc = new HashMap();
+    
+    public static void a(String paramString, a parama)
+    {
+      Assert.assertNotNull(paramString);
+      Assert.assertNotNull(parama);
+      synchronized (hoc)
       {
-        str = "";
-        localContentValues.put("path", str);
+        hoc.put(paramString.toLowerCase(), parama);
+        return;
       }
     }
-    else
+    
+    public static a b(Map<String, String> paramMap, bl parambl)
     {
-      if ((this.bsY & 0x8) != 0)
+      if (paramMap == null)
       {
-        if (this.fsf != null) {
-          break label195;
-        }
-        str = "";
-        label100:
-        localContentValues.put("reserved1", str);
+        ad.e("MicroMsg.BaseNewXmlMsg", "values is null !!!");
+        return null;
       }
-      if ((this.bsY & 0x10) != 0) {
-        if (this.fsg != null) {
-          break label203;
+      String str = bt.by((String)paramMap.get(".sysmsg.$type"), "");
+      synchronized (hoc)
+      {
+        a locala = (a)hoc.get(str.toLowerCase());
+        if (locala == null)
+        {
+          ad.w("MicroMsg.BaseNewXmlMsg", "TYPE %s is unDefine", new Object[] { str });
+          return null;
         }
+        paramMap = locala.a(paramMap, parambl);
+        return paramMap;
       }
     }
-    label195:
-    label203:
-    for (String str = "";; str = this.fsg)
-    {
-      localContentValues.put("reserved2", str);
-      if ((this.bsY & 0x20) != 0) {
-        localContentValues.put("reserved3", Integer.valueOf(this.fsh));
-      }
-      if ((this.bsY & 0x40) != 0) {
-        localContentValues.put("reserved4", Integer.valueOf(this.fsi));
-      }
-      AppMethodBeat.o(78432);
-      return localContentValues;
-      str = this.path;
-      break;
-      str = this.fsf;
-      break label100;
-    }
+    
+    public abstract a a(Map<String, String> paramMap, bl parambl);
   }
   
-  public final String getUsername()
+  public static abstract interface b
   {
-    if (this.username == null) {
-      return "";
-    }
-    return this.username;
+    public abstract void a(View paramView, bl parambl, a parama, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ba.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,280 +4,475 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.media.MediaPlayer.OnErrorListener;
 import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.b.g;
 import com.tencent.mm.compatible.b.k;
 import com.tencent.mm.modelvoiceaddr.f;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.modelvoiceaddr.f.b;
+import com.tencent.mm.plugin.audio.c.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.ui.widget.imageview.WeImageButton;
 
 public class VoiceSearchLayout
   extends LinearLayout
 {
-  private static final int[] gcA = { 2130840730, 2130840731, 2130840732, 2130840733, 2130840710, 2130840711, 2130840712, 2130840713, 2130840714, 2130840715, 2130840716, 2130840717, 2130840718, 2130840719 };
-  private static final int[] gcB = { 2130840730, 2130840730, 2130840730, 2130840731, 2130840732, 2130840731, 2130840730, 2130840733, 2130840730, 2130840730 };
-  private static final int[] gcC = { 2130840720, 2130840729, 2130840729, 2130840729, 2130840720 };
+  private static final int[] hFs = { 2131234544, 2131234545, 2131234546, 2131234547, 2131234524, 2131234525, 2131234526, 2131234527, 2131234528, 2131234529, 2131234530, 2131234531, 2131234532, 2131234533 };
+  private static final int[] hFt = { 2131234544, 2131234544, 2131234544, 2131234545, 2131234546, 2131234545, 2131234544, 2131234547, 2131234544, 2131234544 };
+  private static final int[] hFu = { 2131234534, 2131234543, 2131234543, 2131234543, 2131234534 };
   private int from;
-  private int gcD;
-  private int gcE;
-  int gcF;
-  final ap gcG;
-  private View gcq;
-  VoiceSearchLayout.a gcr;
-  private Button gcs;
-  boolean gct;
-  int gcu;
-  private VoiceSearchLayout.b gcv;
-  private View gcw;
-  private AnimationDrawable gcx;
-  f gcy;
-  private boolean gcz;
+  private View hFi;
+  a hFj;
+  private WeImageButton hFk;
+  boolean hFl;
+  int hFm;
+  private VoiceSearchLayout.b hFn;
+  private View hFo;
+  private AnimationDrawable hFp;
+  f hFq;
+  private boolean hFr;
+  private int hFv;
+  private int hFw;
+  int hFx;
+  final av hFy;
   boolean isStart;
   
   public VoiceSearchLayout(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(116771);
-    this.gcq = null;
-    this.gcr = null;
+    AppMethodBeat.i(148617);
+    this.hFi = null;
+    this.hFj = null;
     this.isStart = false;
-    this.gct = false;
-    this.gcu = 0;
-    this.gcz = false;
+    this.hFl = false;
+    this.hFm = 0;
+    this.hFr = false;
     this.from = 0;
-    this.gcD = 0;
-    this.gcE = 0;
-    this.gcF = 0;
-    this.gcG = new ap(new VoiceSearchLayout.1(this), true);
+    this.hFv = 0;
+    this.hFw = 0;
+    this.hFx = 0;
+    this.hFy = new av(new av.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(148610);
+        if (VoiceSearchLayout.a(VoiceSearchLayout.this) == null)
+        {
+          AppMethodBeat.o(148610);
+          return true;
+        }
+        if (VoiceSearchLayout.b(VoiceSearchLayout.this) < VoiceSearchLayout.aEa().length)
+        {
+          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.aEa()[VoiceSearchLayout.c(VoiceSearchLayout.this)]);
+          AppMethodBeat.o(148610);
+          return true;
+        }
+        f localf = VoiceSearchLayout.a(VoiceSearchLayout.this);
+        ad.d("MicroMsg.SceneVoiceAddr", "cAmplitude " + localf.hEb);
+        int i = localf.hEb;
+        localf.hEb = 0;
+        if (i > f.cZR) {
+          f.cZR = i;
+        }
+        ad.d("getMaxAmplitude", " map: " + i + " max:" + f.cZR + " per:" + i * 100 / f.cZR);
+        i = i * 100 / f.cZR;
+        ad.d("MicroMsg.VoiceSearchLayout", "addr vol:".concat(String.valueOf(i)));
+        int k = VoiceSearchLayout.d(VoiceSearchLayout.this);
+        if (VoiceSearchLayout.d(VoiceSearchLayout.this) == VoiceSearchLayout.e(VoiceSearchLayout.this))
+        {
+          if (i <= 10)
+          {
+            VoiceSearchLayout.f(VoiceSearchLayout.this);
+            if (VoiceSearchLayout.g(VoiceSearchLayout.this) >= VoiceSearchLayout.aEb().length) {
+              VoiceSearchLayout.h(VoiceSearchLayout.this);
+            }
+            VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.aEb()[VoiceSearchLayout.g(VoiceSearchLayout.this)]);
+            AppMethodBeat.o(148610);
+            return true;
+          }
+          int j = i / 5;
+          i = j;
+          if (j >= VoiceSearchLayout.aEc().length) {
+            i = VoiceSearchLayout.aEc().length - 1;
+          }
+          ad.d("MicroMsg.VoiceSearchLayout", "addr mvol:".concat(String.valueOf(i)));
+          VoiceSearchLayout.b(VoiceSearchLayout.this, i);
+        }
+        for (;;)
+        {
+          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.aEc()[k]);
+          AppMethodBeat.o(148610);
+          return true;
+          if (VoiceSearchLayout.d(VoiceSearchLayout.this) > VoiceSearchLayout.e(VoiceSearchLayout.this)) {
+            VoiceSearchLayout.i(VoiceSearchLayout.this);
+          } else {
+            VoiceSearchLayout.j(VoiceSearchLayout.this);
+          }
+        }
+      }
+    }, true);
     init(paramContext);
-    AppMethodBeat.o(116771);
+    AppMethodBeat.o(148617);
   }
   
   public VoiceSearchLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(116770);
-    this.gcq = null;
-    this.gcr = null;
+    AppMethodBeat.i(148616);
+    this.hFi = null;
+    this.hFj = null;
     this.isStart = false;
-    this.gct = false;
-    this.gcu = 0;
-    this.gcz = false;
+    this.hFl = false;
+    this.hFm = 0;
+    this.hFr = false;
     this.from = 0;
-    this.gcD = 0;
-    this.gcE = 0;
-    this.gcF = 0;
-    this.gcG = new ap(new VoiceSearchLayout.1(this), true);
+    this.hFv = 0;
+    this.hFw = 0;
+    this.hFx = 0;
+    this.hFy = new av(new av.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(148610);
+        if (VoiceSearchLayout.a(VoiceSearchLayout.this) == null)
+        {
+          AppMethodBeat.o(148610);
+          return true;
+        }
+        if (VoiceSearchLayout.b(VoiceSearchLayout.this) < VoiceSearchLayout.aEa().length)
+        {
+          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.aEa()[VoiceSearchLayout.c(VoiceSearchLayout.this)]);
+          AppMethodBeat.o(148610);
+          return true;
+        }
+        f localf = VoiceSearchLayout.a(VoiceSearchLayout.this);
+        ad.d("MicroMsg.SceneVoiceAddr", "cAmplitude " + localf.hEb);
+        int i = localf.hEb;
+        localf.hEb = 0;
+        if (i > f.cZR) {
+          f.cZR = i;
+        }
+        ad.d("getMaxAmplitude", " map: " + i + " max:" + f.cZR + " per:" + i * 100 / f.cZR);
+        i = i * 100 / f.cZR;
+        ad.d("MicroMsg.VoiceSearchLayout", "addr vol:".concat(String.valueOf(i)));
+        int k = VoiceSearchLayout.d(VoiceSearchLayout.this);
+        if (VoiceSearchLayout.d(VoiceSearchLayout.this) == VoiceSearchLayout.e(VoiceSearchLayout.this))
+        {
+          if (i <= 10)
+          {
+            VoiceSearchLayout.f(VoiceSearchLayout.this);
+            if (VoiceSearchLayout.g(VoiceSearchLayout.this) >= VoiceSearchLayout.aEb().length) {
+              VoiceSearchLayout.h(VoiceSearchLayout.this);
+            }
+            VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.aEb()[VoiceSearchLayout.g(VoiceSearchLayout.this)]);
+            AppMethodBeat.o(148610);
+            return true;
+          }
+          int j = i / 5;
+          i = j;
+          if (j >= VoiceSearchLayout.aEc().length) {
+            i = VoiceSearchLayout.aEc().length - 1;
+          }
+          ad.d("MicroMsg.VoiceSearchLayout", "addr mvol:".concat(String.valueOf(i)));
+          VoiceSearchLayout.b(VoiceSearchLayout.this, i);
+        }
+        for (;;)
+        {
+          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.aEc()[k]);
+          AppMethodBeat.o(148610);
+          return true;
+          if (VoiceSearchLayout.d(VoiceSearchLayout.this) > VoiceSearchLayout.e(VoiceSearchLayout.this)) {
+            VoiceSearchLayout.i(VoiceSearchLayout.this);
+          } else {
+            VoiceSearchLayout.j(VoiceSearchLayout.this);
+          }
+        }
+      }
+    }, true);
     init(paramContext);
-    AppMethodBeat.o(116770);
+    AppMethodBeat.o(148616);
   }
   
   @TargetApi(11)
   public VoiceSearchLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(116769);
-    this.gcq = null;
-    this.gcr = null;
+    AppMethodBeat.i(148615);
+    this.hFi = null;
+    this.hFj = null;
     this.isStart = false;
-    this.gct = false;
-    this.gcu = 0;
-    this.gcz = false;
+    this.hFl = false;
+    this.hFm = 0;
+    this.hFr = false;
     this.from = 0;
-    this.gcD = 0;
-    this.gcE = 0;
-    this.gcF = 0;
-    this.gcG = new ap(new VoiceSearchLayout.1(this), true);
+    this.hFv = 0;
+    this.hFw = 0;
+    this.hFx = 0;
+    this.hFy = new av(new av.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(148610);
+        if (VoiceSearchLayout.a(VoiceSearchLayout.this) == null)
+        {
+          AppMethodBeat.o(148610);
+          return true;
+        }
+        if (VoiceSearchLayout.b(VoiceSearchLayout.this) < VoiceSearchLayout.aEa().length)
+        {
+          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.aEa()[VoiceSearchLayout.c(VoiceSearchLayout.this)]);
+          AppMethodBeat.o(148610);
+          return true;
+        }
+        f localf = VoiceSearchLayout.a(VoiceSearchLayout.this);
+        ad.d("MicroMsg.SceneVoiceAddr", "cAmplitude " + localf.hEb);
+        int i = localf.hEb;
+        localf.hEb = 0;
+        if (i > f.cZR) {
+          f.cZR = i;
+        }
+        ad.d("getMaxAmplitude", " map: " + i + " max:" + f.cZR + " per:" + i * 100 / f.cZR);
+        i = i * 100 / f.cZR;
+        ad.d("MicroMsg.VoiceSearchLayout", "addr vol:".concat(String.valueOf(i)));
+        int k = VoiceSearchLayout.d(VoiceSearchLayout.this);
+        if (VoiceSearchLayout.d(VoiceSearchLayout.this) == VoiceSearchLayout.e(VoiceSearchLayout.this))
+        {
+          if (i <= 10)
+          {
+            VoiceSearchLayout.f(VoiceSearchLayout.this);
+            if (VoiceSearchLayout.g(VoiceSearchLayout.this) >= VoiceSearchLayout.aEb().length) {
+              VoiceSearchLayout.h(VoiceSearchLayout.this);
+            }
+            VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.aEb()[VoiceSearchLayout.g(VoiceSearchLayout.this)]);
+            AppMethodBeat.o(148610);
+            return true;
+          }
+          int j = i / 5;
+          i = j;
+          if (j >= VoiceSearchLayout.aEc().length) {
+            i = VoiceSearchLayout.aEc().length - 1;
+          }
+          ad.d("MicroMsg.VoiceSearchLayout", "addr mvol:".concat(String.valueOf(i)));
+          VoiceSearchLayout.b(VoiceSearchLayout.this, i);
+        }
+        for (;;)
+        {
+          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.aEc()[k]);
+          AppMethodBeat.o(148610);
+          return true;
+          if (VoiceSearchLayout.d(VoiceSearchLayout.this) > VoiceSearchLayout.e(VoiceSearchLayout.this)) {
+            VoiceSearchLayout.i(VoiceSearchLayout.this);
+          } else {
+            VoiceSearchLayout.j(VoiceSearchLayout.this);
+          }
+        }
+      }
+    }, true);
     init(paramContext);
-    AppMethodBeat.o(116769);
+    AppMethodBeat.o(148615);
   }
   
-  private static void KQ()
+  private static void azC()
   {
-    AppMethodBeat.i(116781);
-    ab.d("MicroMsg.VoiceSearchLayout", "resumeMusic");
-    g.KC().KQ();
-    AppMethodBeat.o(116781);
+    AppMethodBeat.i(148627);
+    ad.d("MicroMsg.VoiceSearchLayout", "resumeMusic");
+    a.azC();
+    AppMethodBeat.o(148627);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(116772);
-    this.gcq = inflate(paramContext, 2130971100, this);
-    this.gcs = ((Button)this.gcq.findViewById(2131824403));
-    this.gcw = this.gcq.findViewById(2131828798);
+    AppMethodBeat.i(148618);
+    this.hFi = inflate(paramContext, 2131495870, this);
+    this.hFk = ((WeImageButton)this.hFi.findViewById(2131306533));
+    this.hFo = this.hFi.findViewById(2131306531);
     setSearchStartBtnView(false);
     reset();
-    AppMethodBeat.o(116772);
+    AppMethodBeat.o(148618);
   }
   
   private void setAmpImage(int paramInt)
   {
-    AppMethodBeat.i(116779);
-    if (this.gcs != null) {
-      this.gcs.setBackgroundResource(paramInt);
+    AppMethodBeat.i(148625);
+    if (this.hFk != null) {
+      this.hFk.setBackgroundResource(paramInt);
     }
-    AppMethodBeat.o(116779);
+    AppMethodBeat.o(148625);
   }
   
   private void setSearchStartBtnView(boolean paramBoolean)
   {
-    AppMethodBeat.i(116776);
+    AppMethodBeat.i(148622);
     if (paramBoolean)
     {
-      this.gcs.setBackgroundResource(2130840686);
-      this.gcx = ((AnimationDrawable)this.gcs.getBackground());
-      if (this.gcx != null)
+      this.hFk.setBackgroundResource(2131234499);
+      this.hFp = ((AnimationDrawable)this.hFk.getBackground());
+      if (this.hFp != null)
       {
-        this.gcx.start();
-        AppMethodBeat.o(116776);
+        this.hFp.start();
+        AppMethodBeat.o(148622);
       }
     }
     else
     {
-      this.gcs.setBackgroundResource(2130840708);
+      this.hFk.setBackgroundResource(2131234522);
     }
-    AppMethodBeat.o(116776);
+    AppMethodBeat.o(148622);
   }
   
-  public final void amT()
+  public final void aDZ()
   {
-    AppMethodBeat.i(116774);
-    ab.d("MicroMsg.VoiceSearchLayout", "doCancel " + this.isStart);
+    AppMethodBeat.i(148620);
+    ad.d("MicroMsg.VoiceSearchLayout", "doCancel " + this.isStart);
     if (this.isStart)
     {
       this.isStart = false;
-      if (this.gcr != null) {
-        this.gcr.amY();
+      if (this.hFj != null) {
+        this.hFj.aEe();
       }
     }
     reset();
     if (getVisibility() == 0)
     {
       setVisibility(8);
-      if (this.gcv != null) {
-        this.gcv.dp(false);
+      if (this.hFn != null) {
+        this.hFn.eI(false);
       }
     }
-    KQ();
-    if (this.gcy != null) {
-      this.gcy.cancel();
+    azC();
+    if (this.hFq != null) {
+      this.hFq.cancel();
     }
-    if (this.gcG != null) {
-      this.gcG.stopTimer();
+    if (this.hFy != null) {
+      this.hFy.stopTimer();
     }
-    AppMethodBeat.o(116774);
+    AppMethodBeat.o(148620);
   }
   
-  final void jdMethod_do(boolean paramBoolean)
+  final void eH(boolean paramBoolean)
   {
-    AppMethodBeat.i(116780);
+    AppMethodBeat.i(148626);
     k localk;
     if (paramBoolean)
     {
-      ab.d("MicroMsg.VoiceSearchLayout", "pauseMusic");
-      g.KC().KP();
+      ad.d("MicroMsg.VoiceSearchLayout", "pauseMusic");
+      a.azB();
       localk = new k();
       if (!paramBoolean) {
-        break label131;
+        break label128;
       }
     }
     for (;;)
     {
       try
       {
-        localk.setDataSource(getContext(), Uri.parse("android.resource://" + getContext().getPackageName() + "/2131231830"));
+        localk.setDataSource(getContext(), Uri.parse("android.resource://" + getContext().getPackageName() + "/2131690999"));
         localk.setAudioStreamType(5);
-        localk.setOnCompletionListener(new VoiceSearchLayout.2(this));
-        localk.setOnErrorListener(new VoiceSearchLayout.3(this));
+        localk.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+        {
+          public final void onCompletion(MediaPlayer paramAnonymousMediaPlayer)
+          {
+            AppMethodBeat.i(148611);
+            paramAnonymousMediaPlayer.release();
+            AppMethodBeat.o(148611);
+          }
+        });
+        localk.setOnErrorListener(new MediaPlayer.OnErrorListener()
+        {
+          public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
+          {
+            return false;
+          }
+        });
         localk.prepare();
         localk.setLooping(false);
         localk.start();
-        AppMethodBeat.o(116780);
+        AppMethodBeat.o(148626);
         return;
       }
       catch (Exception localException)
       {
-        label131:
-        ab.printErrStackTrace("MicroMsg.VoiceSearchLayout", localException, "", new Object[0]);
+        label128:
+        ad.printErrStackTrace("MicroMsg.VoiceSearchLayout", localException, "", new Object[0]);
         localk.release();
-        AppMethodBeat.o(116780);
+        AppMethodBeat.o(148626);
       }
-      KQ();
+      azC();
       break;
-      localk.setDataSource(getContext(), Uri.parse("android.resource://" + getContext().getPackageName() + "/2131231788"));
+      localk.setDataSource(getContext(), Uri.parse("android.resource://" + getContext().getPackageName() + "/2131690958"));
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(116773);
-    if (!this.gct)
+    AppMethodBeat.i(148619);
+    if (!this.hFl)
     {
-      ab.d("MicroMsg.VoiceSearchLayout", "checkStop " + this.isStart);
+      ad.d("MicroMsg.VoiceSearchLayout", "checkStop " + this.isStart);
       if (this.isStart)
       {
-        amT();
+        aDZ();
         this.isStart = false;
       }
     }
-    AppMethodBeat.o(116773);
+    AppMethodBeat.o(148619);
     return true;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(116775);
+    AppMethodBeat.i(148621);
     setSearchStartBtnView(false);
     this.isStart = false;
-    this.gct = false;
-    this.gcs.setBackgroundResource(2130840708);
-    AppMethodBeat.o(116775);
+    this.hFl = false;
+    this.hFk.setBackgroundResource(2131234522);
+    AppMethodBeat.o(148621);
   }
   
-  public void setOnSearchListener(VoiceSearchLayout.a parama)
+  public void setOnSearchListener(a parama)
   {
-    this.gcr = parama;
+    this.hFj = parama;
   }
   
   public void setOnVisibleChangeListener(VoiceSearchLayout.b paramb)
   {
-    this.gcv = paramb;
+    this.hFn = paramb;
   }
   
   public void setTopMargin(int paramInt)
   {
-    AppMethodBeat.i(116778);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.gcw.getLayoutParams();
+    AppMethodBeat.i(148624);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.hFo.getLayoutParams();
     localLayoutParams.topMargin = paramInt;
-    this.gcw.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(116778);
+    this.hFo.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(148624);
   }
   
   public void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(116777);
+    AppMethodBeat.i(148623);
     Object localObject;
-    if ((super.getVisibility() != paramInt) && (!this.gcz))
+    if ((super.getVisibility() != paramInt) && (!this.hFr))
     {
       if (paramInt != 8) {
         break label80;
       }
-      localObject = AnimationUtils.loadAnimation(getContext(), 2131034182);
+      localObject = AnimationUtils.loadAnimation(getContext(), 2130772048);
       startAnimation((Animation)localObject);
       super.setVisibility(paramInt);
-      if (this.gcv != null)
+      if (this.hFn != null)
       {
-        localObject = this.gcv;
+        localObject = this.hFn;
         if (paramInt != 0) {
           break label94;
         }
@@ -287,17 +482,26 @@ public class VoiceSearchLayout
     label94:
     for (boolean bool = true;; bool = false)
     {
-      ((VoiceSearchLayout.b)localObject).dp(bool);
-      AppMethodBeat.o(116777);
+      ((VoiceSearchLayout.b)localObject).eI(bool);
+      AppMethodBeat.o(148623);
       return;
-      localObject = AnimationUtils.loadAnimation(getContext(), 2131034181);
+      localObject = AnimationUtils.loadAnimation(getContext(), 2130772047);
       break;
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(boolean paramBoolean, String[] paramArrayOfString, long paramLong);
+    
+    public abstract void aEd();
+    
+    public abstract void aEe();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelvoiceaddr.ui.VoiceSearchLayout
  * JD-Core Version:    0.7.0.1
  */

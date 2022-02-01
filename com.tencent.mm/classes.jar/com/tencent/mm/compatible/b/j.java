@@ -4,64 +4,64 @@ import android.annotation.TargetApi;
 import android.media.AudioRecord;
 import android.media.audiofx.NoiseSuppressor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class j
   implements h.a
 {
-  private NoiseSuppressor emx;
+  private NoiseSuppressor fzg;
   
   @TargetApi(16)
   public j(AudioRecord paramAudioRecord)
   {
-    AppMethodBeat.i(92896);
-    this.emx = null;
+    AppMethodBeat.i(155614);
+    this.fzg = null;
     boolean bool = NoiseSuppressor.isAvailable();
-    ab.d("MicroMsg.MMNoiseSuppressor", "available  ".concat(String.valueOf(bool)));
+    ad.d("MicroMsg.MMNoiseSuppressor", "available  ".concat(String.valueOf(bool)));
     if (bool) {
-      this.emx = NoiseSuppressor.create(paramAudioRecord.getAudioSessionId());
+      this.fzg = NoiseSuppressor.create(paramAudioRecord.getAudioSessionId());
     }
-    AppMethodBeat.o(92896);
+    AppMethodBeat.o(155614);
   }
   
   @TargetApi(16)
-  public final boolean KB()
+  public final boolean Wj()
   {
-    AppMethodBeat.i(92898);
-    if (this.emx != null) {}
+    AppMethodBeat.i(155616);
+    if (this.fzg != null) {}
     try
     {
-      int i = this.emx.setEnabled(true);
+      int i = this.fzg.setEnabled(true);
       if (i == 0)
       {
-        AppMethodBeat.o(92898);
+        AppMethodBeat.o(155616);
         return true;
       }
-      ab.d("MicroMsg.MMNoiseSuppressor", "setEnabled failed ".concat(String.valueOf(i)));
+      ad.d("MicroMsg.MMNoiseSuppressor", "setEnabled failed ".concat(String.valueOf(i)));
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.MMNoiseSuppressor", localException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.MMNoiseSuppressor", localException, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(92898);
+    AppMethodBeat.o(155616);
     return false;
   }
   
   @TargetApi(16)
   public final boolean isAvailable()
   {
-    AppMethodBeat.i(92897);
+    AppMethodBeat.i(155615);
     boolean bool = NoiseSuppressor.isAvailable();
-    AppMethodBeat.o(92897);
+    AppMethodBeat.o(155615);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.compatible.b.j
  * JD-Core Version:    0.7.0.1
  */

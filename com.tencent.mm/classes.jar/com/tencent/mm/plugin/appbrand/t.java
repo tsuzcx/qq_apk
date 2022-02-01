@@ -1,66 +1,229 @@
 package com.tencent.mm.plugin.appbrand;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.RectF;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.g;
-import com.tencent.mm.modelappbrand.b.a;
-import com.tencent.mm.plugin.base.model.c;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class t
-  implements a
 {
-  public static t auj()
+  public static Intent a(Context paramContext, t.a parama, int paramInt, Bitmap paramBitmap, boolean paramBoolean)
   {
-    return t.a.gRM;
-  }
-  
-  public final Intent a(String paramString1, int paramInt1, String paramString2, String paramString3, String[] paramArrayOfString, String paramString4, int paramInt2, int paramInt3)
-  {
-    int i = 0;
-    AppMethodBeat.i(129116);
-    if (Build.VERSION.SDK_INT >= 26) {}
-    String str;
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(43962);
+    if ((parama == null) || (paramContext == null) || (parama.userName == null))
     {
-      str = c.av(paramString2, bool);
-      if (!bo.isNullOrNil(str)) {
-        break;
-      }
-      AppMethodBeat.o(129116);
+      ad.e("MicroMsg.AppBrandShortcutManager", "buildIntent, wrong parameters");
+      AppMethodBeat.o(43962);
       return null;
     }
-    if (TextUtils.isEmpty(paramString3)) {}
+    if ((paramBitmap == null) && (paramBoolean))
+    {
+      ad.e("MicroMsg.AppBrandShortcutManager", "no bmp");
+      AppMethodBeat.o(43962);
+      return null;
+    }
+    String str;
+    if (TextUtils.isEmpty(parama.nickname))
+    {
+      str = parama.userName;
+      parama = s.aNE().a(paramContext.getPackageName(), paramInt, parama.userName, parama.nickname, parama.cfS, parama.appId, parama.uin, 1);
+      if (!paramBoolean) {
+        break label180;
+      }
+    }
+    label180:
+    for (paramContext = "com.android.launcher.action.INSTALL_SHORTCUT";; paramContext = "com.android.launcher.action.UNINSTALL_SHORTCUT")
+    {
+      paramContext = new Intent(paramContext);
+      paramContext.putExtra("android.intent.extra.shortcut.NAME", str);
+      paramContext.putExtra("duplicate", false);
+      paramContext.putExtra("android.intent.extra.shortcut.INTENT", parama);
+      paramContext.putExtra("android.intent.extra.shortcut.ICON", paramBitmap);
+      paramContext.putExtra("shortcut_is_adaptive_icon", true);
+      AppMethodBeat.o(43962);
+      return paramContext;
+      str = parama.nickname;
+      break;
+    }
+  }
+  
+  public static Bitmap a(Context paramContext, Bitmap paramBitmap, int paramInt)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(43964);
+    if ((paramContext == null) || (paramBitmap == null) || (paramBitmap.isRecycled()))
+    {
+      AppMethodBeat.o(43964);
+      return null;
+    }
+    int i = (int)(a.getDensity(paramContext) * 48.0F);
+    Bitmap localBitmap = Bitmap.createScaledBitmap(paramBitmap, i, i, false);
+    paramBitmap = localObject;
+    if (localBitmap != null)
+    {
+      paramBitmap = localBitmap.copy(Bitmap.Config.ARGB_8888, true);
+      ad.i("MicroMsg.AppBrandShortcutManager", "bitmap recycle %s", new Object[] { localBitmap });
+      localBitmap.recycle();
+    }
+    if (paramInt == 2) {
+      a(paramContext, paramBitmap, a.aq(paramContext, 2131755659));
+    }
     for (;;)
     {
-      paramString3 = new StringBuilder();
-      int j = paramArrayOfString.length;
-      while (i < j)
-      {
-        paramString3.append(paramArrayOfString[i]);
-        i += 1;
+      AppMethodBeat.o(43964);
+      return paramBitmap;
+      if (paramInt == 1) {
+        a(paramContext, paramBitmap, a.aq(paramContext, 2131755660));
       }
-      paramString2 = paramString3;
     }
-    paramString2 = g.w((paramString2 + paramString3.toString()).getBytes());
-    paramString3 = new Intent("com.tencent.mm.action.WX_SHORTCUT");
-    paramString3.putExtra("type", paramInt3);
-    paramString3.putExtra("id", str);
-    paramString3.putExtra("ext_info", c.av(paramString4, bool));
-    paramString3.putExtra("token", c.de(paramString4, String.valueOf(paramInt2)));
-    paramString3.putExtra("digest", paramString2);
-    paramString3.putExtra("ext_info_1", paramInt1);
-    paramString3.setPackage(paramString1);
-    paramString3.addFlags(67108864);
-    AppMethodBeat.o(129116);
-    return paramString3;
+  }
+  
+  private static void a(Context paramContext, Bitmap paramBitmap, String paramString)
+  {
+    AppMethodBeat.i(43965);
+    if ((paramContext == null) || (paramBitmap == null) || (paramBitmap.isRecycled()))
+    {
+      AppMethodBeat.o(43965);
+      return;
+    }
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(43965);
+      return;
+    }
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    float f3 = a.getDensity(paramContext);
+    float f1 = 4.0F * f3;
+    float f2 = 2.0F * f3;
+    Paint localPaint = new Paint();
+    localPaint.setTextSize(f3 * 6.0F);
+    localPaint.setFakeBoldText(true);
+    localPaint.setAntiAlias(true);
+    f3 = localPaint.measureText(paramString);
+    Paint.FontMetrics localFontMetrics = localPaint.getFontMetrics();
+    float f4 = localFontMetrics.bottom - localFontMetrics.top;
+    localPaint.setColor(Color.parseColor("#459AE9"));
+    paramBitmap = new Canvas(paramBitmap);
+    if (Build.VERSION.SDK_INT < 26) {}
+    for (paramContext = new RectF(i - f3 - 2.0F * f1, j - f4 - 2.0F * f2, i, j);; paramContext = new RectF(0.0F, j - f4 - 2.0F * f2, f3 + 2.0F * f1, j))
+    {
+      paramBitmap.drawRoundRect(paramContext, 4.0F, 4.0F, localPaint);
+      localPaint.setColor(-1);
+      paramBitmap.drawText(paramString, paramContext.left + f1, paramContext.top + f2 - localFontMetrics.ascent, localPaint);
+      AppMethodBeat.o(43965);
+      return;
+    }
+  }
+  
+  public static boolean a(Context paramContext, t.a parama, int paramInt, boolean paramBoolean)
+  {
+    String str1 = null;
+    AppMethodBeat.i(43961);
+    if ((paramContext == null) || (parama == null))
+    {
+      ad.e("MicroMsg.AppBrandShortcutManager", "add fail, invalid argument");
+      AppMethodBeat.o(43961);
+      return false;
+    }
+    if (parama.cfS == null)
+    {
+      ad.e("MicroMsg.AppBrandShortcutManager", "no such user");
+      AppMethodBeat.o(43961);
+      return false;
+    }
+    Object localObject = m(parama.cfS);
+    if (localObject == null)
+    {
+      ad.i("MicroMsg.AppBrandShortcutManager", "bitmap do not exist, delay get.");
+      AppMethodBeat.o(43961);
+      return true;
+    }
+    Intent localIntent = a(paramContext, parama, paramInt, a(paramContext, (Bitmap)localObject, paramInt), true);
+    if (localIntent == null)
+    {
+      ad.e("MicroMsg.AppBrandShortcutManager", "add fail, intent is null");
+      AppMethodBeat.o(43961);
+      return false;
+    }
+    if ((Intent)localIntent.getParcelableExtra("android.intent.extra.shortcut.INTENT") != null)
+    {
+      String str2 = parama.appId;
+      String str3 = com.tencent.mm.plugin.base.model.b.eh(str2 + String.valueOf(paramInt), q.cG(true));
+      if (str3 != null)
+      {
+        localObject = com.tencent.mm.plugin.base.model.b.aa(str3.getBytes());
+        String str4 = com.tencent.mm.plugin.base.model.b.eh(str2 + String.valueOf(paramInt), q.getAndroidId());
+        if (str3 != null) {
+          str1 = com.tencent.mm.plugin.base.model.b.aa(str4.getBytes());
+        }
+        ad.i("MicroMsg.AppBrandShortcutManager", "alvinluo appId: %s, shortcutId: %s", new Object[] { str2, localObject });
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        com.tencent.mm.plugin.base.model.b.a(paramContext, localIntent, str1, (String)localObject, paramBoolean);
+        ad.i("MicroMsg.AppBrandShortcutManager", "add shortcut %s", new Object[] { parama.userName });
+        AppMethodBeat.o(43961);
+        return true;
+      }
+      catch (IllegalStateException paramContext)
+      {
+        ad.w("MicroMsg.AppBrandShortcutManager", paramContext.toString());
+        AppMethodBeat.o(43961);
+        return false;
+      }
+      localObject = null;
+      break;
+      str1 = null;
+      localObject = null;
+    }
+  }
+  
+  public static Bitmap m(String[] paramArrayOfString)
+  {
+    AppMethodBeat.i(43963);
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      localObject = paramArrayOfString[i];
+      if (!bt.isNullOrNil((String)localObject))
+      {
+        Bitmap localBitmap = com.tencent.mm.modelappbrand.a.b.aub().a((String)localObject, null);
+        if (localBitmap != null)
+        {
+          localObject = localBitmap;
+          if (!localBitmap.isRecycled()) {
+            break label62;
+          }
+        }
+      }
+      i += 1;
+    }
+    Object localObject = null;
+    label62:
+    AppMethodBeat.o(43963);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.t
  * JD-Core Version:    0.7.0.1
  */

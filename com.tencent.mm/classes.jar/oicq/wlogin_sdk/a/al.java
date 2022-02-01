@@ -5,7 +5,7 @@ public final class al
 {
   public al()
   {
-    this.CMD = 361;
+    this.Kik = 361;
   }
 }
 

@@ -1,100 +1,136 @@
 package com.tencent.mm.plugin.fav.a;
 
-import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.protocal.protobuf.ccd;
-import com.tencent.mm.protocal.protobuf.cce;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.agc;
+import com.tencent.mm.protocal.protobuf.bqq;
+import com.tencent.mm.protocal.protobuf.bqr;
+import com.tencent.mm.protocal.protobuf.bqs;
+import com.tencent.mm.protocal.protobuf.bqt;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
-import java.util.List;
 
 public final class am
-  extends m
+  extends n
   implements k
 {
-  private f callback;
-  private am.a muA;
-  private SparseArray<String> muB;
-  private List<Integer> muz;
-  private final b rr;
+  private com.tencent.mm.al.g callback;
+  public int qbc;
+  public f qbd;
+  private LinkedList<bqt> qbe;
+  private LinkedList<bqq> qbf;
+  public String qbg;
+  private final com.tencent.mm.al.b rr;
   private int scene;
-  private String toUser;
+  public int type;
   
-  public am(String paramString, List<Integer> paramList, am.a parama)
+  public am(int paramInt, f paramf)
   {
-    AppMethodBeat.i(102746);
-    this.callback = null;
-    this.muA = null;
-    this.muB = new SparseArray();
-    b.a locala = new b.a();
-    locala.fsX = new ccd();
-    locala.fsY = new cce();
-    locala.uri = "/cgi-bin/micromsg-bin/sharefav";
-    locala.funcId = 608;
-    locala.reqCmdId = 246;
-    locala.respCmdId = 1000000246;
-    this.rr = locala.ado();
-    this.toUser = paramString;
-    this.scene = 2;
-    this.muz = paramList;
-    this.muA = parama;
-    AppMethodBeat.o(102746);
+    this(paramInt, paramf.field_modItem.qbf, paramf.field_modItem.Din, 1);
+    this.qbd = paramf;
   }
   
-  public final int doScene(e parame, f paramf)
+  public am(int paramInt, LinkedList<bqq> paramLinkedList, LinkedList<bqt> paramLinkedList1)
   {
-    AppMethodBeat.i(102748);
-    ccd localccd = (ccd)this.rr.fsV.fta;
-    localccd.xMA = this.toUser;
-    localccd.Scene = this.scene;
-    localccd.wuv = new LinkedList(this.muz);
-    localccd.jJu = localccd.wuv.size();
-    ab.d("MicroMsg.NetSceneShareFavItem", "do scene %s %d %s %d", new Object[] { localccd.xMA, Integer.valueOf(localccd.Scene), localccd.wuv, Integer.valueOf(localccd.jJu) });
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(102748);
-    return i;
+    this(paramInt, paramLinkedList, paramLinkedList1, 0);
+  }
+  
+  private am(int paramInt1, LinkedList<bqq> paramLinkedList, LinkedList<bqt> paramLinkedList1, int paramInt2)
+  {
+    AppMethodBeat.i(103483);
+    this.callback = null;
+    b.a locala = new b.a();
+    locala.gUU = new bqr();
+    locala.gUV = new bqs();
+    locala.uri = "/cgi-bin/micromsg-bin/modfavitem";
+    locala.funcId = 426;
+    locala.reqCmdId = 216;
+    locala.respCmdId = 1000000216;
+    this.rr = locala.atI();
+    this.qbe = paramLinkedList1;
+    this.qbf = paramLinkedList;
+    this.qbc = paramInt1;
+    this.type = paramInt2;
+    AppMethodBeat.o(103483);
+  }
+  
+  public am(int paramInt, LinkedList<bqq> paramLinkedList, LinkedList<bqt> paramLinkedList1, String paramString)
+  {
+    this(paramInt, paramLinkedList, paramLinkedList1, 0);
+    this.qbg = paramString;
+  }
+  
+  public am(int paramInt, LinkedList<bqq> paramLinkedList, LinkedList<bqt> paramLinkedList1, String paramString, byte paramByte)
+  {
+    this(paramInt, paramLinkedList, paramLinkedList1, 0);
+    this.qbg = paramString;
+    this.scene = 1;
+  }
+  
+  public final long cin()
+  {
+    if (this.qbd == null) {
+      return -1L;
+    }
+    return this.qbd.field_localId;
+  }
+  
+  public final int cio()
+  {
+    if (this.qbd == null) {
+      return -1;
+    }
+    return this.qbd.field_type;
+  }
+  
+  public final int doScene(e parame, com.tencent.mm.al.g paramg)
+  {
+    AppMethodBeat.i(103484);
+    if ((this.scene == 0) && ((this.qbf == null) || (this.qbf.size() == 0)))
+    {
+      AppMethodBeat.o(103484);
+      return -1;
+    }
+    bqr localbqr = (bqr)this.rr.gUS.gUX;
+    localbqr.DOP = this.qbf.size();
+    if (this.qbe != null) {
+      localbqr.DOR = this.qbe.size();
+    }
+    for (localbqr.CEH = this.qbe;; localbqr.CEH = new LinkedList())
+    {
+      if (!bt.isNullOrNil(this.qbg)) {
+        localbqr.DOS = this.qbg;
+      }
+      localbqr.DOP = this.qbf.size();
+      localbqr.DOQ = this.qbf;
+      localbqr.Cxl = this.qbc;
+      localbqr.Scene = this.scene;
+      this.callback = paramg;
+      int i = dispatch(parame, this.rr, this);
+      AppMethodBeat.o(103484);
+      return i;
+      localbqr.DOR = 0;
+    }
   }
   
   public final int getType()
   {
-    return 608;
+    return 426;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(102747);
-    ab.d("MicroMsg.NetSceneShareFavItem", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
-    this.muB.clear();
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      paramq = (cce)((b)paramq).fsW.fta;
-      if (paramq.xgi != this.muz.size()) {
-        ab.w("MicroMsg.NetSceneShareFavItem", "get url error, request count %d, response count %d", new Object[] { Integer.valueOf(this.muz.size()), Integer.valueOf(paramq.xgi) });
-      }
-      paramInt1 = 0;
-      while ((paramInt1 < paramq.wuF.size()) && (paramInt1 < this.muz.size()))
-      {
-        ab.d("MicroMsg.NetSceneShareFavItem", "id[%d] url=%s", new Object[] { this.muz.get(paramInt1), paramq.wuF.get(paramInt1) });
-        this.muB.put(((Integer)this.muz.get(paramInt1)).intValue(), ((bwc)paramq.wuF.get(paramInt1)).xJE);
-        paramInt1 += 1;
-      }
-    }
+    AppMethodBeat.i(103485);
+    ad.d("MicroMsg.Fav.NetSceneModFavItem", "favId: " + this.qbc + ", netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    if (this.muA != null) {
-      this.muA.d(this.muB);
-    }
-    AppMethodBeat.o(102747);
+    b.d(((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().pT(this.qbc));
+    AppMethodBeat.o(103485);
   }
 }
 

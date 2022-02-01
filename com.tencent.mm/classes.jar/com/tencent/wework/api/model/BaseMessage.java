@@ -10,18 +10,7 @@ public abstract class BaseMessage
 {
   protected Context mContext = null;
   
-  public static Bundle b(BaseMessage paramBaseMessage)
-  {
-    if (paramBaseMessage == null) {
-      return null;
-    }
-    Bundle localBundle = new Bundle();
-    paramBaseMessage.toBundle(localBundle);
-    localBundle.putString("_wwobject_identifier_", paramBaseMessage.getClass().getName());
-    return localBundle;
-  }
-  
-  public static BaseMessage q(Uri paramUri)
+  public static BaseMessage C(Uri paramUri)
   {
     try
     {
@@ -36,6 +25,17 @@ public abstract class BaseMessage
     return null;
   }
   
+  public static Bundle b(BaseMessage paramBaseMessage)
+  {
+    if (paramBaseMessage == null) {
+      return null;
+    }
+    Bundle localBundle = new Bundle();
+    paramBaseMessage.toBundle(localBundle);
+    localBundle.putString("_wwobject_identifier_", paramBaseMessage.getClass().getName());
+    return localBundle;
+  }
+  
   public abstract boolean checkArgs();
   
   public final void setContext(Context paramContext)
@@ -47,7 +47,7 @@ public abstract class BaseMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wework.api.model.BaseMessage
  * JD-Core Version:    0.7.0.1
  */

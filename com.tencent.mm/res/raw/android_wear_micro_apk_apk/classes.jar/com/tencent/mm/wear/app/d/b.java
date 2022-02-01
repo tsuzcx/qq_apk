@@ -12,10 +12,10 @@ final class b
   protected final void execute()
   {
     com.tencent.mm.wear.app.a.g localg = new com.tencent.mm.wear.app.a.g();
-    localg.aaO = 11035;
+    localg.aep = 11035;
     localg.data = this.data;
-    e locale = new e(h.mb().lS());
-    locale.lO();
+    e locale = new e(h.mO().mF());
+    locale.mB();
     locale.a(localg);
   }
   

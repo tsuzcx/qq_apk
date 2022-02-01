@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.tmassistantsdk.downloadclient.IAssistantOnActionListener;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadOpenSDKClient;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKManager;
@@ -39,31 +39,31 @@ public class TMQQDownloaderOpenSDKDataProcessor
   
   public TMQQDownloaderOpenSDKDataProcessor()
   {
-    AppMethodBeat.i(75876);
+    AppMethodBeat.i(102122);
     this.openSDKClient = null;
     this.callback = null;
     this.clientKey = UUID.randomUUID().toString();
-    AppMethodBeat.o(75876);
+    AppMethodBeat.o(102122);
   }
   
   private TMQQDownloaderOpenSDKDataProcessor(Context paramContext)
   {
-    AppMethodBeat.i(75877);
+    AppMethodBeat.i(102123);
     this.openSDKClient = null;
     this.callback = null;
     this.clientKey = UUID.randomUUID().toString();
     if (paramContext != null) {
       getOpenSDKClient(paramContext);
     }
-    AppMethodBeat.o(75877);
+    AppMethodBeat.o(102123);
   }
   
   private static IPCBaseParam QQParam2BasePram(TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam)
   {
-    AppMethodBeat.i(75887);
+    AppMethodBeat.i(102133);
     if (paramTMQQDownloaderOpenSDKParam == null)
     {
-      AppMethodBeat.o(75887);
+      AppMethodBeat.o(102133);
       return null;
     }
     IPCBaseParam localIPCBaseParam = new IPCBaseParam();
@@ -75,16 +75,16 @@ public class TMQQDownloaderOpenSDKDataProcessor
     localIPCBaseParam.uinType = paramTMQQDownloaderOpenSDKParam.uinType;
     localIPCBaseParam.via = paramTMQQDownloaderOpenSDKParam.via;
     localIPCBaseParam.channelId = paramTMQQDownloaderOpenSDKParam.channelId;
-    AppMethodBeat.o(75887);
+    AppMethodBeat.o(102133);
     return localIPCBaseParam;
   }
   
   private TMQQDownloaderOpenSDKParam baseParam2QQParam(IPCBaseParam paramIPCBaseParam)
   {
-    AppMethodBeat.i(75888);
+    AppMethodBeat.i(102134);
     if (paramIPCBaseParam == null)
     {
-      AppMethodBeat.o(75888);
+      AppMethodBeat.o(102134);
       return null;
     }
     TMQQDownloaderOpenSDKParam localTMQQDownloaderOpenSDKParam = new TMQQDownloaderOpenSDKParam();
@@ -98,7 +98,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
       localTMQQDownloaderOpenSDKParam.uinType = paramIPCBaseParam.uinType;
       localTMQQDownloaderOpenSDKParam.via = paramIPCBaseParam.via;
       localTMQQDownloaderOpenSDKParam.channelId = paramIPCBaseParam.channelId;
-      AppMethodBeat.o(75888);
+      AppMethodBeat.o(102134);
       return localTMQQDownloaderOpenSDKParam;
     }
     catch (Exception localException)
@@ -112,7 +112,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
   
   protected static BatchDownloadActionRequest buildBatchActionRequest(int paramInt, ArrayList<TMQQDownloaderOpenSDKParam> paramArrayList, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(75885);
+    AppMethodBeat.i(102131);
     BatchDownloadActionRequest localBatchDownloadActionRequest = new BatchDownloadActionRequest();
     localBatchDownloadActionRequest.batchRequestType = paramInt;
     if (paramString1 != null) {
@@ -145,28 +145,28 @@ public class TMQQDownloaderOpenSDKDataProcessor
       }
     }
     TMLog.i("QQDownloaderOpenSDKDataProcessor", paramString2 + "}");
-    AppMethodBeat.o(75885);
+    AppMethodBeat.o(102131);
     return localBatchDownloadActionRequest;
   }
   
   protected static byte[] buildSendData(JceStruct paramJceStruct)
   {
-    AppMethodBeat.i(75886);
+    AppMethodBeat.i(102132);
     paramJceStruct = IPCPackageTools.buildIpcRequest(paramJceStruct);
     if (paramJceStruct != null)
     {
       paramJceStruct = IPCPackageTools.buildPostData(paramJceStruct);
       if ((paramJceStruct != null) && (paramJceStruct.length > 0))
       {
-        AppMethodBeat.o(75886);
+        AppMethodBeat.o(102132);
         return paramJceStruct;
       }
       TMLog.i("QQDownloaderOpenSDKDataProcessor", "handleUriAction sendData = null");
-      AppMethodBeat.o(75886);
+      AppMethodBeat.o(102132);
       return null;
     }
     TMLog.i("QQDownloaderOpenSDKDataProcessor", "handleUriAction IPCRequest = null");
-    AppMethodBeat.o(75886);
+    AppMethodBeat.o(102132);
     return null;
   }
   
@@ -174,12 +174,12 @@ public class TMQQDownloaderOpenSDKDataProcessor
   {
     try
     {
-      AppMethodBeat.i(75878);
+      AppMethodBeat.i(102124);
       if (mOpenSDKDataProcessor == null) {
         mOpenSDKDataProcessor = new TMQQDownloaderOpenSDKDataProcessor(paramContext);
       }
       paramContext = mOpenSDKDataProcessor;
-      AppMethodBeat.o(75878);
+      AppMethodBeat.o(102124);
       return paramContext;
     }
     finally {}
@@ -187,10 +187,10 @@ public class TMQQDownloaderOpenSDKDataProcessor
   
   public ArrayList<TMAssistantDownloadTaskInfo> getBatchTaskInfos(ArrayList<TMQQDownloaderOpenSDKParam> paramArrayList, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(75883);
+    AppMethodBeat.i(102129);
     if (paramArrayList == null)
     {
-      AppMethodBeat.o(75883);
+      AppMethodBeat.o(102129);
       return null;
     }
     TMLog.i("QQDownloaderOpenSDKDataProcessor", "getBatchTaskInfos appList.size:" + paramArrayList.size());
@@ -235,15 +235,15 @@ public class TMQQDownloaderOpenSDKDataProcessor
       }
       catch (Throwable paramArrayList)
       {
-        ab.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramArrayList, "", new Object[0]);
-        AppMethodBeat.o(75883);
+        ad.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramArrayList, "", new Object[0]);
+        AppMethodBeat.o(102129);
         return null;
       }
     }
     TMLog.i("QQDownloaderOpenSDKDataProcessor", paramString1);
     for (;;)
     {
-      AppMethodBeat.o(75883);
+      AppMethodBeat.o(102129);
       return paramArrayList;
       label315:
       paramString1 = paramArrayList + "response.batchData = null";
@@ -261,7 +261,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
   
   public TMAssistantDownloadTaskInfo getDownloadTask(TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam)
   {
-    AppMethodBeat.i(75884);
+    AppMethodBeat.i(102130);
     TMLog.i("QQDownloaderOpenSDKDataProcessor", "getDownloadTask param.sngAppid:" + paramTMQQDownloaderOpenSDKParam.SNGAppId + "|param.appid:" + paramTMQQDownloaderOpenSDKParam.taskAppId + "| param.taskPackageName:" + paramTMQQDownloaderOpenSDKParam.taskPackageName + "|param.taskVersion:" + paramTMQQDownloaderOpenSDKParam.taskVersion);
     paramTMQQDownloaderOpenSDKParam = QQParam2BasePram(paramTMQQDownloaderOpenSDKParam);
     QueryDownloadTaskRequest localQueryDownloadTaskRequest = new QueryDownloadTaskRequest();
@@ -288,13 +288,13 @@ public class TMQQDownloaderOpenSDKDataProcessor
           break label251;
         }
         paramTMQQDownloaderOpenSDKParam = new TMAssistantDownloadTaskInfo(paramTMQQDownloaderOpenSDKParam.url, paramTMQQDownloaderOpenSDKParam.savePath, i, paramTMQQDownloaderOpenSDKParam.receivedLen, paramTMQQDownloaderOpenSDKParam.totalLen, "application/vnd.android.package-archive");
-        AppMethodBeat.o(75884);
+        AppMethodBeat.o(102130);
         return paramTMQQDownloaderOpenSDKParam;
       }
       catch (Throwable paramTMQQDownloaderOpenSDKParam)
       {
-        ab.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramTMQQDownloaderOpenSDKParam, "", new Object[0]);
-        AppMethodBeat.o(75884);
+        ad.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramTMQQDownloaderOpenSDKParam, "", new Object[0]);
+        AppMethodBeat.o(102130);
         return null;
       }
       TMLog.i("QQDownloaderOpenSDKDataProcessor", "getDownloadTask sendData = null");
@@ -303,7 +303,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
     }
     TMLog.i("QQDownloaderOpenSDKDataProcessor", "getDownloadTask IPCResponse = null");
     label251:
-    AppMethodBeat.o(75884);
+    AppMethodBeat.o(102130);
     return null;
   }
   
@@ -311,7 +311,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
   {
     try
     {
-      AppMethodBeat.i(75895);
+      AppMethodBeat.i(102141);
       if ((this.openSDKClient == null) && (paramContext != null))
       {
         this.openSDKClient = TMAssistantDownloadSDKManager.getInstance(paramContext).getDownloadOpenSDKClient(this.clientKey);
@@ -319,7 +319,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
           this.openSDKClient.addAssistantOnActionListener(this);
         }
       }
-      AppMethodBeat.o(75895);
+      AppMethodBeat.o(102141);
       return;
     }
     finally {}
@@ -327,7 +327,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
   
   public boolean handleBatchRequestAction(int paramInt, ArrayList<TMQQDownloaderOpenSDKParam> paramArrayList, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(75882);
+    AppMethodBeat.i(102128);
     TMLog.i("QQDownloaderOpenSDKDataProcessor", "handleBatchUpdateAction batchRequestType:" + paramInt + "|appList:" + paramArrayList);
     paramArrayList = buildSendData(buildBatchActionRequest(paramInt, paramArrayList, paramString1, paramString2, paramString3));
     if ((paramArrayList != null) && (paramArrayList.length > 0)) {
@@ -337,27 +337,27 @@ public class TMQQDownloaderOpenSDKDataProcessor
         if (this.openSDKClient != null)
         {
           this.openSDKClient.sendAsyncData(paramArrayList);
-          AppMethodBeat.o(75882);
+          AppMethodBeat.o(102128);
           return true;
         }
-        AppMethodBeat.o(75882);
+        AppMethodBeat.o(102128);
         return false;
       }
       catch (Throwable paramArrayList)
       {
-        ab.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramArrayList, "", new Object[0]);
-        AppMethodBeat.o(75882);
+        ad.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramArrayList, "", new Object[0]);
+        AppMethodBeat.o(102128);
         return false;
       }
     }
     TMLog.i("QQDownloaderOpenSDKDataProcessor", "handleBatchUpdateAction sendData = null or length = 0");
-    AppMethodBeat.o(75882);
+    AppMethodBeat.o(102128);
     return false;
   }
   
   public boolean handleDownloadTask(TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(75880);
+    AppMethodBeat.i(102126);
     TMLog.i("QQDownloaderOpenSDKDataProcessor", "handleDownloadTask requestType:" + paramInt + "  param.sngAppid:" + paramTMQQDownloaderOpenSDKParam.SNGAppId + "|param.appid:" + paramTMQQDownloaderOpenSDKParam.taskAppId + "| param.taskPackageName:" + paramTMQQDownloaderOpenSDKParam.taskPackageName + "|param.taskVersion:" + paramTMQQDownloaderOpenSDKParam.taskVersion + "| param.actionFlag:" + paramString2 + " | verifyType:" + paramString3);
     OperateDownloadTaskRequest localOperateDownloadTaskRequest = new OperateDownloadTaskRequest();
     paramTMQQDownloaderOpenSDKParam = QQParam2BasePram(paramTMQQDownloaderOpenSDKParam);
@@ -374,30 +374,30 @@ public class TMQQDownloaderOpenSDKDataProcessor
         if (this.openSDKClient != null)
         {
           this.openSDKClient.sendAsyncData(paramTMQQDownloaderOpenSDKParam);
-          AppMethodBeat.o(75880);
+          AppMethodBeat.o(102126);
           return true;
         }
-        AppMethodBeat.o(75880);
+        AppMethodBeat.o(102126);
         return false;
       }
       catch (Throwable paramTMQQDownloaderOpenSDKParam)
       {
-        ab.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramTMQQDownloaderOpenSDKParam, "", new Object[0]);
-        AppMethodBeat.o(75880);
+        ad.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramTMQQDownloaderOpenSDKParam, "", new Object[0]);
+        AppMethodBeat.o(102126);
         return false;
       }
     }
     TMLog.i("QQDownloaderOpenSDKDataProcessor", "handleDownloadTask sendData = null");
-    AppMethodBeat.o(75880);
+    AppMethodBeat.o(102126);
     return false;
   }
   
   public boolean handleUriAction(String paramString)
   {
-    AppMethodBeat.i(75881);
+    AppMethodBeat.i(102127);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(75881);
+      AppMethodBeat.o(102127);
       return false;
     }
     paramString = buildSendData(new URIActionRequest(paramString));
@@ -408,24 +408,24 @@ public class TMQQDownloaderOpenSDKDataProcessor
         if (this.openSDKClient != null) {
           this.openSDKClient.sendAsyncData(paramString);
         }
-        AppMethodBeat.o(75881);
+        AppMethodBeat.o(102127);
         return false;
       }
       catch (Throwable paramString)
       {
-        ab.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramString, "", new Object[0]);
-        AppMethodBeat.o(75881);
+        ad.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramString, "", new Object[0]);
+        AppMethodBeat.o(102127);
         return false;
       }
     }
     TMLog.i("QQDownloaderOpenSDKDataProcessor", "handleUriAction sendData = null");
-    AppMethodBeat.o(75881);
+    AppMethodBeat.o(102127);
     return false;
   }
   
   public void onActionResult(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(75889);
+    AppMethodBeat.i(102135);
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
       paramArrayOfByte = IPCPackageTools.unpackPackage(paramArrayOfByte);
@@ -435,17 +435,17 @@ public class TMQQDownloaderOpenSDKDataProcessor
       }
       for (;;)
       {
-        AppMethodBeat.o(75889);
+        AppMethodBeat.o(102135);
         return;
         if (localJceStruct != null)
         {
           onStateChanged((GetDownloadStateResponse)localJceStruct);
-          AppMethodBeat.o(75889);
+          AppMethodBeat.o(102135);
           return;
           if (localJceStruct != null)
           {
             onProgressChanged((GetDownloadProgressResponse)localJceStruct);
-            AppMethodBeat.o(75889);
+            AppMethodBeat.o(102135);
             return;
             onServiceFreed();
           }
@@ -453,12 +453,12 @@ public class TMQQDownloaderOpenSDKDataProcessor
       }
     }
     TMLog.i("QQDownloaderOpenSDKDataProcessor", "onActionResult reponseData = null");
-    AppMethodBeat.o(75889);
+    AppMethodBeat.o(102135);
   }
   
   public void onDownloadSDKServiceInvalid()
   {
-    AppMethodBeat.i(75890);
+    AppMethodBeat.i(102136);
     if (this.callback != null) {
       this.callback.OnQQDownloaderInvalid();
     }
@@ -467,40 +467,40 @@ public class TMQQDownloaderOpenSDKDataProcessor
       TMAssistantDownloadSDKManager.getInstance(localContext).releaseDownloadSDKClient(this.clientKey);
     }
     this.openSDKClient = null;
-    AppMethodBeat.o(75890);
+    AppMethodBeat.o(102136);
   }
   
   void onProgressChanged(GetDownloadProgressResponse paramGetDownloadProgressResponse)
   {
-    AppMethodBeat.i(75893);
+    AppMethodBeat.i(102139);
     TMQQDownloaderOpenSDKParam localTMQQDownloaderOpenSDKParam = baseParam2QQParam(paramGetDownloadProgressResponse.requestParam);
     if ((localTMQQDownloaderOpenSDKParam != null) && (this.callback != null))
     {
       TMLog.i("QQDownloaderOpenSDKDataProcessor", "进度回调：GetDownloadProgressResponse response.receivedLen:" + paramGetDownloadProgressResponse.receivedLen + ",response.totalLen" + paramGetDownloadProgressResponse.totalLen);
       this.callback.OnDownloadTaskProgressChanged(localTMQQDownloaderOpenSDKParam, paramGetDownloadProgressResponse.receivedLen, paramGetDownloadProgressResponse.totalLen);
     }
-    AppMethodBeat.o(75893);
+    AppMethodBeat.o(102139);
   }
   
   void onServiceFreed()
   {
-    AppMethodBeat.i(75894);
+    AppMethodBeat.i(102140);
     if (this.callback != null) {
       this.callback.OnServiceFree();
     }
-    AppMethodBeat.o(75894);
+    AppMethodBeat.o(102140);
   }
   
   void onStateChanged(GetDownloadStateResponse paramGetDownloadStateResponse)
   {
-    AppMethodBeat.i(75892);
+    AppMethodBeat.i(102138);
     TMQQDownloaderOpenSDKParam localTMQQDownloaderOpenSDKParam = baseParam2QQParam(paramGetDownloadStateResponse.requestParam);
     if ((localTMQQDownloaderOpenSDKParam != null) && (this.callback != null))
     {
       TMLog.i("QQDownloaderOpenSDKDataProcessor", "状态回调：GetDownloadStateResponse param.taskAppId:" + localTMQQDownloaderOpenSDKParam.taskAppId + ",param.taskPackageName:" + localTMQQDownloaderOpenSDKParam.taskPackageName + ",state:" + paramGetDownloadStateResponse.state + ",response.errorCode" + paramGetDownloadStateResponse.errorCode);
       this.callback.OnDownloadTaskStateChanged(localTMQQDownloaderOpenSDKParam, GlobalUtil.assistantState2SDKState(paramGetDownloadStateResponse.state), GlobalUtil.assistantErrorCode2SDKErrorCode(paramGetDownloadStateResponse.errorCode), paramGetDownloadStateResponse.errorMsg);
     }
-    AppMethodBeat.o(75892);
+    AppMethodBeat.o(102138);
   }
   
   public void registerIQQDownloaderOpenSDKListener(ITMQQDownloaderOpenSDKListener paramITMQQDownloaderOpenSDKListener)
@@ -510,7 +510,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
   
   public void releaseIPCClient()
   {
-    AppMethodBeat.i(75891);
+    AppMethodBeat.i(102137);
     if (this.openSDKClient != null)
     {
       Context localContext = GlobalUtil.getInstance().getContext();
@@ -519,24 +519,24 @@ public class TMQQDownloaderOpenSDKDataProcessor
       }
       this.openSDKClient = null;
     }
-    AppMethodBeat.o(75891);
+    AppMethodBeat.o(102137);
   }
   
   public void unregisterIQQDownloaderOpenSDKListener()
   {
-    AppMethodBeat.i(75879);
+    AppMethodBeat.i(102125);
     this.callback = null;
     Context localContext = GlobalUtil.getInstance().getContext();
     if (localContext != null) {
       TMAssistantDownloadSDKManager.getInstance(localContext).releaseDownloadSDKClient(this.clientKey);
     }
     this.openSDKClient = null;
-    AppMethodBeat.o(75879);
+    AppMethodBeat.o(102125);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKDataProcessor
  * JD-Core Version:    0.7.0.1
  */

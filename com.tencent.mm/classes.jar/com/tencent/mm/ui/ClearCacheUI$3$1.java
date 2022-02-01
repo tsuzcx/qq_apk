@@ -3,7 +3,7 @@ package com.tencent.mm.ui;
 import android.content.Context;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.aj;
 
 final class ClearCacheUI$3$1
   implements Runnable
@@ -12,14 +12,14 @@ final class ClearCacheUI$3$1
   
   public final void run()
   {
-    AppMethodBeat.i(29167);
-    Toast.makeText(ah.getContext(), ah.getContext().getString(2131298410), 0).show();
-    AppMethodBeat.o(29167);
+    AppMethodBeat.i(32992);
+    Toast.makeText(aj.getContext(), aj.getContext().getString(2131757421), 0).show();
+    AppMethodBeat.o(32992);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.ClearCacheUI.3.1
  * JD-Core Version:    0.7.0.1
  */

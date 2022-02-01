@@ -32,7 +32,7 @@ public class Space
     }
   }
   
-  private static int w(int paramInt1, int paramInt2)
+  private static int y(int paramInt1, int paramInt2)
   {
     int i = View.MeasureSpec.getMode(paramInt2);
     paramInt2 = View.MeasureSpec.getSize(paramInt2);
@@ -54,12 +54,12 @@ public class Space
   @Deprecated
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    setMeasuredDimension(w(getSuggestedMinimumWidth(), paramInt1), w(getSuggestedMinimumHeight(), paramInt2));
+    setMeasuredDimension(y(getSuggestedMinimumWidth(), paramInt1), y(getSuggestedMinimumHeight(), paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.v4.widget.Space
  * JD-Core Version:    0.7.0.1
  */

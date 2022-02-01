@@ -6,26 +6,26 @@ import com.tencent.mm.plugin.fts.a.a.a;
 final class c$b
   extends a
 {
-  private long eaY;
+  private long fll;
   
   public c$b(c paramc, long paramLong)
   {
-    this.eaY = paramLong;
+    this.fll = paramLong;
   }
   
-  public final String aAn()
+  public final String aWs()
   {
-    AppMethodBeat.i(136749);
-    String str = String.format("{MsgId: %d}", new Object[] { Long.valueOf(this.eaY) });
-    AppMethodBeat.o(136749);
+    AppMethodBeat.i(52723);
+    String str = String.format("{MsgId: %d}", new Object[] { Long.valueOf(this.fll) });
+    AppMethodBeat.o(52723);
     return str;
   }
   
   public final boolean execute()
   {
-    AppMethodBeat.i(136748);
-    this.mUU.mUM.c(com.tencent.mm.plugin.fts.a.c.mQA, this.eaY);
-    AppMethodBeat.o(136748);
+    AppMethodBeat.i(52722);
+    this.rrL.rrF.c(com.tencent.mm.plugin.fts.a.c.rnr, this.fll);
+    AppMethodBeat.o(52722);
     return true;
   }
   
@@ -36,7 +36,7 @@ final class c$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.c.b
  * JD-Core Version:    0.7.0.1
  */

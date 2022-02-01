@@ -22,7 +22,7 @@ public final class G$netStats$patterns
   
   static
   {
-    AppMethodBeat.i(113976);
+    AppMethodBeat.i(73474);
     IDENTS = GservicesValue.value("gms:stats:netstats:pattern:idents", " *ident=\\[(?<idents>.*)\\](?: uid=(?<uid>-?[0-9]+))?(?: set=(?<set>\\w+))?(?: tag=0x(?<tag>[0-9a-f]+))?.*");
     IDENT = GservicesValue.value("gms:stats:netstats:pattern:ident", NetstatsParserPatterns.IDENT_PATTERN);
     HISTORY = GservicesValue.value("gms:stats:netstats:pattern:history", ".*bucketDuration=(?<duration>[0-9]+).*");
@@ -36,12 +36,12 @@ public final class G$netStats$patterns
     TYPE_DEBUG_VPN_OUT_PATTERN = GservicesValue.value("gms:stats:netstats:pattern:type_debug_vpn_out_pattern", "DBG_VPN_OUT");
     TAG_RADIX = GservicesValue.value("gms:stats:netstats:pattern:tag_radix", Integer.valueOf(16));
     TS_TO_MILLIS = GservicesValue.value("gms:stats:netstats:pattern:ts_to_millis", Integer.valueOf(NetstatsParserPatterns.TS_TO_MILLIS));
-    AppMethodBeat.o(113976);
+    AppMethodBeat.o(73474);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.stats.internal.G.netStats.patterns
  * JD-Core Version:    0.7.0.1
  */

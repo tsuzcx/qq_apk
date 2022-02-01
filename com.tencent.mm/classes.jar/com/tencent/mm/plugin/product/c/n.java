@@ -3,101 +3,101 @@ package com.tencent.mm.plugin.product.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class n
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int bsY;
-  public String cwc;
+  public String dlB;
+  public int dtM;
   public String name;
-  public String pvi;
   public String username;
+  public String uwS;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(56639);
+    AppMethodBeat.i(91282);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.cwc != null) {
-        paramVarArgs.e(1, this.cwc);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.dlB != null) {
+        paramVarArgs.d(1, this.dlB);
       }
       if (this.name != null) {
-        paramVarArgs.e(2, this.name);
+        paramVarArgs.d(2, this.name);
       }
-      if (this.pvi != null) {
-        paramVarArgs.e(3, this.pvi);
+      if (this.uwS != null) {
+        paramVarArgs.d(3, this.uwS);
       }
       if (this.username != null) {
-        paramVarArgs.e(4, this.username);
+        paramVarArgs.d(4, this.username);
       }
-      paramVarArgs.aO(5, this.bsY);
-      AppMethodBeat.o(56639);
+      paramVarArgs.aR(5, this.dtM);
+      AppMethodBeat.o(91282);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.cwc == null) {
+      if (this.dlB == null) {
         break label438;
       }
     }
     label438:
-    for (int i = e.a.a.b.b.a.f(1, this.cwc) + 0;; i = 0)
+    for (int i = f.a.a.b.b.a.e(1, this.dlB) + 0;; i = 0)
     {
       paramInt = i;
       if (this.name != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.name);
+        paramInt = i + f.a.a.b.b.a.e(2, this.name);
       }
       i = paramInt;
-      if (this.pvi != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.pvi);
+      if (this.uwS != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.uwS);
       }
       paramInt = i;
       if (this.username != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.username);
+        paramInt = i + f.a.a.b.b.a.e(4, this.username);
       }
-      i = e.a.a.b.b.a.bl(5, this.bsY);
-      AppMethodBeat.o(56639);
+      i = f.a.a.b.b.a.bA(5, this.dtM);
+      AppMethodBeat.o(91282);
       return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(56639);
+        AppMethodBeat.o(91282);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         n localn = (n)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(56639);
+          AppMethodBeat.o(91282);
           return -1;
         case 1: 
-          localn.cwc = locala.CLY.readString();
-          AppMethodBeat.o(56639);
+          localn.dlB = locala.KhF.readString();
+          AppMethodBeat.o(91282);
           return 0;
         case 2: 
-          localn.name = locala.CLY.readString();
-          AppMethodBeat.o(56639);
+          localn.name = locala.KhF.readString();
+          AppMethodBeat.o(91282);
           return 0;
         case 3: 
-          localn.pvi = locala.CLY.readString();
-          AppMethodBeat.o(56639);
+          localn.uwS = locala.KhF.readString();
+          AppMethodBeat.o(91282);
           return 0;
         case 4: 
-          localn.username = locala.CLY.readString();
-          AppMethodBeat.o(56639);
+          localn.username = locala.KhF.readString();
+          AppMethodBeat.o(91282);
           return 0;
         }
-        localn.bsY = locala.CLY.sl();
-        AppMethodBeat.o(56639);
+        localn.dtM = locala.KhF.xS();
+        AppMethodBeat.o(91282);
         return 0;
       }
-      AppMethodBeat.o(56639);
+      AppMethodBeat.o(91282);
       return -1;
     }
   }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/ig" android:layout_width="120.0dip" android:layout_height="120.0dip">
-        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/bct" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="31.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/ih" style="@android:style/Widget.ProgressBar" />
-        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/a6q" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/ak2" />
-    </LinearLayout>
-</FrameLayout>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:orientation="vertical" android:id="@id/a1t" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/a1u" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="@id/a1r" />
+    <View android:id="@id/a1r" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/hj" app:layout_constraintBottom_toBottomOf="@id/a1q" app:layout_constraintLeft_toLeftOf="ea8" />
+    <TextView android:textSize="@dimen/jo" android:textColor="@color/a_u" android:id="@id/biz_slot_show_desc_tv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginBottom="@dimen/bq" app:layout_constraintBottom_toTopOf="@id/biz_slot_title_neat_tv" app:layout_constraintLeft_toLeftOf="ea8" app:layout_goneMarginBottom="@dimen/ci" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/ia" android:textStyle="bold" android:textColor="@color/a_u" android:ellipsize="end" android:id="@id/biz_slot_title_neat_tv" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:layout_marginBottom="@dimen/ci" android:maxLines="2" android:lineSpacingExtra="2.0dip" app:layout_constraintBottom_toBottomOf="@id/a1u" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" />
+</merge>

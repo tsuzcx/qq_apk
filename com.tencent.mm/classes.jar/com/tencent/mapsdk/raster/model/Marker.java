@@ -40,6 +40,8 @@ public abstract interface Marker
   
   public abstract boolean isVisible();
   
+  public abstract void refreshInfoWindow();
+  
   public abstract void remove();
   
   public abstract void set2Top();
@@ -80,7 +82,7 @@ public abstract interface Marker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.Marker
  * JD-Core Version:    0.7.0.1
  */

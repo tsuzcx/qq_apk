@@ -2,6 +2,8 @@ package com.tencent.mm.plugin.scanner.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -10,73 +12,137 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.y;
 
 public class ScannerFlashSwitcher
   extends LinearLayout
 {
-  ImageView qBb;
-  TextView qBc;
-  boolean qBd;
+  public boolean SE;
+  boolean cEL;
+  private TextView vVA;
+  private boolean vVB;
+  private ImageView vVz;
   
   public ScannerFlashSwitcher(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(81322);
-    this.qBd = false;
+    AppMethodBeat.i(91061);
+    this.vVB = false;
     init();
-    AppMethodBeat.o(81322);
+    AppMethodBeat.o(91061);
   }
   
   public ScannerFlashSwitcher(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(81323);
-    this.qBd = false;
+    AppMethodBeat.i(91062);
+    this.vVB = false;
     init();
-    AppMethodBeat.o(81323);
+    AppMethodBeat.o(91062);
   }
   
   private void init()
   {
-    AppMethodBeat.i(81324);
-    w.hM(getContext()).inflate(2130970613, this, true);
-    this.qBb = ((ImageView)findViewById(2131827449));
-    this.qBc = ((TextView)findViewById(2131827450));
-    this.qBd = true;
-    AppMethodBeat.o(81324);
+    AppMethodBeat.i(91063);
+    y.js(getContext()).inflate(2131495308, this, true);
+    this.vVz = ((ImageView)findViewById(2131300127));
+    this.vVA = ((TextView)findViewById(2131300126));
+    this.vVB = true;
+    AppMethodBeat.o(91063);
   }
   
-  public final void cji()
+  public final void dmE()
   {
-    AppMethodBeat.i(81326);
-    ab.i("MicroMsg.ScannerFlashSwitcher", "closeFlashStatus");
-    this.qBb.setImageResource(2131231942);
-    AppMethodBeat.o(81326);
+    AppMethodBeat.i(91066);
+    ad.i("MicroMsg.ScannerFlashSwitcher", "openFlashStatus");
+    this.SE = true;
+    this.vVz.setImageResource(2131691128);
+    this.vVA.setText(2131762814);
+    AppMethodBeat.o(91066);
+  }
+  
+  public final void dmF()
+  {
+    AppMethodBeat.i(91067);
+    ad.i("MicroMsg.ScannerFlashSwitcher", "closeFlashStatus");
+    this.SE = false;
+    this.vVz.setImageResource(2131691127);
+    this.vVA.setText(2131762815);
+    AppMethodBeat.o(91067);
   }
   
   public final void hide()
   {
-    AppMethodBeat.i(81325);
-    ab.i("MicroMsg.ScannerFlashSwitcher", "hide");
+    AppMethodBeat.i(91065);
+    ad.i("MicroMsg.ScannerFlashSwitcher", "hide");
     setEnabled(false);
-    this.qBb.animate().alpha(0.0F).setDuration(500L);
-    this.qBc.animate().alpha(0.0F).setDuration(500L).setListener(new AnimatorListenerAdapter()
+    this.cEL = false;
+    this.vVz.animate().alpha(0.0F).setDuration(500L);
+    this.vVA.animate().alpha(0.0F).setDuration(500L).setListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(81321);
+        AppMethodBeat.i(91060);
         ScannerFlashSwitcher.this.setVisibility(8);
-        AppMethodBeat.o(81321);
+        AppMethodBeat.o(91060);
       }
     });
-    AppMethodBeat.o(81325);
+    this.SE = false;
+    AppMethodBeat.o(91065);
+  }
+  
+  public final void show()
+  {
+    AppMethodBeat.i(91064);
+    ad.i("MicroMsg.ScannerFlashSwitcher", "show, isFirstShow: %s", new Object[] { Boolean.valueOf(this.vVB) });
+    this.cEL = true;
+    if (this.vVB)
+    {
+      this.vVz.setAlpha(0.0F);
+      this.vVA.setAlpha(0.0F);
+      setVisibility(0);
+      this.vVA.animate().alpha(1.0F).setListener(null).setDuration(500L);
+      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      {
+        public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+        {
+          AppMethodBeat.i(91058);
+          float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
+          ScannerFlashSwitcher.a(ScannerFlashSwitcher.this).setAlpha(f);
+          AppMethodBeat.o(91058);
+        }
+      });
+      localValueAnimator.setRepeatCount(3);
+      localValueAnimator.setRepeatMode(2);
+      localValueAnimator.setDuration(500L);
+      localValueAnimator.addListener(new AnimatorListenerAdapter()
+      {
+        public final void onAnimationEnd(Animator paramAnonymousAnimator)
+        {
+          AppMethodBeat.i(91059);
+          ScannerFlashSwitcher.a(ScannerFlashSwitcher.this).setAlpha(1.0F);
+          AppMethodBeat.o(91059);
+        }
+      });
+      localValueAnimator.start();
+      this.vVB = false;
+    }
+    for (;;)
+    {
+      setEnabled(true);
+      AppMethodBeat.o(91064);
+      return;
+      setVisibility(0);
+      this.vVA.animate().alpha(1.0F).setDuration(500L).setListener(null).start();
+      this.vVz.animate().alpha(1.0F).setDuration(500L).setListener(null).start();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ScannerFlashSwitcher
  * JD-Core Version:    0.7.0.1
  */

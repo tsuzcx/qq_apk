@@ -1,76 +1,93 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
-import android.support.v4.app.a.a;
-import android.text.TextUtils;
-import com.tencent.luggage.g.d;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s.i;
-import java.util.Collection;
-import java.util.Iterator;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.config.a;
+import com.tencent.mm.plugin.appbrand.config.a.e;
+import com.tencent.mm.plugin.appbrand.config.k;
+import java.util.Arrays;
+import java.util.List;
 
 public final class n
 {
-  private static final i<String, a.a> iCj;
+  private static final List<String> ljh;
   
   static
   {
-    AppMethodBeat.i(91127);
-    iCj = new i();
-    AppMethodBeat.o(91127);
+    AppMethodBeat.i(147668);
+    ljh = Arrays.asList(new String[] { "scope.userLocation", "scope.camera" });
+    AppMethodBeat.o(147668);
   }
   
-  public static void EA(String paramString)
+  public static String a(String paramString, AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(91125);
-    if (TextUtils.isEmpty(paramString))
+    AppMethodBeat.i(147667);
+    int i = -1;
+    switch (paramString.hashCode())
     {
-      d.e("Luggage.RequestPermissionRegistry", "removeCallbacks fail, invalid arguments");
-      AppMethodBeat.o(91125);
-      return;
     }
-    iCj.bs(paramString);
-    AppMethodBeat.o(91125);
-  }
-  
-  public static void a(String paramString, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    AppMethodBeat.i(91126);
-    if ((paramString == null) || (paramString.length() == 0))
+    for (;;)
     {
-      d.e("Luggage.RequestPermissionRegistry", "removeCallback fail, invalid id");
-      AppMethodBeat.o(91126);
-      return;
-    }
-    paramString = iCj.br(paramString);
-    if (paramString != null)
-    {
-      paramString = paramString.iterator();
-      while (paramString.hasNext()) {
-        ((a.a)paramString.next()).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+      switch (i)
+      {
+      default: 
+        paramString = paramAppBrandRuntime.getAppConfig().FK(paramString);
+        if (paramString != null) {
+          break label99;
+        }
+        AppMethodBeat.o(147667);
+        return null;
+        if (paramString.equals("scope.camera")) {
+          i = 0;
+        }
+        break;
       }
     }
-    AppMethodBeat.o(91126);
+    paramString = paramAppBrandRuntime.mContext.getString(2131755948);
+    AppMethodBeat.o(147667);
+    return paramString;
+    label99:
+    paramString = paramString.desc;
+    AppMethodBeat.o(147667);
+    return paramString;
   }
   
-  public static void a(String paramString, a.a parama)
+  public static boolean a(String paramString, k paramk)
   {
-    AppMethodBeat.i(91123);
-    if ((TextUtils.isEmpty(paramString)) || (parama == null))
+    AppMethodBeat.i(147666);
+    if (!ljh.contains(paramString))
     {
-      d.e("Luggage.RequestPermissionRegistry", "addCallback fail, invalid arguments");
-      AppMethodBeat.o(91123);
-      return;
+      AppMethodBeat.o(147666);
+      return false;
     }
-    iCj.s(paramString, parama);
-    AppMethodBeat.o(91123);
-  }
-  
-  @Deprecated
-  public static void b(String paramString, a.a parama)
-  {
-    AppMethodBeat.i(91124);
-    a(paramString, parama);
-    AppMethodBeat.o(91124);
+    int i = -1;
+    switch (paramString.hashCode())
+    {
+    }
+    for (;;)
+    {
+      switch (i)
+      {
+      default: 
+        AppMethodBeat.o(147666);
+        return false;
+        if (paramString.equals("scope.userLocation"))
+        {
+          i = 0;
+          continue;
+          if (paramString.equals("scope.camera")) {
+            i = 1;
+          }
+        }
+        break;
+      }
+    }
+    boolean bool = paramk.jdO;
+    AppMethodBeat.o(147666);
+    return bool;
+    AppMethodBeat.o(147666);
+    return true;
   }
 }
 

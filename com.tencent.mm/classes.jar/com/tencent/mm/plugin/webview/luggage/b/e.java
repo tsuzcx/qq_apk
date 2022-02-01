@@ -1,9 +1,13 @@
 package com.tencent.mm.plugin.webview.luggage.b;
 
-import android.app.Activity;
 import android.content.Context;
-import com.tencent.luggage.d.g;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.luggage.d.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fav.a.b;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.ui.base.l;
 
 public final class e
@@ -11,31 +15,34 @@ public final class e
 {
   public e()
   {
-    super(27);
+    super(12);
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.e parame)
+  public final void a(Context paramContext, f paramf)
   {
-    AppMethodBeat.i(6432);
-    if ((!parame.daU()) && (!parame.byJ.un().ug())) {
-      ((Activity)parame.mContext).finish();
-    }
-    com.tencent.mm.plugin.report.service.h.qsU.cT(982, 11);
-    AppMethodBeat.o(6432);
+    AppMethodBeat.i(78689);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_fav_scene", 2);
+    localIntent.putExtra("key_fav_item_id", paramf.mParams.getLong("fav_local_id", -1L));
+    b.b(paramContext, ".ui.FavTagEditUI", localIntent);
+    h.vKh.dB(982, 1);
+    AppMethodBeat.o(78689);
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.e parame, l paraml)
+  public final void a(Context paramContext, f paramf, l paraml)
   {
-    AppMethodBeat.i(6431);
-    if (parame.isFullScreen()) {
-      paraml.a(27, paramContext.getString(2131302291), 2131231013);
+    AppMethodBeat.i(78688);
+    boolean bool1 = paramf.mParams.getBoolean("is_favorite_item", false);
+    boolean bool2 = paramf.mParams.getBoolean("key_detail_can_delete", true);
+    if ((bool1) && (bool2)) {
+      paraml.a(12, paramContext.getString(2131758846), 2131689794);
     }
-    AppMethodBeat.o(6431);
+    AppMethodBeat.o(78688);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.b.e
  * JD-Core Version:    0.7.0.1
  */

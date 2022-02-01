@@ -3,49 +3,49 @@ package com.tencent.mm.plugin.fts.ui;
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.w;
 
 final class FTSChattingConvUI$a
   extends RecyclerView.a<FTSChattingConvUI.b>
 {
-  String[] mWZ;
+  String[] rtO;
   
   FTSChattingConvUI$a(FTSChattingConvUI paramFTSChattingConvUI)
   {
-    AppMethodBeat.i(61793);
-    if (!t.nI(FTSChattingConvUI.a(paramFTSChattingConvUI)))
+    AppMethodBeat.i(111887);
+    if (!w.sl(FTSChattingConvUI.a(paramFTSChattingConvUI)))
     {
-      this.mWZ = new String[7];
-      this.mWZ[0] = paramFTSChattingConvUI.getResources().getString(2131302969);
-      this.mWZ[1] = paramFTSChattingConvUI.getResources().getString(2131302971);
-      this.mWZ[2] = paramFTSChattingConvUI.getResources().getString(2131302970);
-      this.mWZ[3] = paramFTSChattingConvUI.getResources().getString(2131302975);
-      this.mWZ[4] = paramFTSChattingConvUI.getResources().getString(2131302973);
-      this.mWZ[5] = paramFTSChattingConvUI.getResources().getString(2131302974);
-      this.mWZ[6] = paramFTSChattingConvUI.getResources().getString(2131302968);
-      AppMethodBeat.o(61793);
+      this.rtO = new String[7];
+      this.rtO[0] = paramFTSChattingConvUI.getResources().getString(2131762907);
+      this.rtO[1] = paramFTSChattingConvUI.getResources().getString(2131762909);
+      this.rtO[2] = paramFTSChattingConvUI.getResources().getString(2131762908);
+      this.rtO[3] = paramFTSChattingConvUI.getResources().getString(2131762913);
+      this.rtO[4] = paramFTSChattingConvUI.getResources().getString(2131762911);
+      this.rtO[5] = paramFTSChattingConvUI.getResources().getString(2131762912);
+      this.rtO[6] = paramFTSChattingConvUI.getResources().getString(2131762906);
+      AppMethodBeat.o(111887);
       return;
     }
-    this.mWZ = new String[8];
-    this.mWZ[0] = paramFTSChattingConvUI.getResources().getString(2131302972);
-    this.mWZ[1] = paramFTSChattingConvUI.getResources().getString(2131302969);
-    this.mWZ[2] = paramFTSChattingConvUI.getResources().getString(2131302971);
-    this.mWZ[3] = paramFTSChattingConvUI.getResources().getString(2131302970);
-    this.mWZ[4] = paramFTSChattingConvUI.getResources().getString(2131302975);
-    this.mWZ[5] = paramFTSChattingConvUI.getResources().getString(2131302973);
-    this.mWZ[6] = paramFTSChattingConvUI.getResources().getString(2131302974);
-    this.mWZ[7] = paramFTSChattingConvUI.getResources().getString(2131302968);
-    AppMethodBeat.o(61793);
+    this.rtO = new String[8];
+    this.rtO[0] = paramFTSChattingConvUI.getResources().getString(2131762910);
+    this.rtO[1] = paramFTSChattingConvUI.getResources().getString(2131762907);
+    this.rtO[2] = paramFTSChattingConvUI.getResources().getString(2131762909);
+    this.rtO[3] = paramFTSChattingConvUI.getResources().getString(2131762908);
+    this.rtO[4] = paramFTSChattingConvUI.getResources().getString(2131762913);
+    this.rtO[5] = paramFTSChattingConvUI.getResources().getString(2131762911);
+    this.rtO[6] = paramFTSChattingConvUI.getResources().getString(2131762912);
+    this.rtO[7] = paramFTSChattingConvUI.getResources().getString(2131762906);
+    AppMethodBeat.o(111887);
   }
   
   public final int getItemCount()
   {
-    return this.mWZ.length;
+    return this.rtO.length;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSChattingConvUI.a
  * JD-Core Version:    0.7.0.1
  */

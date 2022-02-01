@@ -9,67 +9,67 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface d
   extends IInterface
 {
-  public abstract int R(byte[] paramArrayOfByte);
+  public abstract void AU(String paramString);
   
-  public abstract void Y(byte[] paramArrayOfByte);
+  public abstract boolean AW(String paramString);
   
-  public abstract void Z(byte[] paramArrayOfByte);
+  public abstract int Z(byte[] paramArrayOfByte);
   
   public abstract void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt);
   
-  public abstract void aa(byte[] paramArrayOfByte);
+  public abstract void ah(byte[] paramArrayOfByte);
   
-  public abstract boolean ab(byte[] paramArrayOfByte);
+  public abstract void ai(byte[] paramArrayOfByte);
   
-  public abstract byte[] adB();
+  public abstract void aj(byte[] paramArrayOfByte);
   
-  public abstract boolean adC();
+  public abstract boolean ak(byte[] paramArrayOfByte);
   
-  public abstract byte[] adD();
+  public abstract byte[] auZ();
   
-  public abstract String adE();
+  public abstract boolean ava();
   
-  public abstract byte[] adF();
+  public abstract byte[] avb();
   
-  public abstract void adG();
+  public abstract String avc();
   
-  public abstract void adH();
+  public abstract byte[] avd();
+  
+  public abstract void ave();
+  
+  public abstract void avf();
   
   public abstract void b(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
   
-  public abstract void cP(boolean paramBoolean);
-  
-  public abstract void g(int paramInt, byte[] paramArrayOfByte);
+  public abstract void eh(boolean paramBoolean);
   
   public abstract int getUin();
   
   public abstract String getUsername();
   
+  public abstract void h(int paramInt, byte[] paramArrayOfByte);
+  
+  public abstract void i(String paramString, byte[] paramArrayOfByte);
+  
   public abstract boolean isForeground();
   
-  public abstract byte[] jN(int paramInt);
-  
-  public abstract void o(String paramString, byte[] paramArrayOfByte);
+  public abstract byte[] mq(int paramInt);
   
   public abstract void reset();
-  
-  public abstract byte[] rm(String paramString);
-  
-  public abstract byte[] rn(String paramString);
-  
-  public abstract byte[] ro(String paramString);
-  
-  public abstract byte[] rp(String paramString);
-  
-  public abstract boolean rq(String paramString);
   
   public abstract void setUin(int paramInt);
   
   public abstract void setUsername(String paramString);
   
-  public abstract void vY(String paramString);
+  public abstract byte[] wh(String paramString);
   
-  public abstract boolean wa(String paramString);
+  public abstract byte[] wi(String paramString);
+  
+  public abstract byte[] wj(String paramString);
+  
+  public abstract byte[] wk(String paramString);
+  
+  public abstract boolean wl(String paramString);
   
   public static abstract class a
     extends Binder
@@ -134,12 +134,12 @@ public abstract interface d
         return true;
       case 5: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        Y(paramParcel1.createByteArray());
+        ah(paramParcel1.createByteArray());
         paramParcel2.writeNoException();
         return true;
       case 6: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        Z(paramParcel1.createByteArray());
+        ai(paramParcel1.createByteArray());
         paramParcel2.writeNoException();
         return true;
       case 7: 
@@ -150,19 +150,19 @@ public abstract interface d
         return true;
       case 8: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        paramParcel1 = jN(paramParcel1.readInt());
+        paramParcel1 = mq(paramParcel1.readInt());
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
       case 9: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        paramParcel1 = adB();
+        paramParcel1 = auZ();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
       case 10: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        paramParcel1 = adD();
+        paramParcel1 = avb();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
@@ -174,7 +174,7 @@ public abstract interface d
         return true;
       case 12: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        bool = adC();
+        bool = ava();
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool) {
@@ -184,12 +184,12 @@ public abstract interface d
         return true;
       case 13: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        o(paramParcel1.readString(), paramParcel1.createByteArray());
+        i(paramParcel1.readString(), paramParcel1.createByteArray());
         paramParcel2.writeNoException();
         return true;
       case 14: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        paramParcel1 = rm(paramParcel1.readString());
+        paramParcel1 = wh(paramParcel1.readString());
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
@@ -198,7 +198,7 @@ public abstract interface d
         if (paramParcel1.readInt() != 0) {
           bool = true;
         }
-        cP(bool);
+        eh(bool);
         paramParcel2.writeNoException();
         return true;
       case 16: 
@@ -213,30 +213,30 @@ public abstract interface d
         return true;
       case 17: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        paramParcel1 = adE();
+        paramParcel1 = avc();
         paramParcel2.writeNoException();
         paramParcel2.writeString(paramParcel1);
         return true;
       case 18: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        vY(paramParcel1.readString());
+        AU(paramParcel1.readString());
         paramParcel2.writeNoException();
         return true;
       case 19: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        paramInt1 = R(paramParcel1.createByteArray());
+        paramInt1 = Z(paramParcel1.createByteArray());
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
       case 20: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        paramParcel1 = adF();
+        paramParcel1 = avd();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
       case 21: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        g(paramParcel1.readInt(), paramParcel1.createByteArray());
+        h(paramParcel1.readInt(), paramParcel1.createByteArray());
         paramParcel2.writeNoException();
         return true;
       case 22: 
@@ -246,12 +246,12 @@ public abstract interface d
         return true;
       case 23: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        aa(paramParcel1.createByteArray());
+        aj(paramParcel1.createByteArray());
         paramParcel2.writeNoException();
         return true;
       case 24: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        bool = ab(paramParcel1.createByteArray());
+        bool = ak(paramParcel1.createByteArray());
         paramParcel2.writeNoException();
         paramInt1 = k;
         if (bool) {
@@ -261,25 +261,25 @@ public abstract interface d
         return true;
       case 25: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        paramParcel1 = rn(paramParcel1.readString());
+        paramParcel1 = wi(paramParcel1.readString());
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
       case 26: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        paramParcel1 = rp(paramParcel1.readString());
+        paramParcel1 = wk(paramParcel1.readString());
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
       case 27: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        paramParcel1 = ro(paramParcel1.readString());
+        paramParcel1 = wj(paramParcel1.readString());
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
       case 28: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        bool = rq(paramParcel1.readString());
+        bool = wl(paramParcel1.readString());
         paramParcel2.writeNoException();
         paramInt1 = m;
         if (bool) {
@@ -289,17 +289,17 @@ public abstract interface d
         return true;
       case 29: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        adG();
+        ave();
         paramParcel2.writeNoException();
         return true;
       case 30: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-        adH();
+        avf();
         paramParcel2.writeNoException();
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.network.IAccInfo_AIDL");
-      bool = wa(paramParcel1.readString());
+      bool = AW(paramParcel1.readString());
       paramParcel2.writeNoException();
       paramInt1 = n;
       if (bool) {
@@ -319,655 +319,9 @@ public abstract interface d
         this.mRemote = paramIBinder;
       }
       
-      public final int R(byte[] paramArrayOfByte)
+      public final void AU(String paramString)
       {
-        AppMethodBeat.i(58478);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeByteArray(paramArrayOfByte);
-          this.mRemote.transact(19, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          int i = localParcel2.readInt();
-          return i;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58478);
-        }
-      }
-      
-      public final void Y(byte[] paramArrayOfByte)
-      {
-        AppMethodBeat.i(58464);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeByteArray(paramArrayOfByte);
-          this.mRemote.transact(5, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58464);
-        }
-      }
-      
-      public final void Z(byte[] paramArrayOfByte)
-      {
-        AppMethodBeat.i(58465);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeByteArray(paramArrayOfByte);
-          this.mRemote.transact(6, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58465);
-        }
-      }
-      
-      public final void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt)
-      {
-        AppMethodBeat.i(58461);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeByteArray(paramArrayOfByte1);
-          localParcel1.writeByteArray(paramArrayOfByte2);
-          localParcel1.writeByteArray(paramArrayOfByte3);
-          localParcel1.writeInt(paramInt);
-          this.mRemote.transact(2, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58461);
-        }
-      }
-      
-      public final void aa(byte[] paramArrayOfByte)
-      {
-        AppMethodBeat.i(154746);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeByteArray(paramArrayOfByte);
-          this.mRemote.transact(23, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(154746);
-        }
-      }
-      
-      public final boolean ab(byte[] paramArrayOfByte)
-      {
-        boolean bool = false;
-        AppMethodBeat.i(154747);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeByteArray(paramArrayOfByte);
-          this.mRemote.transact(24, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          int i = localParcel2.readInt();
-          if (i != 0) {
-            bool = true;
-          }
-          return bool;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(154747);
-        }
-      }
-      
-      public final byte[] adB()
-      {
-        AppMethodBeat.i(58468);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          this.mRemote.transact(9, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          byte[] arrayOfByte = localParcel2.createByteArray();
-          return arrayOfByte;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58468);
-        }
-      }
-      
-      public final boolean adC()
-      {
-        boolean bool = false;
-        AppMethodBeat.i(58471);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          this.mRemote.transact(12, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          int i = localParcel2.readInt();
-          if (i != 0) {
-            bool = true;
-          }
-          return bool;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58471);
-        }
-      }
-      
-      public final byte[] adD()
-      {
-        AppMethodBeat.i(58469);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          this.mRemote.transact(10, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          byte[] arrayOfByte = localParcel2.createByteArray();
-          return arrayOfByte;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58469);
-        }
-      }
-      
-      public final String adE()
-      {
-        AppMethodBeat.i(58476);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          this.mRemote.transact(17, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          String str = localParcel2.readString();
-          return str;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58476);
-        }
-      }
-      
-      public final byte[] adF()
-      {
-        AppMethodBeat.i(58479);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          this.mRemote.transact(20, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          byte[] arrayOfByte = localParcel2.createByteArray();
-          return arrayOfByte;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58479);
-        }
-      }
-      
-      public final void adG()
-      {
-        AppMethodBeat.i(154752);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          this.mRemote.transact(29, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(154752);
-        }
-      }
-      
-      public final void adH()
-      {
-        AppMethodBeat.i(154753);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          this.mRemote.transact(30, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(154753);
-        }
-      }
-      
-      public final IBinder asBinder()
-      {
-        return this.mRemote;
-      }
-      
-      public final void b(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-      {
-        AppMethodBeat.i(154745);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeInt(paramInt);
-          localParcel1.writeByteArray(paramArrayOfByte1);
-          localParcel1.writeByteArray(paramArrayOfByte2);
-          this.mRemote.transact(22, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(154745);
-        }
-      }
-      
-      public final void cP(boolean paramBoolean)
-      {
-        int i = 0;
-        AppMethodBeat.i(58474);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          if (paramBoolean) {
-            i = 1;
-          }
-          localParcel1.writeInt(i);
-          this.mRemote.transact(15, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58474);
-        }
-      }
-      
-      public final void g(int paramInt, byte[] paramArrayOfByte)
-      {
-        AppMethodBeat.i(154744);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeInt(paramInt);
-          localParcel1.writeByteArray(paramArrayOfByte);
-          this.mRemote.transact(21, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(154744);
-        }
-      }
-      
-      public final int getUin()
-      {
-        AppMethodBeat.i(58470);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          this.mRemote.transact(11, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          int i = localParcel2.readInt();
-          return i;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58470);
-        }
-      }
-      
-      public final String getUsername()
-      {
-        AppMethodBeat.i(58466);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          this.mRemote.transact(7, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          String str = localParcel2.readString();
-          return str;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58466);
-        }
-      }
-      
-      public final boolean isForeground()
-      {
-        boolean bool = false;
-        AppMethodBeat.i(58475);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          this.mRemote.transact(16, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          int i = localParcel2.readInt();
-          if (i != 0) {
-            bool = true;
-          }
-          return bool;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58475);
-        }
-      }
-      
-      public final byte[] jN(int paramInt)
-      {
-        AppMethodBeat.i(58467);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeInt(paramInt);
-          this.mRemote.transact(8, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          byte[] arrayOfByte = localParcel2.createByteArray();
-          return arrayOfByte;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58467);
-        }
-      }
-      
-      public final void o(String paramString, byte[] paramArrayOfByte)
-      {
-        AppMethodBeat.i(58472);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeString(paramString);
-          localParcel1.writeByteArray(paramArrayOfByte);
-          this.mRemote.transact(13, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58472);
-        }
-      }
-      
-      public final void reset()
-      {
-        AppMethodBeat.i(58460);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          this.mRemote.transact(1, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58460);
-        }
-      }
-      
-      public final byte[] rm(String paramString)
-      {
-        AppMethodBeat.i(58473);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeString(paramString);
-          this.mRemote.transact(14, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          paramString = localParcel2.createByteArray();
-          return paramString;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58473);
-        }
-      }
-      
-      public final byte[] rn(String paramString)
-      {
-        AppMethodBeat.i(154748);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeString(paramString);
-          this.mRemote.transact(25, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          paramString = localParcel2.createByteArray();
-          return paramString;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(154748);
-        }
-      }
-      
-      public final byte[] ro(String paramString)
-      {
-        AppMethodBeat.i(154750);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeString(paramString);
-          this.mRemote.transact(27, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          paramString = localParcel2.createByteArray();
-          return paramString;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(154750);
-        }
-      }
-      
-      public final byte[] rp(String paramString)
-      {
-        AppMethodBeat.i(154749);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeString(paramString);
-          this.mRemote.transact(26, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          paramString = localParcel2.createByteArray();
-          return paramString;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(154749);
-        }
-      }
-      
-      public final boolean rq(String paramString)
-      {
-        boolean bool = false;
-        AppMethodBeat.i(154751);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeString(paramString);
-          this.mRemote.transact(28, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          int i = localParcel2.readInt();
-          if (i != 0) {
-            bool = true;
-          }
-          return bool;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(154751);
-        }
-      }
-      
-      public final void setUin(int paramInt)
-      {
-        AppMethodBeat.i(58462);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeInt(paramInt);
-          this.mRemote.transact(3, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58462);
-        }
-      }
-      
-      public final void setUsername(String paramString)
-      {
-        AppMethodBeat.i(58463);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
-          localParcel1.writeString(paramString);
-          this.mRemote.transact(4, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58463);
-        }
-      }
-      
-      public final void vY(String paramString)
-      {
-        AppMethodBeat.i(58477);
+        AppMethodBeat.i(132684);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -982,14 +336,14 @@ public abstract interface d
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58477);
+          AppMethodBeat.o(132684);
         }
       }
       
-      public final boolean wa(String paramString)
+      public final boolean AW(String paramString)
       {
         boolean bool = false;
-        AppMethodBeat.i(154754);
+        AppMethodBeat.i(132697);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -1008,7 +362,653 @@ public abstract interface d
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(154754);
+          AppMethodBeat.o(132697);
+        }
+      }
+      
+      public final int Z(byte[] paramArrayOfByte)
+      {
+        AppMethodBeat.i(132685);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeByteArray(paramArrayOfByte);
+          this.mRemote.transact(19, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132685);
+        }
+      }
+      
+      public final void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt)
+      {
+        AppMethodBeat.i(132668);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeByteArray(paramArrayOfByte1);
+          localParcel1.writeByteArray(paramArrayOfByte2);
+          localParcel1.writeByteArray(paramArrayOfByte3);
+          localParcel1.writeInt(paramInt);
+          this.mRemote.transact(2, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132668);
+        }
+      }
+      
+      public final void ah(byte[] paramArrayOfByte)
+      {
+        AppMethodBeat.i(132671);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeByteArray(paramArrayOfByte);
+          this.mRemote.transact(5, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132671);
+        }
+      }
+      
+      public final void ai(byte[] paramArrayOfByte)
+      {
+        AppMethodBeat.i(132672);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeByteArray(paramArrayOfByte);
+          this.mRemote.transact(6, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132672);
+        }
+      }
+      
+      public final void aj(byte[] paramArrayOfByte)
+      {
+        AppMethodBeat.i(132689);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeByteArray(paramArrayOfByte);
+          this.mRemote.transact(23, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132689);
+        }
+      }
+      
+      public final boolean ak(byte[] paramArrayOfByte)
+      {
+        boolean bool = false;
+        AppMethodBeat.i(132690);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeByteArray(paramArrayOfByte);
+          this.mRemote.transact(24, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          if (i != 0) {
+            bool = true;
+          }
+          return bool;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132690);
+        }
+      }
+      
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
+      }
+      
+      public final byte[] auZ()
+      {
+        AppMethodBeat.i(132675);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          this.mRemote.transact(9, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          byte[] arrayOfByte = localParcel2.createByteArray();
+          return arrayOfByte;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132675);
+        }
+      }
+      
+      public final boolean ava()
+      {
+        boolean bool = false;
+        AppMethodBeat.i(132678);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          this.mRemote.transact(12, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          if (i != 0) {
+            bool = true;
+          }
+          return bool;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132678);
+        }
+      }
+      
+      public final byte[] avb()
+      {
+        AppMethodBeat.i(132676);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          this.mRemote.transact(10, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          byte[] arrayOfByte = localParcel2.createByteArray();
+          return arrayOfByte;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132676);
+        }
+      }
+      
+      public final String avc()
+      {
+        AppMethodBeat.i(132683);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          this.mRemote.transact(17, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          String str = localParcel2.readString();
+          return str;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132683);
+        }
+      }
+      
+      public final byte[] avd()
+      {
+        AppMethodBeat.i(132686);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          this.mRemote.transact(20, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          byte[] arrayOfByte = localParcel2.createByteArray();
+          return arrayOfByte;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132686);
+        }
+      }
+      
+      public final void ave()
+      {
+        AppMethodBeat.i(132695);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          this.mRemote.transact(29, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132695);
+        }
+      }
+      
+      public final void avf()
+      {
+        AppMethodBeat.i(132696);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          this.mRemote.transact(30, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132696);
+        }
+      }
+      
+      public final void b(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+      {
+        AppMethodBeat.i(132688);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeInt(paramInt);
+          localParcel1.writeByteArray(paramArrayOfByte1);
+          localParcel1.writeByteArray(paramArrayOfByte2);
+          this.mRemote.transact(22, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132688);
+        }
+      }
+      
+      public final void eh(boolean paramBoolean)
+      {
+        int i = 0;
+        AppMethodBeat.i(132681);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          if (paramBoolean) {
+            i = 1;
+          }
+          localParcel1.writeInt(i);
+          this.mRemote.transact(15, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132681);
+        }
+      }
+      
+      public final int getUin()
+      {
+        AppMethodBeat.i(132677);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          this.mRemote.transact(11, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132677);
+        }
+      }
+      
+      public final String getUsername()
+      {
+        AppMethodBeat.i(132673);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          this.mRemote.transact(7, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          String str = localParcel2.readString();
+          return str;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132673);
+        }
+      }
+      
+      public final void h(int paramInt, byte[] paramArrayOfByte)
+      {
+        AppMethodBeat.i(132687);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeInt(paramInt);
+          localParcel1.writeByteArray(paramArrayOfByte);
+          this.mRemote.transact(21, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132687);
+        }
+      }
+      
+      public final void i(String paramString, byte[] paramArrayOfByte)
+      {
+        AppMethodBeat.i(132679);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeString(paramString);
+          localParcel1.writeByteArray(paramArrayOfByte);
+          this.mRemote.transact(13, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132679);
+        }
+      }
+      
+      public final boolean isForeground()
+      {
+        boolean bool = false;
+        AppMethodBeat.i(132682);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          this.mRemote.transact(16, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          if (i != 0) {
+            bool = true;
+          }
+          return bool;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132682);
+        }
+      }
+      
+      public final byte[] mq(int paramInt)
+      {
+        AppMethodBeat.i(132674);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeInt(paramInt);
+          this.mRemote.transact(8, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          byte[] arrayOfByte = localParcel2.createByteArray();
+          return arrayOfByte;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132674);
+        }
+      }
+      
+      public final void reset()
+      {
+        AppMethodBeat.i(132667);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          this.mRemote.transact(1, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132667);
+        }
+      }
+      
+      public final void setUin(int paramInt)
+      {
+        AppMethodBeat.i(132669);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeInt(paramInt);
+          this.mRemote.transact(3, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132669);
+        }
+      }
+      
+      public final void setUsername(String paramString)
+      {
+        AppMethodBeat.i(132670);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeString(paramString);
+          this.mRemote.transact(4, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132670);
+        }
+      }
+      
+      public final byte[] wh(String paramString)
+      {
+        AppMethodBeat.i(132680);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeString(paramString);
+          this.mRemote.transact(14, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          paramString = localParcel2.createByteArray();
+          return paramString;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132680);
+        }
+      }
+      
+      public final byte[] wi(String paramString)
+      {
+        AppMethodBeat.i(132691);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeString(paramString);
+          this.mRemote.transact(25, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          paramString = localParcel2.createByteArray();
+          return paramString;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132691);
+        }
+      }
+      
+      public final byte[] wj(String paramString)
+      {
+        AppMethodBeat.i(132693);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeString(paramString);
+          this.mRemote.transact(27, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          paramString = localParcel2.createByteArray();
+          return paramString;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132693);
+        }
+      }
+      
+      public final byte[] wk(String paramString)
+      {
+        AppMethodBeat.i(132692);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeString(paramString);
+          this.mRemote.transact(26, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          paramString = localParcel2.createByteArray();
+          return paramString;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132692);
+        }
+      }
+      
+      public final boolean wl(String paramString)
+      {
+        boolean bool = false;
+        AppMethodBeat.i(132694);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IAccInfo_AIDL");
+          localParcel1.writeString(paramString);
+          this.mRemote.transact(28, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          if (i != 0) {
+            bool = true;
+          }
+          return bool;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132694);
         }
       }
     }

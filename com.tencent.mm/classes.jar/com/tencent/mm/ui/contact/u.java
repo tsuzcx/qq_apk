@@ -1,181 +1,170 @@
 package com.tencent.mm.ui.contact;
 
-import android.content.Context;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.a.e;
-import com.tencent.mm.cg.h;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.c;
-import com.tencent.mm.openim.PluginOpenIM;
-import com.tencent.mm.openim.a.b;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.AddressView;
+import com.tencent.mm.m.e;
+import com.tencent.mm.model.w;
+import com.tencent.mm.plugin.zero.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 
 public final class u
-  extends a
 {
-  private HashSet<String> Aet;
-  private String Aeu;
-  OpenIMAddressUI.OpenIMAddressUIFragment Aev;
+  public static final int GWA;
+  public static final int GWB;
+  public static int GWC;
+  public static int GWD;
+  public static final int GWE;
+  public static final int GWF;
+  public static final int GWG;
+  public static final int GWH;
+  public static final int GWI;
+  public static final int GWJ;
+  public static final int GWK;
   
-  public u(Context paramContext, String paramString1, String paramString2)
+  static
   {
-    super(paramContext, paramString1, null, 2);
-    AppMethodBeat.i(33801);
-    this.Aet = new HashSet();
-    this.Aeu = paramString2;
-    AppMethodBeat.o(33801);
+    AppMethodBeat.i(133757);
+    GWA = I(new int[] { 256, 16, 1, 2, 4 });
+    GWB = I(new int[] { 16, 1, 2, 4, 64, 16384 });
+    GWC = I(new int[] { 16, 1, 2, 4, 64, 16384, 16777216 });
+    GWD = I(new int[] { 16, 1, 2, 4, 64, 4096, 16777216 });
+    GWE = I(new int[] { GWA, 64, 16384, 4096, 16777216 });
+    GWF = I(new int[] { 16, 2, 16384, 4 });
+    GWG = I(new int[] { GWA, 16384, 64, 4096, 16777216 });
+    GWH = I(new int[] { GWA, 16384, 64, 131072, 8192, 16777216 });
+    GWI = I(new int[] { 16, 32, 1, 4, 2, 64 });
+    GWJ = I(new int[] { 1, 2, 4, 64, 256, 16384 });
+    GWK = I(new int[] { GWC, 131072 });
+    AppMethodBeat.o(133757);
   }
   
-  protected final int a(com.tencent.mm.storage.f paramf, int paramInt)
+  public static int I(int... paramVarArgs)
   {
-    AppMethodBeat.i(33803);
-    if (paramf == null)
+    int k = paramVarArgs.length;
+    int j = 0;
+    int m;
+    for (int i = 0; j < k; i = m | i)
     {
-      ab.e("OpenIMContactAdapter", "contact is null, position:%d", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(33803);
-      return -1;
+      m = paramVarArgs[j];
+      j += 1;
     }
-    if (bo.isNullOrNil(paramf.field_descWording))
-    {
-      AppMethodBeat.o(33803);
-      return -1;
-    }
-    paramInt = paramf.field_descWording.hashCode();
-    AppMethodBeat.o(33803);
-    return paramInt;
+    return i;
   }
   
-  public final void a(int paramInt, n paramn, Object paramObject)
+  public static HashSet<String> fbL()
   {
-    AppMethodBeat.i(33806);
-    if ((paramObject == null) || (!(paramObject instanceof String)))
+    AppMethodBeat.i(133752);
+    HashSet localHashSet = new HashSet();
+    localHashSet.add("weixin");
+    AppMethodBeat.o(133752);
+    return localHashSet;
+  }
+  
+  public static HashSet<String> fbM()
+  {
+    AppMethodBeat.i(133754);
+    HashSet localHashSet = new HashSet();
+    localHashSet.add("officialaccounts");
+    localHashSet.add("newsapp");
+    String[] arrayOfString = w.gMw;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
     {
-      ab.d("OpenIMContactAdapter", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
-      AppMethodBeat.o(33806);
-      return;
+      localHashSet.add(arrayOfString[i]);
+      i += 1;
     }
-    aw.aaz();
-    if (paramn == c.YA())
+    localHashSet.add("weibo");
+    localHashSet.add("qqmail");
+    localHashSet.add("fmessage");
+    localHashSet.add("tmessage");
+    localHashSet.add("floatbottle");
+    localHashSet.add("lbsapp");
+    localHashSet.add("shakeapp");
+    localHashSet.add("medianote");
+    localHashSet.add("qqfriend");
+    localHashSet.add("readerapp");
+    localHashSet.add("newsapp");
+    localHashSet.add("blogapp");
+    localHashSet.add("facebookapp");
+    localHashSet.add("masssendapp");
+    localHashSet.add("meishiapp");
+    localHashSet.add("feedsapp");
+    localHashSet.add("voipapp");
+    localHashSet.add("filehelper");
+    localHashSet.add("officialaccounts");
+    localHashSet.add("helper_entry");
+    localHashSet.add("pc_share");
+    localHashSet.add("cardpackage");
+    localHashSet.add("voicevoipapp");
+    localHashSet.add("voiceinputapp");
+    localHashSet.add("linkedinplugin");
+    localHashSet.add("appbrandcustomerservicemsg");
+    AppMethodBeat.o(133754);
+    return localHashSet;
+  }
+  
+  public static boolean fbN()
+  {
+    AppMethodBeat.i(133756);
+    int i = ((a)g.ab(a.class)).Zd().getInt("ShowOpenImInGroup", 0);
+    ad.i("MMSelectContactLogic", "config_val %s ", new Object[] { Integer.valueOf(i) });
+    if (i == 0)
     {
-      if (ad.arf((String)paramObject))
-      {
-        this.Aev.AaH = true;
-        AppMethodBeat.o(33806);
-        return;
+      AppMethodBeat.o(133756);
+      return false;
+    }
+    AppMethodBeat.o(133756);
+    return true;
+  }
+  
+  public static boolean hasAttr(int paramInt1, int paramInt2)
+  {
+    return (paramInt1 & paramInt2) > 0;
+  }
+  
+  public static void i(HashSet<String> paramHashSet)
+  {
+    AppMethodBeat.i(133753);
+    paramHashSet.remove("filehelper");
+    AppMethodBeat.o(133753);
+  }
+  
+  public static void init()
+  {
+    AppMethodBeat.i(133755);
+    if (!fbN())
+    {
+      if (hasAttr(GWC, 16777216)) {
+        GWC &= 0xFEFFFFFF;
       }
-      ab.d("OpenIMContactAdapter", "newcursor is not openim ，return");
-    }
-    AppMethodBeat.o(33806);
-  }
-  
-  protected final void a(com.tencent.mm.storage.f paramf, a.b paramb)
-  {
-    AppMethodBeat.i(33805);
-    paramb = paramf.field_descWordingId;
-    if (this.Aet.contains(paramb))
-    {
-      AppMethodBeat.o(33805);
-      return;
-    }
-    this.Aet.add(paramb);
-    ((b)g.E(b.class)).bd(paramf.field_openImAppid, paramb);
-    AppMethodBeat.o(33805);
-  }
-  
-  protected final String b(com.tencent.mm.storage.f paramf, int paramInt)
-  {
-    AppMethodBeat.i(33804);
-    paramf = paramf.field_descWording;
-    if (bo.isNullOrNil(paramf))
-    {
-      AppMethodBeat.o(33804);
-      return "#";
-    }
-    AppMethodBeat.o(33804);
-    return paramf;
-  }
-  
-  protected final void b(com.tencent.mm.storage.f paramf, a.b paramb)
-  {
-    AppMethodBeat.i(156721);
-    paramb.nYV.updateTextColors();
-    paramb.nYV.setMergeCallback(null);
-    Object localObject1 = paramf.ywx;
-    if (localObject1 == null) {}
-    for (;;)
-    {
-      CharSequence localCharSequence;
-      try
+      if (hasAttr(GWD, 16777216))
       {
-        if (ad.arf(paramf.field_username))
-        {
-          localObject1 = ((b)g.E(b.class)).e(com.tencent.mm.sdk.platformtools.ah.getContext(), paramf.Of(), com.tencent.mm.cb.a.ao(this.context, 2131427809));
-          Object localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = "";
-          }
-          paramb.nYV.setName((CharSequence)localObject2);
-          paramb.nYV.setDescription(com.tencent.mm.platformtools.ah.nullAsNil(paramf.field_remarkDesc));
-          AppMethodBeat.o(156721);
-          return;
-        }
-        localObject1 = j.b(this.context, auw(getDisplayName(paramf.Of(), paramf.field_username)), com.tencent.mm.cb.a.ao(this.context, 2131427809));
-        continue;
+        GWD &= 0xFEFFFFFF;
+        AppMethodBeat.o(133755);
       }
-      catch (Exception localException)
-      {
-        localCharSequence = null;
-        continue;
-      }
-      paramb.nYV.setName(localCharSequence);
     }
+    else
+    {
+      if (!hasAttr(GWC, 16777216)) {
+        GWC = I(new int[] { GWC, 16777216 });
+      }
+      if (!hasAttr(GWD, 16777216)) {
+        GWD = I(new int[] { GWD, 16777216 });
+      }
+    }
+    AppMethodBeat.o(133755);
   }
   
-  protected final Cursor dLA()
+  public static int jw(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(33802);
-    long l = System.currentTimeMillis();
-    g.RM();
-    Object localObject2 = ((PluginOpenIM)g.G(PluginOpenIM.class)).getAppIdInfoStg();
-    String str = this.Aeu;
-    Object localObject1 = new LinkedList();
-    localObject2 = ((com.tencent.mm.openim.e.d)localObject2).fnw.a("select distinct appid from OpenIMAppIdInfo where acctTypeId=? ", new String[] { str }, 2);
-    if (((Cursor)localObject2).moveToFirst()) {
-      do
-      {
-        str = ((Cursor)localObject2).getString(0);
-        if (!bo.isNullOrNil(str)) {
-          ((List)localObject1).add(str);
-        }
-      } while (((Cursor)localObject2).moveToNext());
-    }
-    ((Cursor)localObject2).close();
-    aw.aaz();
-    localObject2 = c.YA().a(this.ejc, aa.gP(com.tencent.mm.sdk.platformtools.ah.getContext()), (List)localObject1);
-    localObject1 = localObject2;
-    if ((localObject2 instanceof com.tencent.mm.cg.a.f)) {
-      localObject1 = new e(new com.tencent.mm.cg.a.d[] { (com.tencent.mm.cg.a.d)com.tencent.mm.cg.d.dzJ(), (com.tencent.mm.cg.a.f)localObject2 });
-    }
-    ab.d("OpenIMContactAdapter", "createNewCursor : " + (System.currentTimeMillis() - l));
-    AppMethodBeat.o(33802);
-    return localObject1;
+    return (paramInt2 ^ 0xFFFFFFFF) & paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.contact.u
  * JD-Core Version:    0.7.0.1
  */

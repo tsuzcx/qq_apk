@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.webwx.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aax;
-import com.tencent.mm.protocal.protobuf.aay;
+import com.tencent.mm.protocal.protobuf.aeo;
+import com.tencent.mm.protocal.protobuf.aep;
 
 public final class e
-  extends m
+  extends n
   implements k
 {
-  private f callback;
-  public final b fBd;
-  public boolean vuh;
+  public boolean BAL;
+  private g callback;
+  public final b hdD;
   
   public e(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(26503);
-    this.vuh = paramBoolean;
+    AppMethodBeat.i(30178);
+    this.BAL = paramBoolean;
     b.a locala = new b.a();
-    aax localaax = new aax();
-    aay localaay = new aay();
-    locala.fsX = localaax;
-    locala.fsY = localaay;
+    aeo localaeo = new aeo();
+    aep localaep = new aep();
+    locala.gUU = localaeo;
+    locala.gUV = localaep;
     locala.uri = "/cgi-bin/micromsg-bin/extdeviceloginconfirmok";
     locala.funcId = 972;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    localaax.wRk = paramString1;
-    localaax.wRv = paramString2;
-    localaax.wRx = paramBoolean;
-    this.fBd = locala.ado();
-    AppMethodBeat.o(26503);
+    localaeo.Dex = paramString1;
+    localaeo.DeI = paramString2;
+    localaeo.DeK = paramBoolean;
+    this.hdD = locala.atI();
+    AppMethodBeat.o(30178);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, g paramg)
   {
-    AppMethodBeat.i(26504);
-    this.callback = paramf;
-    int i = dispatch(parame, this.fBd, this);
-    AppMethodBeat.o(26504);
+    AppMethodBeat.i(30179);
+    this.callback = paramg;
+    int i = dispatch(parame, this.hdD, this);
+    AppMethodBeat.o(30179);
     return i;
   }
   
@@ -54,14 +54,14 @@ public final class e
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(26505);
+    AppMethodBeat.i(30180);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(26505);
+    AppMethodBeat.o(30180);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webwx.a.e
  * JD-Core Version:    0.7.0.1
  */

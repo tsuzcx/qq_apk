@@ -6,23 +6,50 @@ import java.io.InputStream;
 
 public class FileUtil
 {
+  public static byte[] readFromStream(InputStream paramInputStream)
+  {
+    if (paramInputStream == null) {
+      return null;
+    }
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    byte[] arrayOfByte = new byte[1024];
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        int j = paramInputStream.read(arrayOfByte, 0, 1024);
+        i = j;
+      }
+      catch (IOException localIOException)
+      {
+        continue;
+      }
+      if (i <= 0) {
+        continue;
+      }
+      localByteArrayOutputStream.write(arrayOfByte, 0, i);
+    }
+    return localByteArrayOutputStream.toByteArray();
+  }
+  
   /* Error */
-  public static java.lang.String ac(java.io.File paramFile)
+  public static java.lang.String readStringFromFile(java.io.File paramFile)
   {
     // Byte code:
-    //   0: new 17	java/io/FileInputStream
+    //   0: new 36	java/io/FileInputStream
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 20	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   5: invokespecial 39	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   8: astore_0
-    //   9: new 22	java/lang/String
+    //   9: new 41	java/lang/String
     //   12: dup
     //   13: aload_0
-    //   14: invokestatic 26	com/tencent/recovery/wx/util/FileUtil:m	(Ljava/io/InputStream;)[B
-    //   17: invokespecial 29	java/lang/String:<init>	([B)V
+    //   14: invokestatic 43	com/tencent/recovery/wx/util/FileUtil:readFromStream	(Ljava/io/InputStream;)[B
+    //   17: invokespecial 46	java/lang/String:<init>	([B)V
     //   20: astore_1
     //   21: aload_0
-    //   22: invokevirtual 34	java/io/InputStream:close	()V
+    //   22: invokevirtual 49	java/io/InputStream:close	()V
     //   25: aload_1
     //   26: areturn
     //   27: astore_0
@@ -31,7 +58,7 @@ public class FileUtil
     //   30: aload_0
     //   31: ifnull +7 -> 38
     //   34: aload_0
-    //   35: invokevirtual 34	java/io/InputStream:close	()V
+    //   35: invokevirtual 49	java/io/InputStream:close	()V
     //   38: aconst_null
     //   39: areturn
     //   40: astore_1
@@ -40,7 +67,7 @@ public class FileUtil
     //   43: aload_0
     //   44: ifnull +7 -> 51
     //   47: aload_0
-    //   48: invokevirtual 34	java/io/InputStream:close	()V
+    //   48: invokevirtual 49	java/io/InputStream:close	()V
     //   51: aload_1
     //   52: athrow
     //   53: astore_0
@@ -70,33 +97,6 @@ public class FileUtil
     //   47	51	60	java/io/IOException
     //   9	21	64	finally
     //   9	21	68	java/lang/Exception
-  }
-  
-  public static byte[] m(InputStream paramInputStream)
-  {
-    if (paramInputStream == null) {
-      return null;
-    }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    byte[] arrayOfByte = new byte[1024];
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        int j = paramInputStream.read(arrayOfByte, 0, 1024);
-        i = j;
-      }
-      catch (IOException localIOException)
-      {
-        continue;
-      }
-      if (i <= 0) {
-        continue;
-      }
-      localByteArrayOutputStream.write(arrayOfByte, 0, i);
-    }
-    return localByteArrayOutputStream.toByteArray();
   }
 }
 

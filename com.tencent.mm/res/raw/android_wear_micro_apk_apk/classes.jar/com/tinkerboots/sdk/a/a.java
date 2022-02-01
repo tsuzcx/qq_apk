@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 public final class a
 {
-  private static HashSet<String> amF = new HashSet();
+  private static HashSet<String> aqh = new HashSet();
 }
 
 

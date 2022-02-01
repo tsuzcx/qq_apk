@@ -1,0 +1,44 @@
+package com.tencent.mm.xeffect;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+public final class b
+{
+  public static b LEu;
+  
+  static
+  {
+    AppMethodBeat.i(201302);
+    LEu = new a((byte)0);
+    AppMethodBeat.o(201302);
+  }
+  
+  public static void y(String paramString, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(201301);
+    LEu.y(paramString, paramVarArgs);
+    AppMethodBeat.o(201301);
+  }
+  
+  static final class a
+    implements b.b
+  {
+    public final void y(String paramString, Object... paramVarArgs)
+    {
+      AppMethodBeat.i(201300);
+      String.format(paramString, paramVarArgs);
+      AppMethodBeat.o(201300);
+    }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void y(String paramString, Object... paramVarArgs);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+ * Qualified Name:     com.tencent.mm.xeffect.b
+ * JD-Core Version:    0.7.0.1
+ */

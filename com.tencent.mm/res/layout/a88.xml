@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="40.0dip" android:textColor="@color/h6" android:gravity="right" android:id="@id/de" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" wallet:walletTypeFace="e2" />
-        <TextView android:id="@id/dc" style="@style/vm" />
-        <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="40.0dip" android:textColor="@color/h6" android:gravity="left" android:id="@id/d8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:textCursorDrawable="@drawable/rh" />
+<LinearLayout android:orientation="vertical" android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/f9r" android:background="@drawable/ajp" android:layout_width="fill_parent" android:layout_height="@dimen/c_" android:layout_marginLeft="@dimen/c0" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/c0" android:layout_marginBottom="@dimen/ci">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_margin="@dimen/bq" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_70" />
+        <TextView android:textSize="@dimen/q" android:textColor="@color/s5" android:layout_gravity="center" android:id="@id/c55" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bbv" />
     </LinearLayout>
-</merge>
+    <TextView android:background="@color/a25" android:paddingLeft="@dimen/i_" android:paddingTop="@dimen/ha" android:paddingRight="@dimen/i_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/cgb" style="@style/n4" />
+    <View android:background="@color/lq" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="t">প্রস্থান করুন</string>
+    <string name="dismiss_overlay_button_label">প্রস্থান করুন</string>
 </resources>

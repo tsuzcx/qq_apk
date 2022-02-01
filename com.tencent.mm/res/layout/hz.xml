@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="#19000000" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/a0v" android:paddingLeft="@dimen/uy" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="96.0dip">
-        <TextView android:textSize="13.0dip" android:textColor="@color/hi" android:id="@id/a_y" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="2.0dip">
-            <ImageView android:id="@id/jp" android:layout_width="@dimen/uz" android:layout_height="@dimen/uz" android:src="@raw/actionsheet_default_appbrand_icon" android:scaleType="fitCenter" />
-            <TextView android:textSize="@dimen/v2" android:textColor="@color/hg" android:id="@id/cz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
-            <ImageView android:layout_width="7.0dip" android:layout_height="13.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="1.0px" android:src="@raw/arrow_right" />
+    <ScrollView android:scrollbars="none" style="@style/ny">
+        <LinearLayout android:gravity="center_horizontal" android:paddingLeft="@dimen/h" android:paddingTop="@dimen/he" android:paddingRight="@dimen/h" android:paddingBottom="@dimen/he" style="@style/ld">
+            <ImageView android:id="@id/fdl" android:paddingBottom="@dimen/he" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aoi" />
+            <TextView android:textSize="@dimen/a" android:textColor="@color/y4" android:gravity="center" android:id="@id/fdk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ha" android:maxLines="4" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/nn" />
+            <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:gravity="center" android:id="@id/fdj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/he" android:maxLines="4" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/nn" />
+            <Button android:id="@id/a0f" android:visibility="gone" android:layout_marginBottom="@dimen/ha" android:text="@string/ac7" style="@style/o6" />
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

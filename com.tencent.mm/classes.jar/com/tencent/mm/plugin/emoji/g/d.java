@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.emoji.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
@@ -17,13 +17,13 @@ import org.xml.sax.InputSource;
 
 public final class d
 {
-  public static ArrayList<EmojiGroupInfo> KW(String paramString)
+  public static ArrayList<EmojiGroupInfo> Ud(String paramString)
   {
-    AppMethodBeat.i(53162);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(108735);
+    if (bt.isNullOrNil(paramString))
     {
-      ab.w("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] parse xml faild. xml is null.");
-      AppMethodBeat.o(53162);
+      ad.w("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] parse xml faild. xml is null.");
+      AppMethodBeat.o(108735);
       return null;
     }
     Object localObject1 = DocumentBuilderFactory.newInstance();
@@ -56,66 +56,66 @@ public final class d
           if ((localObject2 != null) && (((Node)localObject2).getNodeName() != null) && (((Node)localObject2).getNodeName().equals("ProductID")))
           {
             localObject2 = ((Node)localObject2).getTextContent();
-            ab.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] productId:%s", new Object[] { localObject2 });
+            ad.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] productId:%s", new Object[] { localObject2 });
             localEmojiGroupInfo.field_productID = ((String)localObject2);
           }
           else if ((localObject2 != null) && (((Node)localObject2).getNodeName() != null) && (((Node)localObject2).getNodeName().equals("RecType")))
           {
             localObject2 = ((Node)localObject2).getTextContent();
-            ab.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] RecType:%s", new Object[] { localObject2 });
+            ad.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] RecType:%s", new Object[] { localObject2 });
             localEmojiGroupInfo.field_recommandType = Integer.valueOf((String)localObject2).intValue();
           }
         }
       }
       catch (Exception paramString)
       {
-        ab.e("MicroMsg.emoji.EmojiRecommendXMLParser", "[parser] parseXML exception:%s", new Object[] { paramString.toString() });
-        AppMethodBeat.o(53162);
+        ad.e("MicroMsg.emoji.EmojiRecommendXMLParser", "[parser] parseXML exception:%s", new Object[] { paramString.toString() });
+        AppMethodBeat.o(108735);
         return null;
       }
       if ((localObject2 != null) && (((Node)localObject2).getNodeName() != null) && (((Node)localObject2).getNodeName().equals("RecWord")))
       {
         localObject2 = ((Node)localObject2).getTextContent();
-        ab.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] recWord:%s", new Object[] { localObject2 });
+        ad.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] recWord:%s", new Object[] { localObject2 });
         localEmojiGroupInfo.field_recommandWord = ((String)localObject2);
       }
       else if ((localObject2 != null) && (((Node)localObject2).getNodeName() != null) && (((Node)localObject2).getNodeName().equals("Name")))
       {
         localObject2 = ((Node)localObject2).getTextContent();
-        ab.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] Name:%s", new Object[] { localObject2 });
+        ad.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] Name:%s", new Object[] { localObject2 });
         localEmojiGroupInfo.field_packName = ((String)localObject2);
       }
       else if ((localObject2 != null) && (((Node)localObject2).getNodeName() != null) && (((Node)localObject2).getNodeName().equals("Panel")))
       {
         localObject2 = ((Node)localObject2).getTextContent();
-        ab.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] iconUrl:%s", new Object[] { localObject2 });
+        ad.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] iconUrl:%s", new Object[] { localObject2 });
         localEmojiGroupInfo.field_packGrayIconUrl = ((String)localObject2);
       }
       else if ((localObject2 != null) && (((Node)localObject2).getNodeName() != null) && (((Node)localObject2).getNodeName().equals("Icon")))
       {
         localObject2 = ((Node)localObject2).getTextContent();
-        ab.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] BigIconUrl:%s", new Object[] { localObject2 });
+        ad.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] BigIconUrl:%s", new Object[] { localObject2 });
         localEmojiGroupInfo.field_BigIconUrl = ((String)localObject2);
       }
       else if ((localObject2 != null) && (((Node)localObject2).getNodeName() != null) && (((Node)localObject2).getNodeName().equals("ButtonType")))
       {
         localObject2 = ((Node)localObject2).getTextContent();
-        ab.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] buttonType:%s", new Object[] { localObject2 });
+        ad.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] buttonType:%s", new Object[] { localObject2 });
         localEmojiGroupInfo.field_buttonType = Integer.valueOf((String)localObject2).intValue();
         break label746;
         label653:
-        if (!bo.isNullOrNil(localEmojiGroupInfo.field_productID))
+        if (!bt.isNullOrNil(localEmojiGroupInfo.field_productID))
         {
           localEmojiGroupInfo.field_recommand = 1;
           localEmojiGroupInfo.field_lastUseTime = System.currentTimeMillis();
           localEmojiGroupInfo.field_sort = 0;
-          h.qsU.e(12068, new Object[] { Integer.valueOf(1), localEmojiGroupInfo.field_productID, Integer.valueOf(localEmojiGroupInfo.field_recommandType) });
+          h.vKh.f(12068, new Object[] { Integer.valueOf(1), localEmojiGroupInfo.field_productID, Integer.valueOf(localEmojiGroupInfo.field_recommandType) });
           ((ArrayList)localObject1).add(localEmojiGroupInfo);
         }
         i += 1;
         continue;
         label738:
-        AppMethodBeat.o(53162);
+        AppMethodBeat.o(108735);
         return localObject1;
       }
       label746:

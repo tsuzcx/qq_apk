@@ -9,14 +9,14 @@ final class b$2
 {
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(49403);
+    AppMethodBeat.i(73133);
     paramDialogInterface.dismiss();
-    AppMethodBeat.o(49403);
+    AppMethodBeat.o(73133);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.formview.b.2
  * JD-Core Version:    0.7.0.1
  */

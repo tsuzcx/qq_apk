@@ -3,57 +3,57 @@ package com.tencent.mm.plugin.appbrand.widget.input;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.f.b;
 import com.tencent.mm.plugin.appbrand.jsapi.f.c;
-import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.page.aa;
 import java.lang.ref.WeakReference;
 
 public final class l
   implements f.b, f.c
 {
-  final WeakReference<v> jkD;
+  final WeakReference<aa> mar;
   
-  public l(v paramv)
+  public l(aa paramaa)
   {
-    AppMethodBeat.i(123674);
-    this.jkD = new WeakReference(paramv);
-    paramv.a(this);
-    paramv.a(this);
-    AppMethodBeat.o(123674);
+    AppMethodBeat.i(136408);
+    this.mar = new WeakReference(paramaa);
+    paramaa.a(this);
+    paramaa.a(this);
+    AppMethodBeat.o(136408);
   }
   
   public final void onBackground()
   {
-    AppMethodBeat.i(123675);
-    v localv = (v)this.jkD.get();
-    if (localv != null) {
-      o.q(localv);
+    AppMethodBeat.i(136409);
+    aa localaa = (aa)this.mar.get();
+    if (localaa != null) {
+      o.x(localaa);
     }
-    AppMethodBeat.o(123675);
+    AppMethodBeat.o(136409);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(123676);
-    v localv = (v)this.jkD.get();
-    if (localv != null)
+    AppMethodBeat.i(136410);
+    aa localaa = (aa)this.mar.get();
+    if (localaa != null)
     {
-      if ((localv.getContext() instanceof ad)) {
-        ((ad)localv.getContext()).hideVKB();
+      if ((localaa.getContext() instanceof ad)) {
+        ((ad)localaa.getContext()).hideVKB();
       }
-      o.q(localv);
-      o.r(localv);
-      e.o(localv);
-      localv.b(this);
-      localv.b(this);
-      if (localv.iuy != null) {
-        h.aQF().b(localv.iuy);
+      o.x(localaa);
+      o.y(localaa);
+      e.v(localaa);
+      localaa.b(this);
+      localaa.b(this);
+      if (localaa.kWU != null) {
+        h.bsW().c(localaa.kWU);
       }
     }
-    AppMethodBeat.o(123676);
+    AppMethodBeat.o(136410);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.l
  * JD-Core Version:    0.7.0.1
  */

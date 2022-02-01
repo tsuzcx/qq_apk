@@ -4,29 +4,29 @@ import com.tencent.tinker.a.a.b.c;
 import com.tencent.tinker.a.a.b.e;
 
 public final class n
-  extends t.a.a<n>
+  extends s.a.a<n>
 {
-  public int BoL;
-  public int Bpx;
-  public int Bpy;
+  public int IAG;
+  public int IBs;
+  public int IBt;
   
   public n(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super(paramInt1);
-    this.Bpx = paramInt2;
-    this.BoL = paramInt3;
-    this.Bpy = paramInt4;
+    this.IBs = paramInt2;
+    this.IAG = paramInt3;
+    this.IBt = paramInt4;
   }
   
   private int b(n paramn)
   {
-    if (this.Bpx != paramn.Bpx) {
-      return c.ip(this.Bpx, paramn.Bpx);
+    if (this.IBs != paramn.IBs) {
+      return c.ks(this.IBs, paramn.IBs);
     }
-    if (this.Bpy != paramn.Bpy) {
-      return c.ip(this.Bpy, paramn.Bpy);
+    if (this.IBt != paramn.IBt) {
+      return c.ks(this.IBt, paramn.IBt);
     }
-    return c.ip(this.BoL, paramn.BoL);
+    return c.ks(this.IAG, paramn.IAG);
   }
   
   public final boolean equals(Object paramObject)
@@ -40,12 +40,12 @@ public final class n
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Integer.valueOf(this.Bpx), Integer.valueOf(this.BoL), Integer.valueOf(this.Bpy) });
+    return e.hash(new Object[] { Integer.valueOf(this.IBs), Integer.valueOf(this.IAG), Integer.valueOf(this.IBt) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.a.a.n
  * JD-Core Version:    0.7.0.1
  */

@@ -13,35 +13,35 @@ public final class n
   
   static
   {
-    AppMethodBeat.i(24677);
+    AppMethodBeat.i(28347);
     c.a locala = new c.a();
-    locala.yrK = new Field[5];
+    locala.EYt = new Field[5];
     locala.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "username";
-    locala.yrM.put("username", "TEXT default ''  PRIMARY KEY ");
+    locala.EYv.put("username", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" username TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.yrL = "username";
+    locala.EYu = "username";
     locala.columns[1] = "deeplink";
-    locala.yrM.put("deeplink", "TEXT default '' ");
+    locala.EYv.put("deeplink", "TEXT default '' ");
     localStringBuilder.append(" deeplink TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "title";
-    locala.yrM.put("title", "TEXT default '' ");
+    locala.EYv.put("title", "TEXT default '' ");
     localStringBuilder.append(" title TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "iconurl";
-    locala.yrM.put("iconurl", "TEXT default '' ");
+    locala.EYv.put("iconurl", "TEXT default '' ");
     localStringBuilder.append(" iconurl TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[4] = "createtime";
-    locala.yrM.put("createtime", "LONG default '' ");
+    locala.EYv.put("createtime", "LONG default '' ");
     localStringBuilder.append(" createtime LONG default '' ");
     locala.columns[5] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    AppMethodBeat.o(24677);
+    AppMethodBeat.o(28347);
   }
   
   public final c.a getDBInfo()
@@ -51,7 +51,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.n
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/vy" android:paddingLeft="@dimen/dv" android:paddingRight="@dimen/dv" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ko" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l5" android:text="@string/fz9" />
-    <ImageView android:id="@id/b2v" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_marginTop="@dimen/l5" />
-    <EditText android:textSize="@dimen/dq" android:gravity="center" android:id="@id/b2w" android:layout_width="fill_parent" android:layout_height="@dimen/lw" android:layout_marginTop="@dimen/l2" android:ems="10" android:inputType="number" />
-    <Button android:id="@id/b2x" android:layout_width="fill_parent" android:layout_marginTop="@dimen/m7" android:text="@string/st" style="@style/nq" />
+    <TextView android:id="@id/ao5" style="@style/gx" />
+    <LinearLayout style="@style/go">
+        <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gq">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/ao1" style="@style/gy" />
+                <ProgressBar android:layout_gravity="center_vertical" android:id="@id/gj8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/c0" style="@style/a5o" />
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/ao3" android:paddingRight="@dimen/jn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_status_tick" />
+                <LinearLayout android:layout_gravity="right" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiViewTo android:id="@id/alb" android:layout_marginLeft="@dimen/a0u" android:layout_marginRight="@dimen/a0u" style="@style/hu" />
+                    <FrameLayout android:id="@id/alk" android:paddingLeft="@dimen/a0u" android:paddingTop="8.0dip" android:paddingRight="@dimen/a0u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <LinearLayout android:gravity="center" android:layout_gravity="start" android:orientation="horizontal" android:background="@drawable/di" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <ImageView android:id="@id/all" android:layout_width="12.0dip" android:layout_height="12.0dip" android:src="@raw/emoticonstore_capture_icon" android:layout_marginEnd="3.0dip" />
+                            <TextView android:textSize="@dimen/k4" android:textColor="@color/a_u" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ait" />
+                        </LinearLayout>
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <ViewStub android:layout_gravity="right" android:id="@id/anp" android:layout="@layout/qe" android:inflatedId="@id/anq" android:layout_width="120.0dip" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <include layout="@layout/o7" />
+    </LinearLayout>
 </LinearLayout>

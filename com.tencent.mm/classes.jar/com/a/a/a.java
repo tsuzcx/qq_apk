@@ -1,174 +1,282 @@
 package com.a.a;
 
+import android.os.Handler;
 import android.os.IBinder;
 import android.os.IBinder.DeathRecipient;
 import android.os.Looper;
+import android.os.Message;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private c blA;
-  private b blB;
-  a.a blC;
-  private int blD;
-  a.b blE;
-  int blF;
-  private IBinder.DeathRecipient blG;
+  private IBinder.DeathRecipient bNA;
+  private c bNu;
+  private b bNv;
+  a bNw;
+  private int bNx;
+  b bNy;
+  int bNz;
   
   private a(c paramc, Looper paramLooper)
   {
-    AppMethodBeat.i(118219);
-    this.blF = -1;
-    this.blG = new a.1(this);
-    this.blA = paramc;
-    paramLooper = new a.a(this, paramLooper);
-    this.blD = 1;
-    this.blB = new a.2(this);
-    if (!this.blA.a(this.blB, 1))
+    AppMethodBeat.i(88756);
+    this.bNz = -1;
+    this.bNA = new IBinder.DeathRecipient()
+    {
+      public final void binderDied()
+      {
+        AppMethodBeat.i(88781);
+        if (a.this.bNy != null) {
+          a.this.bNy.D(2101, -1, a.this.bNz);
+        }
+        AppMethodBeat.o(88781);
+      }
+    };
+    this.bNu = paramc;
+    paramLooper = new a(paramLooper);
+    this.bNx = 1;
+    this.bNv = new b.a()
+    {
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, byte[] paramAnonymousArrayOfByte)
+      {
+        AppMethodBeat.i(88780);
+        a.this.bNw.sendMessage(a.this.bNw.obtainMessage(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousArrayOfByte));
+        AppMethodBeat.o(88780);
+      }
+    };
+    if (!this.bNu.a(this.bNv, 1))
     {
       paramc = new RuntimeException();
-      AppMethodBeat.o(118219);
+      AppMethodBeat.o(88756);
       throw paramc;
     }
-    this.blC = paramLooper;
-    paramc.asBinder().linkToDeath(this.blG, 0);
-    AppMethodBeat.o(118219);
+    this.bNw = paramLooper;
+    paramc.asBinder().linkToDeath(this.bNA, 0);
+    AppMethodBeat.o(88756);
   }
   
-  public static a sV()
+  public static a yC()
   {
-    AppMethodBeat.i(118218);
-    Object localObject = sY();
+    AppMethodBeat.i(88755);
+    Object localObject = yF();
     if (localObject == null)
     {
-      AppMethodBeat.o(118218);
+      AppMethodBeat.o(88755);
       return null;
     }
     Looper localLooper = Looper.getMainLooper();
     try
     {
       localObject = new a((c)localObject, localLooper);
-      AppMethodBeat.o(118218);
+      AppMethodBeat.o(88755);
       return localObject;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(118218);
+      AppMethodBeat.o(88755);
     }
     return null;
   }
   
-  public static int[] sX()
+  public static int[] yE()
   {
-    AppMethodBeat.i(118224);
-    Object localObject = sY();
+    AppMethodBeat.i(88761);
+    Object localObject = yF();
     if (localObject == null)
     {
-      AppMethodBeat.o(118224);
+      AppMethodBeat.o(88761);
       return new int[0];
     }
     try
     {
-      localObject = ((c)localObject).ta();
-      AppMethodBeat.o(118224);
+      localObject = ((c)localObject).yG();
+      AppMethodBeat.o(88761);
       return localObject;
     }
     catch (RemoteException localRemoteException)
     {
-      AppMethodBeat.o(118224);
+      AppMethodBeat.o(88761);
     }
     return new int[0];
   }
   
-  private static c sY()
+  private static c yF()
   {
-    AppMethodBeat.i(118225);
+    AppMethodBeat.i(88762);
     c localc = c.a.i(ServiceManager.getService("authentication_service"));
-    AppMethodBeat.o(118225);
+    AppMethodBeat.o(88762);
     return localc;
   }
   
-  public final int a(a.b paramb, int[] paramArrayOfInt)
+  public final int a(b paramb, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(118222);
-    if ((paramArrayOfInt == null) || (paramb == null))
+    AppMethodBeat.i(88759);
+    if (paramArrayOfInt == null)
     {
-      AppMethodBeat.o(118222);
+      AppMethodBeat.o(88759);
       return -1;
     }
-    this.blE = paramb;
-    this.blF = 0;
+    this.bNy = paramb;
+    this.bNz = 0;
     try
     {
-      int i = this.blA.a(this.blB, paramArrayOfInt, null);
-      AppMethodBeat.o(118222);
+      int i = this.bNu.a(this.bNv, paramArrayOfInt, null);
+      AppMethodBeat.o(88759);
       return i;
     }
     catch (RemoteException paramb)
     {
-      AppMethodBeat.o(118222);
+      AppMethodBeat.o(88759);
     }
     return -1;
   }
   
   public final void abort()
   {
-    AppMethodBeat.i(118223);
-    if (this.blC != null) {
-      this.blC.removeMessages(8);
+    AppMethodBeat.i(88760);
+    if (this.bNw != null) {
+      this.bNw.removeMessages(8);
     }
     try
     {
-      this.blA.a(this.blB);
-      AppMethodBeat.o(118223);
+      this.bNu.a(this.bNv);
+      AppMethodBeat.o(88760);
       return;
     }
     catch (RemoteException localRemoteException)
     {
-      AppMethodBeat.o(118223);
+      AppMethodBeat.o(88760);
     }
   }
   
   public final void release()
   {
-    AppMethodBeat.i(118220);
-    if (this.blC != null) {
-      this.blC.removeMessages(8);
+    AppMethodBeat.i(88757);
+    if (this.bNw != null) {
+      this.bNw.removeMessages(8);
     }
     try
     {
-      this.blA.b(this.blB);
-      this.blA.asBinder().unlinkToDeath(this.blG, 0);
-      AppMethodBeat.o(118220);
+      this.bNu.b(this.bNv);
+      this.bNu.asBinder().unlinkToDeath(this.bNA, 0);
+      AppMethodBeat.o(88757);
       return;
     }
     catch (RemoteException localRemoteException)
     {
-      AppMethodBeat.o(118220);
+      AppMethodBeat.o(88757);
     }
   }
   
-  public final int[] sW()
+  public final int[] yD()
   {
-    AppMethodBeat.i(118221);
+    AppMethodBeat.i(88758);
     try
     {
-      int[] arrayOfInt = this.blA.c(this.blB);
-      AppMethodBeat.o(118221);
+      int[] arrayOfInt = this.bNu.c(this.bNv);
+      AppMethodBeat.o(88758);
       return arrayOfInt;
     }
     catch (RemoteException localRemoteException)
     {
-      AppMethodBeat.o(118221);
+      AppMethodBeat.o(88758);
     }
     return new int[0];
+  }
+  
+  final class a
+    extends Handler
+  {
+    private final int bNC = 2001;
+    private final int bND = 2002;
+    private final int bNE = 2003;
+    private final int bNF = 2004;
+    private final int bNG = 2005;
+    private final int bNH = 2006;
+    
+    public a(Looper paramLooper)
+    {
+      super();
+    }
+    
+    public final void handleMessage(Message paramMessage)
+    {
+      int i = 2005;
+      AppMethodBeat.i(88782);
+      new StringBuilder("what = ").append(paramMessage.what);
+      switch (paramMessage.what)
+      {
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(88782);
+        return;
+        if (a.this.bNy != null)
+        {
+          a.this.bNy.bR(1, a.this.bNz);
+          AppMethodBeat.o(88782);
+          return;
+          if (a.this.bNy != null)
+          {
+            a.this.bNy.bR(2, a.this.bNz);
+            AppMethodBeat.o(88782);
+            return;
+            if (a.this.bNy != null)
+            {
+              a.this.bNy.bR(3, a.this.bNz);
+              AppMethodBeat.o(88782);
+              return;
+              if (a.this.bNy != null) {
+                a.this.bNy.D(0, paramMessage.arg1, a.this.bNz);
+              }
+              removeMessages(8);
+              AppMethodBeat.o(88782);
+              return;
+              if (a.this.bNy != null) {
+                switch (paramMessage.arg1)
+                {
+                default: 
+                  i = 2020;
+                }
+              }
+              for (;;)
+              {
+                a.this.bNy.D(i, -1, a.this.bNz);
+                removeMessages(8);
+                AppMethodBeat.o(88782);
+                return;
+                i = 2002;
+                continue;
+                i = 2003;
+                continue;
+                i = 2000;
+                continue;
+                i = 2006;
+              }
+              if (a.this.bNy != null) {
+                a.this.bNy.D(2001, -1, a.this.bNz);
+              }
+              removeMessages(8);
+              a.this.abort();
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void D(int paramInt1, int paramInt2, int paramInt3);
+    
+    public abstract void bR(int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.a.a.a
  * JD-Core Version:    0.7.0.1
  */

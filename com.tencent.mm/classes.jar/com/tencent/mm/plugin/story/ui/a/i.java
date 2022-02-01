@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.story.ui.a;
 
-import a.l;
 import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.widget.ImageView;
@@ -8,85 +7,89 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.a;
 import com.tencent.mm.loader.a.b;
 import com.tencent.mm.loader.e;
-import com.tencent.mm.plugin.story.model.d.g;
-import com.tencent.mm.plugin.story.model.j.b;
+import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.plugin.story.ui.view.StoryCommentView;
+import com.tencent.mm.plugin.story.ui.view.StoryMsgView;
 import com.tencent.mm.plugin.story.ui.view.gallery.StoryGalleryItemView;
 import com.tencent.mm.plugin.story.ui.view.gallery.StoryGalleryPostTip;
-import com.tencent.mm.protocal.protobuf.chf;
-import com.tencent.mm.protocal.protobuf.chl;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.az;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.protocal.protobuf.cym;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bc;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/adapter/StoryGalleryViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryItemView;", "(Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryItemView;)V", "bindItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "commentView", "Lcom/tencent/mm/plugin/story/ui/view/StoryCommentView;", "postTipView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;", "storyItemView", "thumbView", "Landroid/widget/ImageView;", "onBind", "", "item", "position", "", "isActive", "", "reBindBitmap", "plugin-story_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/adapter/StoryGalleryViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryItemView;", "(Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryItemView;)V", "bindItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "commentView", "Lcom/tencent/mm/plugin/story/ui/view/StoryCommentView;", "msgView", "Lcom/tencent/mm/plugin/story/ui/view/StoryMsgView;", "postTipView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;", "storyItemView", "thumbView", "Landroid/widget/ImageView;", "onBind", "", "item", "position", "", "isActive", "", "reBindBitmap", "plugin-story_release"})
 public final class i
   extends RecyclerView.v
 {
-  private final ImageView mAM;
-  final StoryGalleryItemView sIH;
-  final StoryCommentView sII;
-  final StoryGalleryPostTip sIJ;
-  g sIK;
+  private final ImageView qir;
+  final StoryGalleryItemView yqV;
+  final StoryCommentView yqW;
+  final StoryMsgView yqX;
+  final StoryGalleryPostTip yqY;
+  com.tencent.mm.plugin.story.f.d.h yqZ;
   
   public i(StoryGalleryItemView paramStoryGalleryItemView)
   {
     super((View)paramStoryGalleryItemView);
-    AppMethodBeat.i(110138);
-    this.sIH = paramStoryGalleryItemView;
-    this.sII = paramStoryGalleryItemView.getCommentView();
-    this.mAM = paramStoryGalleryItemView.getThumbView();
-    this.sIJ = paramStoryGalleryItemView.getPostTipView();
-    AppMethodBeat.o(110138);
+    AppMethodBeat.i(119773);
+    this.yqV = paramStoryGalleryItemView;
+    this.yqW = paramStoryGalleryItemView.getCommentView();
+    this.yqX = paramStoryGalleryItemView.getMsgView();
+    this.qir = paramStoryGalleryItemView.getThumbView();
+    this.yqY = paramStoryGalleryItemView.getPostTipView();
+    AppMethodBeat.o(119773);
   }
   
-  public final void cFp()
+  public final void dKW()
   {
-    AppMethodBeat.i(110137);
-    Object localObject3 = this.sIK;
+    AppMethodBeat.i(119772);
+    Object localObject3 = this.yqZ;
     if (localObject3 == null)
     {
-      AppMethodBeat.o(110137);
+      AppMethodBeat.o(119772);
       return;
     }
-    Object localObject1 = az.dxH().Nv(((g)localObject3).syr.fDT);
-    if (((g)localObject3).syr.cBM())
+    Object localObject1 = bc.eLM().WB(((com.tencent.mm.plugin.story.f.d.h)localObject3).yhF.hgr);
+    if (((com.tencent.mm.plugin.story.f.d.h)localObject3).yhF.dHW())
     {
-      ab.i(h.Ot(), "reBindBitmap FakeVideo");
-      if (((g)localObject3).syr.syD == null)
+      ad.i(h.abb(), "reBindBitmap FakeVideo");
+      if (((com.tencent.mm.plugin.story.f.d.h)localObject3).yhF.yhQ == null)
       {
-        localObject1 = e.eME;
-        e.SX().mJ("").d(this.mAM);
-        AppMethodBeat.o(110137);
+        localObject1 = e.ghT;
+        e.agS().rd("").c(this.qir);
+        AppMethodBeat.o(119772);
         return;
       }
-      localObject1 = ((g)localObject3).syr.syD;
+      localObject1 = ((com.tencent.mm.plugin.story.f.d.h)localObject3).yhF.yhQ;
       if (localObject1 != null)
       {
-        ab.i(h.Ot(), "load fake localFile:" + ((chf)localObject1).thumbPath + ", position:" + getPosition() + ", videoPath:" + ((chf)localObject1).videoPath);
-        localObject2 = e.eME;
-        localObject2 = e.SX();
-        localObject1 = ((chf)localObject1).thumbPath;
-        a.f.b.j.p(localObject1, "it.thumbPath");
-        ((a)localObject2).mJ((String)localObject1).e(this.mAM);
-        AppMethodBeat.o(110137);
+        ad.i(h.abb(), "load fake localFile:" + ((com.tencent.mm.plugin.recordvideo.background.d)localObject1).dgA().thumbPath + ", position:" + getPosition() + ", videoPath:" + ((com.tencent.mm.plugin.recordvideo.background.d)localObject1).dgA().videoPath);
+        localObject2 = e.ghT;
+        localObject2 = e.agS();
+        localObject1 = ((com.tencent.mm.plugin.recordvideo.background.d)localObject1).dgA().thumbPath;
+        k.g(localObject1, "it.editorProtoData.thumbPath");
+        ((a)localObject2).rd((String)localObject1).a(this.qir, false);
+        AppMethodBeat.o(119772);
         return;
       }
-      AppMethodBeat.o(110137);
+      AppMethodBeat.o(119772);
       return;
     }
-    Object localObject2 = ((g)localObject3).syr.syB;
-    localObject3 = ((g)localObject3).userName;
-    a.f.b.j.p(localObject1, "fromScene");
-    localObject1 = new com.tencent.mm.plugin.story.model.c.d((chl)localObject2, (String)localObject3, (az)localObject1);
-    ab.i(h.Ot(), "reBindBitmap NormalVideo " + ((com.tencent.mm.plugin.story.model.c.d)localObject1).Ug());
-    localObject2 = com.tencent.mm.plugin.story.model.j.svi;
-    j.b.cAK().aE(localObject1).d(this.mAM);
-    AppMethodBeat.o(110137);
+    Object localObject2 = ((com.tencent.mm.plugin.story.f.d.h)localObject3).yhF.yhP;
+    localObject3 = ((com.tencent.mm.plugin.story.f.d.h)localObject3).userName;
+    k.g(localObject1, "fromScene");
+    localObject1 = new com.tencent.mm.plugin.story.f.c.d((cym)localObject2, (String)localObject3, (bc)localObject1);
+    ad.i(h.abb(), "reBindBitmap NormalVideo " + ((com.tencent.mm.plugin.story.f.c.d)localObject1).aaX());
+    localObject2 = com.tencent.mm.plugin.story.f.j.yfh;
+    j.b.dHl().bI(localObject1).c(this.qir);
+    AppMethodBeat.o(119772);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.a.i
  * JD-Core Version:    0.7.0.1
  */

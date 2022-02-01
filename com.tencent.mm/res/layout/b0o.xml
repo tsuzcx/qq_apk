@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/dj" android:layout_width="300.0dip" android:layout_height="88.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ProgressBar android:id="@id/ezc" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" style="@style/a02" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/ex6" android:layout_width="fill_parent" android:layout_height="153.0dip" android:src="@drawable/bwl" android:scaleType="fitCenter" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="17.0dip" android:textColor="@color/km" android:gravity="center_vertical" android:id="@id/b3b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/ens" />
+</LinearLayout>

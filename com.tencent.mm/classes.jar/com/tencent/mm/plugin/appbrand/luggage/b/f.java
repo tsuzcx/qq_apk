@@ -1,25 +1,98 @@
 package com.tencent.mm.plugin.appbrand.luggage.b;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.input.AppBrandSmileyPanel;
-import com.tencent.mm.plugin.appbrand.widget.input.panel.e;
-import com.tencent.mm.plugin.appbrand.widget.input.panel.e.b;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.plugin.appbrand.aa.b;
+import com.tencent.mm.plugin.appbrand.aa.o.a;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.i;
 
 public final class f
-  implements e.b
+  implements o.a
 {
-  public final e cV(Context paramContext)
+  private Context mContext;
+  private String version = "";
+  
+  public f(Context paramContext)
   {
-    AppMethodBeat.i(132101);
-    paramContext = new AppBrandSmileyPanel(paramContext);
-    AppMethodBeat.o(132101);
-    return paramContext;
+    this.mContext = paramContext;
+  }
+  
+  public final String CU()
+  {
+    return " MicroMessenger/";
+  }
+  
+  public final String version()
+  {
+    AppMethodBeat.i(103126);
+    Object localObject;
+    if (!TextUtils.isEmpty(this.version))
+    {
+      localObject = this.version;
+      AppMethodBeat.o(103126);
+      return localObject;
+    }
+    try
+    {
+      localObject = b.getPackageInfo(this.mContext, aj.getPackageName());
+      if (localObject != null)
+      {
+        this.version += i.au(null, d.CpK);
+        this.version = (this.version + "." + ((PackageInfo)localObject).versionCode);
+        this.version = (this.version + "(" + String.format("0x%08X", new Object[] { Integer.valueOf(d.CpK) }) + ")");
+        StringBuilder localStringBuilder = new StringBuilder().append(this.version).append(" Process/");
+        localObject = aj.getPackageName().trim().toLowerCase();
+        str2 = aj.getProcessName().trim().toLowerCase();
+        if (!str2.equals(localObject)) {
+          break label312;
+        }
+        localObject = "mm";
+        this.version = ((String)localObject);
+        localStringBuilder = new StringBuilder().append(this.version).append(" WeChat/");
+        if (!q.is64BitRuntime()) {
+          break label340;
+        }
+        localObject = "arm64";
+        this.version = ((String)localObject);
+        if (i.eFb()) {
+          this.version += " GPVersion/1";
+        }
+      }
+      localObject = this.version;
+      AppMethodBeat.o(103126);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        String str2;
+        String str1 = null;
+        continue;
+        label312:
+        if (str2.startsWith(str1))
+        {
+          str1 = str2.substring(str1.length() + 1);
+        }
+        else
+        {
+          str1 = "unknown";
+          continue;
+          label340:
+          str1 = "arm32";
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.f
  * JD-Core Version:    0.7.0.1
  */

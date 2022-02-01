@@ -32,6 +32,8 @@ public abstract interface j
   
   public abstract void b(int paramInt);
   
+  public abstract void b(int paramInt1, int paramInt2);
+  
   public abstract void b(boolean paramBoolean);
   
   public abstract void c();
@@ -50,17 +52,25 @@ public abstract interface j
   
   public abstract void e(int paramInt);
   
-  public abstract void e(boolean paramBoolean);
-  
   public abstract EGLContext f();
   
   public abstract void f(int paramInt);
   
-  public abstract boolean g();
+  public abstract int g();
+  
+  public abstract boolean h();
+  
+  public abstract boolean i();
+  
+  public abstract boolean j();
+  
+  public abstract boolean k();
+  
+  public abstract boolean l();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.j
  * JD-Core Version:    0.7.0.1
  */

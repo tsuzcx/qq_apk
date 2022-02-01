@@ -1,53 +1,58 @@
 package com.tencent.mm.plugin.appbrand.v;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.d.a.t;
-import com.tencent.mm.d.a.t.a;
-import com.tencent.mm.plugin.appbrand.ag;
-import com.tencent.mm.plugin.appbrand.appcache.ax;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.plugin.appbrand.w;
-import java.util.ArrayList;
+import com.tencent.mm.plugin.appbrand.jsapi.p.b.a;
+import java.util.HashMap;
+import java.util.Map;
 
-public class a
-  extends w
+public final class a
 {
-  public a(r paramr)
+  private static final Map<Integer, Object> fZD;
+  
+  static
   {
-    super(paramr);
+    AppMethodBeat.i(48006);
+    fZD = new HashMap();
+    AppMethodBeat.o(48006);
   }
   
-  public t auk()
+  public static void blX()
   {
-    AppMethodBeat.i(140987);
-    b localb = new b(this.ccw);
-    AppMethodBeat.o(140987);
-    return localb;
+    AppMethodBeat.i(48004);
+    fZD.clear();
+    AppMethodBeat.o(48004);
   }
   
-  public final void b(ArrayList<t.a> paramArrayList, String paramString)
+  public static void blY()
   {
-    AppMethodBeat.i(140989);
-    super.b(paramArrayList, paramString);
-    paramArrayList.add(new b.a(this.gPA.wH() + "WAWorker.js", ax.c(this.gPA.getRuntime(), "WAWorker.js"), this.gPA.getAppId(), this.gPA.aud()));
-    paramString = ag.getSysInfo();
-    paramArrayList.add(new t.a(this.gPA.wH() + "sourcemapSysinfo", paramString));
-    paramString = ax.c(this.gPA.getRuntime(), "WASourceMap.js");
-    paramArrayList.add(new t.a(this.gPA.wH() + "WASourceMap.js", paramString));
-    AppMethodBeat.o(140989);
+    AppMethodBeat.i(48005);
+    com.tencent.mm.plugin.appbrand.jsapi.p.b.khr = new b.a()
+    {
+      public final void rT(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(48002);
+        a.tJ(paramAnonymousInt);
+        AppMethodBeat.o(48002);
+      }
+    };
+    AppMethodBeat.o(48005);
   }
   
-  public final t.a yh(String paramString)
+  public static void tJ(int paramInt)
   {
-    AppMethodBeat.i(140988);
-    paramString = new b.a(super.yh(paramString), ag.a(this.gPA.getRuntime(), paramString, this.gPA.wG()), this.gPA.getAppId(), this.gPA.aud());
-    AppMethodBeat.o(140988);
-    return paramString;
+    AppMethodBeat.i(48003);
+    if (!fZD.containsKey(Integer.valueOf(paramInt)))
+    {
+      AppMethodBeat.o(48003);
+      return;
+    }
+    fZD.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(48003);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.v.a
  * JD-Core Version:    0.7.0.1
  */

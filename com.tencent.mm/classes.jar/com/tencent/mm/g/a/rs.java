@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class rs
   extends b
 {
-  public rs.a cHY;
-  public rs.b cHZ;
+  public a dxo;
   
   public rs()
   {
@@ -16,17 +15,21 @@ public final class rs
   
   private rs(byte paramByte)
   {
-    AppMethodBeat.i(60265);
-    this.cHY = new rs.a();
-    this.cHZ = new rs.b();
-    this.ymq = false;
+    AppMethodBeat.i(91040);
+    this.dxo = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(60265);
+    AppMethodBeat.o(91040);
+  }
+  
+  public static final class a
+  {
+    public int dtM = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.rs
  * JD-Core Version:    0.7.0.1
  */

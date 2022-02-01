@@ -20,24 +20,24 @@ public final class QueryDownloadTaskRequest
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76005);
+    AppMethodBeat.i(102251);
     if (cache_baseParam == null) {
       cache_baseParam = new IPCBaseParam();
     }
     this.baseParam = ((IPCBaseParam)paramJceInputStream.read(cache_baseParam, 0, true));
-    AppMethodBeat.o(76005);
+    AppMethodBeat.o(102251);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76004);
+    AppMethodBeat.i(102250);
     paramJceOutputStream.write(this.baseParam, 0);
-    AppMethodBeat.o(76004);
+    AppMethodBeat.o(102250);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.jce.QueryDownloadTaskRequest
  * JD-Core Version:    0.7.0.1
  */

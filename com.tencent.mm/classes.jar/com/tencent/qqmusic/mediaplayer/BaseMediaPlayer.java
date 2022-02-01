@@ -13,6 +13,9 @@ import java.io.FileDescriptor;
 
 public abstract class BaseMediaPlayer
 {
+  public static final int DECODER_TYPE_ANDROID_MEDIA_PLAYER = 0;
+  public static final int DECODER_TYPE_MEDIA_CODEC = 2;
+  public static final int DECODER_TYPE_SOFT = 1;
   private static final String TAG = "BaseMediaPlayer";
   private long duration = 0L;
   private boolean isPaused = false;
@@ -43,6 +46,8 @@ public abstract class BaseMediaPlayer
   
   public abstract long getCurrentPositionFromFile();
   
+  public abstract int getDecoderType();
+  
   public abstract int getDuration();
   
   public abstract int getPlayerState();
@@ -50,8 +55,6 @@ public abstract class BaseMediaPlayer
   public abstract int getSessionId();
   
   public abstract boolean isPlaying();
-  
-  public abstract boolean isSoftDecoder();
   
   protected void notifyPauseSong()
   {
@@ -68,6 +71,8 @@ public abstract class BaseMediaPlayer
   }
   
   public abstract void pause();
+  
+  public abstract void pauseRealTime();
   
   public abstract void prepare();
   
@@ -96,6 +101,10 @@ public abstract class BaseMediaPlayer
   public abstract void setDataSource(FileDescriptor paramFileDescriptor);
   
   public abstract void setDataSource(String paramString);
+  
+  public void setLeastCommonMultiple(int paramInt) {}
+  
+  public void setPlayLocalPath(String paramString) {}
   
   public abstract void setPlayerListenerCallback(PlayerListenerCallback paramPlayerListenerCallback);
   

@@ -27,15 +27,15 @@ public final class KPoint
   
   public final String toString()
   {
-    AppMethodBeat.i(141354);
+    AppMethodBeat.i(135866);
     String str = "KPoint{mX=" + this.mX + ",mY=" + this.mY + "}";
-    AppMethodBeat.o(141354);
+    AppMethodBeat.o(135866);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.gen.KPoint
  * JD-Core Version:    0.7.0.1
  */

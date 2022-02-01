@@ -1,105 +1,311 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import f.a.a.b;
 
 public final class aga
-  extends buy
+  extends com.tencent.mm.bx.a
 {
-  public String cwc;
-  public String signature;
+  public boolean DhY = false;
+  public boolean DhZ = false;
+  public boolean Dia = false;
+  public String Dib;
+  public boolean Dic = false;
+  public String Did;
+  public boolean Die = false;
+  public boolean Dif = false;
+  public boolean Dig = false;
+  public boolean Dih = false;
+  public boolean Dii = false;
+  public String Dij;
+  public boolean Dik = false;
+  public boolean Dil = false;
+  public String appId;
+  public long createTime;
+  public String dAA;
+  public String dbj;
+  public String dpv;
+  public String dvT;
+  public boolean hgE = false;
+  public String link;
+  public int sourceType;
+  public String toUser;
+  
+  public final aga VH(int paramInt)
+  {
+    this.sourceType = paramInt;
+    this.DhY = true;
+    return this;
+  }
+  
+  public final aga aDU(String paramString)
+  {
+    this.dpv = paramString;
+    this.DhZ = true;
+    return this;
+  }
+  
+  public final aga aDV(String paramString)
+  {
+    this.toUser = paramString;
+    this.Dia = true;
+    return this;
+  }
+  
+  public final aga aDW(String paramString)
+  {
+    this.Dib = paramString;
+    this.Dic = true;
+    return this;
+  }
+  
+  public final aga aDX(String paramString)
+  {
+    this.Did = paramString;
+    this.Die = true;
+    return this;
+  }
+  
+  public final aga aDY(String paramString)
+  {
+    this.dvT = paramString;
+    this.Dif = true;
+    return this;
+  }
+  
+  public final aga aDZ(String paramString)
+  {
+    this.appId = paramString;
+    this.Dih = true;
+    return this;
+  }
+  
+  public final aga aEa(String paramString)
+  {
+    this.link = paramString;
+    this.Dii = true;
+    return this;
+  }
+  
+  public final aga aEb(String paramString)
+  {
+    this.dbj = paramString;
+    this.Dil = true;
+    return this;
+  }
+  
+  public final String eCn()
+  {
+    return this.dpv;
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(10166);
+    AppMethodBeat.i(127459);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (!this.DhY)
       {
-        paramVarArgs.iQ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: sourceType");
+        AppMethodBeat.o(127459);
+        throw paramVarArgs;
       }
-      if (this.cwc != null) {
-        paramVarArgs.e(2, this.cwc);
+      if (this.DhY == true) {
+        paramVarArgs.aR(1, this.sourceType);
       }
-      if (this.signature != null) {
-        paramVarArgs.e(3, this.signature);
+      if (this.dpv != null) {
+        paramVarArgs.d(2, this.dpv);
       }
-      AppMethodBeat.o(10166);
+      if (this.toUser != null) {
+        paramVarArgs.d(3, this.toUser);
+      }
+      if (this.Dib != null) {
+        paramVarArgs.d(4, this.Dib);
+      }
+      if (this.Did != null) {
+        paramVarArgs.d(5, this.Did);
+      }
+      if (this.hgE == true) {
+        paramVarArgs.aG(6, this.createTime);
+      }
+      if (this.dvT != null) {
+        paramVarArgs.d(7, this.dvT);
+      }
+      if (this.dAA != null) {
+        paramVarArgs.d(8, this.dAA);
+      }
+      if (this.appId != null) {
+        paramVarArgs.d(9, this.appId);
+      }
+      if (this.link != null) {
+        paramVarArgs.d(10, this.link);
+      }
+      if (this.Dij != null) {
+        paramVarArgs.d(11, this.Dij);
+      }
+      if (this.dbj != null) {
+        paramVarArgs.d(12, this.dbj);
+      }
+      AppMethodBeat.o(127459);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label439;
+      if (this.DhY != true) {
+        break label1014;
       }
     }
-    label439:
-    for (int i = e.a.a.a.iP(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label1014:
+    for (int i = f.a.a.b.b.a.bA(1, this.sourceType) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.cwc != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.cwc);
+      if (this.dpv != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.dpv);
       }
       i = paramInt;
-      if (this.signature != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.signature);
+      if (this.toUser != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.toUser);
       }
-      AppMethodBeat.o(10166);
-      return i;
+      paramInt = i;
+      if (this.Dib != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.Dib);
+      }
+      i = paramInt;
+      if (this.Did != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.Did);
+      }
+      paramInt = i;
+      if (this.hgE == true) {
+        paramInt = i + f.a.a.b.b.a.q(6, this.createTime);
+      }
+      i = paramInt;
+      if (this.dvT != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.dvT);
+      }
+      paramInt = i;
+      if (this.dAA != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.dAA);
+      }
+      i = paramInt;
+      if (this.appId != null) {
+        i = paramInt + f.a.a.b.b.a.e(9, this.appId);
+      }
+      paramInt = i;
+      if (this.link != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.link);
+      }
+      i = paramInt;
+      if (this.Dij != null) {
+        i = paramInt + f.a.a.b.b.a.e(11, this.Dij);
+      }
+      paramInt = i;
+      if (this.dbj != null) {
+        paramInt = i + f.a.a.b.b.a.e(12, this.dbj);
+      }
+      AppMethodBeat.o(127459);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = buy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = buy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(10166);
+        if (!this.DhY)
+        {
+          paramVarArgs = new b("Not all required fields were included: sourceType");
+          AppMethodBeat.o(127459);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(127459);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         aga localaga = (aga)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(10166);
+          AppMethodBeat.o(127459);
           return -1;
         case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new hq();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((hq)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localaga.BaseRequest = ((hq)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(10166);
+          localaga.sourceType = locala.KhF.xS();
+          localaga.DhY = true;
+          AppMethodBeat.o(127459);
           return 0;
         case 2: 
-          localaga.cwc = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(10166);
+          localaga.dpv = locala.KhF.readString();
+          localaga.DhZ = true;
+          AppMethodBeat.o(127459);
+          return 0;
+        case 3: 
+          localaga.toUser = locala.KhF.readString();
+          localaga.Dia = true;
+          AppMethodBeat.o(127459);
+          return 0;
+        case 4: 
+          localaga.Dib = locala.KhF.readString();
+          localaga.Dic = true;
+          AppMethodBeat.o(127459);
+          return 0;
+        case 5: 
+          localaga.Did = locala.KhF.readString();
+          localaga.Die = true;
+          AppMethodBeat.o(127459);
+          return 0;
+        case 6: 
+          localaga.createTime = locala.KhF.xT();
+          localaga.hgE = true;
+          AppMethodBeat.o(127459);
+          return 0;
+        case 7: 
+          localaga.dvT = locala.KhF.readString();
+          localaga.Dif = true;
+          AppMethodBeat.o(127459);
+          return 0;
+        case 8: 
+          localaga.dAA = locala.KhF.readString();
+          localaga.Dig = true;
+          AppMethodBeat.o(127459);
+          return 0;
+        case 9: 
+          localaga.appId = locala.KhF.readString();
+          localaga.Dih = true;
+          AppMethodBeat.o(127459);
+          return 0;
+        case 10: 
+          localaga.link = locala.KhF.readString();
+          localaga.Dii = true;
+          AppMethodBeat.o(127459);
+          return 0;
+        case 11: 
+          localaga.Dij = locala.KhF.readString();
+          localaga.Dik = true;
+          AppMethodBeat.o(127459);
           return 0;
         }
-        localaga.signature = ((e.a.a.a.a)localObject1).CLY.readString();
-        AppMethodBeat.o(10166);
+        localaga.dbj = locala.KhF.readString();
+        localaga.Dil = true;
+        AppMethodBeat.o(127459);
         return 0;
       }
-      AppMethodBeat.o(10166);
+      AppMethodBeat.o(127459);
       return -1;
     }
+  }
+  
+  public final aga vs(long paramLong)
+  {
+    this.createTime = paramLong;
+    this.hgE = true;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aga
  * JD-Core Version:    0.7.0.1
  */

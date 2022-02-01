@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.profile.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.az;
 
 final class c$15
   implements DialogInterface.OnCancelListener
@@ -13,15 +13,15 @@ final class c$15
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(23470);
-    aw.Rc().a(this.pzW);
-    aw.Rc().b(1363, this.pzT);
-    AppMethodBeat.o(23470);
+    AppMethodBeat.i(27085);
+    az.aeS().a(this.uBF);
+    az.aeS().b(1363, this.uBC);
+    AppMethodBeat.o(27085);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.c.15
  * JD-Core Version:    0.7.0.1
  */

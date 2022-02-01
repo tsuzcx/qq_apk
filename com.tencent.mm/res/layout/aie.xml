@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/a1b" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="@dimen/aew"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/lj" android:id="@id/dg9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
-    <com.tencent.mm.plugin.mmsight.api.MMSightRecordView android:id="@id/dg_" android:layout_width="300.0dip" android:layout_height="450.0dip" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/ahw" android:layout_width="125.0dip" android:layout_height="78.0dip" android:scaleType="centerInside" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    <Button android:id="@id/dga" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="take picture" android:layout_below="@id/dg_" android:layout_centerHorizontal="true" />
-    <Button android:id="@id/dgb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="start record" android:layout_below="@id/dga" android:layout_centerHorizontal="true" />
-    <Button android:id="@id/dgc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="switch camera" android:layout_below="@id/dgb" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/f7l" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:layout_gravity="left" android:id="@id/f7m" android:background="@drawable/a9n" android:layout_width="@dimen/d" android:layout_height="@dimen/d" />
+</LinearLayout>

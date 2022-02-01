@@ -1,145 +1,187 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.i;
+import java.util.LinkedList;
+import java.util.List;
 
-public final class ap
+final class ap
 {
-  public String cqq;
-  private String fXq;
-  public boolean fXr;
-  public long time;
-  public boolean yMK;
-  public String yML;
+  protected final long Fyp;
+  private ao Fyq;
   
-  public ap(String paramString)
+  public ap()
   {
-    AppMethodBeat.i(62699);
-    this.cqq = "-1";
-    this.yML = "";
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.e("MicroMsg.emoji.EmojiContent", "EmojiContent parse failed. content is null.");
-      AppMethodBeat.o(62699);
-      return;
-    }
-    for (;;)
-    {
+    AppMethodBeat.i(117134);
+    this.Fyp = 86400L;
+    this.Fyq = new ao();
+    Object localObject = new StringBuilder();
+    g.afC();
+    localObject = i.aR(g.afB().cachePath + "checkmsgid.ini", 0, -1);
+    if (!bt.cw((byte[])localObject)) {
       try
       {
-        Object localObject;
-        if (paramString.endsWith("\n"))
-        {
-          localObject = paramString.substring(0, paramString.length() - 1);
-          localObject = ((String)localObject).split(":", 6);
-          if ((localObject.length == 4) && (ad.nM(localObject[0])))
-          {
-            i = 1;
-            if (localObject.length > i) {
-              this.fXq = localObject[i];
-            }
-            if (localObject.length > i + 1) {
-              this.time = bo.getLong(localObject[(i + 1)], 0L);
-            }
-            if (localObject.length > i + 2) {
-              this.fXr = localObject[(i + 2)].equals("1");
-            }
-            if (localObject.length > i + 3) {
-              this.cqq = localObject[(i + 3)];
-            }
-            if (localObject.length > i + 4) {
-              this.yML = localObject[(i + 4)].replace("*#*", ":");
-            }
-            if (localObject.length > i + 5) {
-              this.yMK = localObject[(i + 5)].equals("1");
-            }
-            AppMethodBeat.o(62699);
-          }
+        this.Fyq.parseFrom((byte[])localObject);
+        if (eLs()) {
+          eLr();
         }
-        else
-        {
-          this.yML = paramString.replace(":", "*#*");
-          localObject = paramString;
-          continue;
-        }
-        int i = 0;
+        AppMethodBeat.o(117134);
+        return;
       }
       catch (Exception localException)
       {
-        this.time = 0L;
-        ab.e("MicroMsg.emoji.EmojiContent", "EmojiContent parse failed. Content:%s Excpetion:%s", new Object[] { paramString, bo.l(localException) });
-        AppMethodBeat.o(62699);
+        ad.w("MicroMsg.DelSvrIdMgr", "DelSvrIDs parse Error");
+        ad.e("MicroMsg.DelSvrIdMgr", "exception:%s", new Object[] { bt.m(localException) });
+      }
+    }
+    AppMethodBeat.o(117134);
+  }
+  
+  private void eLr()
+  {
+    AppMethodBeat.i(117135);
+    ad.i("MicroMsg.DelSvrIdMgr", "summerdel toFile tid[%d] [%d, %d ,%d] stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(this.Fyq.Fym.size()), Integer.valueOf(this.Fyq.Fyn.size()), Integer.valueOf(this.Fyq.Fyo.size()), bt.eGN() });
+    try
+    {
+      this.Fyq.Fyl.clear();
+      this.Fyq.Fyk.clear();
+      this.Fyq.Fyj.clear();
+      ao localao = new ao();
+      localao.Fym.addAll(this.Fyq.Fym);
+      localao.Fyn.addAll(this.Fyq.Fyn);
+      localao.Fyo.addAll(this.Fyq.Fyo);
+      byte[] arrayOfByte = localao.toByteArray();
+      StringBuilder localStringBuilder = new StringBuilder();
+      g.afC();
+      i.f(g.afB().cachePath + "checkmsgid.ini", arrayOfByte, arrayOfByte.length);
+      int j = localao.Fym.size();
+      int k = localao.Fyn.size();
+      int m = localao.Fyo.size();
+      if (arrayOfByte == null) {}
+      for (int i = -1;; i = arrayOfByte.length)
+      {
+        ad.i("MicroMsg.DelSvrIdMgr", "summerdel toFile done [%d, %d, %d] data len[%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i) });
+        AppMethodBeat.o(117135);
         return;
       }
+      return;
+    }
+    catch (Exception localException)
+    {
+      com.tencent.mm.plugin.report.e.vIY.idkeyStat(111L, 168L, 1L, false);
+      ad.printErrStackTrace("MicroMsg.DelSvrIdMgr", localException, "summerdel ", new Object[0]);
+      AppMethodBeat.o(117135);
     }
   }
   
-  public static String a(String paramString1, long paramLong, boolean paramBoolean1, String paramString2, boolean paramBoolean2, String paramString3)
+  private boolean eLs()
   {
-    int j = 1;
-    AppMethodBeat.i(62697);
-    paramString3 = paramString3.replace(":", "*#*");
-    paramString1 = new StringBuilder().append(paramString1).append(":").append(paramLong).append(":");
-    if (paramBoolean1)
+    AppMethodBeat.i(117140);
+    ad.v("MicroMsg.DelSvrIdMgr", "checkOldData todayIndex:%d, t0Size:%d, t1Size:%d, t2Size:%d", new Object[] { Integer.valueOf(this.Fyq.Fyi), Integer.valueOf(this.Fyq.Fym.size()), Integer.valueOf(this.Fyq.Fyn.size()), Integer.valueOf(this.Fyq.Fyo.size()) });
+    int i = (int)(bt.aGK() / 86400L);
+    int j = this.Fyq.Fyi;
+    this.Fyq.Fyi = i;
+    switch (i - j)
     {
-      i = 1;
-      paramString1 = paramString1.append(i).append(":").append(paramString2).append(":").append(paramString3).append(":");
-      if (!paramBoolean2) {
-        break label121;
+    default: 
+      this.Fyq.Fyo.clear();
+      this.Fyq.Fyn.clear();
+      this.Fyq.Fym.clear();
+      AppMethodBeat.o(117140);
+      return true;
+    case 0: 
+      AppMethodBeat.o(117140);
+      return false;
+    case 1: 
+      this.Fyq.Fyo = this.Fyq.Fyn;
+      this.Fyq.Fyn = this.Fyq.Fym;
+      this.Fyq.Fym.clear();
+      AppMethodBeat.o(117140);
+      return true;
+    }
+    this.Fyq.Fyo = this.Fyq.Fym;
+    this.Fyq.Fyn.clear();
+    this.Fyq.Fym.clear();
+    AppMethodBeat.o(117140);
+    return true;
+  }
+  
+  protected final void E(List<Integer> paramList, List<Long> paramList1)
+  {
+    AppMethodBeat.i(117139);
+    ad.i("MicroMsg.DelSvrIdMgr", "add size:%d", new Object[] { Integer.valueOf(paramList.size()) });
+    eLs();
+    int j = (int)(bt.aGK() / 86400L);
+    int i = 0;
+    while (i < paramList.size())
+    {
+      b(j, ((Integer)paramList.get(i)).intValue(), ((Long)paramList1.get(i)).longValue(), false);
+      i += 1;
+    }
+    eLr();
+    AppMethodBeat.o(117139);
+  }
+  
+  protected final void b(int paramInt, long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(117138);
+    if (paramLong1 == 0L)
+    {
+      AppMethodBeat.o(117138);
+      return;
+    }
+    if (paramBoolean) {
+      eLs();
+    }
+    paramInt -= (int)(paramLong2 / 86400L);
+    switch (paramInt)
+    {
+    default: 
+      ad.e("MicroMsg.DelSvrIdMgr", "should not add to thease lists, dayIndex:%d", new Object[] { Integer.valueOf(paramInt) });
+    }
+    for (;;)
+    {
+      if (paramBoolean) {
+        eLr();
       }
-    }
-    label121:
-    for (int i = j;; i = 0)
-    {
-      paramString1 = i + "\n";
-      AppMethodBeat.o(62697);
-      return paramString1;
-      i = 0;
-      break;
+      AppMethodBeat.o(117138);
+      return;
+      this.Fyq.Fym.add(Long.valueOf(paramLong1));
+      continue;
+      this.Fyq.Fyn.add(Long.valueOf(paramLong1));
+      continue;
+      this.Fyq.Fyo.add(Long.valueOf(paramLong1));
     }
   }
   
-  public static ap arZ(String paramString)
+  protected final void m(int paramInt, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(62700);
-    paramString = new ap(paramString);
-    AppMethodBeat.o(62700);
-    return paramString;
+    AppMethodBeat.i(117137);
+    b(paramInt, paramLong1, paramLong2, true);
+    AppMethodBeat.o(117137);
   }
   
-  public final String alM()
+  protected final boolean wm(long paramLong)
   {
-    return this.fXq;
-  }
-  
-  public final String dxr()
-  {
-    int j = 1;
-    AppMethodBeat.i(62698);
-    Object localObject = new StringBuilder().append(this.fXq).append(":").append(this.time).append(":");
-    if (this.fXr)
-    {
-      i = 1;
-      localObject = ((StringBuilder)localObject).append(i).append(":").append(this.cqq).append(":").append(this.yML).append(":");
-      if (!this.yMK) {
-        break label118;
-      }
+    AppMethodBeat.i(117136);
+    if (eLs()) {
+      eLr();
     }
-    label118:
-    for (int i = j;; i = 0)
+    if ((this.Fyq.Fym.contains(Long.valueOf(paramLong))) || (this.Fyq.Fyn.contains(Long.valueOf(paramLong))) || (this.Fyq.Fyo.contains(Long.valueOf(paramLong))))
     {
-      localObject = i + "\n";
-      AppMethodBeat.o(62698);
-      return localObject;
-      i = 0;
-      break;
+      AppMethodBeat.o(117136);
+      return true;
     }
+    AppMethodBeat.o(117136);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.ap
  * JD-Core Version:    0.7.0.1
  */

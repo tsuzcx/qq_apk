@@ -5,55 +5,55 @@ import a.a.a.b;
 public final class m
   extends com.tencent.mm.d.a
 {
-  public String VL;
-  public boolean VM;
-  public String Vm;
+  public String XG;
+  public boolean XH;
+  public String Xh;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.Vm == null) {
+      if (this.Xh == null) {
         throw new b("Not all required fields were included: Username");
       }
-      if (this.VL == null) {
+      if (this.XG == null) {
         throw new b("Not all required fields were included: Language");
       }
-      if (this.Vm != null) {
-        paramVarArgs.d(1, this.Vm);
+      if (this.Xh != null) {
+        paramVarArgs.d(1, this.Xh);
       }
-      if (this.VL != null) {
-        paramVarArgs.d(2, this.VL);
+      if (this.XG != null) {
+        paramVarArgs.d(2, this.XG);
       }
-      paramVarArgs.g(3, this.VM);
+      paramVarArgs.h(3, this.XH);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Vm == null) {
+      if (this.Xh == null) {
         break label324;
       }
     }
     label324:
-    for (paramInt = a.a.a.b.b.a.e(1, this.Vm) + 0;; paramInt = 0)
+    for (paramInt = a.a.a.b.b.a.e(1, this.Xh) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.VL != null) {
-        i = paramInt + a.a.a.b.b.a.e(2, this.VL);
+      if (this.XG != null) {
+        i = paramInt + a.a.a.b.b.a.e(2, this.XG);
       }
-      return i + (a.a.a.b.b.a.cp(3) + 1);
+      return i + (a.a.a.b.b.a.cK(3) + 1);
       if (paramInt == 2)
       {
-        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-        for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+        for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
           if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.oz();
+            paramVarArgs.pm();
           }
         }
-        if (this.Vm == null) {
+        if (this.Xh == null) {
           throw new b("Not all required fields were included: Username");
         }
-        if (this.VL != null) {
+        if (this.XG != null) {
           break;
         }
         throw new b("Not all required fields were included: Language");
@@ -67,13 +67,13 @@ public final class m
         default: 
           return -1;
         case 1: 
-          localm.Vm = locala.ou();
+          localm.Xh = locala.ph();
           return 0;
         case 2: 
-          localm.VL = locala.ou();
+          localm.XG = locala.ph();
           return 0;
         }
-        localm.VM = locala.ov();
+        localm.XH = locala.pi();
         return 0;
       }
       return -1;

@@ -1,74 +1,36 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ui;
 
-import android.app.Activity;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.jsapi.l.i;
+import com.tencent.mm.plugin.appbrand.page.b.h;
+import d.l;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/JsApiShowStatusBar;", "Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiPageExtensionBased;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewStatusBarExtension;", "()V", "invokeByExt", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "ext", "Companion", "luggage-wxa-app-jsapi_release"})
 public final class e
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<c>
+  extends i<d, h>
 {
-  private static final int CTRL_INDEX = 580;
-  private static final String NAME = "showVirtualBottomNavigationBar";
+  private static final int CTRL_INDEX = 470;
+  private static final String NAME = "showStatusBar";
+  @Deprecated
+  public static final a klZ;
   
-  private static void y(c paramc)
+  static
   {
-    AppMethodBeat.i(74817);
-    paramc = com.tencent.mm.sdk.f.a.hr(paramc.getContext());
-    if (paramc == null)
-    {
-      ab.i("JsApiShowVirtualBottomNavigationBar", "null == activity");
-      AppMethodBeat.o(74817);
-      return;
-    }
-    paramc = paramc.getWindow();
-    if (paramc == null)
-    {
-      ab.i("JsApiShowVirtualBottomNavigationBar", "null == window");
-      AppMethodBeat.o(74817);
-      return;
-    }
-    int j = paramc.getDecorView().getSystemUiVisibility();
-    int i = j;
-    if (Build.VERSION.SDK_INT >= 20) {
-      i = j & 0xFFFFFDFF & 0xFFFFFFFD;
-    }
-    j = i;
-    if (Build.VERSION.SDK_INT >= 19) {
-      j = i & 0xFFFFEFFF;
-    }
-    paramc.getDecorView().setSystemUiVisibility(j & 0xFFFFFEFF);
-    paramc.getDecorView().setOnSystemUiVisibilityChangeListener(null);
-    AppMethodBeat.o(74817);
+    AppMethodBeat.i(138294);
+    klZ = new a((byte)0);
+    NAME = "showStatusBar";
+    CTRL_INDEX = 470;
+    AppMethodBeat.o(138294);
   }
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public e()
   {
-    AppMethodBeat.i(74815);
-    c(paramc, paramInt);
-    AppMethodBeat.o(74815);
+    super(h.class);
   }
   
-  final void c(c paramc, int paramInt)
-  {
-    AppMethodBeat.i(74816);
-    if (!al.isMainThread())
-    {
-      al.d(new e.1(this, paramc, paramInt));
-      AppMethodBeat.o(74816);
-      return;
-    }
-    ab.i("JsApiShowVirtualBottomNavigationBar", "show");
-    y(paramc);
-    paramc.h(paramInt, j("ok", null));
-    AppMethodBeat.o(74816);
-  }
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/JsApiShowStatusBar$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-wxa-app-jsapi_release"})
+  static final class a {}
 }
 
 

@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class im
   extends b
 {
-  public a cxT;
+  public a dmu;
   
   public im()
   {
@@ -16,23 +15,21 @@ public final class im
   
   private im(byte paramByte)
   {
-    AppMethodBeat.i(15778);
-    this.cxT = new a();
-    this.ymq = false;
+    AppMethodBeat.i(123478);
+    this.dmu = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15778);
+    AppMethodBeat.o(123478);
   }
   
   public static final class a
   {
-    public String[] cmj;
-    public Context context;
-    public String[] selectionArgs;
+    public int dlp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.im
  * JD-Core Version:    0.7.0.1
  */

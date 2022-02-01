@@ -18,13 +18,13 @@ import android.widget.FrameLayout;
 public class WatchViewStub
   extends FrameLayout
 {
-  private boolean At;
-  private int DQ;
-  private int DR;
-  private boolean DS;
-  private boolean DT;
-  private boolean DU;
-  private w DV;
+  private boolean Ci;
+  private int FF;
+  private int FG;
+  private boolean FH;
+  private boolean FI;
+  private boolean FJ;
+  private w FK;
   
   public WatchViewStub(Context paramContext)
   {
@@ -39,29 +39,29 @@ public class WatchViewStub
   public WatchViewStub(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, k.yf, 0, 0);
-    this.DQ = paramContext.getResourceId(k.yg, 0);
-    this.DR = paramContext.getResourceId(k.yh, 0);
-    this.DS = true;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, k.zU, 0, 0);
+    this.FF = paramContext.getResourceId(k.zV, 0);
+    this.FG = paramContext.getResourceId(k.zW, 0);
+    this.FH = true;
     paramContext.recycle();
   }
   
-  private void fu()
+  private void fD()
   {
     removeAllViews();
-    if ((this.DR == 0) && (!isInEditMode())) {
+    if ((this.FG == 0) && (!isInEditMode())) {
       throw new IllegalStateException("You must supply a roundLayout resource");
     }
-    if ((this.DQ == 0) && (!isInEditMode())) {
+    if ((this.FF == 0) && (!isInEditMode())) {
       throw new IllegalStateException("You must supply a rectLayout resource");
     }
-    if (this.At) {}
-    for (int i = this.DR;; i = this.DQ)
+    if (this.Ci) {}
+    for (int i = this.FG;; i = this.FF)
     {
       LayoutInflater.from(getContext()).inflate(i, this);
-      this.DS = false;
-      if (this.DV != null) {
-        this.DV.a(this);
+      this.FH = false;
+      if (this.FK != null) {
+        this.FK.a(this);
       }
       return;
     }
@@ -69,20 +69,20 @@ public class WatchViewStub
   
   public final void a(w paramw)
   {
-    this.DV = paramw;
+    this.FK = paramw;
   }
   
   public WindowInsets onApplyWindowInsets(WindowInsets paramWindowInsets)
   {
-    this.DT = true;
+    this.FI = true;
     boolean bool = paramWindowInsets.isRound();
-    if (bool != this.At)
+    if (bool != this.Ci)
     {
-      this.At = bool;
-      this.DS = true;
+      this.Ci = bool;
+      this.FH = true;
     }
-    if (this.DS) {
-      fu();
+    if (this.FH) {
+      fD();
     }
     return paramWindowInsets;
   }
@@ -99,8 +99,8 @@ public class WatchViewStub
     }
     for (;;)
     {
-      this.DU = bool;
-      this.DT = false;
+      this.FJ = bool;
+      this.FI = false;
       requestApplyInsets();
       return;
       bool = false;
@@ -111,7 +111,7 @@ public class WatchViewStub
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.DU) && (!this.DT)) {
+    if ((this.FJ) && (!this.FI)) {
       Log.w("WatchViewStub", "onApplyWindowInsets was not called. WatchViewStub should be the the root of your layout. If an OnApplyWindowInsetsListener was attached to this view, it must forward the insets on by calling view.onApplyWindowInsets.");
     }
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
@@ -119,8 +119,8 @@ public class WatchViewStub
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    if ((this.DS) && (!this.DU)) {
-      fu();
+    if ((this.FH) && (!this.FJ)) {
+      fD();
     }
     super.onMeasure(paramInt1, paramInt2);
   }

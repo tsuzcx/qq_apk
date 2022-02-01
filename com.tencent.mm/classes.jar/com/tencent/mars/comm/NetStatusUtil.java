@@ -11,6 +11,8 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build.VERSION;
 import android.provider.Settings.System;
+import android.telephony.PhoneStateListener;
+import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
 import java.lang.reflect.Method;
 
@@ -27,6 +29,7 @@ public class NetStatusUtil
   public static final int NET_3G = 4;
   public static final int NON_NETWORK = -1;
   public static final int NO_SIM_OPERATOR = 0;
+  public static final int NR_5G = 11;
   public static final int POLICY_NONE = 0;
   public static final int POLICY_REJECT_METERED_BACKGROUND = 1;
   private static final String TAG = "MicroMsg.NetStatusUtil";
@@ -40,6 +43,7 @@ public class NetStatusUtil
   public static final int WAP_3G = 3;
   public static final int WIFI = 0;
   private static int nowStrength = 0;
+  private byte _hellAccFlag_;
   
   public static void dumpNetStatus(Context paramContext)
   {
@@ -145,6 +149,9 @@ public class NetStatusUtil
   
   public static int getNetType(Context paramContext)
   {
+    if (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0) {
+      return -1;
+    }
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
     if (paramContext == null) {
       return -1;
@@ -196,6 +203,9 @@ public class NetStatusUtil
     }
     try
     {
+      if (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0) {
+        return 999;
+      }
       paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
       if (paramContext == null) {
         return 999;
@@ -219,6 +229,9 @@ public class NetStatusUtil
   
   public static String getNetTypeString(Context paramContext)
   {
+    if (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0) {
+      return "NON_NETWORK";
+    }
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
     if (paramContext == null) {
       return "NON_NETWORK";
@@ -240,6 +253,9 @@ public class NetStatusUtil
   {
     try
     {
+      if (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0) {
+        return -1;
+      }
       paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
       if (paramContext != null)
       {
@@ -293,7 +309,7 @@ public class NetStatusUtil
       if (getNetTypeForStat(paramContext) == 1) {
         return Math.abs(((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getRssi());
       }
-      ((TelephonyManager)paramContext.getSystemService("phone")).listen(new NetStatusUtil.StrengthListener(), 256);
+      ((TelephonyManager)paramContext.getSystemService("phone")).listen(new StrengthListener(), 256);
       int i = Math.abs(nowStrength);
       return i;
     }
@@ -305,6 +321,9 @@ public class NetStatusUtil
   {
     try
     {
+      if (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0) {
+        return null;
+      }
       Object localObject = (ConnectivityManager)paramContext.getSystemService("connectivity");
       if (localObject == null) {
         return null;
@@ -336,6 +355,9 @@ public class NetStatusUtil
   {
     try
     {
+      if (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0) {
+        return 102400;
+      }
       paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
       if (paramContext.getType() == 1) {
         return 102400;
@@ -347,8 +369,8 @@ public class NetStatusUtil
     }
     catch (Exception paramContext)
     {
-      label104:
-      break label104;
+      label120:
+      break label120;
     }
     return 102400;
     return 4096;
@@ -360,14 +382,17 @@ public class NetStatusUtil
   {
     try
     {
+      if (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0) {
+        return false;
+      }
       paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
       if (paramContext.getType() == 1) {
         return false;
       }
-      if ((paramContext.getSubtype() != 2) && (paramContext.getSubtype() != 1))
+      if ((paramContext.getSubtype() != 2) && (paramContext.getSubtype() != 1) && (paramContext.getSubtype() != 4) && (paramContext.getSubtype() != 16) && (paramContext.getSubtype() != 7))
       {
         int i = paramContext.getSubtype();
-        if (i != 4) {}
+        if (i != 11) {}
       }
       else
       {
@@ -382,11 +407,14 @@ public class NetStatusUtil
   {
     try
     {
+      if (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0) {
+        return false;
+      }
       paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
       if (paramContext.getType() == 1) {
         return false;
       }
-      if (paramContext.getSubtype() >= 5)
+      if (paramContext.getSubtype() >= 3)
       {
         int i = paramContext.getSubtype();
         if (i < 13) {
@@ -402,12 +430,40 @@ public class NetStatusUtil
   {
     try
     {
+      if (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0) {
+        return false;
+      }
+      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      if (paramContext.getType() == 1) {
+        return false;
+      }
+      if (paramContext.getSubtype() != 13)
+      {
+        int i = paramContext.getSubtype();
+        if (i != 18) {}
+      }
+      else
+      {
+        return true;
+      }
+    }
+    catch (Exception paramContext) {}
+    return false;
+  }
+  
+  public static boolean is5G(Context paramContext)
+  {
+    try
+    {
+      if (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0) {
+        return false;
+      }
       paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
       if (paramContext.getType() == 1) {
         return false;
       }
       int i = paramContext.getSubtype();
-      if (i >= 13) {
+      if (i >= 20) {
         return true;
       }
     }
@@ -417,14 +473,22 @@ public class NetStatusUtil
   
   public static boolean isConnected(Context paramContext)
   {
+    if (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0) {
+      return false;
+    }
     paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
     try
     {
-      boolean bool = paramContext.isConnected();
+      bool = paramContext.isConnected();
       return bool;
     }
-    catch (Exception paramContext) {}
-    return false;
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        boolean bool = false;
+      }
+    }
   }
   
   public static boolean isImmediatelyDestroyActivities(Context paramContext)
@@ -451,6 +515,9 @@ public class NetStatusUtil
   {
     try
     {
+      if (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0) {
+        return false;
+      }
       int i = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo().getType();
       return i != 1;
     }
@@ -460,6 +527,9 @@ public class NetStatusUtil
   
   public static boolean isNetworkConnected(Context paramContext)
   {
+    if (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0) {
+      return false;
+    }
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
     if (paramContext == null) {
       return false;
@@ -496,129 +566,156 @@ public class NetStatusUtil
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 317	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
+    //   1: invokevirtual 328	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
     //   4: astore 5
     //   6: aload 5
     //   8: iconst_0
-    //   9: invokevirtual 323	android/content/pm/PackageManager:getInstalledPackages	(I)Ljava/util/List;
+    //   9: invokevirtual 334	android/content/pm/PackageManager:getInstalledPackages	(I)Ljava/util/List;
     //   12: astore 6
     //   14: aload 6
-    //   16: ifnull +199 -> 215
+    //   16: ifnull +269 -> 285
     //   19: aload 6
-    //   21: invokeinterface 328 1 0
-    //   26: ifle +189 -> 215
+    //   21: invokeinterface 339 1 0
+    //   26: ifle +259 -> 285
     //   29: iconst_0
     //   30: istore_2
     //   31: aload 6
-    //   33: invokeinterface 328 1 0
+    //   33: invokeinterface 339 1 0
     //   38: istore_3
     //   39: iload_2
     //   40: iload_3
-    //   41: if_icmpge +174 -> 215
-    //   44: new 330	android/content/Intent
+    //   41: if_icmpge +244 -> 285
+    //   44: new 341	android/content/Intent
     //   47: dup
-    //   48: invokespecial 331	android/content/Intent:<init>	()V
+    //   48: invokespecial 342	android/content/Intent:<init>	()V
     //   51: astore 7
     //   53: aload 7
     //   55: aload 6
     //   57: iload_2
-    //   58: invokeinterface 335 2 0
-    //   63: checkcast 337	android/content/pm/PackageInfo
-    //   66: getfield 340	android/content/pm/PackageInfo:packageName	Ljava/lang/String;
-    //   69: invokevirtual 344	android/content/Intent:setPackage	(Ljava/lang/String;)Landroid/content/Intent;
+    //   58: invokeinterface 346 2 0
+    //   63: checkcast 348	android/content/pm/PackageInfo
+    //   66: getfield 351	android/content/pm/PackageInfo:packageName	Ljava/lang/String;
+    //   69: invokevirtual 355	android/content/Intent:setPackage	(Ljava/lang/String;)Landroid/content/Intent;
     //   72: pop
     //   73: aload 5
     //   75: aload 7
     //   77: iconst_0
-    //   78: invokevirtual 348	android/content/pm/PackageManager:queryIntentActivities	(Landroid/content/Intent;I)Ljava/util/List;
+    //   78: invokevirtual 359	android/content/pm/PackageManager:queryIntentActivities	(Landroid/content/Intent;I)Ljava/util/List;
     //   81: astore 8
     //   83: aload 8
-    //   85: ifnull +106 -> 191
+    //   85: ifnull +176 -> 261
     //   88: aload 8
-    //   90: invokeinterface 328 1 0
+    //   90: invokeinterface 339 1 0
     //   95: istore_3
     //   96: iload_3
-    //   97: ifle +110 -> 207
+    //   97: ifle +180 -> 277
     //   100: iconst_0
     //   101: istore 4
     //   103: iload 4
     //   105: iload_3
-    //   106: if_icmpge +101 -> 207
+    //   106: if_icmpge +171 -> 277
     //   109: aload 8
     //   111: iload 4
-    //   113: invokeinterface 335 2 0
-    //   118: checkcast 350	android/content/pm/ResolveInfo
-    //   121: getfield 354	android/content/pm/ResolveInfo:activityInfo	Landroid/content/pm/ActivityInfo;
+    //   113: invokeinterface 346 2 0
+    //   118: checkcast 361	android/content/pm/ResolveInfo
+    //   121: getfield 365	android/content/pm/ResolveInfo:activityInfo	Landroid/content/pm/ActivityInfo;
     //   124: astore 7
     //   126: aload 7
-    //   128: getfield 359	android/content/pm/ActivityInfo:name	Ljava/lang/String;
+    //   128: getfield 370	android/content/pm/ActivityInfo:name	Ljava/lang/String;
     //   131: aload_1
-    //   132: invokevirtual 363	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   135: ifeq +61 -> 196
-    //   138: new 330	android/content/Intent
+    //   132: invokevirtual 374	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   135: ifeq +131 -> 266
+    //   138: new 341	android/content/Intent
     //   141: dup
-    //   142: ldc_w 365
-    //   145: invokespecial 368	android/content/Intent:<init>	(Ljava/lang/String;)V
+    //   142: ldc_w 376
+    //   145: invokespecial 379	android/content/Intent:<init>	(Ljava/lang/String;)V
     //   148: astore 8
     //   150: aload 8
-    //   152: new 370	android/content/ComponentName
+    //   152: new 381	android/content/ComponentName
     //   155: dup
     //   156: aload 7
-    //   158: getfield 371	android/content/pm/ActivityInfo:packageName	Ljava/lang/String;
+    //   158: getfield 382	android/content/pm/ActivityInfo:packageName	Ljava/lang/String;
     //   161: aload 7
-    //   163: getfield 359	android/content/pm/ActivityInfo:name	Ljava/lang/String;
-    //   166: invokespecial 374	android/content/ComponentName:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   169: invokevirtual 378	android/content/Intent:setComponent	(Landroid/content/ComponentName;)Landroid/content/Intent;
+    //   163: getfield 370	android/content/pm/ActivityInfo:name	Ljava/lang/String;
+    //   166: invokespecial 385	android/content/ComponentName:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   169: invokevirtual 389	android/content/Intent:setComponent	(Landroid/content/ComponentName;)Landroid/content/Intent;
     //   172: pop
     //   173: aload 8
-    //   175: ldc_w 380
-    //   178: invokevirtual 383	android/content/Intent:setAction	(Ljava/lang/String;)Landroid/content/Intent;
+    //   175: ldc_w 391
+    //   178: invokevirtual 394	android/content/Intent:setAction	(Ljava/lang/String;)Landroid/content/Intent;
     //   181: pop
-    //   182: aload_0
-    //   183: aload 8
-    //   185: invokevirtual 387	android/content/Context:startActivity	(Landroid/content/Intent;)V
-    //   188: aload 8
-    //   190: areturn
-    //   191: iconst_0
-    //   192: istore_3
-    //   193: goto -97 -> 96
-    //   196: iload 4
-    //   198: iconst_1
-    //   199: iadd
-    //   200: istore 4
-    //   202: goto -99 -> 103
-    //   205: astore 7
-    //   207: iload_2
-    //   208: iconst_1
-    //   209: iadd
-    //   210: istore_2
-    //   211: goto -180 -> 31
-    //   214: astore_0
-    //   215: aconst_null
-    //   216: areturn
-    //   217: astore 7
-    //   219: goto -12 -> 207
+    //   182: new 396	com/tencent/mm/hellhoundlib/b/a
+    //   185: dup
+    //   186: invokespecial 397	com/tencent/mm/hellhoundlib/b/a:<init>	()V
+    //   189: aload 8
+    //   191: invokevirtual 401	com/tencent/mm/hellhoundlib/b/a:bd	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
+    //   194: astore 7
+    //   196: aload_0
+    //   197: aload 7
+    //   199: invokevirtual 405	com/tencent/mm/hellhoundlib/b/a:adn	()[Ljava/lang/Object;
+    //   202: ldc_w 406
+    //   205: ldc_w 407
+    //   208: ldc_w 408
+    //   211: ldc_w 410
+    //   214: ldc_w 412
+    //   217: ldc_w 414
+    //   220: invokestatic 420	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;[Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   223: aload_0
+    //   224: aload 7
+    //   226: iconst_0
+    //   227: invokevirtual 423	com/tencent/mm/hellhoundlib/b/a:lS	(I)Ljava/lang/Object;
+    //   230: checkcast 341	android/content/Intent
+    //   233: invokevirtual 425	android/content/Context:startActivity	(Landroid/content/Intent;)V
+    //   236: aload_0
+    //   237: ldc_w 406
+    //   240: ldc_w 407
+    //   243: ldc_w 408
+    //   246: ldc_w 410
+    //   249: ldc_w 412
+    //   252: ldc_w 414
+    //   255: invokestatic 428	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   258: aload 8
+    //   260: areturn
+    //   261: iconst_0
+    //   262: istore_3
+    //   263: goto -167 -> 96
+    //   266: iload 4
+    //   268: iconst_1
+    //   269: iadd
+    //   270: istore 4
+    //   272: goto -169 -> 103
+    //   275: astore 7
+    //   277: iload_2
+    //   278: iconst_1
+    //   279: iadd
+    //   280: istore_2
+    //   281: goto -250 -> 31
+    //   284: astore_0
+    //   285: aconst_null
+    //   286: areturn
+    //   287: astore 7
+    //   289: goto -12 -> 277
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	222	0	paramContext	Context
-    //   0	222	1	paramString	String
-    //   30	181	2	i	int
-    //   38	155	3	j	int
-    //   101	100	4	k	int
+    //   0	292	0	paramContext	Context
+    //   0	292	1	paramString	String
+    //   30	251	2	i	int
+    //   38	225	3	j	int
+    //   101	170	4	k	int
     //   4	70	5	localPackageManager	android.content.pm.PackageManager
     //   12	44	6	localList	java.util.List
-    //   51	111	7	localObject1	Object
-    //   205	1	7	localException1	Exception
-    //   217	1	7	localException2	Exception
-    //   81	108	8	localObject2	Object
+    //   51	174	7	localObject1	Object
+    //   275	1	7	localException1	Exception
+    //   287	1	7	localException2	Exception
+    //   81	178	8	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   44	83	205	java/lang/Exception
-    //   88	96	205	java/lang/Exception
-    //   0	14	214	java/lang/Exception
-    //   19	29	214	java/lang/Exception
-    //   31	39	214	java/lang/Exception
-    //   109	188	217	java/lang/Exception
+    //   44	83	275	java/lang/Exception
+    //   88	96	275	java/lang/Exception
+    //   0	14	284	java/lang/Exception
+    //   19	29	284	java/lang/Exception
+    //   31	39	284	java/lang/Exception
+    //   109	258	287	java/lang/Exception
   }
   
   public static void startSettingItent(Context paramContext, int paramInt)
@@ -631,20 +728,26 @@ public class NetStatusUtil
     case 2: 
       try
       {
-        Intent localIntent1 = new Intent("/");
-        localIntent1.setComponent(new ComponentName("com.android.providers.subscribedfeeds", "com.android.settings.ManageAccountsSettings"));
-        localIntent1.setAction("android.intent.action.VIEW");
-        paramContext.startActivity(localIntent1);
+        Object localObject1 = new Intent("/");
+        ((Intent)localObject1).setComponent(new ComponentName("com.android.providers.subscribedfeeds", "com.android.settings.ManageAccountsSettings"));
+        ((Intent)localObject1).setAction("android.intent.action.VIEW");
+        localObject1 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject1);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject1).adn(), "com/tencent/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).lS(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         return;
       }
       catch (Exception localException1)
       {
         try
         {
-          Intent localIntent2 = new Intent("/");
-          localIntent2.setComponent(new ComponentName("com.htc.settings.accountsync", "com.htc.settings.accountsync.ManageAccountsSettings"));
-          localIntent2.setAction("android.intent.action.VIEW");
-          paramContext.startActivity(localIntent2);
+          Object localObject2 = new Intent("/");
+          ((Intent)localObject2).setComponent(new ComponentName("com.htc.settings.accountsync", "com.htc.settings.accountsync.ManageAccountsSettings"));
+          ((Intent)localObject2).setAction("android.intent.action.VIEW");
+          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject2);
+          com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject2).adn(), "com/tencent/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lS(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           return;
         }
         catch (Exception localException2)
@@ -656,10 +759,13 @@ public class NetStatusUtil
     case 1: 
       try
       {
-        Intent localIntent3 = new Intent("/");
-        localIntent3.setComponent(new ComponentName("com.android.settings", "com.android.settings.DevelopmentSettings"));
-        localIntent3.setAction("android.intent.action.VIEW");
-        paramContext.startActivity(localIntent3);
+        Object localObject3 = new Intent("/");
+        ((Intent)localObject3).setComponent(new ComponentName("com.android.settings", "com.android.settings.DevelopmentSettings"));
+        ((Intent)localObject3).setAction("android.intent.action.VIEW");
+        localObject3 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject3);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject3).adn(), "com/tencent/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject3).lS(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         return;
       }
       catch (Exception localException3)
@@ -670,9 +776,12 @@ public class NetStatusUtil
     }
     try
     {
-      Intent localIntent4 = new Intent();
-      localIntent4.setAction("android.settings.WIFI_IP_SETTINGS");
-      paramContext.startActivity(localIntent4);
+      Object localObject4 = new Intent();
+      ((Intent)localObject4).setAction("android.settings.WIFI_IP_SETTINGS");
+      localObject4 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject4);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject4).adn(), "com/tencent/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject4).lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       return;
     }
     catch (Exception localException4)
@@ -680,10 +789,25 @@ public class NetStatusUtil
       searchIntentByClass(paramContext, "AdvancedSettings");
     }
   }
+  
+  public static class StrengthListener
+    extends PhoneStateListener
+  {
+    public void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
+    {
+      super.onSignalStrengthsChanged(paramSignalStrength);
+      if (!paramSignalStrength.isGsm())
+      {
+        NetStatusUtil.access$002(paramSignalStrength.getCdmaDbm());
+        return;
+      }
+      NetStatusUtil.access$002(paramSignalStrength.getGsmSignalStrength());
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.comm.NetStatusUtil
  * JD-Core Version:    0.7.0.1
  */

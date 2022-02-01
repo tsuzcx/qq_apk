@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public final class h
 {
-  private long[] baR;
+  private long[] byS;
   public int size;
   
   public h()
@@ -15,43 +15,43 @@ public final class h
   
   private h(byte paramByte)
   {
-    AppMethodBeat.i(95876);
-    this.baR = new long[32];
-    AppMethodBeat.o(95876);
+    AppMethodBeat.i(93136);
+    this.byS = new long[32];
+    AppMethodBeat.o(93136);
   }
   
   public final void add(long paramLong)
   {
-    AppMethodBeat.i(95877);
-    if (this.size == this.baR.length) {
-      this.baR = Arrays.copyOf(this.baR, this.size * 2);
+    AppMethodBeat.i(93137);
+    if (this.size == this.byS.length) {
+      this.byS = Arrays.copyOf(this.byS, this.size * 2);
     }
-    long[] arrayOfLong = this.baR;
+    long[] arrayOfLong = this.byS;
     int i = this.size;
     this.size = (i + 1);
     arrayOfLong[i] = paramLong;
-    AppMethodBeat.o(95877);
+    AppMethodBeat.o(93137);
   }
   
   public final long get(int paramInt)
   {
-    AppMethodBeat.i(95878);
+    AppMethodBeat.i(93138);
     if ((paramInt < 0) || (paramInt >= this.size))
     {
       IndexOutOfBoundsException localIndexOutOfBoundsException = new IndexOutOfBoundsException("Invalid index " + paramInt + ", size is " + this.size);
-      AppMethodBeat.o(95878);
+      AppMethodBeat.o(93138);
       throw localIndexOutOfBoundsException;
     }
-    long l = this.baR[paramInt];
-    AppMethodBeat.o(95878);
+    long l = this.byS[paramInt];
+    AppMethodBeat.o(93138);
     return l;
   }
   
   public final long[] toArray()
   {
-    AppMethodBeat.i(95879);
-    long[] arrayOfLong = Arrays.copyOf(this.baR, this.size);
-    AppMethodBeat.o(95879);
+    AppMethodBeat.i(93139);
+    long[] arrayOfLong = Arrays.copyOf(this.byS, this.size);
+    AppMethodBeat.o(93139);
     return arrayOfLong;
   }
 }

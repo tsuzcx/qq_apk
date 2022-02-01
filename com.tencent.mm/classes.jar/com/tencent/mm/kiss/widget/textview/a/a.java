@@ -9,86 +9,86 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public Typeface bKi = null;
-  public Layout.Alignment eLF = Layout.Alignment.ALIGN_NORMAL;
-  public TextUtils.TruncateAt eLG = null;
-  public TextDirectionHeuristic eLI = null;
-  public float eLJ = 0.0F;
-  public float eLK = 1.0F;
-  public boolean eLL = false;
-  public TextPaint eLQ = null;
-  public int eMi = -1;
   public int fontStyle = -1;
+  public TextPaint ga = null;
+  public Layout.Alignment ggL = Layout.Alignment.ALIGN_NORMAL;
+  public TextUtils.TruncateAt ggM = null;
+  public TextDirectionHeuristic ggO = null;
+  public float ggP = 0.0F;
+  public float ggQ = 1.0F;
+  public boolean ggR = false;
+  public int ghn = -1;
   public int gravity = 51;
   public int linkColor = -1;
   public int maxLength = -1;
   public int maxLines = -1;
   public int minLines = -1;
+  public Typeface pC = null;
   public int textColor = -1;
   public float textSize = -1.0F;
   
   public final int hashCode()
   {
-    AppMethodBeat.i(105815);
+    AppMethodBeat.i(141135);
     int j = this.maxLines * 31 + 0 + this.maxLength * 31;
     int i = j;
-    if (this.eLQ != null) {
-      i = j + this.eLQ.hashCode() * 31;
+    if (this.ga != null) {
+      i = j + this.ga.hashCode() * 31;
     }
-    j = i + this.eLF.hashCode() * 31;
+    j = i + this.ggL.hashCode() * 31;
     i = j;
-    if (this.eLG != null) {
-      i = j + this.eLG.hashCode() * 31;
+    if (this.ggM != null) {
+      i = j + this.ggM.hashCode() * 31;
     }
-    j = i + this.gravity * 31 + this.eMi * 31;
+    j = i + this.gravity * 31 + this.ghn * 31;
     i = j;
-    if (this.eLI != null) {
-      i = j + this.eLI.hashCode() * 31;
+    if (this.ggO != null) {
+      i = j + this.ggO.hashCode() * 31;
     }
-    j = (int)((int)(i + this.eLJ * 31.0F) + this.eLK * 31.0F);
-    if (this.eLL) {}
+    j = (int)((int)(i + this.ggP * 31.0F) + this.ggQ * 31.0F);
+    if (this.ggR) {}
     for (i = 1;; i = 0)
     {
       j = i * 31 + j;
       i = j;
-      if (this.bKi != null) {
-        i = j + this.bKi.hashCode() * 31;
+      if (this.pC != null) {
+        i = j + this.pC.hashCode() * 31;
       }
       i = (int)(i + this.fontStyle * 31 + this.textSize * 31.0F);
       j = this.textColor;
       int k = this.linkColor;
-      AppMethodBeat.o(105815);
+      AppMethodBeat.o(141135);
       return i + j * 31 + k * 31;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(105814);
+    AppMethodBeat.i(141134);
     Object localObject = new StringBuilder("");
     ((StringBuilder)localObject).append(String.format("maxLines: %d ", new Object[] { Integer.valueOf(this.maxLines) }));
     ((StringBuilder)localObject).append(String.format("maxLength: %d ", new Object[] { Integer.valueOf(this.maxLength) }));
-    ((StringBuilder)localObject).append(String.format("textPaint: %s ", new Object[] { this.eLQ }));
-    ((StringBuilder)localObject).append(String.format("alignment: %s ", new Object[] { this.eLF }));
-    ((StringBuilder)localObject).append(String.format("ellipsize: %s ", new Object[] { this.eLG }));
+    ((StringBuilder)localObject).append(String.format("textPaint: %s ", new Object[] { this.ga }));
+    ((StringBuilder)localObject).append(String.format("alignment: %s ", new Object[] { this.ggL }));
+    ((StringBuilder)localObject).append(String.format("ellipsize: %s ", new Object[] { this.ggM }));
     ((StringBuilder)localObject).append(String.format("gravity: %s ", new Object[] { Integer.valueOf(this.gravity) }));
-    ((StringBuilder)localObject).append(String.format("ellipsizeWidth: %s ", new Object[] { Integer.valueOf(this.eMi) }));
-    ((StringBuilder)localObject).append(String.format("textDirection: %s ", new Object[] { this.eLI }));
-    ((StringBuilder)localObject).append(String.format("spacingAdd: %s spacingMult: %s ", new Object[] { Float.valueOf(this.eLJ), Float.valueOf(this.eLK) }));
-    ((StringBuilder)localObject).append(String.format("includedPad: %b ", new Object[] { Boolean.valueOf(this.eLL) }));
-    ((StringBuilder)localObject).append(String.format("typeface: %s ", new Object[] { this.bKi }));
+    ((StringBuilder)localObject).append(String.format("ellipsizeWidth: %s ", new Object[] { Integer.valueOf(this.ghn) }));
+    ((StringBuilder)localObject).append(String.format("textDirection: %s ", new Object[] { this.ggO }));
+    ((StringBuilder)localObject).append(String.format("spacingAdd: %s spacingMult: %s ", new Object[] { Float.valueOf(this.ggP), Float.valueOf(this.ggQ) }));
+    ((StringBuilder)localObject).append(String.format("includedPad: %b ", new Object[] { Boolean.valueOf(this.ggR) }));
+    ((StringBuilder)localObject).append(String.format("typeface: %s ", new Object[] { this.pC }));
     ((StringBuilder)localObject).append(String.format("fontStyle: %d ", new Object[] { Integer.valueOf(this.fontStyle) }));
     ((StringBuilder)localObject).append(String.format("textSize: %s ", new Object[] { Float.valueOf(this.textSize) }));
     ((StringBuilder)localObject).append(String.format("textColor: %d", new Object[] { Integer.valueOf(this.textColor) }));
     ((StringBuilder)localObject).append(String.format("linkColor: %d", new Object[] { Integer.valueOf(this.linkColor) }));
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(105814);
+    AppMethodBeat.o(141134);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.a.a
  * JD-Core Version:    0.7.0.1
  */

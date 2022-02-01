@@ -12,15 +12,15 @@ final class ComposeUI$4
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(68170);
-    ComposeUI.k(this.pLX).onClick(null);
-    AppMethodBeat.o(68170);
+    AppMethodBeat.i(122895);
+    ComposeUI.k(this.uOk).onClick(null);
+    AppMethodBeat.o(122895);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.ComposeUI.4
  * JD-Core Version:    0.7.0.1
  */

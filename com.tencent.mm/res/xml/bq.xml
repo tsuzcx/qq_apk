@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:title="@string/e_d" android:key="settings_chatting_bg_select_bg" android:layout="@layout/afi" />
-    <Preference android:title="@string/e_e" android:key="settings_chatting_bg_select_from_album" android:layout="@layout/afi" />
-    <Preference android:title="@string/e_f" android:key="settings_chatting_bg_take_photo" android:layout="@layout/afi" />
-    <Preference android:title="@string/e_c" android:key="settings_chatting_bg_apply_to_all" android:layout="@layout/afi" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory />
+    <CheckBoxPreference android:key="room_msg_show_username" android:layout="@layout/aop" android:title="@string/eqt" />
+    <com.tencent.mm.chatroom.ui.preference.SignaturePreference android:key="room_name" android:layout="@layout/aop" android:title="@string/equ" />
+    <PreferenceCategory />
+    <CheckBoxPreference android:key="room_msg_notify" android:layout="@layout/aop" android:title="@string/eqr" />
+    <CheckBoxPreference android:key="room_show_msg_count" android:layout="@layout/aop" android:title="@string/eqy" />
+    <PreferenceCategory />
+    <Preference android:key="room_set_chatting_background" android:layout="@layout/aop" android:title="@string/es9" />
+    <PreferenceCategory />
+    <Preference android:key="room_clear_chatting_history" android:layout="@layout/aop" android:title="@string/ep8" />
 </PreferenceScreen>

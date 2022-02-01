@@ -21,7 +21,7 @@ public class d
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(66954);
+    AppMethodBeat.i(15000);
     super.a(paramInt1, paramInt2);
     if (paramInt1 > paramInt2) {
       if (paramInt2 < 540) {
@@ -33,7 +33,7 @@ public class d
       TXCLog.i(this.u, "m_textureRation " + this.t);
       a(this.r, this.t / paramInt1);
       a(this.s, this.t / paramInt2);
-      AppMethodBeat.o(66954);
+      AppMethodBeat.o(15000);
       return;
       this.t = 4.0F;
       continue;
@@ -47,7 +47,7 @@ public class d
   
   public boolean a()
   {
-    AppMethodBeat.i(66951);
+    AppMethodBeat.i(14997);
     NativeLoad.getInstance();
     this.a = NativeLoad.nativeLoadGLProgram(13);
     if ((this.a != 0) && (b())) {}
@@ -55,31 +55,31 @@ public class d
     {
       c();
       boolean bool = this.g;
-      AppMethodBeat.o(66951);
+      AppMethodBeat.o(14997);
       return bool;
     }
   }
   
   public boolean b()
   {
-    AppMethodBeat.i(66952);
+    AppMethodBeat.i(14998);
     super.b();
     q();
-    AppMethodBeat.o(66952);
+    AppMethodBeat.o(14998);
     return true;
   }
   
   public void q()
   {
-    AppMethodBeat.i(66953);
+    AppMethodBeat.i(14999);
     this.r = GLES20.glGetUniformLocation(p(), "texelWidthOffset");
     this.s = GLES20.glGetUniformLocation(p(), "texelHeightOffset");
-    AppMethodBeat.o(66953);
+    AppMethodBeat.o(14999);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.a.d
  * JD-Core Version:    0.7.0.1
  */

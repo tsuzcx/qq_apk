@@ -4,17 +4,17 @@ import android.content.Context;
 
 public final class ch
 {
-  private static ch Qg = new ch();
-  private cg LA = null;
+  private static ch RV = new ch();
+  private cg Np = null;
   
   /* Error */
-  private cg t(Context paramContext)
+  private cg u(Context paramContext)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 19	com/google/android/gms/internal/ch:LA	Lcom/google/android/gms/internal/cg;
+    //   3: getfield 19	com/google/android/gms/internal/ch:Np	Lcom/google/android/gms/internal/cg;
     //   6: ifnonnull +22 -> 28
     //   9: aload_1
     //   10: invokevirtual 27	android/content/Context:getApplicationContext	()Landroid/content/Context;
@@ -24,9 +24,9 @@ public final class ch
     //   20: dup
     //   21: aload_1
     //   22: invokespecial 32	com/google/android/gms/internal/cg:<init>	(Landroid/content/Context;)V
-    //   25: putfield 19	com/google/android/gms/internal/ch:LA	Lcom/google/android/gms/internal/cg;
+    //   25: putfield 19	com/google/android/gms/internal/ch:Np	Lcom/google/android/gms/internal/cg;
     //   28: aload_0
-    //   29: getfield 19	com/google/android/gms/internal/ch:LA	Lcom/google/android/gms/internal/cg;
+    //   29: getfield 19	com/google/android/gms/internal/ch:Np	Lcom/google/android/gms/internal/cg;
     //   32: astore_1
     //   33: aload_0
     //   34: monitorexit
@@ -53,9 +53,9 @@ public final class ch
     //   37	42	45	finally
   }
   
-  public static cg u(Context paramContext)
+  public static cg v(Context paramContext)
   {
-    return Qg.t(paramContext);
+    return RV.u(paramContext);
   }
 }
 

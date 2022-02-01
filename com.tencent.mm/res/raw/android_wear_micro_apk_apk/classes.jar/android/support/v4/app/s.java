@@ -1,26 +1,87 @@
 package android.support.v4.app;
 
-import java.io.FileDescriptor;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
 import java.io.PrintWriter;
-import java.util.List;
 
-public abstract class s
+public abstract class s<E>
+  extends q
 {
-  public abstract ae Z();
+  final u cI = new u();
+  private final Handler dG;
+  private final Activity dU;
+  final int dV;
+  final Context mContext;
   
-  public abstract Fragment c(String paramString);
+  private s(Activity paramActivity, Context paramContext, Handler paramHandler)
+  {
+    this.dU = paramActivity;
+    this.mContext = paramContext;
+    this.dG = paramHandler;
+    this.dV = 0;
+  }
   
-  public abstract void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString);
+  s(FragmentActivity paramFragmentActivity)
+  {
+    this(paramFragmentActivity, paramFragmentActivity, paramFragmentActivity.dG);
+  }
   
-  public abstract boolean executePendingTransactions();
+  public void a(Fragment paramFragment, Intent paramIntent, int paramInt, Bundle paramBundle)
+  {
+    if (paramInt != -1) {
+      throw new IllegalStateException("Starting activity with a requestCode requires a FragmentActivity host");
+    }
+    this.mContext.startActivity(paramIntent);
+  }
   
-  public abstract void g(int paramInt);
+  public void a(String paramString, PrintWriter paramPrintWriter, String[] paramArrayOfString) {}
   
-  public abstract List<Fragment> getFragments();
+  public boolean aj()
+  {
+    return true;
+  }
   
-  public abstract boolean isStateSaved();
+  public void ak() {}
   
-  public abstract boolean popBackStackImmediate();
+  final Activity getActivity()
+  {
+    return this.dU;
+  }
+  
+  final Handler getHandler()
+  {
+    return this.dG;
+  }
+  
+  public View onFindViewById(int paramInt)
+  {
+    return null;
+  }
+  
+  public LayoutInflater onGetLayoutInflater()
+  {
+    return LayoutInflater.from(this.mContext);
+  }
+  
+  public int onGetWindowAnimations()
+  {
+    return this.dV;
+  }
+  
+  public boolean onHasView()
+  {
+    return true;
+  }
+  
+  public boolean onHasWindowAnimations()
+  {
+    return true;
+  }
 }
 
 

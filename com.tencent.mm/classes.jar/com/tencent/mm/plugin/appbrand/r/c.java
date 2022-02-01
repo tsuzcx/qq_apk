@@ -1,71 +1,40 @@
 package com.tencent.mm.plugin.appbrand.r;
 
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.HashSet;
+import java.util.Set;
 
-public abstract class c<_Model extends com.tencent.mm.sdk.e.c,  extends b>
-  extends j<_Model>
+public final class c
 {
-  public c(e parame, c.a parama, String paramString, String[] paramArrayOfString)
+  private static Set<String> kWt;
+  
+  static
   {
-    super(parame, parama, paramString, paramArrayOfString);
+    AppMethodBeat.i(47770);
+    HashSet localHashSet = new HashSet();
+    kWt = localHashSet;
+    localHashSet.add(ai.du("wx9a3998a6d8b89d42"));
+    AppMethodBeat.o(47770);
   }
   
-  public boolean delete(_Model param_Model, boolean paramBoolean, String... paramVarArgs)
+  public static boolean Lj(String paramString)
   {
-    String[] arrayOfString;
-    if (paramVarArgs != null)
+    AppMethodBeat.i(47769);
+    if (bt.isNullOrNil(paramString))
     {
-      arrayOfString = paramVarArgs;
-      if (paramVarArgs.length != 0) {}
+      AppMethodBeat.o(47769);
+      return true;
     }
-    else
-    {
-      arrayOfString = ((b)param_Model).getKeys();
-    }
-    return super.delete(param_Model, paramBoolean, arrayOfString);
-  }
-  
-  public boolean get(_Model param_Model, String... paramVarArgs)
-  {
-    String[] arrayOfString;
-    if (paramVarArgs != null)
-    {
-      arrayOfString = paramVarArgs;
-      if (paramVarArgs.length != 0) {}
-    }
-    else
-    {
-      arrayOfString = ((b)param_Model).getKeys();
-    }
-    return super.get(param_Model, arrayOfString);
-  }
-  
-  public boolean insertNotify(_Model param_Model, boolean paramBoolean)
-  {
-    super.insertNotify(param_Model, paramBoolean);
-    return get(param_Model, new String[0]);
-  }
-  
-  public boolean updateNotify(_Model param_Model, boolean paramBoolean, String... paramVarArgs)
-  {
-    String[] arrayOfString;
-    if (paramVarArgs != null)
-    {
-      arrayOfString = paramVarArgs;
-      if (paramVarArgs.length != 0) {}
-    }
-    else
-    {
-      arrayOfString = ((b)param_Model).getKeys();
-    }
-    return super.updateNotify(param_Model, paramBoolean, arrayOfString);
+    boolean bool = kWt.contains(ai.du(paramString));
+    AppMethodBeat.o(47769);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.r.c
  * JD-Core Version:    0.7.0.1
  */

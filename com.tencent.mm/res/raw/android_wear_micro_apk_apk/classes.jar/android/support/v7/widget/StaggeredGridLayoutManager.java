@@ -5,9 +5,9 @@ import android.graphics.PointF;
 import android.graphics.Rect;
 import android.os.Parcelable;
 import android.support.v4.view.a.a;
-import android.support.v4.view.a.aa;
+import android.support.v4.view.a.b;
 import android.support.v4.view.a.e;
-import android.support.v4.view.a.q;
+import android.support.v4.view.a.i;
 import android.support.v4.view.r;
 import android.util.AttributeSet;
 import android.view.View;
@@ -21,33 +21,33 @@ import java.util.BitSet;
 public final class StaggeredGridLayoutManager
   extends ab
 {
-  private final Rect oI;
-  private int rS;
-  private int sj;
-  private boolean sn;
-  boolean so;
-  private boolean sq;
-  int sr;
-  int ss;
-  StaggeredGridLayoutManager.LazySpanLookup vA;
-  private int vB;
-  private boolean vC;
-  private boolean vD;
-  private StaggeredGridLayoutManager.SavedState vE;
-  private int vF;
-  private int vG;
-  private int vH;
-  private final aq vI;
-  private boolean vJ;
-  private final Runnable vK;
-  private ar[] vu;
-  s vv;
-  s vw;
-  private int vx;
-  private l vy;
-  private BitSet vz;
+  private final Rect qy;
+  private int tI;
+  private int tZ;
+  private boolean ud;
+  boolean ue;
+  private boolean ug;
+  int uh;
+  int ui;
+  private ar[] xj;
+  s xk;
+  s xl;
+  private int xm;
+  private l xn;
+  private BitSet xo;
+  StaggeredGridLayoutManager.LazySpanLookup xp;
+  private int xq;
+  private boolean xr;
+  private boolean xs;
+  private StaggeredGridLayoutManager.SavedState xt;
+  private int xu;
+  private int xv;
+  private int xw;
+  private final aq xx;
+  private boolean xy;
+  private final Runnable xz;
   
-  private static int G(int paramInt1, int paramInt2)
+  private static int I(int paramInt1, int paramInt2)
   {
     if (paramInt1 < 0) {
       return paramInt2;
@@ -55,13 +55,13 @@ public final class StaggeredGridLayoutManager
     return View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
   }
   
-  private void H(int paramInt1, int paramInt2)
+  private void J(int paramInt1, int paramInt2)
   {
     int i = 0;
-    while (i < this.rS)
+    while (i < this.tI)
     {
-      if (!ar.a(this.vu[i]).isEmpty()) {
-        a(this.vu[i], paramInt1, paramInt2);
+      if (!ar.b(this.xj[i]).isEmpty()) {
+        a(this.xj[i], paramInt1, paramInt2);
       }
       i += 1;
     }
@@ -69,450 +69,304 @@ public final class StaggeredGridLayoutManager
   
   private int a(af paramaf, l paraml, ak paramak)
   {
-    this.vz.set(0, this.rS, true);
+    this.xo.set(0, this.tI, true);
+    int k;
     int m;
-    int n;
     label58:
     int i;
-    int j;
-    label82:
+    label61:
     View localView;
     StaggeredGridLayoutManager.LayoutParams localLayoutParams;
-    int i4;
-    label168:
-    int i1;
-    if (paraml.sg == 1)
-    {
-      m = paraml.si + paraml.sd;
-      H(paraml.sg, m);
-      if (!this.so) {
-        break label412;
-      }
-      n = this.vv.db();
-      i = 0;
-      if ((paraml.se < 0) || (paraml.se >= paramak.getItemCount())) {
-        break label424;
-      }
-      j = 1;
-      if ((j == 0) || (this.vz.isEmpty())) {
-        break label1514;
-      }
-      localView = paramaf.at(paraml.se);
-      paraml.se += paraml.sf;
-      localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)localView.getLayoutParams();
-      i4 = localLayoutParams.uo.eg();
-      localObject1 = this.vA;
-      if ((((StaggeredGridLayoutManager.LazySpanLookup)localObject1).mData != null) && (i4 < ((StaggeredGridLayoutManager.LazySpanLookup)localObject1).mData.length)) {
-        break label430;
-      }
-      i = -1;
-      if (i != -1) {
-        break label443;
-      }
-      i1 = 1;
-      label177:
-      if (i1 == 0) {
-        break label747;
-      }
-      if (!localLayoutParams.vO) {
-        break label449;
-      }
-      localObject1 = this.vu[0];
-    }
-    label198:
-    Object localObject2;
-    label224:
-    label245:
-    int k;
-    label283:
-    label307:
-    label443:
-    label449:
-    int i6;
-    label412:
-    label424:
-    label430:
-    label471:
-    label483:
-    label502:
-    int i5;
     int i2;
-    label534:
-    do
+    int n;
+    label126:
+    ar localar;
+    label147:
+    label158:
+    label179:
+    label211:
+    int i1;
+    StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem;
+    int j;
+    if (paraml.tW == 1)
     {
-      localObject2 = this.vA;
-      ((StaggeredGridLayoutManager.LazySpanLookup)localObject2).aF(i4);
-      ((StaggeredGridLayoutManager.LazySpanLookup)localObject2).mData[i4] = ((ar)localObject1).ac;
-      localLayoutParams.vN = ((ar)localObject1);
-      if (paraml.sg != 1) {
-        break label759;
+      k = paraml.tY + paraml.tT;
+      J(paraml.tW, k);
+      if (!this.ue) {
+        break label454;
+      }
+      m = this.xk.dk();
+      i = 0;
+      if ((!paraml.a(paramak)) || (this.xo.isEmpty())) {
+        break label690;
+      }
+      localView = paraml.a(paramaf);
+      localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)localView.getLayoutParams();
+      i2 = localLayoutParams.wd.ev();
+      i = this.xp.aW(i2);
+      if (i != -1) {
+        break label466;
+      }
+      n = 1;
+      if (n == 0) {
+        break label482;
+      }
+      if (!localLayoutParams.xD) {
+        break label472;
+      }
+      localar = this.xj[0];
+      this.xp.a(i2, localar);
+      localLayoutParams.xC = localar;
+      if (paraml.tW != 1) {
+        break label494;
       }
       addView(localView);
-      if (!localLayoutParams.vO) {
-        break label794;
+      a(localView, localLayoutParams);
+      if (paraml.tW != 1) {
+        break label516;
       }
-      if (this.sj != 1) {
-        break label769;
+      if (!localLayoutParams.xD) {
+        break label504;
       }
-      d(localView, this.vF, G(localLayoutParams.height, this.vH));
-      if (paraml.sg != 1) {
-        break label1054;
+      i = aQ(m);
+      i1 = this.xk.an(localView) + i;
+      if ((n == 0) || (!localLayoutParams.xD)) {
+        break label781;
       }
-      if (!localLayoutParams.vO) {
-        break label852;
-      }
-      i = aB(n);
-      j = i + this.vv.ag(localView);
-      if ((i1 == 0) || (!localLayoutParams.vO)) {
-        break label1605;
-      }
-      localObject2 = new StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem();
-      ((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject2).vR = new int[this.rS];
-      k = 0;
-      while (k < this.rS)
-      {
-        ((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject2).vR[k] = (i - this.vu[k].aJ(i));
-        k += 1;
-      }
-      m = paraml.sh - paraml.sd;
-      break;
-      n = this.vv.da();
-      break label58;
-      j = 0;
-      break label82;
-      i = localObject1.mData[i4];
-      break label168;
-      i1 = 0;
-      break label177;
-      i = paraml.sg;
-      if (this.sj != 0) {
-        break label600;
-      }
-      if (i != -1) {
-        break label588;
-      }
-      i6 = 1;
-      if (i6 == this.so) {
-        break label594;
-      }
-      i = 1;
-      if (i == 0) {
-        break label654;
-      }
-      i = this.rS - 1;
-      k = -1;
-      j = -1;
-      if (paraml.sg != 1) {
-        break label669;
-      }
-      localObject2 = null;
-      i3 = 2147483647;
-      i5 = this.vv.da();
-      i2 = i;
-      i = i3;
-      localObject1 = localObject2;
-    } while (i2 == k);
-    Object localObject1 = this.vu[i2];
-    int i3 = ((ar)localObject1).aJ(i5);
-    if (i3 < i) {
-      i = i3;
+      localFullSpanItem = aM(i);
+      localFullSpanItem.xF = -1;
+      localFullSpanItem.un = i2;
+      this.xp.a(localFullSpanItem);
+      j = i;
     }
     for (;;)
     {
-      i2 += j;
-      localObject2 = localObject1;
-      break label534;
-      label588:
-      i6 = 0;
-      break label471;
-      label594:
-      i = 0;
-      break label483;
-      label600:
-      if (i == -1)
+      if ((localLayoutParams.xD) && (paraml.tV == -1))
       {
-        i6 = 1;
-        label609:
-        if (i6 != this.so) {
-          break label642;
+        if (n == 0)
+        {
+          if (paraml.tW != 1) {
+            break label614;
+          }
+          if (eK()) {
+            break label608;
+          }
+          i = 1;
+          label311:
+          if (i == 0) {
+            break label343;
+          }
+          localFullSpanItem = this.xp.ba(i2);
+          if (localFullSpanItem != null) {
+            localFullSpanItem.xH = true;
+          }
         }
+        this.xy = true;
       }
-      label642:
-      for (i6 = 1;; i6 = 0)
+      label343:
+      a(localView, localLayoutParams, paraml);
+      if (localLayoutParams.xD)
       {
-        if (i6 != cS()) {
-          break label648;
+        i = this.xl.dj();
+        label369:
+        n = this.xl.an(localView) + i;
+        if (this.tZ != 1) {
+          break label656;
         }
-        i = 1;
-        break;
-        i6 = 0;
-        break label609;
-      }
-      label648:
-      i = 0;
-      break label483;
-      label654:
-      i = 0;
-      k = this.rS;
-      j = 1;
-      break label502;
-      label669:
-      localObject2 = null;
-      i3 = -2147483648;
-      i5 = this.vv.db();
-      i2 = i;
-      i = i3;
-      label693:
-      localObject1 = localObject2;
-      if (i2 == k) {
-        break label198;
-      }
-      localObject1 = this.vu[i2];
-      i3 = ((ar)localObject1).aI(i5);
-      if (i3 > i) {
-        i = i3;
+        d(localView, i, j, n, i1);
+        label404:
+        if (!localLayoutParams.xD) {
+          break label672;
+        }
+        J(this.xn.tW, k);
       }
       for (;;)
       {
-        i2 += j;
-        localObject2 = localObject1;
-        break label693;
-        label747:
-        localObject1 = this.vu[i];
-        break label224;
-        label759:
+        a(paramaf, this.xn);
+        i = 1;
+        break label61;
+        k = paraml.tX - paraml.tT;
+        break;
+        label454:
+        m = this.xk.dj();
+        break label58;
+        label466:
+        n = 0;
+        break label126;
+        label472:
+        localar = a(paraml);
+        break label147;
+        label482:
+        localar = this.xj[i];
+        break label158;
+        label494:
         addView(localView, 0);
-        break label245;
-        label769:
-        d(localView, G(localLayoutParams.width, this.vG), this.vF);
-        break label283;
-        label794:
-        if (this.sj == 1)
+        break label179;
+        label504:
+        i = localar.bd(m);
+        break label211;
+        label516:
+        if (localLayoutParams.xD) {}
+        for (i = aP(m);; i = localar.bc(m))
         {
-          d(localView, this.vG, G(localLayoutParams.height, this.vH));
-          break label283;
+          j = i - this.xk.an(localView);
+          if ((n != 0) && (localLayoutParams.xD))
+          {
+            localFullSpanItem = aN(i);
+            localFullSpanItem.xF = 1;
+            localFullSpanItem.un = i2;
+            this.xp.a(localFullSpanItem);
+          }
+          i1 = i;
+          break;
         }
-        d(localView, G(localLayoutParams.width, this.vG), this.vH);
-        break label283;
-        label852:
-        i = ((ar)localObject1).aJ(n);
-        break label307;
-        ((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject2).vQ = -1;
-        ((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject2).sx = i4;
-        this.vA.a((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject2);
-        k = i;
-        for (;;)
+        label608:
+        i = 0;
+        break label311;
+        label614:
+        if (!eL())
         {
-          if ((localLayoutParams.vO) && (paraml.sf == -1)) {
-            if (i1 == 0)
-            {
-              if (paraml.sg != 1) {
-                break label1227;
-              }
-              i1 = this.vu[0].aJ(-2147483648);
-              i = 1;
-              label935:
-              if (i >= this.rS) {
-                break label1215;
-              }
-              if (this.vu[i].aJ(-2147483648) == i1) {
-                break label1206;
-              }
-              i = 0;
-              label964:
-              if (i != 0) {
-                break label1221;
-              }
-              i = 1;
-            }
-          }
-          for (;;)
-          {
-            if (i != 0)
-            {
-              localObject2 = this.vA.aG(i4);
-              if (localObject2 != null) {
-                ((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject2).vS = true;
-              }
-              this.vJ = true;
-            }
-            if (paraml.sg != 1) {
-              break label1402;
-            }
-            if (!localLayoutParams.vO) {
-              break label1304;
-            }
-            i = this.rS - 1;
-            while (i >= 0)
-            {
-              this.vu[i].aC(localView);
-              i -= 1;
-            }
-            label1054:
-            if (localLayoutParams.vO) {}
-            for (i = aA(n);; i = ((ar)localObject1).aI(n))
-            {
-              k = this.vv.ag(localView);
-              if ((i1 == 0) || (!localLayoutParams.vO)) {
-                break label1192;
-              }
-              localObject2 = new StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem();
-              ((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject2).vR = new int[this.rS];
-              j = 0;
-              while (j < this.rS)
-              {
-                ((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject2).vR[j] = (this.vu[j].aI(i) - i);
-                j += 1;
-              }
-            }
-            ((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject2).vQ = 1;
-            ((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject2).sx = i4;
-            this.vA.a((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject2);
-            label1192:
-            j = i;
-            k = i - k;
-            break;
-            label1206:
-            i += 1;
-            break label935;
-            label1215:
-            i = 1;
-            break label964;
-            label1221:
-            i = 0;
-            continue;
-            label1227:
-            i1 = this.vu[0].aI(-2147483648);
-            i = 1;
-            label1243:
-            if (i < this.rS) {
-              if (this.vu[i].aI(-2147483648) == i1) {}
-            }
-            for (i = 0;; i = 1)
-            {
-              if (i != 0) {
-                break label1298;
-              }
-              i = 1;
-              break;
-              i += 1;
-              break label1243;
-            }
-            label1298:
-            i = 0;
-          }
-          label1304:
-          localLayoutParams.vN.aC(localView);
-          label1314:
-          if (localLayoutParams.vO)
-          {
-            i = this.vw.da();
-            label1331:
-            i1 = this.vw.ag(localView) + i;
-            if (this.sj != 1) {
-              break label1480;
-            }
-            c(localView, i, k, i1, j);
-            label1366:
-            if (!localLayoutParams.vO) {
-              break label1496;
-            }
-            H(this.vy.sg, m);
-          }
-          for (;;)
-          {
-            a(paramaf, this.vy);
-            i = 1;
-            break;
-            label1402:
-            if (localLayoutParams.vO)
-            {
-              i = this.rS - 1;
-              while (i >= 0)
-              {
-                this.vu[i].aB(localView);
-                i -= 1;
-              }
-              break label1314;
-            }
-            localLayoutParams.vN.aB(localView);
-            break label1314;
-            i = ((ar)localObject1).ac * this.vx + this.vw.da();
-            break label1331;
-            label1480:
-            c(localView, k, i, j, i1);
-            break label1366;
-            label1496:
-            a((ar)localObject1, this.vy.sg, m);
-          }
-          label1514:
-          if (i == 0) {
-            a(paramaf, this.vy);
-          }
-          if (this.vy.sg == -1) {
-            i = aA(this.vv.da());
-          }
-          for (i = this.vv.da() - i; i > 0; i = aB(this.vv.db()) - this.vv.db()) {
-            return Math.min(paraml.sd, i);
-          }
-          return 0;
-          label1605:
-          k = i;
+          i = 1;
+          break label311;
         }
-        localObject1 = localObject2;
+        i = 0;
+        break label311;
+        i = localar.bL * this.xm + this.xl.dj();
+        break label369;
+        label656:
+        d(localView, j, i, i1, n);
+        break label404;
+        label672:
+        a(localar, this.xn.tW, k);
       }
-      localObject1 = localObject2;
+      label690:
+      if (i == 0) {
+        a(paramaf, this.xn);
+      }
+      if (this.xn.tW == -1) {
+        i = aP(this.xk.dj());
+      }
+      for (i = this.xk.dj() - i; i > 0; i = aQ(this.xk.dk()) - this.xk.dk()) {
+        return Math.min(paraml.tT, i);
+      }
+      return 0;
+      label781:
+      j = i;
+    }
+  }
+  
+  private ar a(l paraml)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    int i;
+    int j;
+    int k;
+    int n;
+    int i1;
+    int m;
+    if (aS(paraml.tW))
+    {
+      i = this.tI - 1;
+      j = -1;
+      k = -1;
+      if (paraml.tW != 1) {
+        break label121;
+      }
+      n = 2147483647;
+      i1 = this.xk.dj();
+      m = i;
+      paraml = (l)localObject1;
+      i = n;
+      label59:
+      localObject1 = paraml;
+      if (m == k) {
+        break label192;
+      }
+      localObject1 = this.xj[m];
+      n = ((ar)localObject1).bd(i1);
+      if (n >= i) {
+        break label198;
+      }
+      paraml = (l)localObject1;
+      i = n;
+    }
+    label192:
+    label195:
+    label198:
+    for (;;)
+    {
+      m += j;
+      break label59;
+      i = 0;
+      k = this.tI;
+      j = 1;
+      break;
+      label121:
+      n = -2147483648;
+      i1 = this.xk.dk();
+      m = i;
+      paraml = localObject2;
+      i = n;
+      localObject1 = paraml;
+      if (m != k)
+      {
+        localObject1 = this.xj[m];
+        n = ((ar)localObject1).bc(i1);
+        if (n <= i) {
+          break label195;
+        }
+        paraml = (l)localObject1;
+        i = n;
+      }
+      for (;;)
+      {
+        m += j;
+        break;
+        return localObject1;
+      }
     }
   }
   
   private void a(int paramInt, ak paramak)
   {
-    int k = 0;
-    this.vy.sd = 0;
-    this.vy.se = paramInt;
+    this.xn.tT = 0;
+    this.xn.tU = paramInt;
     int i;
     boolean bool1;
-    if (dN())
+    if (eb())
     {
-      i = paramak.ea();
+      i = paramak.eo();
       if (i != -1)
       {
-        boolean bool2 = this.so;
+        boolean bool2 = this.ue;
         if (i < paramInt)
         {
           bool1 = true;
           if (bool2 != bool1) {
-            break label139;
+            break label110;
           }
-          paramInt = this.vv.dc();
+          paramInt = this.xk.dl();
           i = 0;
         }
       }
     }
     for (;;)
     {
-      int j = k;
-      if (this.uk != null)
+      if (getClipToPadding())
       {
-        j = k;
-        if (RecyclerView.p(this.uk)) {
-          j = 1;
-        }
-      }
-      if (j != 0)
-      {
-        this.vy.sh = (this.vv.da() - i);
-        this.vy.si = (paramInt + this.vv.db());
+        this.xn.tX = (this.xk.dj() - i);
+        this.xn.tY = (paramInt + this.xk.dk());
         return;
         bool1 = false;
         break;
-        label139:
-        i = this.vv.dc();
+        label110:
+        i = this.xk.dl();
         paramInt = 0;
         continue;
       }
-      this.vy.si = (paramInt + this.vv.getEnd());
-      this.vy.sh = (-i);
+      this.xn.tY = (paramInt + this.xk.getEnd());
+      this.xn.tX = (-i);
       return;
       paramInt = 0;
       i = 0;
@@ -528,17 +382,17 @@ public final class StaggeredGridLayoutManager
       if (getChildCount() > 0)
       {
         localView = getChildAt(0);
-        if (this.vv.af(localView) <= paramInt)
+        if (this.xk.am(localView) <= paramInt)
         {
           localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)localView.getLayoutParams();
-          if (!localLayoutParams.vO) {
+          if (!localLayoutParams.xD) {
             break label105;
           }
           i = 0;
-          if (i >= this.rS) {
+          if (i >= this.tI) {
             break label79;
           }
-          if (ar.a(this.vu[i]).size() != 1) {
+          if (ar.b(this.xj[i]).size() != 1) {
             break label72;
           }
         }
@@ -546,7 +400,7 @@ public final class StaggeredGridLayoutManager
       label72:
       label79:
       label105:
-      while (ar.a(localLayoutParams.vN).size() == 1)
+      while (ar.b(localLayoutParams.xC).size() == 1)
       {
         for (;;)
         {
@@ -554,159 +408,157 @@ public final class StaggeredGridLayoutManager
           i += 1;
         }
         int i = 0;
-        while (i < this.rS)
+        while (i < this.tI)
         {
-          this.vu[i].eD();
+          this.xj[i].eT();
           i += 1;
         }
       }
-      localLayoutParams.vN.eD();
+      localLayoutParams.xC.eT();
       a(localView, paramaf);
     }
   }
   
   private void a(af paramaf, ak paramak, boolean paramBoolean)
   {
-    int i = aB(this.vv.db());
-    i = this.vv.db() - i;
+    int i = aQ(this.xk.dk());
+    i = this.xk.dk() - i;
     if (i > 0)
     {
       i -= -c(-i, paramaf, paramak);
       if ((paramBoolean) && (i > 0)) {
-        this.vv.aj(i);
+        this.xk.av(i);
       }
     }
   }
   
   private void a(af paramaf, l paraml)
   {
-    int k = 1;
-    int i = 1;
-    if (paraml.sd == 0)
+    if (paraml.tT == 0)
     {
-      if (paraml.sg == -1)
+      if (paraml.tW == -1)
       {
-        b(paramaf, paraml.si);
+        b(paramaf, paraml.tY);
         return;
       }
-      a(paramaf, paraml.sh);
+      a(paramaf, paraml.tX);
       return;
     }
-    int m;
-    if (paraml.sg == -1)
+    if (paraml.tW == -1)
     {
-      n = paraml.sh;
-      int i1 = paraml.sh;
-      for (j = this.vu[0].aI(i1); i < this.rS; j = k)
-      {
-        m = this.vu[i].aI(i1);
-        k = j;
-        if (m > j) {
-          k = m;
-        }
-        i += 1;
-      }
-      i = n - j;
+      i = paraml.tX - aO(paraml.tX);
       if (i < 0) {}
-      for (i = paraml.si;; i = paraml.si - Math.min(i, paraml.sd))
+      for (i = paraml.tY;; i = paraml.tY - Math.min(i, paraml.tT))
       {
         b(paramaf, i);
         return;
       }
     }
-    int n = paraml.si;
-    int j = this.vu[0].aJ(n);
-    i = k;
-    while (i < this.rS)
-    {
-      m = this.vu[i].aJ(n);
-      k = j;
-      if (m < j) {
-        k = m;
-      }
-      i += 1;
-      j = k;
-    }
-    i = j - paraml.si;
+    int i = aR(paraml.tY) - paraml.tY;
     if (i < 0) {}
-    for (i = paraml.sh;; i = Math.min(i, paraml.sd) + j)
+    int j;
+    for (i = paraml.tX;; i = Math.min(i, paraml.tT) + j)
     {
       a(paramaf, i);
       return;
-      j = paraml.sh;
+      j = paraml.tX;
     }
   }
   
   private void a(ar paramar, int paramInt1, int paramInt2)
   {
-    int i = paramar.wb;
+    int i = paramar.xQ;
     if (paramInt1 == -1) {
-      if (i + paramar.ez() <= paramInt2) {
-        this.vz.set(paramar.ac, false);
+      if (i + paramar.eP() <= paramInt2) {
+        this.xo.set(paramar.bL, false);
       }
     }
-    while (paramar.eB() - i < paramInt2) {
+    while (paramar.eR() - i < paramInt2) {
       return;
     }
-    this.vz.set(paramar.ac, false);
+    this.xo.set(paramar.bL, false);
   }
   
-  private int aA(int paramInt)
+  private void a(View paramView, StaggeredGridLayoutManager.LayoutParams paramLayoutParams)
   {
-    int j = this.vu[0].aI(paramInt);
-    int i = 1;
-    while (i < this.rS)
+    if (paramLayoutParams.xD)
     {
-      int m = this.vu[i].aI(paramInt);
-      int k = j;
-      if (m < j) {
-        k = m;
+      if (this.tZ == 1)
+      {
+        d(paramView, this.xu, I(paramLayoutParams.height, this.xw));
+        return;
       }
-      i += 1;
-      j = k;
+      d(paramView, I(paramLayoutParams.width, this.xv), this.xu);
+      return;
     }
-    return j;
-  }
-  
-  private int aB(int paramInt)
-  {
-    int j = this.vu[0].aJ(paramInt);
-    int i = 1;
-    while (i < this.rS)
+    if (this.tZ == 1)
     {
-      int m = this.vu[i].aJ(paramInt);
-      int k = j;
-      if (m > j) {
-        k = m;
-      }
-      i += 1;
-      j = k;
+      d(paramView, this.xv, I(paramLayoutParams.height, this.xw));
+      return;
     }
-    return j;
+    d(paramView, I(paramLayoutParams.width, this.xv), this.xw);
   }
   
-  private int aC(int paramInt)
+  private void a(View paramView, StaggeredGridLayoutManager.LayoutParams paramLayoutParams, l paraml)
   {
-    if (getChildCount() == 0) {
-      if (!this.so) {}
-    }
-    for (;;)
+    if (paraml.tW == 1)
     {
-      return 1;
-      return -1;
-      if (paramInt < ex()) {}
-      for (int i = 1; i != this.so; i = 0) {
-        return -1;
+      if (paramLayoutParams.xD)
+      {
+        aI(paramView);
+        return;
       }
+      paramLayoutParams.xC.aL(paramView);
+      return;
+    }
+    if (paramLayoutParams.xD)
+    {
+      aJ(paramView);
+      return;
+    }
+    paramLayoutParams.xC.aK(paramView);
+  }
+  
+  private boolean a(ar paramar)
+  {
+    if (this.ue)
+    {
+      if (paramar.eR() >= this.xk.dk()) {}
+    }
+    else {
+      while (paramar.eP() > this.xk.dj()) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private void aI(View paramView)
+  {
+    int i = this.tI - 1;
+    while (i >= 0)
+    {
+      this.xj[i].aL(paramView);
+      i -= 1;
     }
   }
   
-  private void az(int paramInt)
+  private void aJ(View paramView)
+  {
+    int i = this.tI - 1;
+    while (i >= 0)
+    {
+      this.xj[i].aK(paramView);
+      i -= 1;
+    }
+  }
+  
+  private void aL(int paramInt)
   {
     int i = 1;
-    this.vy.sg = paramInt;
-    l locall = this.vy;
-    boolean bool2 = this.so;
+    this.xn.tW = paramInt;
+    l locall = this.xn;
+    boolean bool2 = this.ue;
     boolean bool1;
     if (paramInt == -1)
     {
@@ -718,10 +570,160 @@ public final class StaggeredGridLayoutManager
     label49:
     for (paramInt = i;; paramInt = -1)
     {
-      locall.sf = paramInt;
+      locall.tV = paramInt;
       return;
       bool1 = false;
       break;
+    }
+  }
+  
+  private StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem aM(int paramInt)
+  {
+    StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem = new StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem();
+    localFullSpanItem.xG = new int[this.tI];
+    int i = 0;
+    while (i < this.tI)
+    {
+      localFullSpanItem.xG[i] = (paramInt - this.xj[i].bd(paramInt));
+      i += 1;
+    }
+    return localFullSpanItem;
+  }
+  
+  private StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem aN(int paramInt)
+  {
+    StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem = new StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem();
+    localFullSpanItem.xG = new int[this.tI];
+    int i = 0;
+    while (i < this.tI)
+    {
+      localFullSpanItem.xG[i] = (this.xj[i].bc(paramInt) - paramInt);
+      i += 1;
+    }
+    return localFullSpanItem;
+  }
+  
+  private int aO(int paramInt)
+  {
+    int j = this.xj[0].bc(paramInt);
+    int i = 1;
+    while (i < this.tI)
+    {
+      int m = this.xj[i].bc(paramInt);
+      int k = j;
+      if (m > j) {
+        k = m;
+      }
+      i += 1;
+      j = k;
+    }
+    return j;
+  }
+  
+  private int aP(int paramInt)
+  {
+    int j = this.xj[0].bc(paramInt);
+    int i = 1;
+    while (i < this.tI)
+    {
+      int m = this.xj[i].bc(paramInt);
+      int k = j;
+      if (m < j) {
+        k = m;
+      }
+      i += 1;
+      j = k;
+    }
+    return j;
+  }
+  
+  private int aQ(int paramInt)
+  {
+    int j = this.xj[0].bd(paramInt);
+    int i = 1;
+    while (i < this.tI)
+    {
+      int m = this.xj[i].bd(paramInt);
+      int k = j;
+      if (m > j) {
+        k = m;
+      }
+      i += 1;
+      j = k;
+    }
+    return j;
+  }
+  
+  private int aR(int paramInt)
+  {
+    int j = this.xj[0].bd(paramInt);
+    int i = 1;
+    while (i < this.tI)
+    {
+      int m = this.xj[i].bd(paramInt);
+      int k = j;
+      if (m < j) {
+        k = m;
+      }
+      i += 1;
+      j = k;
+    }
+    return j;
+  }
+  
+  private boolean aS(int paramInt)
+  {
+    int i;
+    if (this.tZ == 0) {
+      if (paramInt == -1)
+      {
+        i = 1;
+        if (i == this.ue) {
+          break label29;
+        }
+      }
+    }
+    label29:
+    label63:
+    label66:
+    for (;;)
+    {
+      return true;
+      i = 0;
+      break;
+      return false;
+      if (paramInt == -1)
+      {
+        i = 1;
+        if (i != this.ue) {
+          break label63;
+        }
+      }
+      for (i = 1;; i = 0)
+      {
+        if (i == da()) {
+          break label66;
+        }
+        return false;
+        i = 0;
+        break;
+      }
+    }
+  }
+  
+  private int aT(int paramInt)
+  {
+    if (getChildCount() == 0) {
+      if (!this.ue) {}
+    }
+    for (;;)
+    {
+      return 1;
+      return -1;
+      if (paramInt < eN()) {}
+      for (int i = 1; i != this.ue; i = 0) {
+        return -1;
+      }
     }
   }
   
@@ -735,17 +737,17 @@ public final class StaggeredGridLayoutManager
       if (i >= 0)
       {
         localView = getChildAt(i);
-        if (this.vv.ae(localView) >= paramInt)
+        if (this.xk.al(localView) >= paramInt)
         {
           localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)localView.getLayoutParams();
-          if (!localLayoutParams.vO) {
+          if (!localLayoutParams.xD) {
             break label119;
           }
           j = 0;
-          if (j >= this.rS) {
+          if (j >= this.tI) {
             break label88;
           }
-          if (ar.a(this.vu[j]).size() != 1) {
+          if (ar.b(this.xj[j]).size() != 1) {
             break label79;
           }
         }
@@ -753,7 +755,7 @@ public final class StaggeredGridLayoutManager
       label79:
       label88:
       label119:
-      while (ar.a(localLayoutParams.vN).size() == 1)
+      while (ar.b(localLayoutParams.xC).size() == 1)
       {
         for (;;)
         {
@@ -761,13 +763,13 @@ public final class StaggeredGridLayoutManager
           j += 1;
         }
         int j = 0;
-        while (j < this.rS)
+        while (j < this.tI)
         {
-          this.vu[j].eC();
+          this.xj[j].eS();
           j += 1;
         }
       }
-      localLayoutParams.vN.eC();
+      localLayoutParams.xC.eS();
       a(localView, paramaf);
       i -= 1;
     }
@@ -775,44 +777,45 @@ public final class StaggeredGridLayoutManager
   
   private void b(af paramaf, ak paramak, boolean paramBoolean)
   {
-    int i = aA(this.vv.da()) - this.vv.da();
+    int i = aP(this.xk.dj()) - this.xk.dj();
     if (i > 0)
     {
       i -= c(i, paramaf, paramak);
       if ((paramBoolean) && (i > 0)) {
-        this.vv.aj(-i);
+        this.xk.av(-i);
       }
     }
   }
   
   private int c(int paramInt, af paramaf, ak paramak)
   {
-    ev();
+    eJ();
     int i;
     int j;
     if (paramInt > 0)
     {
       i = 1;
-      j = ew();
+      j = eM();
       a(j, paramak);
-      az(i);
-      this.vy.se = (j + this.vy.sf);
+      aL(i);
+      l locall = this.xn;
+      locall.tU = (j + locall.tV);
       j = Math.abs(paramInt);
-      this.vy.sd = j;
-      i = a(paramaf, this.vy, paramak);
+      this.xn.tT = j;
+      i = a(paramaf, this.xn, paramak);
       if (j >= i) {
-        break label112;
+        break label114;
       }
     }
     for (;;)
     {
-      this.vv.aj(-paramInt);
-      this.vC = this.so;
+      this.xk.av(-paramInt);
+      this.xr = this.ue;
       return paramInt;
       i = -1;
-      j = ex();
+      j = eN();
       break;
-      label112:
+      label114:
       if (paramInt < 0) {
         paramInt = -i;
       } else {
@@ -821,124 +824,104 @@ public final class StaggeredGridLayoutManager
     }
   }
   
-  private static void c(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    StaggeredGridLayoutManager.LayoutParams localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
-    b(paramView, localLayoutParams.leftMargin + paramInt1, localLayoutParams.topMargin + paramInt2, paramInt3 - localLayoutParams.rightMargin, paramInt4 - localLayoutParams.bottomMargin);
-  }
-  
-  private void cR()
+  private void cZ()
   {
     boolean bool = true;
-    if ((this.sj == 1) || (!cS())) {
-      bool = this.sn;
+    if ((this.tZ == 1) || (!da())) {
+      bool = this.ud;
     }
     for (;;)
     {
-      this.so = bool;
+      this.ue = bool;
       return;
-      if (this.sn) {
+      if (this.ud) {
         bool = false;
       }
     }
   }
   
-  private boolean cS()
-  {
-    return r.i(this.uk) == 1;
-  }
-  
   private void d(View paramView, int paramInt1, int paramInt2)
   {
-    b(paramView, this.oI);
+    b(paramView, this.qy);
     StaggeredGridLayoutManager.LayoutParams localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
-    paramView.measure(f(paramInt1, localLayoutParams.leftMargin + this.oI.left, localLayoutParams.rightMargin + this.oI.right), f(paramInt2, localLayoutParams.topMargin + this.oI.top, localLayoutParams.bottomMargin + this.oI.bottom));
+    paramView.measure(f(paramInt1, localLayoutParams.leftMargin + this.qy.left, localLayoutParams.rightMargin + this.qy.right), f(paramInt2, localLayoutParams.topMargin + this.qy.top, localLayoutParams.bottomMargin + this.qy.bottom));
   }
   
-  private View eu()
+  private static void d(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    StaggeredGridLayoutManager.LayoutParams localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
+    c(paramView, localLayoutParams.leftMargin + paramInt1, localLayoutParams.topMargin + paramInt2, paramInt3 - localLayoutParams.rightMargin, paramInt4 - localLayoutParams.bottomMargin);
+  }
+  
+  private boolean da()
+  {
+    return r.j(this.wa) == 1;
+  }
+  
+  private View eI()
   {
     int i = getChildCount() - 1;
-    BitSet localBitSet = new BitSet(this.rS);
-    localBitSet.set(0, this.rS, true);
+    BitSet localBitSet = new BitSet(this.tI);
+    localBitSet.set(0, this.tI, true);
     int j;
     int k;
-    label57:
-    int m;
-    label65:
+    if ((this.tZ == 1) && (da()))
+    {
+      j = 1;
+      if (!this.ue) {
+        break label128;
+      }
+      k = -1;
+      label57:
+      if (i >= k) {
+        break label143;
+      }
+    }
     int n;
     View localView;
     StaggeredGridLayoutManager.LayoutParams localLayoutParams;
-    Object localObject;
-    if ((this.sj == 1) && (cS()))
+    label128:
+    label143:
+    for (int m = 1;; m = -1)
     {
-      j = 1;
-      if (!this.so) {
-        break label151;
-      }
-      k = -1;
-      if (i >= k) {
-        break label166;
-      }
-      m = 1;
       n = i;
       if (n == k) {
-        break label397;
+        break label349;
       }
       localView = getChildAt(n);
       localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)localView.getLayoutParams();
-      if (!localBitSet.get(localLayoutParams.vN.ac)) {
-        break label210;
+      if (!localBitSet.get(localLayoutParams.xC.bL)) {
+        break label162;
       }
-      localObject = localLayoutParams.vN;
-      if (!this.so) {
-        break label172;
-      }
-      if (((ar)localObject).eB() >= this.vv.db()) {
-        break label192;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i == 0) {
-        break label197;
+      if (!a(localLayoutParams.xC)) {
+        break label149;
       }
       return localView;
       j = -1;
       break;
-      label151:
       k = 0;
       m = i + 1;
       i = k;
       k = m;
       break label57;
-      label166:
-      m = -1;
-      break label65;
-      label172:
-      if (((ar)localObject).ez() > this.vv.da()) {
-        i = 1;
-      } else {
-        label192:
-        i = 0;
-      }
     }
-    label197:
-    localBitSet.clear(localLayoutParams.vN.ac);
-    label210:
+    label149:
+    localBitSet.clear(localLayoutParams.xC.bL);
+    label162:
+    Object localObject;
     int i1;
-    if ((!localLayoutParams.vO) && (n + m != k))
+    if ((!localLayoutParams.xD) && (n + m != k))
     {
       localObject = getChildAt(n + m);
-      if (this.so)
+      if (this.ue)
       {
-        i = this.vv.af(localView);
-        i1 = this.vv.af((View)localObject);
+        i = this.xk.am(localView);
+        i1 = this.xk.am((View)localObject);
         if (i < i1) {
           return localView;
         }
         if (i != i1) {
-          break label399;
+          break label351;
         }
         i = 1;
       }
@@ -948,70 +931,112 @@ public final class StaggeredGridLayoutManager
       if (i != 0)
       {
         localObject = (StaggeredGridLayoutManager.LayoutParams)((View)localObject).getLayoutParams();
-        if (localLayoutParams.vN.ac - ((StaggeredGridLayoutManager.LayoutParams)localObject).vN.ac < 0)
+        if (localLayoutParams.xC.bL - ((StaggeredGridLayoutManager.LayoutParams)localObject).xC.bL < 0)
         {
           i = 1;
-          label319:
+          label271:
           if (j >= 0) {
-            break label381;
+            break label333;
           }
         }
-        label381:
+        label333:
         for (i1 = 1;; i1 = 0)
         {
           if (i == i1) {
-            break label387;
+            break label339;
           }
           return localView;
-          i = this.vv.ae(localView);
-          i1 = this.vv.ae((View)localObject);
+          i = this.xk.al(localView);
+          i1 = this.xk.al((View)localObject);
           if (i > i1) {
             return localView;
           }
           if (i != i1) {
-            break label399;
+            break label351;
           }
           i = 1;
           break;
           i = 0;
-          break label319;
+          break label271;
         }
       }
-      label387:
+      label339:
       n += m;
       break;
-      label397:
+      label349:
       return null;
-      label399:
+      label351:
       i = 0;
     }
   }
   
-  private void ev()
+  private void eJ()
   {
-    if (this.vv == null)
+    if (this.xk == null)
     {
-      this.vv = s.a(this, this.sj);
-      this.vw = s.a(this, 1 - this.sj);
-      this.vy = new l();
+      this.xk = s.a(this, this.tZ);
+      this.xl = s.a(this, 1 - this.tZ);
+      this.xn = new l();
     }
   }
   
-  private int ew()
+  private boolean eK()
+  {
+    boolean bool2 = true;
+    int j = this.xj[0].bd(-2147483648);
+    int i = 1;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < this.tI)
+      {
+        if (this.xj[i].bd(-2147483648) != j) {
+          bool1 = false;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  private boolean eL()
+  {
+    boolean bool2 = true;
+    int j = this.xj[0].bc(-2147483648);
+    int i = 1;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < this.tI)
+      {
+        if (this.xj[i].bc(-2147483648) != j) {
+          bool1 = false;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  private int eM()
   {
     int i = getChildCount();
     if (i == 0) {
       return 0;
     }
-    return ao(getChildAt(i - 1));
+    return av(getChildAt(i - 1));
   }
   
-  private int ex()
+  private int eN()
   {
     if (getChildCount() == 0) {
       return 0;
     }
-    return ao(getChildAt(0));
+    return av(getChildAt(0));
   }
   
   private static int f(int paramInt1, int paramInt2, int paramInt3)
@@ -1026,40 +1051,14 @@ public final class StaggeredGridLayoutManager
     return View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.getSize(paramInt1) - paramInt2 - paramInt3, i);
   }
   
-  private int h(ak paramak)
-  {
-    boolean bool2 = true;
-    if (getChildCount() == 0) {
-      return 0;
-    }
-    ev();
-    s locals = this.vv;
-    View localView;
-    if (!this.sq)
-    {
-      bool1 = true;
-      localView = q(bool1);
-      if (this.sq) {
-        break label74;
-      }
-    }
-    label74:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      return ap.a(paramak, locals, localView, r(bool1), this, this.sq, this.so);
-      bool1 = false;
-      break;
-    }
-  }
-  
   private void h(int paramInt1, int paramInt2, int paramInt3)
   {
     int k;
     int j;
     int i;
-    if (this.so)
+    if (this.ue)
     {
-      k = ew();
+      k = eM();
       if (paramInt3 != 3) {
         break label100;
       }
@@ -1069,7 +1068,7 @@ public final class StaggeredGridLayoutManager
       j = paramInt2 + 1;
       i = paramInt1;
       label31:
-      this.vA.aE(i);
+      this.xp.aV(i);
       switch (paramInt3)
       {
       case 2: 
@@ -1083,7 +1082,7 @@ public final class StaggeredGridLayoutManager
     for (;;)
     {
       return;
-      k = ex();
+      k = eN();
       break;
       label89:
       j = paramInt1 + 1;
@@ -1093,15 +1092,15 @@ public final class StaggeredGridLayoutManager
       j = paramInt1 + paramInt2;
       i = paramInt1;
       break label31;
-      this.vA.J(paramInt1, paramInt2);
+      this.xp.L(paramInt1, paramInt2);
       break label72;
-      this.vA.I(paramInt1, paramInt2);
+      this.xp.K(paramInt1, paramInt2);
       break label72;
-      this.vA.I(paramInt1, 1);
-      this.vA.J(paramInt2, 1);
+      this.xp.K(paramInt1, 1);
+      this.xp.L(paramInt2, 1);
       break label72;
-      if (this.so) {}
-      for (paramInt1 = ex(); i <= paramInt1; paramInt1 = ew())
+      if (this.ue) {}
+      for (paramInt1 = eN(); i <= paramInt1; paramInt1 = eM())
       {
         requestLayout();
         return;
@@ -1115,21 +1114,21 @@ public final class StaggeredGridLayoutManager
     if (getChildCount() == 0) {
       return 0;
     }
-    ev();
-    s locals = this.vv;
+    eJ();
+    s locals = this.xk;
     View localView;
-    if (!this.sq)
+    if (!this.ug)
     {
       bool1 = true;
-      localView = q(bool1);
-      if (this.sq) {
-        break label70;
+      localView = t(bool1);
+      if (this.ug) {
+        break label74;
       }
     }
-    label70:
+    label74:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      return ap.a(paramak, locals, localView, r(bool1), this, this.sq);
+      return ap.a(paramak, locals, localView, u(bool1), this, this.ug, this.ue);
       bool1 = false;
       break;
     }
@@ -1141,39 +1140,65 @@ public final class StaggeredGridLayoutManager
     if (getChildCount() == 0) {
       return 0;
     }
-    ev();
-    s locals = this.vv;
+    eJ();
+    s locals = this.xk;
     View localView;
-    if (!this.sq)
+    if (!this.ug)
     {
       bool1 = true;
-      localView = q(bool1);
-      if (this.sq) {
+      localView = t(bool1);
+      if (this.ug) {
         break label70;
       }
     }
     label70:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      return ap.b(paramak, locals, localView, r(bool1), this, this.sq);
+      return ap.a(paramak, locals, localView, u(bool1), this, this.ug);
       bool1 = false;
       break;
     }
   }
   
-  private View q(boolean paramBoolean)
+  private int k(ak paramak)
   {
-    ev();
-    int j = this.vv.da();
-    int k = this.vv.db();
+    boolean bool2 = true;
+    if (getChildCount() == 0) {
+      return 0;
+    }
+    eJ();
+    s locals = this.xk;
+    View localView;
+    if (!this.ug)
+    {
+      bool1 = true;
+      localView = t(bool1);
+      if (this.ug) {
+        break label70;
+      }
+    }
+    label70:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      return ap.b(paramak, locals, localView, u(bool1), this, this.ug);
+      bool1 = false;
+      break;
+    }
+  }
+  
+  private View t(boolean paramBoolean)
+  {
+    eJ();
+    int j = this.xk.dj();
+    int k = this.xk.dk();
     int m = getChildCount();
     Object localObject = null;
     int i = 0;
     if (i < m)
     {
       View localView = getChildAt(i);
-      int n = this.vv.ae(localView);
-      if ((this.vv.af(localView) <= j) || (n >= k)) {
+      int n = this.xk.al(localView);
+      if ((this.xk.am(localView) <= j) || (n >= k)) {
         break label108;
       }
       if ((n >= j) || (!paramBoolean)) {
@@ -1193,18 +1218,18 @@ public final class StaggeredGridLayoutManager
     }
   }
   
-  private View r(boolean paramBoolean)
+  private View u(boolean paramBoolean)
   {
-    ev();
-    int j = this.vv.da();
-    int k = this.vv.db();
+    eJ();
+    int j = this.xk.dj();
+    int k = this.xk.dk();
     Object localObject = null;
     int i = getChildCount() - 1;
     if (i >= 0)
     {
       View localView = getChildAt(i);
-      int m = this.vv.ae(localView);
-      int n = this.vv.af(localView);
+      int m = this.xk.al(localView);
+      int n = this.xk.am(localView);
       if ((n <= j) || (m >= k)) {
         break label110;
       }
@@ -1232,8 +1257,8 @@ public final class StaggeredGridLayoutManager
   
   public final int a(af paramaf, ak paramak)
   {
-    if (this.sj == 0) {
-      return this.rS;
+    if (this.tZ == 0) {
+      return this.tI;
     }
     return super.a(paramaf, paramak);
   }
@@ -1255,7 +1280,7 @@ public final class StaggeredGridLayoutManager
   {
     paramRecyclerView = new p(paramRecyclerView.getContext())
     {
-      public final PointF ah(int paramAnonymousInt)
+      public final PointF at(int paramAnonymousInt)
       {
         paramAnonymousInt = StaggeredGridLayoutManager.a(StaggeredGridLayoutManager.this, paramAnonymousInt);
         if (paramAnonymousInt == 0) {
@@ -1267,39 +1292,39 @@ public final class StaggeredGridLayoutManager
         return new PointF(0.0F, paramAnonymousInt);
       }
     };
-    paramRecyclerView.aw(paramInt);
+    paramRecyclerView.aI(paramInt);
     a(paramRecyclerView);
   }
   
   public final void a(RecyclerView paramRecyclerView, af paramaf)
   {
-    removeCallbacks(this.vK);
+    removeCallbacks(this.xz);
     int i = 0;
-    while (i < this.rS)
+    while (i < this.tI)
     {
-      this.vu[i].clear();
+      this.xj[i].clear();
       i += 1;
     }
   }
   
-  public final void a(af paramaf, ak paramak, View paramView, e parame)
+  public final void a(af paramaf, ak paramak, View paramView, b paramb)
   {
     int i = 1;
     paramaf = paramView.getLayoutParams();
     if (!(paramaf instanceof StaggeredGridLayoutManager.LayoutParams))
     {
-      super.b(paramView, parame);
+      super.b(paramView, paramb);
       return;
     }
     paramaf = (StaggeredGridLayoutManager.LayoutParams)paramaf;
     int k;
     int m;
     int j;
-    if (this.sj == 0)
+    if (this.tZ == 0)
     {
-      k = paramaf.cM();
-      if (paramaf.vO) {
-        i = this.rS;
+      k = paramaf.cU();
+      if (paramaf.xD) {
+        i = this.tI;
       }
       int n = -1;
       m = -1;
@@ -1308,12 +1333,12 @@ public final class StaggeredGridLayoutManager
     }
     for (;;)
     {
-      parame.p(q.a(k, j, m, i, paramaf.vO));
+      paramb.w(e.a(k, j, m, i, paramaf.xD));
       return;
-      m = paramaf.cM();
-      if (paramaf.vO)
+      m = paramaf.cU();
+      if (paramaf.xD)
       {
-        i = this.rS;
+        i = this.tI;
         j = -1;
         k = -1;
       }
@@ -1331,89 +1356,89 @@ public final class StaggeredGridLayoutManager
     return paramLayoutParams instanceof StaggeredGridLayoutManager.LayoutParams;
   }
   
-  public final void ag(int paramInt)
+  public final void aA(int paramInt)
   {
-    if ((this.vE != null) && (this.vE.sK != paramInt))
-    {
-      StaggeredGridLayoutManager.SavedState localSavedState = this.vE;
-      localSavedState.vV = null;
-      localSavedState.vU = 0;
-      localSavedState.sK = -1;
-      localSavedState.vT = -1;
-    }
-    this.sr = paramInt;
-    this.ss = -2147483648;
-    requestLayout();
-  }
-  
-  public final void am(int paramInt)
-  {
-    super.am(paramInt);
-    int i = 0;
-    while (i < this.rS)
-    {
-      this.vu[i].aL(paramInt);
-      i += 1;
-    }
-  }
-  
-  public final void an(int paramInt)
-  {
-    super.an(paramInt);
-    int i = 0;
-    while (i < this.rS)
-    {
-      this.vu[i].aL(paramInt);
-      i += 1;
-    }
-  }
-  
-  public final void ao(int paramInt)
-  {
-    if ((paramInt != 0) || (getChildCount() == 0) || (this.vB == 0) || (!isAttachedToWindow())) {
+    if ((paramInt != 0) || (getChildCount() == 0) || (this.xq == 0) || (!isAttachedToWindow())) {
       return;
     }
     int i;
-    if (this.so)
+    if (this.ue)
     {
-      i = ew();
-      paramInt = ex();
+      i = eM();
+      paramInt = eN();
       label43:
-      if ((i != 0) || (eu() == null)) {
+      if ((i != 0) || (eI() == null)) {
         break label83;
       }
-      this.vA.clear();
+      this.xp.clear();
     }
     for (;;)
     {
-      dQ();
+      ee();
       requestLayout();
       return;
-      i = ex();
-      paramInt = ew();
+      i = eN();
+      paramInt = eM();
       break label43;
       label83:
-      if (!this.vJ) {
+      if (!this.xy) {
         break;
       }
-      if (this.so) {}
+      if (this.ue) {}
       StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem1;
       for (int j = -1;; j = 1)
       {
-        localFullSpanItem1 = this.vA.i(i, paramInt + 1, j);
+        localFullSpanItem1 = this.xp.i(i, paramInt + 1, j);
         if (localFullSpanItem1 != null) {
           break;
         }
-        this.vJ = false;
-        this.vA.aD(paramInt + 1);
+        this.xy = false;
+        this.xp.aU(paramInt + 1);
         return;
       }
-      StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem2 = this.vA.i(i, localFullSpanItem1.sx, j * -1);
+      StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem2 = this.xp.i(i, localFullSpanItem1.un, j * -1);
       if (localFullSpanItem2 == null) {
-        this.vA.aD(localFullSpanItem1.sx);
+        this.xp.aU(localFullSpanItem1.un);
       } else {
-        this.vA.aD(localFullSpanItem2.sx + 1);
+        this.xp.aU(localFullSpanItem2.un + 1);
       }
+    }
+  }
+  
+  public final void as(int paramInt)
+  {
+    if ((this.xt != null) && (this.xt.uA != paramInt))
+    {
+      StaggeredGridLayoutManager.SavedState localSavedState = this.xt;
+      localSavedState.xK = null;
+      localSavedState.xJ = 0;
+      localSavedState.uA = -1;
+      localSavedState.xI = -1;
+    }
+    this.uh = paramInt;
+    this.ui = -2147483648;
+    requestLayout();
+  }
+  
+  public final void ay(int paramInt)
+  {
+    super.ay(paramInt);
+    int i = 0;
+    while (i < this.tI)
+    {
+      this.xj[i].bf(paramInt);
+      i += 1;
+    }
+  }
+  
+  public final void az(int paramInt)
+  {
+    super.az(paramInt);
+    int i = 0;
+    while (i < this.tI)
+    {
+      this.xj[i].bf(paramInt);
+      i += 1;
     }
   }
   
@@ -1424,32 +1449,27 @@ public final class StaggeredGridLayoutManager
   
   public final int b(af paramaf, ak paramak)
   {
-    if (this.sj == 1) {
-      return this.rS;
+    if (this.tZ == 1) {
+      return this.tI;
     }
     return super.b(paramaf, paramak);
   }
   
-  public final int b(ak paramak)
-  {
-    return h(paramak);
-  }
-  
   public final int c(ak paramak)
   {
-    return h(paramak);
+    return i(paramak);
   }
   
   public final void c(af paramaf, ak paramak)
   {
     int m = 1;
-    ev();
-    aq localaq = this.vI;
-    localaq.sx = -1;
-    localaq.jp = -2147483648;
-    localaq.sz = false;
-    localaq.vM = false;
-    if (((this.vE != null) || (this.sr != -1)) && (paramak.getItemCount() == 0))
+    eJ();
+    aq localaq = this.xx;
+    localaq.un = -1;
+    localaq.lm = -2147483648;
+    localaq.up = false;
+    localaq.xB = false;
+    if (((this.xt != null) || (this.uh != -1)) && (paramak.getItemCount() == 0))
     {
       d(paramaf);
       return;
@@ -1458,25 +1478,25 @@ public final class StaggeredGridLayoutManager
     label182:
     Object localObject;
     boolean bool;
-    if (this.vE != null)
+    if (this.xt != null)
     {
-      if (this.vE.vU > 0) {
-        if (this.vE.vU == this.rS)
+      if (this.xt.xJ > 0) {
+        if (this.xt.xJ == this.tI)
         {
           j = 0;
-          if (j < this.rS)
+          if (j < this.tI)
           {
-            this.vu[j].clear();
-            k = this.vE.vV[j];
+            this.xj[j].clear();
+            k = this.xt.xK[j];
             i = k;
             if (k != -2147483648) {
-              if (!this.vE.sM) {
+              if (!this.xt.uC) {
                 break label182;
               }
             }
-            for (i = k + this.vv.db();; i = k + this.vv.da())
+            for (i = k + this.xk.dk();; i = k + this.xk.dj())
             {
-              this.vu[j].aK(i);
+              this.xj[j].be(i);
               j += 1;
               break;
             }
@@ -1484,42 +1504,42 @@ public final class StaggeredGridLayoutManager
         }
         else
         {
-          localObject = this.vE;
-          ((StaggeredGridLayoutManager.SavedState)localObject).vV = null;
-          ((StaggeredGridLayoutManager.SavedState)localObject).vU = 0;
-          ((StaggeredGridLayoutManager.SavedState)localObject).vW = 0;
-          ((StaggeredGridLayoutManager.SavedState)localObject).vX = null;
-          ((StaggeredGridLayoutManager.SavedState)localObject).vP = null;
-          this.vE.sK = this.vE.vT;
+          localObject = this.xt;
+          ((StaggeredGridLayoutManager.SavedState)localObject).xK = null;
+          ((StaggeredGridLayoutManager.SavedState)localObject).xJ = 0;
+          ((StaggeredGridLayoutManager.SavedState)localObject).xL = 0;
+          ((StaggeredGridLayoutManager.SavedState)localObject).xM = null;
+          ((StaggeredGridLayoutManager.SavedState)localObject).xE = null;
+          this.xt.uA = this.xt.xI;
         }
       }
-      this.vD = this.vE.vD;
-      bool = this.vE.sn;
+      this.xs = this.xt.xs;
+      bool = this.xt.ud;
       f(null);
-      if ((this.vE != null) && (this.vE.sn != bool)) {
-        this.vE.sn = bool;
+      if ((this.xt != null) && (this.xt.ud != bool)) {
+        this.xt.ud = bool;
       }
-      this.sn = bool;
+      this.ud = bool;
       requestLayout();
-      cR();
-      if (this.vE.sK != -1)
+      cZ();
+      if (this.xt.uA != -1)
       {
-        this.sr = this.vE.sK;
-        localaq.sz = this.vE.sM;
-        if (this.vE.vW > 1)
+        this.uh = this.xt.uA;
+        localaq.up = this.xt.uC;
+        if (this.xt.xL > 1)
         {
-          this.vA.mData = this.vE.vX;
-          this.vA.vP = this.vE.vP;
+          this.xp.mData = this.xt.xM;
+          this.xp.xE = this.xt.xE;
         }
         label386:
-        if ((!paramak.dY()) && (this.sr != -1)) {
+        if ((!paramak.em()) && (this.uh != -1)) {
           break label622;
         }
         i = 0;
         label403:
         if (i == 0)
         {
-          if (!this.vC) {
+          if (!this.xr) {
             break label1117;
           }
           k = paramak.getItemCount();
@@ -1528,7 +1548,7 @@ public final class StaggeredGridLayoutManager
           if (i < 0) {
             break label1112;
           }
-          j = ao(getChildAt(i));
+          j = av(getChildAt(i));
           if ((j < 0) || (j >= k)) {
             break label1105;
           }
@@ -1541,72 +1561,72 @@ public final class StaggeredGridLayoutManager
     int n;
     for (;;)
     {
-      localaq.sx = i;
-      localaq.jp = -2147483648;
-      if ((this.vE == null) && ((localaq.sz != this.vC) || (cS() != this.vD)))
+      localaq.un = i;
+      localaq.lm = -2147483648;
+      if ((this.xt == null) && ((localaq.up != this.xr) || (da() != this.xs)))
       {
-        this.vA.clear();
-        localaq.vM = true;
+        this.xp.clear();
+        localaq.xB = true;
       }
-      if ((getChildCount() <= 0) || ((this.vE != null) && (this.vE.vU > 0))) {
+      if ((getChildCount() <= 0) || ((this.xt != null) && (this.xt.xJ > 0))) {
         break label1330;
       }
-      if (!localaq.vM) {
+      if (!localaq.xB) {
         break label1179;
       }
       i = 0;
-      while (i < this.rS)
+      while (i < this.tI)
       {
-        this.vu[i].clear();
-        if (localaq.jp != -2147483648) {
-          this.vu[i].aK(localaq.jp);
+        this.xj[i].clear();
+        if (localaq.lm != -2147483648) {
+          this.xj[i].be(localaq.lm);
         }
         i += 1;
       }
-      localaq.sz = this.so;
+      localaq.up = this.ue;
       break;
-      cR();
-      localaq.sz = this.so;
+      cZ();
+      localaq.up = this.ue;
       break label386;
-      if ((this.sr < 0) || (this.sr >= paramak.getItemCount()))
+      if ((this.uh < 0) || (this.uh >= paramak.getItemCount()))
       {
-        this.sr = -1;
-        this.ss = -2147483648;
+        this.uh = -1;
+        this.ui = -2147483648;
         i = 0;
         break label403;
       }
-      if ((this.vE == null) || (this.vE.sK == -1) || (this.vE.vU <= 0))
+      if ((this.xt == null) || (this.xt.uA == -1) || (this.xt.xJ <= 0))
       {
-        localObject = af(this.sr);
+        localObject = ar(this.uh);
         if (localObject != null)
         {
-          if (this.so)
+          if (this.ue)
           {
-            i = ew();
+            i = eM();
             label711:
-            localaq.sx = i;
-            if (this.ss == -2147483648) {
+            localaq.un = i;
+            if (this.ui == -2147483648) {
               break label804;
             }
-            if (!localaq.sz) {
+            if (!localaq.up) {
               break label774;
             }
           }
           label774:
-          for (localaq.jp = (this.vv.db() - this.ss - this.vv.af((View)localObject));; localaq.jp = (this.vv.da() + this.ss - this.vv.ae((View)localObject)))
+          for (localaq.lm = (this.xk.dk() - this.ui - this.xk.am((View)localObject));; localaq.lm = (this.xk.dj() + this.ui - this.xk.al((View)localObject)))
           {
             i = 1;
             break;
-            i = ex();
+            i = eN();
             break label711;
           }
           label804:
-          if (this.vv.ag((View)localObject) > this.vv.dc()) {
-            if (localaq.sz)
+          if (this.xk.an((View)localObject) > this.xk.dl()) {
+            if (localaq.up)
             {
-              i = this.vv.db();
+              i = this.xk.dk();
               label839:
-              localaq.jp = i;
+              localaq.lm = i;
             }
           }
         }
@@ -1615,56 +1635,56 @@ public final class StaggeredGridLayoutManager
       {
         i = 1;
         break;
-        i = this.vv.da();
+        i = this.xk.dj();
         break label839;
-        i = this.vv.ae((View)localObject) - this.vv.da();
+        i = this.xk.al((View)localObject) - this.xk.dj();
         if (i < 0)
         {
-          localaq.jp = (-i);
+          localaq.lm = (-i);
         }
         else
         {
-          i = this.vv.db() - this.vv.af((View)localObject);
+          i = this.xk.dk() - this.xk.am((View)localObject);
           if (i < 0)
           {
-            localaq.jp = i;
+            localaq.lm = i;
           }
           else
           {
-            localaq.jp = -2147483648;
+            localaq.lm = -2147483648;
             continue;
-            localaq.sx = this.sr;
-            if (this.ss == -2147483648) {
-              if (aC(localaq.sx) == 1)
+            localaq.un = this.uh;
+            if (this.ui == -2147483648) {
+              if (aT(localaq.un) == 1)
               {
                 bool = true;
                 label968:
-                localaq.sz = bool;
-                if (!localaq.sz) {
+                localaq.up = bool;
+                if (!localaq.up) {
                   break label1016;
                 }
-                i = localaq.vL.vv.db();
+                i = localaq.xA.xk.dk();
                 label995:
-                localaq.jp = i;
+                localaq.lm = i;
               }
             }
             for (;;)
             {
-              localaq.vM = true;
+              localaq.xB = true;
               break;
               bool = false;
               break label968;
-              i = localaq.vL.vv.da();
+              i = localaq.xA.xk.dj();
               break label995;
-              i = this.ss;
-              if (localaq.sz) {
-                localaq.jp = (localaq.vL.vv.db() - i);
+              i = this.ui;
+              if (localaq.up) {
+                localaq.lm = (localaq.xA.xk.dk() - i);
               } else {
-                localaq.jp = (i + localaq.vL.vv.da());
+                localaq.lm = (i + localaq.xA.xk.dj());
               }
             }
-            localaq.jp = -2147483648;
-            localaq.sx = this.sr;
+            localaq.lm = -2147483648;
+            localaq.un = this.uh;
           }
         }
       }
@@ -1683,7 +1703,7 @@ public final class StaggeredGridLayoutManager
         if (j >= i1) {
           break label1174;
         }
-        k = ao(getChildAt(j));
+        k = av(getChildAt(j));
         if (k >= 0)
         {
           i = k;
@@ -1698,17 +1718,17 @@ public final class StaggeredGridLayoutManager
     }
     label1179:
     int j = 0;
-    if (j < this.rS)
+    if (j < this.tI)
     {
-      localObject = this.vu[j];
-      bool = this.so;
-      n = localaq.jp;
+      localObject = this.xj[j];
+      bool = this.ue;
+      n = localaq.lm;
       if (bool)
       {
-        i = ((ar)localObject).aJ(-2147483648);
+        i = ((ar)localObject).bd(-2147483648);
         label1226:
         ((ar)localObject).clear();
-        if ((i != -2147483648) && ((!bool) || (i >= ((ar)localObject).vL.vv.db())) && ((bool) || (i <= ((ar)localObject).vL.vv.da()))) {
+        if ((i != -2147483648) && ((!bool) || (i >= ((ar)localObject).xA.xk.dk())) && ((bool) || (i <= ((ar)localObject).xA.xk.dj()))) {
           break label1297;
         }
       }
@@ -1716,53 +1736,53 @@ public final class StaggeredGridLayoutManager
       {
         j += 1;
         break;
-        i = ((ar)localObject).aI(-2147483648);
+        i = ((ar)localObject).bc(-2147483648);
         break label1226;
         label1297:
         k = i;
         if (n != -2147483648) {
           k = i + n;
         }
-        ((ar)localObject).wa = k;
-        ((ar)localObject).vZ = k;
+        ((ar)localObject).xP = k;
+        ((ar)localObject).xO = k;
       }
     }
     label1330:
     b(paramaf);
-    this.vJ = false;
-    this.vx = (this.vw.dc() / this.rS);
-    this.vF = View.MeasureSpec.makeMeasureSpec(this.vw.dc(), 1073741824);
-    if (this.sj == 1)
+    this.xy = false;
+    this.xm = (this.xl.dl() / this.tI);
+    this.xu = View.MeasureSpec.makeMeasureSpec(this.xl.dl(), 1073741824);
+    if (this.tZ == 1)
     {
-      this.vG = View.MeasureSpec.makeMeasureSpec(this.vx, 1073741824);
-      this.vH = View.MeasureSpec.makeMeasureSpec(0, 0);
-      a(localaq.sx, paramak);
-      if (!localaq.sz) {
+      this.xv = View.MeasureSpec.makeMeasureSpec(this.xm, 1073741824);
+      this.xw = View.MeasureSpec.makeMeasureSpec(0, 0);
+      a(localaq.un, paramak);
+      if (!localaq.up) {
         break label1633;
       }
-      az(-1);
-      a(paramaf, this.vy, paramak);
-      az(1);
-      this.vy.se = (localaq.sx + this.vy.sf);
-      a(paramaf, this.vy, paramak);
+      aL(-1);
+      a(paramaf, this.xn, paramak);
+      aL(1);
+      this.xn.tU = (localaq.un + this.xn.tV);
+      a(paramaf, this.xn, paramak);
       label1472:
       if (getChildCount() > 0)
       {
-        if (!this.so) {
+        if (!this.ue) {
           break label1688;
         }
         a(paramaf, paramak, true);
         b(paramaf, paramak, false);
       }
       label1500:
-      if (!paramak.dY())
+      if (!paramak.em())
       {
-        if ((this.vB == 0) || (getChildCount() <= 0)) {
+        if ((this.xq == 0) || (getChildCount() <= 0)) {
           break label1705;
         }
         i = m;
-        if (!this.vJ) {
-          if (eu() == null) {
+        if (!this.xy) {
+          if (eI() == null) {
             break label1705;
           }
         }
@@ -1774,27 +1794,27 @@ public final class StaggeredGridLayoutManager
     {
       if (i != 0)
       {
-        removeCallbacks(this.vK);
-        paramaf = this.vK;
-        if (this.uk != null) {
-          r.b(this.uk, paramaf);
+        removeCallbacks(this.xz);
+        paramaf = this.xz;
+        if (this.wa != null) {
+          r.b(this.wa, paramaf);
         }
       }
-      this.sr = -1;
-      this.ss = -2147483648;
-      this.vC = localaq.sz;
-      this.vD = cS();
-      this.vE = null;
+      this.uh = -1;
+      this.ui = -2147483648;
+      this.xr = localaq.up;
+      this.xs = da();
+      this.xt = null;
       return;
-      this.vH = View.MeasureSpec.makeMeasureSpec(this.vx, 1073741824);
-      this.vG = View.MeasureSpec.makeMeasureSpec(0, 0);
+      this.xw = View.MeasureSpec.makeMeasureSpec(this.xm, 1073741824);
+      this.xv = View.MeasureSpec.makeMeasureSpec(0, 0);
       break;
       label1633:
-      az(1);
-      a(paramaf, this.vy, paramak);
-      az(-1);
-      this.vy.se = (localaq.sx + this.vy.sf);
-      a(paramaf, this.vy, paramak);
+      aL(1);
+      a(paramaf, this.xn, paramak);
+      aL(-1);
+      this.xn.tU = (localaq.un + this.xn.tV);
+      a(paramaf, this.xn, paramak);
       break label1472;
       b(paramaf, paramak, true);
       a(paramaf, paramak, false);
@@ -1802,30 +1822,30 @@ public final class StaggeredGridLayoutManager
     }
   }
   
-  public final void cJ()
+  public final void cR()
   {
-    this.vA.clear();
+    this.xp.clear();
     requestLayout();
   }
   
-  public final RecyclerView.LayoutParams cK()
+  public final RecyclerView.LayoutParams cS()
   {
     return new StaggeredGridLayoutManager.LayoutParams();
   }
   
-  public final boolean cL()
+  public final boolean cT()
   {
-    return this.vE == null;
+    return this.xt == null;
   }
   
-  public final boolean cP()
+  public final boolean cX()
   {
-    return this.sj == 0;
+    return this.tZ == 0;
   }
   
-  public final boolean cQ()
+  public final boolean cY()
   {
-    return this.sj == 1;
+    return this.tZ == 1;
   }
   
   public final int d(ak paramak)
@@ -1835,7 +1855,7 @@ public final class StaggeredGridLayoutManager
   
   public final int e(ak paramak)
   {
-    return i(paramak);
+    return j(paramak);
   }
   
   public final int f(ak paramak)
@@ -1845,14 +1865,19 @@ public final class StaggeredGridLayoutManager
   
   public final void f(String paramString)
   {
-    if (this.vE == null) {
+    if (this.xt == null) {
       super.f(paramString);
     }
   }
   
   public final int g(ak paramak)
   {
-    return j(paramak);
+    return k(paramak);
+  }
+  
+  public final int h(ak paramak)
+  {
+    return k(paramak);
   }
   
   public final void onInitializeAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
@@ -1863,16 +1888,16 @@ public final class StaggeredGridLayoutManager
     if (getChildCount() > 0)
     {
       paramAccessibilityEvent = a.a(paramAccessibilityEvent);
-      localView1 = q(false);
-      localView2 = r(false);
+      localView1 = t(false);
+      localView2 = u(false);
       if ((localView1 != null) && (localView2 != null)) {}
     }
     else
     {
       return;
     }
-    int i = ao(localView1);
-    int j = ao(localView2);
+    int i = av(localView1);
+    int j = av(localView2);
     if (i < j)
     {
       paramAccessibilityEvent.setFromIndex(i);
@@ -1887,20 +1912,20 @@ public final class StaggeredGridLayoutManager
   {
     if ((paramParcelable instanceof StaggeredGridLayoutManager.SavedState))
     {
-      this.vE = ((StaggeredGridLayoutManager.SavedState)paramParcelable);
+      this.xt = ((StaggeredGridLayoutManager.SavedState)paramParcelable);
       requestLayout();
     }
   }
   
   public final Parcelable onSaveInstanceState()
   {
-    if (this.vE != null) {
-      return new StaggeredGridLayoutManager.SavedState(this.vE);
+    if (this.xt != null) {
+      return new StaggeredGridLayoutManager.SavedState(this.xt);
     }
     StaggeredGridLayoutManager.SavedState localSavedState = new StaggeredGridLayoutManager.SavedState();
-    localSavedState.sn = this.sn;
-    localSavedState.sM = this.vC;
-    localSavedState.vD = this.vD;
+    localSavedState.ud = this.ud;
+    localSavedState.uC = this.xr;
+    localSavedState.xs = this.xs;
     int i;
     label130:
     View localView;
@@ -1909,91 +1934,91 @@ public final class StaggeredGridLayoutManager
     int j;
     label185:
     int k;
-    if ((this.vA != null) && (this.vA.mData != null))
+    if ((this.xp != null) && (this.xp.mData != null))
     {
-      localSavedState.vX = this.vA.mData;
-      localSavedState.vW = localSavedState.vX.length;
-      localSavedState.vP = this.vA.vP;
+      localSavedState.xM = this.xp.mData;
+      localSavedState.xL = localSavedState.xM.length;
+      localSavedState.xE = this.xp.xE;
       if (getChildCount() <= 0) {
         break label314;
       }
-      ev();
-      if (!this.vC) {
+      eJ();
+      if (!this.xr) {
         break label254;
       }
-      i = ew();
-      localSavedState.sK = i;
-      if (!this.so) {
+      i = eM();
+      localSavedState.uA = i;
+      if (!this.ue) {
         break label262;
       }
-      localView = r(true);
+      localView = u(true);
       if (localView != null) {
         break label272;
       }
       i = -1;
-      localSavedState.vT = i;
-      localSavedState.vU = this.rS;
-      localSavedState.vV = new int[this.rS];
+      localSavedState.xI = i;
+      localSavedState.xJ = this.tI;
+      localSavedState.xK = new int[this.tI];
       j = 0;
-      if (j >= this.rS) {
+      if (j >= this.tI) {
         break label332;
       }
-      if (!this.vC) {
+      if (!this.xr) {
         break label281;
       }
-      k = this.vu[j].aJ(-2147483648);
+      k = this.xj[j].bd(-2147483648);
       i = k;
       if (k != -2147483648) {
-        i = k - this.vv.db();
+        i = k - this.xk.dk();
       }
     }
     for (;;)
     {
-      localSavedState.vV[j] = i;
+      localSavedState.xK[j] = i;
       j += 1;
       break label185;
-      localSavedState.vW = 0;
+      localSavedState.xL = 0;
       break;
       label254:
-      i = ex();
+      i = eN();
       break label130;
       label262:
-      localView = q(true);
+      localView = t(true);
       break label150;
       label272:
-      i = ao(localView);
+      i = av(localView);
       break label157;
       label281:
-      k = this.vu[j].aI(-2147483648);
+      k = this.xj[j].bc(-2147483648);
       i = k;
       if (k != -2147483648) {
-        i = k - this.vv.da();
+        i = k - this.xk.dj();
       }
     }
     label314:
-    localSavedState.sK = -1;
-    localSavedState.vT = -1;
-    localSavedState.vU = 0;
+    localSavedState.uA = -1;
+    localSavedState.xI = -1;
+    localSavedState.xJ = 0;
     label332:
     return localSavedState;
   }
   
-  public final void q(int paramInt1, int paramInt2)
+  public final void r(int paramInt1, int paramInt2)
   {
     h(paramInt1, paramInt2, 0);
   }
   
-  public final void r(int paramInt1, int paramInt2)
+  public final void s(int paramInt1, int paramInt2)
   {
     h(paramInt1, paramInt2, 1);
   }
   
-  public final void s(int paramInt1, int paramInt2)
+  public final void t(int paramInt1, int paramInt2)
   {
     h(paramInt1, paramInt2, 2);
   }
   
-  public final void t(int paramInt1, int paramInt2)
+  public final void u(int paramInt1, int paramInt2)
   {
     h(paramInt1, paramInt2, 3);
   }

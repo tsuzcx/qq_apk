@@ -11,28 +11,28 @@ public class InputStreamDataSource
 {
   private long currentPosition;
   private InputStream currentStream;
-  private final InputStreamDataSource.InputStreamFactory factory;
+  private final InputStreamFactory factory;
   private long size;
   
-  public InputStreamDataSource(InputStreamDataSource.InputStreamFactory paramInputStreamFactory)
+  public InputStreamDataSource(InputStreamFactory paramInputStreamFactory)
   {
     this.factory = paramInputStreamFactory;
   }
   
   public void close()
   {
-    AppMethodBeat.i(128365);
+    AppMethodBeat.i(114302);
     if (this.currentStream != null) {
       this.currentStream.close();
     }
-    AppMethodBeat.o(128365);
+    AppMethodBeat.o(114302);
   }
   
   public AudioFormat.AudioType getAudioType()
   {
-    AppMethodBeat.i(128364);
+    AppMethodBeat.i(114301);
     AudioFormat.AudioType localAudioType = FormatDetector.getAudioFormat(this, false);
-    AppMethodBeat.o(128364);
+    AppMethodBeat.o(114301);
     return localAudioType;
   }
   
@@ -43,24 +43,24 @@ public class InputStreamDataSource
   
   public void open()
   {
-    AppMethodBeat.i(128362);
+    AppMethodBeat.i(114299);
     if (this.currentStream != null) {
       this.currentStream.close();
     }
     this.currentStream = this.factory.create();
     this.size = this.currentStream.available();
     this.currentPosition = 0L;
-    AppMethodBeat.o(128362);
+    AppMethodBeat.o(114299);
   }
   
   public int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(128363);
+    AppMethodBeat.i(114300);
     if (paramLong < this.currentPosition)
     {
       open();
       paramInt1 = readAt(paramLong, paramArrayOfByte, paramInt1, paramInt2);
-      AppMethodBeat.o(128363);
+      AppMethodBeat.o(114300);
       return paramInt1;
     }
     if (paramLong > this.currentPosition)
@@ -81,7 +81,7 @@ public class InputStreamDataSource
       if (l2 < 0L)
       {
         paramArrayOfByte = new IOException("skipped too much bytes");
-        AppMethodBeat.o(128363);
+        AppMethodBeat.o(114300);
         throw paramArrayOfByte;
       }
       this.currentPosition = paramLong;
@@ -90,13 +90,18 @@ public class InputStreamDataSource
     if (paramInt1 > 0) {
       this.currentPosition += paramInt1;
     }
-    AppMethodBeat.o(128363);
+    AppMethodBeat.o(114300);
     return paramInt1;
+  }
+  
+  public static abstract interface InputStreamFactory
+  {
+    public abstract InputStream create();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.upstream.InputStreamDataSource
  * JD-Core Version:    0.7.0.1
  */

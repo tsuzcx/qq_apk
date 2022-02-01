@@ -1,46 +1,40 @@
 package com.tencent.mm.plugin.game.commlib.d;
 
-import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.vending.h.g;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public final class a
 {
-  private static volatile al ftB;
-  private static final Object iXt;
+  private static LinkedList<b> kRj;
   
   static
   {
-    AppMethodBeat.i(59425);
-    iXt = new Object();
-    AppMethodBeat.o(59425);
+    AppMethodBeat.i(89959);
+    kRj = new LinkedList();
+    AppMethodBeat.o(89959);
   }
   
-  public static void aNR()
+  public static void a(b paramb)
   {
-    AppMethodBeat.i(59424);
-    if (ftB == null)
-    {
-      AppMethodBeat.o(59424);
-      return;
+    AppMethodBeat.i(89957);
+    kRj.add(paramb);
+    AppMethodBeat.o(89957);
+  }
+  
+  public static void cot()
+  {
+    AppMethodBeat.i(89958);
+    Iterator localIterator = kRj.iterator();
+    while (localIterator.hasNext()) {
+      ((b)localIterator.next()).acz();
     }
-    synchronized (iXt)
-    {
-      if (ftB != null)
-      {
-        g.avC("GameCommLib#WorkThread");
-        ftB.oNc.quit();
-        ftB = null;
-      }
-      AppMethodBeat.o(59424);
-      return;
-    }
+    AppMethodBeat.o(89958);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.commlib.d.a
  * JD-Core Version:    0.7.0.1
  */

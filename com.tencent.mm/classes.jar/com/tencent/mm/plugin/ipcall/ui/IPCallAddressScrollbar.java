@@ -12,16 +12,16 @@ public class IPCallAddressScrollbar
     super(paramContext, paramAttributeSet);
   }
   
-  public final void Kr()
+  public final void Wa()
   {
-    this.nSx = new String[] { "↑", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
-    this.nSv = 1.3F;
-    this.nSw = 66;
+    this.sGr = new String[] { "↑", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
+    this.sGp = 1.3F;
+    this.sGq = 66;
   }
   
   public int getToastLayoutId()
   {
-    return 2130970734;
+    return 2131495439;
   }
 }
 

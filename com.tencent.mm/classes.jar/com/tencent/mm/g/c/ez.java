@@ -8,26 +8,23 @@ public abstract class ez
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dQG = "contactLabels".hashCode();
-  private static final int dQH = "conDescription".hashCode();
-  private static final int dQI = "conPhone".hashCode();
-  private static final int dqk;
-  private static final int dqu = "encryptUsername".hashCode();
+  private static final int eJw = "createtime".hashCode();
+  private static final int eVo = "uid".hashCode();
+  private static final int eVp;
+  private static final int ezc = "name".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dQD = true;
-  private boolean dQE = true;
-  private boolean dQF = true;
-  private boolean dpS = true;
-  private boolean dqc = true;
-  public String field_conDescription;
-  public String field_conPhone;
-  public String field_conRemark;
-  public String field_contactLabels;
-  public String field_encryptUsername;
+  private boolean eJn = true;
+  private boolean eVm = true;
+  private boolean eVn = true;
+  private boolean eyq = true;
+  public long field_createtime;
+  public String field_devicetype;
+  public String field_name;
+  public String field_uid;
   
   static
   {
-    dqk = "conRemark".hashCode();
+    eVp = "devicetype".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -43,11 +40,11 @@ public abstract class ez
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dqu != k) {
+      if (eVo != k) {
         break label65;
       }
-      this.field_encryptUsername = paramCursor.getString(i);
-      this.dqc = true;
+      this.field_uid = paramCursor.getString(i);
+      this.eVm = true;
     }
     for (;;)
     {
@@ -55,14 +52,12 @@ public abstract class ez
       break label20;
       break;
       label65:
-      if (dqk == k) {
-        this.field_conRemark = paramCursor.getString(i);
-      } else if (dQG == k) {
-        this.field_contactLabels = paramCursor.getString(i);
-      } else if (dQH == k) {
-        this.field_conDescription = paramCursor.getString(i);
-      } else if (dQI == k) {
-        this.field_conPhone = paramCursor.getString(i);
+      if (ezc == k) {
+        this.field_name = paramCursor.getString(i);
+      } else if (eVp == k) {
+        this.field_devicetype = paramCursor.getString(i);
+      } else if (eJw == k) {
+        this.field_createtime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -72,35 +67,26 @@ public abstract class ez
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.field_encryptUsername == null) {
-      this.field_encryptUsername = "";
+    if (this.field_uid == null) {
+      this.field_uid = "";
     }
-    if (this.dqc) {
-      localContentValues.put("encryptUsername", this.field_encryptUsername);
+    if (this.eVm) {
+      localContentValues.put("uid", this.field_uid);
     }
-    if (this.field_conRemark == null) {
-      this.field_conRemark = "";
+    if (this.field_name == null) {
+      this.field_name = "";
     }
-    if (this.dpS) {
-      localContentValues.put("conRemark", this.field_conRemark);
+    if (this.eyq) {
+      localContentValues.put("name", this.field_name);
     }
-    if (this.field_contactLabels == null) {
-      this.field_contactLabels = "";
+    if (this.field_devicetype == null) {
+      this.field_devicetype = "";
     }
-    if (this.dQD) {
-      localContentValues.put("contactLabels", this.field_contactLabels);
+    if (this.eVn) {
+      localContentValues.put("devicetype", this.field_devicetype);
     }
-    if (this.field_conDescription == null) {
-      this.field_conDescription = "";
-    }
-    if (this.dQE) {
-      localContentValues.put("conDescription", this.field_conDescription);
-    }
-    if (this.field_conPhone == null) {
-      this.field_conPhone = "";
-    }
-    if (this.dQF) {
-      localContentValues.put("conPhone", this.field_conPhone);
+    if (this.eJn) {
+      localContentValues.put("createtime", Long.valueOf(this.field_createtime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -110,7 +96,7 @@ public abstract class ez
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.ez
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,12 @@ public final class v
 {
   public v()
   {
-    this.CMD = 287;
+    this.Kik = 287;
   }
   
-  public final Boolean erf()
+  public final Boolean fMI()
   {
-    if (this.CNn < 8) {
+    if (this.KiU < 8) {
       return Boolean.FALSE;
     }
     return Boolean.TRUE;

@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.emoji.sync;
 
 public abstract interface d
 {
-  public abstract void KX(String paramString);
+  public abstract void Ue(String paramString);
   
-  public abstract void m(String paramString, int paramInt, boolean paramBoolean);
+  public abstract void l(String paramString, int paramInt, boolean paramBoolean);
 }
 
 

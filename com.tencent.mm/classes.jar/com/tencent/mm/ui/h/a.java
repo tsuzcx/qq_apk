@@ -15,16 +15,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static b App;
-  private static b Apq;
+  private static b HjL;
+  private static b HjM;
   
   @TargetApi(11)
   public static void b(Activity paramActivity, View paramView)
   {
-    AppMethodBeat.i(107423);
+    AppMethodBeat.i(142857);
     View localView = paramActivity.getWindow().getDecorView();
-    App = b.iz(paramActivity);
-    Apq = b.iz(paramActivity);
+    HjL = b.kb(paramActivity);
+    HjM = b.kb(paramActivity);
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
     Rect localRect = new Rect();
@@ -32,19 +32,37 @@ public final class a
     int i = localRect.top;
     int j = ((AppCompatActivity)paramActivity).getSupportActionBar().getHeight();
     int k = arrayOfInt[1];
-    App.setHeight(k - i - j);
-    k = dh(paramActivity)[1];
+    HjL.setHeight(k - i - j);
+    k = et(paramActivity)[1];
     int m = arrayOfInt[1];
     int n = paramView.getHeight();
-    Apq.setHeight(k - m - n);
-    App.showAtLocation(localView, 48, 0, j + i);
-    Apq.showAtLocation(localView, 80, 0, 0);
-    AppMethodBeat.o(107423);
+    HjM.setHeight(k - m - n);
+    HjL.showAtLocation(localView, 48, 0, j + i);
+    HjM.showAtLocation(localView, 80, 0, 0);
+    AppMethodBeat.o(142857);
   }
   
-  private static int[] dh(Context paramContext)
+  public static void dismiss()
   {
-    AppMethodBeat.i(107425);
+    AppMethodBeat.i(142858);
+    if (HjL != null)
+    {
+      HjL.setAnimationStyle(-1);
+      HjL.dismiss();
+      HjL = null;
+    }
+    if (HjM != null)
+    {
+      HjM.setAnimationStyle(-1);
+      HjM.dismiss();
+      HjM = null;
+    }
+    AppMethodBeat.o(142858);
+  }
+  
+  private static int[] et(Context paramContext)
+  {
+    AppMethodBeat.i(142859);
     int[] arrayOfInt = new int[2];
     if ((paramContext instanceof Activity))
     {
@@ -55,35 +73,17 @@ public final class a
     }
     for (;;)
     {
-      AppMethodBeat.o(107425);
+      AppMethodBeat.o(142859);
       return arrayOfInt;
       paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
       arrayOfInt[0] = paramContext.getWidth();
       arrayOfInt[1] = paramContext.getHeight();
     }
   }
-  
-  public static void dismiss()
-  {
-    AppMethodBeat.i(107424);
-    if (App != null)
-    {
-      App.setAnimationStyle(-1);
-      App.dismiss();
-      App = null;
-    }
-    if (Apq != null)
-    {
-      Apq.setAnimationStyle(-1);
-      Apq.dismiss();
-      Apq = null;
-    }
-    AppMethodBeat.o(107424);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.h.a
  * JD-Core Version:    0.7.0.1
  */

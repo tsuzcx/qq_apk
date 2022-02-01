@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:id="@id/bl" android:padding="2.0dip" android:layout_width="63.0dip" android:layout_height="63.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="8.0dip" android:src="@drawable/a2a" android:scaleType="centerCrop" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center|left|top" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:id="@id/emt" android:background="@drawable/cv" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </FrameLayout>
-</LinearLayout>
+    <ImageView android:id="@id/cpj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <View android:layout_gravity="end|center|top" android:id="@id/dmf" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+    <CheckBox android:textColor="@color/a_r" android:gravity="center" android:layout_gravity="end|center|top" android:id="@id/dm0" android:background="@drawable/a6j" android:focusable="false" android:clickable="false" android:layout_width="@dimen/ao" android:layout_height="20.0dip" android:layout_marginTop="@dimen/ci" android:layout_marginEnd="@dimen/ci" />
+    <View android:id="@id/dm9" android:background="@color/BW_100_Alpha_0_5" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

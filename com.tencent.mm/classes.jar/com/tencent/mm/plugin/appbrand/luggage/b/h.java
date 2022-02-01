@@ -1,67 +1,143 @@
 package com.tencent.mm.plugin.appbrand.luggage.b;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s.b;
-import com.tencent.mm.plugin.appbrand.s.q.a;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.plugin.appbrand.ad.g;
+import com.tencent.mm.plugin.appbrand.appstorage.p;
+import com.tencent.mm.plugin.appbrand.g.a.b;
+import com.tencent.mm.plugin.appbrand.g.a.c;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vfs.q;
 
 public final class h
-  implements q.a
+  extends com.tencent.luggage.bridge.impl.a.a
+  implements com.tencent.mm.plugin.appbrand.g.b
 {
-  private String version;
-  
-  public h(Context paramContext)
+  public final String AL()
   {
-    AppMethodBeat.i(80436);
-    this.version = "";
-    paramContext = b.getPackageInfo(paramContext, ah.getPackageName());
-    StringBuilder localStringBuilder;
-    String str;
-    if (paramContext != null)
+    return "WxFileAdImageReader";
+  }
+  
+  public final void a(String paramString, a.c paramc)
+  {
+    AppMethodBeat.i(194468);
+    if (!match(paramString))
     {
-      this.version += g.au(null, d.whH);
-      this.version = (this.version + "." + paramContext.versionCode);
-      this.version = (this.version + "(" + f.CLIENT_VERSION + ")");
-      localStringBuilder = new StringBuilder().append(this.version).append(" Process/");
-      paramContext = ah.getPackageName().trim().toLowerCase();
-      str = ah.getProcessName().trim().toLowerCase();
-      if (!str.equals(paramContext)) {
-        break label197;
-      }
-      paramContext = "mm";
-    }
-    for (;;)
-    {
-      this.version = paramContext;
-      AppMethodBeat.o(80436);
+      ad.w("MicroMsg.WxFileAdImageReader", "openRead, not match, url:%s", new Object[] { paramString });
+      AppMethodBeat.o(194468);
       return;
-      label197:
-      if (str.startsWith(paramContext)) {
-        paramContext = str.substring(paramContext.length() + 1);
-      } else {
-        paramContext = "unknown";
-      }
     }
+    if (paramc == null)
+    {
+      AppMethodBeat.o(194468);
+      return;
+    }
+    Object localObject = (g)com.tencent.luggage.a.e.K(g.class);
+    if (localObject == null)
+    {
+      ad.i("MicroMsg.WxFileAdImageReader", "openRead, no ad service");
+      AppMethodBeat.o(194468);
+      return;
+    }
+    localObject = ((g)localObject).aNY();
+    if (localObject == null)
+    {
+      ad.i("MicroMsg.WxFileAdImageReader", "openRead, no ad file system");
+      AppMethodBeat.o(194468);
+      return;
+    }
+    paramc.A(((p)localObject).ET(paramString));
+    AppMethodBeat.o(194468);
   }
   
-  public final String vV()
+  public final boolean a(c paramc, String paramString)
   {
-    return " MicroMessenger/";
+    AppMethodBeat.i(162082);
+    if ((paramc == null) || (paramString == null) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(162082);
+      return false;
+    }
+    boolean bool = paramString.startsWith("wxfile://ad");
+    AppMethodBeat.o(162082);
+    return bool;
   }
   
-  public final String version()
+  public final Bitmap b(String paramString, Rect paramRect, a.b paramb)
   {
-    return this.version;
+    Object localObject = null;
+    AppMethodBeat.i(162081);
+    if (!match(paramString))
+    {
+      ad.w("MicroMsg.WxFileAdImageReader", "read, not match, url:%s", new Object[] { paramString });
+      AppMethodBeat.o(162081);
+      return null;
+    }
+    paramb = (g)com.tencent.luggage.a.e.K(g.class);
+    if (paramb == null)
+    {
+      ad.i("MicroMsg.WxFileAdImageReader", "read, no ad service");
+      AppMethodBeat.o(162081);
+      return null;
+    }
+    paramb = paramb.aNY();
+    if (paramb == null)
+    {
+      ad.i("MicroMsg.WxFileAdImageReader", "read, no ad file system");
+      AppMethodBeat.o(162081);
+      return null;
+    }
+    paramb = paramb.EP(paramString);
+    if ((paramb == null) || (!paramb.exists()))
+    {
+      ad.w("MicroMsg.WxFileAdImageReader", "read, file not exist, url:%s", new Object[] { paramString });
+      AppMethodBeat.o(162081);
+      return null;
+    }
+    String str = q.B(paramb.fhU());
+    paramb = str;
+    if (!str.startsWith("file://")) {
+      paramb = "file://".concat(String.valueOf(str));
+    }
+    ad.w("MicroMsg.WxFileAdImageReader", "read, url:%s, path:%s", new Object[] { paramString, paramb });
+    paramString = localObject;
+    if (paramRect != null) {
+      paramString = new com.tencent.mm.plugin.appbrand.luggage.a.a(paramRect.left, paramRect.top, paramRect.width(), paramRect.height());
+    }
+    paramString = com.tencent.mm.modelappbrand.a.b.aub().a(paramb, paramString);
+    AppMethodBeat.o(162081);
+    return paramString;
+  }
+  
+  public final String b(c paramc, String paramString)
+  {
+    AppMethodBeat.i(162083);
+    if (!a(paramc, paramString))
+    {
+      AppMethodBeat.o(162083);
+      return paramString;
+    }
+    AppMethodBeat.o(162083);
+    return paramString;
+  }
+  
+  public final boolean match(String paramString)
+  {
+    AppMethodBeat.i(162080);
+    if ((paramString != null) && (paramString.startsWith("wxfile://ad")))
+    {
+      AppMethodBeat.o(162080);
+      return true;
+    }
+    AppMethodBeat.o(162080);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.h
  * JD-Core Version:    0.7.0.1
  */

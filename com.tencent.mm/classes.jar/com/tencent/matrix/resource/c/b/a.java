@@ -18,7 +18,7 @@ public final class a
   
   public static Object a(InputStream paramInputStream, c paramc, int paramInt)
   {
-    switch (1.bPP[paramc.ordinal()])
+    switch (a.1.cAq[paramc.ordinal()])
     {
     default: 
       return null;
@@ -30,19 +30,19 @@ public final class a
         return Boolean.valueOf(bool);
       }
     case 3: 
-      return Character.valueOf((char)h(paramInputStream));
+      return Character.valueOf((char)k(paramInputStream));
     case 4: 
-      return Float.valueOf(Float.intBitsToFloat(i(paramInputStream)));
+      return Float.valueOf(Float.intBitsToFloat(l(paramInputStream)));
     case 5: 
-      return Double.valueOf(Double.longBitsToDouble(j(paramInputStream)));
+      return Double.valueOf(Double.longBitsToDouble(m(paramInputStream)));
     case 6: 
       return Byte.valueOf((byte)paramInputStream.read());
     case 7: 
-      return Short.valueOf(h(paramInputStream));
+      return Short.valueOf(k(paramInputStream));
     case 8: 
-      return Integer.valueOf(i(paramInputStream));
+      return Integer.valueOf(l(paramInputStream));
     }
-    return Long.valueOf(j(paramInputStream));
+    return Long.valueOf(m(paramInputStream));
   }
   
   public static void a(InputStream paramInputStream, byte[] paramArrayOfByte, long paramLong)
@@ -71,7 +71,7 @@ public final class a
   
   public static void a(OutputStream paramOutputStream, b paramb)
   {
-    paramOutputStream.write(paramb.bPD);
+    paramOutputStream.write(paramb.cAf);
   }
   
   public static int b(InputStream paramInputStream, c paramc, int paramInt)
@@ -120,7 +120,7 @@ public final class a
     }
   }
   
-  public static short h(InputStream paramInputStream)
+  public static short k(InputStream paramInputStream)
   {
     int i = paramInputStream.read();
     int j = paramInputStream.read();
@@ -130,7 +130,7 @@ public final class a
     return (short)(i << 8 | j);
   }
   
-  public static int i(InputStream paramInputStream)
+  public static int l(InputStream paramInputStream)
   {
     int i = paramInputStream.read();
     int j = paramInputStream.read();
@@ -142,7 +142,7 @@ public final class a
     return (i << 24) + (j << 16) + (k << 8) + m;
   }
   
-  public static long j(InputStream paramInputStream)
+  public static long m(InputStream paramInputStream)
   {
     byte[] arrayOfByte = new byte[8];
     a(paramInputStream, arrayOfByte, 8L);
@@ -156,7 +156,7 @@ public final class a
     return (arrayOfByte[7] & 0xFF) + ((l1 << 56) + (l2 << 48) + (l3 << 40) + (l4 << 32) + (l5 << 24) + l6 + l7);
   }
   
-  public static String k(InputStream paramInputStream)
+  public static String n(InputStream paramInputStream)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     for (int i = paramInputStream.read(); i != 0; i = paramInputStream.read()) {
@@ -167,7 +167,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.resource.c.b.a
  * JD-Core Version:    0.7.0.1
  */

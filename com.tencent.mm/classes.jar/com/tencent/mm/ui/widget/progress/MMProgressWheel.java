@@ -8,98 +8,101 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.os.Build.VERSION;
+import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import android.os.SystemClock;
 import android.provider.Settings.Global;
 import android.provider.Settings.System;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.View.BaseSavedState;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ck.a.a;
+import com.tencent.mm.cm.a.a;
 
 public class MMProgressWheel
   extends View
 {
   private static final String TAG;
-  private final int AJI;
-  private final int AJJ;
-  private final long AJK;
-  private int AJL;
-  private int AJM;
-  private boolean AJN;
-  private double AJO;
-  private double AJP;
-  private float AJQ;
-  private boolean AJR;
-  private long AJS;
-  private int AJT;
-  private int AJU;
-  private Paint AJV;
-  private Paint AJW;
-  private RectF AJX;
-  private float AJY;
-  private long AJZ;
-  private boolean AKa;
-  private float AKb;
-  private boolean AKc;
-  private MMProgressWheel.a AKd;
-  private boolean AKe;
-  private float Tb;
+  private final long HKA;
+  private int HKB;
+  private int HKC;
+  private boolean HKD;
+  private double HKE;
+  private double HKF;
+  private float HKG;
+  private boolean HKH;
+  private long HKI;
+  private int HKJ;
+  private int HKK;
+  private Paint HKL;
+  private Paint HKM;
+  private RectF HKN;
+  private float HKO;
+  private long HKP;
+  private boolean HKQ;
+  private float HKR;
+  private boolean HKS;
+  private a HKT;
+  private boolean HKU;
+  private final int HKy;
+  private final int HKz;
+  private float aae;
   private int circleRadius;
   
   static
   {
-    AppMethodBeat.i(112958);
+    AppMethodBeat.i(159683);
     TAG = MMProgressWheel.class.getSimpleName();
-    AppMethodBeat.o(112958);
+    AppMethodBeat.o(159683);
   }
   
   public MMProgressWheel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(112940);
-    this.AJI = 16;
-    this.AJJ = 270;
-    this.AJK = 200L;
+    AppMethodBeat.i(159665);
+    this.HKy = 16;
+    this.HKz = 270;
+    this.HKA = 200L;
     this.circleRadius = 28;
-    this.AJL = 4;
-    this.AJM = 4;
-    this.AJN = false;
-    this.AJO = 0.0D;
-    this.AJP = 460.0D;
-    this.AJQ = 0.0F;
-    this.AJR = true;
-    this.AJS = 0L;
-    this.AJT = -1442840576;
-    this.AJU = 16777215;
-    this.AJV = new Paint();
-    this.AJW = new Paint();
-    this.AJX = new RectF();
-    this.AJY = 230.0F;
-    this.AJZ = 0L;
-    this.Tb = 0.0F;
-    this.AKb = 0.0F;
-    this.AKc = false;
+    this.HKB = 4;
+    this.HKC = 4;
+    this.HKD = false;
+    this.HKE = 0.0D;
+    this.HKF = 460.0D;
+    this.HKG = 0.0F;
+    this.HKH = true;
+    this.HKI = 0L;
+    this.HKJ = -1442840576;
+    this.HKK = 16777215;
+    this.HKL = new Paint();
+    this.HKM = new Paint();
+    this.HKN = new RectF();
+    this.HKO = 230.0F;
+    this.HKP = 0L;
+    this.aae = 0.0F;
+    this.HKR = 0.0F;
+    this.HKS = false;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MMProgressWheel);
     paramAttributeSet = getContext().getResources().getDisplayMetrics();
-    this.AJL = ((int)TypedValue.applyDimension(1, this.AJL, paramAttributeSet));
-    this.AJM = ((int)TypedValue.applyDimension(1, this.AJM, paramAttributeSet));
+    this.HKB = ((int)TypedValue.applyDimension(1, this.HKB, paramAttributeSet));
+    this.HKC = ((int)TypedValue.applyDimension(1, this.HKC, paramAttributeSet));
     this.circleRadius = ((int)TypedValue.applyDimension(1, this.circleRadius, paramAttributeSet));
-    this.circleRadius = ((int)paramContext.getDimension(6, this.circleRadius));
-    this.AJN = paramContext.getBoolean(7, false);
-    this.AJL = ((int)paramContext.getDimension(8, this.AJL));
-    this.AJM = ((int)paramContext.getDimension(3, this.AJM));
-    this.AJY = (paramContext.getFloat(4, this.AJY / 360.0F) * 360.0F);
-    this.AJP = paramContext.getInt(5, (int)this.AJP);
-    this.AJT = paramContext.getColor(1, this.AJT);
-    this.AJU = paramContext.getColor(2, this.AJU);
-    this.AKa = paramContext.getBoolean(9, false);
-    if (paramContext.getBoolean(0, false))
+    this.circleRadius = ((int)paramContext.getDimension(3, this.circleRadius));
+    this.HKD = paramContext.getBoolean(4, false);
+    this.HKB = ((int)paramContext.getDimension(2, this.HKB));
+    this.HKC = ((int)paramContext.getDimension(8, this.HKC));
+    this.HKO = (paramContext.getFloat(9, this.HKO / 360.0F) * 360.0F);
+    this.HKF = paramContext.getInt(1, (int)this.HKF);
+    this.HKJ = paramContext.getColor(0, this.HKJ);
+    this.HKK = paramContext.getColor(7, this.HKK);
+    this.HKQ = paramContext.getBoolean(5, false);
+    if (paramContext.getBoolean(6, false))
     {
-      this.AJZ = SystemClock.uptimeMillis();
-      this.AKc = true;
+      this.HKP = SystemClock.uptimeMillis();
+      this.HKS = true;
       invalidate();
     }
     paramContext.recycle();
@@ -113,8 +116,8 @@ public class MMProgressWheel
     }
     for (;;)
     {
-      this.AKe = bool;
-      AppMethodBeat.o(112940);
+      this.HKU = bool;
+      AppMethodBeat.o(159665);
       return;
       f = Settings.System.getFloat(getContext().getContentResolver(), "animator_duration_scale", 1.0F);
       break;
@@ -123,37 +126,37 @@ public class MMProgressWheel
     }
   }
   
-  private void dPy()
+  private void fgn()
   {
-    AppMethodBeat.i(112943);
-    this.AJV.setColor(this.AJT);
-    this.AJV.setAntiAlias(true);
-    this.AJV.setStyle(Paint.Style.STROKE);
-    this.AJV.setStrokeWidth(this.AJL);
-    this.AJW.setColor(this.AJU);
-    this.AJW.setAntiAlias(true);
-    this.AJW.setStyle(Paint.Style.STROKE);
-    this.AJW.setStrokeWidth(this.AJM);
-    AppMethodBeat.o(112943);
+    AppMethodBeat.i(159668);
+    this.HKL.setColor(this.HKJ);
+    this.HKL.setAntiAlias(true);
+    this.HKL.setStyle(Paint.Style.STROKE);
+    this.HKL.setStrokeWidth(this.HKB);
+    this.HKM.setColor(this.HKK);
+    this.HKM.setAntiAlias(true);
+    this.HKM.setStyle(Paint.Style.STROKE);
+    this.HKM.setStrokeWidth(this.HKC);
+    AppMethodBeat.o(159668);
   }
   
-  private void dPz()
+  private void fgo()
   {
-    AppMethodBeat.i(112947);
-    if (this.AKd != null) {
-      Math.round(this.Tb * 100.0F / 360.0F);
+    AppMethodBeat.i(159672);
+    if (this.HKT != null) {
+      Math.round(this.aae * 100.0F / 360.0F);
     }
-    AppMethodBeat.o(112947);
+    AppMethodBeat.o(159672);
   }
   
   public int getBarColor()
   {
-    return this.AJT;
+    return this.HKJ;
   }
   
   public int getBarWidth()
   {
-    return this.AJL;
+    return this.HKB;
   }
   
   public int getCircleRadius()
@@ -163,122 +166,122 @@ public class MMProgressWheel
   
   public float getProgress()
   {
-    if (this.AKc) {
+    if (this.HKS) {
       return -1.0F;
     }
-    return this.Tb / 360.0F;
+    return this.aae / 360.0F;
   }
   
   public int getRimColor()
   {
-    return this.AJU;
+    return this.HKK;
   }
   
   public int getRimWidth()
   {
-    return this.AJM;
+    return this.HKC;
   }
   
   public float getSpinSpeed()
   {
-    return this.AJY / 360.0F;
+    return this.HKO / 360.0F;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     int j = 1;
     int i = 1;
-    AppMethodBeat.i(112945);
+    AppMethodBeat.i(159670);
     super.onDraw(paramCanvas);
-    paramCanvas.drawArc(this.AJX, 360.0F, 360.0F, false, this.AJW);
-    if (!this.AKe)
+    paramCanvas.drawArc(this.HKN, 360.0F, 360.0F, false, this.HKM);
+    if (!this.HKU)
     {
-      AppMethodBeat.o(112945);
+      AppMethodBeat.o(159670);
       return;
     }
     float f2;
-    if (this.AKc)
+    if (this.HKS)
     {
-      long l = SystemClock.uptimeMillis() - this.AJZ;
-      f1 = (float)l * this.AJY / 1000.0F;
+      long l = SystemClock.uptimeMillis() - this.HKP;
+      f1 = (float)l * this.HKO / 1000.0F;
       boolean bool;
-      if (this.AJS >= 200L)
+      if (this.HKI >= 200L)
       {
-        double d = this.AJO;
-        this.AJO = (l + d);
-        if (this.AJO > this.AJP)
+        double d = this.HKE;
+        this.HKE = (l + d);
+        if (this.HKE > this.HKF)
         {
-          this.AJO -= this.AJP;
-          this.AJS = 0L;
-          if (!this.AJR)
+          this.HKE -= this.HKF;
+          this.HKI = 0L;
+          if (!this.HKH)
           {
             bool = true;
-            this.AJR = bool;
+            this.HKH = bool;
           }
         }
         else
         {
-          f2 = (float)Math.cos((this.AJO / this.AJP + 1.0D) * 3.141592653589793D) / 2.0F + 0.5F;
-          if (!this.AJR) {
+          f2 = (float)Math.cos((this.HKE / this.HKF + 1.0D) * 3.141592653589793D) / 2.0F + 0.5F;
+          if (!this.HKH) {
             break label307;
           }
-          this.AJQ = (f2 * 254.0F);
+          this.HKG = (f2 * 254.0F);
         }
       }
       for (;;)
       {
-        this.Tb += f1;
-        if (this.Tb > 360.0F) {
-          this.Tb -= 360.0F;
+        this.aae += f1;
+        if (this.aae > 360.0F) {
+          this.aae -= 360.0F;
         }
-        this.AJZ = SystemClock.uptimeMillis();
-        f1 = this.Tb - 90.0F;
-        f2 = 16.0F + this.AJQ;
+        this.HKP = SystemClock.uptimeMillis();
+        f1 = this.aae - 90.0F;
+        f2 = 16.0F + this.HKG;
         if (isInEditMode())
         {
           f1 = 0.0F;
           f2 = 135.0F;
         }
-        paramCanvas.drawArc(this.AJX, f1, f2, false, this.AJV);
+        paramCanvas.drawArc(this.HKN, f1, f2, false, this.HKL);
         if (i != 0) {
           invalidate();
         }
-        AppMethodBeat.o(112945);
+        AppMethodBeat.o(159670);
         return;
         bool = false;
         break;
         label307:
         f2 = (1.0F - f2) * 254.0F;
-        this.Tb += this.AJQ - f2;
-        this.AJQ = f2;
+        this.aae += this.HKG - f2;
+        this.HKG = f2;
         continue;
-        this.AJS = (l + this.AJS);
+        this.HKI = (l + this.HKI);
       }
     }
-    float f1 = this.Tb;
-    if (this.Tb != this.AKb)
+    float f1 = this.aae;
+    if (this.aae != this.HKR)
     {
-      this.Tb = Math.min((float)(SystemClock.uptimeMillis() - this.AJZ) / 1000.0F * this.AJY + this.Tb, this.AKb);
-      this.AJZ = SystemClock.uptimeMillis();
+      this.aae = Math.min((float)(SystemClock.uptimeMillis() - this.HKP) / 1000.0F * this.HKO + this.aae, this.HKR);
+      this.HKP = SystemClock.uptimeMillis();
     }
     for (i = j;; i = 0)
     {
-      if (f1 != this.Tb) {
-        dPz();
+      if (f1 != this.aae) {
+        fgo();
       }
       f2 = 0.0F;
-      f1 = this.Tb;
-      if (!this.AKa)
+      f1 = this.aae;
+      if (!this.HKQ)
       {
-        f2 = (float)(1.0D - Math.pow(1.0F - this.Tb / 360.0F, 4.0D)) * 360.0F;
-        f1 = (float)(1.0D - Math.pow(1.0F - this.Tb / 360.0F, 2.0D)) * 360.0F;
+        f2 = (float)(1.0D - Math.pow(1.0F - this.aae / 360.0F, 4.0D)) * 360.0F;
+        f1 = (float)(1.0D - Math.pow(1.0F - this.aae / 360.0F, 2.0D)) * 360.0F;
       }
       if (isInEditMode()) {
         f1 = 360.0F;
       }
       for (;;)
       {
-        paramCanvas.drawArc(this.AJX, f2 - 90.0F, f1, false, this.AJV);
+        paramCanvas.drawArc(this.HKN, f2 - 90.0F, f1, false, this.HKL);
         break;
       }
     }
@@ -286,7 +289,7 @@ public class MMProgressWheel
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(112941);
+    AppMethodBeat.i(159666);
     super.onMeasure(paramInt1, paramInt2);
     int k = this.circleRadius + getPaddingLeft() + getPaddingRight();
     int i = this.circleRadius + getPaddingTop() + getPaddingBottom();
@@ -307,7 +310,7 @@ public class MMProgressWheel
       for (;;)
       {
         setMeasuredDimension(paramInt1, paramInt2);
-        AppMethodBeat.o(112941);
+        AppMethodBeat.o(159666);
         return;
         paramInt2 = i;
         if (i1 == -2147483648) {
@@ -319,220 +322,332 @@ public class MMProgressWheel
   
   public void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    AppMethodBeat.i(112950);
-    if (!(paramParcelable instanceof MMProgressWheel.WheelSavedState))
+    AppMethodBeat.i(159675);
+    if (!(paramParcelable instanceof WheelSavedState))
     {
       super.onRestoreInstanceState(paramParcelable);
-      AppMethodBeat.o(112950);
+      AppMethodBeat.o(159675);
       return;
     }
-    paramParcelable = (MMProgressWheel.WheelSavedState)paramParcelable;
+    paramParcelable = (WheelSavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    this.Tb = paramParcelable.Tb;
-    this.AKb = paramParcelable.AKb;
-    this.AKc = paramParcelable.AKc;
-    this.AJY = paramParcelable.AJY;
-    this.AJL = paramParcelable.AJL;
-    this.AJT = paramParcelable.AJT;
-    this.AJM = paramParcelable.AJM;
-    this.AJU = paramParcelable.AJU;
+    this.aae = paramParcelable.aae;
+    this.HKR = paramParcelable.HKR;
+    this.HKS = paramParcelable.HKS;
+    this.HKO = paramParcelable.HKO;
+    this.HKB = paramParcelable.HKB;
+    this.HKJ = paramParcelable.HKJ;
+    this.HKC = paramParcelable.HKC;
+    this.HKK = paramParcelable.HKK;
     this.circleRadius = paramParcelable.circleRadius;
-    this.AKa = paramParcelable.AKa;
-    this.AJN = paramParcelable.AJN;
-    this.AJZ = SystemClock.uptimeMillis();
-    AppMethodBeat.o(112950);
+    this.HKQ = paramParcelable.HKQ;
+    this.HKD = paramParcelable.HKD;
+    this.HKP = SystemClock.uptimeMillis();
+    AppMethodBeat.o(159675);
   }
   
   public Parcelable onSaveInstanceState()
   {
-    AppMethodBeat.i(112949);
-    MMProgressWheel.WheelSavedState localWheelSavedState = new MMProgressWheel.WheelSavedState(super.onSaveInstanceState());
-    localWheelSavedState.Tb = this.Tb;
-    localWheelSavedState.AKb = this.AKb;
-    localWheelSavedState.AKc = this.AKc;
-    localWheelSavedState.AJY = this.AJY;
-    localWheelSavedState.AJL = this.AJL;
-    localWheelSavedState.AJT = this.AJT;
-    localWheelSavedState.AJM = this.AJM;
-    localWheelSavedState.AJU = this.AJU;
+    AppMethodBeat.i(159674);
+    WheelSavedState localWheelSavedState = new WheelSavedState(super.onSaveInstanceState());
+    localWheelSavedState.aae = this.aae;
+    localWheelSavedState.HKR = this.HKR;
+    localWheelSavedState.HKS = this.HKS;
+    localWheelSavedState.HKO = this.HKO;
+    localWheelSavedState.HKB = this.HKB;
+    localWheelSavedState.HKJ = this.HKJ;
+    localWheelSavedState.HKC = this.HKC;
+    localWheelSavedState.HKK = this.HKK;
     localWheelSavedState.circleRadius = this.circleRadius;
-    localWheelSavedState.AKa = this.AKa;
-    localWheelSavedState.AJN = this.AJN;
-    AppMethodBeat.o(112949);
+    localWheelSavedState.HKQ = this.HKQ;
+    localWheelSavedState.HKD = this.HKD;
+    AppMethodBeat.o(159674);
     return localWheelSavedState;
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(112942);
+    AppMethodBeat.i(159667);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt4 = getPaddingTop();
     int i = getPaddingBottom();
     int j = getPaddingLeft();
     int k = getPaddingRight();
-    if (!this.AJN)
+    if (!this.HKD)
     {
-      paramInt3 = Math.min(Math.min(paramInt1 - j - k, paramInt2 - i - paramInt4), this.circleRadius * 2 - this.AJL * 2);
+      paramInt3 = Math.min(Math.min(paramInt1 - j - k, paramInt2 - i - paramInt4), this.circleRadius * 2 - this.HKB * 2);
       paramInt1 = j + (paramInt1 - j - k - paramInt3) / 2;
       paramInt2 = paramInt4 + (paramInt2 - paramInt4 - i - paramInt3) / 2;
     }
-    for (this.AJX = new RectF(this.AJL + paramInt1, this.AJL + paramInt2, paramInt1 + paramInt3 - this.AJL, paramInt2 + paramInt3 - this.AJL);; this.AJX = new RectF(j + this.AJL, paramInt4 + this.AJL, paramInt1 - k - this.AJL, paramInt2 - i - this.AJL))
+    for (this.HKN = new RectF(this.HKB + paramInt1, this.HKB + paramInt2, paramInt1 + paramInt3 - this.HKB, paramInt2 + paramInt3 - this.HKB);; this.HKN = new RectF(j + this.HKB, paramInt4 + this.HKB, paramInt1 - k - this.HKB, paramInt2 - i - this.HKB))
     {
-      dPy();
+      fgn();
       invalidate();
-      AppMethodBeat.o(112942);
+      AppMethodBeat.o(159667);
       return;
     }
   }
   
   protected void onVisibilityChanged(View paramView, int paramInt)
   {
-    AppMethodBeat.i(112946);
+    AppMethodBeat.i(159671);
     super.onVisibilityChanged(paramView, paramInt);
     if (paramInt == 0) {
-      this.AJZ = SystemClock.uptimeMillis();
+      this.HKP = SystemClock.uptimeMillis();
     }
-    AppMethodBeat.o(112946);
+    AppMethodBeat.o(159671);
   }
   
   public void setBarColor(int paramInt)
   {
-    AppMethodBeat.i(112955);
-    this.AJT = paramInt;
-    dPy();
-    if (!this.AKc) {
+    AppMethodBeat.i(159680);
+    this.HKJ = paramInt;
+    fgn();
+    if (!this.HKS) {
       invalidate();
     }
-    AppMethodBeat.o(112955);
+    AppMethodBeat.o(159680);
   }
   
   public void setBarWidth(int paramInt)
   {
-    AppMethodBeat.i(112954);
-    this.AJL = paramInt;
-    if (!this.AKc) {
+    AppMethodBeat.i(159679);
+    this.HKB = paramInt;
+    if (!this.HKS) {
       invalidate();
     }
-    AppMethodBeat.o(112954);
+    AppMethodBeat.o(159679);
   }
   
-  public void setCallback(MMProgressWheel.a parama)
+  public void setCallback(a parama)
   {
-    AppMethodBeat.i(112944);
-    this.AKd = parama;
-    if (!this.AKc) {
-      dPz();
+    AppMethodBeat.i(159669);
+    this.HKT = parama;
+    if (!this.HKS) {
+      fgo();
     }
-    AppMethodBeat.o(112944);
+    AppMethodBeat.o(159669);
   }
   
   public void setCircleRadius(int paramInt)
   {
-    AppMethodBeat.i(112953);
+    AppMethodBeat.i(159678);
     this.circleRadius = paramInt;
-    if (!this.AKc) {
+    if (!this.HKS) {
       invalidate();
     }
-    AppMethodBeat.o(112953);
+    AppMethodBeat.o(159678);
   }
   
   public void setInstantProgress(float paramFloat)
   {
-    AppMethodBeat.i(112948);
-    if (this.AKc)
+    AppMethodBeat.i(159673);
+    if (this.HKS)
     {
-      this.Tb = 0.0F;
-      this.AKc = false;
+      this.aae = 0.0F;
+      this.HKS = false;
     }
     float f;
     if (paramFloat > 1.0F) {
       f = paramFloat - 1.0F;
     }
-    while (Math.abs(f - this.AKb) <= 0.0F)
+    while (Math.abs(f - this.HKR) <= 0.0F)
     {
-      AppMethodBeat.o(112948);
+      AppMethodBeat.o(159673);
       return;
       f = paramFloat;
       if (paramFloat < 0.0F) {
         f = 0.0F;
       }
     }
-    this.AKb = Math.min(f * 360.0F, 360.0F);
-    this.Tb = this.AKb;
-    this.AJZ = SystemClock.uptimeMillis();
+    this.HKR = Math.min(f * 360.0F, 360.0F);
+    this.aae = this.HKR;
+    this.HKP = SystemClock.uptimeMillis();
     invalidate();
-    AppMethodBeat.o(112948);
+    AppMethodBeat.o(159673);
   }
   
   public void setLinearProgress(boolean paramBoolean)
   {
-    AppMethodBeat.i(112952);
-    this.AKa = paramBoolean;
-    if (!this.AKc) {
+    AppMethodBeat.i(159677);
+    this.HKQ = paramBoolean;
+    if (!this.HKS) {
       invalidate();
     }
-    AppMethodBeat.o(112952);
+    AppMethodBeat.o(159677);
   }
   
   public void setProgress(float paramFloat)
   {
-    AppMethodBeat.i(112951);
-    if (this.AKc)
+    AppMethodBeat.i(159676);
+    if (this.HKS)
     {
-      this.Tb = 0.0F;
-      this.AKc = false;
-      dPz();
+      this.aae = 0.0F;
+      this.HKS = false;
+      fgo();
     }
     float f;
     if (paramFloat > 1.0F) {
       f = paramFloat - 1.0F;
     }
-    while (Math.abs(f - this.AKb) <= 0.0F)
+    while (Math.abs(f - this.HKR) <= 0.0F)
     {
-      AppMethodBeat.o(112951);
+      AppMethodBeat.o(159676);
       return;
       f = paramFloat;
       if (paramFloat < 0.0F) {
         f = 0.0F;
       }
     }
-    if (this.Tb == this.AKb) {
-      this.AJZ = SystemClock.uptimeMillis();
+    if (this.aae == this.HKR) {
+      this.HKP = SystemClock.uptimeMillis();
     }
-    this.AKb = Math.min(f * 360.0F, 360.0F);
+    this.HKR = Math.min(f * 360.0F, 360.0F);
     invalidate();
-    AppMethodBeat.o(112951);
+    AppMethodBeat.o(159676);
   }
   
   public void setRimColor(int paramInt)
   {
-    AppMethodBeat.i(112956);
-    this.AJU = paramInt;
-    dPy();
-    if (!this.AKc) {
+    AppMethodBeat.i(159681);
+    this.HKK = paramInt;
+    fgn();
+    if (!this.HKS) {
       invalidate();
     }
-    AppMethodBeat.o(112956);
+    AppMethodBeat.o(159681);
   }
   
   public void setRimWidth(int paramInt)
   {
-    AppMethodBeat.i(112957);
-    this.AJM = paramInt;
-    if (!this.AKc) {
+    AppMethodBeat.i(159682);
+    this.HKC = paramInt;
+    if (!this.HKS) {
       invalidate();
     }
-    AppMethodBeat.o(112957);
+    AppMethodBeat.o(159682);
   }
   
   public void setSpinSpeed(float paramFloat)
   {
-    this.AJY = (360.0F * paramFloat);
+    this.HKO = (360.0F * paramFloat);
   }
+  
+  static class WheelSavedState
+    extends View.BaseSavedState
+  {
+    public static final Parcelable.Creator<WheelSavedState> CREATOR;
+    int HKB;
+    int HKC;
+    boolean HKD;
+    int HKJ;
+    int HKK;
+    float HKO;
+    boolean HKQ;
+    float HKR;
+    boolean HKS;
+    float aae;
+    int circleRadius;
+    
+    static
+    {
+      AppMethodBeat.i(159664);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(159664);
+    }
+    
+    private WheelSavedState(Parcel paramParcel)
+    {
+      super();
+      AppMethodBeat.i(159662);
+      this.aae = paramParcel.readFloat();
+      this.HKR = paramParcel.readFloat();
+      if (paramParcel.readByte() != 0)
+      {
+        bool1 = true;
+        this.HKS = bool1;
+        this.HKO = paramParcel.readFloat();
+        this.HKB = paramParcel.readInt();
+        this.HKJ = paramParcel.readInt();
+        this.HKC = paramParcel.readInt();
+        this.HKK = paramParcel.readInt();
+        this.circleRadius = paramParcel.readInt();
+        if (paramParcel.readByte() == 0) {
+          break label129;
+        }
+        bool1 = true;
+        label99:
+        this.HKQ = bool1;
+        if (paramParcel.readByte() == 0) {
+          break label134;
+        }
+      }
+      label129:
+      label134:
+      for (boolean bool1 = bool2;; bool1 = false)
+      {
+        this.HKD = bool1;
+        AppMethodBeat.o(159662);
+        return;
+        bool1 = false;
+        break;
+        bool1 = false;
+        break label99;
+      }
+    }
+    
+    WheelSavedState(Parcelable paramParcelable)
+    {
+      super();
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      int i = 1;
+      AppMethodBeat.i(159663);
+      super.writeToParcel(paramParcel, paramInt);
+      paramParcel.writeFloat(this.aae);
+      paramParcel.writeFloat(this.HKR);
+      if (this.HKS)
+      {
+        paramInt = 1;
+        paramParcel.writeByte((byte)paramInt);
+        paramParcel.writeFloat(this.HKO);
+        paramParcel.writeInt(this.HKB);
+        paramParcel.writeInt(this.HKJ);
+        paramParcel.writeInt(this.HKC);
+        paramParcel.writeInt(this.HKK);
+        paramParcel.writeInt(this.circleRadius);
+        if (!this.HKQ) {
+          break label133;
+        }
+        paramInt = 1;
+        label101:
+        paramParcel.writeByte((byte)paramInt);
+        if (!this.HKD) {
+          break label138;
+        }
+      }
+      label133:
+      label138:
+      for (paramInt = i;; paramInt = 0)
+      {
+        paramParcel.writeByte((byte)paramInt);
+        AppMethodBeat.o(159663);
+        return;
+        paramInt = 0;
+        break;
+        paramInt = 0;
+        break label101;
+      }
+    }
+  }
+  
+  public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.progress.MMProgressWheel
  * JD-Core Version:    0.7.0.1
  */

@@ -3,21 +3,21 @@ package com.tencent.mm.wear.app.d.a.a;
 public abstract class a
   implements d
 {
-  private e adq;
+  private e agS;
   
   public final void a(e parame)
   {
-    this.adq = parame;
-  }
-  
-  protected final void f(long paramLong)
-  {
-    com.tencent.mm.wear.a.b.a.aiT.post(new c(this, paramLong));
+    this.agS = parame;
   }
   
   protected final void g(long paramLong)
   {
-    com.tencent.mm.wear.a.b.a.aiT.post(new b(this, paramLong));
+    com.tencent.mm.wear.a.b.a.amv.post(new c(this, paramLong));
+  }
+  
+  protected final void h(long paramLong)
+  {
+    com.tencent.mm.wear.a.b.a.amv.post(new b(this, paramLong));
   }
 }
 

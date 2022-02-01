@@ -3,55 +3,55 @@ package com.tencent.mm.plugin.card.model;
 import android.text.TextUtils;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
+import com.tencent.mm.plugin.card.d.f;
 import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.protocal.protobuf.ih;
-import com.tencent.mm.protocal.protobuf.ii;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.je;
+import com.tencent.mm.protocal.protobuf.jf;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class s
-  extends m
+  extends n
   implements k
 {
-  private com.tencent.mm.ai.f callback;
-  private LinkedList<ak> kon;
-  public LinkedList<ak> koo;
+  private com.tencent.mm.al.g callback;
+  private LinkedList<ak> ntA;
+  public LinkedList<ak> ntB;
   private final b rr;
   
   public s(LinkedList<ak> paramLinkedList)
   {
-    AppMethodBeat.i(87869);
-    this.koo = new LinkedList();
-    this.kon = paramLinkedList;
+    AppMethodBeat.i(112811);
+    this.ntB = new LinkedList();
+    this.ntA = paramLinkedList;
     b.a locala = new b.a();
-    locala.fsX = new ih();
-    locala.fsY = new ii();
+    locala.gUU = new je();
+    locala.gUV = new jf();
     locala.uri = "/cgi-bin/micromsg-bin/batchgetcarditem";
-    locala.funcId = 559;
+    locala.funcId = 1074;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.ado();
-    ((ih)this.rr.fsV.fta).wut = J(paramLinkedList);
-    AppMethodBeat.o(87869);
+    this.rr = locala.atI();
+    ((je)this.rr.gUS.gUX).CEl = O(paramLinkedList);
+    AppMethodBeat.o(112811);
   }
   
-  private static LinkedList<String> J(LinkedList<ak> paramLinkedList)
+  private static LinkedList<String> O(LinkedList<ak> paramLinkedList)
   {
-    AppMethodBeat.i(87872);
+    AppMethodBeat.i(112814);
     LinkedList localLinkedList = new LinkedList();
     if ((paramLinkedList == null) || (paramLinkedList.size() == 0))
     {
-      AppMethodBeat.o(87872);
+      AppMethodBeat.o(112814);
       return localLinkedList;
     }
     paramLinkedList = paramLinkedList.iterator();
@@ -62,52 +62,52 @@ public final class s
         localLinkedList.add(localak.field_cardUserId);
       }
     }
-    AppMethodBeat.o(87872);
+    AppMethodBeat.o(112814);
     return localLinkedList;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ai.f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(87870);
-    this.callback = paramf;
+    AppMethodBeat.i(112812);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(87870);
+    AppMethodBeat.o(112812);
     return i;
   }
   
   public final int getType()
   {
-    return 559;
+    return 1074;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(87871);
-    ab.d("MicroMsg.NetSceneBatchGetCardItem", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    AppMethodBeat.i(112813);
+    ad.d("MicroMsg.NetSceneBatchGetCardItem", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ab.e("MicroMsg.NetSceneBatchGetCardItem", "onGYNetEnd, batch get fail, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      ad.e("MicroMsg.NetSceneBatchGetCardItem", "onGYNetEnd, batch get fail, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(87871);
+      AppMethodBeat.o(112813);
       return;
     }
-    paramq = ((ii)this.rr.fsW.fta).koi;
+    paramq = ((jf)this.rr.gUT.gUX).ntw;
     if (TextUtils.isEmpty(paramq))
     {
-      ab.e("MicroMsg.NetSceneBatchGetCardItem", "onGYNetEnd fail, resp json_ret is null");
+      ad.e("MicroMsg.NetSceneBatchGetCardItem", "onGYNetEnd fail, resp json_ret is null");
       this.callback.onSceneEnd(4, -1, null, this);
-      AppMethodBeat.o(87871);
+      AppMethodBeat.o(112813);
       return;
     }
     long l1 = System.currentTimeMillis();
-    paramq = com.tencent.mm.plugin.card.d.f.Iu(paramq);
+    paramq = f.Rf(paramq);
     if (paramq != null)
     {
-      if (this.kon != null) {
-        this.koo.addAll(this.kon);
+      if (this.ntA != null) {
+        this.ntB.addAll(this.ntA);
       }
       long l2 = System.currentTimeMillis();
-      long l3 = g.RL().eHS.kr(Thread.currentThread().getId());
+      long l3 = com.tencent.mm.kernel.g.afB().gda.rb(Thread.currentThread().getId());
       paramInt1 = 0;
       paramArrayOfByte = paramq.iterator();
       Object localObject1;
@@ -121,7 +121,7 @@ public final class s
         if (!l.b((CardInfo)localObject1))
         {
           paramInt1 += 1;
-          localObject2 = this.koo;
+          localObject2 = this.ntB;
           paramInt2 = paramInt1;
           if (localObject1 != null)
           {
@@ -133,10 +133,10 @@ public final class s
         }
         paramInt1 = paramInt2;
       }
-      g.RL().eHS.nY(l3);
-      ab.i("MicroMsg.NetSceneBatchGetCardItem", "onGYNetEnd do transaction use time %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
-      ab.e("MicroMsg.NetSceneBatchGetCardItem", "onGYNetEnd, deal CardObject %d fail of %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      l.bfz();
+      com.tencent.mm.kernel.g.afB().gda.mX(l3);
+      ad.i("MicroMsg.NetSceneBatchGetCardItem", "onGYNetEnd do transaction use time %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
+      ad.e("MicroMsg.NetSceneBatchGetCardItem", "onGYNetEnd, deal CardObject %d fail of %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      l.bMK();
       if (paramq.size() > 0)
       {
         paramInt1 = (int)(System.currentTimeMillis() - l1);
@@ -161,11 +161,11 @@ public final class s
         paramArrayOfByte.add(localObject2);
         paramArrayOfByte.add(localObject3);
         paramArrayOfByte.add(localIDKey);
-        com.tencent.mm.plugin.report.service.h.qsU.b(paramArrayOfByte, true);
+        com.tencent.mm.plugin.report.service.h.vKh.b(paramArrayOfByte, true);
       }
     }
     this.callback.onSceneEnd(0, 0, paramString, this);
-    AppMethodBeat.o(87871);
+    AppMethodBeat.o(112813);
   }
 }
 

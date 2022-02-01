@@ -6,22 +6,21 @@ import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.label.a.b;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.messenger.foundation.a.a.m;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bw;
 import java.util.ArrayList;
 
 public class ProfileLabelView
   extends ProfileItemView
 {
-  public TextView pzr;
-  public TextView vRB;
+  public TextView BWi;
+  public TextView uBa;
   
   public ProfileLabelView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,69 +32,69 @@ public class ProfileLabelView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final boolean ccG()
+  public final boolean dcY()
   {
-    AppMethodBeat.i(27531);
-    if (this.vRB != null)
+    AppMethodBeat.i(31233);
+    if (this.BWi != null)
     {
-      localObject = this.vRB.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = com.tencent.mm.cb.a.ao(getContext(), 2131427664);
-      this.vRB.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = this.BWi.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).width = com.tencent.mm.cd.a.ao(getContext(), 2131165370);
+      this.BWi.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
     ArrayList localArrayList;
-    if (com.tencent.mm.n.a.je(this.lpe.field_type))
+    if (com.tencent.mm.n.b.ls(this.oFt.field_type))
     {
-      if (r.nB(this.lpe.field_username))
+      if (u.se(this.oFt.field_username))
       {
         setVisibility(8);
-        AppMethodBeat.o(27531);
+        AppMethodBeat.o(31233);
         return false;
       }
-      localObject = this.lpe.field_contactLabelIds;
-      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.bKV().RQ((String)localObject);
-      if ((!bo.isNullOrNil((String)localObject)) && (localArrayList != null) && (localArrayList.size() > 0))
+      localObject = this.oFt.field_contactLabelIds;
+      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.cIS().aeK((String)localObject);
+      if ((!bt.isNullOrNil((String)localObject)) && (localArrayList != null) && (localArrayList.size() > 0))
       {
-        this.pzr.setText(j.b(getContext(), bo.d(localArrayList, getContext().getResources().getString(2131298491))));
-        AppMethodBeat.o(27531);
+        this.uBa.setText(k.c(getContext(), bt.n(localArrayList, getContext().getResources().getString(2131757526))));
+        AppMethodBeat.o(31233);
         return true;
       }
       setVisibility(8);
-      AppMethodBeat.o(27531);
+      AppMethodBeat.o(31233);
       return false;
     }
-    Object localObject = this.lpe.field_encryptUsername;
-    if (!bo.isNullOrNil((String)localObject)) {
-      aw.aaz();
+    Object localObject = this.oFt.field_encryptUsername;
+    if (!bt.isNullOrNil((String)localObject)) {
+      az.arV();
     }
-    for (localObject = c.YB().TM((String)localObject); localObject != null; localObject = c.YB().TM(this.lpe.field_username))
+    for (localObject = c.apN().agQ((String)localObject); localObject != null; localObject = c.apN().agQ(this.oFt.field_username))
     {
-      localObject = ((bv)localObject).field_contactLabels;
-      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.bKV().RP((String)localObject);
-      if ((bo.isNullOrNil((String)localObject)) || (localArrayList == null) || (localArrayList.size() <= 0)) {
+      localObject = ((bw)localObject).field_contactLabels;
+      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.cIS().aeJ((String)localObject);
+      if ((bt.isNullOrNil((String)localObject)) || (localArrayList == null) || (localArrayList.size() <= 0)) {
         break;
       }
-      this.pzr.setText(j.b(getContext(), bo.d(localArrayList, getContext().getResources().getString(2131298491))));
-      AppMethodBeat.o(27531);
+      this.uBa.setText(k.c(getContext(), bt.n(localArrayList, getContext().getResources().getString(2131757526))));
+      AppMethodBeat.o(31233);
       return true;
-      aw.aaz();
+      az.arV();
     }
     setVisibility(8);
-    AppMethodBeat.o(27531);
+    AppMethodBeat.o(31233);
     return false;
   }
   
   public int getLayout()
   {
-    return 2130970465;
+    return 2131495138;
   }
   
   public final void init()
   {
-    AppMethodBeat.i(27530);
-    this.pzr = ((TextView)findViewById(2131826851));
-    this.vRB = ((TextView)findViewById(2131826850));
+    AppMethodBeat.i(31232);
+    this.uBa = ((TextView)findViewById(2131298619));
+    this.BWi = ((TextView)findViewById(2131298620));
     setClickable(true);
-    AppMethodBeat.o(27530);
+    AppMethodBeat.o(31232);
   }
 }
 

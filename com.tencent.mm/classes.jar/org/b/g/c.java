@@ -16,59 +16,59 @@ import org.b.b.b;
 public final class c
 {
   private static String CHARSET;
-  private static final Map<String, String> CSk;
+  private static final Map<String, String> KnZ;
   
   static
   {
-    AppMethodBeat.i(77311);
+    AppMethodBeat.i(40580);
     CHARSET = "UTF-8";
     HashMap localHashMap = new HashMap();
     localHashMap.put("*", "%2A");
     localHashMap.put("+", "%20");
     localHashMap.put("%7E", "~");
-    CSk = Collections.unmodifiableMap(localHashMap);
-    AppMethodBeat.o(77311);
+    KnZ = Collections.unmodifiableMap(localHashMap);
+    AppMethodBeat.o(40580);
   }
   
   public static String decode(String paramString)
   {
-    AppMethodBeat.i(77313);
-    d.s(paramString, "Cannot decode null object");
+    AppMethodBeat.i(40582);
+    d.j(paramString, "Cannot decode null object");
     try
     {
       paramString = URLDecoder.decode(paramString, CHARSET);
-      AppMethodBeat.o(77313);
+      AppMethodBeat.o(40582);
       return paramString;
     }
     catch (UnsupportedEncodingException paramString)
     {
       paramString = new b("Charset not found while decoding string: " + CHARSET, paramString);
-      AppMethodBeat.o(77313);
+      AppMethodBeat.o(40582);
       throw paramString;
     }
   }
   
   public static String encode(String paramString)
   {
-    AppMethodBeat.i(77312);
-    d.s(paramString, "Cannot encode null object");
+    AppMethodBeat.i(40581);
+    d.j(paramString, "Cannot encode null object");
     for (;;)
     {
       Iterator localIterator;
       try
       {
         paramString = URLEncoder.encode(paramString, CHARSET);
-        localIterator = CSk.entrySet().iterator();
+        localIterator = KnZ.entrySet().iterator();
         if (!localIterator.hasNext())
         {
-          AppMethodBeat.o(77312);
+          AppMethodBeat.o(40581);
           return paramString;
         }
       }
       catch (UnsupportedEncodingException paramString)
       {
         paramString = new b("Charset not found while encoding string: " + CHARSET, paramString);
-        AppMethodBeat.o(77312);
+        AppMethodBeat.o(40581);
         throw paramString;
       }
       Object localObject = (Map.Entry)localIterator.next();
@@ -80,7 +80,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.b.g.c
  * JD-Core Version:    0.7.0.1
  */

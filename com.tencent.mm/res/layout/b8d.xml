@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/c9h" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:id="@id/d03" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/b3b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/b25" />
+    <Button android:id="@id/cd8" android:visibility="gone" style="@style/a4g" />
+</FrameLayout>

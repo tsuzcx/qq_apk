@@ -17,9 +17,24 @@ public final class BulkCursorDescriptor
   
   static
   {
-    AppMethodBeat.i(11966);
-    CREATOR = new BulkCursorDescriptor.1();
-    AppMethodBeat.o(11966);
+    AppMethodBeat.i(2647);
+    CREATOR = new Parcelable.Creator()
+    {
+      public final BulkCursorDescriptor createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(2641);
+        BulkCursorDescriptor localBulkCursorDescriptor = new BulkCursorDescriptor();
+        localBulkCursorDescriptor.readFromParcel(paramAnonymousParcel);
+        AppMethodBeat.o(2641);
+        return localBulkCursorDescriptor;
+      }
+      
+      public final BulkCursorDescriptor[] newArray(int paramAnonymousInt)
+      {
+        return new BulkCursorDescriptor[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(2647);
   }
   
   public final int describeContents()
@@ -29,7 +44,7 @@ public final class BulkCursorDescriptor
   
   public final void readFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(11965);
+    AppMethodBeat.i(2646);
     this.cursor = BulkCursorNative.asInterface(paramParcel.readStrongBinder());
     this.columnNames = readStringArray(paramParcel);
     if (paramParcel.readInt() != 0) {}
@@ -40,14 +55,14 @@ public final class BulkCursorDescriptor
       if (paramParcel.readInt() != 0) {
         this.window = ((CursorWindow)CursorWindow.CREATOR.createFromParcel(paramParcel));
       }
-      AppMethodBeat.o(11965);
+      AppMethodBeat.o(2646);
       return;
     }
   }
   
   public final String[] readStringArray(Parcel paramParcel)
   {
-    AppMethodBeat.i(11964);
+    AppMethodBeat.i(2645);
     Object localObject = null;
     int j = paramParcel.readInt();
     if (j >= 0)
@@ -64,13 +79,13 @@ public final class BulkCursorDescriptor
         i += 1;
       }
     }
-    AppMethodBeat.o(11964);
+    AppMethodBeat.o(2645);
     return localObject;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(11963);
+    AppMethodBeat.i(2644);
     paramParcel.writeStrongBinder(this.cursor.asBinder());
     paramParcel.writeStringArray(this.columnNames);
     if (this.wantsAllOnMoveCalls) {}
@@ -83,16 +98,16 @@ public final class BulkCursorDescriptor
       }
       paramParcel.writeInt(1);
       this.window.writeToParcel(paramParcel, paramInt);
-      AppMethodBeat.o(11963);
+      AppMethodBeat.o(2644);
       return;
     }
     paramParcel.writeInt(0);
-    AppMethodBeat.o(11963);
+    AppMethodBeat.o(2644);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.wcdb.BulkCursorDescriptor
  * JD-Core Version:    0.7.0.1
  */

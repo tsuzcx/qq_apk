@@ -1,32 +1,27 @@
 package com.tencent.mm.ui.chatting.c.b;
 
-import android.content.Intent;
-import android.view.ContextMenu;
 import android.view.MenuItem;
-import com.tencent.mm.plugin.mmsight.SightCaptureResult;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.c.v;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.ui.chatting.c.ab;
+import com.tencent.mm.ui.chatting.viewitems.c;
+import java.util.List;
 
 public abstract interface aa
-  extends v
+  extends ab
 {
-  public abstract void E(int paramInt1, int paramInt2, String paramString);
+  public abstract int YZ();
   
-  public abstract void a(ContextMenu paramContextMenu, int paramInt, bi parambi);
+  public abstract void a(MenuItem paramMenuItem, c paramc);
   
-  public abstract void a(SightCaptureResult paramSightCaptureResult);
+  public abstract boolean aKL(String paramString);
   
-  public abstract boolean a(MenuItem paramMenuItem, bi parambi);
+  public abstract List<bl> eYo();
   
-  public abstract boolean bc(bi parambi);
-  
-  public abstract boolean g(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void z(String paramString1, int paramInt, String paramString2);
+  public abstract boolean eYp();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.b.aa
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class VoiceInputScrollView
   extends ScrollView
 {
-  private VoiceInputScrollView.a vSB;
+  private a BXf;
   
   public VoiceInputScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -22,15 +22,17 @@ public class VoiceInputScrollView
   
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(27605);
+    AppMethodBeat.i(31307);
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(27605);
+    AppMethodBeat.o(31307);
   }
   
-  public void setOnScrollListener(VoiceInputScrollView.a parama)
+  public void setOnScrollListener(a parama)
   {
-    this.vSB = parama;
+    this.BXf = parama;
   }
+  
+  public static abstract interface a {}
 }
 
 

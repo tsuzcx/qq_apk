@@ -1,120 +1,127 @@
 package com.tencent.mm.ui.tools.b;
 
-import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.graphics.MMBitmapFactory;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.i;
 
 public final class b
   extends a
 {
-  public int AyA = 0;
-  public int AyB = 0;
-  private b.a AyC;
-  private String Ayy;
-  public int Ayz = 0;
+  private String HuH;
+  public int HuI = 0;
+  public int HuJ = 0;
+  public int HuK = 0;
+  private a HuL;
   private int mHeight = 2048;
   public int mSize = 104857600;
   private int mWidth = 2048;
   
   private b(String paramString)
   {
-    this.Ayy = paramString;
+    this.HuH = paramString;
   }
   
-  public static b auW(String paramString)
+  public static b aLP(String paramString)
   {
-    AppMethodBeat.i(107829);
+    AppMethodBeat.i(143300);
     paramString = new b(paramString);
-    AppMethodBeat.o(107829);
+    AppMethodBeat.o(143300);
     return paramString;
   }
   
-  public final b QR(int paramInt)
+  public final void a(a parama)
+  {
+    AppMethodBeat.i(143301);
+    this.HuL = parama;
+    cAQ();
+    AppMethodBeat.o(143301);
+  }
+  
+  protected final int aVG()
+  {
+    AppMethodBeat.i(143302);
+    if (bt.isNullOrNil(this.HuH)) {
+      ad.w("MicroMsg.ImageBoundaryCheck", "dz[check image but path is null or nil]");
+    }
+    this.HuI = ((int)i.aMN(this.HuH));
+    String str = this.HuH;
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inJustDecodeBounds = true;
+    MMBitmapFactory.decodeFile(str, localOptions);
+    this.HuJ = localOptions.outWidth;
+    this.HuK = localOptions.outHeight;
+    if (this.HuI <= this.mSize)
+    {
+      if (this.HuI < 0)
+      {
+        i = 1;
+        if (i == 0) {
+          break label206;
+        }
+      }
+    }
+    else {
+      ad.d("MicroMsg.ImageBoundaryCheck", "dz[over size] size = %d", new Object[] { Integer.valueOf(this.HuI) });
+    }
+    label206:
+    for (int i = 0;; i = 1)
+    {
+      if ((this.HuJ > this.mWidth) || (this.HuK > this.mHeight))
+      {
+        ad.d("MicroMsg.ImageBoundaryCheck", "dz[over width or height] width = %d, height = %d", new Object[] { Integer.valueOf(this.HuJ), Integer.valueOf(this.HuK) });
+        i = 0;
+      }
+      if (i != 0)
+      {
+        ad.i("MicroMsg.ImageBoundaryCheck", "dz[status ok]");
+        AppMethodBeat.o(143302);
+        return 0;
+        i = 0;
+        break;
+      }
+      AppMethodBeat.o(143302);
+      return 1;
+    }
+  }
+  
+  public final b aai(int paramInt)
   {
     this.mWidth = paramInt;
     this.mHeight = paramInt;
     return this;
   }
   
-  public final void a(b.a parama)
+  protected final void cAQ()
   {
-    AppMethodBeat.i(107830);
-    this.AyC = parama;
-    bEI();
-    AppMethodBeat.o(107830);
-  }
-  
-  protected final int azZ()
-  {
-    AppMethodBeat.i(107831);
-    if (bo.isNullOrNil(this.Ayy)) {
-      ab.w("MicroMsg.ImageBoundaryCheck", "dz[check image but path is null or nil]");
-    }
-    this.Ayz = e.cM(this.Ayy);
-    String str = this.Ayy;
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(str, localOptions);
-    this.AyA = localOptions.outWidth;
-    this.AyB = localOptions.outHeight;
-    if (this.Ayz <= this.mSize)
+    AppMethodBeat.i(143303);
+    if (this.HuL == null)
     {
-      if (this.Ayz < 0)
-      {
-        i = 1;
-        if (i == 0) {
-          break label205;
-        }
-      }
-    }
-    else {
-      ab.d("MicroMsg.ImageBoundaryCheck", "dz[over size] size = %d", new Object[] { Integer.valueOf(this.Ayz) });
-    }
-    label205:
-    for (int i = 0;; i = 1)
-    {
-      if ((this.AyA > this.mWidth) || (this.AyB > this.mHeight))
-      {
-        ab.d("MicroMsg.ImageBoundaryCheck", "dz[over width or height] width = %d, height = %d", new Object[] { Integer.valueOf(this.AyA), Integer.valueOf(this.AyB) });
-        i = 0;
-      }
-      if (i != 0)
-      {
-        ab.i("MicroMsg.ImageBoundaryCheck", "dz[status ok]");
-        AppMethodBeat.o(107831);
-        return 0;
-        i = 0;
-        break;
-      }
-      AppMethodBeat.o(107831);
-      return 1;
-    }
-  }
-  
-  protected final void bEI()
-  {
-    AppMethodBeat.i(107832);
-    if (this.AyC == null)
-    {
-      ab.w("MicroMsg.ImageBoundaryCheck", "dz[callback is null]");
-      AppMethodBeat.o(107832);
+      ad.w("MicroMsg.ImageBoundaryCheck", "dz[callback is null]");
+      AppMethodBeat.o(143303);
       return;
     }
-    switch (azZ())
+    switch (aVG())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(107832);
+      AppMethodBeat.o(143303);
       return;
-      this.AyC.a(this);
-      AppMethodBeat.o(107832);
+      this.HuL.a(this);
+      AppMethodBeat.o(143303);
       return;
-      this.AyC.bmr();
+      this.HuL.bWb();
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(b paramb);
+    
+    public abstract void bWb();
   }
 }
 

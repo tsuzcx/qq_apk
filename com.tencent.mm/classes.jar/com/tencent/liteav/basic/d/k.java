@@ -21,9 +21,9 @@ public class k
   
   public static float[] a(j paramj, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(146550);
+    AppMethodBeat.i(14562);
     float[] arrayOfFloat;
-    switch (k.1.a[paramj.ordinal()])
+    switch (1.a[paramj.ordinal()])
     {
     default: 
       paramj = (float[])a.clone();
@@ -59,7 +59,7 @@ public class k
       }
       for (;;)
       {
-        AppMethodBeat.o(146550);
+        AppMethodBeat.o(14562);
         return paramj;
         paramj = (float[])b.clone();
         break;
@@ -73,7 +73,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.d.k
  * JD-Core Version:    0.7.0.1
  */

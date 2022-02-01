@@ -1,176 +1,182 @@
 package com.tencent.mm.plugin.d.a.c;
 
 import android.bluetooth.BluetoothSocket;
+import com.tencent.e.i.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.LinkedList;
 
 public final class c$c
-  implements Runnable
+  implements h
 {
-  private b jQV;
-  private a jQW;
-  private volatile boolean jRa;
-  private volatile Runnable jRb;
-  private OutputStream jRc;
-  private final LinkedList<byte[]> jRd;
-  private final LinkedList<byte[]> jRe;
+  private b mPY;
+  private a mPZ;
+  private volatile boolean mQd;
+  private volatile Runnable mQe;
+  private OutputStream mQf;
+  private final LinkedList<byte[]> mQg;
+  private final LinkedList<byte[]> mQh;
   
   public c$c(b paramb, a parama, BluetoothSocket paramBluetoothSocket)
   {
-    AppMethodBeat.i(18492);
-    this.jRb = null;
-    this.jRc = null;
-    this.jRd = new LinkedList();
-    this.jRe = new LinkedList();
-    this.jQV = null;
-    this.jQW = null;
-    this.jRa = false;
-    this.jQV = paramb;
-    this.jQW = parama;
+    AppMethodBeat.i(22603);
+    this.mQe = null;
+    this.mQf = null;
+    this.mQg = new LinkedList();
+    this.mQh = new LinkedList();
+    this.mPY = null;
+    this.mPZ = null;
+    this.mQd = false;
+    this.mPY = paramb;
+    this.mPZ = parama;
     try
     {
       paramb = paramBluetoothSocket.getOutputStream();
-      this.jRb = this;
-      this.jRc = paramb;
-      AppMethodBeat.o(18492);
+      this.mQe = this;
+      this.mQf = paramb;
+      AppMethodBeat.o(22603);
       return;
     }
     catch (IOException paramb)
     {
-      ab.e("MicroMsg.exdevice.SendThread", "temp sockets not created", new Object[] { paramb });
-      this.jRc = null;
-      if (this.jQW != null) {
-        this.jQW.jQL.c(this.jQV.mSessionId, 11, "Can not get write stream");
+      ad.e("MicroMsg.exdevice.SendThread", "temp sockets not created", new Object[] { paramb });
+      this.mQf = null;
+      if (this.mPZ != null) {
+        this.mPZ.mPO.c(this.mPY.mSessionId, 11, "Can not get write stream");
       }
-      AppMethodBeat.o(18492);
+      AppMethodBeat.o(22603);
     }
   }
   
-  public final boolean au(byte[] paramArrayOfByte)
+  public final boolean aJ(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(18494);
-    ab.i("MicroMsg.exdevice.SendThread", "------write------buffer length = %d", new Object[] { Integer.valueOf(paramArrayOfByte.length) });
-    if (this.jRb == null)
+    AppMethodBeat.i(22605);
+    ad.i("MicroMsg.exdevice.SendThread", "------write------buffer length = %d", new Object[] { Integer.valueOf(paramArrayOfByte.length) });
+    if (this.mQe == null)
     {
-      ab.e("MicroMsg.exdevice.SendThread", "Send thread has been close. Send data abort");
-      AppMethodBeat.o(18494);
+      ad.e("MicroMsg.exdevice.SendThread", "Send thread has been close. Send data abort");
+      AppMethodBeat.o(22605);
       return false;
     }
     try
     {
-      this.jRd.add(paramArrayOfByte);
+      this.mQg.add(paramArrayOfByte);
       notify();
       return true;
     }
     finally
     {
-      AppMethodBeat.o(18494);
+      AppMethodBeat.o(22605);
     }
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(18495);
-    this.jRb = null;
-    this.jRa = true;
+    AppMethodBeat.i(22606);
+    this.mQe = null;
+    this.mQd = true;
     try
     {
       notify();
-      this.jRe.clear();
-      this.jRd.clear();
-      AppMethodBeat.o(18495);
+      this.mQh.clear();
+      this.mQg.clear();
+      AppMethodBeat.o(22606);
       return;
     }
     finally
     {
-      AppMethodBeat.o(18495);
+      AppMethodBeat.o(22606);
     }
+  }
+  
+  public final String getKey()
+  {
+    return "BluetoothChatSession_send";
   }
   
   /* Error */
   public final void run()
   {
     // Byte code:
-    //   0: sipush 18493
+    //   0: sipush 22604
     //   3: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: ldc 64
-    //   8: ldc 125
-    //   10: invokestatic 127	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   8: ldc 129
+    //   10: invokestatic 131	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   13: aload_0
-    //   14: getfield 40	com/tencent/mm/plugin/d/a/c/c$c:jRc	Ljava/io/OutputStream;
+    //   14: getfield 40	com/tencent/mm/plugin/d/a/c/c$c:mQf	Ljava/io/OutputStream;
     //   17: ifnonnull +36 -> 53
-    //   20: sipush 18493
+    //   20: sipush 22604
     //   23: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   26: return
     //   27: astore_1
     //   28: aload_0
-    //   29: getfield 51	com/tencent/mm/plugin/d/a/c/c$c:jQW	Lcom/tencent/mm/plugin/d/a/c/a;
+    //   29: getfield 51	com/tencent/mm/plugin/d/a/c/c$c:mPZ	Lcom/tencent/mm/plugin/d/a/c/a;
     //   32: ifnull +21 -> 53
     //   35: aload_0
-    //   36: getfield 51	com/tencent/mm/plugin/d/a/c/c$c:jQW	Lcom/tencent/mm/plugin/d/a/c/a;
-    //   39: getfield 78	com/tencent/mm/plugin/d/a/c/a:jQL	Lcom/tencent/mm/plugin/d/a/c/a$a;
+    //   36: getfield 51	com/tencent/mm/plugin/d/a/c/c$c:mPZ	Lcom/tencent/mm/plugin/d/a/c/a;
+    //   39: getfield 78	com/tencent/mm/plugin/d/a/c/a:mPO	Lcom/tencent/mm/plugin/d/a/c/a$a;
     //   42: aload_0
-    //   43: getfield 49	com/tencent/mm/plugin/d/a/c/c$c:jQV	Lcom/tencent/mm/plugin/d/a/c/b;
+    //   43: getfield 49	com/tencent/mm/plugin/d/a/c/c$c:mPY	Lcom/tencent/mm/plugin/d/a/c/b;
     //   46: getfield 84	com/tencent/mm/plugin/d/a/c/b:mSessionId	J
     //   49: iconst_0
-    //   50: invokevirtual 131	com/tencent/mm/plugin/d/a/c/a$a:m	(JZ)V
+    //   50: invokevirtual 135	com/tencent/mm/plugin/d/a/c/a$a:l	(JZ)V
     //   53: aload_0
-    //   54: getfield 53	com/tencent/mm/plugin/d/a/c/c$c:jRa	Z
+    //   54: getfield 53	com/tencent/mm/plugin/d/a/c/c$c:mQd	Z
     //   57: ifne +180 -> 237
     //   60: aload_0
-    //   61: getfield 38	com/tencent/mm/plugin/d/a/c/c$c:jRb	Ljava/lang/Runnable;
+    //   61: getfield 38	com/tencent/mm/plugin/d/a/c/c$c:mQe	Ljava/lang/Runnable;
     //   64: ifnonnull +17 -> 81
     //   67: ldc 64
-    //   69: ldc 133
-    //   71: invokestatic 136	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   74: sipush 18493
+    //   69: ldc 137
+    //   71: invokestatic 140	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   74: sipush 22604
     //   77: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   80: return
     //   81: aload_0
-    //   82: getfield 47	com/tencent/mm/plugin/d/a/c/c$c:jRe	Ljava/util/LinkedList;
-    //   85: invokevirtual 140	java/util/LinkedList:isEmpty	()Z
+    //   82: getfield 47	com/tencent/mm/plugin/d/a/c/c$c:mQh	Ljava/util/LinkedList;
+    //   85: invokevirtual 144	java/util/LinkedList:isEmpty	()Z
     //   88: ifne +50 -> 138
     //   91: aload_0
-    //   92: getfield 47	com/tencent/mm/plugin/d/a/c/c$c:jRe	Ljava/util/LinkedList;
-    //   95: invokevirtual 144	java/util/LinkedList:pop	()Ljava/lang/Object;
-    //   98: checkcast 146	[B
+    //   92: getfield 47	com/tencent/mm/plugin/d/a/c/c$c:mQh	Ljava/util/LinkedList;
+    //   95: invokevirtual 148	java/util/LinkedList:pop	()Ljava/lang/Object;
+    //   98: checkcast 150	[B
     //   101: astore_1
     //   102: aload_0
-    //   103: getfield 40	com/tencent/mm/plugin/d/a/c/c$c:jRc	Ljava/io/OutputStream;
+    //   103: getfield 40	com/tencent/mm/plugin/d/a/c/c$c:mQf	Ljava/io/OutputStream;
     //   106: aload_1
-    //   107: invokevirtual 152	java/io/OutputStream:write	([B)V
+    //   107: invokevirtual 156	java/io/OutputStream:write	([B)V
     //   110: aload_0
-    //   111: getfield 51	com/tencent/mm/plugin/d/a/c/c$c:jQW	Lcom/tencent/mm/plugin/d/a/c/a;
+    //   111: getfield 51	com/tencent/mm/plugin/d/a/c/c$c:mPZ	Lcom/tencent/mm/plugin/d/a/c/a;
     //   114: ifnull -61 -> 53
     //   117: aload_0
-    //   118: getfield 51	com/tencent/mm/plugin/d/a/c/c$c:jQW	Lcom/tencent/mm/plugin/d/a/c/a;
-    //   121: getfield 78	com/tencent/mm/plugin/d/a/c/a:jQL	Lcom/tencent/mm/plugin/d/a/c/a$a;
+    //   118: getfield 51	com/tencent/mm/plugin/d/a/c/c$c:mPZ	Lcom/tencent/mm/plugin/d/a/c/a;
+    //   121: getfield 78	com/tencent/mm/plugin/d/a/c/a:mPO	Lcom/tencent/mm/plugin/d/a/c/a$a;
     //   124: aload_0
-    //   125: getfield 49	com/tencent/mm/plugin/d/a/c/c$c:jQV	Lcom/tencent/mm/plugin/d/a/c/b;
+    //   125: getfield 49	com/tencent/mm/plugin/d/a/c/c$c:mPY	Lcom/tencent/mm/plugin/d/a/c/b;
     //   128: getfield 84	com/tencent/mm/plugin/d/a/c/b:mSessionId	J
     //   131: iconst_1
-    //   132: invokevirtual 131	com/tencent/mm/plugin/d/a/c/a$a:m	(JZ)V
+    //   132: invokevirtual 135	com/tencent/mm/plugin/d/a/c/a$a:l	(JZ)V
     //   135: goto -82 -> 53
     //   138: aload_0
-    //   139: getfield 45	com/tencent/mm/plugin/d/a/c/c$c:jRd	Ljava/util/LinkedList;
-    //   142: invokevirtual 140	java/util/LinkedList:isEmpty	()Z
+    //   139: getfield 45	com/tencent/mm/plugin/d/a/c/c$c:mQg	Ljava/util/LinkedList;
+    //   142: invokevirtual 144	java/util/LinkedList:isEmpty	()Z
     //   145: ifne +47 -> 192
     //   148: aload_0
-    //   149: getfield 45	com/tencent/mm/plugin/d/a/c/c$c:jRd	Ljava/util/LinkedList;
+    //   149: getfield 45	com/tencent/mm/plugin/d/a/c/c$c:mQg	Ljava/util/LinkedList;
     //   152: astore_1
     //   153: aload_1
     //   154: monitorenter
     //   155: aload_0
-    //   156: getfield 47	com/tencent/mm/plugin/d/a/c/c$c:jRe	Ljava/util/LinkedList;
+    //   156: getfield 47	com/tencent/mm/plugin/d/a/c/c$c:mQh	Ljava/util/LinkedList;
     //   159: aload_0
-    //   160: getfield 45	com/tencent/mm/plugin/d/a/c/c$c:jRd	Ljava/util/LinkedList;
-    //   163: invokevirtual 156	java/util/LinkedList:addAll	(Ljava/util/Collection;)Z
-    //   166: invokestatic 162	junit/framework/Assert:assertTrue	(Z)V
+    //   160: getfield 45	com/tencent/mm/plugin/d/a/c/c$c:mQg	Ljava/util/LinkedList;
+    //   163: invokevirtual 160	java/util/LinkedList:addAll	(Ljava/util/Collection;)Z
+    //   166: invokestatic 166	junit/framework/Assert:assertTrue	(Z)V
     //   169: aload_0
-    //   170: getfield 45	com/tencent/mm/plugin/d/a/c/c$c:jRd	Ljava/util/LinkedList;
+    //   170: getfield 45	com/tencent/mm/plugin/d/a/c/c$c:mQg	Ljava/util/LinkedList;
     //   173: invokevirtual 120	java/util/LinkedList:clear	()V
     //   176: aload_1
     //   177: monitorexit
@@ -178,36 +184,36 @@ public final class c$c
     //   181: astore_2
     //   182: aload_1
     //   183: monitorexit
-    //   184: sipush 18493
+    //   184: sipush 22604
     //   187: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   190: aload_2
     //   191: athrow
     //   192: aload_0
     //   193: monitorenter
     //   194: aload_0
-    //   195: invokevirtual 165	java/lang/Object:wait	()V
+    //   195: invokevirtual 169	java/lang/Object:wait	()V
     //   198: aload_0
     //   199: monitorexit
     //   200: goto -147 -> 53
     //   203: astore_1
     //   204: aload_0
     //   205: monitorexit
-    //   206: sipush 18493
+    //   206: sipush 22604
     //   209: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   212: aload_1
     //   213: athrow
     //   214: astore_1
     //   215: ldc 64
     //   217: aload_1
-    //   218: ldc 167
+    //   218: ldc 171
     //   220: iconst_0
     //   221: anewarray 4	java/lang/Object
-    //   224: invokestatic 171	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   224: invokestatic 175	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   227: ldc 64
-    //   229: ldc 173
-    //   231: invokestatic 136	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   229: ldc 177
+    //   231: invokestatic 140	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   234: goto -36 -> 198
-    //   237: sipush 18493
+    //   237: sipush 22604
     //   240: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   243: return
     // Local variable table:
@@ -232,7 +238,7 @@ public final class c$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.c.c.c
  * JD-Core Version:    0.7.0.1
  */

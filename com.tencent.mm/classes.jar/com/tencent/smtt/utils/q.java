@@ -1,70 +1,85 @@
 package com.tencent.smtt.utils;
 
-import android.text.TextUtils;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.os.Environment;
+import android.os.StatFs;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Method;
+import com.tencent.smtt.sdk.QbSdk;
+import java.io.File;
 
 public class q
 {
-  private static Class a;
-  private static Method b;
+  private static File a = null;
   
-  static
+  public static long a()
   {
-    AppMethodBeat.i(65285);
-    try
-    {
-      Class localClass = Class.forName("android.os.SystemProperties");
-      a = localClass;
-      b = localClass.getDeclaredMethod("get", new Class[] { String.class, String.class });
-      AppMethodBeat.o(65285);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(65285);
-    }
+    AppMethodBeat.i(54010);
+    StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
+    long l1 = localStatFs.getBlockSize();
+    long l2 = localStatFs.getAvailableBlocks();
+    AppMethodBeat.o(54010);
+    return l2 * l1;
   }
   
-  public static String a(String paramString1, String paramString2)
+  @TargetApi(9)
+  public static boolean a(Context paramContext)
   {
-    AppMethodBeat.i(65283);
-    if (TextUtils.isEmpty(paramString1))
+    AppMethodBeat.i(54011);
+    if (paramContext == null)
     {
-      AppMethodBeat.o(65283);
-      return paramString2;
+      AppMethodBeat.o(54011);
+      return false;
     }
-    paramString1 = b(paramString1, paramString2);
-    AppMethodBeat.o(65283);
-    return paramString1;
-  }
-  
-  private static String b(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(65284);
-    if ((a == null) || (b == null))
-    {
-      AppMethodBeat.o(65284);
-      return paramString2;
-    }
-    try
-    {
-      paramString1 = (String)b.invoke(a, new Object[] { paramString1, paramString2 });
-      AppMethodBeat.o(65284);
-      return paramString1;
-    }
-    catch (Throwable paramString1)
-    {
-      for (;;)
+    if (a == null) {
+      try
       {
-        paramString1 = paramString2;
+        boolean bool = paramContext.getApplicationInfo().processName.contains("com.tencent.mm");
+        if (!bool)
+        {
+          AppMethodBeat.o(54011);
+          return false;
+        }
+        paramContext = QbSdk.getTbsFolderDir(paramContext);
+        if (paramContext != null)
+        {
+          bool = paramContext.isDirectory();
+          if (bool) {}
+        }
+        else
+        {
+          AppMethodBeat.o(54011);
+          return false;
+        }
+        paramContext = new File(paramContext, "share");
+        if (!paramContext.isDirectory())
+        {
+          bool = paramContext.mkdir();
+          if (!bool)
+          {
+            AppMethodBeat.o(54011);
+            return false;
+          }
+        }
+        a = paramContext;
+        paramContext.setExecutable(true, false);
+        AppMethodBeat.o(54011);
+        return true;
+      }
+      catch (Exception paramContext)
+      {
+        AppMethodBeat.o(54011);
+        return false;
       }
     }
+    AppMethodBeat.o(54011);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.utils.q
  * JD-Core Version:    0.7.0.1
  */

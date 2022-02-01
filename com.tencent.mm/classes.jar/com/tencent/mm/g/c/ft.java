@@ -3,68 +3,60 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class ft
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dVM;
-  private static final int dVN;
-  private static final int dVO;
-  private static final int dVP = "autoDownloadCount".hashCode();
-  private static final int dVQ = "fileDownloadCount".hashCode();
-  private static final int dVs;
-  private static final int dVw;
-  private static final int dgM;
-  private static final int diB;
-  private static final int dij;
-  private static final int doI;
-  private static final int doK;
-  private static final int dtX;
-  private static final int key_HASHCODE = "key".hashCode();
+  private static final int eJv = "roomname".hashCode();
+  private static final int eYY = "userStoryFlag".hashCode();
+  private static final int eZp = "newStoryList".hashCode();
+  private static final int eZq = "extbuf".hashCode();
+  private static final int eZr = "nextSyncTime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean __hadSetkey = true;
-  private boolean dVH = true;
-  private boolean dVI = true;
-  private boolean dVJ = true;
-  private boolean dVK = true;
-  private boolean dVL = true;
-  private boolean dVn = true;
-  private boolean dVr = true;
-  private boolean dgp = true;
-  private boolean dih = true;
-  private boolean div = true;
-  private boolean doA = true;
-  private boolean doC = true;
-  private boolean dtk = true;
-  public int field_autoDownloadCount;
-  public boolean field_completeDownload;
-  public long field_createTime;
-  public int field_downloadNetType;
-  public String field_downloadUrl;
-  public int field_fileDownloadCount;
-  public String field_filePath;
-  public String field_key;
-  public String field_md5;
-  public String field_mimeType;
-  public String field_pkgId;
-  public String field_rid;
-  public int field_size;
-  public String field_version;
+  private boolean eJm = true;
+  private boolean eYK = true;
+  private boolean eZm = true;
+  private boolean eZn = true;
+  private boolean eZo = true;
+  public byte[] field_extbuf;
+  public String field_newStoryList;
+  public long field_nextSyncTime;
+  public String field_roomname;
+  public int field_userStoryFlag;
   
-  static
+  public static c.a So()
   {
-    dVs = "pkgId".hashCode();
-    diB = "version".hashCode();
-    doK = "filePath".hashCode();
-    dVM = "rid".hashCode();
-    dVN = "mimeType".hashCode();
-    dtX = "md5".hashCode();
-    doI = "downloadUrl".hashCode();
-    dij = "size".hashCode();
-    dVw = "downloadNetType".hashCode();
-    dVO = "completeDownload".hashCode();
-    dgM = "createTime".hashCode();
+    c.a locala = new c.a();
+    locala.EYt = new Field[5];
+    locala.columns = new String[6];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "roomname";
+    locala.EYv.put("roomname", "TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(" roomname TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.EYu = "roomname";
+    locala.columns[1] = "userStoryFlag";
+    locala.EYv.put("userStoryFlag", "INTEGER");
+    localStringBuilder.append(" userStoryFlag INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "newStoryList";
+    locala.EYv.put("newStoryList", "TEXT");
+    localStringBuilder.append(" newStoryList TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "extbuf";
+    locala.EYv.put("extbuf", "BLOB");
+    localStringBuilder.append(" extbuf BLOB");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "nextSyncTime";
+    locala.EYv.put("nextSyncTime", "LONG");
+    localStringBuilder.append(" nextSyncTime LONG");
+    locala.columns[5] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -73,18 +65,18 @@ public abstract class ft
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (key_HASHCODE != k) {
+      if (eJv != k) {
         break label65;
       }
-      this.field_key = paramCursor.getString(i);
-      this.__hadSetkey = true;
+      this.field_roomname = paramCursor.getString(i);
+      this.eJm = true;
     }
     for (;;)
     {
@@ -92,62 +84,16 @@ public abstract class ft
       break label20;
       break;
       label65:
-      if (dVs == k)
-      {
-        this.field_pkgId = paramCursor.getString(i);
-      }
-      else if (diB == k)
-      {
-        this.field_version = paramCursor.getString(i);
-      }
-      else if (doK == k)
-      {
-        this.field_filePath = paramCursor.getString(i);
-      }
-      else if (dVM == k)
-      {
-        this.field_rid = paramCursor.getString(i);
-      }
-      else if (dVN == k)
-      {
-        this.field_mimeType = paramCursor.getString(i);
-      }
-      else if (dtX == k)
-      {
-        this.field_md5 = paramCursor.getString(i);
-      }
-      else if (doI == k)
-      {
-        this.field_downloadUrl = paramCursor.getString(i);
-      }
-      else if (dij == k)
-      {
-        this.field_size = paramCursor.getInt(i);
-      }
-      else if (dVw == k)
-      {
-        this.field_downloadNetType = paramCursor.getInt(i);
-      }
-      else
-      {
-        if (dVO == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_completeDownload = bool;
-            break;
-          }
-        }
-        if (dgM == k) {
-          this.field_createTime = paramCursor.getLong(i);
-        } else if (dVP == k) {
-          this.field_autoDownloadCount = paramCursor.getInt(i);
-        } else if (dVQ == k) {
-          this.field_fileDownloadCount = paramCursor.getInt(i);
-        } else if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      if (eYY == k) {
+        this.field_userStoryFlag = paramCursor.getInt(i);
+      } else if (eZp == k) {
+        this.field_newStoryList = paramCursor.getString(i);
+      } else if (eZq == k) {
+        this.field_extbuf = paramCursor.getBlob(i);
+      } else if (eZr == k) {
+        this.field_nextSyncTime = paramCursor.getLong(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -155,47 +101,23 @@ public abstract class ft
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
+    if (this.field_roomname == null) {
+      this.field_roomname = "";
     }
-    if (this.dVn) {
-      localContentValues.put("pkgId", this.field_pkgId);
+    if (this.eJm) {
+      localContentValues.put("roomname", this.field_roomname);
     }
-    if (this.div) {
-      localContentValues.put("version", this.field_version);
+    if (this.eYK) {
+      localContentValues.put("userStoryFlag", Integer.valueOf(this.field_userStoryFlag));
     }
-    if (this.doC) {
-      localContentValues.put("filePath", this.field_filePath);
+    if (this.eZm) {
+      localContentValues.put("newStoryList", this.field_newStoryList);
     }
-    if (this.dVH) {
-      localContentValues.put("rid", this.field_rid);
+    if (this.eZn) {
+      localContentValues.put("extbuf", this.field_extbuf);
     }
-    if (this.dVI) {
-      localContentValues.put("mimeType", this.field_mimeType);
-    }
-    if (this.dtk) {
-      localContentValues.put("md5", this.field_md5);
-    }
-    if (this.doA) {
-      localContentValues.put("downloadUrl", this.field_downloadUrl);
-    }
-    if (this.dih) {
-      localContentValues.put("size", Integer.valueOf(this.field_size));
-    }
-    if (this.dVr) {
-      localContentValues.put("downloadNetType", Integer.valueOf(this.field_downloadNetType));
-    }
-    if (this.dVJ) {
-      localContentValues.put("completeDownload", Boolean.valueOf(this.field_completeDownload));
-    }
-    if (this.dgp) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
-    }
-    if (this.dVK) {
-      localContentValues.put("autoDownloadCount", Integer.valueOf(this.field_autoDownloadCount));
-    }
-    if (this.dVL) {
-      localContentValues.put("fileDownloadCount", Integer.valueOf(this.field_fileDownloadCount));
+    if (this.eZo) {
+      localContentValues.put("nextSyncTime", Long.valueOf(this.field_nextSyncTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -205,7 +127,7 @@ public abstract class ft
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.ft
  * JD-Core Version:    0.7.0.1
  */

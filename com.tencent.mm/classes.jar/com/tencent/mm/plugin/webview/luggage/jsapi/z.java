@@ -1,62 +1,48 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.Intent;
+import com.tencent.luggage.d.a;
 import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.a.a;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.MMActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.webview.luggage.f;
+import com.tencent.mm.plugin.webview.luggage.l;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class z
-  extends bi
+  extends bo<f>
 {
-  public final void a(Context paramContext, String paramString, bh.a parama)
+  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  
+  public final void b(a<f>.a parama)
   {
-    AppMethodBeat.i(6321);
-    try
+    AppMethodBeat.i(78562);
+    ad.i("MicroMsg.JsApiHideOptionMenu", "invoke");
+    l locall = ((f)parama.bZU).ekS();
+    if (locall == null)
     {
-      Object localObject = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject).optString("tousername");
-      String str1 = ((JSONObject)localObject).optString("extmsg");
-      ab.d("MicroMsg.JsApiJumpToBizProfile", "doJumpToBizProfile %s, %s", new Object[] { paramString, str1 });
-      String str2 = ((JSONObject)localObject).optString("currentUrl");
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("toUserName", paramString);
-      ((Intent)localObject).putExtra("extInfo", str1);
-      ((Intent)localObject).putExtra("fromURL", str2);
-      ((Intent)localObject).putExtra("source", 2);
-      paramString = new z.1(this, parama);
-      a.gmO.a((Intent)localObject, hashCode() & 0xFFFF, paramString, (MMActivity)paramContext);
-      AppMethodBeat.o(6321);
+      ad.e("MicroMsg.JsApiHideOptionMenu", "actionBar is null");
+      parama.a("fail", null);
+      AppMethodBeat.o(78562);
       return;
     }
-    catch (JSONException paramContext)
-    {
-      ab.e("MicroMsg.JsApiJumpToBizProfile", "parase json fail");
-      parama.c("fail", null);
-      AppMethodBeat.o(6321);
-    }
+    locall.ell();
+    parama.a("", null);
+    AppMethodBeat.o(78562);
   }
   
-  public final void b(a.a parama) {}
-  
-  public final int bjL()
+  public final int bQV()
   {
-    return 2;
+    return 0;
   }
   
   public final String name()
   {
-    return "jumpToBizProfile";
+    return "hideOptionMenu";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.z
  * JD-Core Version:    0.7.0.1
  */

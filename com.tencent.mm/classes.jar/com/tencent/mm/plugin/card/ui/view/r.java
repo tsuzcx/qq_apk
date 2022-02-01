@@ -16,24 +16,24 @@ public final class r
   
   public final void b(ViewGroup paramViewGroup, b paramb) {}
   
-  public final boolean bfr()
+  public final boolean bMC()
   {
     return false;
   }
   
-  public final boolean bfs()
+  public final boolean bMD()
   {
     return true;
   }
   
   public final int getLayoutId()
   {
-    return 2130968919;
+    return 2131493261;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.r
  * JD-Core Version:    0.7.0.1
  */

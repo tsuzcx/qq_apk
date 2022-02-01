@@ -8,69 +8,51 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static void E(View paramView, boolean paramBoolean)
+  public static void H(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(67830);
-    paramView = ft(paramView);
+    AppMethodBeat.i(133798);
+    paramView = gn(paramView);
     if (paramView != null) {
-      paramView.rq(paramBoolean);
+      paramView.wD(paramBoolean);
     }
-    AppMethodBeat.o(67830);
+    AppMethodBeat.o(133798);
   }
   
-  public static int aG(Activity paramActivity)
+  public static void e(View paramView, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(67831);
-    if (!c.ApJ)
-    {
-      AppMethodBeat.o(67831);
-      return 0;
-    }
-    if (paramActivity == null)
-    {
-      AppMethodBeat.o(67831);
-      return 0;
-    }
-    int i = c.aH(paramActivity).ApM;
-    AppMethodBeat.o(67831);
-    return i;
-  }
-  
-  public static void d(View paramView, int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(67829);
+    AppMethodBeat.i(133797);
     if (paramView == null)
     {
-      AppMethodBeat.o(67829);
+      AppMethodBeat.o(133797);
       return;
     }
-    if (!c.ApJ)
+    if (!c.HlA)
     {
-      AppMethodBeat.o(67829);
+      AppMethodBeat.o(133797);
       return;
     }
-    b localb = ft(paramView);
+    b localb = gn(paramView);
     if (localb != null)
     {
-      localb.K(paramInt, paramBoolean);
-      AppMethodBeat.o(67829);
+      localb.L(paramInt, paramBoolean);
+      AppMethodBeat.o(133797);
       return;
     }
-    paramView = com.tencent.mm.sdk.f.a.hr(paramView.getContext());
+    paramView = com.tencent.mm.sdk.f.a.iV(paramView.getContext());
     if (paramView != null)
     {
       paramView.getWindow().setStatusBarColor(paramInt);
-      d.a(paramView.getWindow(), paramBoolean);
+      d.c(paramView.getWindow(), paramBoolean);
     }
-    AppMethodBeat.o(67829);
+    AppMethodBeat.o(133797);
   }
   
-  private static b ft(View paramView)
+  private static b gn(View paramView)
   {
-    AppMethodBeat.i(67828);
+    AppMethodBeat.i(133796);
     if (paramView == null)
     {
-      AppMethodBeat.o(67828);
+      AppMethodBeat.o(133796);
       return null;
       paramView = (View)paramView;
     }
@@ -79,14 +61,14 @@ public final class a
       if ((paramView instanceof b))
       {
         paramView = (b)paramView;
-        AppMethodBeat.o(67828);
+        AppMethodBeat.o(133796);
         return paramView;
       }
       paramView = paramView.getParent();
       if ((paramView != null) && ((paramView instanceof ViewGroup))) {
         break;
       }
-      AppMethodBeat.o(67828);
+      AppMethodBeat.o(133796);
       return null;
     }
   }

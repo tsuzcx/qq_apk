@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="3.0dip" />
-    <solid android:color="@color/a6q" />
-    <stroke android:width="1.0px" android:color="#ffe5e5e5" />
-</shape>
+    <item android:state_enabled="false" android:drawable="@raw/more_fav_icon_disable" />
+    <item android:state_pressed="true" android:drawable="@raw/more_fav_icon_pressed" />
+    <item android:drawable="@raw/more_fav_icon_normal" />
+</selector>

@@ -7,11 +7,11 @@ import java.util.Arrays;
 
 public final class j
 {
-  public final long aPF;
-  public final byte[] aYx;
-  public final long aYy;
+  public final byte[] bwy;
+  public final long bwz;
   public final int flags;
   public final String key;
+  public final long length;
   public final long position;
   public final Uri uri;
   
@@ -28,20 +28,20 @@ public final class j
   public j(Uri paramUri, long paramLong1, long paramLong2, String paramString)
   {
     this(paramUri, paramLong1, paramLong1, paramLong2, paramString, 0);
-    AppMethodBeat.i(95801);
-    AppMethodBeat.o(95801);
+    AppMethodBeat.i(93043);
+    AppMethodBeat.o(93043);
   }
   
   public j(Uri paramUri, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
     this(paramUri, paramLong1, paramLong1, paramLong2, paramString, paramInt);
-    AppMethodBeat.i(152014);
-    AppMethodBeat.o(152014);
+    AppMethodBeat.i(93044);
+    AppMethodBeat.o(93044);
   }
   
   public j(Uri paramUri, byte[] paramArrayOfByte, long paramLong1, long paramLong2, long paramLong3, String paramString, int paramInt)
   {
-    AppMethodBeat.i(95802);
+    AppMethodBeat.i(93045);
     if (paramLong1 >= 0L)
     {
       bool = true;
@@ -62,13 +62,13 @@ public final class j
     {
       a.checkArgument(bool);
       this.uri = paramUri;
-      this.aYx = paramArrayOfByte;
-      this.aYy = paramLong1;
+      this.bwy = paramArrayOfByte;
+      this.bwz = paramLong1;
       this.position = paramLong2;
-      this.aPF = paramLong3;
+      this.length = paramLong3;
       this.key = paramString;
       this.flags = paramInt;
-      AppMethodBeat.o(95802);
+      AppMethodBeat.o(93045);
       return;
       bool = false;
       break;
@@ -77,49 +77,49 @@ public final class j
     }
   }
   
-  private j k(long paramLong1, long paramLong2)
+  private j l(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(95805);
-    if ((paramLong1 == 0L) && (this.aPF == paramLong2))
+    AppMethodBeat.i(93048);
+    if ((paramLong1 == 0L) && (this.length == paramLong2))
     {
-      AppMethodBeat.o(95805);
+      AppMethodBeat.o(93048);
       return this;
     }
-    j localj = new j(this.uri, this.aYx, this.aYy + paramLong1, this.position + paramLong1, paramLong2, this.key, this.flags);
-    AppMethodBeat.o(95805);
+    j localj = new j(this.uri, this.bwy, this.bwz + paramLong1, this.position + paramLong1, paramLong2, this.key, this.flags);
+    AppMethodBeat.o(93048);
     return localj;
   }
   
-  public final j ae(long paramLong)
+  public final j ap(long paramLong)
   {
     long l = -1L;
-    AppMethodBeat.i(95804);
-    if (this.aPF == -1L) {}
+    AppMethodBeat.i(93047);
+    if (this.length == -1L) {}
     for (;;)
     {
-      j localj = k(paramLong, l);
-      AppMethodBeat.o(95804);
+      j localj = l(paramLong, l);
+      AppMethodBeat.o(93047);
       return localj;
-      l = this.aPF - paramLong;
+      l = this.length - paramLong;
     }
   }
   
-  public final boolean ej(int paramInt)
+  public final boolean fh(int paramInt)
   {
     return (this.flags & paramInt) == paramInt;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(95803);
-    String str = "DataSpec[" + this.uri + ", " + Arrays.toString(this.aYx) + ", " + this.aYy + ", " + this.position + ", " + this.aPF + ", " + this.key + ", " + this.flags + "]";
-    AppMethodBeat.o(95803);
+    AppMethodBeat.i(93046);
+    String str = "DataSpec[" + this.uri + ", " + Arrays.toString(this.bwy) + ", " + this.bwz + ", " + this.position + ", " + this.length + ", " + this.key + ", " + this.flags + "]";
+    AppMethodBeat.o(93046);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.h.j
  * JD-Core Version:    0.7.0.1
  */

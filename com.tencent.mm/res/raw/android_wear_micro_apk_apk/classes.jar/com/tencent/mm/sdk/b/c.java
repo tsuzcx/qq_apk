@@ -1,23 +1,31 @@
 package com.tencent.mm.sdk.b;
 
-import android.os.HandlerThread;
-import junit.framework.Assert;
+import com.tencent.mm.sdk.b.a.d;
+import com.tencent.mm.sdk.b.a.f;
 
 public final class c
+  implements com.tencent.mm.sdk.b.a.c
 {
-  static int[] Yl = { 19, 16, 13, 10, 0, -2, -4, -5, -6, -8 };
-  private static long Ym = 0L;
-  private static long Yn = 0L;
-  private static a Yo;
-  private static d Yp;
+  private f aan;
+  private d aao;
   
-  public static HandlerThread E(String paramString)
+  public c(f paramf)
   {
-    if (Yo == null) {
-      Yo = new a(Yp);
+    this.aan = paramf;
+  }
+  
+  public final void a(Runnable paramRunnable, String paramString, long paramLong)
+  {
+    if ((this.aao == null) || (this.aao.lK()))
+    {
+      if (0L >= paramLong) {
+        this.aan.a(paramRunnable, paramString);
+      }
     }
-    Assert.assertNotNull("newThread arg name is null!", paramString);
-    return new b("mmt_h" + paramString, 0);
+    else {
+      return;
+    }
+    this.aan.b(paramRunnable, paramString, paramLong);
   }
 }
 

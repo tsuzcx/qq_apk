@@ -1,94 +1,130 @@
 package com.tencent.mm.v;
 
-import a.f.b.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.f;
-import com.tencent.mm.model.cb;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ba;
+import com.tencent.mm.api.h;
+import com.tencent.mm.api.q;
+import com.tencent.mm.model.ce;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bd;
 import com.tencent.mm.u.b.a;
 import com.tencent.mm.u.d;
 import com.tencent.mm.u.e;
+import d.g.b.k;
+import d.l;
 import java.util.LinkedList;
 import java.util.List;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/executor/OpDelayExecutor;", "Lcom/tencent/mm/executor/IOpExecutor;", "()V", "execute", "", "timer", "Lcom/tencent/mm/engine/FunctionMsgTimer;", "dispatcher", "Lcom/tencent/mm/api/IFunctionMsgDispatcher;", "storage", "Lcom/tencent/mm/storage/FunctionMsgStorage;", "newFunctionMsgItem", "Lcom/tencent/mm/api/FunctionMsgItem;", "oldFunctionMsgItem", "newXmlCreateTime", "", "onTaskExpired", "task", "Lcom/tencent/mm/engine/FunctionMsgTask;", "Companion", "plugin-functionmsg_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/executor/OpDelayExecutor;", "Lcom/tencent/mm/executor/IOpExecutor;", "()V", "execute", "", "timer", "Lcom/tencent/mm/engine/FunctionMsgTimer;", "dispatcher", "Lcom/tencent/mm/api/IFunctionMsgDispatcher;", "storage", "Lcom/tencent/mm/storage/FunctionMsgStorage;", "newFunctionMsgItem", "Lcom/tencent/mm/api/FunctionMsgItem;", "oldFunctionMsgItem", "newXmlCreateTime", "", "onTaskExpired", "task", "Lcom/tencent/mm/engine/FunctionMsgTask;", "Companion", "plugin-functionmsg_release"})
 public final class c
   implements b
 {
-  public static final c.a eyV;
+  public static final c.a fTA;
   
   static
   {
-    AppMethodBeat.i(35480);
-    eyV = new c.a((byte)0);
-    AppMethodBeat.o(35480);
+    AppMethodBeat.i(114133);
+    fTA = new c.a((byte)0);
+    AppMethodBeat.o(114133);
   }
   
-  public final void a(e parame, com.tencent.mm.api.l paraml, ba paramba, f paramf1, f paramf2, long paramLong)
+  public final void a(e parame, q paramq, bd parambd, h paramh1, h paramh2, long paramLong)
   {
-    AppMethodBeat.i(35478);
-    j.q(parame, "timer");
-    j.q(paraml, "dispatcher");
-    j.q(paramba, "storage");
-    j.q(paramf1, "newFunctionMsgItem");
-    if (paramf2 != null)
+    AppMethodBeat.i(114131);
+    k.h(parame, "timer");
+    k.h(paramq, "dispatcher");
+    k.h(parambd, "storage");
+    k.h(paramh1, "newFunctionMsgItem");
+    if (paramh2 != null)
     {
-      paramf1.bl(true);
-      paramf2.aD(paramf2.getVersion());
-      paramf2.aC(paramf1.getVersion());
-      if (0L < paramf1.Ai()) {
-        paramf2.aF(paramf1.Ai() + paramf1.Ah());
+      paramh1.bW(true);
+      paramh2.be(paramh2.getVersion());
+      paramh2.bd(paramh1.getVersion());
+      if (0L < paramh1.getActionTime()) {
+        paramh2.setActionTime(paramh1.getActionTime() + paramh1.JP());
       }
       for (;;)
       {
-        paramf2.cY(paramf1.Af());
-        paraml = paramf2.Ad();
-        j.p(paraml, "oldFunctionMsgItem!!.functionMsgId");
-        ba.a(paraml, paramf2);
-        ab.i("FunctionMsg.OpDelayExecutor", "[OpDelayExecutor], functionMsgId: " + paramf1.Ad() + ", op delay! update the exist one, new ActionTime:" + paramf1.Ai() + " new delay:" + paramf1.Ah() + " reslt:" + paramf2);
-        parame.a(101, paramf2, (b)this);
-        AppMethodBeat.o(35478);
+        paramh2.dY(paramh1.JM());
+        paramq = paramh2.JK();
+        k.g(paramq, "oldFunctionMsgItem!!.functionMsgId");
+        bd.a(paramq, paramh2);
+        ad.i("FunctionMsg.OpDelayExecutor", "[OpDelayExecutor], functionMsgId: " + paramh1.JK() + ", op delay! update the exist one, new ActionTime:" + paramh1.getActionTime() + " new delay:" + paramh1.JP() + " reslt:" + paramh2);
+        parame.a(101, paramh2, (b)this);
+        AppMethodBeat.o(114131);
         return;
-        paramf2.aF(paramf2.Ai() + paramf1.Ah());
+        paramh2.setActionTime(paramh2.getActionTime() + paramh1.JP());
       }
     }
-    ab.i("FunctionMsg.OpDelayExecutor", "[OpDelayExecutor] op delay, oldFunctionMsgItem is null! newFunctionMsgItem: ".concat(String.valueOf(paramf1)));
-    AppMethodBeat.o(35478);
+    ad.i("FunctionMsg.OpDelayExecutor", "[OpDelayExecutor] op delay, oldFunctionMsgItem is null! newFunctionMsgItem: ".concat(String.valueOf(paramh1)));
+    AppMethodBeat.o(114131);
   }
   
-  public final void a(e parame, com.tencent.mm.api.l paraml, d paramd)
+  public final void a(e parame, final q paramq, final d paramd)
   {
-    AppMethodBeat.i(35479);
-    j.q(parame, "timer");
-    j.q(paraml, "dispatcher");
-    j.q(paramd, "task");
-    f localf = paramd.eyP;
-    if (localf.getStatus() == -1)
+    AppMethodBeat.i(114132);
+    k.h(parame, "timer");
+    k.h(paramq, "dispatcher");
+    k.h(paramd, "task");
+    final h localh = paramd.fTu;
+    if (localh.getStatus() == -1)
     {
       LinkedList localLinkedList = new LinkedList();
-      localLinkedList.add(localf);
-      new com.tencent.mm.u.b((List)localLinkedList, paraml, (b.a)new c.b(parame, paramd, localf, paraml)).Pm();
-      AppMethodBeat.o(35479);
+      localLinkedList.add(localh);
+      new com.tencent.mm.u.b((List)localLinkedList, paramq, (b.a)new b(parame, paramd, localh, paramq)).acI();
+      AppMethodBeat.o(114132);
       return;
     }
-    if ((localf.getStatus() == 2) || (localf.getStatus() == -2))
+    if ((localh.getStatus() == 2) || (localh.getStatus() == -2))
     {
-      ab.i("FunctionMsg.OpDelayExecutor", "[onTaskExpired] id" + localf.Ad() + " actionTime:" + localf.Ai());
-      if (localf.Ai() <= cb.abp() / 1000L)
+      ad.i("FunctionMsg.OpDelayExecutor", "[onTaskExpired] id" + localh.JK() + " actionTime:" + localh.getActionTime());
+      if (localh.getActionTime() <= ce.asQ() / 1000L)
       {
-        paraml.a(localf.Ad(), localf, localf.Ag());
-        AppMethodBeat.o(35479);
+        paramq.a(localh.JK(), localh, localh.JN());
+        AppMethodBeat.o(114132);
         return;
       }
-      parame.a(localf.Ac(), localf, paramd.eyQ);
+      parame.a(localh.JJ(), localh, paramd.fTv);
     }
-    AppMethodBeat.o(35479);
+    AppMethodBeat.o(114132);
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/executor/OpDelayExecutor$onTaskExpired$1", "Lcom/tencent/mm/engine/FunctionMsgFetcher$IFunctionMsgFetcherCallback;", "onFailFetch", "", "item", "Lcom/tencent/mm/api/FunctionMsgItem;", "onSuccessFetch", "plugin-functionmsg_release"})
+  public static final class b
+    implements b.a
+  {
+    b(e parame, d paramd, h paramh, q paramq) {}
+    
+    public final void a(h paramh)
+    {
+      AppMethodBeat.i(114130);
+      k.h(paramh, "item");
+      ad.i("FunctionMsg.OpDelayExecutor", "[onSuccessFetch] item:".concat(String.valueOf(paramh)));
+      if (paramh.getActionTime() > ce.asQ() / 1000L)
+      {
+        this.fTB.a(101, paramh, paramd.fTv);
+        AppMethodBeat.o(114130);
+        return;
+      }
+      ad.i("FunctionMsg.OpDelayExecutor", "[onTaskExpired] to show! id" + localh.JK());
+      paramq.a(paramh.JK(), paramh, paramh.JN());
+      AppMethodBeat.o(114130);
+    }
+    
+    public final void b(h paramh)
+    {
+      AppMethodBeat.i(114129);
+      k.h(paramh, "item");
+      ad.w("FunctionMsg.OpDelayExecutor", "[onFailFetch] item:".concat(String.valueOf(paramh)));
+      if (paramh.getStatus() == -1) {
+        this.fTB.a(-1, paramh, paramd.fTv);
+      }
+      AppMethodBeat.o(114129);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.v.c
  * JD-Core Version:    0.7.0.1
  */

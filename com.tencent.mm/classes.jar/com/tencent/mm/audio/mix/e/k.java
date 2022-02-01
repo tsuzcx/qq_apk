@@ -7,28 +7,28 @@ public final class k
 {
   private float A;
   private float B;
-  private float cha;
-  private float chb;
-  private float chc;
-  private int chd;
-  private int che;
+  private float cVX;
+  private float cVY;
+  private float cVZ;
+  private int cWa;
+  private int cWb;
   
   public k()
   {
-    AppMethodBeat.i(137129);
-    this.cha = 128.0F;
-    this.chb = 128.0F;
-    this.chc = 128.0F;
-    this.chd = 44100;
-    this.che = ((int)(0.02F * this.chd * 2.0F * 16.0F / 8.0F));
-    this.A = (this.chd / this.che);
+    AppMethodBeat.i(136878);
+    this.cVX = 128.0F;
+    this.cVY = 128.0F;
+    this.cVZ = 128.0F;
+    this.cWa = 44100;
+    this.cWb = ((int)(0.02F * this.cWa * 2.0F * 16.0F / 8.0F));
+    this.A = (this.cWa / this.cWb);
     this.B = 1.0F;
-    AppMethodBeat.o(137129);
+    AppMethodBeat.o(136878);
   }
   
-  protected final byte[] D(int paramInt1, int paramInt2, int paramInt3)
+  protected final byte[] G(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(137130);
+    AppMethodBeat.i(136879);
     int j = 0;
     if (j < paramInt2)
     {
@@ -36,34 +36,34 @@ public final class k
       int k = 0;
       if (k < paramInt1)
       {
-        i += this.cgQ[k][j];
+        i += this.cVN[k][j];
         if (i > this.MAX_VALUE) {
-          this.cha *= 32768.0F / i;
+          this.cVX *= 32768.0F / i;
         }
         for (;;)
         {
           k += 1;
           break;
           if (i < this.MIN_VALUE) {
-            this.cha *= 32768.0F / i;
+            this.cVX *= 32768.0F / i;
           }
         }
       }
-      if (this.cha >= this.chb) {}
-      for (this.cha = ((this.A * (this.chb + 1.0F) + this.B * this.cha) / (this.A + this.B));; this.cha = ((this.chb + this.cha) / 2.0F))
+      if (this.cVX >= this.cVY) {}
+      for (this.cVX = ((this.A * (this.cVY + 1.0F) + this.B * this.cVX) / (this.A + this.B));; this.cVX = ((this.cVY + this.cVX) / 2.0F))
       {
-        this.chb = this.cha;
+        this.cVY = this.cVX;
         k = i;
-        if ((int)(this.cha * 128.0F) >> 7 != 128) {
-          k = (int)(this.chc * this.cha / 128.0F * i) / 128;
+        if ((int)(this.cVX * 128.0F) >> 7 != 128) {
+          k = (int)(this.cVZ * this.cVX / 128.0F * i) / 128;
         }
-        this.cgT[j] = gt(k);
+        this.cVQ[j] = hS(k);
         j += 1;
         break;
       }
     }
-    byte[] arrayOfByte = bR(paramInt3, paramInt2);
-    AppMethodBeat.o(137130);
+    byte[] arrayOfByte = cg(paramInt3, paramInt2);
+    AppMethodBeat.o(136879);
     return arrayOfByte;
   }
 }

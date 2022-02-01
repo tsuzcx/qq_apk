@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="t">പുറത്തുകടക്കുക</string>
+    <string name="dismiss_overlay_button_label">പുറത്തുകടക്കുക</string>
 </resources>

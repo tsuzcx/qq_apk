@@ -17,15 +17,15 @@ public class NetstatsParserPatterns$NetstatsMatcher
   
   public boolean find()
   {
-    AppMethodBeat.i(113979);
+    AppMethodBeat.i(73477);
     boolean bool = this.zzaff.find();
-    AppMethodBeat.o(113979);
+    AppMethodBeat.o(73477);
     return bool;
   }
   
   public String get(String paramString)
   {
-    AppMethodBeat.i(113980);
+    AppMethodBeat.i(73478);
     if (!this.zzafg.containsKey(paramString))
     {
       paramString = String.valueOf(paramString);
@@ -33,20 +33,20 @@ public class NetstatsParserPatterns$NetstatsMatcher
       for (paramString = "Unknown group ".concat(paramString);; paramString = new String("Unknown group "))
       {
         paramString = new IllegalArgumentException(paramString);
-        AppMethodBeat.o(113980);
+        AppMethodBeat.o(73478);
         throw paramString;
       }
     }
     paramString = this.zzaff.group(((Integer)this.zzafg.get(paramString)).intValue());
-    AppMethodBeat.o(113980);
+    AppMethodBeat.o(73478);
     return paramString;
   }
   
   public boolean matches()
   {
-    AppMethodBeat.i(113978);
+    AppMethodBeat.i(73476);
     boolean bool = this.zzaff.matches();
-    AppMethodBeat.o(113978);
+    AppMethodBeat.o(73476);
     return bool;
   }
 }

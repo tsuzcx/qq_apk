@@ -9,29 +9,29 @@ public abstract class a
     this.flags = 0;
   }
   
-  public final void db(int paramInt)
+  public final void dM(int paramInt)
   {
     this.flags |= paramInt;
   }
   
-  protected final boolean dc(int paramInt)
+  protected final boolean dN(int paramInt)
   {
     return (this.flags & paramInt) == paramInt;
   }
   
-  public final boolean nD()
+  public final boolean sp()
   {
-    return dc(-2147483648);
+    return dN(-2147483648);
   }
   
-  public final boolean nE()
+  public final boolean sq()
   {
-    return dc(4);
+    return dN(4);
   }
   
-  public final boolean nF()
+  public final boolean sr()
   {
-    return dc(1);
+    return dN(1);
   }
 }
 

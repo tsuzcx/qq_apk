@@ -7,31 +7,38 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface b
   extends a
 {
-  public abstract void IL(int paramInt);
+  public abstract void RK(int paramInt);
   
-  public abstract void a(Activity paramActivity, b.b paramb);
+  public abstract void a(Activity paramActivity, b paramb, a parama);
   
-  public abstract void a(Activity paramActivity, b.b paramb, b.a parama);
+  public abstract boolean a(Activity paramActivity, b paramb);
   
-  public abstract void ak(Activity paramActivity);
+  public abstract void aF(Activity paramActivity);
   
   public abstract void b(Activity paramActivity, int paramInt1, int paramInt2);
   
   public abstract void b(Activity paramActivity, Intent paramIntent);
   
-  public abstract void b(Activity paramActivity, Intent paramIntent, int paramInt);
+  public abstract void c(Activity paramActivity, Intent paramIntent, int paramInt);
   
-  public abstract b.b cXt();
+  public abstract b efN();
   
-  public abstract boolean cXu();
+  public abstract boolean efO();
   
-  public abstract boolean cXv();
+  public abstract boolean efP();
   
   public abstract void init();
   
-  public abstract void j(Activity paramActivity, int paramInt);
+  public abstract void l(Activity paramActivity, int paramInt);
   
-  public abstract void k(Activity paramActivity, int paramInt);
+  public abstract void m(Activity paramActivity, int paramInt);
+  
+  public static abstract interface a {}
+  
+  public static abstract interface b
+  {
+    public abstract boolean aG(Activity paramActivity);
+  }
 }
 
 

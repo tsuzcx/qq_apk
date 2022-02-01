@@ -17,20 +17,20 @@ public final class GeobFrame
   
   static
   {
-    AppMethodBeat.i(95309);
+    AppMethodBeat.i(92431);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(95309);
+    AppMethodBeat.o(92431);
   }
   
   GeobFrame(Parcel paramParcel)
   {
     super("GEOB");
-    AppMethodBeat.i(95305);
+    AppMethodBeat.i(92427);
     this.mimeType = paramParcel.readString();
     this.filename = paramParcel.readString();
     this.description = paramParcel.readString();
     this.data = paramParcel.createByteArray();
-    AppMethodBeat.o(95305);
+    AppMethodBeat.o(92427);
   }
   
   public GeobFrame(String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte)
@@ -44,31 +44,31 @@ public final class GeobFrame
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(95306);
+    AppMethodBeat.i(92428);
     if (this == paramObject)
     {
-      AppMethodBeat.o(95306);
+      AppMethodBeat.o(92428);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(95306);
+      AppMethodBeat.o(92428);
       return false;
     }
     paramObject = (GeobFrame)paramObject;
-    if ((x.e(this.mimeType, paramObject.mimeType)) && (x.e(this.filename, paramObject.filename)) && (x.e(this.description, paramObject.description)) && (Arrays.equals(this.data, paramObject.data)))
+    if ((x.g(this.mimeType, paramObject.mimeType)) && (x.g(this.filename, paramObject.filename)) && (x.g(this.description, paramObject.description)) && (Arrays.equals(this.data, paramObject.data)))
     {
-      AppMethodBeat.o(95306);
+      AppMethodBeat.o(92428);
       return true;
     }
-    AppMethodBeat.o(95306);
+    AppMethodBeat.o(92428);
     return false;
   }
   
   public final int hashCode()
   {
     int k = 0;
-    AppMethodBeat.i(95307);
+    AppMethodBeat.i(92429);
     int i;
     if (this.mimeType != null)
     {
@@ -84,7 +84,7 @@ public final class GeobFrame
         k = this.description.hashCode();
       }
       int m = Arrays.hashCode(this.data);
-      AppMethodBeat.o(95307);
+      AppMethodBeat.o(92429);
       return ((j + (i + 527) * 31) * 31 + k) * 31 + m;
       i = 0;
       break;
@@ -93,17 +93,17 @@ public final class GeobFrame
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(95308);
+    AppMethodBeat.i(92430);
     paramParcel.writeString(this.mimeType);
     paramParcel.writeString(this.filename);
     paramParcel.writeString(this.description);
     paramParcel.writeByteArray(this.data);
-    AppMethodBeat.o(95308);
+    AppMethodBeat.o(92430);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.GeobFrame
  * JD-Core Version:    0.7.0.1
  */

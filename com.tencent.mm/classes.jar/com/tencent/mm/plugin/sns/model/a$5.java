@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
@@ -15,16 +15,16 @@ final class a$5
   
   protected final boolean removeEldestEntry(Map.Entry<Long, Integer> paramEntry)
   {
-    AppMethodBeat.i(36065);
+    AppMethodBeat.i(95379);
     if ((size() > 500) && (paramEntry != null)) {
-      ab.i("MicroMsg.AdSnsInfoStorageLogic", "remove eldest ad snsId " + paramEntry.getKey());
+      ad.i("MicroMsg.AdSnsInfoStorageLogic", "remove eldest ad snsId " + paramEntry.getKey());
     }
     if (size() > 500)
     {
-      AppMethodBeat.o(36065);
+      AppMethodBeat.o(95379);
       return true;
     }
-    AppMethodBeat.o(36065);
+    AppMethodBeat.o(95379);
     return false;
   }
 }

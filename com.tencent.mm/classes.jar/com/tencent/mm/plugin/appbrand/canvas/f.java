@@ -20,13 +20,13 @@ public final class f
     this.mBitmap = paramBitmap;
   }
   
-  public final void g(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public final void j(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    AppMethodBeat.i(103170);
+    AppMethodBeat.i(144853);
     Bitmap localBitmap1 = this.mBitmap;
-    RectF localRectF1 = new RectF(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
-    RectF localRectF2 = new RectF(0.0F, 0.0F, this.mBitmap.getWidth(), this.mBitmap.getHeight());
-    Region.Op localOp = Region.Op.XOR;
+    RectF localRectF1 = new RectF(0.0F, 0.0F, this.mBitmap.getWidth(), this.mBitmap.getHeight());
+    RectF localRectF2 = new RectF(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    Region.Op localOp = Region.Op.DIFFERENCE;
     Bitmap localBitmap2 = Bitmap.createBitmap(localBitmap1.getWidth(), localBitmap1.getHeight(), Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap2);
     localCanvas.clipRect(localRectF1);
@@ -38,15 +38,15 @@ public final class f
       drawBitmap(localBitmap2, 0.0F, 0.0F, null);
       localBitmap2.recycle();
     }
-    AppMethodBeat.o(103170);
+    AppMethodBeat.o(144853);
   }
   
   public final void setBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(103171);
+    AppMethodBeat.i(144854);
     super.setBitmap(paramBitmap);
     this.mBitmap = paramBitmap;
-    AppMethodBeat.o(103171);
+    AppMethodBeat.o(144854);
   }
 }
 

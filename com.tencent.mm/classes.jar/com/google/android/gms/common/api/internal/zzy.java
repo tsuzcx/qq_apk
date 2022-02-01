@@ -21,7 +21,7 @@ final class zzy
   
   public final void onComplete(Task<Map<zzh<?>, String>> paramTask)
   {
-    AppMethodBeat.i(61006);
+    AppMethodBeat.i(11498);
     zzw.zza(this.zzgu).lock();
     Object localObject;
     try
@@ -41,13 +41,13 @@ final class zzy
         }
       }
       if (!(paramTask.getException() instanceof AvailabilityException)) {
-        break label455;
+        break label459;
       }
     }
     finally
     {
       zzw.zza(this.zzgu).unlock();
-      AppMethodBeat.o(61006);
+      AppMethodBeat.o(11498);
     }
     paramTask = (AvailabilityException)paramTask.getException();
     if (zzw.zze(this.zzgu))
@@ -82,9 +82,9 @@ final class zzy
     {
       zzw.zzl(this.zzgu).signalAll();
       zzw.zza(this.zzgu).unlock();
-      AppMethodBeat.o(61006);
+      AppMethodBeat.o(11498);
       return;
-      label455:
+      label459:
       paramTask.getException();
       zzw.zza(this.zzgu, Collections.emptyMap());
       zzw.zza(this.zzgu, new ConnectionResult(8));

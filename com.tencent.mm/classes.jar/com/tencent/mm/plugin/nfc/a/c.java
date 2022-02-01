@@ -9,122 +9,122 @@ import java.util.Arrays;
 public final class c
   implements Serializable
 {
-  public byte[] pgd;
+  public byte[] ueH;
   
   public c(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(23021);
+    AppMethodBeat.i(26648);
     if (paramArrayOfByte == null)
     {
       paramArrayOfByte = new IllegalArgumentException("apdu is null");
-      AppMethodBeat.o(23021);
+      AppMethodBeat.o(26648);
       throw paramArrayOfByte;
     }
     paramArrayOfByte = (byte[])paramArrayOfByte.clone();
-    be(paramArrayOfByte);
-    this.pgd = paramArrayOfByte;
-    AppMethodBeat.o(23021);
+    bu(paramArrayOfByte);
+    this.ueH = paramArrayOfByte;
+    AppMethodBeat.o(26648);
   }
   
-  private static void be(byte[] paramArrayOfByte)
+  private static void bu(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(23022);
+    AppMethodBeat.i(26649);
     if (paramArrayOfByte.length < 2)
     {
       paramArrayOfByte = new IllegalArgumentException("apdu must be at least 2 bytes long");
-      AppMethodBeat.o(23022);
+      AppMethodBeat.o(26649);
       throw paramArrayOfByte;
     }
-    AppMethodBeat.o(23022);
+    AppMethodBeat.o(26649);
   }
   
   private void readObject(ObjectInputStream paramObjectInputStream)
   {
-    AppMethodBeat.i(23028);
-    this.pgd = ((byte[])(byte[])paramObjectInputStream.readUnshared());
-    be(this.pgd);
-    AppMethodBeat.o(23028);
+    AppMethodBeat.i(26655);
+    this.ueH = ((byte[])(byte[])paramObjectInputStream.readUnshared());
+    bu(this.ueH);
+    AppMethodBeat.o(26655);
   }
   
   public final void a(c paramc)
   {
-    AppMethodBeat.i(23025);
-    int j = this.pgd.length;
-    this.pgd = Arrays.copyOf(this.pgd, this.pgd.length + paramc.pgd.length - 2);
+    AppMethodBeat.i(26652);
+    int j = this.ueH.length;
+    this.ueH = Arrays.copyOf(this.ueH, this.ueH.length + paramc.ueH.length - 2);
     j -= 2;
-    paramc = (byte[])paramc.pgd.clone();
+    paramc = (byte[])paramc.ueH.clone();
     int m = paramc.length;
     int k = 0;
     while (k < m)
     {
       int i = paramc[k];
-      this.pgd[j] = i;
+      this.ueH[j] = i;
       k += 1;
       j += 1;
     }
-    AppMethodBeat.o(23025);
+    AppMethodBeat.o(26652);
   }
   
-  public final short bWV()
+  public final short cWB()
   {
-    return (short)(this.pgd[(this.pgd.length - 2)] & 0xFF);
+    return (short)(this.ueH[(this.ueH.length - 2)] & 0xFF);
   }
   
-  public final short bWW()
+  public final short cWC()
   {
-    return (short)(this.pgd[(this.pgd.length - 1)] & 0xFF);
+    return (short)(this.ueH[(this.ueH.length - 1)] & 0xFF);
   }
   
-  public final boolean bWX()
+  public final boolean cWD()
   {
-    AppMethodBeat.i(23023);
-    if ((short)(bWV() << 8 | bWW()) == -28672)
+    AppMethodBeat.i(26650);
+    if ((short)(cWB() << 8 | cWC()) == -28672)
     {
-      AppMethodBeat.o(23023);
+      AppMethodBeat.o(26650);
       return true;
     }
-    AppMethodBeat.o(23023);
+    AppMethodBeat.o(26650);
     return false;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(23026);
+    AppMethodBeat.i(26653);
     if (this == paramObject)
     {
-      AppMethodBeat.o(23026);
+      AppMethodBeat.o(26653);
       return true;
     }
     if (!(paramObject instanceof c))
     {
-      AppMethodBeat.o(23026);
+      AppMethodBeat.o(26653);
       return false;
     }
     paramObject = (c)paramObject;
-    boolean bool = Arrays.equals(this.pgd, paramObject.pgd);
-    AppMethodBeat.o(23026);
+    boolean bool = Arrays.equals(this.ueH, paramObject.ueH);
+    AppMethodBeat.o(26653);
     return bool;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(23027);
-    int i = Arrays.hashCode(this.pgd);
-    AppMethodBeat.o(23027);
+    AppMethodBeat.i(26654);
+    int i = Arrays.hashCode(this.ueH);
+    AppMethodBeat.o(26654);
     return i;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(23024);
-    String str = a.byteArrayToHexString(this.pgd);
-    AppMethodBeat.o(23024);
+    AppMethodBeat.i(26651);
+    String str = a.byteArrayToHexString(this.ueH);
+    AppMethodBeat.o(26651);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.nfc.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,34 @@
 package com.tencent.mm.plugin.account.ui;
 
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.applet.SecurityImage.b;
+import com.tencent.mm.ui.base.h;
 
 public abstract class b
   extends SecurityImage.b
 {
-  m gCj = null;
-  SecurityImage gwg = null;
+  SecurityImage ijd = null;
+  n ipD = null;
   
-  public abstract m a(m paramm, String paramString);
+  public abstract n a(n paramn, String paramString);
   
-  public final void apW()
+  public final void aIs()
   {
-    g.Rc().a(a(this.gCj, ""), 0);
+    g.aeS().a(a(this.ipD, ""), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.b
  * JD-Core Version:    0.7.0.1
  */

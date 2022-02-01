@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class rz
   extends b
 {
-  public rz.a cIl;
+  public a dxH;
   
   public rz()
   {
@@ -15,16 +15,21 @@ public final class rz
   
   private rz(byte paramByte)
   {
-    AppMethodBeat.i(94445);
-    this.cIl = new rz.a();
-    this.ymq = false;
+    AppMethodBeat.i(110507);
+    this.dxH = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(94445);
+    AppMethodBeat.o(110507);
+  }
+  
+  public static final class a
+  {
+    public boolean dml = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.rz
  * JD-Core Version:    0.7.0.1
  */

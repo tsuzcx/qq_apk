@@ -5,147 +5,148 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.nfc.NfcAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
-import com.tencent.mm.protocal.protobuf.bgk;
-import com.tencent.mm.protocal.protobuf.oi;
-import com.tencent.mm.protocal.protobuf.ub;
-import com.tencent.mm.protocal.protobuf.vo;
-import com.tencent.mm.protocal.protobuf.vp;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.protocal.protobuf.btl;
+import com.tencent.mm.protocal.protobuf.qn;
+import com.tencent.mm.protocal.protobuf.xb;
+import com.tencent.mm.protocal.protobuf.ys;
+import com.tencent.mm.protocal.protobuf.yt;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.LinkedList;
 
 public final class a
-  implements f
+  implements g
 {
-  public bgk pgy;
+  public btl ufb;
   
   public a()
   {
-    AppMethodBeat.i(23063);
+    AppMethodBeat.i(26689);
     init();
-    AppMethodBeat.o(23063);
+    AppMethodBeat.o(26689);
   }
   
-  private void a(bgk parambgk)
+  private void a(btl parambtl)
   {
-    AppMethodBeat.i(23065);
-    if (!aw.RG())
+    AppMethodBeat.i(26691);
+    if (!az.afw())
     {
-      ab.i("MicroMsg.CpuCardConfigManager", "setConfig account not ready");
-      AppMethodBeat.o(23065);
+      ad.i("MicroMsg.CpuCardConfigManager", "setConfig account not ready");
+      AppMethodBeat.o(26691);
       return;
     }
-    if (parambgk != null)
+    if (parambtl != null)
     {
-      ab.i("MicroMsg.CpuCardConfigManager", "setConfig config");
-      this.pgy = parambgk;
+      ad.i("MicroMsg.CpuCardConfigManager", "setConfig config");
+      this.ufb = parambtl;
       try
       {
-        parambgk = new String(this.pgy.toByteArray(), "ISO-8859-1");
-        aw.aaz();
-        c.Ru().set(ac.a.yzK, parambgk);
-        AppMethodBeat.o(23065);
+        parambtl = new String(this.ufb.toByteArray(), "ISO-8859-1");
+        az.arV();
+        c.afk().set(ae.a.Fif, parambtl);
+        AppMethodBeat.o(26691);
         return;
       }
-      catch (UnsupportedEncodingException parambgk)
+      catch (UnsupportedEncodingException parambtl)
       {
-        ab.w("MicroMsg.CpuCardConfigManager", "save config exp, " + parambgk.getLocalizedMessage());
-        AppMethodBeat.o(23065);
+        ad.w("MicroMsg.CpuCardConfigManager", "save config exp, " + parambtl.getLocalizedMessage());
+        AppMethodBeat.o(26691);
         return;
       }
-      catch (IOException parambgk)
+      catch (IOException parambtl)
       {
-        ab.w("MicroMsg.CpuCardConfigManager", "save config exp, " + parambgk.getLocalizedMessage());
+        ad.w("MicroMsg.CpuCardConfigManager", "save config exp, " + parambtl.getLocalizedMessage());
       }
     }
-    AppMethodBeat.o(23065);
+    AppMethodBeat.o(26691);
   }
   
-  private bgk bXb()
+  private btl cWH()
   {
-    AppMethodBeat.i(23066);
-    if (this.pgy == null) {
+    AppMethodBeat.i(26692);
+    if (this.ufb == null) {
       init();
     }
-    bgk localbgk = this.pgy;
-    AppMethodBeat.o(23066);
-    return localbgk;
+    btl localbtl = this.ufb;
+    AppMethodBeat.o(26692);
+    return localbtl;
   }
   
   private void init()
   {
-    AppMethodBeat.i(23064);
-    this.pgy = new bgk();
-    aw.aaz();
-    String str = String.valueOf(c.Ru().get(ac.a.yzK, null));
-    if (bo.isNullOrNil(str))
+    AppMethodBeat.i(26690);
+    this.ufb = new btl();
+    az.arV();
+    String str = String.valueOf(c.afk().get(ae.a.Fif, null));
+    if (bt.isNullOrNil(str))
     {
-      this.pgy.wOn = new LinkedList();
-      this.pgy.lastUpdateTime = 0L;
-      this.pgy.wOo = 86400;
-      this.pgy.version = 0;
-      AppMethodBeat.o(23064);
+      this.ufb.DaU = new LinkedList();
+      this.ufb.lastUpdateTime = 0L;
+      this.ufb.DaV = 86400;
+      this.ufb.version = 0;
+      AppMethodBeat.o(26690);
       return;
     }
     try
     {
-      this.pgy.parseFrom(str.getBytes("ISO-8859-1"));
-      AppMethodBeat.o(23064);
+      this.ufb.parseFrom(str.getBytes("ISO-8859-1"));
+      ad.i("MicroMsg.CpuCardConfigManager", "alvinluo nfcConfig version: %d", new Object[] { Integer.valueOf(this.ufb.version) });
+      AppMethodBeat.o(26690);
       return;
     }
     catch (Exception localException)
     {
-      ab.w("MicroMsg.CpuCardConfigManager", "parseConfig exp, " + localException.getLocalizedMessage());
-      this.pgy.wOn = new LinkedList();
-      this.pgy.lastUpdateTime = 0L;
-      this.pgy.wOo = 86400;
-      this.pgy.version = 0;
-      AppMethodBeat.o(23064);
+      ad.w("MicroMsg.CpuCardConfigManager", "parseConfig exp, " + localException.getLocalizedMessage());
+      this.ufb.DaU = new LinkedList();
+      this.ufb.lastUpdateTime = 0L;
+      this.ufb.DaV = 86400;
+      this.ufb.version = 0;
+      AppMethodBeat.o(26690);
     }
   }
   
-  public final boolean bIs()
+  public final boolean cGn()
   {
     int i = 1800;
-    AppMethodBeat.i(23067);
+    AppMethodBeat.i(26693);
     try
     {
-      if (NfcAdapter.getDefaultAdapter(ah.getContext()) == null)
+      if (NfcAdapter.getDefaultAdapter(aj.getContext()) == null)
       {
-        ab.i("MicroMsg.CpuCardConfigManager", "Nfc not support no need update");
-        AppMethodBeat.o(23067);
+        ad.i("MicroMsg.CpuCardConfigManager", "Nfc not support no need update");
+        AppMethodBeat.o(26693);
         return false;
       }
     }
     catch (Exception localException)
     {
-      ab.printErrStackTrace("MicroMsg.CpuCardConfigManager", localException, "", new Object[0]);
-      AppMethodBeat.o(23067);
+      ad.printErrStackTrace("MicroMsg.CpuCardConfigManager", localException, "", new Object[0]);
+      AppMethodBeat.o(26693);
       return false;
     }
     int j;
-    if (this.pgy != null)
+    if (this.ufb != null)
     {
-      j = this.pgy.wOo;
+      j = this.ufb.DaV;
       if (j >= 1800) {}
     }
     for (;;)
     {
-      ab.i("MicroMsg.CpuCardConfigManager", "now=" + bo.aox() + ", lastUpdateTime=" + this.pgy.lastUpdateTime + ", updateFreq=" + i + ", configUpdateFreq=" + this.pgy.wOo);
-      if (bo.aox() - this.pgy.lastUpdateTime > i)
+      ad.i("MicroMsg.CpuCardConfigManager", "now=" + bt.aGK() + ", lastUpdateTime=" + this.ufb.lastUpdateTime + ", updateFreq=" + i + ", configUpdateFreq=" + this.ufb.DaV);
+      if (bt.aGK() - this.ufb.lastUpdateTime > i)
       {
-        AppMethodBeat.o(23067);
+        AppMethodBeat.o(26693);
         return true;
         if (j > 604800) {
           i = 604800;
@@ -153,121 +154,122 @@ public final class a
       }
       else
       {
-        AppMethodBeat.o(23067);
+        AppMethodBeat.o(26693);
         return false;
       }
       i = j;
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(23068);
-    aw.Rc().b(1561, this);
-    if ((paramm instanceof com.tencent.mm.plugin.nfc_open.a.b))
+    AppMethodBeat.i(26694);
+    az.aeS().b(1561, this);
+    if ((paramn instanceof com.tencent.mm.plugin.nfc_open.a.b))
     {
-      paramString = bXb();
-      paramString.lastUpdateTime = bo.aox();
+      paramString = cWH();
+      paramString.lastUpdateTime = bt.aGK();
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramm = (vo)((com.tencent.mm.plugin.nfc_open.a.b)paramm).rr.fsW.fta;
-        if (paramm != null)
+        paramn = (ys)((com.tencent.mm.plugin.nfc_open.a.b)paramn).rr.gUT.gUX;
+        if (paramn != null)
         {
-          paramString.wOo = paramm.wOo;
-          paramString.wOp = paramm.wOp;
-          aw.aaz();
-          if (((Integer)c.Ru().get(ac.a.yzP, Integer.valueOf(0))).intValue() == 0)
+          paramString.DaV = paramn.DaV;
+          paramString.DaW = paramn.DaW;
+          az.arV();
+          if (((Integer)c.afk().get(ae.a.Fik, Integer.valueOf(0))).intValue() == 0)
           {
-            if (paramm.wOp != 1) {
+            if (paramn.DaW != 1) {
               break label234;
             }
-            ah.getContext().getPackageManager().setComponentEnabledSetting(new ComponentName(ah.getPackageName(), "com.tencent.mm.plugin.nfc_open.ui.NfcWebViewUI"), 1, 1);
+            aj.getContext().getPackageManager().setComponentEnabledSetting(new ComponentName(aj.getPackageName(), "com.tencent.mm.plugin.nfc_open.ui.NfcWebViewUI"), 1, 1);
           }
           for (;;)
           {
-            aw.aaz();
-            c.Ru().set(ac.a.yzQ, Integer.valueOf(paramm.wOp));
-            aw.aaz();
-            c.Ru().set(ac.a.yzT, paramm.ucg);
-            if (paramString.version != paramm.version) {
+            az.arV();
+            c.afk().set(ae.a.Fil, Integer.valueOf(paramn.DaW));
+            az.arV();
+            c.afk().set(ae.a.Fio, paramn.zWO);
+            if (paramString.version != paramn.version) {
               break;
             }
-            ab.i("MicroMsg.CpuCardConfigManager", "nfc-onSceneEnd no config change return version = " + paramm.version);
+            ad.i("MicroMsg.CpuCardConfigManager", "nfc-onSceneEnd no config change return version = " + paramn.version);
             a(paramString);
-            AppMethodBeat.o(23068);
+            AppMethodBeat.o(26694);
             return;
             label234:
-            ah.getContext().getPackageManager().setComponentEnabledSetting(new ComponentName(ah.getPackageName(), "com.tencent.mm.plugin.nfc_open.ui.NfcWebViewUI"), 2, 1);
+            aj.getContext().getPackageManager().setComponentEnabledSetting(new ComponentName(aj.getPackageName(), "com.tencent.mm.plugin.nfc_open.ui.NfcWebViewUI"), 2, 1);
           }
-          paramString.version = paramm.version;
-          if ((paramm.wOn != null) && (!paramm.wOn.isEmpty())) {
-            if (paramString.wOn == null)
+          paramString.version = paramn.version;
+          ad.i("MicroMsg.CpuCardConfigManager", "alvinluo nfc-onSceneEnd config new version: %d", new Object[] { Integer.valueOf(paramn.version) });
+          if ((paramn.DaU != null) && (!paramn.DaU.isEmpty())) {
+            if (paramString.DaU == null)
             {
-              paramString.wOn = new LinkedList();
+              paramString.DaU = new LinkedList();
               paramInt1 = 0;
             }
           }
           for (;;)
           {
-            if (paramInt1 < paramm.wOn.size())
+            if (paramInt1 < paramn.DaU.size())
             {
-              oi localoi = new oi();
-              localoi.wki = ((oi)paramm.wOn.get(paramInt1)).wki;
-              localoi.wDK = ((oi)paramm.wOn.get(paramInt1)).wDK;
-              ab.d("MicroMsg.CpuCardConfigManager", "nfc-onSceneEnd sflag=" + bo.g(Integer.valueOf(localoi.wDK)) + ", url=" + bo.nullAsNil(localoi.wki));
-              if (localoi.wDJ == null)
+              qn localqn = new qn();
+              localqn.Csy = ((qn)paramn.DaU.get(paramInt1)).Csy;
+              localqn.CPl = ((qn)paramn.DaU.get(paramInt1)).CPl;
+              ad.d("MicroMsg.CpuCardConfigManager", "nfc-onSceneEnd sflag=" + bt.l(Integer.valueOf(localqn.CPl)) + ", url=" + bt.nullAsNil(localqn.Csy));
+              if (localqn.CPk == null)
               {
-                localoi.wDJ = new LinkedList();
-                label439:
+                localqn.CPk = new LinkedList();
+                label462:
                 paramInt2 = 0;
               }
               for (;;)
               {
-                if (paramInt2 >= ((oi)paramm.wOn.get(paramInt1)).wDJ.size()) {
-                  break label735;
+                if (paramInt2 >= ((qn)paramn.DaU.get(paramInt1)).CPk.size()) {
+                  break label758;
                 }
-                vp localvp = new vp();
-                if (localvp.wOq == null) {
-                  localvp.wOq = new LinkedList();
+                yt localyt = new yt();
+                if (localyt.DaX == null) {
+                  localyt.DaX = new LinkedList();
                 }
                 for (;;)
                 {
                   int i = 0;
-                  while (i < ((vp)((oi)paramm.wOn.get(paramInt1)).wDJ.get(paramInt2)).wOq.size())
+                  while (i < ((yt)((qn)paramn.DaU.get(paramInt1)).CPk.get(paramInt2)).DaX.size())
                   {
-                    ub localub = new ub();
-                    localub.wMy = ((ub)((vp)((oi)paramm.wOn.get(paramInt1)).wDJ.get(paramInt2)).wOq.get(i)).wMy;
-                    localub.ooD = ((ub)((vp)((oi)paramm.wOn.get(paramInt1)).wDJ.get(paramInt2)).wOq.get(i)).ooD;
-                    ab.d("MicroMsg.CpuCardConfigManager", "nfc-onSceneEnd cmd=" + bo.nullAsNil(localub.wMy) + ", answer=" + bo.nullAsNil(localub.ooD));
-                    localvp.wOq.add(localub);
+                    xb localxb = new xb();
+                    localxb.CYV = ((xb)((yt)((qn)paramn.DaU.get(paramInt1)).CPk.get(paramInt2)).DaX.get(i)).CYV;
+                    localxb.teH = ((xb)((yt)((qn)paramn.DaU.get(paramInt1)).CPk.get(paramInt2)).DaX.get(i)).teH;
+                    ad.d("MicroMsg.CpuCardConfigManager", "nfc-onSceneEnd cmd=" + bt.nullAsNil(localxb.CYV) + ", answer=" + bt.nullAsNil(localxb.teH));
+                    localyt.DaX.add(localxb);
                     i += 1;
                   }
-                  paramString.wOn.clear();
+                  paramString.DaU.clear();
                   break;
-                  localoi.wDJ.clear();
-                  break label439;
-                  localvp.wOq.clear();
+                  localqn.CPk.clear();
+                  break label462;
+                  localyt.DaX.clear();
                 }
-                localoi.wDJ.add(localvp);
+                localqn.CPk.add(localyt);
                 paramInt2 += 1;
               }
-              label735:
-              paramString.wOn.add(localoi);
+              label758:
+              paramString.DaU.add(localqn);
               paramInt1 += 1;
               continue;
-              paramString.wOn.clear();
+              paramString.DaU.clear();
             }
           }
         }
       }
       a(paramString);
     }
-    AppMethodBeat.o(23068);
+    AppMethodBeat.o(26694);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.nfc_open.b.a
  * JD-Core Version:    0.7.0.1
  */

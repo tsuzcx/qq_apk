@@ -12,9 +12,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class EnterpriseFullHeightListView
   extends ListView
 {
-  public boolean AkR = true;
-  private View AkS;
-  private int itemHeight = 0;
+  public boolean Hev = true;
+  private View Hew;
+  private int hr = 0;
   
   public EnterpriseFullHeightListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,16 +29,16 @@ public class EnterpriseFullHeightListView
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = 0;
-    AppMethodBeat.i(34459);
+    AppMethodBeat.i(38588);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.AkR)
+    if (this.Hev)
     {
-      AppMethodBeat.o(34459);
+      AppMethodBeat.o(38588);
       return;
     }
     try
     {
-      if (this.AkR) {
+      if (this.Hev) {
         break label266;
       }
       int j = getHeaderViewsCount();
@@ -46,7 +46,7 @@ public class EnterpriseFullHeightListView
       paramInt4 = i;
       paramInt1 = k;
       paramInt3 = j;
-      if (this.AkS != null)
+      if (this.Hew != null)
       {
         paramInt1 = k - 1;
         paramInt3 = j;
@@ -55,7 +55,7 @@ public class EnterpriseFullHeightListView
       View localView;
       while (paramInt3 < paramInt1)
       {
-        i = this.itemHeight;
+        i = this.hr;
         if (i > 0) {}
       }
       if (paramInt4 >= paramInt2) {
@@ -68,18 +68,18 @@ public class EnterpriseFullHeightListView
       {
         localView = getAdapter().getView(paramInt3, null, this);
         localView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-        this.itemHeight = localView.getMeasuredHeight();
-        i = paramInt4 + this.itemHeight;
+        this.hr = localView.getMeasuredHeight();
+        i = paramInt4 + this.hr;
         paramInt4 = i;
         if (i <= paramInt2) {
           break label193;
         }
-        if (this.AkS != null)
+        if (this.Hew != null)
         {
-          removeFooterView(this.AkS);
-          this.AkS = null;
+          removeFooterView(this.Hew);
+          this.Hew = null;
         }
-        AppMethodBeat.o(34459);
+        AppMethodBeat.o(38588);
         return;
       }
       catch (Exception localException2)
@@ -87,23 +87,23 @@ public class EnterpriseFullHeightListView
         paramInt3 += 1;
       }
       localException1 = localException1;
-      AppMethodBeat.o(34459);
+      AppMethodBeat.o(38588);
       return;
     }
     label193:
-    if (this.AkS == null) {
-      this.AkS = new View(getContext());
+    if (this.Hew == null) {
+      this.Hew = new View(getContext());
     }
-    removeFooterView(this.AkS);
-    this.AkS.setLayoutParams(new AbsListView.LayoutParams(-1, paramInt2 - paramInt4));
-    addFooterView(this.AkS, null, false);
+    removeFooterView(this.Hew);
+    this.Hew.setLayoutParams(new AbsListView.LayoutParams(-1, paramInt2 - paramInt4));
+    addFooterView(this.Hew, null, false);
     label266:
-    AppMethodBeat.o(34459);
+    AppMethodBeat.o(38588);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.EnterpriseFullHeightListView
  * JD-Core Version:    0.7.0.1
  */

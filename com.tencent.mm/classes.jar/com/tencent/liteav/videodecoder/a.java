@@ -7,6 +7,8 @@ import java.nio.ByteBuffer;
 
 public abstract interface a
 {
+  public abstract int GetDecodeCost();
+  
   public abstract int config(Surface paramSurface);
   
   public abstract void decode(TXSNALPacket paramTXSNALPacket);
@@ -23,7 +25,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.videodecoder.a
  * JD-Core Version:    0.7.0.1
  */

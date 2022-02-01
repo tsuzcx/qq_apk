@@ -10,14 +10,14 @@ import com.google.android.gms.internal.ch;
 
 public class o
 {
-  private static o Lz;
-  private final cg LA;
+  private static o No;
+  private final cg Np;
   private final Context mContext;
   
   private o(Context paramContext)
   {
     this.mContext = paramContext.getApplicationContext();
-    this.LA = ch.u(this.mContext);
+    this.Np = ch.v(this.mContext);
   }
   
   static j a(PackageInfo paramPackageInfo, j... paramVarArgs)
@@ -47,24 +47,24 @@ public class o
     if ((paramPackageInfo != null) && (paramPackageInfo.signatures != null))
     {
       if (paramBoolean) {}
-      for (paramPackageInfo = a(paramPackageInfo, m.Ls); paramPackageInfo != null; paramPackageInfo = a(paramPackageInfo, new j[] { m.Ls[0] })) {
+      for (paramPackageInfo = a(paramPackageInfo, m.Nh); paramPackageInfo != null; paramPackageInfo = a(paramPackageInfo, new j[] { m.Nh[0] })) {
         return true;
       }
     }
     return false;
   }
   
-  public static o p(Context paramContext)
+  public static o q(Context paramContext)
   {
-    d.u(paramContext);
+    d.D(paramContext);
     try
     {
-      if (Lz == null)
+      if (No == null)
       {
-        i.m(paramContext);
-        Lz = new o(paramContext);
+        i.n(paramContext);
+        No = new o(paramContext);
       }
-      return Lz;
+      return No;
     }
     finally {}
   }
@@ -79,7 +79,7 @@ public class o
         return true;
       }
     } while (!a(paramPackageInfo, true));
-    if (n.n(this.mContext)) {
+    if (n.o(this.mContext)) {
       return true;
     }
     Log.w("GoogleSignatureVerifier", "Test-keys aren't accepted on this build.");

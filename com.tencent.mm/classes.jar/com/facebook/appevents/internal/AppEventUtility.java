@@ -24,7 +24,7 @@ public class AppEventUtility
   
   public static String bytesToHex(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(72161);
+    AppMethodBeat.i(17597);
     StringBuffer localStringBuffer = new StringBuffer();
     int j = paramArrayOfByte.length;
     int i = 0;
@@ -34,54 +34,54 @@ public class AppEventUtility
       i += 1;
     }
     paramArrayOfByte = localStringBuffer.toString();
-    AppMethodBeat.o(72161);
+    AppMethodBeat.o(17597);
     return paramArrayOfByte;
   }
   
   public static String getAppVersion()
   {
-    AppMethodBeat.i(72164);
+    AppMethodBeat.i(17600);
     Object localObject = FacebookSdk.getApplicationContext();
     try
     {
       localObject = ((Context)localObject).getPackageManager().getPackageInfo(((Context)localObject).getPackageName(), 0).versionName;
-      AppMethodBeat.o(72164);
+      AppMethodBeat.o(17600);
       return localObject;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      AppMethodBeat.o(72164);
+      AppMethodBeat.o(17600);
     }
     return "";
   }
   
   public static boolean isEmulator()
   {
-    AppMethodBeat.i(72162);
+    AppMethodBeat.i(17598);
     if ((Build.FINGERPRINT.startsWith("generic")) || (Build.FINGERPRINT.startsWith("unknown")) || (Build.MODEL.contains("google_sdk")) || (Build.MODEL.contains("Emulator")) || (Build.MODEL.contains("Android SDK built for x86")) || (Build.MANUFACTURER.contains("Genymotion")) || ((Build.BRAND.startsWith("generic")) && (Build.DEVICE.startsWith("generic"))) || ("google_sdk".equals(Build.PRODUCT)))
     {
-      AppMethodBeat.o(72162);
+      AppMethodBeat.o(17598);
       return true;
     }
-    AppMethodBeat.o(72162);
+    AppMethodBeat.o(17598);
     return false;
   }
   
   private static boolean isMainThread()
   {
-    AppMethodBeat.i(72163);
+    AppMethodBeat.i(17599);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      AppMethodBeat.o(72163);
+      AppMethodBeat.o(17599);
       return true;
     }
-    AppMethodBeat.o(72163);
+    AppMethodBeat.o(17599);
     return false;
   }
   
   public static double normalizePrice(String paramString)
   {
-    AppMethodBeat.i(72160);
+    AppMethodBeat.i(17596);
     try
     {
       paramString = Pattern.compile("[-+]*\\d+([\\,\\.]\\d+)*([\\.\\,]\\d+)?", 8).matcher(paramString);
@@ -89,22 +89,22 @@ public class AppEventUtility
       {
         paramString = paramString.group(0);
         double d = NumberFormat.getNumberInstance(Utility.getCurrentLocale()).parse(paramString).doubleValue();
-        AppMethodBeat.o(72160);
+        AppMethodBeat.o(17596);
         return d;
       }
-      AppMethodBeat.o(72160);
+      AppMethodBeat.o(17596);
       return 0.0D;
     }
     catch (ParseException paramString)
     {
-      AppMethodBeat.o(72160);
+      AppMethodBeat.o(17596);
     }
     return 0.0D;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.internal.AppEventUtility
  * JD-Core Version:    0.7.0.1
  */

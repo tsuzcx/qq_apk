@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.facedetect.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class FaceDetectUI$2
   implements Runnable
@@ -11,16 +11,16 @@ final class FaceDetectUI$2
   
   public final void run()
   {
-    AppMethodBeat.i(459);
-    long l = bo.yB();
+    AppMethodBeat.i(103978);
+    long l = bt.GC();
     Runtime.getRuntime().gc();
-    ab.i("MicroMsg.FaceDetectUI", "hy: gc uses: %d ms", new Object[] { Long.valueOf(bo.av(l)) });
-    AppMethodBeat.o(459);
+    ad.i("MicroMsg.FaceDetectUI", "hy: gc uses: %d ms", new Object[] { Long.valueOf(bt.aS(l)) });
+    AppMethodBeat.o(103978);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.ui.FaceDetectUI.2
  * JD-Core Version:    0.7.0.1
  */

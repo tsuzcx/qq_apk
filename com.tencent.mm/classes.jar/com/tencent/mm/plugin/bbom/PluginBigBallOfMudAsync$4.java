@@ -11,17 +11,17 @@ final class PluginBigBallOfMudAsync$4
 {
   PluginBigBallOfMudAsync$4(PluginBigBallOfMudAsync paramPluginBigBallOfMudAsync) {}
   
-  public final MMWebView dz(Context paramContext)
+  public final MMWebView eg(Context paramContext)
   {
-    AppMethodBeat.i(18310);
-    paramContext = MMWebViewWithJsApi.a.fD(paramContext);
-    AppMethodBeat.o(18310);
+    AppMethodBeat.i(22422);
+    paramContext = MMWebViewWithJsApi.a.gJ(paramContext);
+    AppMethodBeat.o(22422);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.PluginBigBallOfMudAsync.4
  * JD-Core Version:    0.7.0.1
  */

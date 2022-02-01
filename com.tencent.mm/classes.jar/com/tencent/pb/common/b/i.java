@@ -1,25 +1,26 @@
 package com.tencent.pb.common.b;
 
+import com.tencent.pb.common.c.b;
 import java.lang.ref.WeakReference;
 
 public final class i
   implements c
 {
-  private WeakReference<c> CT;
+  private WeakReference<c> JI;
   
   public i(c paramc)
   {
-    this.CT = new WeakReference(paramc);
+    this.JI = new WeakReference(paramc);
   }
   
   public final void onResp(int paramInt, byte[] paramArrayOfByte)
   {
-    if ((this.CT != null) && (this.CT.get() != null))
+    if ((this.JI != null) && (this.JI.get() != null))
     {
-      ((c)this.CT.get()).onResp(paramInt, paramArrayOfByte);
+      ((c)this.JI.get()).onResp(paramInt, paramArrayOfByte);
       return;
     }
-    com.tencent.pb.common.c.c.w("OnRespForLongAIDLImpl fail", new Object[] { "callback is null, errCode=".concat(String.valueOf(paramInt)) });
+    b.w("OnRespForLongAIDLImpl fail", new Object[] { "callback is null, errCode=".concat(String.valueOf(paramInt)) });
   }
 }
 

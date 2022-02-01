@@ -1,35 +1,40 @@
 package com.google.android.exoplayer2.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.IOException;
 import java.util.PriorityQueue;
 
 public final class p
 {
-  public final PriorityQueue<Integer> bbe;
-  public int bbf;
+  public final PriorityQueue<Integer> bzf;
+  public int bzg;
   public final Object lock;
   
-  public final void ra()
+  public final void vX()
   {
-    AppMethodBeat.i(95931);
+    AppMethodBeat.i(93193);
     synchronized (this.lock)
     {
-      this.bbe.remove(Integer.valueOf(0));
-      if (this.bbe.isEmpty())
+      this.bzf.remove(Integer.valueOf(0));
+      if (this.bzf.isEmpty())
       {
         i = -2147483648;
-        this.bbf = i;
+        this.bzg = i;
         this.lock.notifyAll();
-        AppMethodBeat.o(95931);
+        AppMethodBeat.o(93193);
         return;
       }
-      int i = ((Integer)this.bbe.peek()).intValue();
+      int i = ((Integer)this.bzf.peek()).intValue();
     }
   }
+  
+  public static final class a
+    extends IOException
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.i.p
  * JD-Core Version:    0.7.0.1
  */

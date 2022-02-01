@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.card.ui.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.protocal.protobuf.oj;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.qo;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 
 public final class f
@@ -14,37 +14,37 @@ public final class f
     super(paramMMActivity);
   }
   
-  public final boolean beQ()
+  public final boolean bLM()
   {
-    return this.kyA;
+    return this.nDT;
   }
   
-  public final boolean beR()
+  public final boolean bLN()
   {
-    AppMethodBeat.i(88721);
-    if ((this.klk.isNormal()) && (super.beR()) && ((this.klk.baY()) || (!bo.isNullOrNil(this.klk.bbe().code))))
+    AppMethodBeat.i(113648);
+    if ((this.nqp.bHR()) && (super.bLN()) && ((this.nqp.bHP()) || (!bt.isNullOrNil(this.nqp.bHW().code))))
     {
-      AppMethodBeat.o(88721);
+      AppMethodBeat.o(113648);
       return true;
     }
-    AppMethodBeat.o(88721);
+    AppMethodBeat.o(113648);
     return false;
   }
   
-  public final boolean beS()
+  public final boolean bLO()
   {
     return true;
   }
   
-  public final boolean beV()
+  public final boolean bLR()
   {
-    AppMethodBeat.i(88722);
-    if ((this.klk.isNormal()) && (super.beV()))
+    AppMethodBeat.i(113649);
+    if ((this.nqp.bHR()) && (super.bLR()))
     {
-      AppMethodBeat.o(88722);
+      AppMethodBeat.o(113649);
       return true;
     }
-    AppMethodBeat.o(88722);
+    AppMethodBeat.o(113649);
     return false;
   }
 }

@@ -1,154 +1,179 @@
 package com.tencent.e.b;
 
+import android.content.ContentValues;
 import android.content.Context;
-import android.os.Build;
-import com.tencent.e.f.d;
-import com.tencent.e.f.d.a;
-import com.tencent.e.f.l;
+import android.database.Cursor;
+import android.database.CursorWrapper;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import com.tencent.e.d.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public final class b
+  extends SQLiteOpenHelper
+  implements d
 {
-  private int BiR;
-  private int BiS;
-  private String BiT;
-  private com.tencent.e.c.a.c BiU;
-  private com.tencent.e.c.a.a BiV;
-  private String mChannelId;
-  private Context mContext;
-  private String mVersionName;
+  private SQLiteDatabase IyD;
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(114472);
-    this.mContext = null;
-    this.BiR = -1;
-    this.BiS = -1;
-    this.mVersionName = null;
-    this.mChannelId = null;
-    this.BiT = null;
-    this.BiU = null;
-    this.BiV = null;
-    this.mContext = paramContext;
-    paramContext = com.tencent.e.f.a.cb(paramContext, paramContext.getPackageName());
-    this.mVersionName = paramContext.versionName;
-    this.BiS = paramContext.versionCode;
-    this.BiR = 82;
-    this.mChannelId = "105901";
-    this.BiT = "7AD75E27CD5842F6";
-    AppMethodBeat.o(114472);
-  }
-  
-  private static String awy(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    return str;
-  }
-  
-  private com.tencent.e.c.a.c dUw()
-  {
-    int m = 2;
-    AppMethodBeat.i(114474);
-    if (this.BiU == null)
+    super(paramContext, "Scheduler.db", null, 1);
+    AppMethodBeat.i(183214);
+    try
     {
-      this.BiU = new com.tencent.e.c.a.c();
-      this.BiU.Bjf = this.BiR;
-      this.BiU.Bjk = this.BiS;
-      this.BiU.Bjc = this.mChannelId;
-      this.BiU.Bjb = this.BiT;
+      this.IyD = getWritableDatabase();
+      AppMethodBeat.o(183214);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      com.tencent.e.d.IxU.e("ExperienceStorage", "%s", new Object[] { paramContext.toString() });
+      AppMethodBeat.o(183214);
+    }
+  }
+  
+  public final void delete(long paramLong)
+  {
+    AppMethodBeat.i(183217);
+    if (this.IyD == null)
+    {
+      AppMethodBeat.o(183217);
+      return;
+    }
+    if (paramLong <= 0L) {}
+    for (paramLong = System.currentTimeMillis();; paramLong = System.currentTimeMillis() + paramLong)
+    {
+      this.IyD.delete("DisposedTask", "timestamp<?", new String[] { String.valueOf(paramLong) });
+      AppMethodBeat.o(183217);
+      return;
+    }
+  }
+  
+  public final Map<String, a.a> fnT()
+  {
+    AppMethodBeat.i(183218);
+    localObject3 = new HashMap();
+    if (this.IyD == null)
+    {
+      AppMethodBeat.o(183218);
+      return localObject3;
     }
     try
     {
-      localObject = this.mVersionName.trim().split("[\\.]");
-      if ((localObject == null) || (localObject.length < 3)) {
-        break label345;
+      localObject1 = this.IyD.query("DisposedTask", new String[] { "taskName", String.format("avg(%s)", new Object[] { "rate" }), String.format("avg(%s)", new Object[] { "threadTime" }) }, null, null, "taskName", null, null);
+      try
+      {
+        ((Cursor)localObject1).moveToFirst();
+        while (!((Cursor)localObject1).isAfterLast())
+        {
+          Object localObject4 = new a((Cursor)localObject1);
+          String str = ((a)localObject4).getString(0);
+          double d1 = ((a)localObject4).getDouble(1);
+          double d2 = ((a)localObject4).getDouble(2);
+          localObject4 = new a.a(str, (float)d1, d2);
+          ((Map)localObject3).put(((a.a)localObject4).name, localObject4);
+          ((Cursor)localObject1).moveToNext();
+        }
+        if (localObject3 == null) {
+          break label204;
+        }
       }
-      k = Integer.parseInt(localObject[0]);
-      j = Integer.parseInt(localObject[1]);
-      i = Integer.parseInt(localObject[2]);
+      finally
+      {
+        localObject3 = localObject1;
+        localObject1 = localObject5;
+      }
     }
-    catch (Exception localException)
+    finally
     {
       for (;;)
       {
-        Object localObject;
-        continue;
-        int i = 0;
-        int j = 0;
-        int k = 0;
+        Object localObject1;
+        localObject3 = null;
       }
     }
-    this.BiU.Bjg = new com.tencent.e.c.a.b();
-    this.BiU.Bjg.BiY = k;
-    this.BiU.Bjg.BiZ = j;
-    this.BiU.Bjg.Bja = i;
-    this.BiU.Bjh = 0;
-    this.BiU.Bjj = d.dUQ();
-    this.BiU.imei = awy(d.getIMEI(this.mContext));
-    this.BiU.imsi = awy(d.jb(this.mContext));
-    this.BiU.Bjd = awy(Build.MODEL);
-    this.BiU.rpv = awy(d.jc(this.mContext));
-    this.BiU.Bjp = awy(d.rU(true));
-    this.BiU.Bjq = awy(d.rU(false));
-    this.BiU.guid = null;
-    this.BiU.Bji = 0;
-    localObject = this.BiU;
-    if (d.jd(this.mContext) == d.a.BlC) {}
-    for (i = m;; i = 1)
-    {
-      ((com.tencent.e.c.a.c)localObject).Bje = i;
-      localObject = this.BiU;
-      AppMethodBeat.o(114474);
-      return localObject;
+    ((Cursor)localObject3).close();
+    label204:
+    AppMethodBeat.o(183218);
+    throw ((Throwable)localObject1);
+    if (localObject1 != null) {
+      ((Cursor)localObject1).close();
     }
+    AppMethodBeat.o(183218);
+    return localObject3;
   }
   
-  public final byte[] a(com.tencent.e.c.b.a parama)
+  public final void m(Collection<a.a> paramCollection)
   {
-    AppMethodBeat.i(114473);
-    Object localObject = null;
+    AppMethodBeat.i(183216);
+    if ((this.IyD == null) || (paramCollection.size() <= 0))
+    {
+      AppMethodBeat.o(183216);
+      return;
+    }
     try
     {
-      l locall = new l();
-      locall.dUW();
-      locall.awH("viruscheck");
-      locall.awI("RiskCheck");
-      locall.awG("UTF-8");
-      if (this.BiV == null)
+      this.IyD.beginTransaction();
+      paramCollection = paramCollection.iterator();
+      while (paramCollection.hasNext())
       {
-        this.BiV = new com.tencent.e.c.a.a();
-        this.BiV.BiW = 2;
-        this.BiV.BiX = 201;
+        Object localObject = (a.a)paramCollection.next();
+        localObject = new a.b(((a.a)localObject).name, ((a.a)localObject).Iyw, ((a.a)localObject).cVx, "");
+        ((a.b)localObject).timestamp = System.currentTimeMillis();
+        SQLiteDatabase localSQLiteDatabase = this.IyD;
+        ContentValues localContentValues = new ContentValues();
+        localContentValues.put("taskName", ((a.b)localObject).name);
+        localContentValues.put("threadTime", Long.valueOf(((a.b)localObject).utu));
+        localContentValues.put("time", Long.valueOf(((a.b)localObject).time));
+        localContentValues.put("timestamp", Long.valueOf(((a.b)localObject).timestamp));
+        localContentValues.put("rate", Float.valueOf(((a.b)localObject).rate));
+        localContentValues.put("scheduler", ((a.b)localObject).IyC);
+        localSQLiteDatabase.insert("DisposedTask", null, localContentValues);
       }
-      locall.put("phonetype", this.BiV);
-      locall.put("userinfo", dUw());
-      locall.put("req", parama);
-      parama = com.tencent.e.f.b.compress(locall.AJ());
-      if (parama == null)
-      {
-        parama = new RuntimeException("compress data fail");
-        AppMethodBeat.o(114473);
-        throw parama;
-      }
+      this.IyD.setTransactionSuccessful();
     }
-    catch (Exception parama)
+    finally
     {
-      parama = localObject;
+      this.IyD.setTransactionSuccessful();
+      this.IyD.endTransaction();
+      AppMethodBeat.o(183216);
     }
-    for (;;)
+    this.IyD.endTransaction();
+    AppMethodBeat.o(183216);
+  }
+  
+  public final void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  {
+    AppMethodBeat.i(183215);
+    if (paramSQLiteDatabase == null)
     {
-      AppMethodBeat.o(114473);
-      return parama;
-      parama = com.tencent.e.f.c.m(parama, com.tencent.e.f.c.dUP());
+      AppMethodBeat.o(183215);
+      return;
+    }
+    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS DisposedTask(_ID INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL, taskName TEXT NOT NULL, threadTime LONG NOT NULL, time LONG NOT NULL, rate REAL NOT NULL, timestamp LONG NOT NULL, scheduler TEXT NOT NULL )");
+    paramSQLiteDatabase.execSQL("CREATE INDEX IF NOT EXISTS timestampIndex ON DisposedTask(timestamp)");
+    paramSQLiteDatabase.execSQL("CREATE INDEX IF NOT EXISTS taskNameIndex ON DisposedTask(taskName)");
+    AppMethodBeat.o(183215);
+  }
+  
+  public final void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
+  
+  public final class a
+    extends CursorWrapper
+  {
+    a(Cursor paramCursor)
+    {
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.e.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,194 +1,197 @@
 package com.tencent.mm.plugin.backup.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.ag;
+import com.tencent.mm.g.c.ay;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.model.aj;
+import com.tencent.mm.model.w;
 import com.tencent.mm.modelvideo.s;
+import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.j;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.ak;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.l;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.i;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
 public final class c
 {
-  public static s Gt(String paramString)
+  public static s Ou(String paramString)
   {
-    AppMethodBeat.i(17704);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(21761);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(17704);
+      AppMethodBeat.o(21761);
       return null;
     }
-    paramString = d.aUK().aUL().alE().vd(paramString);
-    AppMethodBeat.o(17704);
+    paramString = d.bxT().bxU().aCI().zO(paramString);
+    AppMethodBeat.o(21761);
     return paramString;
   }
   
-  public static String Gu(String paramString)
+  public static String Ov(String paramString)
   {
-    AppMethodBeat.i(17705);
-    String str = j.b(d.aUK().aUL().YM(), "msg_", paramString, ".amr", 2);
-    if (bo.isNullOrNil(str))
+    AppMethodBeat.i(21762);
+    String str = l.d(d.bxT().bxU().apY(), "msg_", paramString, ".amr", 2);
+    if (bt.isNullOrNil(str))
     {
-      AppMethodBeat.o(17705);
+      AppMethodBeat.o(21762);
       return null;
     }
-    if (new com.tencent.mm.vfs.b(str).exists())
+    if (new e(str).exists())
     {
-      AppMethodBeat.o(17705);
+      AppMethodBeat.o(21762);
       return str;
     }
-    paramString = d.aUK().aUL().amy() + paramString;
-    if (new com.tencent.mm.vfs.b(paramString + ".amr").exists()) {
-      e.aT(paramString + ".amr", str);
+    paramString = d.bxT().bxU().aDE() + paramString;
+    if (new e(paramString + ".amr").exists()) {
+      i.lD(paramString + ".amr", str);
     }
     for (;;)
     {
-      AppMethodBeat.o(17705);
+      AppMethodBeat.o(21762);
       return str;
-      if (new com.tencent.mm.vfs.b(paramString).exists()) {
-        e.aT(paramString, str);
+      if (new e(paramString).exists()) {
+        i.lD(paramString, str);
       }
     }
   }
   
-  public static void k(HashMap<String, Integer> paramHashMap)
+  public static void g(HashMap<String, Integer> paramHashMap)
   {
-    AppMethodBeat.i(17700);
-    ab.i("MicroMsg.BackupStorageLogic", "buildConversation, unReadSum size[%d]", new Object[] { Integer.valueOf(paramHashMap.size()) });
+    AppMethodBeat.i(21757);
+    ad.i("MicroMsg.BackupStorageLogic", "buildConversation, unReadSum size[%d]", new Object[] { Integer.valueOf(paramHashMap.size()) });
     Iterator localIterator = paramHashMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str1 = (String)localIterator.next();
-      bi localbi = d.aUK().aUL().YC().fi(str1, " and not ( type = 10000 and isSend != 2 ) ");
+      bl localbl = d.bxT().bxU().apO().hn(str1, " and not ( type = 10000 and isSend != 2 ) ");
       int i;
       String str2;
-      ak localak;
-      if (localbi != null)
+      am localam;
+      if (localbl != null)
       {
         i = ((Integer)paramHashMap.get(str1)).intValue();
-        str2 = localbi.field_talker;
-        ab.i("MicroMsg.BackupStorageLogic", "updateConvFromLastMsg, talker:%s, addUnreadCount:%d", new Object[] { str2, Integer.valueOf(i) });
-        localak = d.aUK().aUL().YF().arH(str2);
-        if ((localak == null) || (localak.field_conversationTime <= localbi.field_createTime) || (localak.field_conversationTime == 9223372036854775807L)) {
+        str2 = localbl.field_talker;
+        ad.i("MicroMsg.BackupStorageLogic", "updateConvFromLastMsg, talker:%s, addUnreadCount:%d", new Object[] { str2, Integer.valueOf(i) });
+        localam = d.bxT().bxU().apR().aIn(str2);
+        if ((localam == null) || (localam.field_conversationTime <= localbl.field_createTime) || (localam.field_conversationTime == 9223372036854775807L)) {
           break label216;
         }
-        ab.e("MicroMsg.BackupStorageLogic", "updateConvFromLastMsg ignore(maybe the system time is bigger than normal)");
+        ad.e("MicroMsg.BackupStorageLogic", "updateConvFromLastMsg ignore(maybe the system time is bigger than normal)");
       }
       Object localObject;
       for (;;)
       {
-        localObject = d.aUK().aUL();
+        localObject = d.bxT().bxU();
         if (((b)localObject).uin != 0) {
           break;
         }
         paramHashMap = new com.tencent.mm.model.b();
-        AppMethodBeat.o(17700);
+        AppMethodBeat.o(21757);
         throw paramHashMap;
         label216:
         boolean bool = false;
-        localObject = localak;
-        if (localak == null)
+        localObject = localam;
+        if (localam == null)
         {
-          localObject = new ak(str2);
+          localObject = new am(str2);
           bool = true;
         }
-        ((ak)localObject).hL(localbi.field_isSend);
-        ((ak)localObject).hJ(i + ((au)localObject).field_unReadCount);
-        ((ak)localObject).aq(localbi);
-        ((ak)localObject).jV(Integer.toString(localbi.getType()));
-        long l = ((au)localObject).field_flag;
-        ((ak)localObject).fL(localbi.field_createTime & 0xFFFFFFFF | l & 0x0);
-        ((ak)localObject).hI(0);
-        ab.i("MicroMsg.BackupStorageLogic", "updateConvFromLastMsg, isNewConv[%b], talker[%s], flag[%d]", new Object[] { Boolean.valueOf(bool), str2, Long.valueOf(((au)localObject).field_flag) });
+        ((am)localObject).jV(localbl.field_isSend);
+        ((am)localObject).jT(i + ((ay)localObject).field_unReadCount);
+        ((am)localObject).aG(localbl);
+        ((am)localObject).nK(Integer.toString(localbl.getType()));
+        long l = ((ay)localObject).field_flag;
+        ((am)localObject).kT(localbl.field_createTime & 0xFFFFFFFF | l & 0x0);
+        ((am)localObject).jS(0);
+        ad.i("MicroMsg.BackupStorageLogic", "updateConvFromLastMsg, isNewConv[%b], talker[%s], flag[%d]", new Object[] { Boolean.valueOf(bool), str2, Long.valueOf(((ay)localObject).field_flag) });
         if (bool) {
-          d.aUK().aUL().YF().d((ak)localObject);
+          d.bxT().bxU().apR().e((am)localObject);
         } else {
-          d.aUK().aUL().YF().a((ak)localObject, str2);
+          d.bxT().bxU().apR().a((am)localObject, str2);
         }
       }
-      ((b)localObject).jGy.ae(str1, 0L);
+      ((b)localObject).mxR.aB(str1, 0L);
     }
-    d.aUK().aUL().YF().dxf();
-    AppMethodBeat.o(17700);
+    d.bxT().bxU().apR().eLi();
+    AppMethodBeat.o(21757);
   }
   
-  public static long l(bi parambi)
+  public static boolean pF(String paramString)
   {
-    AppMethodBeat.i(17702);
-    ad localad = d.aUK().aUL().YA().arw(parambi.field_talker);
-    if ((localad == null) || ((int)localad.euF == 0))
-    {
-      if (bo.isNullOrNil(parambi.field_talker)) {
-        break label147;
-      }
-      d.aUK().aUM().h(2, parambi.field_talker);
-      d.aUK().aUL().YA().Y(new ad(parambi.field_talker));
-    }
-    for (;;)
-    {
-      long l = d.aUK().aUL().YC().Z(parambi);
-      if (l < 0L) {
-        ab.e("MicroMsg.BackupStorageLogic", "insertMsgWithContact faile: type:%d, talker:%s", new Object[] { Integer.valueOf(parambi.getType()), parambi.field_talker });
-      }
-      AppMethodBeat.o(17702);
-      return l;
-      label147:
-      if ((parambi.field_talker.endsWith("@chatroom")) && (d.aUK().aUL().YJ().oY(parambi.field_talker) == null)) {
-        d.aUK().aUM().h(2, parambi.field_talker);
-      }
-    }
-  }
-  
-  public static boolean lA(String paramString)
-  {
-    AppMethodBeat.i(17701);
+    AppMethodBeat.i(21758);
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      AppMethodBeat.o(17701);
+      AppMethodBeat.o(21758);
       return false;
     }
-    boolean bool = com.tencent.mm.model.t.nI(paramString);
-    AppMethodBeat.o(17701);
+    boolean bool = w.sl(paramString);
+    AppMethodBeat.o(21758);
     return bool;
   }
   
-  public static int pt(String paramString)
+  public static long u(bl parambl)
   {
-    AppMethodBeat.i(17703);
+    AppMethodBeat.i(21759);
+    af localaf = d.bxT().bxU().apM().aHY(parambl.field_talker);
+    if ((localaf == null) || ((int)localaf.fId == 0))
+    {
+      if (bt.isNullOrNil(parambl.field_talker)) {
+        break label146;
+      }
+      d.bxT().bxV().h(2, parambl.field_talker);
+      d.bxT().bxU().apM().af(new af(parambl.field_talker));
+    }
+    for (;;)
+    {
+      long l = d.bxT().bxU().apO().an(parambl);
+      if (l < 0L) {
+        ad.e("MicroMsg.BackupStorageLogic", "insertMsgWithContact failed: type:%d, talker:%s", new Object[] { Integer.valueOf(parambl.getType()), parambl.field_talker });
+      }
+      AppMethodBeat.o(21759);
+      return l;
+      label146:
+      if ((parambl.field_talker.endsWith("@chatroom")) && (d.bxT().bxU().apV().tL(parambl.field_talker) == null)) {
+        d.bxT().bxV().h(2, parambl.field_talker);
+      }
+    }
+  }
+  
+  public static int ue(String paramString)
+  {
+    AppMethodBeat.i(21760);
     if (paramString == null)
     {
-      AppMethodBeat.o(17703);
+      AppMethodBeat.o(21760);
       return -1;
     }
     if (paramString.length() <= 0)
     {
-      AppMethodBeat.o(17703);
+      AppMethodBeat.o(21760);
       return -1;
     }
     int i = paramString.indexOf(':');
     if ((i != -1) && (paramString.substring(0, i).contains("<")))
     {
-      AppMethodBeat.o(17703);
+      AppMethodBeat.o(21760);
       return -1;
     }
-    AppMethodBeat.o(17703);
+    AppMethodBeat.o(21760);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.h.c
  * JD-Core Version:    0.7.0.1
  */

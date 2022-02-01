@@ -2,31 +2,36 @@ package com.tencent.mm.audio.b;
 
 public abstract class f
 {
-  protected f.a cjK;
-  protected int cjs = -123456789;
-  protected int ckg = 0;
+  protected a cYD;
+  protected int cYZ = 0;
+  protected int cYk = -123456789;
   protected boolean mIsPause = false;
   
-  public abstract boolean EC();
+  public abstract boolean Ok();
   
-  public final int EF()
+  public final int On()
   {
-    return this.ckg;
+    return this.cYZ;
   }
   
-  public final void a(f.a parama)
+  public final void a(a parama)
   {
-    this.cjK = parama;
+    this.cYD = parama;
   }
   
-  public abstract void bB(boolean paramBoolean);
+  public abstract void ct(boolean paramBoolean);
   
-  public final void gB(int paramInt)
+  public final void hY(int paramInt)
   {
-    this.cjs = paramInt;
+    this.cYk = paramInt;
   }
   
   public abstract void stopRecord();
+  
+  public static abstract interface a
+  {
+    public abstract void d(int paramInt, byte[] paramArrayOfByte);
+  }
 }
 
 

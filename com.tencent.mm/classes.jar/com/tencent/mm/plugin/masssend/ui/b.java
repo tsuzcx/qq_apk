@@ -1,251 +1,405 @@
 package com.tencent.mm.plugin.masssend.ui;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.res.Resources;
 import android.os.Vibrator;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.j.a;
-import com.tencent.mm.ai.j.b;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.cj.a.a;
-import com.tencent.mm.model.ae;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.al.k.a;
+import com.tencent.mm.al.k.b;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.cl.a.a;
+import com.tencent.mm.model.ah;
+import com.tencent.mm.model.az;
 import com.tencent.mm.modelvoice.s;
 import com.tencent.mm.plugin.masssend.a.f;
 import com.tencent.mm.plugin.transvoice.a.c.a;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.pluginsdk.ui.chat.ChatFooter.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.an;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bd;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.base.t;
 import java.util.List;
 
 public final class b
   implements com.tencent.mm.pluginsdk.ui.chat.b
 {
-  final ap gcG;
-  private Vibrator kqP;
-  long mwM;
-  Toast mwN;
-  final ap mwY;
-  private boolean oBA;
-  private final j.a oBB;
-  private final j.b oBC;
-  MassSendMsgUI oBv;
-  ChatFooter oBw;
-  b.a oBx;
-  private String oBy;
-  private List<String> oBz;
-  com.tencent.mm.ui.base.p tipDialog;
+  private List<String> fsY;
+  final av hFy;
+  private Vibrator mHT;
+  long omi;
+  Toast omj;
+  final av omt;
+  p tipDialog;
+  MassSendMsgUI twa;
+  ChatFooter twb;
+  a twc;
+  private String twd;
+  private boolean twe;
+  private final k.a twf;
+  private final k.b twg;
   
   public b(MassSendMsgUI paramMassSendMsgUI, ChatFooter paramChatFooter, String paramString, List<String> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(22775);
-    this.mwM = -1L;
+    AppMethodBeat.i(26394);
+    this.omi = -1L;
     this.tipDialog = null;
-    this.gcG = new ap(new b.1(this), true);
-    this.oBB = new b.2(this);
-    this.oBC = new b.3(this);
-    this.mwY = new ap(new b.4(this), true);
-    this.oBv = paramMassSendMsgUI;
-    this.oBw = paramChatFooter;
-    this.oBy = paramString;
-    this.oBz = paramList;
-    this.oBA = paramBoolean;
-    this.oBx = new b.a(this, paramMassSendMsgUI);
-    this.oBx.a(this.oBB);
-    this.oBx.a(this.oBC);
-    this.kqP = ((Vibrator)paramMassSendMsgUI.getSystemService("vibrator"));
-    AppMethodBeat.o(22775);
+    this.hFy = new av(new av.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(26387);
+        b.this.twb.Vb(b.this.twc.getMaxAmplitude());
+        AppMethodBeat.o(26387);
+        return true;
+      }
+    }, true);
+    this.twf = new k.a()
+    {
+      public final void onError()
+      {
+        AppMethodBeat.i(26388);
+        b.this.twc.reset();
+        b.this.hFy.stopTimer();
+        b.this.omt.stopTimer();
+        an.aFy("keep_app_silent");
+        b.this.twb.a(ChatFooter.h.CfF);
+        ad.v("MicroMsg.MassSendFooterEventImpl", "record stop on error");
+        Toast.makeText(b.this.twa, b.this.twa.getString(2131757276), 0).show();
+        AppMethodBeat.o(26388);
+      }
+    };
+    this.twg = new k.b()
+    {
+      public final void auN()
+      {
+        AppMethodBeat.i(26389);
+        b.this.twb.eza();
+        AppMethodBeat.o(26389);
+      }
+    };
+    this.omt = new av(new av.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(26390);
+        if (b.this.omi == -1L) {
+          b.this.omi = bt.GC();
+        }
+        long l = bt.aS(b.this.omi);
+        int i;
+        if ((l >= 50000L) && (l <= 60000L))
+        {
+          if (b.this.omj == null)
+          {
+            i = (int)((60000L - l) / 1000L);
+            b.this.omj = Toast.makeText(b.this.twa, b.this.twa.getResources().getQuantityString(2131623938, i, new Object[] { Integer.valueOf(i) }), 0);
+            b.this.omj.show();
+          }
+        }
+        else
+        {
+          if (l < 60000L) {
+            break label278;
+          }
+          ad.v("MicroMsg.MassSendFooterEventImpl", "record stop on countdown");
+          if (!b.this.twb.ezQ()) {
+            break label242;
+          }
+          b.this.twb.ezy();
+        }
+        for (;;)
+        {
+          bd.az(b.this.twa, 2131764424);
+          AppMethodBeat.o(26390);
+          return false;
+          i = (int)((60000L - l) / 1000L);
+          b.this.omj.setText(b.this.twa.getResources().getQuantityString(2131623938, i, new Object[] { Integer.valueOf(i) }));
+          break;
+          label242:
+          if (b.this.twc.Ft()) {
+            b.this.cNW();
+          }
+          b.this.twb.a(ChatFooter.h.CfA);
+        }
+        label278:
+        AppMethodBeat.o(26390);
+        return true;
+      }
+    }, true);
+    this.twa = paramMassSendMsgUI;
+    this.twb = paramChatFooter;
+    this.twd = paramString;
+    this.fsY = paramList;
+    this.twe = paramBoolean;
+    this.twc = new a(paramMassSendMsgUI);
+    this.twc.a(this.twf);
+    this.twc.a(this.twg);
+    this.mHT = ((Vibrator)paramMassSendMsgUI.getSystemService("vibrator"));
+    AppMethodBeat.o(26394);
   }
   
-  public final long EN()
+  public final long Ou()
   {
-    AppMethodBeat.i(155410);
-    if (this.oBx != null)
+    AppMethodBeat.i(26404);
+    if (this.twc != null)
     {
-      long l = this.oBx.EN();
-      AppMethodBeat.o(155410);
+      long l = this.twc.Ou();
+      AppMethodBeat.o(26404);
       return l;
     }
-    AppMethodBeat.o(155410);
+    AppMethodBeat.o(26404);
     return 0L;
   }
   
-  public final void M(MotionEvent paramMotionEvent) {}
+  public final void W(MotionEvent paramMotionEvent) {}
   
-  public final boolean SE(String paramString)
+  public final void adu(String paramString) {}
+  
+  public final boolean afG(final String paramString)
   {
-    AppMethodBeat.i(22780);
+    AppMethodBeat.i(26400);
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      AppMethodBeat.o(22780);
+      AppMethodBeat.o(26400);
       return false;
     }
-    MassSendMsgUI.SJ(paramString);
+    MassSendMsgUI.afK(paramString);
     Object localObject = new com.tencent.mm.plugin.masssend.a.a();
-    ((com.tencent.mm.plugin.masssend.a.a)localObject).oBe = this.oBy;
-    ((com.tencent.mm.plugin.masssend.a.a)localObject).oBf = this.oBz.size();
+    ((com.tencent.mm.plugin.masssend.a.a)localObject).tvJ = this.twd;
+    ((com.tencent.mm.plugin.masssend.a.a)localObject).tvK = this.fsY.size();
     ((com.tencent.mm.plugin.masssend.a.a)localObject).filename = paramString;
     ((com.tencent.mm.plugin.masssend.a.a)localObject).msgType = 1;
-    paramString = new f((com.tencent.mm.plugin.masssend.a.a)localObject, this.oBA);
-    aw.Rc().a(paramString, 0);
-    localObject = this.oBv;
-    this.oBv.getString(2131297087);
-    this.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject, this.oBv.getString(2131303128), true, new b.6(this, paramString));
-    AppMethodBeat.o(22780);
+    paramString = new f((com.tencent.mm.plugin.masssend.a.a)localObject, this.twe);
+    az.aeS().a(paramString, 0);
+    localObject = this.twa;
+    this.twa.getString(2131755906);
+    this.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject, this.twa.getString(2131763077), true, new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(26392);
+        az.aeS().a(paramString);
+        if (b.this.tipDialog != null)
+        {
+          b.this.tipDialog.dismiss();
+          b.this.tipDialog = null;
+        }
+        AppMethodBeat.o(26392);
+      }
+    });
+    AppMethodBeat.o(26400);
     return true;
   }
   
-  public final boolean SF(String paramString)
+  public final boolean afH(String paramString)
   {
-    AppMethodBeat.i(155409);
-    boolean bool = s.vQ(paramString);
-    AppMethodBeat.o(155409);
+    AppMethodBeat.i(26402);
+    boolean bool = s.AD(paramString);
+    AppMethodBeat.o(26402);
     return bool;
   }
   
-  public final boolean bPe()
+  public final boolean cNU()
   {
-    AppMethodBeat.i(22776);
-    this.gcG.stopTimer();
-    this.mwY.stopTimer();
-    this.mwM = -1L;
-    if (this.oBx.Ez())
+    AppMethodBeat.i(26395);
+    this.hFy.stopTimer();
+    this.omt.stopTimer();
+    this.omi = -1L;
+    if (this.twc.Ft())
     {
-      c.a locala = com.tencent.mm.plugin.transvoice.a.c.tpD;
-      com.tencent.mm.plugin.transvoice.a.c.cKY().GV(0);
-      bPg();
-      this.oBw.bxy();
+      c.a locala = com.tencent.mm.plugin.transvoice.a.c.yWx;
+      com.tencent.mm.plugin.transvoice.a.c.dQE().setExitType(0);
+      cNW();
+      this.twb.a(ChatFooter.h.CfA);
     }
     for (;;)
     {
-      aw.BY().Ib();
-      AppMethodBeat.o(22776);
+      az.Lv().Tj();
+      AppMethodBeat.o(26395);
       return false;
-      this.oBw.dhO();
+      this.twb.bSf();
     }
   }
   
-  public final boolean bPf()
+  public final boolean cNV()
   {
-    AppMethodBeat.i(155407);
-    this.gcG.stopTimer();
-    this.mwY.stopTimer();
-    this.mwM = -1L;
-    if (this.oBx.Ez()) {
-      this.oBw.bxy();
-    }
-    for (;;)
-    {
-      aw.BY().Ib();
-      AppMethodBeat.o(155407);
-      return true;
-      this.oBw.dhO();
-    }
+    AppMethodBeat.i(26396);
+    this.hFy.stopTimer();
+    this.omt.stopTimer();
+    this.omi = -1L;
+    this.twc.Ft();
+    this.twb.a(ChatFooter.h.CfB);
+    az.Lv().Tj();
+    AppMethodBeat.o(26396);
+    return true;
   }
   
-  final void bPg()
+  final void cNW()
   {
-    AppMethodBeat.i(22777);
+    AppMethodBeat.i(26397);
     Object localObject = new com.tencent.mm.plugin.masssend.a.a();
-    ((com.tencent.mm.plugin.masssend.a.a)localObject).oBe = this.oBy;
-    ((com.tencent.mm.plugin.masssend.a.a)localObject).oBf = this.oBz.size();
-    ((com.tencent.mm.plugin.masssend.a.a)localObject).filename = this.oBx.fileName;
+    ((com.tencent.mm.plugin.masssend.a.a)localObject).tvJ = this.twd;
+    ((com.tencent.mm.plugin.masssend.a.a)localObject).tvK = this.fsY.size();
+    ((com.tencent.mm.plugin.masssend.a.a)localObject).filename = this.twc.fileName;
     ((com.tencent.mm.plugin.masssend.a.a)localObject).msgType = 34;
-    ((com.tencent.mm.plugin.masssend.a.a)localObject).oBg = this.oBx.cku;
-    localObject = new f((com.tencent.mm.plugin.masssend.a.a)localObject, this.oBA);
-    aw.Rc().a((m)localObject, 0);
-    MassSendMsgUI localMassSendMsgUI = this.oBv;
-    this.oBv.getString(2131297087);
-    this.tipDialog = com.tencent.mm.ui.base.h.b(localMassSendMsgUI, this.oBv.getString(2131303128), true, new b.5(this, (f)localObject));
-    AppMethodBeat.o(22777);
+    ((com.tencent.mm.plugin.masssend.a.a)localObject).tvL = this.twc.cZn;
+    localObject = new f((com.tencent.mm.plugin.masssend.a.a)localObject, this.twe);
+    az.aeS().a((n)localObject, 0);
+    MassSendMsgUI localMassSendMsgUI = this.twa;
+    this.twa.getString(2131755906);
+    this.tipDialog = com.tencent.mm.ui.base.h.b(localMassSendMsgUI, this.twa.getString(2131763077), true, new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(26391);
+        az.aeS().a(this.twi);
+        if (b.this.tipDialog != null)
+        {
+          b.this.tipDialog.dismiss();
+          b.this.tipDialog = null;
+        }
+        AppMethodBeat.o(26391);
+      }
+    });
+    AppMethodBeat.o(26397);
   }
   
-  public final boolean bPh()
+  public final boolean cNX()
   {
-    AppMethodBeat.i(22778);
-    this.gcG.stopTimer();
-    this.mwY.stopTimer();
-    this.mwM = -1L;
-    this.oBw.bxy();
-    b.a locala = this.oBx;
-    locala.Ez();
-    s.vQ(locala.fileName);
-    aw.BY().Ib();
-    AppMethodBeat.o(22778);
+    AppMethodBeat.i(26398);
+    this.hFy.stopTimer();
+    this.omt.stopTimer();
+    this.omi = -1L;
+    this.twb.a(ChatFooter.h.CfD);
+    this.twc.cgL();
+    az.Lv().Tj();
+    AppMethodBeat.o(26398);
     return false;
   }
   
-  public final boolean bPi()
+  public final void cNY()
   {
-    AppMethodBeat.i(22779);
-    aw.aaz();
+    AppMethodBeat.i(185750);
+    this.twb.a(ChatFooter.h.CfD);
+    this.twc.cgL();
+    AppMethodBeat.o(185750);
+  }
+  
+  public final boolean cNZ()
+  {
+    AppMethodBeat.i(26399);
+    az.arV();
     if (!com.tencent.mm.model.c.isSDCardAvailable())
     {
-      t.ii(this.oBv);
-      AppMethodBeat.o(22779);
+      t.g(this.twa, null);
+      AppMethodBeat.o(26399);
       return false;
     }
-    this.kqP.vibrate(50L);
-    this.gcG.ag(100L, 100L);
-    this.mwY.ag(200L, 200L);
-    DisplayMetrics localDisplayMetrics = this.oBv.getResources().getDisplayMetrics();
-    this.oBw.Mi(localDisplayMetrics.heightPixels - this.oBw.getHeight());
-    this.oBx.eI("_USER_FOR_THROWBOTTLE_");
-    this.oBx.a(this.oBC);
-    this.oBx.a(this.oBB);
-    aw.BY().Ic();
-    AppMethodBeat.o(22779);
+    this.mHT.vibrate(50L);
+    Object localObject = com.tencent.mm.plugin.transvoice.a.c.yWx;
+    com.tencent.mm.plugin.transvoice.a.c.dQE().yWe = true;
+    this.hFy.av(100L, 100L);
+    this.omt.av(200L, 200L);
+    localObject = this.twa.getResources().getDisplayMetrics();
+    this.twb.Va(((DisplayMetrics)localObject).heightPixels - this.twb.getHeight());
+    this.twc.fP("_USER_FOR_THROWBOTTLE_");
+    this.twc.a(this.twg);
+    this.twc.a(this.twf);
+    az.Lv().Tk();
+    AppMethodBeat.o(26399);
     return false;
   }
   
-  public final void bPj() {}
+  public final void cOa() {}
   
-  public final void bPk() {}
+  public final void cOb() {}
   
-  public final boolean cA(String paramString, int paramInt)
+  public final boolean dC(String paramString, int paramInt)
   {
-    AppMethodBeat.i(155408);
-    bPg();
-    AppMethodBeat.o(155408);
+    AppMethodBeat.i(26401);
+    cNW();
+    AppMethodBeat.o(26401);
     return true;
   }
   
   public final String getFileName()
   {
-    if (this.oBx != null) {
-      return this.oBx.fileName;
+    if (this.twc != null) {
+      return this.twc.fileName;
     }
     return "";
   }
   
-  public final void jj(boolean paramBoolean) {}
+  public final void nb(boolean paramBoolean) {}
   
   public final void onPause()
   {
-    AppMethodBeat.i(22782);
-    this.gcG.stopTimer();
-    this.mwY.stopTimer();
-    this.mwM = -1L;
-    a.a locala = com.tencent.mm.cj.a.yTb;
-    if (!a.a.atj(this.oBx.fileName)) {
-      this.oBx.Ez();
+    AppMethodBeat.i(26403);
+    this.hFy.stopTimer();
+    this.omt.stopTimer();
+    this.omi = -1L;
+    a.a locala = com.tencent.mm.cl.a.FFw;
+    if (!a.a.aJT(this.twc.fileName))
+    {
+      locala = com.tencent.mm.cl.a.FFw;
+      if (!a.a.aJV(this.twc.fileName)) {
+        this.twc.Ft();
+      }
     }
-    aw.BY().Ib();
-    AppMethodBeat.o(22782);
+    az.Lv().Tj();
+    AppMethodBeat.o(26403);
   }
   
-  public final void release()
+  public final void release() {}
+  
+  final class a
+    extends com.tencent.mm.audio.b.h
   {
-    AppMethodBeat.i(22781);
-    AppMethodBeat.o(22781);
+    String fileName;
+    
+    public a(Context paramContext)
+    {
+      super(false);
+    }
+    
+    public final boolean Ft()
+    {
+      AppMethodBeat.i(26393);
+      this.fileName = super.getFileName();
+      boolean bool = super.Ft();
+      super.reset();
+      AppMethodBeat.o(26393);
+      return bool;
+    }
+    
+    public final void cgL()
+    {
+      AppMethodBeat.i(185749);
+      Ft();
+      s.AD(this.fileName);
+      AppMethodBeat.o(185749);
+    }
+    
+    public final String getFileName()
+    {
+      return this.fileName;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.ui.b
  * JD-Core Version:    0.7.0.1
  */

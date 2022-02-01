@@ -10,8 +10,8 @@ public final class cp
   static void a(zzu paramzzu, Parcel paramParcel)
   {
     int i = c.b(paramParcel);
-    c.a(paramParcel, 2, paramzzu.kY());
-    c.a(paramParcel, 3, paramzzu.kq());
+    c.a(paramParcel, 2, paramzzu.lh());
+    c.a(paramParcel, 3, paramzzu.kz());
     c.a(paramParcel, 4, paramzzu.getPath());
     c.v(paramParcel, i);
   }

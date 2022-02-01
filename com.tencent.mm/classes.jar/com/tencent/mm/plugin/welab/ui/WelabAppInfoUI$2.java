@@ -11,22 +11,22 @@ final class WelabAppInfoUI$2
   
   public final void onStatusChange(boolean paramBoolean)
   {
-    AppMethodBeat.i(80600);
-    if (WelabAppInfoUI.a(this.vvu).field_Switch == 2)
+    AppMethodBeat.i(146271);
+    if (WelabAppInfoUI.a(this.BCd).field_Switch == 2)
     {
-      WelabAppInfoUI.a(this.vvu).field_Switch = 1;
-      AppMethodBeat.o(80600);
+      WelabAppInfoUI.a(this.BCd).field_Switch = 1;
+      AppMethodBeat.o(146271);
       return;
     }
-    if (WelabAppInfoUI.a(this.vvu).field_Switch == 1) {
-      WelabAppInfoUI.a(this.vvu).field_Switch = 2;
+    if (WelabAppInfoUI.a(this.BCd).field_Switch == 1) {
+      WelabAppInfoUI.a(this.BCd).field_Switch = 2;
     }
-    AppMethodBeat.o(80600);
+    AppMethodBeat.o(146271);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.ui.WelabAppInfoUI.2
  * JD-Core Version:    0.7.0.1
  */

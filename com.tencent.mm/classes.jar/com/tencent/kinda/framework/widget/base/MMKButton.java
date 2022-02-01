@@ -6,13 +6,16 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import com.tencent.kinda.framework.widget.tools.ColorUtil;
+import com.tencent.kinda.framework.widget.tools.ColorUtil.MMViewType;
 import com.tencent.kinda.framework.widget.tools.MMKViewUtil;
+import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.FontStyle;
 import com.tencent.kinda.gen.KButton;
 import com.tencent.kinda.gen.KImage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.wallet_core.ui.e;
 import java.util.ArrayList;
 
 public class MMKButton
@@ -20,27 +23,45 @@ public class MMKButton
   implements KButton
 {
   public static final String TAG = "MMKView.MMKButton";
-  private long disabledColor = -1L;
+  private long disabledColor;
   private MMKImage disabledImage;
-  private long normalColor = -1L;
+  private FontStyle fontStyle;
+  private boolean isEnableHighlight;
+  private DynamicColor normalColor;
   private MMKImage normalImage;
-  private long pressedColor = -1L;
+  private long pressedColor;
   private MMKImage pressedImage;
-  private long selectedColor = -1L;
+  private long selectedColor;
   private MMKImage selectedImage;
-  private long textDisabledColor = -1L;
+  private long textDisabledColor;
   private String textFontName;
-  private long textNormalColor = -1L;
-  private long textPressedColor = -1L;
-  private long textSelectedColor = -1L;
+  private DynamicColor textNormalColor;
+  private long textPressedColor;
+  private long textSelectedColor;
   private float textSize;
+  
+  public MMKButton()
+  {
+    AppMethodBeat.i(18995);
+    this.textSelectedColor = -1L;
+    this.textNormalColor = new DynamicColor(-1L, 0L);
+    this.textPressedColor = -1L;
+    this.textDisabledColor = -1L;
+    this.selectedColor = -1L;
+    this.normalColor = new DynamicColor(-1L, 0L);
+    this.pressedColor = -1L;
+    this.disabledColor = -1L;
+    this.isEnableHighlight = true;
+    this.fontStyle = FontStyle.REGULAR;
+    AppMethodBeat.o(18995);
+  }
   
   private void updateBackgroundWithColor()
   {
-    AppMethodBeat.i(144859);
+    AppMethodBeat.i(19011);
     StateListDrawable localStateListDrawable = new StateListDrawable();
     MMKButton.BackgroundColorDrawable localBackgroundColorDrawable;
-    if (this.pressedColor >= 0L)
+    if ((this.isEnableHighlight) && (this.pressedColor >= 0L))
     {
       localBackgroundColorDrawable = new MMKButton.BackgroundColorDrawable(MMKViewUtil.argbColor(this.pressedColor));
       localStateListDrawable.addState(new int[] { 16842919 }, localBackgroundColorDrawable);
@@ -55,21 +76,21 @@ public class MMKButton
       localBackgroundColorDrawable = new MMKButton.BackgroundColorDrawable(MMKViewUtil.argbColor(this.disabledColor));
       localStateListDrawable.addState(new int[] { -16842910 }, localBackgroundColorDrawable);
     }
-    if (this.normalColor >= 0L)
+    if (ColorUtil.getColorByMode(this.normalColor) >= 0L)
     {
-      localBackgroundColorDrawable = new MMKButton.BackgroundColorDrawable(MMKViewUtil.argbColor(this.normalColor));
+      localBackgroundColorDrawable = new MMKButton.BackgroundColorDrawable(MMKViewUtil.argbColor(ColorUtil.getColorByModeNoCompat(this.normalColor)));
       localStateListDrawable.addState(new int[0], localBackgroundColorDrawable);
     }
     setViewBackground(localStateListDrawable);
-    AppMethodBeat.o(144859);
+    AppMethodBeat.o(19011);
   }
   
   private void updateBackgroundWithImage()
   {
-    AppMethodBeat.i(144858);
+    AppMethodBeat.i(19010);
     StateListDrawable localStateListDrawable = new StateListDrawable();
     Drawable localDrawable;
-    if ((this.pressedImage != null) && (!this.pressedImage.isNetworkImage()))
+    if ((this.isEnableHighlight) && (this.pressedImage != null) && (!this.pressedImage.isNetworkImage()))
     {
       localDrawable = this.pressedImage.getDrawable();
       localStateListDrawable.addState(new int[] { 16842919 }, localDrawable);
@@ -90,14 +111,14 @@ public class MMKButton
       localStateListDrawable.addState(new int[0], localDrawable);
     }
     ((KindaButtonImpl)getView()).setImageDrawable(localStateListDrawable);
-    AppMethodBeat.o(144858);
+    AppMethodBeat.o(19010);
   }
   
   private void updateTextColor()
   {
     int j = 0;
-    AppMethodBeat.i(144851);
-    if ((this.textNormalColor >= 0L) || (this.textSelectedColor >= 0L) || (this.textPressedColor >= 0L) || (this.textDisabledColor >= 0L))
+    AppMethodBeat.i(19003);
+    if ((ColorUtil.getColorByModeNoCompat(this.textNormalColor) >= 0L) || (this.textSelectedColor >= 0L) || (this.textPressedColor >= 0L) || (this.textDisabledColor >= 0L))
     {
       Object localObject1 = new ArrayList();
       Object localObject2 = new ArrayList();
@@ -106,7 +127,7 @@ public class MMKButton
         ((ArrayList)localObject1).add(new int[] { 16842913 });
         ((ArrayList)localObject2).add(Integer.valueOf(MMKViewUtil.argbColor(this.textSelectedColor)));
       }
-      if (this.textPressedColor >= 0L)
+      if ((this.isEnableHighlight) && (this.textPressedColor >= 0L))
       {
         ((ArrayList)localObject1).add(new int[] { 16842919 });
         ((ArrayList)localObject2).add(Integer.valueOf(MMKViewUtil.argbColor(this.textPressedColor)));
@@ -116,10 +137,10 @@ public class MMKButton
         ((ArrayList)localObject1).add(new int[] { -16842910 });
         ((ArrayList)localObject2).add(Integer.valueOf(MMKViewUtil.argbColor(this.textDisabledColor)));
       }
-      if (this.textNormalColor >= 0L)
+      if (ColorUtil.getColorByModeNoCompat(this.textNormalColor) >= 0L)
       {
         ((ArrayList)localObject1).add(new int[0]);
-        ((ArrayList)localObject2).add(Integer.valueOf(MMKViewUtil.argbColor(this.textNormalColor)));
+        ((ArrayList)localObject2).add(Integer.valueOf(MMKViewUtil.argbColor(ColorUtil.getColorByModeNoCompat(this.textNormalColor))));
       }
       int[] arrayOfInt = new int[((ArrayList)localObject2).size()];
       int i = 0;
@@ -138,16 +159,72 @@ public class MMKButton
       localObject1 = new ColorStateList((int[][])localObject2, arrayOfInt);
       ((KindaButtonImpl)getView()).setTextColor((ColorStateList)localObject1);
     }
-    AppMethodBeat.o(144851);
+    AppMethodBeat.o(19003);
+  }
+  
+  private void updateTypeface()
+  {
+    AppMethodBeat.i(186443);
+    int i;
+    if (this.textFontName != null) {
+      if (this.textFontName.equalsIgnoreCase("WeChat-Sans-SS-Light")) {
+        i = 2;
+      }
+    }
+    for (;;)
+    {
+      if (i != -1)
+      {
+        String str = e.abw(i);
+        try
+        {
+          ((KindaButtonImpl)getView()).getKButtonTextView().setTypeface(Typeface.createFromAsset(aj.getContext().getAssets(), str));
+          AppMethodBeat.o(186443);
+          return;
+        }
+        catch (Exception localException)
+        {
+          ad.e("MMKView.MMKButton", "setTypeface() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+          AppMethodBeat.o(186443);
+          return;
+        }
+        if (this.textFontName.equalsIgnoreCase("WeChat-Sans-SS-Medium"))
+        {
+          i = 0;
+          continue;
+        }
+        if (this.textFontName.equalsIgnoreCase("WeChat-Sans-SS-Regular"))
+        {
+          i = 3;
+          continue;
+        }
+        if (!this.textFontName.equalsIgnoreCase("WeChat-Sans-SS-Bold")) {
+          break label203;
+        }
+        i = 1;
+        continue;
+      }
+      if (this.fontStyle == FontStyle.REGULAR)
+      {
+        ((KindaButtonImpl)getView()).getKButtonTextView().setTypeface(null, 0);
+        AppMethodBeat.o(186443);
+        return;
+      }
+      ((KindaButtonImpl)getView()).getKButtonTextView().setTypeface(null, 1);
+      AppMethodBeat.o(186443);
+      return;
+      label203:
+      i = -1;
+    }
   }
   
   public KindaButtonImpl createView(Context paramContext)
   {
-    AppMethodBeat.i(144844);
+    AppMethodBeat.i(18996);
     paramContext = new KindaButtonImpl(paramContext);
     paramContext.setClickable(true);
     paramContext.setEnabled(true);
-    AppMethodBeat.o(144844);
+    AppMethodBeat.o(18996);
     return paramContext;
   }
   
@@ -158,9 +235,9 @@ public class MMKButton
   
   public boolean getEnable()
   {
-    AppMethodBeat.i(144857);
+    AppMethodBeat.i(19009);
     boolean bool = ((KindaButtonImpl)getView()).isEnabled();
-    AppMethodBeat.o(144857);
+    AppMethodBeat.o(19009);
     return bool;
   }
   
@@ -176,10 +253,10 @@ public class MMKButton
   
   public FontStyle getFontStyle()
   {
-    return null;
+    return this.fontStyle;
   }
   
-  public long getNormalColor()
+  public DynamicColor getNormalColor()
   {
     return this.normalColor;
   }
@@ -201,14 +278,14 @@ public class MMKButton
   
   public String getText()
   {
-    AppMethodBeat.i(144846);
+    AppMethodBeat.i(18998);
     if (((KindaButtonImpl)getView()).getText() != null)
     {
       String str = ((KindaButtonImpl)getView()).getText().toString();
-      AppMethodBeat.o(144846);
+      AppMethodBeat.o(18998);
       return str;
     }
-    AppMethodBeat.o(144846);
+    AppMethodBeat.o(18998);
     return null;
   }
   
@@ -217,7 +294,7 @@ public class MMKButton
     return this.textFontName;
   }
   
-  public long getTextNormalColor()
+  public DynamicColor getTextNormalColor()
   {
     return this.textNormalColor;
   }
@@ -229,132 +306,149 @@ public class MMKButton
   
   public void setDisabledImage(KImage paramKImage)
   {
-    AppMethodBeat.i(144855);
+    AppMethodBeat.i(19007);
     if ((paramKImage instanceof MMKImage))
     {
       this.disabledImage = ((MMKImage)paramKImage);
       updateBackgroundWithImage();
     }
-    AppMethodBeat.o(144855);
+    AppMethodBeat.o(19007);
   }
   
   public void setEnable(boolean paramBoolean)
   {
-    AppMethodBeat.i(144856);
+    AppMethodBeat.i(19008);
     ((KindaButtonImpl)getView()).setEnabled(paramBoolean);
     ((KindaButtonImpl)getView()).setClickable(paramBoolean);
-    AppMethodBeat.o(144856);
+    AppMethodBeat.o(19008);
+  }
+  
+  public void setEnableHighLight(boolean paramBoolean)
+  {
+    this.isEnableHighlight = paramBoolean;
   }
   
   public void setExpandHitHeight(long paramLong) {}
   
   public void setExpandHitWidth(long paramLong) {}
   
-  public void setFontStyle(FontStyle paramFontStyle) {}
-  
-  public void setNormalColor(long paramLong)
+  public void setFontStyle(FontStyle paramFontStyle)
   {
-    AppMethodBeat.i(144847);
-    if (this.normalColor != paramLong)
+    AppMethodBeat.i(186442);
+    this.fontStyle = paramFontStyle;
+    updateTypeface();
+    AppMethodBeat.o(186442);
+  }
+  
+  public void setNormalColor(DynamicColor paramDynamicColor)
+  {
+    AppMethodBeat.i(18999);
+    if (ColorUtil.getColorByModeNoCompat(this.normalColor) != ColorUtil.getColorByMode(paramDynamicColor))
     {
-      this.normalColor = paramLong;
-      if (paramLong != 0L)
+      this.normalColor = paramDynamicColor;
+      if (ColorUtil.getColorByModeNoCompat(paramDynamicColor) != 0L)
       {
-        this.pressedColor = ColorUtil.MergeColors(paramLong, 436207616L);
-        this.disabledColor = ColorUtil.MergeColors(paramLong, 2583691263L);
+        this.pressedColor = ColorUtil.MergeColors(ColorUtil.getColorByModeNoCompat(paramDynamicColor), 436207616L);
+        if (!ColorUtil.ifCompatKindaDarkModeDefaultColor()) {
+          break label142;
+        }
       }
-      updateBackgroundWithColor();
-      ab.i("MMKView.MMKButton", "MMKButton[" + getText() + "] setNormalColor设置完成后，normalColor：" + this.normalColor + "，pressedColor：" + this.pressedColor + "，disabledColor：" + this.disabledColor);
-      AppMethodBeat.o(144847);
-      return;
+      label142:
+      for (this.disabledColor = Long.parseLong("14FFFFFF", 16);; this.disabledColor = ColorUtil.MergeColors(ColorUtil.getColorByModeNoCompat(paramDynamicColor), 2583691263L))
+      {
+        updateBackgroundWithColor();
+        ad.i("MMKView.MMKButton", "MMKButton[" + getText() + "] setNormalColor设置完成后，normalColor：" + this.normalColor + "，pressedColor：" + this.pressedColor + "，disabledColor：" + this.disabledColor);
+        AppMethodBeat.o(18999);
+        return;
+      }
     }
-    ab.i("MMKView.MMKButton", "MMKButton[" + getText() + "] setNormalColor设置相同值。");
-    AppMethodBeat.o(144847);
+    ad.i("MMKView.MMKButton", "MMKButton[" + getText() + "] setNormalColor设置相同值。");
+    AppMethodBeat.o(18999);
   }
   
   public void setNormalImage(KImage paramKImage)
   {
-    AppMethodBeat.i(144852);
+    AppMethodBeat.i(19004);
     if ((paramKImage instanceof MMKImage))
     {
       this.normalImage = ((MMKImage)paramKImage);
       updateBackgroundWithImage();
     }
-    AppMethodBeat.o(144852);
+    AppMethodBeat.o(19004);
   }
   
   public void setPressedImage(KImage paramKImage)
   {
-    AppMethodBeat.i(144853);
+    AppMethodBeat.i(19005);
     if ((paramKImage instanceof MMKImage))
     {
       this.pressedImage = ((MMKImage)paramKImage);
       updateBackgroundWithImage();
     }
-    AppMethodBeat.o(144853);
+    AppMethodBeat.o(19005);
   }
   
   public void setSelectedImage(KImage paramKImage)
   {
-    AppMethodBeat.i(144854);
+    AppMethodBeat.i(19006);
     if ((paramKImage instanceof MMKImage))
     {
       this.selectedImage = ((MMKImage)paramKImage);
       updateBackgroundWithImage();
     }
-    AppMethodBeat.o(144854);
+    AppMethodBeat.o(19006);
   }
   
   public void setText(String paramString)
   {
-    AppMethodBeat.i(144845);
+    AppMethodBeat.i(18997);
     if (paramString != null) {
       ((KindaButtonImpl)getView()).setText(paramString);
     }
-    AppMethodBeat.o(144845);
+    AppMethodBeat.o(18997);
   }
   
   public void setTextFont(String paramString)
   {
-    AppMethodBeat.i(144849);
+    AppMethodBeat.i(19001);
     if (paramString != null)
     {
       this.textFontName = paramString;
-      ((KindaButtonImpl)getView()).setTextFont(Typeface.createFromAsset(ah.getContext().getAssets(), paramString));
+      ((KindaButtonImpl)getView()).setTextFont(Typeface.createFromAsset(aj.getContext().getAssets(), paramString));
       notifyChanged();
     }
-    AppMethodBeat.o(144849);
+    AppMethodBeat.o(19001);
   }
   
-  public void setTextNormalColor(long paramLong)
+  public void setTextNormalColor(DynamicColor paramDynamicColor)
   {
-    AppMethodBeat.i(144850);
-    if (this.textNormalColor != paramLong)
+    AppMethodBeat.i(19002);
+    if (ColorUtil.getColorByModeNoCompat(this.textNormalColor) != ColorUtil.getColorByMode(paramDynamicColor, ColorUtil.MMViewType.MMKButtonText))
     {
-      this.textNormalColor = paramLong;
-      paramLong = 0x99000000 | 0xFFFFFF & paramLong;
-      this.textPressedColor = paramLong;
-      this.textDisabledColor = paramLong;
-      ab.d("MMKView.MMKButton", "100mango pressedColor" + Long.toString(this.textPressedColor) + "disableColor" + Long.toString(this.textDisabledColor));
-      ab.d("MMKView.MMKButton", "100mango pressedColor" + Long.toHexString(this.textPressedColor) + "disableColor" + Long.toHexString(this.textDisabledColor));
+      this.textNormalColor = paramDynamicColor;
+      long l = 0x99000000 | ColorUtil.getColorByModeNoCompat(paramDynamicColor) & 0xFFFFFF;
+      this.textPressedColor = l;
+      this.textDisabledColor = l;
+      ad.d("MMKView.MMKButton", "100mango pressedColor" + Long.toString(this.textPressedColor) + "disableColor" + Long.toString(this.textDisabledColor));
+      ad.d("MMKView.MMKButton", "100mango pressedColor" + Long.toHexString(this.textPressedColor) + "disableColor" + Long.toHexString(this.textDisabledColor));
       updateTextColor();
     }
-    AppMethodBeat.o(144850);
+    AppMethodBeat.o(19002);
   }
   
   public void setTextSize(float paramFloat)
   {
-    AppMethodBeat.i(144848);
+    AppMethodBeat.i(19000);
     this.textSize = paramFloat;
     if (paramFloat > 0.0F) {
-      ((KindaButtonImpl)getView()).setTextSize(0, MMKViewUtil.dpToPx(ah.getContext(), paramFloat));
+      ((KindaButtonImpl)getView()).setTextSize(0, MMKViewUtil.dpToPx(aj.getContext(), paramFloat));
     }
-    AppMethodBeat.o(144848);
+    AppMethodBeat.o(19000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKButton
  * JD-Core Version:    0.7.0.1
  */

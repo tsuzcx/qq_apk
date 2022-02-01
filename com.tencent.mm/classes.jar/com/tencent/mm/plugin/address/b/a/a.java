@@ -7,35 +7,35 @@ import java.util.LinkedList;
 
 public final class a
 {
-  public com.tencent.mm.plugin.j.a.a gKJ;
+  public com.tencent.mm.plugin.j.a.a iyt;
   
   public a()
   {
-    AppMethodBeat.i(16719);
-    this.gKJ = new com.tencent.mm.plugin.j.a.a();
-    AppMethodBeat.o(16719);
+    AppMethodBeat.i(20762);
+    this.iyt = new com.tencent.mm.plugin.j.a.a();
+    AppMethodBeat.o(20762);
   }
   
-  public final b mZ(int paramInt)
+  public final b qi(int paramInt)
   {
-    AppMethodBeat.i(16720);
-    Iterator localIterator = this.gKJ.nLl.iterator();
+    AppMethodBeat.i(20763);
+    Iterator localIterator = this.iyt.szd.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.nLm == paramInt)
+      if (localb.sze == paramInt)
       {
-        AppMethodBeat.o(16720);
+        AppMethodBeat.o(20763);
         return localb;
       }
     }
-    AppMethodBeat.o(16720);
+    AppMethodBeat.o(20763);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.address.b.a.a
  * JD-Core Version:    0.7.0.1
  */

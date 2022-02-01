@@ -1,0 +1,22 @@
+package com.tencent.mm.plugin.exdevice.model;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.eo;
+import com.tencent.mm.sdk.b.c;
+
+final class e$7
+  extends c<eo>
+{
+  e$7(e parame)
+  {
+    AppMethodBeat.i(161321);
+    this.__eventId = eo.class.getName().hashCode();
+    AppMethodBeat.o(161321);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+ * Qualified Name:     com.tencent.mm.plugin.exdevice.model.e.7
+ * JD-Core Version:    0.7.0.1
+ */

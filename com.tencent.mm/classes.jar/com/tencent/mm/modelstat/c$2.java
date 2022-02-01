@@ -1,9 +1,9 @@
 package com.tencent.mm.modelstat;
 
-import com.tencent.mm.sdk.platformtools.bj;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class c$2
-  extends bj<Boolean>
+  extends bo<Boolean>
 {
   c$2(c paramc, Boolean paramBoolean)
   {

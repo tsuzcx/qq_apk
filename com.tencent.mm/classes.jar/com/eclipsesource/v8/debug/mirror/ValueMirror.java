@@ -15,9 +15,9 @@ public class ValueMirror
   
   public Object getValue()
   {
-    AppMethodBeat.i(74911);
+    AppMethodBeat.i(61534);
     Object localObject = this.v8Object.executeFunction("value", null);
-    AppMethodBeat.o(74911);
+    AppMethodBeat.o(61534);
     return localObject;
   }
   
@@ -28,7 +28,7 @@ public class ValueMirror
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.debug.mirror.ValueMirror
  * JD-Core Version:    0.7.0.1
  */

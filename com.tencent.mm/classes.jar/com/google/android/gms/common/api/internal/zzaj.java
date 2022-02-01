@@ -64,7 +64,7 @@ public final class zzaj
   
   public zzaj(zzbd paramzzbd, ClientSettings paramClientSettings, Map<Api<?>, Boolean> paramMap, GoogleApiAvailabilityLight paramGoogleApiAvailabilityLight, Api.AbstractClientBuilder<? extends SignInClient, SignInOptions> paramAbstractClientBuilder, Lock paramLock, Context paramContext)
   {
-    AppMethodBeat.i(60720);
+    AppMethodBeat.i(11212);
     this.zzhj = 0;
     this.zzhl = new Bundle();
     this.zzhm = new HashSet();
@@ -76,16 +76,16 @@ public final class zzaj
     this.zzdh = paramAbstractClientBuilder;
     this.zzga = paramLock;
     this.mContext = paramContext;
-    AppMethodBeat.o(60720);
+    AppMethodBeat.o(11212);
   }
   
   @GuardedBy("mLock")
   private final void zza(SignInResponse paramSignInResponse)
   {
-    AppMethodBeat.i(60723);
+    AppMethodBeat.i(11215);
     if (!zze(0))
     {
-      AppMethodBeat.o(60723);
+      AppMethodBeat.o(11215);
       return;
     }
     Object localObject = paramSignInResponse.getConnectionResult();
@@ -98,7 +98,7 @@ public final class zzaj
         localObject = String.valueOf(paramSignInResponse);
         Log.wtf("GoogleApiClientConnecting", String.valueOf(localObject).length() + 48 + "Sign-in succeeded with resolve account failure: " + (String)localObject, new Exception());
         zze(paramSignInResponse);
-        AppMethodBeat.o(60723);
+        AppMethodBeat.o(11215);
         return;
       }
       this.zzhq = true;
@@ -106,23 +106,23 @@ public final class zzaj
       this.zzhs = ((ResolveAccountResponse)localObject).getSaveDefaultAccount();
       this.zzht = ((ResolveAccountResponse)localObject).isFromCrossClientAuth();
       zzas();
-      AppMethodBeat.o(60723);
+      AppMethodBeat.o(11215);
       return;
     }
     if (zzd((ConnectionResult)localObject))
     {
       zzau();
       zzas();
-      AppMethodBeat.o(60723);
+      AppMethodBeat.o(11215);
       return;
     }
     zze((ConnectionResult)localObject);
-    AppMethodBeat.o(60723);
+    AppMethodBeat.o(11215);
   }
   
   private final void zza(boolean paramBoolean)
   {
-    AppMethodBeat.i(60736);
+    AppMethodBeat.i(11228);
     if (this.zzhn != null)
     {
       if ((this.zzhn.isConnected()) && (paramBoolean)) {
@@ -131,17 +131,17 @@ public final class zzaj
       this.zzhn.disconnect();
       this.zzhr = null;
     }
-    AppMethodBeat.o(60736);
+    AppMethodBeat.o(11228);
   }
   
   @GuardedBy("mLock")
   private final boolean zzar()
   {
-    AppMethodBeat.i(60722);
+    AppMethodBeat.i(11214);
     this.zzhk -= 1;
     if (this.zzhk > 0)
     {
-      AppMethodBeat.o(60722);
+      AppMethodBeat.o(11214);
       return false;
     }
     if (this.zzhk < 0)
@@ -149,27 +149,27 @@ public final class zzaj
       this.zzhf.zzfq.zzbb();
       Log.wtf("GoogleApiClientConnecting", "GoogleApiClient received too many callbacks for the given step. Clients may be in an unexpected state; GoogleApiClient will now disconnect.", new Exception());
       zze(new ConnectionResult(8, null));
-      AppMethodBeat.o(60722);
+      AppMethodBeat.o(11214);
       return false;
     }
     if (this.zzgt != null)
     {
       this.zzhf.zzje = this.zzhi;
       zze(this.zzgt);
-      AppMethodBeat.o(60722);
+      AppMethodBeat.o(11214);
       return false;
     }
-    AppMethodBeat.o(60722);
+    AppMethodBeat.o(11214);
     return true;
   }
   
   @GuardedBy("mLock")
   private final void zzas()
   {
-    AppMethodBeat.i(60724);
+    AppMethodBeat.i(11216);
     if (this.zzhk != 0)
     {
-      AppMethodBeat.o(60724);
+      AppMethodBeat.o(11216);
       return;
     }
     if ((!this.zzhp) || (this.zzhq))
@@ -195,13 +195,13 @@ public final class zzaj
         this.zzhu.add(zzbg.zzbe().submit(new zzap(this, localArrayList)));
       }
     }
-    AppMethodBeat.o(60724);
+    AppMethodBeat.o(11216);
   }
   
   @GuardedBy("mLock")
   private final void zzat()
   {
-    AppMethodBeat.i(60727);
+    AppMethodBeat.i(11219);
     this.zzhf.zzbd();
     zzbg.zzbe().execute(new zzak(this));
     if (this.zzhn != null)
@@ -221,7 +221,7 @@ public final class zzaj
     for (localObject = null;; localObject = this.zzhl)
     {
       this.zzhf.zzjf.zzb((Bundle)localObject);
-      AppMethodBeat.o(60727);
+      AppMethodBeat.o(11219);
       return;
     }
   }
@@ -229,7 +229,7 @@ public final class zzaj
   @GuardedBy("mLock")
   private final void zzau()
   {
-    AppMethodBeat.i(60733);
+    AppMethodBeat.i(11225);
     this.zzhp = false;
     this.zzhf.zzfq.zzim = Collections.emptySet();
     Iterator localIterator = this.zzhm.iterator();
@@ -240,12 +240,12 @@ public final class zzaj
         this.zzhf.zzjb.put(localAnyClientKey, new ConnectionResult(17, null));
       }
     }
-    AppMethodBeat.o(60733);
+    AppMethodBeat.o(11225);
   }
   
   private final void zzav()
   {
-    AppMethodBeat.i(60737);
+    AppMethodBeat.i(11229);
     ArrayList localArrayList = (ArrayList)this.zzhu;
     int j = localArrayList.size();
     int i = 0;
@@ -256,16 +256,16 @@ public final class zzaj
       ((Future)localObject).cancel(true);
     }
     this.zzhu.clear();
-    AppMethodBeat.o(60737);
+    AppMethodBeat.o(11229);
   }
   
   private final Set<Scope> zzaw()
   {
-    AppMethodBeat.i(60738);
+    AppMethodBeat.i(11230);
     if (this.zzgf == null)
     {
       localObject = Collections.emptySet();
-      AppMethodBeat.o(60738);
+      AppMethodBeat.o(11230);
       return localObject;
     }
     Object localObject = new HashSet(this.zzgf.getRequiredScopes());
@@ -278,7 +278,7 @@ public final class zzaj
         ((Set)localObject).addAll(((ClientSettings.OptionalApiSettings)localMap.get(localApi)).mScopes);
       }
     }
-    AppMethodBeat.o(60738);
+    AppMethodBeat.o(11230);
     return localObject;
   }
   
@@ -286,7 +286,7 @@ public final class zzaj
   private final void zzb(ConnectionResult paramConnectionResult, Api<?> paramApi, boolean paramBoolean)
   {
     int j = 1;
-    AppMethodBeat.i(60732);
+    AppMethodBeat.i(11224);
     int k = paramApi.zzj().getPriority();
     if (paramBoolean)
     {
@@ -316,7 +316,7 @@ public final class zzaj
         this.zzhi = k;
       }
       this.zzhf.zzjb.put(paramApi.getClientKey(), paramConnectionResult);
-      AppMethodBeat.o(60732);
+      AppMethodBeat.o(11224);
       return;
       if (this.zzgk.getErrorResolutionIntent(paramConnectionResult.getErrorCode()) != null)
       {
@@ -331,20 +331,20 @@ public final class zzaj
   @GuardedBy("mLock")
   private final boolean zzd(ConnectionResult paramConnectionResult)
   {
-    AppMethodBeat.i(60734);
+    AppMethodBeat.i(11226);
     if ((this.zzho) && (!paramConnectionResult.hasResolution()))
     {
-      AppMethodBeat.o(60734);
+      AppMethodBeat.o(11226);
       return true;
     }
-    AppMethodBeat.o(60734);
+    AppMethodBeat.o(11226);
     return false;
   }
   
   @GuardedBy("mLock")
   private final void zze(ConnectionResult paramConnectionResult)
   {
-    AppMethodBeat.i(60735);
+    AppMethodBeat.i(11227);
     zzav();
     if (!paramConnectionResult.hasResolution()) {}
     for (boolean bool = true;; bool = false)
@@ -352,7 +352,7 @@ public final class zzaj
       zza(bool);
       this.zzhf.zzf(paramConnectionResult);
       this.zzhf.zzjf.zzc(paramConnectionResult);
-      AppMethodBeat.o(60735);
+      AppMethodBeat.o(11227);
       return;
     }
   }
@@ -360,7 +360,7 @@ public final class zzaj
   @GuardedBy("mLock")
   private final boolean zze(int paramInt)
   {
-    AppMethodBeat.i(60739);
+    AppMethodBeat.i(11231);
     if (this.zzhj != paramInt)
     {
       this.zzhf.zzfq.zzbb();
@@ -372,10 +372,10 @@ public final class zzaj
       String str2 = zzf(paramInt);
       Log.wtf("GoogleApiClientConnecting", String.valueOf(str1).length() + 70 + String.valueOf(str2).length() + "GoogleApiClient connecting is in step " + str1 + " but received callback for step " + str2, new Exception());
       zze(new ConnectionResult(8, null));
-      AppMethodBeat.o(60739);
+      AppMethodBeat.o(11231);
       return false;
     }
-    AppMethodBeat.o(60739);
+    AppMethodBeat.o(11231);
     return true;
   }
   
@@ -393,7 +393,7 @@ public final class zzaj
   
   public final void begin()
   {
-    AppMethodBeat.i(60721);
+    AppMethodBeat.i(11213);
     this.zzhf.zzjb.clear();
     this.zzhp = false;
     this.zzgt = null;
@@ -446,44 +446,44 @@ public final class zzaj
     }
     this.zzhk = this.zzhf.zzil.size();
     this.zzhu.add(zzbg.zzbe().submit(new zzam(this, localHashMap)));
-    AppMethodBeat.o(60721);
+    AppMethodBeat.o(11213);
   }
   
   public final void connect() {}
   
   public final boolean disconnect()
   {
-    AppMethodBeat.i(60730);
+    AppMethodBeat.i(11222);
     zzav();
     zza(true);
     this.zzhf.zzf(null);
-    AppMethodBeat.o(60730);
+    AppMethodBeat.o(11222);
     return true;
   }
   
   public final <A extends Api.AnyClient, R extends Result, T extends BaseImplementation.ApiMethodImpl<R, A>> T enqueue(T paramT)
   {
-    AppMethodBeat.i(60728);
+    AppMethodBeat.i(11220);
     this.zzhf.zzfq.zzgo.add(paramT);
-    AppMethodBeat.o(60728);
+    AppMethodBeat.o(11220);
     return paramT;
   }
   
   public final <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T execute(T paramT)
   {
-    AppMethodBeat.i(60729);
+    AppMethodBeat.i(11221);
     paramT = new IllegalStateException("GoogleApiClient is not connected yet.");
-    AppMethodBeat.o(60729);
+    AppMethodBeat.o(11221);
     throw paramT;
   }
   
   @GuardedBy("mLock")
   public final void onConnected(Bundle paramBundle)
   {
-    AppMethodBeat.i(60725);
+    AppMethodBeat.i(11217);
     if (!zze(1))
     {
-      AppMethodBeat.o(60725);
+      AppMethodBeat.o(11217);
       return;
     }
     if (paramBundle != null) {
@@ -492,31 +492,31 @@ public final class zzaj
     if (zzar()) {
       zzat();
     }
-    AppMethodBeat.o(60725);
+    AppMethodBeat.o(11217);
   }
   
   @GuardedBy("mLock")
   public final void onConnectionSuspended(int paramInt)
   {
-    AppMethodBeat.i(60731);
+    AppMethodBeat.i(11223);
     zze(new ConnectionResult(8, null));
-    AppMethodBeat.o(60731);
+    AppMethodBeat.o(11223);
   }
   
   @GuardedBy("mLock")
   public final void zza(ConnectionResult paramConnectionResult, Api<?> paramApi, boolean paramBoolean)
   {
-    AppMethodBeat.i(60726);
+    AppMethodBeat.i(11218);
     if (!zze(1))
     {
-      AppMethodBeat.o(60726);
+      AppMethodBeat.o(11218);
       return;
     }
     zzb(paramConnectionResult, paramApi, paramBoolean);
     if (zzar()) {
       zzat();
     }
-    AppMethodBeat.o(60726);
+    AppMethodBeat.o(11218);
   }
 }
 

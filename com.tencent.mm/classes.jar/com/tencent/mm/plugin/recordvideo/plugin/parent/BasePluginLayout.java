@@ -1,41 +1,61 @@
 package com.tencent.mm.plugin.recordvideo.plugin.parent;
 
-import a.l;
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import com.tencent.mm.plugin.recordvideo.plugin.q;
+import com.tencent.mm.media.widget.camerarecordview.b.b;
+import com.tencent.mm.plugin.recordvideo.activity.a;
+import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
+import com.tencent.mm.plugin.recordvideo.plugin.t;
+import d.l;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BasePluginLayout;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "isCurrentState", "", "()Z", "setCurrentState", "(Z)V", "pluginList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getPluginList", "()Ljava/util/ArrayList;", "onBackPress", "onPause", "", "onResume", "release", "reset", "setVisibility", "visibility", "", "Companion", "plugin-recordvideo_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BasePluginLayout;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "pluginList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getPluginList", "()Ljava/util/ArrayList;", "initLogic", "", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "loadCurrentPage", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onAttach", "onBackPress", "", "onDetach", "onPause", "onResume", "release", "reset", "setVisibility", "visibility", "Companion", "plugin-recordvideo_release"})
 public abstract class BasePluginLayout
   extends RelativeLayout
-  implements q
+  implements t
 {
-  public static final BasePluginLayout.a qdJ = new BasePluginLayout.a((byte)0);
-  private final ArrayList<q> qdH = new ArrayList();
-  private boolean qdI;
+  public static final a vng = new a((byte)0);
+  private final ArrayList<t> vnf = new ArrayList();
   
   public BasePluginLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public boolean cgq()
+  public void a(b paramb)
   {
-    Iterator localIterator = ((Iterable)this.qdH).iterator();
+    apt();
+    reset();
+    setVisibility(0);
+  }
+  
+  public abstract void a(a parama, RecordConfigProvider paramRecordConfigProvider);
+  
+  public final void apt()
+  {
+    Iterator localIterator = ((Iterable)this.vnf).iterator();
     while (localIterator.hasNext()) {
-      if (((q)localIterator.next()).cgq()) {
+      ((t)localIterator.next()).apt();
+    }
+  }
+  
+  public boolean dia()
+  {
+    Iterator localIterator = ((Iterable)this.vnf).iterator();
+    while (localIterator.hasNext()) {
+      if (((t)localIterator.next()).dia()) {
         return true;
       }
     }
     return false;
   }
   
-  protected final ArrayList<q> getPluginList()
+  protected final ArrayList<t> getPluginList()
   {
-    return this.qdH;
+    return this.vnf;
   }
   
   public final String name()
@@ -43,43 +63,52 @@ public abstract class BasePluginLayout
     return null;
   }
   
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    Iterator localIterator = ((Iterable)this.vnf).iterator();
+    while (localIterator.hasNext()) {
+      ((t)localIterator.next()).onActivityResult(paramInt1, paramInt2, paramIntent);
+    }
+  }
+  
+  public void onDetach()
+  {
+    Iterator localIterator = ((Iterable)this.vnf).iterator();
+    while (localIterator.hasNext()) {
+      ((t)localIterator.next()).onDetach();
+    }
+  }
+  
   public void onPause()
   {
-    this.qdI = false;
-    Iterator localIterator = ((Iterable)this.qdH).iterator();
+    Iterator localIterator = ((Iterable)this.vnf).iterator();
     while (localIterator.hasNext()) {
-      ((q)localIterator.next()).onPause();
+      ((t)localIterator.next()).onPause();
     }
   }
   
   public void onResume()
   {
-    this.qdI = true;
-    Iterator localIterator = ((Iterable)this.qdH).iterator();
+    Iterator localIterator = ((Iterable)this.vnf).iterator();
     while (localIterator.hasNext()) {
-      ((q)localIterator.next()).onResume();
+      ((t)localIterator.next()).onResume();
     }
   }
   
   public void release()
   {
-    Iterator localIterator = ((Iterable)this.qdH).iterator();
+    Iterator localIterator = ((Iterable)this.vnf).iterator();
     while (localIterator.hasNext()) {
-      ((q)localIterator.next()).release();
+      ((t)localIterator.next()).release();
     }
   }
   
   public void reset()
   {
-    Iterator localIterator = ((Iterable)this.qdH).iterator();
+    Iterator localIterator = ((Iterable)this.vnf).iterator();
     while (localIterator.hasNext()) {
-      ((q)localIterator.next()).reset();
+      ((t)localIterator.next()).reset();
     }
-  }
-  
-  protected final void setCurrentState(boolean paramBoolean)
-  {
-    this.qdI = paramBoolean;
   }
   
   public void setVisibility(int paramInt)
@@ -92,10 +121,13 @@ public abstract class BasePluginLayout
     }
     onPause();
   }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BasePluginLayout$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.parent.BasePluginLayout
  * JD-Core Version:    0.7.0.1
  */

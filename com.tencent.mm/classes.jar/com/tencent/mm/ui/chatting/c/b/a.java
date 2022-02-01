@@ -1,19 +1,19 @@
 package com.tencent.mm.ui.chatting.c.b;
 
-import com.tencent.mm.ui.chatting.c.v;
+import com.tencent.mm.ui.chatting.c.ab;
 
 public abstract interface a
-  extends v
+  extends ab
 {
-  public abstract void dIv();
+  public abstract void eXQ();
   
-  public abstract String dJA();
+  public abstract void eYU();
   
-  public abstract void dJz();
+  public abstract String eYV();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,18 +5,18 @@ import java.util.List;
 
 public abstract class c
 {
-  public final String aSG;
-  public final List<String> aSH;
+  public final String bqj;
+  public final List<String> bqk;
   
   protected c(String paramString, List<String> paramList)
   {
-    this.aSG = paramString;
-    this.aSH = Collections.unmodifiableList(paramList);
+    this.bqj = paramString;
+    this.bqk = Collections.unmodifiableList(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.source.b.a.c
  * JD-Core Version:    0.7.0.1
  */

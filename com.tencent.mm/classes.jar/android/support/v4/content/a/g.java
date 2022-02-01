@@ -48,7 +48,7 @@ public final class g
       paramXmlPullParser = new TypedValue();
       paramTypedArray.getValue(paramInt, paramXmlPullParser);
       if ((paramXmlPullParser.type >= 28) && (paramXmlPullParser.type <= 31)) {
-        paramTypedArray = b.ab(paramXmlPullParser.data);
+        paramTypedArray = b.at(paramXmlPullParser.data);
       }
       do
       {
@@ -57,7 +57,7 @@ public final class g
         paramTypedArray = paramXmlPullParser;
       } while (paramXmlPullParser != null);
     }
-    return b.ab(0);
+    return b.at(0);
   }
   
   public static TypedValue a(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString)

@@ -1,17 +1,17 @@
 package com.tencent.mm.modelstat;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class h
 {
-  long bSb;
   long beginTime;
-  boolean cMU;
+  long cin;
+  boolean dDS;
   long endTime;
-  long fTq;
-  long fTr;
+  long hvZ;
+  long hwa;
   int rtType;
   
   public h() {}
@@ -19,39 +19,39 @@ public final class h
   public h(int paramInt, boolean paramBoolean, long paramLong)
   {
     this.rtType = paramInt;
-    this.cMU = paramBoolean;
-    this.fTq = paramLong;
-    this.fTr = 0L;
+    this.dDS = paramBoolean;
+    this.hvZ = paramLong;
+    this.hwa = 0L;
   }
   
-  public final void akD()
+  public final void aBI()
   {
-    AppMethodBeat.i(78735);
-    if (this.fTr == 0L)
+    AppMethodBeat.i(151079);
+    if (this.hwa == 0L)
     {
-      this.beginTime = bo.aoy();
-      this.bSb = bo.yB();
+      this.beginTime = bt.eGO();
+      this.cin = bt.GC();
     }
-    this.fTr += 1L;
-    AppMethodBeat.o(78735);
+    this.hwa += 1L;
+    AppMethodBeat.o(151079);
   }
   
-  public final void hc(long paramLong)
+  public final void mB(long paramLong)
   {
-    AppMethodBeat.i(78736);
-    if (this.fTq == 0L) {
-      this.fTq = paramLong;
+    AppMethodBeat.i(151080);
+    if (this.hvZ == 0L) {
+      this.hvZ = paramLong;
     }
-    this.bSb = (bo.yB() - this.bSb);
-    this.endTime = bo.aoy();
-    ab.d("MicroMsg.MultiSceneStat", "FIN: TIME:" + (this.endTime - this.beginTime) + " datalen:" + this.fTq + " Count:" + this.fTr + " type:" + this.rtType);
+    this.cin = (bt.GC() - this.cin);
+    this.endTime = bt.eGO();
+    ad.d("MicroMsg.MultiSceneStat", "FIN: TIME:" + (this.endTime - this.beginTime) + " datalen:" + this.hvZ + " Count:" + this.hwa + " type:" + this.rtType);
     WatchDogPushReceiver.a(this);
-    AppMethodBeat.o(78736);
+    AppMethodBeat.o(151080);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelstat.h
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,8 @@ import java.lang.ref.WeakReference;
 abstract class l
   extends j
 {
-  private static final WeakReference<byte[]> Lr = new WeakReference(null);
-  private WeakReference<byte[]> Lq = Lr;
+  private static final WeakReference<byte[]> Ng = new WeakReference(null);
+  private WeakReference<byte[]> Nf = Ng;
   
   l(byte[] paramArrayOfByte)
   {
@@ -17,19 +17,19 @@ abstract class l
   {
     try
     {
-      byte[] arrayOfByte2 = (byte[])this.Lq.get();
+      byte[] arrayOfByte2 = (byte[])this.Nf.get();
       byte[] arrayOfByte1 = arrayOfByte2;
       if (arrayOfByte2 == null)
       {
-        arrayOfByte1 = hX();
-        this.Lq = new WeakReference(arrayOfByte1);
+        arrayOfByte1 = jdMethod_if();
+        this.Nf = new WeakReference(arrayOfByte1);
       }
       return arrayOfByte1;
     }
     finally {}
   }
   
-  protected abstract byte[] hX();
+  protected abstract byte[] jdMethod_if();
 }
 
 

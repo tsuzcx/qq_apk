@@ -1,542 +1,297 @@
 package com.tencent.mm.storage;
 
-import android.content.ContentValues;
 import android.database.Cursor;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.j.a.a.c;
-import com.tencent.mm.j.a.a.d;
-import com.tencent.mm.plugin.messenger.foundation.a.a.b;
-import com.tencent.mm.plugin.messenger.foundation.a.a.b.a;
+import com.tencent.mm.model.aj;
+import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Iterator;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storagebase.g;
+import com.tencent.mm.storagebase.g.a;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
+import junit.framework.Assert;
 
 public final class x
-  extends n
-  implements b
+  extends j<w>
+  implements aj, g.a
 {
+  public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  private static final String[] yxa;
-  private h fnw;
+  private e db;
   
   static
   {
-    AppMethodBeat.i(1101);
-    SQL_CREATE = new String[] { j.getCreateSQLs(w.info, "ChatroomMsgSeq") };
-    yxa = new String[] { "CREATE INDEX IF NOT EXISTS  ChatroomMsgSeqTalkerIndex ON ChatroomMsgSeq ( username )" };
-    AppMethodBeat.o(1101);
+    AppMethodBeat.i(116941);
+    SQL_CREATE = new String[] { j.getCreateSQLs(w.info, "chatroom") };
+    INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS serverChatRoomUserIndex ON chatroom ( chatroomname )" };
+    AppMethodBeat.o(116941);
   }
   
-  public x(h paramh)
+  public x(e parame)
   {
-    AppMethodBeat.i(1078);
-    this.fnw = paramh;
-    paramh.execSQL("ChatroomMsgSeq", yxa[0]);
-    AppMethodBeat.o(1078);
+    super(parame, w.info, "chatroom", INDEX_CREATE);
+    this.db = parame;
   }
   
-  public final long SQ(String paramString)
+  public final int a(g paramg)
   {
-    AppMethodBeat.i(1082);
-    long l = this.fnw.delete("ChatroomMsgSeq", "username = ?", new String[] { paramString });
-    AppMethodBeat.o(1082);
-    return l;
+    return 0;
   }
   
-  public final long SR(String paramString)
+  public final String sh(String paramString)
   {
-    AppMethodBeat.i(1084);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(116936);
+    boolean bool;
+    Cursor localCursor;
+    if (paramString.length() > 0)
     {
-      AppMethodBeat.o(1084);
-      return -1L;
-    }
-    Object localObject = "select lastPushSeq from ChatroomMsgSeq where username = \"" + bo.wC(String.valueOf(paramString)) + "\"";
-    localObject = this.fnw.a((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      ab.i("MicroMsg.ChatroomMsgSeqStorage", "getLastPushSeq failed ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(1084);
-      return -2L;
-    }
-    if (((Cursor)localObject).moveToFirst())
-    {
-      long l = ((Cursor)localObject).getLong(0);
-      ((Cursor)localObject).close();
-      AppMethodBeat.o(1084);
-      return l;
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(1084);
-    return -3L;
-  }
-  
-  public final long SS(String paramString)
-  {
-    AppMethodBeat.i(1086);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(1086);
-      return -1L;
-    }
-    Object localObject = "select lastLocalSeq from ChatroomMsgSeq where username = \"" + bo.wC(String.valueOf(paramString)) + "\"";
-    localObject = this.fnw.a((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      ab.i("MicroMsg.ChatroomMsgSeqStorage", "getLastLocalSeq failed ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(1086);
-      return -2L;
-    }
-    if (((Cursor)localObject).moveToFirst())
-    {
-      long l = ((Cursor)localObject).getLong(0);
-      ((Cursor)localObject).close();
-      AppMethodBeat.o(1086);
-      return l;
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(1086);
-    return -3L;
-  }
-  
-  public final long ST(String paramString)
-  {
-    AppMethodBeat.i(1085);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(1085);
-      return -1L;
-    }
-    Object localObject = "select lastPushCreateTime from ChatroomMsgSeq where username = \"" + bo.wC(String.valueOf(paramString)) + "\"";
-    localObject = this.fnw.a((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      ab.i("MicroMsg.ChatroomMsgSeqStorage", "getLastPushSeq failed ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(1085);
-      return -2L;
-    }
-    if (((Cursor)localObject).moveToFirst())
-    {
-      long l = ((Cursor)localObject).getLong(0);
-      ((Cursor)localObject).close();
-      AppMethodBeat.o(1085);
-      return l;
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(1085);
-    return -3L;
-  }
-  
-  public final long SU(String paramString)
-  {
-    AppMethodBeat.i(1087);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(1087);
-      return -1L;
-    }
-    Object localObject = "select lastLocalCreateTime from ChatroomMsgSeq where username = \"" + bo.wC(String.valueOf(paramString)) + "\"";
-    localObject = this.fnw.a((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      ab.i("MicroMsg.ChatroomMsgSeqStorage", "getLastLocalSeq failed ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(1087);
-      return -2L;
-    }
-    if (((Cursor)localObject).moveToFirst())
-    {
-      long l = ((Cursor)localObject).getLong(0);
-      ((Cursor)localObject).close();
-      AppMethodBeat.o(1087);
-      return l;
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(1087);
-    return -3L;
-  }
-  
-  public final d SV(String paramString)
-  {
-    AppMethodBeat.i(1092);
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.i("MicroMsg.ChatroomMsgSeqStorage", "getSeqBlockInfo failed username is null!");
-      paramString = new d();
-      AppMethodBeat.o(1092);
-      return paramString;
-    }
-    Object localObject = "select seqBlockInfo from ChatroomMsgSeq where username = \"" + bo.wC(String.valueOf(paramString)) + "\"";
-    localObject = this.fnw.a((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      ab.e("MicroMsg.ChatroomMsgSeqStorage", "getSeqBlockInfo failed ".concat(String.valueOf(paramString)));
-      paramString = new d();
-      AppMethodBeat.o(1092);
-      return paramString;
-    }
-    byte[] arrayOfByte;
-    if (((Cursor)localObject).moveToFirst())
-    {
-      arrayOfByte = ((Cursor)localObject).getBlob(0);
-      if (bo.ce(arrayOfByte))
-      {
-        ((Cursor)localObject).close();
-        paramString = new d();
-        AppMethodBeat.o(1092);
-        return paramString;
+      bool = true;
+      Assert.assertTrue(bool);
+      paramString = "select displayname from chatroom where chatroomname='" + bt.aFQ(paramString) + "'";
+      localCursor = this.db.a(paramString, null, 2);
+      if (!localCursor.moveToFirst()) {
+        break label112;
       }
-      paramString = new d();
+      paramString = new w();
+      paramString.convertFrom(localCursor);
     }
-    try
+    for (;;)
     {
-      paramString.parseFrom(arrayOfByte);
-      label169:
-      ((Cursor)localObject).close();
-      AppMethodBeat.o(1092);
-      return paramString;
-      ((Cursor)localObject).close();
-      paramString = new d();
-      AppMethodBeat.o(1092);
-      return paramString;
-    }
-    catch (Exception localException)
-    {
-      break label169;
-    }
-  }
-  
-  public final boolean SW(String paramString)
-  {
-    AppMethodBeat.i(1094);
-    Object localObject = "select count(*) from ChatroomMsgSeq where username = \"" + bo.wC(String.valueOf(paramString)) + "\"";
-    localObject = this.fnw.a((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      ab.i("MicroMsg.ChatroomMsgSeqStorage", "getLastPushSeq failed ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(1094);
-      return false;
-    }
-    if (((Cursor)localObject).moveToFirst())
-    {
-      long l = ((Cursor)localObject).getLong(0);
-      ((Cursor)localObject).close();
-      if (l > 0L)
+      localCursor.close();
+      if (paramString == null)
       {
-        AppMethodBeat.o(1094);
-        return true;
+        AppMethodBeat.o(116936);
+        return null;
+        bool = false;
+        break;
       }
-      AppMethodBeat.o(1094);
-      return false;
+      paramString = paramString.field_displayname;
+      AppMethodBeat.o(116936);
+      return paramString;
+      label112:
+      paramString = null;
     }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(1094);
-    return false;
   }
   
-  public final c SX(String paramString)
+  public final w tH(String paramString)
   {
-    AppMethodBeat.i(1095);
-    paramString = SV(paramString);
-    if (paramString.elE.size() <= 0)
-    {
-      AppMethodBeat.o(1095);
-      return null;
-    }
-    paramString = (c)paramString.elE.getLast();
-    AppMethodBeat.o(1095);
-    return paramString;
-  }
-  
-  public final w SY(String paramString)
-  {
-    AppMethodBeat.i(1098);
-    ab.i("MicroMsg.ChatroomMsgSeqStorage", "[getChatroomMsgSeq] username:%s", new Object[] { paramString });
+    AppMethodBeat.i(116930);
     w localw = new w();
-    paramString = "select * from ChatroomMsgSeq where username = \"" + bo.wC(String.valueOf(paramString)) + "\"";
-    paramString = this.fnw.a(paramString, null, 2);
-    if (paramString == null)
+    localw.field_chatroomname = paramString;
+    if (super.get(localw, new String[] { "chatroomname" }))
     {
-      AppMethodBeat.o(1098);
+      AppMethodBeat.o(116930);
       return localw;
     }
-    if (paramString.moveToFirst()) {
-      localw.convertFrom(paramString);
+    AppMethodBeat.o(116930);
+    return null;
+  }
+  
+  public final w tI(String paramString)
+  {
+    AppMethodBeat.i(116931);
+    w localw = new w();
+    localw.field_chatroomname = paramString;
+    if (super.get(localw, new String[] { "chatroomname" }))
+    {
+      AppMethodBeat.o(116931);
+      return localw;
     }
-    paramString.close();
-    AppMethodBeat.o(1098);
+    AppMethodBeat.o(116931);
     return localw;
   }
   
-  public final StringBuilder SZ(String paramString)
+  public final String tJ(String paramString)
   {
-    AppMethodBeat.i(1099);
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramString = SY(paramString).field_seqBlockInfo;
-    if (paramString == null)
+    AppMethodBeat.i(116933);
+    if (paramString.length() > 0) {}
+    Cursor localCursor;
+    for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(1099);
-      return localStringBuilder;
-    }
-    paramString = paramString.elE.iterator();
-    while (paramString.hasNext())
-    {
-      c localc = (c)paramString.next();
-      localStringBuilder.append("[").append(localc.elA).append(":").append(localc.elB).append("][").append(localc.elC).append(":").append(localc.elD).append("] | ");
-    }
-    AppMethodBeat.o(1099);
-    return localStringBuilder;
-  }
-  
-  public final boolean Y(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(1088);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(1088);
-      return false;
-    }
-    Object localObject = "update ChatroomMsgSeq set lastPushSeq =  " + paramLong + " where username = \"" + bo.wC(paramString) + "\"";
-    boolean bool = this.fnw.execSQL("ChatroomMsgSeq", (String)localObject);
-    if (bool)
-    {
-      localObject = new b.a();
-      ((b.a)localObject).id = 4;
-      ((b.a)localObject).username = paramString;
-      b(2, this, localObject);
-    }
-    AppMethodBeat.o(1088);
-    return bool;
-  }
-  
-  public final boolean Z(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(1089);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(1089);
-      return false;
-    }
-    paramString = "update ChatroomMsgSeq set lastLocalCreateTime =  " + paramLong + " where username = \"" + bo.wC(paramString) + "\"";
-    boolean bool = this.fnw.execSQL("ChatroomMsgSeq", paramString);
-    AppMethodBeat.o(1089);
-    return bool;
-  }
-  
-  public final long a(w paramw)
-  {
-    AppMethodBeat.i(1079);
-    long l = a(paramw, false);
-    AppMethodBeat.o(1079);
-    return l;
-  }
-  
-  public final long a(w paramw, boolean paramBoolean)
-  {
-    AppMethodBeat.i(1080);
-    if (paramw == null)
-    {
-      AppMethodBeat.o(1080);
-      return -1L;
-    }
-    Object localObject = paramw.convertTo();
-    long l = this.fnw.a("ChatroomMsgSeq", "username", (ContentValues)localObject);
-    if (l >= 0L)
-    {
-      localObject = new b.a();
-      ((b.a)localObject).id = 4;
-      ((b.a)localObject).username = paramw.field_username;
-      ((b.a)localObject).oDK = paramBoolean;
-      b(4, this, localObject);
-    }
-    AppMethodBeat.o(1080);
-    return l;
-  }
-  
-  public final boolean a(String paramString, d paramd)
-  {
-    AppMethodBeat.i(1093);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      ab.e("MicroMsg.ChatroomMsgSeqStorage", "updateSeqBlockInfo failed");
-      AppMethodBeat.o(1093);
-      return false;
-    }
-    Object localObject = new byte[0];
-    try
-    {
-      paramd = paramd.toByteArray();
-      localObject = new ContentValues();
-      ((ContentValues)localObject).put("seqBlockInfo", paramd);
-      if (this.fnw.update("ChatroomMsgSeq", (ContentValues)localObject, "username = ?", new String[] { bo.wC(paramString) }) > 0)
-      {
-        AppMethodBeat.o(1093);
-        return true;
+      Assert.assertTrue(bool);
+      paramString = "select roomowner from chatroom where chatroomname='" + bt.aFQ(paramString) + "'";
+      localCursor = this.db.a(paramString, null, 2);
+      if (localCursor != null) {
+        break;
       }
-      AppMethodBeat.o(1093);
-      return false;
-    }
-    catch (Exception paramd)
-    {
-      for (;;)
-      {
-        paramd = (d)localObject;
-      }
-    }
-  }
-  
-  public final boolean aa(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(1090);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(1090);
-      return false;
-    }
-    paramString = "update ChatroomMsgSeq set lastPushCreateTime =  " + paramLong + " where username = \"" + bo.wC(paramString) + "\"";
-    boolean bool = this.fnw.execSQL("ChatroomMsgSeq", paramString);
-    AppMethodBeat.o(1090);
-    return bool;
-  }
-  
-  public final boolean ab(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(1091);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(1091);
-      return false;
-    }
-    paramString = "update ChatroomMsgSeq set lastLocalSeq =  " + paramLong + " where username = \"" + bo.wC(paramString) + "\"";
-    boolean bool = this.fnw.execSQL("ChatroomMsgSeq", paramString);
-    AppMethodBeat.o(1091);
-    return bool;
-  }
-  
-  public final c ac(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(1097);
-    paramString = SV(paramString);
-    if (paramString.elE.size() <= 0)
-    {
-      AppMethodBeat.o(1097);
+      ad.e("MicroMsg.ChatroomStorage", "getChatroomOwner fail, cursor is null");
+      AppMethodBeat.o(116933);
       return null;
     }
-    paramString = paramString.elE.listIterator(paramString.elE.size());
-    while (paramString.hasPrevious())
+    if (localCursor.moveToFirst())
     {
-      c localc = (c)paramString.previous();
-      if (localc.elC < paramLong)
+      paramString = new w();
+      paramString.convertFrom(localCursor);
+    }
+    for (;;)
+    {
+      localCursor.close();
+      if (paramString == null)
       {
-        AppMethodBeat.o(1097);
-        return localc;
+        AppMethodBeat.o(116933);
+        return null;
+      }
+      paramString = paramString.field_roomowner;
+      AppMethodBeat.o(116933);
+      return paramString;
+      paramString = null;
+    }
+  }
+  
+  public final String tK(String paramString)
+  {
+    AppMethodBeat.i(116934);
+    boolean bool;
+    Cursor localCursor;
+    if (paramString.length() > 0)
+    {
+      bool = true;
+      Assert.assertTrue(bool);
+      paramString = "select memberlist from chatroom where chatroomname='" + bt.aFQ(paramString) + "'";
+      localCursor = this.db.a(paramString, null, 2);
+      if (!localCursor.moveToFirst()) {
+        break label112;
+      }
+      paramString = new w();
+      paramString.convertFrom(localCursor);
+    }
+    for (;;)
+    {
+      localCursor.close();
+      if (paramString == null)
+      {
+        AppMethodBeat.o(116934);
+        return null;
+        bool = false;
+        break;
+      }
+      paramString = paramString.field_memberlist;
+      AppMethodBeat.o(116934);
+      return paramString;
+      label112:
+      paramString = null;
+    }
+  }
+  
+  public final List<String> tL(String paramString)
+  {
+    AppMethodBeat.i(116937);
+    Object localObject = tK(paramString);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(116937);
+      return null;
+    }
+    paramString = new LinkedList();
+    if (!((String)localObject).equals(""))
+    {
+      localObject = ((String)localObject).split(";");
+      int i = 0;
+      while (i < localObject.length)
+      {
+        paramString.add(localObject[i]);
+        i += 1;
       }
     }
-    AppMethodBeat.o(1097);
-    return null;
+    AppMethodBeat.o(116937);
+    return paramString;
   }
   
-  public final boolean aqj()
+  public final boolean tM(String paramString)
   {
-    return true;
-  }
-  
-  public final long b(w paramw)
-  {
-    AppMethodBeat.i(1081);
-    if (paramw == null)
+    Object localObject = null;
+    AppMethodBeat.i(116938);
+    paramString = "select * from chatroom where chatroomname='" + bt.aFQ(paramString) + "'";
+    Cursor localCursor = this.db.a(paramString, null, 2);
+    paramString = localObject;
+    if (localCursor.moveToFirst())
     {
-      AppMethodBeat.o(1081);
-      return -1L;
+      paramString = new w();
+      paramString.convertFrom(localCursor);
     }
-    ContentValues localContentValues = paramw.convertTo();
-    long l = this.fnw.update("ChatroomMsgSeq", localContentValues, "username = ?", new String[] { paramw.field_username });
-    AppMethodBeat.o(1081);
-    return l;
-  }
-  
-  public final boolean bPT()
-  {
-    AppMethodBeat.i(1083);
-    long l = this.fnw.delete("ChatroomMsgSeq", "", null);
-    ab.w("MicroMsg.ChatroomMsgSeqStorage", "[deleteTable] result:" + l + " table:ChatroomMsgSeq");
-    if (l >= 0L)
+    localCursor.close();
+    if ((paramString != null) && ((paramString.field_roomflag & 0x1) == 0))
     {
-      AppMethodBeat.o(1083);
+      AppMethodBeat.o(116938);
       return true;
     }
-    AppMethodBeat.o(1083);
+    AppMethodBeat.o(116938);
     return false;
   }
   
-  public final c f(String paramString, long paramLong, boolean paramBoolean)
+  public final boolean tN(String paramString)
   {
-    AppMethodBeat.i(1096);
-    paramString = SV(paramString);
-    if (paramString.elE.size() <= 0)
+    AppMethodBeat.i(116939);
+    if (paramString.length() > 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(1096);
-      return null;
-    }
-    paramString = paramString.elE.iterator();
-    while (paramString.hasNext())
-    {
-      c localc = (c)paramString.next();
-      if (!paramBoolean)
-      {
-        if (localc.elD > paramLong)
-        {
-          AppMethodBeat.o(1096);
-          return localc;
-        }
+      Assert.assertTrue(bool);
+      if (this.db.delete("chatroom", "chatroomname=?", new String[] { paramString }) != 0) {
+        break;
       }
-      else if (localc.elC > paramLong)
-      {
-        AppMethodBeat.o(1096);
-        return localc;
-      }
+      AppMethodBeat.o(116939);
+      return false;
     }
-    AppMethodBeat.o(1096);
-    return null;
+    doNotify(paramString);
+    AppMethodBeat.o(116939);
+    return true;
   }
   
-  public final int v(String paramString, long paramLong1, long paramLong2)
+  public final int tO(String paramString)
   {
-    AppMethodBeat.i(1100);
-    paramString = SY(paramString).field_seqBlockInfo;
-    if (paramString == null)
+    w localw = null;
+    AppMethodBeat.i(116935);
+    if (TextUtils.isEmpty(paramString))
     {
-      ab.i("MicroMsg.ChatroomMsgSeqStorage", "[getBlockCount] seqBlockInfo is null!");
-      AppMethodBeat.o(1100);
+      AppMethodBeat.o(116935);
       return 0;
     }
-    paramString = paramString.elE.iterator();
-    int i = 0;
-    if (paramString.hasNext())
+    long l = System.currentTimeMillis();
+    try
     {
-      c localc = (c)paramString.next();
-      if ((paramLong1 > localc.elC) || (localc.elD > paramLong2)) {
-        break label107;
+      Object localObject = "select memberCount from chatroom where chatroomname='" + bt.aFQ(paramString) + "'";
+      localObject = this.db.a((String)localObject, null, 2);
+      if (((Cursor)localObject).moveToFirst())
+      {
+        localw = new w();
+        localw.convertFrom((Cursor)localObject);
       }
-      i += 1;
-    }
-    label107:
-    for (;;)
-    {
-      break;
-      AppMethodBeat.o(1100);
+      ((Cursor)localObject).close();
+      if (localw == null) {
+        return 0;
+      }
+      if (localw.field_memberCount < 0)
+      {
+        i = tK(paramString).split(";").length;
+        localw.field_memberCount = i;
+        localObject = "update chatroom set memberCount = " + i + " where chatroomname = '" + bt.aFQ(paramString) + "'";
+        this.db.execSQL("chatroom", (String)localObject);
+        ad.i("MicroMsg.ChatroomStorage", "[getMemberCount] init field_memberCount! username:%s count:%s", new Object[] { paramString, Integer.valueOf(i) });
+      }
+      int i = localw.field_memberCount;
       return i;
     }
+    finally
+    {
+      ad.i("MicroMsg.ChatroomStorage", "[getMemberCount] cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      AppMethodBeat.o(116935);
+    }
+  }
+  
+  public final void v(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(116932);
+    paramString = "update chatroom set modifytime = " + paramLong + " where chatroomname = '" + bt.aFQ(paramString) + "'";
+    this.db.execSQL("chatroom", paramString);
+    AppMethodBeat.o(116932);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.x
  * JD-Core Version:    0.7.0.1
  */

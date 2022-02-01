@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.text.ClipboardManager;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$9
@@ -14,15 +13,14 @@ final class b$9
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(16089);
-    ((ClipboardManager)this.eug.getSystemService("clipboard")).setText(this.val$key);
-    Toast.makeText(this.eug, 2131304688, 0).show();
-    AppMethodBeat.o(16089);
+    AppMethodBeat.i(20121);
+    ((ClipboardManager)this.fHE.getSystemService("clipboard")).setText(this.val$key);
+    AppMethodBeat.o(20121);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.console.b.9
  * JD-Core Version:    0.7.0.1
  */

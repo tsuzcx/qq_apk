@@ -1,58 +1,58 @@
 package com.tencent.wecall.talkroom.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.c.c;
+import com.tencent.pb.common.c.b;
 
 public class a
 {
-  private static a BzV = null;
-  private f BzW = null;
+  private static a IIW = null;
+  private f IIX = null;
   
-  public static a dXf()
+  public static a fpt()
   {
-    AppMethodBeat.i(127764);
-    if (BzV == null) {}
+    AppMethodBeat.i(62656);
+    if (IIW == null) {}
     try
     {
-      if (BzV == null) {
-        BzV = new a();
+      if (IIW == null) {
+        IIW = new a();
       }
-      a locala = BzV;
-      AppMethodBeat.o(127764);
+      a locala = IIW;
+      AppMethodBeat.o(62656);
       return locala;
     }
     finally
     {
-      AppMethodBeat.o(127764);
+      AppMethodBeat.o(62656);
     }
   }
   
-  public static f dXg()
+  public static f fpu()
   {
-    AppMethodBeat.i(127765);
-    Object localObject1 = dXf();
-    if (((a)localObject1).BzW == null) {}
+    AppMethodBeat.i(62657);
+    Object localObject1 = fpt();
+    if (((a)localObject1).IIX == null) {}
     try
     {
-      if (((a)localObject1).BzW == null) {
-        ((a)localObject1).BzW = new f();
+      if (((a)localObject1).IIX == null) {
+        ((a)localObject1).IIX = new f();
       }
-      localObject1 = ((a)localObject1).BzW;
-      AppMethodBeat.o(127765);
+      localObject1 = ((a)localObject1).IIX;
+      AppMethodBeat.o(62657);
       return localObject1;
     }
     finally
     {
-      AppMethodBeat.o(127765);
+      AppMethodBeat.o(62657);
     }
   }
   
-  public static void dXh()
+  public static void fpv()
   {
-    AppMethodBeat.i(127766);
-    c.d("MicroMsg.Voip", new Object[] { "registerEvents" });
-    dXg();
-    AppMethodBeat.o(127766);
+    AppMethodBeat.i(62658);
+    b.d("MicroMsg.Voip", new Object[] { "registerEvents" });
+    fpu();
+    AppMethodBeat.o(62658);
   }
 }
 

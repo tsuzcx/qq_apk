@@ -1,28 +1,32 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.e;
-import com.tencent.mm.plugin.appbrand.e.d;
-import com.tencent.mm.plugin.appbrand.i;
+import com.tencent.mm.sdk.f.a;
+import com.tencent.mm.ui.base.i;
 
-final class f$1
-  implements View.OnClickListener
+public final class f$1
+  implements DialogInterface.OnCancelListener
 {
-  f$1(f paramf) {}
+  public f$1(Context paramContext, i parami) {}
   
-  public final void onClick(View paramView)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(102311);
-    e.a(f.a(this.iNc).mAppId, e.d.gPe);
-    f.a(this.iNc).finish();
-    AppMethodBeat.o(102311);
+    AppMethodBeat.i(48654);
+    paramDialogInterface = a.iV(this.val$context);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.finish();
+    }
+    this.lzV.setOnCancelListener(null);
+    AppMethodBeat.o(48654);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.f.1
  * JD-Core Version:    0.7.0.1
  */

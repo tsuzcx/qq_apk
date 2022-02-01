@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.account.bind.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,33 +13,33 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.friend.a.l;
 import com.tencent.mm.plugin.account.friend.a.l.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.storage.ab;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BindMContactStatusUI
   extends MMWizardActivity
 {
-  private TextView gtD;
-  private TextView gtE;
-  private Button gtF;
-  private ImageView gtl;
+  private Button hJh;
+  private TextView igF;
+  private TextView igG;
+  private ImageView ign;
   
   public int getLayoutId()
   {
-    return 2130968849;
+    return 2131493181;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(13456);
-    this.gtl = ((ImageView)findViewById(2131821776));
-    this.gtD = ((TextView)findViewById(2131821777));
-    this.gtE = ((TextView)findViewById(2131821807));
-    this.gtF = ((Button)findViewById(2131821779));
-    if (l.aqq() == l.a.gxB)
+    AppMethodBeat.i(109883);
+    this.ign = ((ImageView)findViewById(2131297240));
+    this.igF = ((TextView)findViewById(2131297238));
+    this.igG = ((TextView)findViewById(2131297236));
+    this.hJh = ((Button)findViewById(2131297239));
+    if (l.aIL() == l.a.iky)
     {
-      this.gtl.setImageResource(2131231661);
-      String str2 = (String)g.RL().Ru().get(6, null);
+      this.ign.setImageResource(2131690819);
+      String str2 = (String)g.afB().afk().get(6, null);
       String str1;
       if (str2 != null)
       {
@@ -46,43 +48,51 @@ public class BindMContactStatusUI
       }
       else
       {
-        str1 = (String)g.RL().Ru().get(4097, null);
+        str1 = (String)g.afB().afk().get(4097, null);
       }
-      this.gtE.setText(getString(2131297593));
-      this.gtD.setText(getString(2131297618, new Object[] { str1 }));
+      this.igG.setText(getString(2131756485));
+      this.igF.setText(getString(2131756511, new Object[] { str1 }));
     }
     for (;;)
     {
-      this.gtF.setOnClickListener(new BindMContactStatusUI.1(this));
-      AppMethodBeat.o(13456);
+      this.hJh.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(109881);
+          BindMContactStatusUI.a(BindMContactStatusUI.this);
+          AppMethodBeat.o(109881);
+        }
+      });
+      AppMethodBeat.o(109883);
       return;
-      this.gtl.setImageResource(2131231662);
-      this.gtE.setText(2131297605);
-      this.gtD.setText(2131297605);
-      this.gtE.setVisibility(8);
+      this.ign.setImageResource(2131690820);
+      this.igG.setText(2131756497);
+      this.igF.setText(2131756497);
+      this.igG.setVisibility(8);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(13455);
+    AppMethodBeat.i(109882);
     super.onCreate(paramBundle);
-    setMMTitle(2131297597);
+    setMMTitle(2131756489);
     initView();
-    AppMethodBeat.o(13455);
+    AppMethodBeat.o(109882);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(13457);
+    AppMethodBeat.i(109884);
     if (paramInt == 4)
     {
-      Oi(1);
-      AppMethodBeat.o(13457);
+      Xo(1);
+      AppMethodBeat.o(109884);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(13457);
+    AppMethodBeat.o(109884);
     return bool;
   }
   

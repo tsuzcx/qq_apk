@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ah9" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/bcm" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginTop="96.0dip" android:src="@raw/card_empty_icon" />
-    <TextView android:textSize="@dimen/dw" android:textColor="@color/h7" android:id="@id/ah_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/ai4" />
-</LinearLayout>
+    <View android:background="@drawable/afy" android:layout_width="fill_parent" android:layout_height="448.0dip" android:layout_alignParentBottom="true" />
+    <FrameLayout android:id="@id/h1x" android:layout_width="fill_parent" android:layout_height="400.0dip" android:layout_alignParentBottom="true" />
+    <FrameLayout android:id="@id/atd" android:background="@drawable/i3" android:layout_width="48.0dip" android:layout_height="24.0dip" android:layout_marginBottom="400.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <ImageView android:layout_gravity="center" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bci" android:rotation="-90.0" />
+    </FrameLayout>
+</RelativeLayout>

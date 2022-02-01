@@ -1,13 +1,20 @@
 package android.support.v4.app;
 
-final class ag
+public abstract class ag
 {
-  public Fragment dR;
-  public boolean dS;
-  public d dT;
-  public Fragment dU;
-  public boolean dV;
-  public d dW;
+  public abstract ag a(int paramInt, Fragment paramFragment, String paramString);
+  
+  public abstract ag a(Fragment paramFragment);
+  
+  public abstract ag a(Fragment paramFragment, String paramString);
+  
+  public abstract ag b(Fragment paramFragment);
+  
+  public abstract ag c(Fragment paramFragment);
+  
+  public abstract int commit();
+  
+  public abstract int commitAllowingStateLoss();
 }
 
 

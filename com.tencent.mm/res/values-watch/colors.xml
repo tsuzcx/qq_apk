@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="js">#90000000</color>
+    <color name="ju">#90000000</color>
+    <color name="jv">#de000000</color>
+    <color name="jx">@android:color/white</color>
+    <color name="jy">#deffffff</color>
+    <color name="jz">@android:color/black</color>
+    <color name="k0">#deffffff</color>
+</resources>

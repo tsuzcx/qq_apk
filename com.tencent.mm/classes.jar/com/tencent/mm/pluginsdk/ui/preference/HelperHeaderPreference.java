@@ -4,97 +4,143 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.ap;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.tools.s;
+import com.tencent.mm.ui.tools.t;
 
 public class HelperHeaderPreference
   extends Preference
 {
-  private HelperHeaderPreference.a waT;
+  private a Ciz;
   
   public HelperHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(79801);
-    this.waT = new HelperHeaderPreference.a();
-    AppMethodBeat.o(79801);
+    AppMethodBeat.i(152254);
+    this.Ciz = new a();
+    AppMethodBeat.o(152254);
   }
   
   public HelperHeaderPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(79802);
-    this.waT = new HelperHeaderPreference.a();
-    AppMethodBeat.o(79802);
+    AppMethodBeat.i(152255);
+    this.Ciz = new a();
+    AppMethodBeat.o(152255);
   }
   
-  public final void aB(String paramString1, String paramString2, String paramString3)
+  public final void aO(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(79804);
-    this.waT.cDt = paramString1;
-    this.waT.elx = paramString2;
-    this.waT.hint = paramString3;
+    AppMethodBeat.i(152257);
+    this.Ciz.dtV = paramString1;
+    this.Ciz.fyo = paramString2;
+    this.Ciz.hint = paramString3;
     super.callChangeListener(null);
-    AppMethodBeat.o(79804);
+    AppMethodBeat.o(152257);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(79803);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131821210);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131824328);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131823254);
-    TextView localTextView3 = (TextView)paramView.findViewById(2131826741);
-    TextView localTextView4 = (TextView)paramView.findViewById(2131826740);
-    View localView = paramView.findViewById(2131823104);
-    localTextView4.setText(2131299864);
+    AppMethodBeat.i(152256);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131297008);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131305208);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131302867);
+    TextView localTextView3 = (TextView)paramView.findViewById(2131300747);
+    TextView localTextView4 = (TextView)paramView.findViewById(2131299870);
+    final View localView = paramView.findViewById(2131303492);
+    localTextView4.setText(2131759042);
     if (localImageView != null) {
-      a.b.c(localImageView, this.waT.cDt);
+      a.b.c(localImageView, this.Ciz.dtV);
     }
     if (localTextView1 != null) {
-      switch (this.waT.status)
+      switch (this.Ciz.status)
       {
       }
     }
     for (;;)
     {
       if (localTextView2 != null) {
-        localTextView2.setText(this.waT.elx);
+        localTextView2.setText(this.Ciz.fyo);
       }
       if (localTextView3 != null) {
-        localTextView3.setText(this.waT.hint);
+        localTextView3.setText(this.Ciz.hint);
       }
       super.onBindView(paramView);
-      localView.getViewTreeObserver().addOnPreDrawListener(new HelperHeaderPreference.1(this, localView));
-      AppMethodBeat.o(79803);
+      localView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+      {
+        public final boolean onPreDraw()
+        {
+          AppMethodBeat.i(152253);
+          localView.getViewTreeObserver().removeOnPreDrawListener(this);
+          int[] arrayOfInt = new int[2];
+          localView.getLocationOnScreen(arrayOfInt);
+          int k = arrayOfInt[1];
+          int j = a.fromDPToPix(HelperHeaderPreference.this.mContext, 60);
+          int m = ap.iX(HelperHeaderPreference.this.mContext);
+          int n = ap.dL(HelperHeaderPreference.this.mContext);
+          ad.i("MicroMsg.HelperHeaderPreference", "actionBarHeight=%s ,statusBarHeight=%s , rootTop:%s", new Object[] { Integer.valueOf(n), Integer.valueOf(m), Integer.valueOf(k) });
+          int i = j;
+          if (m > 0)
+          {
+            i = j;
+            if (n > 0) {
+              i = a.ap(HelperHeaderPreference.this.mContext, 2131165289) + n;
+            }
+          }
+          j = i;
+          if (k == 0) {
+            j = i + m;
+          }
+          if (j != localView.getPaddingTop())
+          {
+            localView.setPadding(localView.getPaddingLeft(), j, localView.getPaddingRight(), localView.getPaddingBottom());
+            AppMethodBeat.o(152253);
+            return false;
+          }
+          AppMethodBeat.o(152253);
+          return true;
+        }
+      });
+      AppMethodBeat.o(152256);
       return;
       localTextView1.setVisibility(0);
-      localTextView1.setTextColor(s.iD(this.mContext));
-      localTextView1.setText(2131303378);
+      localTextView1.setTextColor(t.kf(this.mContext));
+      localTextView1.setText(2131763360);
       continue;
       localTextView1.setVisibility(0);
-      localTextView1.setTextColor(s.iE(this.mContext));
-      localTextView1.setText(2131303386);
+      localTextView1.setTextColor(t.kg(this.mContext));
+      localTextView1.setText(2131763368);
       continue;
       localTextView1.setVisibility(8);
     }
   }
   
-  public final void sb(int paramInt)
+  public final void updateStatus(int paramInt)
   {
-    AppMethodBeat.i(79805);
-    this.waT.status = paramInt;
+    AppMethodBeat.i(152258);
+    this.Ciz.status = paramInt;
     super.callChangeListener(null);
-    AppMethodBeat.o(79805);
+    AppMethodBeat.o(152258);
+  }
+  
+  public static final class a
+  {
+    public String dtV;
+    public String fyo;
+    public String hint;
+    public int status;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/hu" android:layout_marginRight="@dimen/c5" android:layout_marginBottom="@dimen/c5"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/efr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/efs" android:background="@drawable/aea" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ProgressBar android:id="@id/eft" android:layout_width="wrap_content" android:layout_height="wrap_content" android:indeterminate="true" style="@style/a0t" />
-        <TextView android:textSize="13.0sp" android:textColor="@color/a6q" android:id="@id/efu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eec" android:singleLine="true" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/efv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/efw" android:background="@drawable/aec" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textColor="@color/h6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eeb" android:singleLine="true" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/efx" android:background="@drawable/aeb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ae_" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/efy" android:background="@drawable/aea" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="13.0sp" android:textColor="@color/a6q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eea" android:singleLine="true" />
-    </LinearLayout>
-</FrameLayout>
+    <TextView android:textSize="@dimen/jo" android:gravity="center" android:id="@id/b7n" android:layout_width="@dimen/ce" android:layout_height="wrap_content" />
+    <SeekBar android:gravity="center" android:layout_gravity="center" android:id="@id/f_n" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="@dimen/ju" android:progressDrawable="@drawable/a4s" android:minHeight="@dimen/ju" android:thumb="@drawable/a4u" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/jo" android:gravity="center" android:id="@id/bmm" android:layout_width="@dimen/ce" android:layout_height="wrap_content" />
+</LinearLayout>

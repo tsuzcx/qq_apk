@@ -1,9 +1,12 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ipcinvoker.wx_extension.b;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.appbrand.report.AppBrandRecommendStatObj;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class i$1
   implements Runnable
@@ -12,15 +15,30 @@ final class i$1
   
   public final void run()
   {
-    AppMethodBeat.i(129754);
-    if (this.hdM == 1)
+    AppMethodBeat.i(44685);
+    if (this.iXc == 1)
     {
-      b.a(i.a(this.hdM, this.hdN, this.hdO, this.hdP).ado(), new i.1.1(this));
-      AppMethodBeat.o(129754);
+      IPCRunCgi.a(i.a(this.iXc, this.iXd, this.iXe, this.iXf).atI(), new IPCRunCgi.a()
+      {
+        public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb)
+        {
+          AppMethodBeat.i(44683);
+          ad.i("MicroMsg.Recommend.CgiRTReportRecommdClick", "CgiRTReportRecommdClick page click errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+          {
+            ad.i("MicroMsg.Recommend.CgiRTReportRecommdClick", "report success");
+            AppMethodBeat.o(44683);
+            return;
+          }
+          ad.e("MicroMsg.Recommend.CgiRTReportRecommdClick", "report fail");
+          AppMethodBeat.o(44683);
+        }
+      });
+      AppMethodBeat.o(44685);
       return;
     }
-    new i.1.2(this, this.hdM, this.hdN, this.hdO, this.hdP).adl();
-    AppMethodBeat.o(129754);
+    new i(this.iXc, this.iXd, this.iXe, this.iXf) {}.auK();
+    AppMethodBeat.o(44685);
   }
 }
 

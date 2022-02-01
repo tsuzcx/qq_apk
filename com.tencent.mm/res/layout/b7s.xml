@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.SphereImageView.SphereImageView android:id="@id/frl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/dkx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <ProgressBar android:gravity="center" android:id="@id/ekz" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerInParent="true" style="@style/a4p" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/g_v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/g_t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b9p" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/a_u" android:id="@id/ga2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/fjp" android:shadowColor="#7f000000" android:shadowDx="0.5" android:shadowDy="0.5" android:shadowRadius="10.0" />
+    </LinearLayout>
+</RelativeLayout>

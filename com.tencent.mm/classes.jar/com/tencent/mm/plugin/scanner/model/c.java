@@ -1,72 +1,66 @@
 package com.tencent.mm.plugin.scanner.model;
 
+import android.app.Activity;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.kz;
-import com.tencent.mm.protocal.protobuf.la;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.LinkedList;
+import com.tencent.mm.g.a.ar;
+import com.tencent.mm.g.a.cl;
+import com.tencent.mm.g.a.mf;
+import com.tencent.mm.g.a.pw;
+import com.tencent.mm.plugin.scanner.d.e.a;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
-  extends m
-  implements k
 {
-  private f callback;
-  public b rr;
+  Activity mActivity;
+  String vOq;
+  com.tencent.mm.plugin.scanner.util.c vOr;
+  com.tencent.mm.plugin.scanner.util.a vOs;
+  e.a vOt;
+  public com.tencent.mm.sdk.b.c vOu;
+  public com.tencent.mm.sdk.b.c vOv;
+  public com.tencent.mm.sdk.b.c vOw;
   
-  public c(String paramString1, LinkedList<String> paramLinkedList, int paramInt, String paramString2, double paramDouble1, double paramDouble2)
+  public c()
   {
-    AppMethodBeat.i(80831);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new kz();
-    ((b.a)localObject).fsY = new la();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscangetactioninfo";
-    ((b.a)localObject).funcId = 1068;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (kz)this.rr.fsV.fta;
-    ((kz)localObject).ProductID = paramString1;
-    ((kz)localObject).Scene = paramInt;
-    ((kz)localObject).wyN = paramString2;
-    ((kz)localObject).wyM = paramLinkedList;
-    ((kz)localObject).wyP = paramDouble2;
-    ((kz)localObject).wyO = paramDouble1;
-    AppMethodBeat.o(80831);
+    AppMethodBeat.i(51615);
+    this.vOt = new e.a()
+    {
+      public final void r(int paramAnonymousInt, Bundle paramAnonymousBundle)
+      {
+        AppMethodBeat.i(51612);
+        ad.i("MicroMsg.ExternRequestDealQBarStrHandler", "Deal QBar String notify, id:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        mf localmf = new mf();
+        localmf.drs.drq = paramAnonymousInt;
+        localmf.drs.activity = c.this.mActivity;
+        localmf.drs.dcO = c.this.vOq;
+        localmf.drs.drt = paramAnonymousBundle;
+        com.tencent.mm.sdk.b.a.ESL.l(localmf);
+        AppMethodBeat.o(51612);
+      }
+    };
+    this.vOu = new com.tencent.mm.sdk.b.c() {};
+    this.vOv = new com.tencent.mm.sdk.b.c() {};
+    this.vOw = new com.tencent.mm.sdk.b.c() {};
+    AppMethodBeat.o(51615);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final void dlq()
   {
-    AppMethodBeat.i(80833);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(80833);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 1068;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(80832);
-    ab.i("MicroMsg.NetSceneGetActionInfo", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(80832);
+    AppMethodBeat.i(51616);
+    if (this.vOr != null)
+    {
+      this.vOr.dnf();
+      this.vOr = null;
+    }
+    this.mActivity = null;
+    this.vOq = null;
+    AppMethodBeat.o(51616);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.c
  * JD-Core Version:    0.7.0.1
  */

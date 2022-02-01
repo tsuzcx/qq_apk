@@ -46,10 +46,10 @@ public final class FacebookRequestErrorClassification
   
   public static FacebookRequestErrorClassification createFromJSON(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(72289);
+    AppMethodBeat.i(17725);
     if (paramJSONArray == null)
     {
-      AppMethodBeat.o(72289);
+      AppMethodBeat.o(17725);
       return null;
     }
     int i = 0;
@@ -81,7 +81,7 @@ public final class FacebookRequestErrorClassification
         if (str != null)
         {
           if (!str.equalsIgnoreCase("other")) {
-            break label182;
+            break label184;
           }
           localObject10 = localJSONObject.optString("recovery_message", null);
           localObject7 = parseJSONDefinition(localJSONObject);
@@ -101,7 +101,7 @@ public final class FacebookRequestErrorClassification
         localObject2 = localObject11;
         localObject1 = localObject12;
         break;
-        label182:
+        label184:
         if (str.equalsIgnoreCase("transient"))
         {
           localObject11 = localJSONObject.optString("recovery_message", null);
@@ -132,7 +132,7 @@ public final class FacebookRequestErrorClassification
       }
     }
     paramJSONArray = new FacebookRequestErrorClassification(localObject6, localObject5, localObject4, localObject3, localObject2, localObject1);
-    AppMethodBeat.o(72289);
+    AppMethodBeat.o(17725);
     return paramJSONArray;
   }
   
@@ -140,12 +140,12 @@ public final class FacebookRequestErrorClassification
   {
     try
     {
-      AppMethodBeat.i(72286);
+      AppMethodBeat.i(17722);
       if (defaultInstance == null) {
         defaultInstance = getDefaultErrorClassificationImpl();
       }
       FacebookRequestErrorClassification localFacebookRequestErrorClassification = defaultInstance;
-      AppMethodBeat.o(72286);
+      AppMethodBeat.o(17722);
       return localFacebookRequestErrorClassification;
     }
     finally {}
@@ -153,19 +153,19 @@ public final class FacebookRequestErrorClassification
   
   private static FacebookRequestErrorClassification getDefaultErrorClassificationImpl()
   {
-    AppMethodBeat.i(72287);
+    AppMethodBeat.i(17723);
     FacebookRequestErrorClassification localFacebookRequestErrorClassification = new FacebookRequestErrorClassification(null, new FacebookRequestErrorClassification.1(), new FacebookRequestErrorClassification.2(), null, null, null);
-    AppMethodBeat.o(72287);
+    AppMethodBeat.o(17723);
     return localFacebookRequestErrorClassification;
   }
   
   private static Map<Integer, Set<Integer>> parseJSONDefinition(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(72288);
+    AppMethodBeat.i(17724);
     JSONArray localJSONArray1 = paramJSONObject.optJSONArray("items");
     if (localJSONArray1.length() == 0)
     {
-      AppMethodBeat.o(72288);
+      AppMethodBeat.o(17724);
       return null;
     }
     HashMap localHashMap = new HashMap();
@@ -181,7 +181,7 @@ public final class FacebookRequestErrorClassification
         {
           JSONArray localJSONArray2 = paramJSONObject.optJSONArray("subcodes");
           if ((localJSONArray2 == null) || (localJSONArray2.length() <= 0)) {
-            break label170;
+            break label173;
           }
           paramJSONObject = new HashSet();
           int j = 0;
@@ -201,20 +201,20 @@ public final class FacebookRequestErrorClassification
       localHashMap.put(Integer.valueOf(k), paramJSONObject);
       i += 1;
       break;
-      AppMethodBeat.o(72288);
+      AppMethodBeat.o(17724);
       return localHashMap;
-      label170:
+      label173:
       paramJSONObject = null;
     }
   }
   
   public final FacebookRequestError.Category classify(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(72285);
+    AppMethodBeat.i(17721);
     if (paramBoolean)
     {
       localObject = FacebookRequestError.Category.TRANSIENT;
-      AppMethodBeat.o(72285);
+      AppMethodBeat.o(17721);
       return localObject;
     }
     if ((this.otherErrors != null) && (this.otherErrors.containsKey(Integer.valueOf(paramInt1))))
@@ -223,7 +223,7 @@ public final class FacebookRequestErrorClassification
       if ((localObject == null) || (((Set)localObject).contains(Integer.valueOf(paramInt2))))
       {
         localObject = FacebookRequestError.Category.OTHER;
-        AppMethodBeat.o(72285);
+        AppMethodBeat.o(17721);
         return localObject;
       }
     }
@@ -233,7 +233,7 @@ public final class FacebookRequestErrorClassification
       if ((localObject == null) || (((Set)localObject).contains(Integer.valueOf(paramInt2))))
       {
         localObject = FacebookRequestError.Category.LOGIN_RECOVERABLE;
-        AppMethodBeat.o(72285);
+        AppMethodBeat.o(17721);
         return localObject;
       }
     }
@@ -243,12 +243,12 @@ public final class FacebookRequestErrorClassification
       if ((localObject == null) || (((Set)localObject).contains(Integer.valueOf(paramInt2))))
       {
         localObject = FacebookRequestError.Category.TRANSIENT;
-        AppMethodBeat.o(72285);
+        AppMethodBeat.o(17721);
         return localObject;
       }
     }
     Object localObject = FacebookRequestError.Category.OTHER;
-    AppMethodBeat.o(72285);
+    AppMethodBeat.o(17721);
     return localObject;
   }
   
@@ -264,23 +264,23 @@ public final class FacebookRequestErrorClassification
   
   public final String getRecoveryMessage(FacebookRequestError.Category paramCategory)
   {
-    AppMethodBeat.i(72284);
-    switch (FacebookRequestErrorClassification.3.$SwitchMap$com$facebook$FacebookRequestError$Category[paramCategory.ordinal()])
+    AppMethodBeat.i(17720);
+    switch (3.$SwitchMap$com$facebook$FacebookRequestError$Category[paramCategory.ordinal()])
     {
     default: 
-      AppMethodBeat.o(72284);
+      AppMethodBeat.o(17720);
       return null;
     case 1: 
       paramCategory = this.otherRecoveryMessage;
-      AppMethodBeat.o(72284);
+      AppMethodBeat.o(17720);
       return paramCategory;
     case 2: 
       paramCategory = this.loginRecoverableRecoveryMessage;
-      AppMethodBeat.o(72284);
+      AppMethodBeat.o(17720);
       return paramCategory;
     }
     paramCategory = this.transientRecoveryMessage;
-    AppMethodBeat.o(72284);
+    AppMethodBeat.o(17720);
     return paramCategory;
   }
   
@@ -291,7 +291,7 @@ public final class FacebookRequestErrorClassification
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.internal.FacebookRequestErrorClassification
  * JD-Core Version:    0.7.0.1
  */

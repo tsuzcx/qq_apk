@@ -5,7 +5,7 @@ import com.tencent.mm.sdk.a.d;
 public final class m
   extends d
 {
-  public n Vh = new n();
+  public n WX = new n();
   
   public m()
   {
@@ -14,8 +14,8 @@ public final class m
   
   private m(byte paramByte)
   {
-    this.WQ = false;
-    this.WP = null;
+    this.YS = false;
+    this.YK = null;
   }
 }
 

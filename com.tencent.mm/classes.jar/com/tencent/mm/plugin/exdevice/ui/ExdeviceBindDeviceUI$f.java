@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.auh;
-import com.tencent.mm.protocal.protobuf.aui;
-import com.tencent.mm.protocal.protobuf.bdt;
+import com.tencent.mm.protocal.protobuf.bfj;
+import com.tencent.mm.protocal.protobuf.bfk;
+import com.tencent.mm.protocal.protobuf.bqj;
 
 final class ExdeviceBindDeviceUI$f
 {
-  public String lKx;
-  public boolean lLo = false;
-  public ExdeviceBindDeviceUI.b lLp = ExdeviceBindDeviceUI.b.lLg;
-  public ExdeviceBindDeviceUI.c lLq;
-  public ExdeviceBindDeviceUI.d lLr;
-  public auh lLs;
-  public aui lLt;
-  public int lLu;
-  public bdt lLv;
-  public String lLw;
+  public boolean pbY = false;
+  public ExdeviceBindDeviceUI.b pbZ = ExdeviceBindDeviceUI.b.pbQ;
+  public String pbh;
+  public ExdeviceBindDeviceUI.c pca;
+  public ExdeviceBindDeviceUI.d pcb;
+  public bfj pcc;
+  public bfk pcd;
+  public int pce;
+  public bqj pcf;
+  public String pcg;
   
   private ExdeviceBindDeviceUI$f(ExdeviceBindDeviceUI paramExdeviceBindDeviceUI) {}
   
-  public final String bqH()
+  public final String cap()
   {
-    if (this.lLp == ExdeviceBindDeviceUI.b.lLg)
+    if (this.pbZ == ExdeviceBindDeviceUI.b.pbQ)
     {
-      if (this.lLt == null) {
+      if (this.pcd == null) {
         return null;
       }
-      return this.lLt.wuT;
+      return this.pcd.CEQ;
     }
-    return this.lLq.bUD;
+    return this.pca.cGn;
   }
   
   public final String getKey()
   {
-    AppMethodBeat.i(19856);
-    if (this.lLp == ExdeviceBindDeviceUI.b.lLg)
+    AppMethodBeat.i(23924);
+    if (this.pbZ == ExdeviceBindDeviceUI.b.pbQ)
     {
-      str = this.lLr.lJz + this.lLr.lEl;
-      AppMethodBeat.o(19856);
+      str = this.pcb.mDeviceType + this.pcb.oUX;
+      AppMethodBeat.o(23924);
       return str;
     }
-    String str = this.lLq.bUD;
-    AppMethodBeat.o(19856);
+    String str = this.pca.cGn;
+    AppMethodBeat.o(23924);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceBindDeviceUI.f
  * JD-Core Version:    0.7.0.1
  */

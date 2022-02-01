@@ -1,101 +1,188 @@
 package com.tencent.mm.plugin.recordvideo.plugin.a;
 
-import a.f.b.j;
 import android.content.Context;
 import android.text.TextUtils;
 import com.google.android.exoplayer2.g;
 import com.google.android.exoplayer2.g.a.a;
-import com.google.android.exoplayer2.g.c;
 import com.google.android.exoplayer2.g.f.a;
 import com.google.android.exoplayer2.g.h;
 import com.google.android.exoplayer2.h.d;
 import com.google.android.exoplayer2.i.x;
+import com.google.android.exoplayer2.source.j;
 import com.google.android.exoplayer2.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.story.model.audio.AudioCacheInfo;
-import com.tencent.mm.plugin.story.model.audio.i;
-import com.tencent.mm.plugin.story.model.audio.i.a;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.g.b.a.dc;
+import com.tencent.mm.g.b.a.dn;
+import com.tencent.mm.plugin.recordvideo.model.audio.AudioCacheInfo;
+import com.tencent.mm.plugin.recordvideo.model.audio.i;
+import com.tencent.mm.plugin.recordvideo.model.audio.i.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.k;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/recordvideo/plugin/music/EditMusicController;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "bandwidthMeter", "Lcom/google/android/exoplayer2/upstream/DefaultBandwidthMeter;", "exoPlayer", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "trackSelector", "Lcom/google/android/exoplayer2/trackselection/DefaultTrackSelector;", "userAgent", "", "videoTrackSelectionFactory", "Lcom/google/android/exoplayer2/trackselection/AdaptiveTrackSelection$Factory;", "pauseAudio", "", "playAudio", "info", "Lcom/tencent/mm/plugin/story/model/audio/AudioCacheInfo;", "plugin-recordvideo_release"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/music/EditMusicController;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "bandwidthMeter", "Lcom/google/android/exoplayer2/upstream/DefaultBandwidthMeter;", "exoPlayer", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "trackSelector", "Lcom/google/android/exoplayer2/trackselection/DefaultTrackSelector;", "userAgent", "", "videoTrackSelectionFactory", "Lcom/google/android/exoplayer2/trackselection/AdaptiveTrackSelection$Factory;", "pauseAudio", "", "playAudio", "info", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "release", "resumeAudio", "seekTo", "timeMs", "", "Companion", "plugin-recordvideo_release"})
 public final class b
 {
-  private final c oYM;
-  private final com.google.android.exoplayer2.h.l oYN;
-  private v qdF;
-  private final a.a qdG;
+  public static final a vmL;
+  private v rdN;
+  private final com.google.android.exoplayer2.h.l rdP;
+  private final com.google.android.exoplayer2.g.c tVT;
   private final String userAgent;
+  private final a.a vmK;
+  
+  static
+  {
+    AppMethodBeat.i(75760);
+    vmL = new a((byte)0);
+    AppMethodBeat.o(75760);
+  }
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(150793);
-    this.oYN = new com.google.android.exoplayer2.h.l();
-    this.qdG = new a.a((d)this.oYN);
-    this.oYM = new c((f.a)this.qdG);
-    paramContext = x.i(paramContext, paramContext.getString(2131297005));
-    if (paramContext == null) {
-      j.ebi();
+    AppMethodBeat.i(75759);
+    this.rdP = new com.google.android.exoplayer2.h.l();
+    this.vmK = new a.a((d)this.rdP);
+    this.tVT = new com.google.android.exoplayer2.g.c((f.a)this.vmK);
+    String str = x.i(paramContext, paramContext.getString(2131755822));
+    if (str == null) {
+      k.fvU();
     }
-    this.userAgent = paramContext;
-    AppMethodBeat.o(150793);
+    this.userAgent = str;
+    this.rdN = g.a(paramContext, (h)this.tVT);
+    paramContext = this.rdN;
+    if (paramContext != null)
+    {
+      paramContext.setRepeatMode(2);
+      AppMethodBeat.o(75759);
+      return;
+    }
+    AppMethodBeat.o(75759);
   }
   
-  public final v b(AudioCacheInfo paramAudioCacheInfo)
+  public final v e(AudioCacheInfo paramAudioCacheInfo)
   {
-    AppMethodBeat.i(150791);
+    AppMethodBeat.i(204216);
     pauseAudio();
     if (paramAudioCacheInfo != null)
     {
-      if (((paramAudioCacheInfo.arq) && (TextUtils.isEmpty((CharSequence)paramAudioCacheInfo.cachePath))) || ((!paramAudioCacheInfo.arq) && (TextUtils.isEmpty((CharSequence)paramAudioCacheInfo.musicUrl))))
+      ad.i("MicroMsg.EditMusicController", "play music: " + paramAudioCacheInfo.musicUrl);
+      if (((paramAudioCacheInfo.aMb) && (TextUtils.isEmpty((CharSequence)paramAudioCacheInfo.cachePath))) || ((!paramAudioCacheInfo.aMb) && (TextUtils.isEmpty((CharSequence)paramAudioCacheInfo.musicUrl))))
       {
-        AppMethodBeat.o(150791);
+        AppMethodBeat.o(204216);
         return null;
       }
-      this.qdF = g.a(ah.getContext(), (h)this.oYM);
-      Object localObject = this.qdF;
-      if (localObject != null) {
-        ((v)localObject).setRepeatMode(2);
+      Object localObject1 = this.rdN;
+      if (localObject1 != null) {
+        ((v)localObject1).aO(true);
       }
-      localObject = this.qdF;
-      if (localObject != null) {
-        ((v)localObject).aC(true);
+      localObject1 = i.vjj;
+      localObject1 = i.a.a(paramAudioCacheInfo, this.userAgent);
+      Object localObject2 = this.rdN;
+      if (localObject2 != null) {
+        ((v)localObject2).a((j)localObject1);
       }
-      localObject = i.swW;
-      paramAudioCacheInfo = i.a.a(paramAudioCacheInfo, this.userAgent);
-      localObject = this.qdF;
-      if (localObject != null) {
-        ((v)localObject).a(paramAudioCacheInfo);
+      localObject1 = com.tencent.mm.plugin.recordvideo.d.b.vpp;
+      com.tencent.mm.plugin.recordvideo.d.b.diy().jw(String.valueOf(paramAudioCacheInfo.viz));
+      localObject1 = com.tencent.mm.plugin.recordvideo.d.b.vpp;
+      localObject1 = com.tencent.mm.plugin.recordvideo.d.b.diy();
+      int i = paramAudioCacheInfo.dep;
+      localObject2 = AudioCacheInfo.viM;
+      if (i == AudioCacheInfo.dhR()) {}
+      for (long l = 0L;; l = paramAudioCacheInfo.position + 1)
+      {
+        ((dc)localObject1).fr(l);
+        localObject1 = com.tencent.mm.plugin.recordvideo.d.b.vpp;
+        com.tencent.mm.plugin.recordvideo.d.b.diy().fs(paramAudioCacheInfo.viE);
+        localObject1 = com.tencent.mm.plugin.recordvideo.d.b.vpp;
+        com.tencent.mm.plugin.recordvideo.d.b.diz().gv(1L);
+        localObject1 = com.tencent.mm.plugin.recordvideo.model.audio.c.vjb;
+        localObject1 = com.tencent.mm.plugin.recordvideo.model.audio.c.dhW();
+        if (localObject1 != null) {
+          ((com.tencent.mm.plugin.recordvideo.model.audio.c)localObject1).ld(paramAudioCacheInfo.viz, paramAudioCacheInfo.dep);
+        }
+        paramAudioCacheInfo = this.rdN;
+        AppMethodBeat.o(204216);
+        return paramAudioCacheInfo;
       }
-      paramAudioCacheInfo = this.qdF;
-      AppMethodBeat.o(150791);
-      return paramAudioCacheInfo;
     }
-    AppMethodBeat.o(150791);
+    AppMethodBeat.o(204216);
     return null;
+  }
+  
+  public final void fYo()
+  {
+    AppMethodBeat.i(204218);
+    v localv = this.rdN;
+    if (localv != null)
+    {
+      localv.aO(true);
+      AppMethodBeat.o(204218);
+      return;
+    }
+    AppMethodBeat.o(204218);
   }
   
   public final void pauseAudio()
   {
-    AppMethodBeat.i(150792);
-    v localv = this.qdF;
-    if ((localv == null) || (localv.mJ() != 4))
-    {
-      localv = this.qdF;
-      if (localv != null) {
-        localv.stop();
-      }
-      localv = this.qdF;
-      if (localv != null) {
-        localv.release();
-      }
-      this.qdF = null;
+    AppMethodBeat.i(75758);
+    ad.i("MicroMsg.EditMusicController", "pause music");
+    Object localObject = com.tencent.mm.plugin.recordvideo.d.b.vpp;
+    com.tencent.mm.plugin.recordvideo.d.b.diy().jw("");
+    localObject = com.tencent.mm.plugin.recordvideo.d.b.vpp;
+    com.tencent.mm.plugin.recordvideo.d.b.diy().fr(0L);
+    localObject = com.tencent.mm.plugin.recordvideo.d.b.vpp;
+    com.tencent.mm.plugin.recordvideo.d.b.diy().fs(0L);
+    localObject = com.tencent.mm.plugin.recordvideo.d.b.vpp;
+    com.tencent.mm.plugin.recordvideo.d.b.diz().gv(0L);
+    localObject = com.tencent.mm.plugin.recordvideo.model.audio.c.vjb;
+    localObject = com.tencent.mm.plugin.recordvideo.model.audio.c.dhW();
+    if (localObject != null) {
+      ((com.tencent.mm.plugin.recordvideo.model.audio.c)localObject).dhS();
     }
-    AppMethodBeat.o(150792);
+    localObject = this.rdN;
+    if (localObject != null)
+    {
+      ((v)localObject).aO(false);
+      AppMethodBeat.o(75758);
+      return;
+    }
+    AppMethodBeat.o(75758);
   }
+  
+  public final void release()
+  {
+    AppMethodBeat.i(204219);
+    ad.i("MicroMsg.EditMusicController", "release");
+    v localv = this.rdN;
+    if (localv != null) {
+      localv.stop();
+    }
+    localv = this.rdN;
+    if (localv != null) {
+      localv.release();
+    }
+    this.rdN = null;
+    AppMethodBeat.o(204219);
+  }
+  
+  public final void seekTo(long paramLong)
+  {
+    AppMethodBeat.i(204217);
+    v localv = this.rdN;
+    if (localv != null)
+    {
+      localv.seekTo(paramLong);
+      AppMethodBeat.o(204217);
+      return;
+    }
+    AppMethodBeat.o(204217);
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/music/EditMusicController$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,39 +5,38 @@ import com.tencent.luggage.bridge.a.a.b;
 import com.tencent.luggage.bridge.a.a.c;
 import com.tencent.luggage.bridge.impl.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.vfs.FileSystemManager;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class a
   implements a.b
 {
-  final com.tencent.mm.plugin.appbrand.e.a byB;
+  final com.tencent.mm.plugin.appbrand.g.a bZR;
   
   public a()
   {
-    AppMethodBeat.i(90759);
-    this.byB = new b();
-    AppMethodBeat.o(90759);
+    AppMethodBeat.i(140359);
+    this.bZR = new b();
+    AppMethodBeat.o(140359);
   }
   
   public void a(a.a parama)
   {
-    AppMethodBeat.i(90761);
-    parama.a(com.tencent.mm.plugin.appbrand.e.a.class, this.byB);
-    AppMethodBeat.o(90761);
+    AppMethodBeat.i(140361);
+    parama.a(com.tencent.mm.plugin.appbrand.g.a.class, this.bZR);
+    AppMethodBeat.o(140361);
   }
   
   public void a(a.c paramc)
   {
-    AppMethodBeat.i(90760);
-    FileSystemManager.setContext(ah.getContext());
-    paramc.a(com.tencent.mm.plugin.appbrand.e.a.class, this.byB);
-    AppMethodBeat.o(90760);
+    AppMethodBeat.i(140360);
+    com.tencent.mm.vfs.a.setContext(aj.getContext());
+    paramc.a(com.tencent.mm.plugin.appbrand.g.a.class, this.bZR);
+    AppMethodBeat.o(140360);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.bridge.impl.a
  * JD-Core Version:    0.7.0.1
  */

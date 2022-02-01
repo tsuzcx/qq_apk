@@ -11,9 +11,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class FoldableChatTextItemView
   extends LinearLayout
 {
-  private c aqn;
+  private a GHm;
+  private c axP;
   private int maxHeight;
-  private FoldableChatTextItemView.a zQQ;
   
   public FoldableChatTextItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,33 +27,33 @@ public class FoldableChatTextItemView
   
   private void setTagObject(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(32758);
-    setTag(2131820681, new int[] { (int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY() });
-    AppMethodBeat.o(32758);
+    AppMethodBeat.i(36700);
+    setTag(2131306044, new int[] { (int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY() });
+    AppMethodBeat.o(36700);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(32760);
+    AppMethodBeat.i(36702);
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(32760);
+    AppMethodBeat.o(36702);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(32757);
+    AppMethodBeat.i(36699);
     setTagObject(paramMotionEvent);
-    if (this.aqn != null) {
-      this.aqn.onTouchEvent(paramMotionEvent);
+    if (this.axP != null) {
+      this.axP.onTouchEvent(paramMotionEvent);
     }
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(32757);
+    AppMethodBeat.o(36699);
     return bool;
   }
   
-  public void setFoldTextListener(FoldableChatTextItemView.a parama)
+  public void setFoldTextListener(a parama)
   {
-    this.zQQ = parama;
+    this.GHm = parama;
   }
   
   public void setMaxHeight(int paramInt)
@@ -63,14 +63,16 @@ public class FoldableChatTextItemView
   
   public void setOnGestureListener(GestureDetector.OnGestureListener paramOnGestureListener)
   {
-    AppMethodBeat.i(32759);
-    this.aqn = new c(getContext(), paramOnGestureListener);
-    AppMethodBeat.o(32759);
+    AppMethodBeat.i(36701);
+    this.axP = new c(getContext(), paramOnGestureListener);
+    AppMethodBeat.o(36701);
   }
+  
+  public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.view.FoldableChatTextItemView
  * JD-Core Version:    0.7.0.1
  */

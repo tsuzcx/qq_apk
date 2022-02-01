@@ -14,45 +14,45 @@ public abstract class i
   extends ay
   implements DialogInterface.OnCancelListener
 {
-  protected final b HF;
-  protected boolean Mk;
-  private ConnectionResult Ml;
-  private int Mm = -1;
-  private final Handler Mn = new Handler(Looper.getMainLooper());
-  protected boolean ej;
+  protected final b Ju;
+  protected boolean NZ;
+  private ConnectionResult Oa;
+  private int Ob = -1;
+  private final Handler Oc = new Handler(Looper.getMainLooper());
+  protected boolean hO;
   
   protected i(az paramaz)
   {
-    this(paramaz, b.gp());
+    this(paramaz, b.gz());
   }
   
   private i(az paramaz, b paramb)
   {
     super(paramaz);
-    this.HF = paramb;
+    this.Ju = paramb;
   }
   
   protected abstract void a(ConnectionResult paramConnectionResult, int paramInt);
   
   public final void b(ConnectionResult paramConnectionResult, int paramInt)
   {
-    if (!this.Mk)
+    if (!this.NZ)
     {
-      this.Mk = true;
-      this.Mm = paramInt;
-      this.Ml = paramConnectionResult;
-      this.Mn.post(new j(this, (byte)0));
+      this.NZ = true;
+      this.Ob = paramInt;
+      this.Oa = paramConnectionResult;
+      this.Oc.post(new j(this, (byte)0));
     }
   }
   
-  protected abstract void hY();
+  protected abstract void ig();
   
-  protected final void ie()
+  protected final void im()
   {
-    this.Mm = -1;
-    this.Mk = false;
-    this.Ml = null;
-    hY();
+    this.Ob = -1;
+    this.NZ = false;
+    this.Oa = null;
+    ig();
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -65,20 +65,20 @@ public abstract class i
       paramInt1 = 0;
       if (paramInt1 != 0)
       {
-        ie();
+        im();
         return;
       }
       break;
     case 2: 
       label30:
-      j = this.HF.d(getActivity());
+      j = this.Ju.d(getActivity());
       if (j != 0) {}
       break;
     }
     for (paramInt2 = i;; paramInt2 = 0)
     {
       paramInt1 = paramInt2;
-      if (this.Ml.getErrorCode() != 18) {
+      if (this.Oa.getErrorCode() != 18) {
         break label30;
       }
       paramInt1 = paramInt2;
@@ -96,9 +96,9 @@ public abstract class i
       if (paramIntent != null) {}
       for (paramInt1 = paramIntent.getIntExtra("<<ResolutionFailureErrorDetail>>", 13);; paramInt1 = 13)
       {
-        this.Ml = new ConnectionResult(paramInt1, null);
+        this.Oa = new ConnectionResult(paramInt1, null);
         break;
-        a(this.Ml, this.Mm);
+        a(this.Oa, this.Ob);
         return;
       }
     }
@@ -106,8 +106,8 @@ public abstract class i
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    a(new ConnectionResult(13, null), this.Mm);
-    ie();
+    a(new ConnectionResult(13, null), this.Ob);
+    im();
   }
   
   public final void onCreate(Bundle paramBundle)
@@ -115,11 +115,11 @@ public abstract class i
     super.onCreate(paramBundle);
     if (paramBundle != null)
     {
-      this.Mk = paramBundle.getBoolean("resolving_error", false);
-      if (this.Mk)
+      this.NZ = paramBundle.getBoolean("resolving_error", false);
+      if (this.NZ)
       {
-        this.Mm = paramBundle.getInt("failed_client_id", -1);
-        this.Ml = new ConnectionResult(paramBundle.getInt("failed_status"), (PendingIntent)paramBundle.getParcelable("failed_resolution"));
+        this.Ob = paramBundle.getInt("failed_client_id", -1);
+        this.Oa = new ConnectionResult(paramBundle.getInt("failed_status"), (PendingIntent)paramBundle.getParcelable("failed_resolution"));
       }
     }
   }
@@ -127,25 +127,25 @@ public abstract class i
   public final void onSaveInstanceState(Bundle paramBundle)
   {
     super.onSaveInstanceState(paramBundle);
-    paramBundle.putBoolean("resolving_error", this.Mk);
-    if (this.Mk)
+    paramBundle.putBoolean("resolving_error", this.NZ);
+    if (this.NZ)
     {
-      paramBundle.putInt("failed_client_id", this.Mm);
-      paramBundle.putInt("failed_status", this.Ml.getErrorCode());
-      paramBundle.putParcelable("failed_resolution", this.Ml.gn());
+      paramBundle.putInt("failed_client_id", this.Ob);
+      paramBundle.putInt("failed_status", this.Oa.getErrorCode());
+      paramBundle.putParcelable("failed_resolution", this.Oa.gx());
     }
   }
   
   public void onStart()
   {
     super.onStart();
-    this.ej = true;
+    this.hO = true;
   }
   
   public void onStop()
   {
     super.onStop();
-    this.ej = false;
+    this.hO = false;
   }
 }
 

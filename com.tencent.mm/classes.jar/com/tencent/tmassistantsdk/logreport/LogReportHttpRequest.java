@@ -17,10 +17,10 @@ public class LogReportHttpRequest
   
   public void onFinished(JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt)
   {
-    AppMethodBeat.i(75816);
+    AppMethodBeat.i(102062);
     if (paramJceStruct2 == null)
     {
-      AppMethodBeat.o(75816);
+      AppMethodBeat.o(102062);
       return;
     }
     if ((this.mListener != null) && (paramInt == 0))
@@ -30,33 +30,33 @@ public class LogReportHttpRequest
         if (((ReportLogResponse)paramJceStruct2).ret == 0)
         {
           this.mListener.onLogReprotHttpRequestFinish(this, true);
-          AppMethodBeat.o(75816);
+          AppMethodBeat.o(102062);
           return;
         }
         this.mListener.onLogReprotHttpRequestFinish(this, false);
-        AppMethodBeat.o(75816);
+        AppMethodBeat.o(102062);
         return;
       }
       TMLog.i("LogReportHttpRequest", "response isn't instanceof ReportLogResponse !");
-      AppMethodBeat.o(75816);
+      AppMethodBeat.o(102062);
       return;
     }
     TMLog.i("LogReportHttpRequest", "mListener is null !");
-    AppMethodBeat.o(75816);
+    AppMethodBeat.o(102062);
   }
   
   public boolean sendLogDataToServer(byte paramByte, BaseLogTable.DataWrapper paramDataWrapper)
   {
-    AppMethodBeat.i(75815);
+    AppMethodBeat.i(102061);
     if (paramDataWrapper == null)
     {
-      AppMethodBeat.o(75815);
+      AppMethodBeat.o(102061);
       return false;
     }
     String str = GlobalUtil.getAppPackageName(GlobalUtil.getInstance().getContext());
     int i = GlobalUtil.getAppVersionCode(GlobalUtil.getInstance().getContext());
     boolean bool = super.sendRequest((ReportLogRequest)ProtocolPackage.buildReportRequest(paramByte, paramDataWrapper.dataList, str, i, ""));
-    AppMethodBeat.o(75815);
+    AppMethodBeat.o(102061);
     return bool;
   }
   

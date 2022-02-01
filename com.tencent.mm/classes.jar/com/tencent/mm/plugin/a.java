@@ -1,27 +1,29 @@
 package com.tencent.mm.plugin;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.t;
+import com.tencent.mm.modelstat.q;
 
 public final class a
-  extends com.tencent.mm.model.q
+  extends t
 {
-  private static a gmN;
+  private static a hYs;
   
   private a()
   {
-    super(com.tencent.mm.modelstat.q.class);
+    super(q.class);
   }
   
-  public static a aoF()
+  public static a aGU()
   {
     try
     {
-      AppMethodBeat.i(79046);
-      if (gmN == null) {
-        gmN = new a();
+      AppMethodBeat.i(151419);
+      if (hYs == null) {
+        hYs = new a();
       }
-      a locala = gmN;
-      AppMethodBeat.o(79046);
+      a locala = hYs;
+      AppMethodBeat.o(151419);
       return locala;
     }
     finally {}
@@ -29,7 +31,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.a
  * JD-Core Version:    0.7.0.1
  */

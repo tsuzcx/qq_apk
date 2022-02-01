@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/ano" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/ano" />
-    <item android:state_focused="true" android:drawable="@drawable/ano" />
-    <item android:state_focused="false" android:drawable="@drawable/ann" />
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/x" />
+            <solid android:color="#ff333333" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/x" />
+            <solid android:color="#ff575757" />
+        </shape>
+    </item>
 </selector>

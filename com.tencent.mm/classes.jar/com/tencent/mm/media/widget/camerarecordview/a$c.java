@@ -1,34 +1,22 @@
 package com.tencent.mm.media.widget.camerarecordview;
 
-import a.l;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.h.b.c;
-import com.tencent.mm.media.h.b.e;
-import com.tencent.mm.media.h.d;
+import com.tencent.mm.media.f.d;
+import d.g.a.b;
+import d.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/media/widget/camerarecordview/CameraPreviewContainer$setRender$curRenderer$1", "Lcom/tencent/mm/media/render/SurfaceTextureRenderer;", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "plugin-mediaeditor_release"})
-public final class a$c
-  extends d
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/media/globject/GLTextureObject;", "invoke"})
+final class a$c
+  extends d.g.b.l
+  implements b<d, y>
 {
-  a$c(int paramInt) {}
-  
-  public final com.tencent.mm.media.h.b.a Ve()
+  a$c(a parama)
   {
-    AppMethodBeat.i(152123);
-    if (this.fbe.fbc.Xn())
-    {
-      locala = (com.tencent.mm.media.h.b.a)new e(this.eYj, this.eYk, this.eYl, this.eYm, this.eYn, this.scaleType);
-      AppMethodBeat.o(152123);
-      return locala;
-    }
-    com.tencent.mm.media.h.b.a locala = (com.tencent.mm.media.h.b.a)new c(this.eYj, this.eYk, this.eYl, this.eYm, this.eYn, this.scaleType);
-    AppMethodBeat.o(152123);
-    return locala;
+    super(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.media.widget.camerarecordview.a.c
  * JD-Core Version:    0.7.0.1
  */

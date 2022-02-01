@@ -1,120 +1,131 @@
 package android.support.transition;
 
-import android.graphics.Rect;
-import android.support.v4.view.t;
+import android.animation.LayoutTransition;
 import android.view.ViewGroup;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
-public final class ab
-  extends bb
+final class ab
 {
-  private float rt = 3.0F;
-  int ss = 80;
+  private static LayoutTransition Av;
+  private static Field Aw;
+  private static boolean Ax;
+  private static Method Ay;
+  private static boolean Az;
   
-  public final long a(ViewGroup paramViewGroup, Transition paramTransition, ah paramah1, ah paramah2)
+  private static void a(LayoutTransition paramLayoutTransition)
   {
-    if ((paramah1 == null) && (paramah2 == null)) {
-      return 0L;
-    }
-    int j = 1;
-    Rect localRect = paramTransition.getEpicenter();
-    if ((paramah2 == null) || (e(paramah1) == 0))
+    if (!Az) {}
+    try
     {
-      j = -1;
-      paramah2 = paramah1;
-    }
-    int n = bb.a(paramah2, 0);
-    int i1 = bb.a(paramah2, 1);
-    paramah1 = new int[2];
-    paramViewGroup.getLocationOnScreen(paramah1);
-    int i2 = paramah1[0] + Math.round(paramViewGroup.getTranslationX());
-    int i3 = paramah1[1] + Math.round(paramViewGroup.getTranslationY());
-    int i4 = i2 + paramViewGroup.getWidth();
-    int i5 = i3 + paramViewGroup.getHeight();
-    int k;
-    int m;
-    label146:
-    label154:
-    label203:
-    float f;
-    if (localRect != null)
-    {
-      k = localRect.centerX();
-      m = localRect.centerY();
-      if (this.ss != 8388611) {
-        break label345;
-      }
-      if (t.T(paramViewGroup) != 1) {
-        break label333;
-      }
-      i = 1;
-      if (i == 0) {
-        break label339;
-      }
-      i = 5;
-      switch (i)
+      Method localMethod = LayoutTransition.class.getDeclaredMethod("cancel", new Class[0]);
+      Ay = localMethod;
+      localMethod.setAccessible(true);
+      label27:
+      Az = true;
+      if (Ay != null) {}
+      try
       {
-      default: 
-        i = 0;
-        f = i;
-        switch (this.ss)
+        Ay.invoke(paramLayoutTransition, new Object[0]);
+        return;
+      }
+      catch (InvocationTargetException paramLayoutTransition) {}catch (IllegalAccessException paramLayoutTransition) {}
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      break label27;
+    }
+  }
+  
+  static void c(ViewGroup paramViewGroup, boolean paramBoolean)
+  {
+    boolean bool1 = false;
+    boolean bool2 = false;
+    Object localObject;
+    if (Av == null)
+    {
+      localObject = new LayoutTransition()
+      {
+        public final boolean isChangingLayout()
         {
+          return true;
         }
-        break;
-      }
+      };
+      Av = (LayoutTransition)localObject;
+      ((LayoutTransition)localObject).setAnimator(2, null);
+      Av.setAnimator(0, null);
+      Av.setAnimator(1, null);
+      Av.setAnimator(3, null);
+      Av.setAnimator(4, null);
     }
-    for (int i = paramViewGroup.getHeight();; i = paramViewGroup.getWidth())
+    if (paramBoolean)
     {
-      f /= i;
-      long l2 = paramTransition.mDuration;
-      long l1 = l2;
-      if (l2 < 0L) {
-        l1 = 300L;
-      }
-      return Math.round((float)(l1 * j) / this.rt * f);
-      k = (i2 + i4) / 2;
-      m = (i3 + i5) / 2;
-      break;
-      label333:
-      i = 0;
-      break label146;
-      label339:
-      i = 3;
-      break label154;
-      label345:
-      if (this.ss == 8388613)
+      localObject = paramViewGroup.getLayoutTransition();
+      if (localObject != null)
       {
-        if (t.T(paramViewGroup) == 1)
+        if (((LayoutTransition)localObject).isRunning()) {
+          a((LayoutTransition)localObject);
+        }
+        if (localObject != Av) {
+          paramViewGroup.setTag(2131306067, localObject);
+        }
+      }
+      paramViewGroup.setLayoutTransition(Av);
+    }
+    for (;;)
+    {
+      return;
+      paramViewGroup.setLayoutTransition(null);
+      if (!Ax) {}
+      try
+      {
+        localObject = ViewGroup.class.getDeclaredField("mLayoutSuppressed");
+        Aw = (Field)localObject;
+        ((Field)localObject).setAccessible(true);
+        label146:
+        Ax = true;
+        paramBoolean = bool2;
+        if (Aw != null) {
+          paramBoolean = bool1;
+        }
+        try
         {
-          i = 1;
-          label365:
-          if (i == 0) {
-            break label382;
+          bool1 = Aw.getBoolean(paramViewGroup);
+          paramBoolean = bool1;
+          if (bool1)
+          {
+            paramBoolean = bool1;
+            Aw.setBoolean(paramViewGroup, false);
+            paramBoolean = bool1;
           }
         }
-        label382:
-        for (i = 3;; i = 5)
+        catch (IllegalAccessException localIllegalAccessException)
         {
-          break;
-          i = 0;
-          break label365;
+          label186:
+          break label186;
         }
+        if (paramBoolean) {
+          paramViewGroup.requestLayout();
+        }
+        localObject = (LayoutTransition)paramViewGroup.getTag(2131306067);
+        if (localObject == null) {
+          continue;
+        }
+        paramViewGroup.setTag(2131306067, null);
+        paramViewGroup.setLayoutTransition((LayoutTransition)localObject);
+        return;
       }
-      i = this.ss;
-      break label154;
-      i = i4 - n + Math.abs(m - i1);
-      break label203;
-      i = Math.abs(k - n) + (i5 - i1);
-      break label203;
-      i = n - i2 + Math.abs(m - i1);
-      break label203;
-      i = Math.abs(k - n) + (i1 - i3);
-      break label203;
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        break label146;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.transition.ab
  * JD-Core Version:    0.7.0.1
  */

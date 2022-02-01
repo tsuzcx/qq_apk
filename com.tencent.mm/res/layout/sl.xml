@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="@dimen/l2" android:layout_width="255.0dip" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/g65" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:layout_width="200.0dip" android:layout_height="118.0dip" android:src="@drawable/bgi" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l2" android:text="@string/b5u" />
+    <FrameLayout android:id="@id/g63" android:padding="@dimen/ci" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <CheckBox android:id="@id/g64" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" />
+    </FrameLayout>
+    <TextView android:textSize="@dimen/b_" android:textColor="@color/km" android:id="@id/g66" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/u5" />
+    <TextView android:textSize="@dimen/b_" android:textColor="@color/tq" android:ellipsize="end" android:id="@id/g67" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
 </LinearLayout>

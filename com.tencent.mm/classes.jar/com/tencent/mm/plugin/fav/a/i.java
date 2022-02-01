@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -12,86 +12,86 @@ import org.json.JSONObject;
 
 public final class i
 {
-  public static List<i.a> mtn;
-  private static String mto = "";
-  private static String mtp = "";
-  private static long mtq = 0L;
+  public static List<a> qaa;
+  private static String qab = "";
+  private static String qac = "";
+  private static long qad = 0L;
   
-  public static void NI(String paramString)
+  public static void Yd(String paramString)
   {
-    AppMethodBeat.i(102662);
-    ep(paramString, "");
-    AppMethodBeat.o(102662);
+    AppMethodBeat.i(103402);
+    fM(paramString, "");
+    AppMethodBeat.o(103402);
   }
   
-  public static void NJ(String paramString)
+  public static void Ye(String paramString)
   {
-    AppMethodBeat.i(102664);
-    eq(paramString, "");
-    AppMethodBeat.o(102664);
+    AppMethodBeat.i(103404);
+    fN(paramString, "");
+    AppMethodBeat.o(103404);
   }
   
   private static void a(String paramString1, long paramLong, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(102660);
-    if (mtn == null)
+    AppMethodBeat.i(103400);
+    if (qaa == null)
     {
-      AppMethodBeat.o(102660);
+      AppMethodBeat.o(103400);
       return;
     }
-    i.a locala = new i.a((byte)0);
+    a locala = new a((byte)0);
     locala.pageId = paramString1;
-    locala.mtr = paramLong;
+    locala.qae = paramLong;
     locala.in = paramInt;
-    if (bo.isNullOrNil(paramString2)) {}
-    for (locala.sid = "-1";; locala.sid = paramString2)
+    if (bt.isNullOrNil(paramString2)) {}
+    for (locala.pZX = "-1";; locala.pZX = paramString2)
     {
-      if (mtn != null) {
-        mtn.add(locala);
+      if (qaa != null) {
+        qaa.add(locala);
       }
-      AppMethodBeat.o(102660);
+      AppMethodBeat.o(103400);
       return;
     }
   }
   
-  private static void bwv()
+  private static void chN()
   {
-    mto = "";
-    mtp = "";
-    mtq = 0L;
+    qab = "";
+    qac = "";
+    qad = 0L;
   }
   
   public static void end()
   {
-    AppMethodBeat.i(102659);
-    if (mtn == null)
+    AppMethodBeat.i(103399);
+    if (qaa == null)
     {
-      mtn = null;
-      bwv();
-      AppMethodBeat.o(102659);
+      qaa = null;
+      chN();
+      AppMethodBeat.o(103399);
       return;
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("[");
-    Object localObject2 = mtn.iterator();
+    Object localObject2 = qaa.iterator();
     for (;;)
     {
       if (((Iterator)localObject2).hasNext())
       {
-        i.a locala = (i.a)((Iterator)localObject2).next();
+        a locala = (a)((Iterator)localObject2).next();
         JSONObject localJSONObject = new JSONObject();
         try
         {
           localJSONObject.put("p", locala.pageId);
-          localJSONObject.put("tbe", locala.mtr);
+          localJSONObject.put("tbe", locala.qae);
           localJSONObject.put("in", locala.in);
-          localJSONObject.put("sid", locala.sid);
+          localJSONObject.put("sid", locala.pZX);
           ((StringBuilder)localObject1).append(localJSONObject.toString()).append(";");
           if (((StringBuilder)localObject1).length() > 3072)
           {
-            mtn = null;
-            bwv();
-            AppMethodBeat.o(102659);
+            qaa = null;
+            chN();
+            AppMethodBeat.o(103399);
             return;
           }
         }
@@ -99,7 +99,7 @@ public final class i
         {
           for (;;)
           {
-            ab.w("MicroMsg.Fav.FavSearchFlowReportLogic", "end, JSONException");
+            ad.w("MicroMsg.Fav.FavSearchFlowReportLogic", "end, JSONException");
           }
         }
       }
@@ -108,9 +108,9 @@ public final class i
     localObject1 = ((StringBuilder)localObject1).toString();
     if (((String)localObject1).length() > 3072)
     {
-      mtn = null;
-      bwv();
-      AppMethodBeat.o(102659);
+      qaa = null;
+      chN();
+      AppMethodBeat.o(103399);
       return;
     }
     localObject2 = new String[3];
@@ -138,59 +138,67 @@ public final class i
       {
         for (;;)
         {
-          ab.w("MicroMsg.Fav.FavSearchFlowReportLogic", "report flow error: " + localThrowable.getMessage());
+          ad.w("MicroMsg.Fav.FavSearchFlowReportLogic", "report flow error: " + localThrowable.getMessage());
         }
       }
-      h.qsU.e(15508, new Object[] { localObject2[0], localObject2[1], localObject2[2] });
-      mtn = null;
-      bwv();
-      AppMethodBeat.o(102659);
+      h.vKh.f(15508, new Object[] { localObject2[0], localObject2[1], localObject2[2] });
+      qaa = null;
+      chN();
+      AppMethodBeat.o(103399);
       return;
       i = 0;
     }
   }
   
-  public static void ep(String paramString1, String paramString2)
+  public static void fM(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(102661);
-    if (!bo.isNullOrNil(mto)) {
-      eq(mto, mtp);
+    AppMethodBeat.i(103401);
+    if (!bt.isNullOrNil(qab)) {
+      fN(qab, qac);
     }
-    mto = paramString1;
-    mtp = paramString2;
-    mtq = System.currentTimeMillis();
-    AppMethodBeat.o(102661);
+    qab = paramString1;
+    qac = paramString2;
+    qad = System.currentTimeMillis();
+    AppMethodBeat.o(103401);
   }
   
-  private static void eq(String paramString1, String paramString2)
+  private static void fN(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(102663);
-    if ((bo.isNullOrNil(paramString1)) || (!paramString1.equals(mto)))
+    AppMethodBeat.i(103403);
+    if ((bt.isNullOrNil(paramString1)) || (!paramString1.equals(qab)))
     {
-      AppMethodBeat.o(102663);
+      AppMethodBeat.o(103403);
       return;
     }
-    int i = (int)(System.currentTimeMillis() - mtq);
-    mtq /= 1000L;
+    int i = (int)(System.currentTimeMillis() - qad);
+    qad /= 1000L;
     String str = paramString2;
-    if (bo.isNullOrNil(paramString2)) {
+    if (bt.isNullOrNil(paramString2)) {
       str = "-1";
     }
-    a(paramString1, mtq, i, str);
-    bwv();
-    AppMethodBeat.o(102663);
+    a(paramString1, qad, i, str);
+    chN();
+    AppMethodBeat.o(103403);
   }
   
   public static void start()
   {
-    AppMethodBeat.i(102658);
-    mtn = new Vector();
-    AppMethodBeat.o(102658);
+    AppMethodBeat.i(103398);
+    qaa = new Vector();
+    AppMethodBeat.o(103398);
+  }
+  
+  static final class a
+  {
+    int in;
+    String pZX;
+    String pageId;
+    long qae;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.i
  * JD-Core Version:    0.7.0.1
  */

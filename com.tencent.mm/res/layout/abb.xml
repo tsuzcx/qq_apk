@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/d01" android:background="#fffcfcfc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <View android:id="@id/d02" android:background="#fffcfcfc" android:layout_width="fill_parent" android:layout_height="0.0dip" />
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="-2.0dip">
-            <ImageView android:id="@id/d03" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:adjustViewBounds="true" />
-            <ImageView android:id="@id/d04" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/b_f" android:scaleType="fitXY" />
+    <com.tencent.mm.plugin.game.ui.GameFeedVideoView android:orientation="vertical" android:padding="@dimen/fy" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.game.ui.GameFeedTitleDescView android:id="@id/cbb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/g3" />
+        <FrameLayout android:id="@id/gmu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/g3">
+            <com.tencent.mm.plugin.game.ui.GameRoundImageView android:id="@id/glz" android:layout_width="fill_parent" android:layout_height="@dimen/fs" />
+            <ImageView android:layout_gravity="center" android:id="@id/gn3" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/att" />
+            <LinearLayout android:layout_gravity="bottom|center|right" android:orientation="horizontal" android:id="@id/gm2" android:background="@drawable/w7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/g3" android:layout_marginBottom="@dimen/g3">
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/gnt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/w2" />
+                <TextView android:textSize="12.0dip" android:textColor="@color/a_u" android:layout_gravity="center_vertical" android:id="@id/gm3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:singleLine="true" />
+            </LinearLayout>
         </FrameLayout>
-    </LinearLayout>
-    <com.tencent.mm.ui.KeyboardLinearLayout android:orientation="vertical" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:id="@id/d05" android:focusable="true" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:scrollingCache="false" android:transcriptMode="disabled" android:divider="@null" android:headerDividersEnabled="false" android:footerDividersEnabled="false" android:overScrollMode="never" />
-        <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyWishFooter android:id="@id/d06" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </com.tencent.mm.ui.KeyboardLinearLayout>
-    <FrameLayout android:id="@id/d07" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.game.ui.GameFeedSubscriptView android:id="@id/g1u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/g3" />
+    </com.tencent.mm.plugin.game.ui.GameFeedVideoView>
 </FrameLayout>

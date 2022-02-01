@@ -1,134 +1,155 @@
 package com.tencent.mm.plugin.qqmail.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.bvk;
-import e.a.a.b;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.ckq;
+import com.tencent.mm.protocal.protobuf.ip;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class ah
-  extends bvk
+  extends ckq
 {
-  public String pIF;
-  public String pIw;
-  public int pIx;
-  public int pIy;
+  public String gKn;
+  public int uKQ;
+  public int uKR;
+  public int uKS;
+  public SKBuiltinBuffer_t uKT;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(68074);
+    AppMethodBeat.i(122799);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.uKT == null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(68074);
+        paramVarArgs = new b("Not all required fields were included: Data");
+        AppMethodBeat.o(122799);
         throw paramVarArgs;
       }
-      if (this.BaseResponse != null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs.iQ(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs.kX(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aO(2, this.pIy);
-      if (this.pIF != null) {
-        paramVarArgs.e(3, this.pIF);
+      if (this.gKn != null) {
+        paramVarArgs.d(2, this.gKn);
       }
-      paramVarArgs.aO(4, this.pIx);
-      if (this.pIw != null) {
-        paramVarArgs.e(5, this.pIw);
+      paramVarArgs.aR(3, this.uKQ);
+      paramVarArgs.aR(4, this.uKR);
+      paramVarArgs.aR(5, this.uKS);
+      if (this.uKT != null)
+      {
+        paramVarArgs.kX(6, this.uKT.computeSize());
+        this.uKT.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(68074);
+      AppMethodBeat.o(122799);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label566;
+      if (this.BaseRequest == null) {
+        break label702;
       }
     }
-    label566:
-    for (paramInt = e.a.a.a.iP(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label702:
+    for (paramInt = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + e.a.a.b.b.a.bl(2, this.pIy);
-      paramInt = i;
-      if (this.pIF != null) {
-        paramInt = i + e.a.a.b.b.a.f(3, this.pIF);
+      int i = paramInt;
+      if (this.gKn != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.gKn);
       }
-      i = paramInt + e.a.a.b.b.a.bl(4, this.pIx);
+      i = i + f.a.a.b.b.a.bA(3, this.uKQ) + f.a.a.b.b.a.bA(4, this.uKR) + f.a.a.b.b.a.bA(5, this.uKS);
       paramInt = i;
-      if (this.pIw != null) {
-        paramInt = i + e.a.a.b.b.a.f(5, this.pIw);
+      if (this.uKT != null) {
+        paramInt = i + f.a.a.a.kW(6, this.uKT.computeSize());
       }
-      AppMethodBeat.o(68074);
+      AppMethodBeat.o(122799);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = bvk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = bvk.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        if (this.BaseResponse == null)
+        if (this.uKT == null)
         {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(68074);
+          paramVarArgs = new b("Not all required fields were included: Data");
+          AppMethodBeat.o(122799);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(68074);
+        AppMethodBeat.o(122799);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         ah localah = (ah)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(68074);
+          AppMethodBeat.o(122799);
           return -1;
         case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, bvk.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localah.BaseResponse = ((BaseResponse)localObject1);
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new ip();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localah.BaseRequest = ((ip)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(68074);
+          AppMethodBeat.o(122799);
           return 0;
         case 2: 
-          localah.pIy = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(68074);
+          localah.gKn = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(122799);
           return 0;
         case 3: 
-          localah.pIF = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(68074);
+          localah.uKQ = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(122799);
           return 0;
         case 4: 
-          localah.pIx = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(68074);
+          localah.uKR = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(122799);
+          return 0;
+        case 5: 
+          localah.uKS = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(122799);
           return 0;
         }
-        localah.pIw = ((e.a.a.a.a)localObject1).CLY.readString();
-        AppMethodBeat.o(68074);
+        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new SKBuiltinBuffer_t();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localah.uKT = ((SKBuiltinBuffer_t)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(122799);
         return 0;
       }
-      AppMethodBeat.o(68074);
+      AppMethodBeat.o(122799);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.ah
  * JD-Core Version:    0.7.0.1
  */

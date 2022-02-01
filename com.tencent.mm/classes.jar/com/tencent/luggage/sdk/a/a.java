@@ -6,17 +6,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends b
 {
-  public final String vV()
+  public final String CU()
   {
-    AppMethodBeat.i(140677);
-    String str = " MicroMessenger/Lite" + super.vV();
-    AppMethodBeat.o(140677);
+    AppMethodBeat.i(146684);
+    String str = " MicroMessenger/Lite" + super.CU();
+    AppMethodBeat.o(146684);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.sdk.a.a
  * JD-Core Version:    0.7.0.1
  */

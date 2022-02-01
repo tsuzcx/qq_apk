@@ -32,7 +32,7 @@ public final class zzch<R extends Result>
   
   public zzch(WeakReference<GoogleApiClient> paramWeakReference)
   {
-    AppMethodBeat.i(60877);
+    AppMethodBeat.i(11369);
     this.zzmd = null;
     this.zzme = null;
     this.zzmf = null;
@@ -47,19 +47,19 @@ public final class zzch<R extends Result>
     for (paramWeakReference = paramWeakReference.getLooper();; paramWeakReference = Looper.getMainLooper())
     {
       this.zzmi = new zzcj(this, paramWeakReference);
-      AppMethodBeat.o(60877);
+      AppMethodBeat.o(11369);
       return;
     }
   }
   
   private static void zzb(Result paramResult)
   {
-    AppMethodBeat.i(60886);
+    AppMethodBeat.i(11378);
     if ((paramResult instanceof Releasable)) {
       try
       {
         ((Releasable)paramResult).release();
-        AppMethodBeat.o(60886);
+        AppMethodBeat.o(11378);
         return;
       }
       catch (RuntimeException localRuntimeException)
@@ -68,16 +68,16 @@ public final class zzch<R extends Result>
         new StringBuilder(String.valueOf(paramResult).length() + 18).append("Unable to release ").append(paramResult);
       }
     }
-    AppMethodBeat.o(60886);
+    AppMethodBeat.o(11378);
   }
   
   @GuardedBy("mSyncToken")
   private final void zzcb()
   {
-    AppMethodBeat.i(60882);
+    AppMethodBeat.i(11374);
     if ((this.zzmd == null) && (this.zzmf == null))
     {
-      AppMethodBeat.o(60882);
+      AppMethodBeat.o(11374);
       return;
     }
     GoogleApiClient localGoogleApiClient = (GoogleApiClient)this.zzfc.get();
@@ -89,44 +89,44 @@ public final class zzch<R extends Result>
     if (this.zzmh != null)
     {
       zze(this.zzmh);
-      AppMethodBeat.o(60882);
+      AppMethodBeat.o(11374);
       return;
     }
     if (this.zzmg != null) {
       this.zzmg.setResultCallback(this);
     }
-    AppMethodBeat.o(60882);
+    AppMethodBeat.o(11374);
   }
   
   @GuardedBy("mSyncToken")
   private final boolean zzcd()
   {
-    AppMethodBeat.i(60885);
+    AppMethodBeat.i(11377);
     GoogleApiClient localGoogleApiClient = (GoogleApiClient)this.zzfc.get();
     if ((this.zzmf != null) && (localGoogleApiClient != null))
     {
-      AppMethodBeat.o(60885);
+      AppMethodBeat.o(11377);
       return true;
     }
-    AppMethodBeat.o(60885);
+    AppMethodBeat.o(11377);
     return false;
   }
   
   private final void zzd(Status paramStatus)
   {
-    AppMethodBeat.i(60883);
+    AppMethodBeat.i(11375);
     synchronized (this.zzfa)
     {
       this.zzmh = paramStatus;
       zze(this.zzmh);
-      AppMethodBeat.o(60883);
+      AppMethodBeat.o(11375);
       return;
     }
   }
   
   private final void zze(Status paramStatus)
   {
-    AppMethodBeat.i(60884);
+    AppMethodBeat.i(11376);
     synchronized (this.zzfa)
     {
       if (this.zzmd != null)
@@ -137,7 +137,7 @@ public final class zzch<R extends Result>
       }
       while (!zzcd())
       {
-        AppMethodBeat.o(60884);
+        AppMethodBeat.o(11376);
         return;
       }
       this.zzmf.onFailure(paramStatus);
@@ -147,7 +147,7 @@ public final class zzch<R extends Result>
   public final void andFinally(ResultCallbacks<? super R> paramResultCallbacks)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(60879);
+    AppMethodBeat.i(11371);
     synchronized (this.zzfa)
     {
       if (this.zzmf == null) {}
@@ -161,7 +161,7 @@ public final class zzch<R extends Result>
         Preconditions.checkState(bool1, "Cannot call then() and andFinally() on the same TransformedResult.");
         this.zzmf = paramResultCallbacks;
         zzcb();
-        AppMethodBeat.o(60879);
+        AppMethodBeat.o(11371);
         return;
       }
       bool1 = false;
@@ -170,7 +170,7 @@ public final class zzch<R extends Result>
   
   public final void onResult(R paramR)
   {
-    AppMethodBeat.i(60880);
+    AppMethodBeat.i(11372);
     for (;;)
     {
       synchronized (this.zzfa)
@@ -180,7 +180,7 @@ public final class zzch<R extends Result>
           if (this.zzmd != null)
           {
             zzbw.zzbe().submit(new zzci(this, paramR));
-            AppMethodBeat.o(60880);
+            AppMethodBeat.o(11372);
             return;
           }
           if (!zzcd()) {
@@ -197,7 +197,7 @@ public final class zzch<R extends Result>
   public final <S extends Result> TransformedResult<S> then(ResultTransform<? super R, ? extends S> paramResultTransform)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(60878);
+    AppMethodBeat.i(11370);
     synchronized (this.zzfa)
     {
       if (this.zzmd == null) {}
@@ -213,7 +213,7 @@ public final class zzch<R extends Result>
         paramResultTransform = new zzch(this.zzfc);
         this.zzme = paramResultTransform;
         zzcb();
-        AppMethodBeat.o(60878);
+        AppMethodBeat.o(11370);
         return paramResultTransform;
       }
       bool1 = false;
@@ -222,12 +222,12 @@ public final class zzch<R extends Result>
   
   public final void zza(PendingResult<?> paramPendingResult)
   {
-    AppMethodBeat.i(60881);
+    AppMethodBeat.i(11373);
     synchronized (this.zzfa)
     {
       this.zzmg = paramPendingResult;
       zzcb();
-      AppMethodBeat.o(60881);
+      AppMethodBeat.o(11373);
       return;
     }
   }

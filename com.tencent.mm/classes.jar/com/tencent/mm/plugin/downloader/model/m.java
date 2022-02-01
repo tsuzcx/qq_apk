@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.downloader.model;
 
 public abstract interface m
 {
-  public abstract void b(long paramLong, int paramInt, boolean paramBoolean);
+  public abstract void a(long paramLong, int paramInt, boolean paramBoolean);
   
   public abstract void b(long paramLong, String paramString, boolean paramBoolean);
   
-  public abstract void hx(long paramLong);
+  public abstract void j(long paramLong, String paramString);
   
-  public abstract void hy(long paramLong);
+  public abstract void mZ(long paramLong);
   
-  public abstract void i(long paramLong, String paramString);
+  public abstract void na(long paramLong);
   
   public abstract void onTaskPaused(long paramLong);
   
@@ -20,7 +20,7 @@ public abstract interface m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.model.m
  * JD-Core Version:    0.7.0.1
  */

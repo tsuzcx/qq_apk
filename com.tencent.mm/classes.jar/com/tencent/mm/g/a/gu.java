@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class gu
   extends b
 {
-  public gu.a cvL;
-  
   public gu()
   {
     this((byte)0);
@@ -15,11 +12,8 @@ public final class gu
   
   private gu(byte paramByte)
   {
-    AppMethodBeat.i(70194);
-    this.cvL = new gu.a();
-    this.ymq = false;
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70194);
   }
 }
 

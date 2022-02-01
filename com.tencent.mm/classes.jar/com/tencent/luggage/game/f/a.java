@@ -1,106 +1,37 @@
 package com.tencent.luggage.game.f;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.e.c;
-import com.tencent.mm.plugin.appbrand.e.d;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.tencent.mm.plugin.appbrand.ui.ad;
+import com.tencent.mm.plugin.appbrand.ui.y.a;
+import d.l;
 
-public class a
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/luggage/game/ui/WAGameButtonLayoutPropertiesProvider;", "Lcom/tencent/mm/plugin/appbrand/ui/WxaMenuButtonLayoutPropertiesProvider;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getExpectedPadding", "Lcom/tencent/mm/plugin/appbrand/ui/IMenuButtonLayoutPropertiesProvider$Padding;", "luggage-wxa-game-ext_release"})
+public final class a
+  extends ad
 {
-  private static a bCu;
-  public String appId;
-  private int bCm;
-  public long bCn;
-  public long bCo;
-  boolean bCp;
-  public int bCq;
-  private float bCr;
-  public CopyOnWriteArrayList<Long> bCs;
-  private final a.a bCt;
-  public e.c bCv;
-  public com.tencent.magicbrush.a mbInspector;
+  private final Context context;
   
-  public a()
+  public a(Context paramContext)
   {
-    AppMethodBeat.i(140547);
-    this.bCm = 0;
-    this.bCn = 0L;
-    this.bCo = 0L;
-    this.appId = "";
-    this.bCp = false;
-    this.bCq = -1;
-    this.bCr = -1.0F;
-    this.bCs = new CopyOnWriteArrayList();
-    this.bCt = new a.a((byte)0);
-    this.bCv = new e.c()
-    {
-      public final void a(e.d paramAnonymousd)
-      {
-        AppMethodBeat.i(140542);
-        ab.i("MicroMsg.MBNiReporter", "hy: onPause");
-        paramAnonymousd = a.this;
-        if (paramAnonymousd.bCp)
-        {
-          ab.i("MicroMsg.MBNiReporter", "hy: hasReported!");
-          AppMethodBeat.o(140542);
-          return;
-        }
-        d.ysm.execute(new a.5(paramAnonymousd));
-        AppMethodBeat.o(140542);
-      }
-      
-      public final void onCreate()
-      {
-        AppMethodBeat.i(140540);
-        ab.i("MicroMsg.MBNiReporter", "hy: onCreate");
-        a.e(a.this);
-        AppMethodBeat.o(140540);
-      }
-      
-      public final void onDestroy()
-      {
-        AppMethodBeat.i(140543);
-        ab.i("MicroMsg.MBNiReporter", "hy: onDestroy");
-        a locala = a.this;
-        ab.i("MicroMsg.MBNiReporter", "hy: release!");
-        com.tencent.mm.plugin.appbrand.e.b(locala.appId, locala.bCv);
-        AppMethodBeat.o(140543);
-      }
-      
-      public final void onResume()
-      {
-        AppMethodBeat.i(140541);
-        ab.i("MicroMsg.MBNiReporter", "hy: onResume");
-        AppMethodBeat.o(140541);
-      }
-    };
-    AppMethodBeat.o(140547);
+    super(paramContext);
+    AppMethodBeat.i(130753);
+    this.context = paramContext;
+    AppMethodBeat.o(130753);
   }
   
-  public static a vN()
+  public final y.a CM()
   {
-    AppMethodBeat.i(140548);
-    if (bCu == null) {}
-    try
-    {
-      if (bCu == null) {
-        bCu = new a();
-      }
-      a locala = bCu;
-      AppMethodBeat.o(140548);
-      return locala;
-    }
-    finally
-    {
-      AppMethodBeat.o(140548);
-    }
+    AppMethodBeat.i(130752);
+    y.a locala = super.CM();
+    locala = new y.a(locala.left, locala.top + ub(2131165773), ub(2131167027) + ub(2131165772), locala.bottom);
+    AppMethodBeat.o(130752);
+    return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.game.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package org.xwalk.core;
 
 import android.graphics.Bitmap;
-import com.tencent.xweb.l;
+import com.tencent.xweb.p;
 import java.io.File;
 
 public abstract class XWalkLongScreenshotCallback
-  implements l
+  implements p
 {
   private Object bridge;
   private XWalkCoreWrapper coreWrapper;
@@ -136,7 +136,7 @@ public abstract class XWalkLongScreenshotCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.XWalkLongScreenshotCallback
  * JD-Core Version:    0.7.0.1
  */

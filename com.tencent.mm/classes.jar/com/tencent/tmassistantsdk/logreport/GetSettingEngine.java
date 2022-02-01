@@ -23,12 +23,12 @@ public class GetSettingEngine
   {
     try
     {
-      AppMethodBeat.i(75811);
+      AppMethodBeat.i(102057);
       if (mInstance == null) {
         mInstance = new GetSettingEngine();
       }
       GetSettingEngine localGetSettingEngine = mInstance;
-      AppMethodBeat.o(75811);
+      AppMethodBeat.o(102057);
       return localGetSettingEngine;
     }
     finally {}
@@ -38,13 +38,13 @@ public class GetSettingEngine
   {
     try
     {
-      AppMethodBeat.i(75812);
+      AppMethodBeat.i(102058);
       if (this.httpRequest != null)
       {
         this.httpRequest.cancleRequest();
         this.httpRequest = null;
       }
-      AppMethodBeat.o(75812);
+      AppMethodBeat.o(102058);
       return;
     }
     finally {}
@@ -52,7 +52,7 @@ public class GetSettingEngine
   
   public void onSettingHttpRequestFinish(GetSettingsRequest paramGetSettingsRequest, GetSettingsResponse paramGetSettingsResponse, boolean paramBoolean)
   {
-    AppMethodBeat.i(75814);
+    AppMethodBeat.i(102060);
     this.httpRequest = null;
     if (paramBoolean)
     {
@@ -71,33 +71,33 @@ public class GetSettingEngine
       for (;;)
       {
         TMLog.i("GetSettingEngine", "response.settings is null !");
-        AppMethodBeat.o(75814);
+        AppMethodBeat.o(102060);
         return;
         label94:
         TMLog.i("GetSettingEngine", "response  StatCfg is null !");
       }
     }
     TMLog.i("GetSettingEngine", "get settings failed!");
-    AppMethodBeat.o(75814);
+    AppMethodBeat.o(102060);
   }
   
   public void sendRequest()
   {
-    AppMethodBeat.i(75813);
+    AppMethodBeat.i(102059);
     if (this.httpRequest != null)
     {
-      AppMethodBeat.o(75813);
+      AppMethodBeat.o(102059);
       return;
     }
     this.httpRequest = new GetSettingHttpRequest();
     this.httpRequest.setGetSettingHttpListener(this);
     this.httpRequest.sendSettingRequest();
-    AppMethodBeat.o(75813);
+    AppMethodBeat.o(102059);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.logreport.GetSettingEngine
  * JD-Core Version:    0.7.0.1
  */

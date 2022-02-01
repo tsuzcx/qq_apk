@@ -19,15 +19,15 @@ final class FTSChattingConvUI$1
   
   FTSChattingConvUI$1(FTSChattingConvUI paramFTSChattingConvUI)
   {
-    AppMethodBeat.i(61790);
-    this.offset = ((int)this.mWY.getResources().getDimension(2131427500));
+    AppMethodBeat.i(111883);
+    this.offset = ((int)this.rtN.getResources().getDimension(2131165191));
     this.paint = new Paint(1);
-    AppMethodBeat.o(61790);
+    AppMethodBeat.o(111883);
   }
   
   public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    AppMethodBeat.i(61792);
+    AppMethodBeat.i(111885);
     super.a(paramCanvas, paramRecyclerView, params);
     this.paint.setColor(-2434342);
     this.paint.setStrokeWidth(1.0F);
@@ -51,20 +51,20 @@ final class FTSChattingConvUI$1
         }
       }
     }
-    AppMethodBeat.o(61792);
+    AppMethodBeat.o(111885);
   }
   
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    AppMethodBeat.i(61791);
+    AppMethodBeat.i(111884);
     super.a(paramRect, paramView, paramRecyclerView, params);
     paramRect.set(this.offset, this.offset, this.offset, this.offset);
-    AppMethodBeat.o(61791);
+    AppMethodBeat.o(111884);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSChattingConvUI.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,42 +12,31 @@ import com.tencent.mm.kiss.widget.textview.a;
 
 public final class b
 {
-  private static b eMm;
-  private static Object eMn;
+  private static b ghr;
+  private static Object ghs;
   
   static
   {
-    AppMethodBeat.i(105823);
-    eMn = new NoCopySpan.Concrete();
-    AppMethodBeat.o(105823);
-  }
-  
-  public static b SR()
-  {
-    AppMethodBeat.i(105822);
-    if (eMm == null) {
-      eMm = new b();
-    }
-    b localb = eMm;
-    AppMethodBeat.o(105822);
-    return localb;
+    AppMethodBeat.i(141143);
+    ghs = new NoCopySpan.Concrete();
+    AppMethodBeat.o(141143);
   }
   
   public static void a(Spannable paramSpannable)
   {
-    AppMethodBeat.i(105821);
+    AppMethodBeat.i(141141);
     Selection.removeSelection(paramSpannable);
-    paramSpannable.removeSpan(eMn);
-    AppMethodBeat.o(105821);
+    paramSpannable.removeSpan(ghs);
+    AppMethodBeat.o(141141);
   }
   
   public static boolean a(View paramView, Layout paramLayout, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(105820);
+    AppMethodBeat.i(141140);
     int i = paramMotionEvent.getAction();
     if (!(paramView instanceof a))
     {
-      AppMethodBeat.o(105820);
+      AppMethodBeat.o(141140);
       return false;
     }
     paramView = (a)paramView;
@@ -57,12 +46,12 @@ public final class b
       int k = (int)paramMotionEvent.getY();
       if ((j < paramView.getHorizontalDrawOffset()) || (j > paramLayout.getWidth() + paramView.getHorizontalDrawOffset()))
       {
-        AppMethodBeat.o(105820);
+        AppMethodBeat.o(141140);
         return false;
       }
       if ((k < paramView.getVerticalDrawOffset()) || (k > paramLayout.getHeight() + paramView.getVerticalDrawOffset()))
       {
-        AppMethodBeat.o(105820);
+        AppMethodBeat.o(141140);
         return false;
       }
       int m = paramView.getHorizontalDrawOffset();
@@ -74,22 +63,33 @@ public final class b
       {
         if (i == 1)
         {
-          AppMethodBeat.o(105820);
+          AppMethodBeat.o(141140);
           return true;
         }
         Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(paramView[0]), paramSpannable.getSpanEnd(paramView[0]));
-        AppMethodBeat.o(105820);
+        AppMethodBeat.o(141140);
         return true;
       }
       Selection.removeSelection(paramSpannable);
     }
-    AppMethodBeat.o(105820);
+    AppMethodBeat.o(141140);
     return false;
+  }
+  
+  public static b agK()
+  {
+    AppMethodBeat.i(141142);
+    if (ghr == null) {
+      ghr = new b();
+    }
+    b localb = ghr;
+    AppMethodBeat.o(141142);
+    return localb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.b.b
  * JD-Core Version:    0.7.0.1
  */

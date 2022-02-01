@@ -1,22 +1,22 @@
 package com.tencent.mm.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jn;
+import com.tencent.mm.g.a.kq;
 import com.tencent.mm.sdk.b.c;
 
 final class NewTaskUI$1
-  extends c<jn>
+  extends c<kq>
 {
   NewTaskUI$1(NewTaskUI paramNewTaskUI)
   {
-    AppMethodBeat.i(34915);
-    this.__eventId = jn.class.getName().hashCode();
-    AppMethodBeat.o(34915);
+    AppMethodBeat.i(161581);
+    this.__eventId = kq.class.getName().hashCode();
+    AppMethodBeat.o(161581);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.tools.NewTaskUI.1
  * JD-Core Version:    0.7.0.1
  */

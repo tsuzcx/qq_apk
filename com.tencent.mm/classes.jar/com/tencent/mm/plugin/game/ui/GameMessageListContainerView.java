@@ -7,10 +7,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.f;
-import com.tencent.mm.plugin.game.model.n;
-import com.tencent.mm.plugin.game.model.n.i;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.b.f;
+import com.tencent.mm.plugin.game.model.o;
+import com.tencent.mm.plugin.game.model.o.i;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 
 public class GameMessageListContainerView
@@ -24,13 +24,13 @@ public class GameMessageListContainerView
     this.mContext = paramContext;
   }
   
-  public final void a(n paramn, LinkedList<n.i> paramLinkedList, int paramInt1, int paramInt2, f<String, Bitmap> paramf)
+  public final void a(o paramo, LinkedList<o.i> paramLinkedList, int paramInt1, int paramInt2, f<String, Bitmap> paramf)
   {
-    AppMethodBeat.i(112089);
-    if ((paramn == null) || (bo.es(paramLinkedList)))
+    AppMethodBeat.i(42284);
+    if ((paramo == null) || (bt.gL(paramLinkedList)))
     {
       setVisibility(8);
-      AppMethodBeat.o(112089);
+      AppMethodBeat.o(42284);
       return;
     }
     setVisibility(0);
@@ -39,7 +39,7 @@ public class GameMessageListContainerView
     GameMessageListUserIconView localGameMessageListUserIconView;
     for (int i = 1;; i = 2)
     {
-      j = this.mContext.getResources().getDimensionPixelSize(2131427496);
+      j = this.mContext.getResources().getDimensionPixelSize(2131165187);
       while (getChildCount() < i)
       {
         localGameMessageListUserIconView = new GameMessageListUserIconView(this.mContext);
@@ -64,7 +64,7 @@ public class GameMessageListContainerView
           localLinkedList.add(paramLinkedList.get(j));
           j += 1;
         }
-        localGameMessageListUserIconView.a(paramn, localLinkedList, paramf);
+        localGameMessageListUserIconView.a(paramo, localLinkedList, paramf);
       }
       for (;;)
       {
@@ -73,19 +73,19 @@ public class GameMessageListContainerView
         getChildAt(paramInt2).setVisibility(8);
       }
     }
-    AppMethodBeat.o(112089);
+    AppMethodBeat.o(42284);
   }
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(112088);
+    AppMethodBeat.i(42283);
     super.onFinishInflate();
-    AppMethodBeat.o(112088);
+    AppMethodBeat.o(42283);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameMessageListContainerView
  * JD-Core Version:    0.7.0.1
  */

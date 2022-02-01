@@ -19,6 +19,7 @@ import com.google.android.gms.common.internal.bc;
 import com.google.android.gms.common.util.g;
 import com.google.android.gms.common.util.h;
 import com.google.android.gms.common.util.k;
+import com.google.android.gms.common.util.l;
 import com.google.android.gms.d;
 import com.google.android.gms.internal.cg;
 import com.google.android.gms.internal.ch;
@@ -29,13 +30,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class n
 {
   @Deprecated
-  public static final int Hi = 10298000;
-  public static boolean Lt = false;
-  public static boolean Lu = false;
-  static boolean Lv = false;
-  private static boolean Lw = false;
-  static final AtomicBoolean Lx = new AtomicBoolean();
-  private static final AtomicBoolean Ly = new AtomicBoolean();
+  public static final int IX = 10298000;
+  public static boolean Ni = false;
+  public static boolean Nj = false;
+  static boolean Nk = false;
+  private static boolean Nl = false;
+  static final AtomicBoolean Nm = new AtomicBoolean();
+  private static final AtomicBoolean Nn = new AtomicBoolean();
   
   @Deprecated
   public static boolean b(Context paramContext, int paramInt)
@@ -50,19 +51,13 @@ public class n
   }
   
   @Deprecated
-  public static String bb(int paramInt)
+  public static boolean bC(int paramInt)
   {
-    return ConnectionResult.aY(paramInt);
+    return l.h(null, paramInt);
   }
   
   @Deprecated
-  public static boolean bi(int paramInt)
-  {
-    return k.h(null, paramInt);
-  }
-  
-  @Deprecated
-  public static boolean bj(int paramInt)
+  public static boolean bD(int paramInt)
   {
     switch (paramInt)
     {
@@ -78,15 +73,21 @@ public class n
   }
   
   @Deprecated
+  public static String bv(int paramInt)
+  {
+    return ConnectionResult.bs(paramInt);
+  }
+  
+  @Deprecated
   public static int d(Context paramContext)
   {
     PackageManager localPackageManager = paramContext.getPackageManager();
     try
     {
-      paramContext.getResources().getString(d.Gb);
-      if ((!"com.google.android.gms".equals(paramContext.getPackageName())) && (!Ly.get()))
+      paramContext.getResources().getString(d.HQ);
+      if ((!"com.google.android.gms".equals(paramContext.getPackageName())) && (!Nn.get()))
       {
-        i = bc.i(paramContext);
+        i = bc.j(paramContext);
         if (i == 0) {
           throw new IllegalStateException("A required meta-data tag in your app's AndroidManifest.xml does not exist.  You must have the following declaration within the <application> element:     <meta-data android:name=\"com.google.android.gms.version\" android:value=\"@integer/google_play_services_version\" />");
         }
@@ -99,13 +100,13 @@ public class n
         Log.e("GooglePlayServicesUtil", "The Google Play services resources were not found. Check your project configuration to ensure that the resources are included.");
       }
       int j;
-      if (i != Hi)
+      if (i != IX)
       {
-        j = Hi;
+        j = IX;
         paramContext = String.valueOf("com.google.android.gms.version");
         throw new IllegalStateException(String.valueOf(paramContext).length() + 290 + "The meta-data tag in your app's AndroidManifest.xml does not have the right value.  Expected " + j + " but found " + i + ".  You must have the following declaration within the <application> element:     <meta-data android:name=\"" + paramContext + "\" android:value=\"@integer/google_play_services_version\" />");
       }
-      if ((!g.j(paramContext)) && (!g.k(paramContext))) {}
+      if ((!g.k(paramContext)) && (!g.l(paramContext))) {}
       PackageInfo localPackageInfo;
       for (int i = 1;; i = 0)
       {
@@ -123,11 +124,11 @@ public class n
         try
         {
           localPackageInfo = localPackageManager.getPackageInfo("com.google.android.gms", 64);
-          o.p(paramContext);
+          o.q(paramContext);
           if (i == 0) {
             break label278;
           }
-          paramContext = o.a((PackageInfo)localObject, m.Ls);
+          paramContext = o.a((PackageInfo)localObject, m.Nh);
           if (paramContext != null) {
             break label251;
           }
@@ -145,17 +146,17 @@ public class n
       {
         Log.w("GooglePlayServicesUtil", "Google Play services signature invalid.");
         return 9;
-        if (o.a(localPackageInfo, m.Ls) == null)
+        if (o.a(localPackageInfo, m.Nh) == null)
         {
           Log.w("GooglePlayServicesUtil", "Google Play services signature invalid.");
           return 9;
         }
       }
       label278:
-      i = h.bh(Hi);
-      if (h.bh(localPackageInfo.versionCode) < i)
+      i = h.bB(IX);
+      if (h.bB(localPackageInfo.versionCode) < i)
       {
-        i = Hi;
+        i = IX;
         j = localPackageInfo.versionCode;
         Log.w("GooglePlayServicesUtil", 77 + "Google Play services out of date.  Requires " + i + " but found " + j);
         return 2;
@@ -179,7 +180,7 @@ public class n
     return 0;
   }
   
-  public static Resources e(Context paramContext)
+  public static Resources f(Context paramContext)
   {
     try
     {
@@ -194,7 +195,7 @@ public class n
   static boolean h(Context paramContext, String paramString)
   {
     boolean bool = paramString.equals("com.google.android.gms");
-    if (com.google.android.gms.common.util.j.hW())
+    if (k.ie())
     {
       localObject = paramContext.getPackageManager().getPackageInstaller().getAllSessions().iterator();
       while (((Iterator)localObject).hasNext()) {
@@ -246,9 +247,9 @@ public class n
   }
   
   @Deprecated
-  public static void l(Context paramContext)
+  public static void m(Context paramContext)
   {
-    if (Lx.getAndSet(true)) {}
+    if (Nm.getAndSet(true)) {}
     for (;;)
     {
       return;
@@ -265,43 +266,43 @@ public class n
     }
   }
   
-  public static boolean n(Context paramContext)
+  public static boolean o(Context paramContext)
   {
     boolean bool = false;
-    if (!Lw) {}
+    if (!Nl) {}
     for (;;)
     {
       try
       {
-        PackageInfo localPackageInfo = ch.u(paramContext).getPackageInfo("com.google.android.gms", 64);
+        PackageInfo localPackageInfo = ch.v(paramContext).getPackageInfo("com.google.android.gms", 64);
         if (localPackageInfo == null) {
           continue;
         }
-        o.p(paramContext);
-        if (o.a(localPackageInfo, new j[] { m.Ls[1] }) == null) {
+        o.q(paramContext);
+        if (o.a(localPackageInfo, new j[] { m.Nh[1] }) == null) {
           continue;
         }
-        Lv = true;
+        Nk = true;
       }
       catch (PackageManager.NameNotFoundException paramContext)
       {
         Log.w("GooglePlayServicesUtil", "Cannot find Google Play services package name.", paramContext);
-        Lw = true;
+        Nl = true;
         continue;
       }
       finally
       {
-        Lw = true;
+        Nl = true;
       }
-      if ((Lv) || (!"user".equals(Build.TYPE))) {
+      if ((Nk) || (!"user".equals(Build.TYPE))) {
         bool = true;
       }
       return bool;
-      Lv = false;
+      Nk = false;
     }
   }
   
-  public static Context o(Context paramContext)
+  public static Context p(Context paramContext)
   {
     try
     {

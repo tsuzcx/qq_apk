@@ -12,7 +12,7 @@ public class p
   
   public int b(int paramInt)
   {
-    AppMethodBeat.i(146364);
+    AppMethodBeat.i(14968);
     if (this.r == null)
     {
       this.r = new a();
@@ -23,13 +23,13 @@ public class p
     }
     GLES20.glViewport(this.r.a, this.r.b, this.r.c, this.r.d);
     paramInt = super.b(paramInt);
-    AppMethodBeat.o(146364);
+    AppMethodBeat.o(14968);
     return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.p
  * JD-Core Version:    0.7.0.1
  */

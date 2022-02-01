@@ -1,8 +1,8 @@
 package com.tencent.mm.media.g;
 
-import a.l;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/remuxer/CodecInputSurface$Companion;", "", "()V", "TIME_COST_TAG", "", "ZERO_FRAME_FAILED_THRESHOLD", "", "plugin-mediaeditor_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/mix/AudioMixCodec$Companion;", "", "()V", "BACKGROUND", "", "BATCH_MIX_NUM", "", "MIX_ALL", "MIX_BACKGROUND", "MIX_MUSIC", "MIX_SILENT", "MUSIC", "plugin-mediaeditor_release"})
 public final class a$a {}
 
 
